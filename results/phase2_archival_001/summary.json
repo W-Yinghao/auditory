@@ -1,0 +1,92 @@
+{
+  "job_id": "995468",
+  "config_sha256": "b2c30fb1f95fe20d18b0907415c540b6c3628f353993b6bfaa248938af2637e4",
+  "scope": "exploratory_archival_label_association_not_confirmed_concurrent_clinical_prediction",
+  "formal_clinical_validity_claim": false,
+  "complete_HA_candidates": 53,
+  "index_selection_outcome_blind": true,
+  "confirmed_concurrent_scale_links": 0,
+  "no_tuning": true,
+  "primary_eeg_condition": "code1",
+  "window_ms": [
+    50,
+    250
+  ],
+  "clinical_baseline_limitation": "age and device-use duration only; no validated hearing/audibility covariate",
+  "input_sha256": {
+    "results/phase2_cohort_001/index_recordings.csv": "65977bfbca4bbf97561206c70fd06528184a364f2c1c65f578cd676e3dc735ee",
+    "private/phase2_cohort_001/linked_index.csv": "59af64aa63d97a6638a3daf6c854ecc8c08b463c98084e840499ab375be0b2b9",
+    "results/phase2_measurements_001/features.csv": "0f281d5abc5db9f7ecf2ce6c328e351a24eb398613371c678d1b82ed40a4c3e4"
+  },
+  "exclusions_multilabel": {
+    "outside_HA": 9,
+    "not_unique_name_plus_label_date": 12,
+    "duration_missing_or_negative": 11,
+    "index_identity_source_hold": 23,
+    "EEG_measurement_missing": 13,
+    "MUSS_missing": 2,
+    "age_missing_or_negative": 2
+  },
+  "selected_label_audit": {
+    "MUSS_ceiling_n": 18,
+    "MUSS_min": 20.0,
+    "MUSS_max": 100.0,
+    "age_gap_available": 53,
+    "age_gap_abs_over_3_months": 4,
+    "age_gap_abs_over_12_months": 0,
+    "duration_greater_than_age_n": 0
+  },
+  "metric_units": "MUSS percentage points",
+  "status": "exploratory_completed",
+  "models": [
+    {
+      "model": "training_mean",
+      "n_candidates": 53,
+      "MAE_percentage_points": 17.593672297791432,
+      "RMSE_percentage_points": 20.407646813514617,
+      "R2": -0.04729696553483276,
+      "averaging": "loss_across_repeats_per_candidate_then_equal_candidate_weight",
+      "clipped_to_scale": true
+    },
+    {
+      "model": "clinical_age_duration",
+      "n_candidates": 53,
+      "MAE_percentage_points": 9.214134532053388,
+      "RMSE_percentage_points": 12.21243642829943,
+      "R2": 0.624950476349853,
+      "averaging": "loss_across_repeats_per_candidate_then_equal_candidate_weight",
+      "clipped_to_scale": true
+    },
+    {
+      "model": "EEG_only",
+      "n_candidates": 53,
+      "MAE_percentage_points": 18.037911379516828,
+      "RMSE_percentage_points": 20.659641204718426,
+      "R2": -0.07332077585034313,
+      "averaging": "loss_across_repeats_per_candidate_then_equal_candidate_weight",
+      "clipped_to_scale": true
+    },
+    {
+      "model": "clinical_plus_EEG",
+      "n_candidates": 53,
+      "MAE_percentage_points": 9.341084853015976,
+      "RMSE_percentage_points": 12.329691988075309,
+      "R2": 0.6177139582163078,
+      "averaging": "loss_across_repeats_per_candidate_then_equal_candidate_weight",
+      "clipped_to_scale": true
+    }
+  ],
+  "paired_MAE_delta_percentage_points": 0.1269503209625877,
+  "paired_MAE_delta_conditional_bootstrap_ci": [
+    -0.07724184345302286,
+    0.3274912260770475
+  ],
+  "conditional_bootstrap_scope": "fixed_repeated_OOF_child_mean_loss_conditional_on_fitted_models_not_refitted_workflow",
+  "repeat_delta_range": [
+    -0.06954368236201525,
+    0.3122678962024441
+  ],
+  "repeats": 20,
+  "folds": 5,
+  "independent_sample_unit": "candidate_identity_cluster_not_epoch"
+}

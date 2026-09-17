@@ -1,0 +1,14 @@
+{
+  "version": "phase3_ha_sensitivity_v1",
+  "status": "prespecified_after_phase3_ha_v1_observed_not_new_model_search",
+  "source_phase3_config": "configs/phase3_science_v1.json",
+  "target": "MUSS",
+  "same_candidate_rule": "phase3_ha_v1_exact_50_pta_complete_index_records",
+  "same_outer_inner_folds_seed": true,
+  "alpha_clinical": [0.1, 1.0, 10.0, 100.0, 1000.0],
+  "alpha_eeg": [1.0, 10.0, 100.0, 1000.0, 10000.0, 1000000.0, "infinity_null_eeg"],
+  "inner_selection_metric": "MAE",
+  "prediction_clip": [0.0, 100.0],
+  "loss_bootstrap_repetitions": 2000,
+  "interpretation": "robustness check for unequal clinical/high-dimensional EEG penalty; not positive-result search or independent validation"
+}
