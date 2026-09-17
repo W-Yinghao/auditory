@@ -1,0 +1,48 @@
+{
+  "version": "auditory_v21_independent_evaluation_001",
+  "baseline_commit": "79b3521ab9b3fdd533f51192b4ba2e7937509c7a",
+  "amendment": "AUDITORY_V2_1_REVIEW_AMENDMENT_79b3521 (1).md",
+  "phase": "INDEPENDENT_CAPABILITY_EVALUATION",
+  "algorithm": {"id": "baseline_preserving_pca8_offset_v0", "lambda_l2": 0.01, "maxiter": 200, "population": "P_nat", "inner_encoder_fold": 0},
+  "tests": {"expected_synthetic_head_calls": 39, "max_synthetic_head_calls": 39},
+  "input_preflight_run": "input_preflight_003",
+  "evaluation": {
+    "development_seeds_excluded": [21101, 21102],
+    "rates": [0.15, 0.20],
+    "replicates_per_rate": 20,
+    "seed_rule": "220000 + rate_index*1000 + replicate_index; replicate_index=0..19",
+    "profile_rule": "outer_fold=replicate_index modulo 5; exact role group sample counts from preflight",
+    "history_dimension": 25,
+    "dimensions": {"R_SIM": {"P": 64, "B": 64}, "L0": {"P": 400, "B": 200}},
+    "N1_worlds": ["trial_key", "group_key", "additive_background", "independent_background", "history_only", "trial_key_weak"],
+    "N3_worlds": ["strong_history_null", "strong_history_increment", "history_copy", "near_deterministic", "strong_history_increment_weak"],
+    "bootstrap_replicates": 1000,
+    "bootstrap_seed": 221999,
+    "lanes": {
+      "N1_R_SIM": {"run": "evaluation_N1_R_SIM_001", "worlds": 240, "head_fits": 2160, "calibration_fits": 720, "transform_fits": 1680},
+      "N1_L0": {"run": "evaluation_N1_L0_001", "worlds": 240, "head_fits": 2160, "calibration_fits": 720, "transform_fits": 1680},
+      "N3_R_SIM": {"run": "evaluation_N3_R_SIM_001", "worlds": 200, "head_fits": 800, "calibration_fits": 200, "transform_fits": 1400},
+      "N3_L0": {"run": "evaluation_N3_L0_001", "worlds": 200, "head_fits": 800, "calibration_fits": 200, "transform_fits": 1400}
+    },
+    "full_catalog": {"worlds": 880, "head_fits": 5920, "calibration_fits": 1840, "transform_fits": 6160}
+  },
+  "thresholds": {
+    "minimum_positive_gain_bits": 0.01,
+    "minimum_control_margin_bits": 0.005,
+    "positive_ci_lower_strictly_above": 0.0,
+    "minimum_positive_recoveries_per_20": 16,
+    "meaningful_false_positive_gain_bits": 0.005,
+    "maximum_meaningful_false_positives_per_20": 2,
+    "minimum_null_risk_preservations_per_20": 18,
+    "null_maximum_loss_increase_bits": 0.005,
+    "null_maximum_mean_loss_increase_bits": 0.002,
+    "minimum_baseline_gain_over_class_prior_bits": 0.02,
+    "near_deterministic_maximum_baseline_risk_bits": 0.05,
+    "unevaluable_worlds_allowed": 0,
+    "weak_injection_worlds_are_gates": false
+  },
+  "frozen_documents": ["docs/auditory_v21/CONTINUATION_LOCK.md", "docs/auditory_v21/CAPABILITY_DESIGN_LOCK.md"],
+  "budget": {"round_max_cpu_core_hours": 192, "round_max_gpu_hours": 16, "max_concurrent_cpu_jobs": 4, "max_concurrent_gpu_jobs": 2},
+  "scope": {"new_formal_encoders": 0, "participant_fits": 0, "automatic_push": false},
+  "gpu_policy": {"forbidden": ["P100"]}
+}

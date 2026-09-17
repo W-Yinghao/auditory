@@ -1,0 +1,29 @@
+{
+  "version": "auditory_v21_development_001",
+  "baseline_commit": "79b3521ab9b3fdd533f51192b4ba2e7937509c7a",
+  "amendment": "AUDITORY_V2_1_REVIEW_AMENDMENT_79b3521 (1).md",
+  "phase": "SYNTHETIC_DEVELOPMENT_ONLY",
+  "algorithm": {"id": "baseline_preserving_pca8_offset_v0", "lambda_l2": 0.01, "maxiter": 200, "population": "P_nat", "inner_encoder_fold": 0},
+  "tests": {"expected_synthetic_head_calls": 39, "max_synthetic_head_calls": 39},
+  "development": {
+    "seeds": [21101, 21102],
+    "dimensions": [64, 400],
+    "positive_rates": [0.15, 0.20],
+    "rate_assignment": "seed21101=0.15; seed21102=0.20",
+    "groups": 60,
+    "samples_per_group_cycle": [107, 584, 795, 914, 976],
+    "N1_worlds": ["trial_key", "group_key", "additive_background", "independent_background", "history_only"],
+    "N3_worlds": ["strong_history_null", "strong_history_increment", "history_copy", "near_deterministic"],
+    "world_count": 36,
+    "N1_head_fits_per_world": 9,
+    "N3_head_fits_per_world": 4,
+    "total_head_fits": 244,
+    "base_temperature_fits": 76,
+    "transform_fits": 252,
+    "bootstrap_replicates": 400,
+    "capability_pass_can_be_issued": false
+  },
+  "budget": {"round_max_cpu_core_hours": 192, "round_max_gpu_hours": 16, "max_concurrent_cpu_jobs": 4, "max_concurrent_gpu_jobs": 2, "development_max_cpu_core_hours": 16, "development_max_gpu_hours": 0},
+  "scope": {"new_formal_encoders": 0, "real_experiments": false, "clinical_inputs": false, "automatic_push": false},
+  "gpu_policy": {"default": "A100", "forbidden": ["P100"]}
+}

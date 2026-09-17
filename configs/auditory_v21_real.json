@@ -1,0 +1,24 @@
+{
+  "version": "auditory_v21_real_001",
+  "baseline_commit": "79b3521ab9b3fdd533f51192b4ba2e7937509c7a",
+  "amendment": "AUDITORY_V2_1_REVIEW_AMENDMENT_79b3521 (1).md",
+  "phase": "CONDITIONAL_REAL_COMPARISON",
+  "algorithm": {"id": "baseline_preserving_pca8_offset_v0", "lambda_l2": 0.01, "maxiter": 200, "population": "P_nat", "inner_encoder_fold": 0},
+  "tests": {"expected_synthetic_head_calls": 39, "max_synthetic_head_calls": 39},
+  "input_preflight_run": "input_preflight_003",
+  "real": {
+    "bootstrap_seed": 222999, "bootstrap_replicates": 2000,
+    "noise_seed": 21287,
+    "lanes": {
+      "N1_R_SIM": {"run": "real_N1_R_SIM_001", "capability_run": "evaluation_N1_R_SIM_001", "heads": 45, "calibrations": 15, "transforms": 35, "primary": true},
+      "N1_L0": {"run": "real_N1_L0_001", "capability_run": "evaluation_N1_L0_001", "heads": 45, "calibrations": 15, "transforms": 35, "primary": false},
+      "N3_R_SIM": {"run": "real_N3_R_SIM_001", "capability_run": "evaluation_N3_R_SIM_001", "heads": 20, "calibrations": 5, "transforms": 35, "primary": true},
+      "N3_L0": {"run": "real_N3_L0_001", "capability_run": "evaluation_N3_L0_001", "heads": 20, "calibrations": 5, "transforms": 35, "primary": false}
+    },
+    "full_upper_fit_catalog": {"heads": 130, "calibrations": 40, "transforms": 140}
+  },
+  "frozen_documents": ["docs/auditory_v21/CONTINUATION_LOCK.md", "docs/auditory_v21/CAPABILITY_DESIGN_LOCK.md", "docs/auditory_v21/REAL_DESIGN_LOCK.md"],
+  "budget": {"round_max_cpu_core_hours": 192, "round_max_gpu_hours": 16, "max_concurrent_cpu_jobs": 4, "max_concurrent_gpu_jobs": 2},
+  "scope": {"new_formal_encoders": 0, "automatic_push": false},
+  "gpu_policy": {"forbidden": ["P100"]}
+}

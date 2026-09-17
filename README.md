@@ -1,8 +1,25 @@
 # 儿童听觉 EEG：数据审计与科学探索
 
-本仓库保存面向 IEEE JBHI 同级期刊研究的 **Phase 0–3、Auditory5 和 auditory_next v2 的代码、方案、报告、汇总结果和图表**。v2 限定执行与最终验收已结束，保留阴性、支持不足、数值失败和缺少对照；尚未形成可投稿论文或经验证的临床模型。原始 EEG、身份映射、逐人临床信息、逐 epoch 数据、个体预测和模型权重不在仓库中。
+本仓库保存面向 IEEE JBHI 同级期刊研究的 **Phase 0–3、Auditory5、auditory_next v2 和 v2.1 的代码、方案、报告、汇总结果和图表**。v2.1 条件计划与最终验收已完成，保留阴性、支持不足、数值失败和缺少对照；尚未形成可投稿论文或经验证的临床模型。原始 EEG、身份映射、逐人临床信息、逐 epoch 数据、个体预测和模型权重不在仓库中。
 
-从 [v2 最终状态](docs/AUDITORY_NEXT_FINAL_STATUS_v2.md)、[研究决策](docs/AUDITORY_NEXT_RESEARCH_DECISIONS_v2.md)和[完整报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)开始阅读；前轮见 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)，前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
+从 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[路线决策](docs/auditory_v21/ROUTE_DECISIONS_v2_1.md)和[最终验收](reports/auditory_v21/final_001/FINAL_REPORT_CN.md)开始阅读；前轮见 [v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)，前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
+
+## v2.1：能力门控后的真实比较
+
+新有限预算读出器先完成独立能力评估 **880/880 世界**，N1/N3 × R_SIM/L0 四条路线均通过冻结门槛，再完成全部 20 个真实外折、130 个 EEG 读出头。它保留基线候选，不是旧 MLP 求解器修复；强合成信号通过也不保证微小效应可检出。真实结果均为 `NO_CONTROLLED_INCREMENT_ESTABLISHED`。
+
+| 比较 | 风险增益及 95% 区间（bits/trial） | 解释 |
+|---|---|---|
+| N1 R_SIM：HP → HPB | 0.000348 [−0.000200, 0.001120] | 59 身份组；反方向及噪声/复制对照也未建立受控增益 |
+| N1 L0：HP → HPB | 0.000114 [−0.000225, 0.000432] | 次要表征，控制比较区间跨零 |
+| N3 R_SIM：H → HP | 0 [0, 0] | 60 身份组；五折均选择历史基线，不能推断总体条件信息为零 |
+| N3 L0：H → HP | −0.000710 [−0.001386, −0.000181] | 测试风险小幅退步，不是负互信息 |
+
+A2 四个配对 SUP−SIM / SUP−RAND 比较区间均跨零。N2 旧袋的无 EEG 历史基线 bAcc 约 0.985；新匹配袋在 49/57 候选中有双半份共同支持，但固定角色分割的 4/5 外折组数不足，**按计划停止 N2 后续分布能力与真实比较**，不能写成分布信息不存在。来源收尾审计保留 4 项未解决控制/隔离限制。
+
+所有区间均为固定预测/统计的身份组 bootstrap，未重训完整流程；身份组不是已经确认的独立儿童。当前真实比较属于 HA/BDF 工作包，不能推广为 CI 整体结论。科学验收 `final_001` 无必需回执缺失或失败，59 项模块测试通过；0 新编码器、0 GPU，科研申请资源上界 32 CPU core·h。发布检查另计，原结果与失败版本保留。
+
+![v2.1 real risk comparisons](reports/auditory_v21/figures_002/new_real_risk_comparisons.png)
 
 ## auditory_next v2 结果
 
@@ -56,6 +73,7 @@ C2-S几何重建精确，但两个新增空间成分没有共同显示明确预�
 
 ## 阅读与复现入口
 
+- v2.1：[审阅修订方案](AUDITORY_V2_1_REVIEW_AMENDMENT_79b3521%20%281%29.md)、[科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[复现导航](docs/auditory_v21/REPRODUCTION.md)、[作业记录](docs/auditory_v21/JOB_LEDGER.md)、[路线状态](results/auditory_v21/final_001/four_axis_routes.csv)、[PDF/PNG 图表](reports/auditory_v21/figures_002/)。
 - auditory_next v2：[执行方案](AUDITORY_NEXT_ROUND_SERVER_PLAN_v2.md)、[最终报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)、[研究决策](docs/AUDITORY_NEXT_RESEARCH_DECISIONS_v2.md)、[复现导航](docs/AUDITORY_NEXT_REPRODUCTION_v2.md)、[聚合指标](results/auditory_next_v2/final_002/metrics_aggregate.csv)、[GPU规则](docs/GPU_SCHEDULING_POLICY.md)。
 - Auditory5：[执行方案](AUDITORY_FIVE_IDEAS_SERVER_PLAN_v1.md)、[最终报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)、[作业记录](docs/AUDITORY5_JOB_LEDGER.md)、[复跑导航](docs/AUDITORY5_REPRODUCTION_v1.md)、[聚合指标](results/auditory5_v1/S4_final_001/metrics_aggregate.csv)。
 - Phase 3：[报告](docs/phase3_report.md)、[科学方案](docs/PHASE3_SCIENTIFIC_PROTOCOL.md)、[产物导航](docs/PHASE3_ARTIFACTS.md)。
@@ -64,4 +82,4 @@ C2-S几何重建精确，但两个新增空间成分没有共同显示明确预�
 - Phase 0：[数据审计](docs/phase0_report.md)、[产物导航](docs/ARTIFACTS.md)、[项目规划](docs/PROJECT_PLAN.md)。
 - [发布范围与复现说明](PUBLICATION.md)、[汇总文件导航](results/README.md)、[发布文件清单与 SHA256](release/manifest.json)。
 
-`auditory_next/`、`auditory5/`、`scripts/`、`configs/`、`slurm/` 保存分析代码、配置和批任务入口；`server_restart_en_v1/` 是早期历史计划，不代表最新证据。所有分析和验证均通过 Slurm 运行；后续GPU禁用P100，优先A100/L40S/H100，备选V100/PRO6000。完整数据流程依赖服务器上的受限源数据、映射及分运行源码快照，单独克隆此仓库不能重建全部实验。
+`auditory_v21/`、`auditory_next/`、`auditory5/`、`scripts/`、`configs/`、`slurm/` 保存分析代码、配置和批任务入口；`server_restart_en_v1/` 是早期历史计划，不代表最新证据。所有分析和验证均通过 Slurm 运行；后续GPU禁用P100，优先A100/L40S/H100，备选V100/PRO6000。完整数据流程依赖服务器上的受限源数据、映射及分运行源码快照，单独克隆此仓库不能重建全部实验。

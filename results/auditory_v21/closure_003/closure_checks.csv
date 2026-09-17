@@ -1,0 +1,38 @@
+package,check,status,evidence,numerator,denominator,notes
+G0/C2,S0_scope_registry,PASS,S0/feature_scope_registry.json,90,90,fit_groups is the saved training partition; all/left/right and outer/D_inner task records are retained
+G0/C2,S0_task_scope_alignment,PASS,S0 plan001 task.json and completion.json,90,90,task scope counts are compared to the immutable registry
+G0/C2,S0_checkpoint_scope_receipts,PASS,S0 plan001 completion.json,90,90,encoder_fit_scope_hash is checked without loading checkpoint tensors
+G0/C2,checkpoint_hash_inventory,PASS,S0/legacy_input_hashes.json,75,1893,declared encoder checkpoint hashes are verified by the hash-chain pass
+G0/C2,scaler_scope_receipts,PASS,S0 plan001 probe_metadata.json,90,90,saved temperature/scaler scope receipts are checked across outer tasks
+A2,frozen_omega,PASS,A2/summary.json omega,2,2,
+A2,no_new_fits,PASS,A2/summary.json new_encoder_fits,0,0,
+A2,train_test_scope,PASS,A2/fit_receipts.json aggregate scope fields,60,60,IDs remain private; validation groups are retained as saved
+A2,fold_receipts,PASS,A2/fold_diagnostics.json,60,60,
+A2,paired_cosine_intervals,PASS,Stage0/a2_secondary_comparisons.csv,4,4,Four requested SUP-SIM/SUP-RAND post and post-minus-pre rows are secondary
+A2,saved_norm_measurements,PASS,Stage0/a2_norm_sensitivity.csv,6,6,scale diagnostics only; no information-unit relabeling
+A2,saved_inner_product_measurements,PASS,A2/repeatability_aggregate.csv,16,,"reported only when saved; projected scale diagnostic, not mutual information"
+A2,fixed_quality_archive_header,PASS,saved outer all-mode features.npz ZIP headers,20,20,"quality.npy archives=0; headers only, no EEG/feature values loaded"
+A2,saved_post_pre_common_response_controls,PASS,A2/repeatability_aggregate.csv,4,4,"post_delta, pre_delta and common_response rows are retained on their projected scale"
+A2,quality_background_control,MISSING,final_002/controls_aggregate.csv plus fixed archive headers,0,20,quality.npy is absent when zero archives contain it; fixed quality input cannot be recreated equivalently from this snapshot
+G0,original_cnn_head,PASS,G0/supervised_original_head.csv plus G0_001/summary.json,10,10,TRAIN_DIAGNOSTIC and OUTER_SHARED are original supervised head roles
+G0,encoder_checkpoint_scaler_provenance,PASS,G0 diagnostics linked to S0 legacy encoder artifacts; scaler fields remain absent,75,75,checkpoint link is verified from immutable S0 paths; scaler inheritance is a separate unresolved provenance field
+G0,encoder_train_ranges,PASS,G0/encoder_training_diagnostics.csv,75,75,"separate diagnostic rows: outer=45, D_inner=30; counts are not a cross-stratum ratio"
+G0,posthoc_probe,PASS,G0_readouts/summary.json and within_child_metrics.csv,72,72,metric rows=72; historical post-fitted probe head fits=1028; separate from original CNN head
+G0,same_child_heldout,PASS,G0_readouts/within_child_metrics.csv,72,72,
+G0,cross_child_bridge,PASS,G0_readouts/summary.json and bridge_metrics.csv,36,36,offline bridge object is kept separate from same-child heldout
+G0,no_new_encoder_fit_in_closure,PASS,G0_readouts/summary.json,0,0,historical probes are reused; this closure performs zero fits
+G0,historical_probe_head_fits,PASS,G0_readouts/summary.json,1158,,1158 existing probe head fits are retained as historical artifacts
+G0,selection_isolation,MISSING,G0_metadata/G0_metadata_002/summary.json,0,1,whole-record offline QC selection remains unisolated
+C2,spatial_train_test_scope,PASS,C2/C2S_core_001/fit_scopes.json,30,30,scope hashes and disjoint group partitions checked without exposing IDs
+C2,scaler_calibration_receipts,PASS,C2/C2S_core_001/fit_scopes.json temperature fields,30,30,saved calibration temperatures are checked as provenance fields
+C2,spatial_geometry_source,PASS,C2S_core_001/summary.json geometry,60,60,max reconstruction error=2.842170943040401e-14; existing left/right source; no spatial grid expansion
+C2,numeric_isolation,PASS,C2S_core_001/summary.json,1,1,
+C2,selection_isolation,MISSING,C2S_core_001/summary.json,0,1,whole-record offline QC selection is not isolated
+C2,no_new_encoder_fit,PASS,C2S_core_001/summary.json,0,0,
+C2,repaired_train_calibration_scope,PASS,C2R_core_001/selection_inventory.json,60,60,fit_groups and temperature calibration receipts checked; IDs remain private
+C2,repaired_scope_declaration,PASS,C2R_core_001/repair_definition.json,1,1,saved declaration distinguishes frozen encoders from inner head/scaler fitting
+C2,repaired_head_scope_receipts,PASS,C2R_core_001/family_training_diagnostics.json,1120,1120,optimization/head receipts retain scope and input hashes; models are not loaded
+C2,repaired_head_fit_counts,PASS,C2R_core_001/summary.json,560,325,historical C2-R neural and linear head fit counts are retained; this closure made zero fits
+C2,repaired_core_completion,PASS,C2R_core_001/summary.json,560,560,C2-R scientific status remains NOT_EVALUABLE where declared
+C2,repaired_no_new_encoder_fit,PASS,C2R_core_001/summary.json,0,0,
+C2,inherited_raw_isolation,MISSING,final_002/controls_aggregate.csv,,,control gap is reported separately from numeric isolation

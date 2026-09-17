@@ -1,0 +1,18 @@
+> GitHub发布副本：本轮验收后，用户明确要求发布代码与聚合结果。文内“未发布／未push”及早期进行中表述是历史状态；当前以v2.1最终科学报告和final_001为准。个体数据、预测、模型与详细日志仍在服务器。见[发布范围](../PUBLICATION.md)。
+
+# auditory_next v2 GitHub publication receipt — 2026-09-17
+
+The researcher explicitly requested this push after the v2 scientific round. The curated update was pushed to `W-Yinghao/auditory` main and the remote ref independently read back as `79b3521ab9b3fdd533f51192b4ba2e7937509c7a`.
+
+- [Commit](https://github.com/W-Yinghao/auditory/commit/79b3521ab9b3fdd533f51192b4ba2e7937509c7a); [final report](https://github.com/W-Yinghao/auditory/blob/main/reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md); [research decisions](https://github.com/W-Yinghao/auditory/blob/main/docs/AUDITORY_NEXT_RESEARCH_DECISIONS_v2.md).
+- Published checkout: `/home/infres/yinwang/auditory_github`, clean after push. Scientific workspace and original scientific artifacts remain unchanged.
+- Snapshot: 710 tracked files, 708 payload hashes, 9,687,256 payload bytes. This update changes 228 files, including 219 copied source/artifact files, editorial navigation, the publication verifier and provenance records.
+- Slurm build997333 and manifest997342 prepared the exact allowlist. Verification997344 passed204 v2 tests,173 Auditory5 tests and19 legacy tests;213 Python files parsed,67 Slurm scripts syntax checked,214 local links and23 historical restart checksums checked. Scans using161 known names and59,382 known identifiers found no matches. All45 final_002 artifacts match their original scientific audit hashes;206 non-documentation source copies were checked exactly.
+- Synthetic fixture calls during v2 publication tests:15 logistic and10 ridge calls,0 neural calls. These include test semantics rather than an assertion of25 successful models. No participant models were refit. Publication CPU jobs are separate from the frozen scientific resource/fit ledger.
+- First index check997353 caught the updated release manifest not yet staged; it stopped before any commit. After explicitly staging that already-verified manifest, check997355 passed the exact710-file staged set and708 payload hashes. The committed tree `7b620a71c734a74997791a4a3d7e8b15817435da` matches its receipt. Failed and successful check logs remain private.
+- Governing v2 protocol, code, configurations, numeric outputs and final reports were copied unchanged. Documentation copies add publication notices and annotate one unavailable server link; README/PUBLICATION/AGENTS are editorial updates. The original frozen plan/configuration still record the earlier no-automatic-push state; this later explicit user request authorized the curated publication.
+- Raw/processed EEG, participant/record/trial tables, private identity splits, clinical rows, embeddings, predictions, model weights and detailed logs remain withheld. No whole private or results directory was copied blindly. Release checks do not constitute a general anonymization certificate.
+
+Scientific conclusions remain those of final_002: N1/N2/N3 fail the predefined progression criteria; the C2-R primary repair completes without clear joint benefit while some controls remain missing; E0-R and some synthetic worlds remain numerically incomplete. The original final_001 acceptance flaw and permission correction remain explicit. Future GPU jobs use A100/L40S/H100 preferentially, with V100/PRO6000 alternatives and no P100 fallback.
+
+Packing scripts, previous release receipts, source selection, exact staged allowlist, index receipt and logs are retained in `private/github_publish_003/`. The private verification test logs are under the published checkout's ignored `private/` directory. This publication does not authorize future participant-data releases.

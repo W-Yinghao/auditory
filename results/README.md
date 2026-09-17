@@ -2,6 +2,10 @@
 
 These directories contain selected aggregate outputs only. Participant/record tables, private predictions, epoch signals and ledgers remain on the server. A directory's presence does not mean its full server contents were released.
 
+The latest round is [v2.1 final_001](auditory_v21/final_001/) with its [scientific report](../docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md). It includes 880 synthetic-world execution records, four complete real N1/N3 comparisons, A2 paired summaries, N2 metadata/support audits, historical failures and the final closure audit. N2's downstream comparison is conditionally stopped for frozen-role support; no subset estimate replaces it. The [v2.1 publication record](../release/auditory_v21_publication_changes.json) gives the exact file selection. Figures use [figures_002](../reports/auditory_v21/figures_002/); the earlier cosmetic export remains on the server.
+
+The previous [auditory_next v2 final_002](auditory_next_v2/final_002/) and its [report](../reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md) remain unchanged. Version names belong to their respective rounds: v2 final_001 is superseded, whereas v2.1 final_001 is the accepted final aggregate.
+
 Auditory5's current entry point is [S4_final_001](auditory5_v1/S4_final_001/), with the [five-route report](../reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md). Core/control summaries, validation gates, numerical failures and earlier interim versions accompany the final aggregates. All90 representation tasks completed; scientific support and numerical failures remain explicit. See `release/auditory5_publication_changes.json` for the exact per-file allowlist. No private identity lists, epoch records, individual predictions or model weights are included.
 
 | Directory | Included evidence |

@@ -9,4 +9,8 @@ set -euo pipefail
 umask 077
 cd /home/infres/yinwang/EEG_auditory
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
-/home/infres/yinwang/anaconda3/envs/eeg2025/bin/python scripts/phase1_epochs.py --run "${PHASE1_SMOKE_RUN:-phase1_smoke_001}" --record-ids B00fe427fa555 B0f35c410ee07
+if (( $# == 0 )); then
+  printf '%s\n' 'Supply authorized record IDs as positional arguments; identifiers are not distributed in this snapshot.' >&2
+  exit 2
+fi
+/home/infres/yinwang/anaconda3/envs/eeg2025/bin/python scripts/phase1_epochs.py --run "${PHASE1_SMOKE_RUN:-phase1_smoke_001}" --record-ids "$@"
