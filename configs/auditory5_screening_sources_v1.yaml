@@ -1,0 +1,42 @@
+version: auditory5_screening_sources_v1
+# This is an explicit source registry, never a best/latest-run selector.
+project_config: configs/auditory5_v1.yaml
+plan: private/auditory5_v1/jobs/plan_001/plan.json
+split: private/auditory5_v1/splits/splits_001/folds.json
+protocol: AUDITORY_FIVE_IDEAS_SERVER_PLAN_v1.md
+execution_run: execution_status_003
+A_balance_support_run: A_balance_support_001
+expected_representation_tasks: 90
+expected_outer_folds: 5
+primary_mode: R_SIM
+parallel_mode: R_SUP
+sources:
+  - {route: A, kind: core, run: A_L0_core_001, modes: [L0]}
+  - {route: A, kind: core, run: A_SUP_RAND_core_001, modes: [R_SUP, R_RAND]}
+  - {route: A, kind: core, run: A_SIM_core_001, modes: [R_SIM]}
+  - {route: A, kind: controls, run: A_controls_L0_SUP_RAND_001, modes: [L0, R_SUP, R_RAND]}
+  - {route: A, kind: controls, run: A_controls_SIM_001, modes: [R_SIM]}
+  - {route: B, kind: core, run: B_L0_001, modes: [L0]}
+  - {route: B, kind: core, run: B_SUP_RAND_core_001, modes: [R_SUP, R_RAND]}
+  - {route: B, kind: core, run: B_SIM_core_001, modes: [R_SIM]}
+  - {route: B, kind: controls, run: B_controls_L0_SUP_001, modes: [L0, R_SUP]}
+  - {route: B, kind: controls, run: B_controls_SIM_001, modes: [R_SIM]}
+  - {route: C, kind: core, run: C_L0_003, modes: [L0]}
+  - {route: C, kind: core, run: C_SIM_full_001, modes: [R_SIM]}
+  - {route: C, kind: core, run: C_SUP_full_001, modes: [R_SUP]}
+  - {route: C, kind: descriptive, run: C_linear_L0_SUP_RAND_002, modes: [L0, R_SUP, R_RAND]}
+  - {route: C, kind: descriptive, run: C_linear_SIM_001, modes: [R_SIM]}
+  - {route: D, kind: core, run: D_L0_core_001, modes: [L0]}
+  - {route: D, kind: core, run: D_SUP_core_001, modes: [R_SUP]}
+  - {route: D, kind: core, run: D_SIM_core_001, modes: [R_SIM]}
+  - {route: D, kind: controls, run: D_controls_L0_SUP_001, modes: [L0, R_SUP]}
+  - {route: D, kind: controls, run: D_controls_SIM_001, modes: [R_SIM]}
+  - {route: E, kind: core, run: E0_native_003, modes: [E0_native]}
+# Retained attempts do not supply replacement estimates or alter the primary.
+retained_attempts:
+  - {route: C, run: C_L0_001, state: CANCELLED_BEFORE_OUTCOMES}
+  - {route: C, run: C_L0_002, state: NUMERICAL_FAILURE}
+  - {route: C, run: C_linear_L0_SUP_RAND_001, state: AGGREGATION_IMPLEMENTATION_FAILURE_REPAIRED}
+limitations:
+  E1_bapa_safe_candidates: 16
+  E1_min_candidates_each_task: 20

@@ -1,0 +1,11 @@
+> Publication copy: aggregate research evidence only; participant-level inputs and outputs remain on the server. Historical running/queued statements are superseded by S4_final_001. See [publication scope](../PUBLICATION.md).
+
+# D nested core and limitations
+
+The first frozen core uses 51 complete HA source-percentage clinical candidates, the existing earliest indices, and the new EEG support. Clinical outcomes are never loaded by encoder jobs. Each learned inner encoder/head excludes outer-test and inner-clinical-validation identities across all EEG tasks; fixed L0 bins need no fitted encoder, so every inner scaler, PCA and stimulus readout is refit from scratch. Outer and inner coordinate systems are never concatenated into a clinical table.
+
+For each inner/outer clinical training set, the feature center and candidate-weighted null/full/pre PCA are fitted on its training candidates. Float64 class-centered head SVD verifies probability equality on all actual stored feature rows. Every condition uses 40 trials, 20 fixed resamplings combined into one candidate summary. Random null controls use 20 fixed Gaussian/QR three-dimensional orthogonal subspaces. Candidate clinical ridge groups have independent plan-defined penalties, with exact column deletion for `drop`. Each inner prediction and final outer prediction uses [0,100] clipping; ties prefer fewer EEG dimensions, then stronger regularization. In the L0 baseline, the original binned feature space has 400 coordinates; this is explicitly not the learned 64-dimensional architecture.
+
+D0–D7 include clinical-only, visible, null, full, random and prestimulus controls. The first L0 core returned a negative incremental result; it is retained and cannot justify endpoint/feature/seed searching. The learned primary remains R_SIM, with R_SUP in parallel.
+
+Remaining prespecified controls are all-trial summaries using the same training-fitted bases, count/QC sensitivity, a new stimulus probe on the fixed null space, and separately reported float32 invariance. Their absence keeps the current output INTERIM. These are named pending controls, not evidence that the full D route is complete. Source units and clinical/EEG assessment concurrence remain unresolved.

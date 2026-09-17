@@ -1,0 +1,202 @@
+project:
+  name: auditory5
+  version: v1.0
+  reference_commit: aac4c366fdaf23507cc5d8b6510f675ae7af615b
+  stage: S3
+  site_config: configs/auditory5_site.local.yaml
+  real_data_execution_status: NOT_RUN
+  overwrite: false
+  raw_read_only: true
+  publish_individual_data: false
+
+paths:
+  private_relative: private/auditory5_v1
+  aggregates_relative: results/auditory5_v1
+  reports_relative: reports/auditory5_v1
+  resolve_existing_artifacts_before_training: true
+
+scope:
+  routes: [A, B, C, D, E]
+  primary_cohort: HA
+  mff_replication: eligibility_gated
+  clinical_cohort: HA_only
+  force_mamba: false
+  force_hfmca: false
+  allow_large_foundation_model: false
+  allow_new_clinical_endpoint_search: false
+
+splits:
+  seed: 20260917
+  group_key: split_group_id
+  outer_folds: 5
+  inner_folds: 3
+  min_groups_five_folds: 25
+  small_support_four_folds_min_groups: 20
+  isolate_all_tasks_of_test_identity: true
+  exclude_test_eeg_from_ssl: true
+  block_seconds: 30
+  minimum_embargo_seconds: 10
+  enlarge_blocks_by_filter_support_before_results: true
+  isolate_inner_validation_from_encoder: true
+
+preprocessing:
+  main: P1_CAUSAL20
+  complementary: P2_SPATIAL_SPLIT
+  output_hz: 250
+  epoch_seconds: [-0.2, 0.5]
+  main_window_seconds: [0.05, 0.45]
+  pre_window_seconds: [-0.2, 0.0]
+  highpass_hz: 0.5
+  highpass_butter_order: 4
+  lowpass_hz: 30.0
+  lowpass_butter_order: 8
+  zero_phase: false
+  baseline_subtract: false
+  per_trial_variance_normalization: false
+  initial_segment_guard_seconds: 20
+  phase_compensation: none
+  channel_scaling: training_candidates_equal_weight
+  source_clock_uncertain: quarantine
+  preserve_rejected_event_history: true
+
+representations:
+  modes: [L0, R_SUP, R_SIM, R_RAND]
+  primary_learned_mode: R_SIM
+  parallel_supervised_mode: R_SUP
+  encoder: SmallEEGCNN_v1
+  latent_dim: 64
+  batch_norm: false
+  dropout: 0.0
+  first_pass_seeds: [11]
+  replication_seeds: [23, 37]
+  classifier_C: [0.01, 0.1, 1.0, 10.0]
+  temperature_calibration_bounds: [0.25, 4.0]
+
+supervised:
+  optimizer: AdamW
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  batch_trials: 64
+  max_epochs: 80
+  patience: 12
+  warmup_epochs: 5
+  scheduler: cosine
+  candidate_balanced: true
+  class_balanced_within_candidate: true
+
+simclr:
+  method: two_view_nt_xent
+  optimizer: AdamW
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  epochs: 100
+  batch_original_trials: 128
+  views_per_trial: 2
+  temperature: 0.2
+  projector_dims: [64, 128, 64]
+  projector_l2_normalize: true
+  encoder_output_l2_normalize: false
+  positive_rule: same_trial_two_augmentations
+  class_labels_in_sampler: false
+  noise_std_training_scale_fraction: 0.02
+  shuffle_time: false
+  permute_channels: false
+  crop_resize: false
+  strong_amplitude_scaling: false
+  clinical_labels_visible: false
+  checkpoint_selection: final_fixed_epoch
+
+route_A:
+  enabled: true
+  stimulus_contrast: local_class1_minus_local_class0
+  trials_per_class_per_half: 20
+  resampling_repetitions: 20
+  contrast_pca_max_dim: 8
+  min_candidates: 25
+  primary_effect: matched_minus_mismatched_cosine
+  screening_effect_floor: 0.05
+  background_control: required
+  prestim_control: required
+
+route_B:
+  enabled: true
+  history: previous_run_length
+  short_value: 1
+  long_minimum: 3
+  omit_intermediate_run_length: 2
+  main_stratum: current_modal_code_and_previous_same_code
+  min_trials_per_history_group: 20
+  min_candidates: 20
+  history_target_as_input: false
+  context_control: required
+  prestim_and_previous_response_controls: required
+  screening_gain_bits: 0.01
+  minimum_candidate_positive_fraction: 0.60
+
+route_C:
+  enabled: true
+  partition: left_right_sensor_groups
+  left: [Fp1, F3, F7, C3, T3, P3, T5, O1]
+  right: [Fp2, F4, F8, C4, T4, P4, T6, O2]
+  reference: independent_within_group_average
+  split_before_preprocessing_and_encoding: true
+  readout_primary_hidden: 32
+  capacity_control_hidden: 64
+  duplicate_view_controls: required
+  min_candidates: 25
+  screening_joint_gain_bits: 0.01
+  claim_pid_synergy: false
+
+route_D:
+  enabled: true
+  outcome: HA_MUSS_source_percentage
+  covariates: [age_months, log1p_device_duration_months, better_ear_4freq_source_units]
+  candidate_index: frozen_earliest_index
+  min_candidates: 30
+  trials_per_class: 40
+  trial_resampling_repetitions: 20
+  head: linear_softmax
+  projection: rowspace_of_class_centered_weights
+  null_pca_dim: 3
+  random_null_projections: 20
+  alpha_C: [0.1, 1.0, 10.0]
+  alpha_visible: [1.0, 10.0, 100.0, drop]
+  alpha_null: [1.0, 10.0, 100.0, drop]
+  prediction_bounds: [0.0, 100.0]
+  require_full_nested_encoder_fitting: true
+  screening_mae_gain_source_points: 0.5
+  must_also_improve_clinical_only_baseline: true
+
+route_E:
+  enabled: true
+  primary_direction: pure_tone_to_bapa
+  reverse_direction: prespecified_secondary
+  task_labels_shared: false
+  min_candidates_each_task: 20
+  min_target_training_candidates_each_fold: 12
+  paired_small_sample_fallback: descriptive_E0
+  same_test_trials: true
+  track_unique_target_label_exposure: true
+  screening_target_information_bits: 0.01
+  screening_transfer_gap_bits: 0.02
+  rank4_adaptation: only_after_supported_gap
+
+statistics:
+  aggregate_unit: split_group_id
+  primary_class_weighting: equal_within_candidate
+  primary_candidate_weighting: equal
+  bootstrap_repetitions: 2000
+  bootstrap_scope: fixed_oof_predictions_not_full_pipeline_refit
+  exact_permutation_requires_exchangeability: true
+  keep_negative_information_scores: true
+  treat_seeds_as_independent_people: false
+  formal_multiple_test_adjustment: Holm_when_valid_and_prespecified
+
+resources:
+  max_concurrent_gpu_jobs: 2
+  max_concurrent_cpu_jobs: 4
+  gpu_per_training_job: 1
+  max_initial_encoder_jobs: 100
+  copy_entire_raw_dataset: false
+  overwrite_or_delete_historical_outputs: false
+  auto_expand_to_new_architectures: false

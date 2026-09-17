@@ -1,5 +1,17 @@
 # GitHub snapshot: scope and reproducibility
 
+## Auditory5 update
+
+The researcher subsequently authorized pushing the Auditory5 implementation and existing results. This update includes the five-ideas protocol, source modules and tests, frozen configurations, Slurm entry points, implementation notes, interim reports, and the final `S4_final_001` aggregate report/figures. All90 representation tasks completed. B/D have negative primary screens; A has unsupported history balancing; C has numerical readout failures; E has partial numerical failures and insufficient E1 support. Numerical failures are not zero or negative scientific effects.
+
+The original scientific outputs remain unchanged. New numerical result files, configurations, source code and the governing plan are byte-for-byte copies; publication copies of new Markdown reports add a scope notice and mark unavailable server downloads. The historical draft spec review is explicitly subordinate to the executed decisions. The updated README is an editorial summary of the final aggregates. Exact additions and changes are recorded in [the Auditory5 publication record](release/auditory5_publication_changes.json).
+
+The private90-task plan contains individual training/test group lists and remains on the server. Its public aggregate descriptor, plan hash and task-status matrix are included. Raw/processed signals, manifests and identity splits with individual IDs, clinical rows, embeddings, per-person predictions, weights/checkpoints and detailed logs remain excluded. This explicit publication request covers the curated code and aggregate snapshot; it does not release the participant dataset.
+
+Use [the Auditory5 reproduction guide](docs/AUDITORY5_REPRODUCTION_v1.md) and the final report for current status. Older “queued”, “not trained” and “server only” statements are historical. Site paths and scheduler partitions in scripts/configurations describe the observed server and need adaptation elsewhere. Module tests can run without private participant inputs; full scientific reproduction requires those restricted inputs. The release verification runs the published173-test Auditory5 suite through Slurm in addition to the legacy checks.
+
+## Original Phase 0–3 snapshot
+
 This snapshot was prepared on 2026-09-17 for the researcher-authorized publication of existing project results at `W-Yinghao/auditory`. It contains analysis source, frozen configurations, protocols, research reports, selected aggregate tables and figures. It does not release the underlying human-participant dataset.
 
 ## Included and retained on the server

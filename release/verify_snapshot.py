@@ -14,6 +14,7 @@ import re
 import subprocess
 import sys
 import unittest
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
@@ -33,7 +34,11 @@ def main():
                        r'AKIA[A-Z0-9]{16}', r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----']
     blocked_columns = {'participant_id', 'recording_id', 'container_id', 'raw_name',
                        'source_row', 'source_worksheet_row', 'clinical_row_ref',
-                       'unique_same_day_pid', 'absolute_path', 'raw_dob'}
+                       'unique_same_day_pid', 'absolute_path', 'raw_dob',
+                       'candidate_id', 'split_group_id', 'record_id', 'trial_id',
+                       'raw_locator_key', 'fit_groups', 'test_groups', 'validation_groups',
+                       'train_groups', 'training_groups', 'signal_path', 'event_path'}
+    scope_count_fields={'fit_groups','test_groups','validation_groups','train_groups','training_groups'}
     link_re = re.compile(r'!?\[[^\]]+\]\(([^)]+)\)')
     links = 0
     py_files = 0
@@ -47,6 +52,8 @@ def main():
     for entry in files:
         rel = entry['path']
         p = root / rel
+        if p.suffix.lower() in {'.pt','.pth','.pkl','.parquet','.npz','.npy','.bdf','.edf','.set','.fdt','.mat','.xlsx','.xls'}:
+            issues.append({'path':rel, 'type':'restricted_data_or_model_extension'})
         if p.is_symlink() or not p.is_file():
             issues.append({'path':rel, 'type':'missing_or_symlink'})
             continue
@@ -91,21 +98,35 @@ def main():
                 if not (p.parent / target).exists():
                     issues.append({'path':rel, 'type':'unresolved_local_link','target':target})
         if rel.startswith('results/') and p.suffix == '.csv':
-            header = next(csv.reader(io.StringIO(content)), [])
-            if blocked_columns.intersection(header):
+            reader=csv.DictReader(io.StringIO(content))
+            rows=list(reader)
+            restricted=blocked_columns.intersection(reader.fieldnames or [])
+            for key in scope_count_fields.intersection(restricted):
+                if rows and all(re.fullmatch(r'[0-9]+', row.get(key, '')) for row in rows):
+                    restricted.remove(key)
+            if restricted:
                 issues.append({'path':rel, 'type':'individual_data_columns'})
         if rel.startswith('results/') and p.suffix == '.json':
             obj = json.loads(content)
             def inspect(value):
                 if isinstance(value,dict):
-                    if blocked_columns.intersection(value):
+                    restricted = blocked_columns.intersection(value)
+                    # These names denote aggregate counts in route summaries,
+                    # but actual fit/test group lists remain restricted.
+                    for key in scope_count_fields:
+                        if key in restricted and type(value[key]) is int and value[key]>=0:
+                            restricted.remove(key)
+                    if restricted:
                         issues.append({'path':rel, 'type':'individual_data_keys'})
                     for child in value.values(): inspect(child)
                 elif isinstance(value,list):
                     for child in value: inspect(child)
             inspect(obj)
+        if rel.startswith(('results/auditory5_v1/','reports/auditory5_v1/')):
+            if re.search(r'(?<![A-Za-z0-9])(?:B|P|G|M)[0-9a-f]{12,16}(?![A-Za-z0-9])', content):
+                issues.append({'path':rel, 'type':'opaque_participant_or_record_identifier'})
     for p in root.rglob('*'):
-        if not p.is_file() or '.git' in p.parts or '__pycache__' in p.parts:
+        if not p.is_file() or '.git' in p.parts or '__pycache__' in p.parts or '.pytest_cache' in p.parts:
             continue
         rel = str(p.relative_to(root))
         if rel.startswith('private/'):
@@ -124,6 +145,24 @@ def main():
     result = unittest.TextTestRunner(verbosity=2).run(suite)
     if not result.wasSuccessful():
         issues.append({'type':'unit_test_failure'})
+    auditory_tests = 0
+    auditory_success = False
+    if (root/'auditory5').is_dir():
+        private = root/'private/release_verification'/os.environ['SLURM_JOB_ID']
+        private.mkdir(parents=True, exist_ok=False, mode=0o700)
+        environment=dict(os.environ, AUDITORY5_ROOT=str(root), PYTHONPATH=str(root))
+        checked = subprocess.run([sys.executable, '-m', 'pytest', 'tests/auditory5', '-q',
+                                  '-p', 'no:cacheprovider', '--junitxml='+str(private/'junit.xml')],
+                                 cwd=root, env=environment, capture_output=True, text=True)
+        (private/'pytest.log').write_text(checked.stdout+'\n'+checked.stderr)
+        if (private/'junit.xml').exists():
+            tree=ET.parse(private/'junit.xml').getroot()
+            auditory_tests=len(tree.findall('.//testcase'))
+            auditory_success=(checked.returncode==0 and auditory_tests>=173 and
+                              not tree.findall('.//failure') and not tree.findall('.//error') and
+                              not tree.findall('.//skipped'))
+        if not auditory_success:
+            issues.append({'type':'published_auditory5_contract_tests_failed'})
     report = {'status':'passed' if not issues else 'failed',
               'job_id':os.environ['SLURM_JOB_ID'], 'files_hashed':len(files),
               'total_bytes':sum(e['bytes'] for e in files),
@@ -133,6 +172,7 @@ def main():
               'pdfs_text_checked':pdf_files, 'pngs_structurally_checked':image_files,
               'known_name_dictionary_size':len(names),
               'unit_tests_run':result.testsRun, 'unit_tests_successful':result.wasSuccessful(),
+              'auditory5_tests_run':auditory_tests, 'auditory5_tests_successful':bool(auditory_success),
               'issues':issues,
               'limits':'Allowlist, content and hash checks are not a formal anonymization certificate. Raw data analyses were not rerun.'}
     (root/'release/verification.json').write_text(json.dumps(report,indent=2)+'\n')

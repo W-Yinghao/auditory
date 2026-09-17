@@ -2,6 +2,8 @@
 
 These directories contain selected aggregate outputs only. Participant/record tables, private predictions, epoch signals and ledgers remain on the server. A directory's presence does not mean its full server contents were released.
 
+Auditory5's current entry point is [S4_final_001](auditory5_v1/S4_final_001/), with the [five-route report](../reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md). Core/control summaries, validation gates, numerical failures and earlier interim versions accompany the final aggregates. All90 representation tasks completed; scientific support and numerical failures remain explicit. See `release/auditory5_publication_changes.json` for the exact per-file allowlist. No private identity lists, epoch records, individual predictions or model weights are included.
+
 | Directory | Included evidence |
 |---|---|
 | [phase1_final_001](phase1_final_001/) | Cohort flow, counts and processing sensitivity |
