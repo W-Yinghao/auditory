@@ -1,0 +1,169 @@
+project:
+  name: auditory_next
+  version: v2.0
+  reference_commit: 191b3a189bea116c4c91fdcfcb6d3bd2945b8dfa
+  status: NOT_RUN
+  exploratory_after_v1_results: true
+  overwrite: false
+  site_config: configs/auditory_next_site.local.yaml
+  source_registry: configs/auditory_next_sources_v2.yaml
+
+scope:
+  packets: [G0, A2, C2_R, C2_S, N1, N2, N3, E0_R]
+  closed_routes: [B_v1, D_v1]
+  allow_E1: false
+  primary_cohort: HA
+  mff_scope: existing_E0_only
+  allow_clinical_modeling: false
+  allow_new_formal_encoders: false
+  allow_new_architecture_search: false
+  allow_new_ssl_objective: false
+  publish_individual_data: false
+  automatic_commit_push: false
+
+sources:
+  legacy_project: auditory5_v1
+  split_run: splits_001
+  representation_plan_run: plan_001
+  execution_run: execution_status_003
+  screen_run: S4_final_001
+  require_exact_trial_ids: true
+  require_inner_scope_provenance: true
+  preserve_metadata_addendum: true
+
+representations:
+  primary: R_SIM
+  new_route_parallel: L0
+  legacy_diagnostics: [R_SUP, R_RAND]
+  use_encoder_output_not_projector: true
+  retrain_legacy_90_jobs: false
+
+preprocessing:
+  default_source: P1_CAUSAL20
+  spatial_source: P2_SPATIAL_SPLIT
+  sample_rate: 250
+  post_seconds: [0.05, 0.45]
+  pre_seconds: [-0.2, 0.0]
+  baseline_subtraction: false
+  per_trial_variance_normalization: false
+  use_actual_filter_support: true
+  event_history_before_qc: true
+  new_temporal_filter_search: false
+
+validation:
+  outer_identity_folds: legacy_fixed_5
+  inner_folds: 3
+  default_new_min_candidates: 20
+  minimum_test_candidates_per_outer: 2
+  minimum_training_candidates_per_outer: 12
+  fixed_oof_cluster_bootstrap: 2000
+  test_eeg_in_ssl_training: false
+  combine_embedding_coordinates_across_folds: false
+  conditional_label_permutation_p_values: false
+
+readouts:
+  new_fixed_logistic_C: 1.0
+  new_fixed_mlp_lambda: 0.001
+  new_mlp_weight_decay: 0.0
+  legacy_C_or_alpha_grid: [0.01, 0.1, 1.0, 10.0]
+  repair_hidden_primary: 32
+  repair_hidden_capacity_control: 64
+  repair_solver: torch_adam_full_batch
+  precision: float64
+  learning_rate: 0.001
+  steps_initial: 1000
+  steps_extension_once: 1000
+  schedule_horizon_steps: 2000
+  seed: 11
+  objective_parity_required_for_repair: true
+  failure_is_not_negative_effect: true
+
+calibration:
+  legacy_repair_T_bounds: [0.25, 4.0]
+  new_T_bounds: [0.25, 16.0]
+  fit_on_training_oof_only: true
+  prior_mixture_diagnostic_eta: [0.0, 0.25, 0.5, 0.75, 1.0]
+  no_oof_fallback: uncalibrated_fixed
+
+A2:
+  previous_code: literal_1
+  minimum_previous_run: 3
+  run_bins: [[3, 5], [6, null]]
+  position_bins: [0.0, 0.5, 1.0]
+  minimum_selected_cells: 2
+  trials_each_cell_half_class: 6
+  minimum_blocks_each_half_class: 3
+  minimum_candidates: 25
+  fixed_common_cell_weights: uniform
+  resampling_repetitions: 20
+  contrast_dimension_max: 8
+  main_statistic: unadjusted_matched_minus_mismatched_cosine
+  effect_floor: 0.05
+  corrected_statistic_is_primary: false
+
+C2:
+  repair_matrix_complete_required: true
+  spatial_geometry_tests_required: true
+  add_crossmean_as_explicit_joint_component: true
+  include_midline_geometry_diagnostic: true
+  claim_PID_synergy: false
+  primary_joint_gain_floor_bits: 0.01
+
+N1:
+  main_population: P_nat
+  secondary_population: P_bal
+  main_readout: mlp32
+  parallel_readout: logistic
+  models: [H, HP, HB, HPB, HPP, HPBnoise]
+  donor_diagnostics: [same_child_remote_pre, training_child_matched_pre]
+  donor_uses_current_label: false
+  matched_donor_training_control: true
+  background_gain_floor_bits: 0.005
+
+N2:
+  main_population: P_bal
+  main_k: 8
+  k_values: [1, 4, 8, 16]
+  main_partition_seed: 20260917
+  sensitivity_test_partitions: 10
+  refit_each_sensitivity_partition: false
+  main_readout: logistic
+  secondary_readout: mlp32
+  trial_pca_dimension: 8
+  variance_epsilon: 0.000001
+  rff_dimension: 16
+  include_history_bag_controls: true
+  main_gain_floor_bits_per_bag: 0.01
+  deepsets_training_this_round: false
+
+N3:
+  main_population: P_nat
+  secondary_population: P_bal
+  target: current_stimulus
+  history: H_v2_past_only
+  overlap_fit_scope: outer_training_event_counts
+  minimum_training_events_per_class_cell: 20
+  minimum_training_candidates_per_class_cell: 5
+  models: [H, HP, HB, HBP, Hnoise]
+  main_gain_floor_bits: 0.005
+  current_run_length_as_input: false
+  eeg_increment_is_exact_cmi: false
+
+E0_R:
+  input_run: E0_native_003
+  same_requested_records: true
+  refit_entire_mlp_family: true
+  new_tasks_or_E1: false
+
+budget:
+  max_formal_encoder_fits: 0
+  max_diagnostic_encoder_fits: 2
+  max_neural_head_fits: 3000
+  max_all_readout_fits: 8000
+  max_gpu_concurrent: 2
+  max_cpu_jobs_concurrent: 4
+  max_gpu_hours: 32
+  max_cpu_core_hours: 256
+  new_route_seed_replication_max_routes: 2
+  replication_seed: 23
+  overwrite_legacy: false
