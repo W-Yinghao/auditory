@@ -1,8 +1,26 @@
 # 儿童听觉 EEG：数据审计与科学探索
 
-本仓库保存面向 IEEE JBHI 同级期刊研究的 **Phase 0–3、Auditory5、auditory_next v2 和 v2.1 的代码、方案、报告、汇总结果和图表**。v2.1 条件计划与最终验收已完成，保留阴性、支持不足、数值失败和缺少对照；尚未形成可投稿论文或经验证的临床模型。原始 EEG、身份映射、逐人临床信息、逐 epoch 数据、个体预测和模型权重不在仓库中。
+本仓库保存面向 IEEE JBHI 同级期刊研究的 **Phase 0–3、Auditory5、auditory_next v2、v2.1 和 V3 的代码、方案、报告、汇总结果和图表**。最新 V3 三个实验包及最终汇总已完成，三项主分析均未达到预设推进标准；尚未形成可投稿论文或经验证的临床模型。原始 EEG、身份映射、逐人临床信息、逐 epoch 数据、个体预测和模型权重不在仓库中。
 
-从 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[路线决策](docs/auditory_v21/ROUTE_DECISIONS_v2_1.md)和[最终验收](reports/auditory_v21/final_001/FINAL_REPORT_CN.md)开始阅读；前轮见 [v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)，前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
+从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
+
+## V3：三个独立能力门控实验
+
+冻结匹配数据包含 **49 个身份组、698 个 bag、5,584 个唯一成员 trial**。P0、N2R、R3 的支持检查和能力测试均通过，真实比较完成；三项主分析均未建立预设方法优势。
+
+| 实验 | 主增益及 95% 区间 | 科学判断 |
+|---|---|---|
+| P0：完整 SIM 表征对比 PCA8 | −0.001750 [−0.007433, 0.003619] bits/trial | 未检出明确的压缩损失；不能证明等价 |
+| N2R：控制历史与二次均值后加入方差 | −0.000844 [−0.008417, 0.006606] bits/bag | 未建立受控额外收益 |
+| R3：MATCH 对比监督学习 | +0.034125 [−0.031363, 0.098477] bits/trial | 未建立超出监督学习的优势 |
+
+P0 完成 260 个、N2R 完成 550 个真实读出头；R3 完成 15 个选择阶段和 15 个最终编码器，以及 180 个选择读出头和 60 个最终读出头。R3 的 SUP/MATCH 判别接近随机且 CE 约 2.7，表现差于 SIM、历史和随机编码器基线；主区间跨零，正点估计不足以支持目标函数优势。原因尚未由额外实验确定。
+
+区间来自固定 OOF 预测的身份组 bootstrap，没有重训完整流程；这些身份组不是已确认的独立儿童。匹配 bag 使用已知类别离线构造，不能当作在线未知刺激部署。本轮仅覆盖冻结 P_MATCH，不能推广至全部 CI 数据或临床预测。已探索队列、阴性结论和敏感性分析的地位保持不变。
+
+数值修复保留完整记录：CUDA 首次反向的确定性错误通过等价无参数池化及同初始化恢复处理；有限 logit 的概率舍入问题通过稳定 logaddexp 重新评分处理，没有额外拟合或丢弃惩罚候选。总计 2,357/3,000 次头优化尝试、30/30 个正式编码器、3/3 个合成初始分配及 3 次同状态恢复。科研资源保守上界为 45.776 CPU core·h / 8.308 GPU·h，全部数值工作经 Slurm，GPU 为 A100。发布核验另计且不训练模型。
+
+![V3 primary effects](results/auditory_v3/final_002/primary_effects.png)
 
 ## v2.1：能力门控后的真实比较
 
@@ -73,6 +91,7 @@ C2-S几何重建精确，但两个新增空间成分没有共同显示明确预�
 
 ## 阅读与复现入口
 
+- V3：[执行方案](AUDITORY_V3_DESIGN_AND_EXECUTION_PLAN_eb24106.md)、[机器配置](auditory_v3_plan.yaml)、[最终报告](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)、[复现导航](docs/auditory_v3/REPRODUCTION.md)、[执行修订](docs/auditory_v3/EXECUTION_DECISIONS.md)、[作业记录](docs/auditory_v3/JOB_LEDGER.md)、[完整主效应表](results/auditory_v3/final_002/primary_results.csv)。
 - v2.1：[审阅修订方案](AUDITORY_V2_1_REVIEW_AMENDMENT_79b3521%20%281%29.md)、[科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[复现导航](docs/auditory_v21/REPRODUCTION.md)、[作业记录](docs/auditory_v21/JOB_LEDGER.md)、[路线状态](results/auditory_v21/final_001/four_axis_routes.csv)、[PDF/PNG 图表](reports/auditory_v21/figures_002/)。
 - auditory_next v2：[执行方案](AUDITORY_NEXT_ROUND_SERVER_PLAN_v2.md)、[最终报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)、[研究决策](docs/AUDITORY_NEXT_RESEARCH_DECISIONS_v2.md)、[复现导航](docs/AUDITORY_NEXT_REPRODUCTION_v2.md)、[聚合指标](results/auditory_next_v2/final_002/metrics_aggregate.csv)、[GPU规则](docs/GPU_SCHEDULING_POLICY.md)。
 - Auditory5：[执行方案](AUDITORY_FIVE_IDEAS_SERVER_PLAN_v1.md)、[最终报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)、[作业记录](docs/AUDITORY5_JOB_LEDGER.md)、[复跑导航](docs/AUDITORY5_REPRODUCTION_v1.md)、[聚合指标](results/auditory5_v1/S4_final_001/metrics_aggregate.csv)。
@@ -82,4 +101,4 @@ C2-S几何重建精确，但两个新增空间成分没有共同显示明确预�
 - Phase 0：[数据审计](docs/phase0_report.md)、[产物导航](docs/ARTIFACTS.md)、[项目规划](docs/PROJECT_PLAN.md)。
 - [发布范围与复现说明](PUBLICATION.md)、[汇总文件导航](results/README.md)、[发布文件清单与 SHA256](release/manifest.json)。
 
-`auditory_v21/`、`auditory_next/`、`auditory5/`、`scripts/`、`configs/`、`slurm/` 保存分析代码、配置和批任务入口；`server_restart_en_v1/` 是早期历史计划，不代表最新证据。所有分析和验证均通过 Slurm 运行；后续GPU禁用P100，优先A100/L40S/H100，备选V100/PRO6000。完整数据流程依赖服务器上的受限源数据、映射及分运行源码快照，单独克隆此仓库不能重建全部实验。
+`auditory_v3/`、`auditory_v21/`、`auditory_next/`、`auditory5/`、`scripts/`、`configs/`、`slurm/` 保存分析代码、配置和批任务入口；`server_restart_en_v1/` 是早期历史计划，不代表最新证据。所有分析和验证均通过 Slurm 运行；后续GPU禁用P100，优先A100/L40S/H100，备选V100/PRO6000。完整数据流程依赖服务器上的受限源数据、映射及分运行源码快照，单独克隆此仓库不能重建全部实验。

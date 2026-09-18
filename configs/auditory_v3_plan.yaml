@@ -1,0 +1,370 @@
+# NEW configuration contract; implement auditory_v3 before use.
+schema_version: auditory_v3_plan_1.0
+status: DESIGN_ONLY_NEW_CLI_REQUIRED
+created_date: '2026-09-18'
+timezone: Europe/Paris
+baseline:
+  repository: W-Yinghao/auditory
+  commit: eb24106afe170b323859daa9dda597a85e548bb9
+  scientific_report: docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md
+  legacy_final: reports/auditory_v21/final_001
+scope:
+  packets:
+  - P0
+  - N2R
+  - R3
+  cohort: HA_BDF_P_MATCH
+  closed:
+  - A
+  - A2
+  - B
+  - C
+  - C2
+  - D
+  - E0
+  - E1
+  - legacy_N1
+  - legacy_N3
+  no_clinical_endpoints: true
+  no_erp_peak_or_reconstruction: true
+  no_large_backbone_search: true
+  automatic_push: false
+  run_independent_packets_after_own_gates: true
+  positive_other_real_packet_required: false
+paths:
+  source_registry: RESOLVE_FROM_V21_RECEIPTS
+  legacy_bag_run: n2_design_001
+  bag_members_file: matched_bags.parquet
+  bag_history_file: matched_h_bag_metadata.parquet
+  candidate_support_file: candidate_half_support.parquet
+  cell_support_file: common_cell_support.parquet
+  design_manifest_file: design_manifest.json
+  legacy_history_run: S1_support_004
+  legacy_folds_run: splits_001
+  legacy_representation_plan: plan_001
+  new_private: private/auditory_v3
+  new_aggregates: results/auditory_v3
+  new_reports: reports/auditory_v3
+  overwrite: false
+population:
+  name: P_MATCH_bal
+  expected_design_candidates: 57
+  expected_nonempty_bag_candidates: 54
+  expected_both_half_candidates: 49
+  expected_is_not_forced: true
+  group_key: split_group_id
+  main_members: frozen_matched_bags_both_half_eligible_only
+  weight_hierarchy:
+  - identity
+  - half
+  - eligible_history_cell
+  - class
+  - observation
+  all_levels_equal_within_parent: true
+bags:
+  reuse_members: true
+  redraw: false
+  k: 8
+  seed: 21201
+  cells:
+  - previous_code
+  - previous_run_bin
+  class_budget: equal_per_cell
+  without_replacement: true
+  separate_halves: true
+  same_record_segment: true
+  min_trials_per_class_cell: 16
+  min_source_blocks_per_class_cell: 3
+  min_blocks_per_bag: 2
+  max_members_per_block: 4
+  min_bags_per_class_half: 2
+  both_halves_required: true
+input:
+  preprocessing: reuse_verified_P1_CAUSAL20
+  resample_hz: 250
+  channels: 20
+  post_seconds:
+  - 0.05
+  - 0.45
+  pre_seconds:
+  - -0.2
+  - 0.0
+  post_shape:
+  - 20
+  - 100
+  pre_shape:
+  - 20
+  - 50
+  time_interval: half_open
+  l0_bin_samples: 5
+  l0_post_dim: 400
+  l0_pre_dim: 200
+  per_trial_variance_normalization: false
+  clinical_labels_loaded: false
+  raw_read_only: true
+  identifier_columns_never_features: true
+splits:
+  outer: reuse_legacy_mapping_restricted_to_P_MATCH
+  outer_folds: 5
+  min_outer_train_groups: 20
+  min_outer_test_groups: 4
+  P0:
+    inner_selection: false
+    new_encoder_fits: 0
+  N2R:
+    inner_folds: 3
+    method: GroupKFold
+    refit_all_transforms_each_inner: true
+    min_inner_fit_groups: 12
+    min_inner_validation_groups: 4
+    split_table: one_row_per_identity_sorted
+  R3:
+    inner_method: single_identity_holdout
+    inner_validation_fraction: 0.2
+    inner_seed: 63011
+    min_outer_train_groups: 21
+    min_inner_fit_groups: 16
+    min_inner_validation_groups: 5
+    selection_encoder_excludes_validation: true
+    refit_encoder_all_outer_train: true
+    five_mutually_exclusive_roles: false
+    inner_validation_count_rule: max(5, ceil(0.2*n_outer_train_groups))
+    inner_validation_order: SHA256(seed,outer_fold,identity_id)
+readout:
+  family: normalized_weighted_logistic_l2
+  dtype: float64
+  objective: sum(normalized_weights*bce)+lambda/2*sum(weight**2)
+  bias_penalty: 0.0
+  solver: L-BFGS
+  max_iter: 1000
+  max_iter_recovery: 2000
+  gradient_inf_tolerance: 1.0e-05
+  success_gradient_inf_tolerance: 0.0001
+  lambda_grid:
+  - 0.001
+  - 0.01
+  - 0.1
+  tie_break: stronger_regularization
+  calibration: none
+  keep_negative_scores: true
+P0:
+  representations:
+  - R_SIM
+  - L0
+  - R_SUP
+  - R_RAND
+  primary_representation: R_SIM
+  views:
+  - FULL
+  - PC8
+  - REST
+  - PC8_DUP
+  pca_dim: 8
+  whiten: false
+  rescale_after_projection: false
+  duplicate_factor: 1/sqrt(2)
+  primary_lambda: 0.01
+  sensitivity_lambdas:
+  - 0.001
+  - 0.1
+  select_best_lambda: false
+  primary_effect: CE_PC8_minus_CE_FULL
+  pre_modes:
+  - R_SIM
+  - L0
+  pre_views:
+  - FULL
+  - PC8
+  pre_lambda: 0.01
+  max_real_heads: 260
+  screen_gain_bits: 0.002
+N2R:
+  representation: L0
+  pca_dim: 8
+  whiten: false
+  variance_ddof: 1
+  variance_transform: log1p_sample_variance
+  mean_basis: linear_plus_all_degree2_monomials
+  mean_basis_dim: 44
+  views:
+  - H
+  - HM
+  - HMV
+  - HQ
+  - HQV
+  - HQQ
+  - HPRE
+  - HPREQ
+  - HPREQV
+  primary_reference: HQ
+  primary_candidate: HQV
+  required_controls:
+  - H
+  - HQQ
+  - HPREQ_to_HPREQV
+  full400_sensitivity:
+  - FULL_MU
+  - FULL_MU_VAR
+  main_heads: 450
+  full400_heads: 100
+  max_real_heads: 550
+  screen_gain_bits_per_bag: 0.005
+  k_sweep: false
+  new_set_network: false
+R3:
+  encoder: SmallEEGCNN_v1
+  latent_dim: 64
+  objectives:
+  - SUP
+  - SIM
+  - MATCH
+  formal_seeds:
+  - 11
+  epochs: 60
+  batch_original_trials: 64
+  quartets_per_batch: 16
+  same_exposure_plan: true
+  max_formal_encoder_fits: 30
+  selection_encoder_fits: 15
+  final_encoder_fits: 15
+  max_synthetic_encoder_smokes: 3
+  optimizer: AdamW
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  warmup_epochs: 5
+  scheduler: cosine_after_warmup
+  gradient_clip: 5.0
+  dtype: float32
+  checkpoint: last_fixed_epoch
+  batchnorm: false
+  dropout: 0.0
+  views_per_trial: 2
+  noise_std_training_scale_fraction: 0.02
+  projector_dims:
+  - 64
+  - 128
+  - 64
+  temperature: 0.2
+  label_aware_matched_pool_for_all_objectives: true
+  SIM_objective_uses_class_labels: false
+  MATCH_objective_uses_class_labels: true
+  MATCH_ce_weight: 1.0
+  MATCH_contrastive_weight: 0.1
+  MATCH_global_classification_anchor: true
+  quartet_strata:
+  - split_group_id
+  - A_half
+  - record_id
+  - segment_id
+  - previous_code
+  - previous_run_bin
+  quartet_classes:
+  - 0
+  - 0
+  - 1
+  - 1
+  positive_different_physical_blocks: true
+  minimum_positive_separation_seconds: 10.823
+  effective_filter_support_must_be_respected: true
+  MATCH_positive_views_per_anchor: 2
+  MATCH_denominator_views_per_anchor: 6
+  exclude_anchor_original_trial_from_MATCH_denominator: true
+  test_on: frozen_P_MATCH_member_trials
+  probe_views:
+  - Zpost
+  - Htrial_Zpost
+  - Htrial_Zpre
+  common_baselines:
+  - Htrial
+  - L0_post
+  - random_encoder
+  probe_on_encoder_not_projector: true
+  probe_pca: false
+  primary_reference: SUP_Htrial_Zpost
+  primary_candidate: MATCH_Htrial_Zpost
+  max_probe_heads: 280
+  screen_gain_bits_per_trial: 0.005
+capability:
+  gate_before_real_data_fit: true
+  no_old_880_world_rerun: true
+  P0:
+    worlds:
+    - LOW_VARIANCE_SIGNAL
+    - TOP_PCA_SIGNAL
+    - 'NULL'
+    eval_repetitions_per_world: 5
+    max_heads: 30
+    low_variance_min_recovered: 4
+    strong_bacc_floor: 0.75
+  N2R:
+    worlds:
+    - VAR_EXTRA
+    - MEAN_SUFFICIENT
+    - HISTORY_ONLY
+    eval_repetitions_per_world: 20
+    eval_seed_start: 53001
+    real_size_and_split_matched: true
+    force_per_bag_demeaning: false
+    views:
+    - HQ
+    - HQV
+    max_heads: 1200
+    min_strong_positive_recovered: 16
+    strong_gain_bits: 0.01
+    max_null_screen_hits_per_world_type: 2
+    null_screen_gain_bits: 0.005
+    null_screen_requires_positive_ci: true
+  R3:
+    smokes_per_objective: 1
+    SUP_MATCH_strong_bacc_floor: 0.8
+    SIM_superiority_required: false
+  max_development_revisions: 1
+  evaluation_seed_reuse_after_tuning: false
+statistics:
+  risk_unit_P0_R3: bits_per_trial
+  risk_unit_N2R: bits_per_bag
+  bootstrap_repetitions: 2000
+  bootstrap_seed: 63017
+  bootstrap_unit: split_group_id
+  stratify_by_outer_fold: true
+  shared_draws_within_packet: true
+  scope: fixed_oof_not_pipeline_refit
+  test_distribution: P_MATCH_bal
+  report_all_prespecified_contrasts: true
+  formal_zero_CMI_claim: false
+  clinical_threshold_claim: false
+resources:
+  max_new_cpu_head_fits: 3000
+  max_cpu_core_hours: 160
+  cpu_limit_includes_gpu_job_cpu_hours: true
+  max_gpu_hours: 16
+  max_concurrent_cpu_jobs: 4
+  max_concurrent_gpu_jobs: 2
+  cpu_cores_default: 2
+  cpu_memory_gb: 16
+  gpu_per_job: 1
+  gpu_job_cpu_cores: 4
+  gpu_memory_host_gb: 16
+  formal_gpu_task_minutes: 30
+  synthetic_gpu_task_minutes: 10
+  gpu_forbidden:
+  - P100
+  gpu_preferred:
+  - A100
+  - L40S
+  - H100
+  gpu_alternatives:
+  - V100
+  - PRO6000
+  auto_expand_architectures: false
+  auto_launch_seed23: false
+outputs:
+  private_permissions: 0700_dir_0600_file
+  keep_failures: true
+  no_participant_predictions_in_public: true
+  new_modules_must_exist_before_commands: true
+  final_status_axes:
+  - execution
+  - support
+  - capability
+  - research
