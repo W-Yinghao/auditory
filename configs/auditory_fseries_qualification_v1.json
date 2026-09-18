@@ -1,0 +1,29 @@
+{
+  "version": "auditory_fseries_qualification_v1",
+  "design": "AUDITORY_FUNCTIONAL_DECODING_F1_F4_RESEARCH_PLAN_v1.md",
+  "stage": "1_targeted_clinical_visit_qualification",
+  "reference_publication": "29ccdb081a45998d17bbbb17ddf8c70311cd8141",
+  "cohort_scope": "existing_HA_and_canonical_MFF_archives_not_restricted_to_P_MATCH",
+  "primary_auditory_endpoint": null,
+  "primary_speech_endpoint": null,
+  "endpoint_selection_basis": ["clinical_definition", "version", "scoring", "coverage", "distribution", "assessment_time_evidence"],
+  "no_eeg_outcome_associations": true,
+  "no_clinical_prediction_fits": true,
+  "no_new_signal_feature_extraction": true,
+  "automatic_push": false,
+  "identity_policy": "evidence_supported_candidate_groups_keep_conflicts_and_cross_archive_overlap",
+  "time_policy": "explicit_assessment_date_or_documented_same_visit_relation; suffix_or_file_mtime_alone_insufficient",
+  "scale_policy": "do_not_merge_IT_MAIS_and_MAIS_or_convert_CI_0_40_values_under_percentage_headers_without_evidence",
+  "f3_policy": "confirmed_candidate_pairing_with_task_and_clinical_time_evidence_required",
+  "f4_policy": "real_ordered_baseline_followup_assessments_and_intervals_required",
+  "compute": {
+    "scheduler": "Slurm",
+    "cpu_partition": "CPU",
+    "maximum_concurrent_cpu_jobs": 4,
+    "stage1_reserved_cpu_core_hours_ceiling": 8,
+    "stage1_gpu_hours": 0,
+    "forbidden_gpu": ["P100"],
+    "future_gpu_preference": ["A100", "L40S", "H100", "V100", "PRO6000"]
+  },
+  "privacy": "private_row_evidence_0700_dirs_0600_files_public_aggregates_only"
+}

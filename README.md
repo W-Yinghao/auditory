@@ -1,10 +1,36 @@
 # 儿童听觉 EEG：数据审计与科学探索
 
-本仓库保存面向 IEEE JBHI 同级期刊研究的 **Phase 0–3、Auditory5、auditory_next v2、v2.1 和 V3 的代码、方案、报告、汇总结果和图表**。最新 V3 三个实验包及最终汇总已完成，三项主分析均未达到预设推进标准；尚未形成可投稿论文或经验证的临床模型。原始 EEG、身份映射、逐人临床信息、逐 epoch 数据、个体预测和模型权重不在仓库中。
+本仓库保存面向 IEEE JBHI 同级期刊研究的 **Phase 0–3、Auditory5、v2/v2.1、V3、F1–F4 功能分析、PTA 修正与扩展分析，以及修正队列完整重训**的代码、方案、报告、汇总结果和图表。最新一轮已完成 40 个学习型编码器和 5 个 L0 表征任务，并通过独立执行核验；临床增益仍小且不确定，尚无独立临床验证或真实随访预测。原始 EEG、身份映射、逐人临床信息、逐 epoch 数据、个体预测和模型权重不在仓库中。
+
+优先阅读[重训完整报告](reports/auditory_retrain_v1/verification_001/REPORT.md)、[结果解读](docs/auditory_retrain/INTERPRETATION.md)、[PTA 修正与扩展分析](reports/auditory_repair/verification_001/REPORT.md)和[最新状态](docs/auditory_retrain/STATUS.md)。**历史 PTA 勘误：旧 Phase 3 协变量使用了错误的临床行号映射，57 条比较中裸耳 PTA 有 55 条、助听 PTA 有 47 条变化。**旧 PTA 调整结果和 Auditory5 D 表只能作为历史记录；后续复用划分的间接影响也不能笼统排除。见[来源勘误](docs/auditory_fseries_archival/LEGACY_PTA_LINEAGE_AMENDMENT.md)与[修正复现说明](docs/auditory_repair/REPRODUCTION.md)。
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## V3：三个独立能力门控实验
+## 最新：修正队列与新划分下完整重训
+
+修正后的临床完整支持为 **52 个候选身份组**，外层总体为 60 组，其中 37 组外折分配变化。使用 5 外折 × 3 临床内折隔离，重新训练 20 个 R_SUP 和 20 个 R_SIM 编码器，并重新拟合 L0 的刺激头/投影；未沿用旧权重初始化。两条 GPU 作业均使用 L40S。三种表征的 81 个核心模型配置、99 个敏感性配置、121 项对照状态和 60 项 FP32 检查均完成；Slurm 999581 完成独立核验，汇总没有重新拟合模型。
+
+C 为临床基线，V 为刺激可见分量，N 为刺激头 null 空间分量；正值表示 MAE 改善，单位为 MUSS 原表分值。
+
+| 比较 | MAE 改善及 95% 固定 OOF 区间 | 解读 |
+|---|---|---|
+| 主分析 R_SIM：C+V → C+V+N | +0.0197 [−0.2742, +0.2953] | 小幅正点估计，增量尚不确定 |
+| R_SIM：C → C+V+N | −0.0942 [−0.6183, +0.3978] | 联合模型未改善临床基线 |
+| 平行 R_SUP：C → C+V | +0.2269 [−0.1046, +0.5951] | 保留可见分量的探索线索，区间跨零 |
+
+SIM 的全试次和质量调整 null 增益约 +0.060 至 +0.109，区间均跨零；SUP 加入 PCA-null 后退步，随机方向对照不支持其特异优势。质量调整敏感性中的正增益也不能替代与原始临床基线的比较。完整小效应、对照和阴性结果均保留，没有以显著性或高增益阈值停止本轮。SUP 仍按原有训练内刺激目标监测选 epoch，SIM 固定 100 epoch。
+
+这是 seed 11、已探索数据上的内部检验。区间条件于保存的 OOF 预测，没有覆盖完整重训/重划分不确定性或作多重比较调整；“独立执行核验”不是独立临床队列验证。候选身份、量表版本/时间、PTA 单位和设备状态仍有未解限制。新旧共同 49 组的描述比较同时改变队列、划分和拟合流程，不能归因为“增加一人”。
+
+![Corrected-cohort clinical increments](reports/auditory_retrain_v1/verification_001/figures/clinical_increments.png)
+
+## F1–F4、PTA 修正与 CI/MFF 扩展
+
+[严格临床资格审计](reports/auditory_fseries/STAGE1_QUALIFICATION_REPORT.md)补回量表说明，但未确认逐行版本和 EEG—量表时间关系。随后完成明确降低解释范围的[56 组档案初筛](reports/auditory_fseries_archival/verification_003/REPORT.md)，以及[57 组扩展分析和历史修正](reports/auditory_repair/verification_001/REPORT.md)：五类固定 EEG 特征、五个目标、质量/幅值分解、有限核方法、同 43 组试次数可靠性，以及旧 Phase 3 50 组和 Auditory5 D 51 组原折重算。V 条件于 A 的小幅正线索保留，但依赖对照设定，尚非临床有效性证据。
+
+CI/MFF 已完成来源范围、DOB/年龄核对及混合来源档案回归。A/V 各 38 组，CAP/SIR 各 36 组；每个目标只有 1 组来自明确 CI 字面来源，不能将其写成 CI 独立验证。四项主要 EEG 增益均为小幅负值。F3 有 9 对同日跨任务记录、仅 2 对有临床数值交集；F4 的 HA 重复 EEG 与两组 MFF 多日期量表线索尚不足以建立真实临床随访预测。
+
+## 历史 V3：三个独立能力门控实验
 
 冻结匹配数据包含 **49 个身份组、698 个 bag、5,584 个唯一成员 trial**。P0、N2R、R3 的支持检查和能力测试均通过，真实比较完成；三项主分析均未建立预设方法优势。
 
@@ -60,6 +86,8 @@ C2-S几何重建精确，但两个新增空间成分没有共同显示明确预�
 
 ## Auditory5 五路线首轮结果
 
+以下为原始历史结果；D 路线 PTA 调整已发现来源错误。当前证据应同时查阅上方修正重算和完整重训报告，旧数值不作为修正后的结论。
+
 90/90 表征任务完成（60 个学习型编码器、30 个 L0/随机任务）；173 项模块测试通过，完成 1,000 组合成实验。最终执行状态为 `S4_RECORDED_WITH_FAILURES`，不等于五条科学路线全部成功。主表征固定为 SimCLR（R_SIM），监督模型为平行分析。
 
 | 路线 | 主结果及 95% 区间 | 状态 |
@@ -76,6 +104,8 @@ C2-S几何重建精确，但两个新增空间成分没有共同显示明确预�
 
 ## Phase 0–3 已有结果
 
+下表保留原发布数值，其中 PTA 调整的 HA 临床模型须以新修正报告共同解释。
+
 | 问题 | 实验结果 | 解释范围 |
 |---|---|---|
 | 试次数量与幅值一致性 | 同一 49 个 HA 候选，每半份 20→160 个试次，ICC 中位数 0.394→0.809 | 完整采集内回顾性抽样；不是跨日重测或已验证的提前停止规则 |
@@ -91,6 +121,8 @@ C2-S几何重建精确，但两个新增空间成分没有共同显示明确预�
 
 ## 阅读与复现入口
 
+- 最新完整重训：[冻结方案](docs/auditory_retrain/PROTOCOL_v1.md)、[状态](docs/auditory_retrain/STATUS.md)、[解读](docs/auditory_retrain/INTERPRETATION.md)、[复现导航](docs/auditory_retrain/REPRODUCTION.md)、[全部模型指标](results/auditory_retrain_v1/verification_001/model_metrics.csv)、[全部比较](results/auditory_retrain_v1/verification_001/contrasts.csv)。
+- 功能与修正：[F1–F4 方案](AUDITORY_FUNCTIONAL_DECODING_F1_F4_RESEARCH_PLAN_v1.md)、[资格审计](reports/auditory_fseries/STAGE1_QUALIFICATION_REPORT.md)、[档案初筛](reports/auditory_fseries_archival/verification_003/REPORT.md)、[扩展与修正方案](docs/auditory_repair/PROTOCOL_v2.md)、[扩展最终报告](reports/auditory_repair/verification_001/REPORT.md)、[复现导航](docs/auditory_repair/REPRODUCTION.md)。
 - V3：[执行方案](AUDITORY_V3_DESIGN_AND_EXECUTION_PLAN_eb24106.md)、[机器配置](auditory_v3_plan.yaml)、[最终报告](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)、[复现导航](docs/auditory_v3/REPRODUCTION.md)、[执行修订](docs/auditory_v3/EXECUTION_DECISIONS.md)、[作业记录](docs/auditory_v3/JOB_LEDGER.md)、[完整主效应表](results/auditory_v3/final_002/primary_results.csv)。
 - v2.1：[审阅修订方案](AUDITORY_V2_1_REVIEW_AMENDMENT_79b3521%20%281%29.md)、[科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[复现导航](docs/auditory_v21/REPRODUCTION.md)、[作业记录](docs/auditory_v21/JOB_LEDGER.md)、[路线状态](results/auditory_v21/final_001/four_axis_routes.csv)、[PDF/PNG 图表](reports/auditory_v21/figures_002/)。
 - auditory_next v2：[执行方案](AUDITORY_NEXT_ROUND_SERVER_PLAN_v2.md)、[最终报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)、[研究决策](docs/AUDITORY_NEXT_RESEARCH_DECISIONS_v2.md)、[复现导航](docs/AUDITORY_NEXT_REPRODUCTION_v2.md)、[聚合指标](results/auditory_next_v2/final_002/metrics_aggregate.csv)、[GPU规则](docs/GPU_SCHEDULING_POLICY.md)。

@@ -1,0 +1,119 @@
+{
+  "job_id": "999272",
+  "status": "COMPLETED",
+  "canonical_eligible_sources": 203,
+  "registered_clinical_rows": 104,
+  "deduplicated_clinical_assessments": 98,
+  "candidate_identity_groups": 87,
+  "valid_EEG_source_count_primary_stad": 199,
+  "identity_evidence_counts": {
+    "exact_name_same_day_unique_links": 136,
+    "sources_with_unique_identity_link": 119
+  },
+  "endpoint_definitions": [
+    {
+      "endpoint": "IT_MAIS_or_MAIS",
+      "header_class": "IT-MAIS/MAIS_combined_percent_header",
+      "source_scale_definition": "registered_HA_document_defines_IT-MAIS_total_0_to_40_and_percent_score_divide_by_40",
+      "version_status": "row_version_unresolved_IT-MAIS_vs_MAIS",
+      "scoring_status": "source_definition_known_row_assignment_unresolved",
+      "unit_status": "percent_header_row_unit_assignment_unresolved",
+      "comparability_status": "not_confirmed_for_this_CI_row_set",
+      "registered_rows_with_unique_literal_numeric_value": 50,
+      "registered_identity_groups_with_literal_numeric_value": 44,
+      "registered_identity_groups_with_conflicting_numeric_values": 1,
+      "registered_rows_at_declared_source_max": 30,
+      "literal_numeric_source_count": 46,
+      "literal_numeric_min": 0.0,
+      "literal_numeric_max": 40.0,
+      "literal_numeric_rows": 50,
+      "rule": "no version split, unit conversion, or cross-instrument merge"
+    },
+    {
+      "endpoint": "MUSS",
+      "header_class": "MUSS_percent_header",
+      "source_scale_definition": "registered_HA_document_defines_MUSS_total_0_to_40_and_percent_score_divide_by_40",
+      "version_status": "source_version_unresolved",
+      "scoring_status": "source_definition_known_observed_0_to_40_row_attribution_unresolved",
+      "unit_status": "percent_header_with_0_to_40_values_row_unit_unresolved",
+      "comparability_status": "not_confirmed_for_this_CI_row_set",
+      "registered_rows_with_unique_literal_numeric_value": 50,
+      "registered_identity_groups_with_literal_numeric_value": 44,
+      "registered_identity_groups_with_conflicting_numeric_values": 2,
+      "registered_rows_at_declared_source_max": 9,
+      "literal_numeric_source_count": 46,
+      "literal_numeric_min": 0.0,
+      "literal_numeric_max": 40.0,
+      "literal_numeric_rows": 50,
+      "rule": "no version split, unit conversion, or cross-instrument merge"
+    },
+    {
+      "endpoint": "CAP",
+      "header_class": "CAP_named_header",
+      "source_scale_definition": "registered_HA_document_defines_CAP_II_ordinal_0_to_9",
+      "version_status": "row_version_unresolved_CAP_vs_CAP_II",
+      "scoring_status": "source_definition_known_row_assignment_unresolved",
+      "unit_status": "ordinal_unitless_row_assignment_unresolved",
+      "comparability_status": "not_confirmed_for_this_CI_row_set",
+      "registered_rows_with_unique_literal_numeric_value": 48,
+      "registered_identity_groups_with_literal_numeric_value": 43,
+      "registered_identity_groups_with_conflicting_numeric_values": 1,
+      "registered_rows_at_declared_source_max": 0,
+      "literal_numeric_source_count": 44,
+      "literal_numeric_min": 0.0,
+      "literal_numeric_max": 7.0,
+      "literal_numeric_rows": 48,
+      "rule": "no version split, unit conversion, or cross-instrument merge"
+    },
+    {
+      "endpoint": "SIR",
+      "header_class": "SIR_named_header",
+      "source_scale_definition": "registered_HA_document_defines_SIR_ordinal_1_to_5",
+      "version_status": "source_version_unresolved",
+      "scoring_status": "source_definition_known_row_assignment_unresolved",
+      "unit_status": "ordinal_unitless_row_assignment_unresolved",
+      "comparability_status": "not_confirmed_for_this_CI_row_set",
+      "registered_rows_with_unique_literal_numeric_value": 48,
+      "registered_identity_groups_with_literal_numeric_value": 43,
+      "registered_identity_groups_with_conflicting_numeric_values": 1,
+      "registered_rows_at_declared_source_max": 11,
+      "literal_numeric_source_count": 44,
+      "literal_numeric_min": 1.0,
+      "literal_numeric_max": 5.0,
+      "literal_numeric_rows": 48,
+      "rule": "no version split, unit conversion, or cross-instrument merge"
+    }
+  ],
+  "f3": {
+    "candidate_task_day_pairs": 9,
+    "unique_task_day_pairs_with_literal_target": 2,
+    "pairs_with_confirmed_comparable_target": 0,
+    "pairs_with_valid_EEG_both": 9,
+    "final_comparable_pair_intersection": 0,
+    "gate": "SUPPORT_INSUFFICIENT"
+  },
+  "f4": {
+    "candidate_id_endpoint_repeat_assessment_series": 8,
+    "series_with_baseline_EEG_and_later_clinical_target": 8,
+    "series_with_two_valid_EEG_visits_sensitivity": 8,
+    "series_with_confirmed_comparable_endpoint": 0,
+    "final_comparable_followup_intersection": 0,
+    "gate": "SUPPORT_INSUFFICIENT",
+    "date_rule": "registered clinical_date field used as a date signal; functional-assessment role is unresolved; EEG filename suffix or file mtime not used"
+  },
+  "route_gates": {
+    "F1": "SUPPORT_INSUFFICIENT",
+    "F2": "SUPPORT_INSUFFICIENT",
+    "F3": "SUPPORT_INSUFFICIENT",
+    "F4": "SUPPORT_INSUFFICIENT"
+  },
+  "source_scope_caveats": [
+    "literal CI/CIHA source labels and explicit same-day clinical CI history are separate evidence classes; expanded_CI_scope is a sensitivity scope, not a diagnosis",
+    "unknown and normal_literal source labels remain unresolved; no global relabeling was performed",
+    "candidate identity groups are exact full-pinyin plus same-calendar-day linkage evidence, not clinically adjudicated independent children",
+    "numeric score availability is reported separately from confirmed scale comparability",
+    "no EEG array values, EEG-outcome associations, clinical prediction fits, or new signal features were computed"
+  ],
+  "config_sha256": "61d3bc2c611f416e003a18d3f4c070d7c5827627470a5066bb243dcec8680930",
+  "protocol_sha256": "f6f2b31cf44650bce9287c35bf69846ff28e6d25e4f9f6ab5ca81e5604c61460"
+}

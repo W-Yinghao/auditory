@@ -1,0 +1,124 @@
+{
+  "status": "QUALIFICATION_COMPLETE_SUPPORT_INSUFFICIENT",
+  "job_id": "999293",
+  "stage": "1_clinical_visit_qualification",
+  "input_hashes": {
+    "HA": "8dbdb84432447af6c7a3666cac602f3e947525d92b8998eae7583797102318bc",
+    "MFF": "d4ead4520fb9fdf9d7de5b5a551a272ff8193588176b294788ab1b4ce891d64c",
+    "F4_supplement": "af1020ed160b77715882cb46047ef0fb690edcbf2628e437f508e158147f73b4",
+    "source_documents": "1567ecab16eb66f866707191991ca382d22b23e46bcf4c8a8a00590503ada65b"
+  },
+  "new_model_fits": 0,
+  "new_signal_features": 0,
+  "gpu_jobs": 0,
+  "eeg_outcome_associations_computed": false,
+  "routes": [
+    {
+      "route": "F1",
+      "scope": "HA_archive",
+      "denominator": 84,
+      "count_unit": "clinical_rows",
+      "raw_archive_or_historical_EEG_intersection": 84,
+      "fully_interpretable_clinical_intersection": 0,
+      "qualification": "SUPPORT_INSUFFICIENT",
+      "model_execution": "NOT_STARTED_DATA_GATE",
+      "reason": "row_scale_assignment_and_functional_assessment_time_unresolved"
+    },
+    {
+      "route": "F2",
+      "scope": "HA_archive",
+      "denominator": 84,
+      "count_unit": "clinical_rows",
+      "raw_archive_or_historical_EEG_intersection": 84,
+      "fully_interpretable_clinical_intersection": 0,
+      "qualification": "SUPPORT_INSUFFICIENT",
+      "model_execution": "NOT_STARTED_DATA_GATE",
+      "reason": "functional_assessment_time_unresolved;auditory_version_mixed_header"
+    },
+    {
+      "route": "F1",
+      "scope": "all_canonical_MFF",
+      "denominator": 203,
+      "count_unit": "EEG_sources",
+      "raw_archive_or_historical_EEG_intersection": 45,
+      "fully_interpretable_clinical_intersection": 0,
+      "qualification": "SUPPORT_INSUFFICIENT",
+      "model_execution": "NOT_STARTED_DATA_GATE",
+      "reason": "raw_percent_header_values_0_40;row_version_and_functional_date_role_unresolved"
+    },
+    {
+      "route": "F2",
+      "scope": "all_canonical_MFF",
+      "denominator": 203,
+      "count_unit": "EEG_sources",
+      "raw_archive_or_historical_EEG_intersection": 45,
+      "fully_interpretable_clinical_intersection": 0,
+      "qualification": "SUPPORT_INSUFFICIENT",
+      "model_execution": "NOT_STARTED_DATA_GATE",
+      "reason": "raw_percent_header_values_0_40;functional_date_role_unresolved"
+    },
+    {
+      "route": "F1",
+      "scope": "expanded_CI_evidence_scope",
+      "denominator": 41,
+      "count_unit": "EEG_sources",
+      "raw_archive_or_historical_EEG_intersection": 2,
+      "fully_interpretable_clinical_intersection": 0,
+      "qualification": "SUPPORT_INSUFFICIENT",
+      "model_execution": "NOT_STARTED_DATA_GATE",
+      "reason": "source_evidence_not_diagnosis;same_scale_time_limits"
+    },
+    {
+      "route": "F2",
+      "scope": "expanded_CI_evidence_scope",
+      "denominator": 41,
+      "count_unit": "EEG_sources",
+      "raw_archive_or_historical_EEG_intersection": 2,
+      "fully_interpretable_clinical_intersection": 0,
+      "qualification": "SUPPORT_INSUFFICIENT",
+      "model_execution": "NOT_STARTED_DATA_GATE",
+      "reason": "source_evidence_not_diagnosis;same_scale_time_limits"
+    },
+    {
+      "route": "F3",
+      "scope": "MFF_same_candidate_day_puretone_bapa",
+      "denominator": 9,
+      "count_unit": "candidate_task_pairs",
+      "raw_archive_or_historical_EEG_intersection": 2,
+      "fully_interpretable_clinical_intersection": 0,
+      "qualification": "SUPPORT_INSUFFICIENT",
+      "model_execution": "NOT_STARTED_DATA_GATE",
+      "reason": "only_two_pairs_with_literal_target;target_comparability_and_time_unresolved"
+    },
+    {
+      "route": "F4",
+      "scope": "HA_repeated_vendor_acquisitions",
+      "denominator": 13,
+      "count_unit": "candidate_identity_groups",
+      "raw_archive_or_historical_EEG_intersection": 13,
+      "fully_interpretable_clinical_intersection": 0,
+      "qualification": "SUPPORT_INSUFFICIENT",
+      "model_execution": "NOT_STARTED_DATA_GATE",
+      "reason": "fifteen_acquisition_pairs;no_confirmed_functional_assessment_dates"
+    },
+    {
+      "route": "F4",
+      "scope": "MFF_repeated_dated_archive_values",
+      "denominator": 87,
+      "count_unit": "candidate_identity_groups",
+      "raw_archive_or_historical_EEG_intersection": 2,
+      "fully_interpretable_clinical_intersection": 0,
+      "qualification": "SUPPORT_INSUFFICIENT",
+      "model_execution": "NOT_STARTED_DATA_GATE",
+      "reason": "eight_identity_endpoint_series;functional_date_role_unresolved"
+    }
+  ],
+  "interpretation": "Data qualification is complete, not F1-F4 prediction experiments. Zero interpretable intersections refer to current evidence requirements, not absence of physiological information or absence of archival scores.",
+  "important_corrections": [
+    "original_HA_document_defines_four_scales",
+    "MFF_F4_eight_series_are_two_candidate_groups",
+    "historical_EEG_measurement_support_not_new_functional_feature_eligibility",
+    "MFF_row_dates_not_confirmed_questionnaire_dates"
+  ],
+  "automatic_push": false
+}
