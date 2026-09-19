@@ -1,0 +1,146 @@
+# Auditory FN1-A v1.1 frozen configuration.
+# Source of truth: AUDITORY_FN1_ARCHIVAL_PLAN_v1_1_493a076.md section 13.1, transcribed
+# verbatim, plus the feature/path blocks the implementation needs to read rather than
+# duplicate as literals.
+project:
+  name: auditory_fn1a
+  version: "1.1"
+  baseline_commit: 493a076a3848d3546a5889e2c583d0fee2ba1612
+  plan_file: AUDITORY_FN1_ARCHIVAL_PLAN_v1_1_493a076.md
+  initial_stage: W0_ARCHIVE_SETUP
+  real_training_authorized: true
+  auto_start_after_operational_checks: true
+  external_contact_required: false
+  new_clinical_data_required: false
+  overwrite: false
+  auto_publish: false
+
+archive:
+  scope: HA_single_source_archival_score_prediction
+  analysis_lock: null   # produced by prepare/freeze; NOT a gate waiting on a clinician
+  primary_target: A_archive
+  primary_source_header: "IT-MAIS/MAIS得分（%）"
+  primary_source_column: IT_MAIS_MAIS
+  secondary_target: V_archive_given_A
+  secondary_source_header: "MUSS得分（%）"
+  secondary_source_column: MUSS
+  same_source_row_for_secondary: true
+  target_bounds_source_units: [0.0, 100.0]
+  target_imputation: false
+  automatic_endpoint_substitution: false
+  allow_unknown_instrument_version: true
+  allow_unknown_questionnaire_date: true
+  allow_unknown_eeg_questionnaire_relation: true
+  allow_unknown_device_state: true
+  unknown_time_imputation: false
+  assume_same_visit: false
+  infer_scale_from_age_or_score: false
+  merge_HA_MFF_scales: false
+  index_rule: reuse_frozen_earliest_supported_source_before_new_qc
+  source_row_key: actual_worksheet_row
+  corrected_pta_required: true
+  historical_pta_table_allowed: false
+
+sources:
+  clinical_rows: private/clinical_003/clinical_rows_clean.csv
+  corrected_pta: private/auditory_repair/pta_007/candidate_covariates.csv
+  historical_pta_forbidden: private/phase3_ha_covariates_004/candidate_covariates.csv
+  frozen_index_cohort: private/auditory_fseries_archival/prepare_001/cohort.csv
+  signal_manifest: results/phase1_sources_001/source_manifest.csv
+  file_path_map: private/inventory_001/file_path_map.csv
+
+signal:
+  continuous_source_required: true
+  concatenate_epochs: false
+  output_hz: 250
+  filter_mode: inherited_tested_causal_0p5_30
+  guard_seconds_min: 20
+  window_seconds: 4
+  overlap_seconds: 0
+  windows_per_record: 32
+  window_selection: chronological_uniform_without_replacement
+  feature_dim: 140
+  peak_to_peak_uv: 150
+  maximum_channels_above_ptp: 2
+  flat_ptp_uv: 0.5
+  per_window_variance_normalization: false
+
+features:
+  bands_hz: [[1.0, 4.0], [4.0, 8.0], [8.0, 13.0], [13.0, 30.0]]
+  band_edge_rule: left_closed_right_open_last_band_includes_upper
+  welch_window_seconds: 2.0
+  welch_window: hann
+  welch_overlap_fraction: 0.5
+  power_integration: psd_times_frequency_spacing
+  log_floor: 1.0e-12
+  hjorth_terms: [activity, mobility, complexity]
+  hjorth_log: true
+
+models:
+  ids: [M0_C, M1_CQ, M2_MEAN_RIDGE, M3_MEAN_THEN_MLP, M4_MLP_THEN_MEAN]
+  local_mlp_dims: [140, 8, 8]
+  activation: tanh
+  train_unit: record
+  stimulus_auxiliary_loss: false
+  information_bottleneck_loss: false
+  clinical_families: [linear, additive_quadratic]
+  clinical_penalties: [0.01, 0.1, 1.0]
+  eeg_ridge_penalties: [0.01, 0.1, 1.0]
+  eeg_ridge_include_baseline: true
+  neural_penalties: [0.01, 0.1]
+  neural_penalty_form: half_lambda_sum_squared_weights_bias_unpenalised
+  seeds: [11, 23]
+  seed_aggregation: arithmetic_mean_prediction_before_selection_and_test
+  optimization_steps: 400
+  learning_rate: 0.001
+  selection_metric: MAE_source_units
+  selection_tie_order: [simpler_basis, stronger_penalty, eeg_off]
+  test_early_stopping: false
+
+validation:
+  outer_folds: 5
+  inner_folds: 3
+  split_seed: 20260919
+  min_total_groups: 30
+  min_outer_train_groups: 24
+  min_inner_train_groups: 16
+  min_outer_test_groups: 4
+  metadata_completeness_gate: false
+  identity_label_signal_checks_required: true
+  secondary_reuses_outer_assignments: true
+  bootstrap_repetitions: 2000
+  bootstrap_seed: 20260919
+  bootstrap_scope: fixed_oof_identity_paired_not_pipeline_refit
+  effect_or_significance_execution_gate: false
+  expand_after_small_positive: false
+
+controls:
+  amplitude_sensitivity: true
+  amplitude_refit_models: [M1_CQ, M4_MLP_THEN_MEAN]
+  mismatch_control: true
+  mismatch_seed: 20260919
+  mismatch_rule: derangement_of_whole_32_window_packages_within_outer_training_only
+
+synthetic:
+  mechanisms: [clinical_sufficient_eeg_independent, segment_mean_drives_target, distribution_shape_drives_target]
+  seeds: [101, 102, 103, 104]
+  strong_injection_min_mse_reduction: 0.5
+  strong_injection_min_seeds: 3
+  reference_for_criterion: train_mean_prediction   # plan 11 wording; clinical-baseline reduction is reported alongside as a disclosed diagnostic
+  n_identities: 40
+  windows_per_identity: 32
+
+resources:
+  setup_cpu_core_hours_cap: 12
+  total_cpu_core_hours_cap: 96
+  gpu_hours_cap: 0
+  neural_fit_cap: 360
+  linear_solver_call_cap: 1000
+  max_concurrent_cpu_jobs: 4
+  forbidden_gpu: [P100]
+
+paths:
+  private_relative: private/auditory_fn1a
+  results_relative: results/auditory_fn1a
+  reports_relative: reports/auditory_fn1a
+  docs_relative: docs/auditory_fn1a

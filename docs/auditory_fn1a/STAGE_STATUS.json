@@ -1,0 +1,97 @@
+{
+  "plan": "AUDITORY_FN1_ARCHIVAL_PLAN_v1_1_493a076.md",
+  "plan_sha256": "1eace961f71c4ffb46ab658046b8dc81dbeb47da3758350d9319e609e0e7d1e3",
+  "config": "configs/auditory_fn1a.yaml",
+  "config_sha256": "a6e24c7ba72fc1192e253df54b6116df85a47c89bfc89c4c73d3a55b3b9ac1ce",
+  "stage": "W1_COMPLETED_ARCHIVAL_EXPLORATORY",
+  "external_contact_required": false,
+  "archive_lock": "LOCKED_FROM_EXISTING_ARCHIVE",
+  "implementation_tests": {
+    "status": "IMPLEMENTATION_CAPABILITY_ESTABLISHED",
+    "neural_fits": 24,
+    "criterion_reference": "train_mean_prediction",
+    "disclosed_caveat": "Every synthetic world carries a clinical signal, so a model can clear a mean-relative bar through the clinical branch alone. The mean-relative number is not by itself evidence about the EEG pathway. The reduction against a clinical-only ridge baseline is reported per row and per check as a diagnostic; the plan's criterion was implemented as written and not substituted."
+  },
+  "cohort": {
+    "index_records": 56,
+    "exported": 52,
+    "signal_support_insufficient": 4,
+    "analysable_identities": 52,
+    "secondary_identities": 52,
+    "outer_fold_test_sizes": [
+      11,
+      11,
+      10,
+      10,
+      10
+    ],
+    "split_fingerprint": "2cf6039effee2cd03b93c67e02594e75dc6f1edbd15ff4a292f424b452a9e144"
+  },
+  "targets_completed": [
+    "A_archive",
+    "V_archive_given_A"
+  ],
+  "headline": {
+    "A_archive": {
+      "M0_MAE": 6.904,
+      "M1_MAE": 6.655,
+      "M4_MAE": 10.243,
+      "M1_to_M4_gain": -3.588,
+      "M1_to_M4_CI": [
+        -5.8848,
+        -1.1197
+      ],
+      "M3_to_M4_gain": 0.055,
+      "M3_to_M4_CI": [
+        -0.0794,
+        0.1853
+      ],
+      "M2_selected_eeg_off_in_all_folds": true
+    },
+    "V_archive_given_A": {
+      "M0_MAE": 5.0036,
+      "M1_MAE": 5.6379,
+      "M4_MAE": 8.5709,
+      "M1_to_M4_gain": -2.933,
+      "M1_to_M4_CI": [
+        -4.7403,
+        -1.1765
+      ],
+      "M3_to_M4_gain": -0.0054,
+      "M3_to_M4_CI": [
+        -0.1008,
+        0.0965
+      ],
+      "M2_selected_eeg_off_in_all_folds": true
+    }
+  },
+  "interpretation_guard": "Record-level EEG models are clearly worse than the clinical baselines on both targets; learning order carries no advantage; M2 switched the EEG block off in every fold. The M3-vs-M4 comparison is clean (identical budget); the M3/M4-vs-M0/M1 comparison confounds a 400-step Adam joint fit with a closed-form ridge solution and must not be read as 'EEG carries no information'.",
+  "known_delivery_gap": "Per-fit optimiser diagnostics required by plan 8.2 (final loss, gradient, training error, numerical failure) were not persisted. Prediction ranges were recovered from saved predictions; the rest cannot be recovered without refitting, which the plan forbids for reporting repairs.",
+  "resources": {
+    "conservative_cpu_core_hours_upper_bound": 21.0,
+    "setup_cap": 12,
+    "total_cap": 96,
+    "gpu_hours": 0.0,
+    "basis": "full reservation x 2 CPUs for every submitted run, superseded runs included"
+  },
+  "runs": {
+    "FN1A_prepare_001": "superseded: the written analysis table dropped the signal locator columns, which made every record report no_signal_source",
+    "FN1A_prepare_002": "authoritative archive manifest",
+    "FN1A_tests_001": "implementation check",
+    "FN1A_freeze_001": "superseded with prepare_001",
+    "FN1A_freeze_002": "authoritative archive analysis lock",
+    "FN1A_export_probe_001": "probe that caught the locator defect before any full export",
+    "FN1A_export_probe_002": "two-record probe, QC gate passed",
+    "FN1A_export_001": "full export, 52 of 56 records",
+    "FN1A_support_001": "frozen analysable support and folds",
+    "FN1A_fit_A_001": "primary target",
+    "FN1A_fit_V_001": "secondary target"
+  },
+  "real_work": {
+    "real_eeg_records_read": 52,
+    "real_models_fitted": 320,
+    "synthetic_models_fitted": 24,
+    "external_contact": false,
+    "github_push": false
+  }
+}

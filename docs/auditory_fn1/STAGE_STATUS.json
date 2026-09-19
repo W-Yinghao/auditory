@@ -1,0 +1,118 @@
+{
+  "plan": "AUDITORY_FN1_NEXT_ROUND_PLAN_493a076.md",
+  "plan_sha256": "5ec0854e17a4459461f70b6391014eea0717e29c3f80c91c32e5d028bec787b7",
+  "config": "configs/auditory_fn1_v1.yaml",
+  "config_sha256": "0756bf9cd4aeabed2630c46c41ff5b37935c1f584ecf69accac222891076f26e",
+  "stage": "W0_READY / W1_BLOCKED_CLINICAL_LOCK",
+  "w0_status": "NEEDS_CLINICAL_RESPONSE",
+  "w1_allowed": false,
+  "implementation_status": "IMPLEMENTATION_UNRESOLVED",
+  "blocking": {
+    "clinical_lock": "no clinical lock file supplied",
+    "implementation": "distribution_shape_drives_target / M4 reached 0/4 against the pre-committed 50% bar after the single permitted synthetic-scale correction"
+  },
+  "row_key_guard": {
+    "corrected_pta_007": "ROW_KEY_ALIGNED",
+    "corrected_offsets": {
+      "0": 57
+    },
+    "legacy_ha_covariates_004": "SEQUENTIAL_ROW_KEY_MISALIGNMENT",
+    "legacy_offsets": {
+      "3": 55
+    }
+  },
+  "implementation_check": {
+    "neural_fits": 24,
+    "neural_fit_cap": 360,
+    "linear_solver_calls": 24,
+    "linear_solver_cap": 1000,
+    "parameter_counts_observed": [
+      1209
+    ],
+    "all_predictions_finite": true,
+    "nonfinite_optimizer_runs": 0,
+    "checks": [
+      {
+        "criterion": "test MSE reduction against a clinical-only ridge baseline",
+        "mechanism": "segment_mean_drives_target",
+        "min_seeds": 3,
+        "model": "M3",
+        "passed": true,
+        "required": true,
+        "seeds_meeting_threshold": 4,
+        "seeds_total": 4,
+        "threshold": 0.5
+      },
+      {
+        "criterion": "test MSE reduction against a clinical-only ridge baseline",
+        "mechanism": "segment_mean_drives_target",
+        "min_seeds": 3,
+        "model": "M4",
+        "passed": true,
+        "required": true,
+        "seeds_meeting_threshold": 4,
+        "seeds_total": 4,
+        "threshold": 0.5
+      },
+      {
+        "criterion": "test MSE reduction against a clinical-only ridge baseline",
+        "mechanism": "distribution_shape_drives_target",
+        "min_seeds": 3,
+        "model": "M3",
+        "passed": null,
+        "required": false,
+        "seeds_meeting_threshold": 0,
+        "seeds_total": 4,
+        "threshold": 0.5
+      },
+      {
+        "criterion": "test MSE reduction against a clinical-only ridge baseline",
+        "mechanism": "distribution_shape_drives_target",
+        "min_seeds": 3,
+        "model": "M4",
+        "passed": false,
+        "required": true,
+        "seeds_meeting_threshold": 0,
+        "seeds_total": 4,
+        "threshold": 0.5
+      }
+    ]
+  },
+  "contract_tests": {
+    "suite": "tests/auditory_fn1/test_contracts.py",
+    "passed": 27,
+    "failed": 0,
+    "job": "999696"
+  },
+  "real_work_performed": {
+    "real_eeg_samples_read": false,
+    "eeg_outcome_associations_computed": false,
+    "real_models_fitted": 0,
+    "clinical_material_sent_externally": false,
+    "github_push": false
+  },
+  "resources": {
+    "jobs": {
+      "999691": "prepare_request",
+      "999694": "test",
+      "999696": "contract_tests",
+      "999689": "prepare_request(superseded)",
+      "999692": "test(superseded criterion)",
+      "999693": "test(superseded generator)",
+      "999695": "contract_tests(collection error)"
+    },
+    "conservative_cpu_core_hours_upper_bound": 6.6667,
+    "cpu_core_hours_cap_w0": 12,
+    "gpu_hours": 0.0,
+    "basis": "full reservation per submitted job x 2 CPUs; includes superseded runs, which stay charged"
+  },
+  "runs": {
+    "FN1_request_001": "superseded: row-field resolution defect produced a false misalignment alarm; retained",
+    "FN1_request_002": "authoritative request package",
+    "FN1_tests_001": "superseded: acceptance criterion measured against the training mean, too weak to isolate the EEG path",
+    "FN1_tests_002": "superseded: criterion corrected; exposed that mechanism 3 was not a valid positive control",
+    "FN1_tests_003": "authoritative implementation check, after the single permitted synthetic-scale correction"
+  },
+  "next_step": "Researcher handles the clinical contact. The computation agent ends this execution; no polling, no archival fallback.",
+  "note": "W0 status describes the state of the clinical material and of the implementation. It is not an EEG positive or negative result."
+}

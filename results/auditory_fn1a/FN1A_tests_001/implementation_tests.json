@@ -1,0 +1,66 @@
+{
+  "all_predictions_finite": true,
+  "checks": [
+    {
+      "criterion_reference": "train_mean_prediction",
+      "diagnostic_seeds_meeting_against_clinical_baseline": 4,
+      "mechanism": "segment_mean_drives_target",
+      "min_seeds": 3,
+      "model": "M3",
+      "passed": true,
+      "required": true,
+      "seeds_meeting_threshold": 4,
+      "seeds_total": 4,
+      "threshold": 0.5
+    },
+    {
+      "criterion_reference": "train_mean_prediction",
+      "diagnostic_seeds_meeting_against_clinical_baseline": 4,
+      "mechanism": "segment_mean_drives_target",
+      "min_seeds": 3,
+      "model": "M4",
+      "passed": true,
+      "required": true,
+      "seeds_meeting_threshold": 4,
+      "seeds_total": 4,
+      "threshold": 0.5
+    },
+    {
+      "criterion_reference": "train_mean_prediction",
+      "diagnostic_seeds_meeting_against_clinical_baseline": 0,
+      "mechanism": "distribution_shape_drives_target",
+      "min_seeds": 3,
+      "model": "M3",
+      "passed": null,
+      "required": false,
+      "seeds_meeting_threshold": 3,
+      "seeds_total": 4,
+      "threshold": 0.5
+    },
+    {
+      "criterion_reference": "train_mean_prediction",
+      "diagnostic_seeds_meeting_against_clinical_baseline": 0,
+      "mechanism": "distribution_shape_drives_target",
+      "min_seeds": 3,
+      "model": "M4",
+      "passed": true,
+      "required": true,
+      "seeds_meeting_threshold": 3,
+      "seeds_total": 4,
+      "threshold": 0.5
+    }
+  ],
+  "criterion": {
+    "disclosed_caveat": "Every synthetic world carries a clinical signal, so a model can clear a mean-relative bar through the clinical branch alone. The mean-relative number is not by itself evidence about the EEG pathway. The reduction against a clinical-only ridge baseline is reported per row and per check as a diagnostic; the plan's criterion was implemented as written and not substituted.",
+    "plan_clause": "section 11: at least 3 of 4 seeds must reduce MSE by 50% against the mean prediction",
+    "reference": "train_mean_prediction"
+  },
+  "interpretation": "Implementation learnability and numerical check. Not a false-positive-rate certificate, not a power analysis, and not evidence that any archival effect is detectable.",
+  "nonfinite_optimizer_runs": 0,
+  "parameter_counts_observed": [
+    1209
+  ],
+  "status": "IMPLEMENTATION_CAPABILITY_ESTABLISHED",
+  "total_linear_solver_calls": 24,
+  "total_neural_fits": 24
+}

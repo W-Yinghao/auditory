@@ -1,0 +1,49 @@
+{
+  "questions": [
+    {
+      "already_established": "Scoring rules for IT-MAIS, CAP-II, MUSS and SIR are present in the source documentation; the numeric columns exist.",
+      "blocks": [
+        "W1_primary_target"
+      ],
+      "fallback_if_unanswered": "instrument_resolved=UNKNOWN; primary target cannot be a single confirmed instrument.",
+      "model_substitutable": false,
+      "question": "Which clinical rows use IT-MAIS and which use MAIS, under which version, and with what age applicability?",
+      "question_class": "target_identity",
+      "still_required": "Per-row or per-batch instrument identity and version, from the clinical team or a traceable original."
+    },
+    {
+      "already_established": "EEG acquisition times exist; the clinical table carries a label date.",
+      "blocks": [
+        "W1_primary_target",
+        "W1_secondary_target"
+      ],
+      "fallback_if_unanswered": "eeg_visit_relation=UNKNOWN; no time tolerance is invented and no zero interval is assumed.",
+      "model_substitutable": false,
+      "question": "Is the questionnaire the same clinical assessment as the EEG visit, and what does the table's date column denote?",
+      "question_class": "time_relation",
+      "still_required": "Same-visit confirmation, or a dated interval plus an explicit applicability rule confirmed before any new EEG outcome analysis."
+    },
+    {
+      "already_established": "Candidate identity and worksheet-row linkage are audited; the corrected row key is in place.",
+      "blocks": [
+        "W1_cohort_membership"
+      ],
+      "fallback_if_unanswered": "identity_status stays conflict or supported_candidate; such records stay out of the primary cohort.",
+      "model_substitutable": false,
+      "question": "Are there known wrong-person, duplicate-export or visit-confusion cases among the currently unresolved records?",
+      "question_class": "identity_and_source",
+      "still_required": "Adjudication of the remaining conflicts only; resolved records are not re-asked."
+    },
+    {
+      "already_established": "Unaided and aided four-frequency data exist; the PTA row key is corrected.",
+      "blocks": [
+        "W1_conclusion_wording"
+      ],
+      "fallback_if_unanswered": "device state stays UNKNOWN, which limits the wording of any conclusion but is NOT by itself a general exclusion; unknown PTA units restrict which clinical context a claim may cite.",
+      "model_substitutable": false,
+      "question": "What units and test conditions do the audiometric columns use, and was the device worn or powered during acquisition?",
+      "question_class": "threshold_and_device_context",
+      "still_required": "Unit and condition confirmation; any recorded mid-session device change."
+    }
+  ]
+}

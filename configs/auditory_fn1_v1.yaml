@@ -1,0 +1,107 @@
+# Auditory FN1 v1.0 frozen configuration.
+# Source of truth: AUDITORY_FN1_NEXT_ROUND_PLAN_493a076.md section 14.1.
+# Values here are the plan's defaults transcribed verbatim. Code must READ this file;
+# a constant duplicated in code instead of read from here is a contract violation.
+project:
+  name: auditory_fn1
+  version: 1.0
+  baseline_commit: 493a076a3848d3546a5889e2c583d0fee2ba1612
+  plan_file: AUDITORY_FN1_NEXT_ROUND_PLAN_493a076.md
+  initial_stage: W0
+  real_training_enabled: false
+  overwrite: false
+  auto_publish: false
+
+clinical:
+  scope: verified_visit_function
+  archival_fallback_allowed: false
+  clinical_lock: null
+  primary_target: auditory_function_single_confirmed_instrument
+  secondary_target: MUSS_given_observed_A
+  automatic_endpoint_substitution: false
+  time_tolerance_days: null
+  index_rule: earliest_clinically_eligible_visit_before_new_signal_qc
+
+signal:
+  continuous_source_required: true
+  concatenate_epochs: false
+  output_hz: 250
+  filter_mode: inherited_tested_causal_0p5_30
+  guard_seconds_min: 20
+  window_seconds: 4
+  overlap_seconds: 0
+  windows_per_record: 32
+  window_selection: chronological_uniform_without_replacement
+  feature_dim: 140
+  peak_to_peak_uv: 150
+  maximum_channels_above_ptp: 2
+  flat_ptp_uv: 0.5
+  per_window_variance_normalization: false
+
+features:
+  # 80 band-power dims (20 channels x 4 bands) + 60 Hjorth dims (20 channels x 3) = 140.
+  bands_hz: [[1.0, 4.0], [4.0, 8.0], [8.0, 13.0], [13.0, 30.0]]
+  band_edge_rule: left_closed_right_open_last_band_includes_upper
+  welch_window_seconds: 2.0
+  welch_window: hann
+  welch_overlap_fraction: 0.5
+  power_integration: psd_times_frequency_spacing
+  log_floor: 1.0e-12
+  hjorth_terms: [activity, mobility, complexity]
+  hjorth_log: true
+
+models:
+  ids: [M0_C, M1_CQ, M2_MEAN_RIDGE, M3_MEAN_THEN_MLP, M4_MLP_THEN_MEAN]
+  local_mlp_dims: [140, 8, 8]
+  activation: tanh
+  train_unit: record
+  stimulus_auxiliary_loss: false
+  information_bottleneck_loss: false
+  clinical_families: [linear, additive_quadratic]
+  clinical_penalties: [0.01, 0.1, 1.0]
+  eeg_ridge_penalties: [0.01, 0.1, 1.0]
+  neural_penalties: [0.01, 0.1]
+  seeds: [11, 23]
+  seed_aggregation: arithmetic_mean_prediction
+  optimization_steps: 400
+  learning_rate: 0.001
+  selection_metric: MAE_original_units
+  test_early_stopping: false
+
+validation:
+  outer_folds: 5
+  inner_folds: 3
+  split_seed: 20260919
+  min_total_groups: 30
+  min_outer_train_groups: 24
+  min_inner_train_groups: 16
+  min_outer_test_groups: 4
+  bootstrap_repetitions: 2000
+  bootstrap_seed: 20260919
+  bootstrap_scope: fixed_oof_group_paired_not_pipeline_refit
+  effect_or_significance_execution_gate: false
+  expand_after_small_positive: false
+
+synthetic:
+  # Plan section 11: three mechanisms x four seeds, M3 and M4 each fitted once = 24 fits.
+  mechanisms: [clinical_sufficient_eeg_independent, segment_mean_drives_target, distribution_shape_drives_target]
+  seeds: [101, 102, 103, 104]
+  strong_injection_min_mse_reduction: 0.5
+  strong_injection_min_seeds: 3
+  n_identities: 40
+  windows_per_identity: 32
+
+resources:
+  current_cpu_core_hours_cap: 12
+  total_conditional_cpu_core_hours_cap: 96
+  gpu_hours_cap: 0
+  neural_fit_cap: 360
+  linear_solver_call_cap: 1000
+  max_concurrent_cpu_jobs: 4
+  forbidden_gpu: [P100]
+
+paths:
+  private_relative: private/auditory_fn1
+  results_relative: results/auditory_fn1
+  reports_relative: reports/auditory_fn1
+  docs_relative: docs/auditory_fn1
