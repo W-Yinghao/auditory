@@ -2,15 +2,16 @@
 
 **Paediatric EEG brain age.** Age decoding from children's EEG is established and the
 accuracy frontier is held by large samples: a 1056-child sleep-EEG model reaches a
-weighted MAE near 0.85 y, and a 659-child resting-EEG model reaches about 1.31 y over
-3-14 y. Normalised by target dispersion those are roughly 0.17-0.20 and 0.44; our
-12.50 months against SD 23.5 is 0.53. We therefore do not present age accuracy as a
+weighted MAE near 0.85 y [A1], a 659-child resting-EEG model reaches about 1.31 y over
+3-14 y [A3], and infant-range models reach months [A4], [A5]. Normalised by target
+dispersion - the comparison [A6] argues for, since raw MAE is not comparable across age
+ranges - those are roughly 0.17-0.20 and 0.44; our 12.50 months against SD 23.5 is 0.53. We therefore do not present age accuracy as a
 contribution. Age is the instrument, not the result: it is the one variable in this
 cohort known a priori to be decodable, which is what makes the budget curves and the
 hearing-related negatives interpretable.
 
-**EEG information capacity.** A recent analysis argues on simulation grounds that the
-neural information recoverable from scalp EEG saturates in the region of 64-128
+**EEG information capacity.** A recent analysis [D6] argues on simulation grounds that
+the neural information recoverable from scalp EEG saturates in the region of 64-128
 electrodes and that linear decoders recover far less than the channel capacity. To our
 knowledge the present study is the first empirical test of that saturation claim on
 real paediatric clinical recordings. Our data do not support saturation below about 96
@@ -20,18 +21,20 @@ readout lowers the curve by roughly half a month to one and a third months witho
 changing where it flattens.
 
 **EEG foundation models.** Masked-reconstruction and contrastive pretraining have
-produced a rapid sequence of general EEG encoders and at least five benchmarks in
-eighteen months, with reviews noting that evaluation remains largely in-distribution,
-that paediatric validation is essentially absent, and that embeddings can encode
-recording-site identity. We do not position against that literature, and Section 3.8 is
+produced a rapid sequence of general EEG encoders [E2]-[E5] and at least five benchmarks
+in eighteen months [E8], with reviews noting that evaluation remains largely
+in-distribution and that paediatric validation is essentially absent [E6], and that
+embeddings can encode recording-site identity [E7]. The pretext task we use is the
+within-recording relative positioning introduced for clinical EEG in [E1]. We do not position against that literature, and Section 3.8 is
 offered as a small, specific mechanistic observation rather than a benchmark entry: a
 pretext task built on within-recording differences provably discards the subject-level
 subspace.
 
 **Brain-age gaps as biomarkers.** Gap residuals have been related to clinical status in
-paediatric populations, and MRI-based gaps have been reported as elevated in adults with
-severe hearing loss. A published criticism holds that clinically altered brain activity
-need not resemble aged brain activity and that gap-based inference can mislead. Section
+paediatric populations [A3], [A4], and MRI-based gaps have been reported as elevated in
+adults with severe hearing loss [B1], though a mild-to-moderate cohort gave a null [B2].
+A published criticism [B3] holds that clinically altered brain activity need not resemble
+aged brain activity and that gap-based inference can mislead. Section
 3.6 is a concrete instance of that criticism rather than a rebuttal of it: in our cohort
 the uncorrected gap produces a coherent, sizeable, entirely spurious association with
 device-use duration.
@@ -94,7 +97,17 @@ its small advantage is not interpreted. Cross-cohort transfer is evaluated on co
 with different age distributions, and the in-range restriction that makes them comparable
 uses 42 of 56 children.
 
-## 5.5 Next
+## 5.5 Why the information readout is a cross-entropy difference
+
+Variational mutual-information estimators have known sample-complexity and
+self-consistency limits [D2], [D3], and partial information decomposition is currently
+contested on subsystem grounds [D7]. We therefore report an operational quantity - the
+cross-entropy of the model against the cross-entropy of a training-fold marginal - which
+requires no density estimator, is a lower bound on the mutual information up to the
+generalisation gap, and comes with a shuffled control at every point. The InfoNCE bound
+[D1] appears only as the pretraining objective in Section 3.8, not as a reported estimate.
+
+## 5.6 Next
 
 A transferable reduced montage via stability selection with its own held-out validation;
 replication of the budget curves on an external paediatric corpus; and, if a learned

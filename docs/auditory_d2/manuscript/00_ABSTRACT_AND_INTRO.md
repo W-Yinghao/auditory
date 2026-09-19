@@ -60,8 +60,8 @@ Choosing the decoding target is where this kind of study usually goes wrong. A t
 that cannot be decoded at all makes every negative result uninterpretable, because a
 null cannot distinguish "no relation" from "broken pipeline". We therefore anchor on
 chronological age, which is decodable from paediatric EEG a priori and whose decoders
-are well characterised in the literature, and we report a label-shuffled control at
-every point of every curve so that the reader can see the floor.
+are well characterised [A1]-[A7], and we report a label-shuffled control at every point
+of every curve so that the reader can see the floor.
 
 We then ask separately whether the same representation carries clinical information
 about hearing. It does not, and we report that negative with the same machinery and the
