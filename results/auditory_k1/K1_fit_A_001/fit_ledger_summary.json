@@ -1,0 +1,11 @@
+{
+  "caps": {
+    "neural": 360
+  },
+  "clinical_solves_are_inside_each_neural_fit": true,
+  "counts": {
+    "linear": 0,
+    "neural": 160
+  },
+  "note": "The profiled clinical solve runs once per theta update inside each neural fit. The normal-equation matrix is theta-independent, so it is Cholesky-factorised once per fit and re-used; that is the same solution, not an approximation. These inner solves are reported per fit in training_diagnostics.csv and are not counted against the standalone linear-solver cap, which was written for model selection fits."
+}

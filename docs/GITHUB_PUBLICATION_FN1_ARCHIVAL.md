@@ -1,6 +1,11 @@
 # FN1 / FN1-A 发布回执 — 2026-09-19
 
-研究者明确指示发布本轮结果。本次为**策展快照**：代码、配置、冻结方案、聚合结果与文档进入公开仓库；参与者数据、逐记录表、身份键、逐人分数、预测、窗口与权重留在服务器。
+研究者明确指示发布本轮结果。提交 `5b5b662c4d7a2f7dc9dc5499ad0ad6f0add012c0`，独立 `git ls-remote` 回读与本地 HEAD 一致；发布检出干净。
+
+- 提交：https://github.com/W-Yinghao/auditory/commit/5b5b662c4d7a2f7dc9dc5499ad0ad6f0add012c0
+- 结果报告：`docs/auditory_fn1a/ARCHIVAL_RECORD_LEARNING_REPORT.md`
+- 范围与限制：`docs/auditory_fn1a/ARCHIVAL_SCOPE_AND_LIMITATIONS.md`
+本次为**策展快照**：代码、配置、冻结方案、聚合结果与文档进入公开仓库；参与者数据、逐记录表、身份键、逐人分数、预测、窗口与权重留在服务器。
 
 本轮发布**不**由任何自动流程触发；FN1-A 方案 §12 禁止自动 push，且声明"旧授权发布不涵盖新增个体数据"。
 
@@ -51,3 +56,7 @@
 ## 限制
 
 这不是匿名化证明，也不是对全部历史 Git 修订的扫描；此前披露的旧脚本历史限制继续适用。发布的 `results/auditory_fn1a/` 聚合结果描述 52 个候选身份组，**不是 52 个已临床确证的独立儿童**。FN1-A 的对象是既有档案数字的离线关联，不建立同期临床效度；允许与禁止的措辞见 `docs/auditory_fn1a/ARCHIVAL_SCOPE_AND_LIMITATIONS.md`。
+
+## 回读核验
+
+远端 `main` = `5b5b662c4d7a2f7dc9dc5499ad0ad6f0add012c0`，与本地 HEAD 相同。已确认：3 个扣留文件在远端树中不存在；2 个去标识化衍生文件存在；整个已跟踪树中 `private/` 路径数为 0；仓库共 1,413 个已跟踪文件（本次 +105）。

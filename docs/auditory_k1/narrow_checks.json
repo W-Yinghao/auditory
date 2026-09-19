@@ -1,0 +1,140 @@
+{
+  "exactness_checks": [
+    {
+      "alpha": 1.0,
+      "check": "zero_eeg_reproduces_M1",
+      "eeg_output_abs_max": 0.0,
+      "max_abs_difference_source_units": 1.4210854715202004e-14,
+      "n": 41,
+      "passed": true
+    },
+    {
+      "check": "constant_eeg_moves_only_the_intercept",
+      "constant_applied": 0.37,
+      "expected_intercept_change": -0.37,
+      "intercept_change": -0.3700000000000001,
+      "max_abs_gamma_change": 2.42861286636753e-17,
+      "max_abs_prediction_change": 2.220446049250313e-16,
+      "passed": true
+    }
+  ],
+  "gradient_check": {
+    "failures": [],
+    "max_envelope_residual_sum": 1.2212453270876722e-15,
+    "noise_floor": 1e-08,
+    "note": "Finite differences of the profiled objective, with the clinical block re-solved inside every perturbed evaluation. Components that are exactly zero by construction (a constant shift in f absorbed by b*) are checked absolutely against the finite-difference noise floor, not relatively.",
+    "parameter_count": 1209,
+    "per_key": {
+      "map_then_mean:W1": {
+        "above_noise_floor": 6,
+        "compared": 6,
+        "max_absolute_error": 1.6253696392271033e-10,
+        "max_relative_error_where_active": 7.974826089251218e-08
+      },
+      "map_then_mean:W2": {
+        "above_noise_floor": 6,
+        "compared": 6,
+        "max_absolute_error": 1.6787598394740755e-10,
+        "max_relative_error_where_active": 3.9529428502924405e-09
+      },
+      "map_then_mean:b1": {
+        "above_noise_floor": 6,
+        "compared": 6,
+        "max_absolute_error": 1.3273846605210693e-10,
+        "max_relative_error_where_active": 6.674326832098259e-08
+      },
+      "map_then_mean:b2": {
+        "above_noise_floor": 0,
+        "compared": 6,
+        "max_absolute_error": 1.1102229682466436e-10,
+        "max_relative_error_where_active": 0.0
+      },
+      "map_then_mean:w": {
+        "above_noise_floor": 6,
+        "compared": 6,
+        "max_absolute_error": 1.4026095215835532e-10,
+        "max_relative_error_where_active": 7.080497298907972e-09
+      },
+      "mean_then_map:W1": {
+        "above_noise_floor": 6,
+        "compared": 6,
+        "max_absolute_error": 2.0924378896225448e-10,
+        "max_relative_error_where_active": 4.235472561733122e-08
+      },
+      "mean_then_map:W2": {
+        "above_noise_floor": 6,
+        "compared": 6,
+        "max_absolute_error": 1.7179599409722357e-10,
+        "max_relative_error_where_active": 2.2042225474609146e-09
+      },
+      "mean_then_map:b1": {
+        "above_noise_floor": 6,
+        "compared": 6,
+        "max_absolute_error": 2.3334413047637614e-10,
+        "max_relative_error_where_active": 1.690599340469556e-07
+      },
+      "mean_then_map:b2": {
+        "above_noise_floor": 0,
+        "compared": 6,
+        "max_absolute_error": 1.110223857292425e-10,
+        "max_relative_error_where_active": 0.0
+      },
+      "mean_then_map:w": {
+        "above_noise_floor": 6,
+        "compared": 6,
+        "max_absolute_error": 2.432939127938738e-10,
+        "max_relative_error_where_active": 1.3686352846943747e-09
+      }
+    },
+    "relative_tolerance": 0.0001,
+    "status": "GRADIENT_VERIFIED"
+  },
+  "status": "NARROW_CHECKS_PASSED",
+  "world_fits": 24,
+  "worlds_criterion": "Reported against the clinical-only baseline under the same profiled objective, which is what isolates the EEG pathway. A mean-relative number cannot do that because every world carries a clinical signal.",
+  "worlds_interpretation": "Pathway capability of a fixed implementation. Not a false-positive rate, not clinical power, and not evidence about the archive.",
+  "worlds_summary": [
+    {
+      "mechanism": "clinical_sufficient_eeg_independent",
+      "median_reduction_vs_clinical_baseline": -0.019915560114343256,
+      "model": "M3",
+      "seeds": 4,
+      "seeds_with_any_gain_over_clinical": 1
+    },
+    {
+      "mechanism": "clinical_sufficient_eeg_independent",
+      "median_reduction_vs_clinical_baseline": -0.018793539944657156,
+      "model": "M4",
+      "seeds": 4,
+      "seeds_with_any_gain_over_clinical": 1
+    },
+    {
+      "mechanism": "segment_mean_drives_target",
+      "median_reduction_vs_clinical_baseline": 0.97249102758401,
+      "model": "M3",
+      "seeds": 4,
+      "seeds_with_any_gain_over_clinical": 4
+    },
+    {
+      "mechanism": "segment_mean_drives_target",
+      "median_reduction_vs_clinical_baseline": 0.9734751539502925,
+      "model": "M4",
+      "seeds": 4,
+      "seeds_with_any_gain_over_clinical": 4
+    },
+    {
+      "mechanism": "distribution_shape_drives_target",
+      "median_reduction_vs_clinical_baseline": 0.0,
+      "model": "M3",
+      "seeds": 4,
+      "seeds_with_any_gain_over_clinical": 0
+    },
+    {
+      "mechanism": "distribution_shape_drives_target",
+      "median_reduction_vs_clinical_baseline": 2.4099274655853264e-06,
+      "model": "M4",
+      "seeds": 4,
+      "seeds_with_any_gain_over_clinical": 3
+    }
+  ]
+}
