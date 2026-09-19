@@ -37,6 +37,24 @@
 **一次自我更正**：`docs/auditory_d2/D2_ROUND4_CORRECTION.md` 记录了第 2 轮"非线性读出
 在 16 电极饱和"这一结论被重复交叉验证推翻的过程。所有曲线主张现在一律附跨折种子离散度。
 
+## 提交与回读
+
+- 内容提交 `b3a98c4a98d529fbc753666d2b0ac9add3dddcad`（129 个文件：128 个候选 + `.gitignore`；127 个新增路径，
+  2 个更新：`AGENTS.md`、`docs/GITHUB_PUBLICATION_D_SERIES.md`）
+- 随后一次提交把本回执与 `AGENTS.md` 的发布状态行补齐到上述 SHA
+- `git ls-remote origin refs/heads/main` 回读与本地 HEAD 一致
+
+## 核验
+
+Slurm 1000497（候选静态检查，含 PNG/PDF 的解码元数据与原始字节）、1000498（落盘）、
+1000499 与 1000572（对 git 实际暂存 blob 的终检）。终检扫 129 个 blob（其中 6 个二进制按
+latin-1 扫原始字节），218 个已知姓名、4356 个已知标识符命中 **0**；不透明 ID 命中 **0**；
+`private/` 路径 **0**。唯一命中项为 8 处绝对路径（`AGENTS.md` 的只读数据根说明，
+7 个 sbatch 的解释器路径），与既有已发布的 sbatch 同类。
+
+`.gitignore` 的失败即拒结构已用 `git check-ignore` 逐条验证：未具名文件
+（含 43 GiB 的 EEG 数组与私有导出计划）全部被忽略，已具名文件可跟踪。本轮新增 152 行。
+
 ## 本次发布未做的事
 
 未联系任何外部人员；未发布任何原始或导出的 EEG 信号；未发布任何逐人预测或身份；
