@@ -1,0 +1,61 @@
+# auditory_gx: full-data GPU exploration round (docs/auditory_gx/GX_ROUTE_PLAN.md).
+project:
+  name: auditory_gx
+  version: "1.0"
+  plan_file: docs/auditory_gx/GX_ROUTE_PLAN.md
+paths:
+  private_relative: private/auditory_gx
+  results_relative: results/auditory_gx
+sources:
+  st_scope_run: ST1_scope_001            # events + records from the ST1 scope run
+  d1_mff_run: D1_mff_001
+  d1_bdf_run: D1_bdf_001
+  condition_clues: results/assets_001/condition_clues.csv
+  mff_lineage: results/phase3_ci_sources_001/all_mff_source_lineage.csv
+  ha_clinical: private/auditory_repair/ha_prepare_001/cohort.csv
+lanes: [mff_puretone, mff_bapa, bdf_puretone, mff_unknown_event, mff_unknown_hdev_ldev, mff_tone]
+epoch:
+  rate_hz: 250
+  pre_seconds: 0.2
+  post_seconds: 0.6
+  interval_edge_guard_seconds: 2.0
+qc:
+  ptp_max_uv: 150.0
+  ptp_channel_fraction_max: 0.10
+  flat_ptp_uv: 0.5
+  flat_channel_fraction_max: 0.10
+  min_trials_per_class_for_within_child: 40
+blocks:
+  block_seconds: 60
+  embargo_seconds: 10
+  segment_seconds: 120
+folds:
+  n_child_folds: 5
+  seeds: [11, 22, 33]
+  inner_validation_fraction: 0.15
+train:
+  batch_size: 256
+  max_epochs: 40
+  patience: 6
+  learning_rate: 0.001
+  weight_decay: 0.01
+  noise_sd: 0.05
+  channel_dropout: 0.10
+  time_shift_samples: 3
+  amplitude_jitter: 0.2
+model:
+  F1: 16
+  D: 2
+  F2: 32
+  k1: 25
+  k2: 15
+  dropout: 0.25
+ssl:
+  window_seconds: 4.0
+  mask_patch_seconds: 0.2
+  mask_fraction: 0.4
+  steps: 20000
+  batch_size: 128
+  learning_rate: 0.0005
+  width: 64
+  embedding_dim: 128

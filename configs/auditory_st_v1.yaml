@@ -1,0 +1,138 @@
+# Auditory ST (stimulus x time decoding profile) v1 configuration.
+# Source of truth: AUDITORY_RESEARCH_SCOPE_AND_FIVE_APPROACHES_v1_20260920.md, 做法一 (sections 1.1-1.7)
+# and section 5 (shared objects). Values marked PROVISIONAL are finalised in
+# docs/auditory_st/ST1_PREREGISTRATION_FROZEN.md from the outcome-blind scope tables
+# BEFORE any readout is fitted; the frozen document lists the final numbers and this
+# file must match it when a readout run starts (the runner checks the hash it records).
+project:
+  name: auditory_st
+  version: "1.0"
+  plan_file: AUDITORY_RESEARCH_SCOPE_AND_FIVE_APPROACHES_v1_20260920.md
+  approach: "做法一: 刺激×时间解码画像, round 1"
+  prereg_file: docs/auditory_st/ST1_PREREGISTRATION_FROZEN.md
+  overwrite: false
+  auto_publish: false
+
+paths:
+  private_relative: private/auditory_st
+  results_relative: results/auditory_st
+  reports_relative: reports/auditory_st
+  docs_relative: docs/auditory_st
+
+sources:
+  # MFF branch (HydroCel 128, canonical event sources established in Phase 3)
+  mff_canonical_labels: results/phase3_ci_linkage_005/canonical_source_labels.csv
+  mff_source_metadata: results/phase3_metadata_addendum_001/source_metadata.csv
+  mff_sources_manifest: results/phase3_ci_sources_001/source_manifest.csv
+  mff_source_paths: private/phase3_ci_sources_001/source_paths_and_tokens.csv
+  mff_age_cohort: private/results/auditory_repair/ci_prepare_004/cohort.csv
+  # HA/BDF branch (22-channel clinical, 800/1200 Hz oddball per the source description)
+  ha_source_manifest: results/phase1_sources_001/source_manifest.csv
+  ha_index_recordings: results/phase2_cohort_001/index_recordings.csv
+  ha_age_cohort: private/auditory_repair/ha_prepare_001/cohort.csv
+  file_path_map: private/inventory_001/file_path_map.csv
+  # identity: conservative components already established outcome-blind (auditory5 manifest_001)
+  identity_graph: private/auditory5_v1/data/manifest_001/identity_graph.json
+  # continuous signal store
+  d1_mff_run: D1_mff_001
+  d1_bdf_run: D1_bdf_001
+  d1_contract: auditory_d1_continuous_v1
+
+lanes:
+  # Task identity comes from the audited protocol_task column, never from event frequency.
+  # post_seconds: filled 2026-09-21 from results/auditory_st/ST1_scope_001/task_event_table.csv by the
+  # frozen rule floor20ms(min(0.80, SOA_p05_min_over_records - 0.06)); see prereg Appendix A.
+  mff_puretone:
+    branch: MFF
+    protocol_task: puretone
+    codes: {stad: 0, devt: 1}
+    role: primary
+    post_seconds: 0.70
+  mff_bapa:
+    branch: MFF
+    protocol_task: bapa
+    codes: {stad: 0, devt: 1}
+    role: primary
+    post_seconds: 0.80
+  bdf_puretone:
+    branch: HA_BDF
+    protocol_task: puretone_literal_1_2
+    codes: {"1": 0, "2": 1}
+    role: primary
+    note: "literal 1/2; 800 vs 1200 Hz mapping documented but not confirmed per record"
+    post_seconds: 0.64
+  mff_unknown_event:
+    branch: MFF
+    protocol_task: unknown
+    codes: {stad: 0, devt: 1}
+    role: supplementary_event_condition_layer
+    note: "sound identity unknown; reported as stad/devt event-condition readability only"
+    post_seconds: 0.72
+  mff_unknown_hdev_ldev:
+    branch: MFF
+    protocol_task: unknown
+    codes: {stad: 0, hdev: 1, ldev: 2}
+    role: deferred_multi_deviant_event_layer
+    note: "two deviant literals; documented in scope tables, no binary readout in round 1"
+    post_seconds: 0.76
+  mff_tone:
+    branch: MFF
+    protocol_task: tone
+    codes: {stad: 0, devt: 1}
+    role: case_description_only
+    post_seconds: 0.80
+
+epoch:
+  rate_hz: 250
+  pre_seconds: 0.2
+  post_seconds: 0.8            # PROVISIONAL upper bound; per-lane value frozen from SOA (see prereg)
+  interval_edge_guard_seconds: 2.0
+  post_rule: "floor20ms(min(0.8, SOA_p05 - 0.06))"
+
+window:
+  length_seconds: 0.08
+  step_seconds: 0.02
+  feature: channel_mean
+
+qc:
+  ptp_max_uv: 150.0
+  ptp_channel_fraction_max: 0.10
+  flat_ptp_uv: 0.5
+  flat_channel_fraction_max: 0.10
+  block_seconds: 60
+  record_min_trials_per_class: 40
+  record_min_blocks_per_class: 4
+
+normalisation:
+  kind: record_robust_scalar
+  definition: "median |x| over all accepted epochs of the record (channels x samples)"
+
+readout:
+  model: shrinkage_lda
+  lda_solver: lsqr
+  lda_shrinkage: auto
+  cv: leave_one_identity_group_out
+  min_train_groups: 10
+  inner_folds_for_stacking: 5
+  history_features: [previous_code, log1p_previous_gap_s, previous_run_length_capped_5, first_in_chain]
+  stacker: logistic_regression_C1
+  temporal_generalisation: true
+  time_blocks:
+    block_seconds: 60
+    embargo_seconds: 10
+    partitions: [early_late_halves, odd_even_blocks]
+  within_child_secondary: true
+  within_child_min_trials_per_class_per_block: 20
+
+metrics:
+  primary: [balanced_accuracy, auc, log_loss_bits, gain_bits_vs_prior, gain_bits_vs_history]
+  child_aggregation: equal_weight_per_identity_group
+  bootstrap:
+    n: 2000
+    unit: identity_group
+    seed: 20260920
+
+slurm:
+  partition: CPU
+  python: /home/infres/yinwang/anaconda3/envs/eeg2025/bin/python
+  array_tasks: 8
