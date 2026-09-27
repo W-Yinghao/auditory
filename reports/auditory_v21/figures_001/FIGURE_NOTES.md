@@ -1,0 +1,3 @@
+# v2.1 aggregate figures
+
+These figures export saved aggregate statistics without refitting. A2 is a retrospective paired review on the same 49 identities; its units are not information bits. N2 shows the original homogeneous-bag task, with equal identity weighting; metadata accuracy is not EEG accuracy. Real risk differences use the new finite-budget learner, with fixed-prediction identity bootstrap intervals. A zero-width interval from identical selected predictions does not prove zero population conditional information. R_SIM remains primary; L0 remains secondary. No source result or failure is overwritten.

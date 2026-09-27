@@ -1,0 +1,7 @@
+# Bounded legacy readout repair
+
+All neural members, including all four full-training alpha models, first run 1000 steps. Any unstable training member extends the entire packet to 2000 using the original cosine schedule. Selection and temperature use only final-budget training OOF logits, after the global stability barrier; test predictions never determine extension. Unselected final-alpha models remain counted. The objective is weighted mean BCE plus alpha/(2*sum(weights)) times squared weight matrices; biases are unpenalized. Float64 full-batch Adam uses explicit L2, seed 11 and weight_decay=0.
+
+C2-R retains independent branch scalers, the complete linear/MLP32/MLP64 matrix, and fixed-head zero/same-class/opposite-class interventions (OOD diagnostics). Inner head validation does not refit the original outer encoders. E0-R retains native128, PCA32 and the original four isolated block folds; E0 fit weights balance filter blocks/classes within a record, not extra children. its legacy linear predictions are source-verified and reused. MFF sources are mixed and not all CI. E1 is not run. Probability metrics retain the legacy clipping definition for estimator comparisons.
+
+Incomplete neural matrices have no neural test aggregate. All bootstrap intervals are fixed OOF, not full workflow refits. The old failed runs remain untouched. This repair alone does not complete all C2 controls or provide independent scientific confirmation.

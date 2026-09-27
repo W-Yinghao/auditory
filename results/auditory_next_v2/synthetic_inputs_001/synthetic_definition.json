@@ -1,0 +1,117 @@
+{
+  "route_worlds": 600,
+  "independent_worlds_by_packet": {
+    "A2": 300,
+    "N1": 120,
+    "N2": 90,
+    "N3": 90
+  },
+  "G0_separate_fixtures": 60,
+  "A2_ridge_fits": 300,
+  "classifier_fits": 1620,
+  "neural_fits": 630,
+  "total_fits": 1920,
+  "calibration_fits": 0,
+  "new_encoder_fits": 0,
+  "neural_lambda": 0.001,
+  "logistic_C": 1.0,
+  "A2_ridge_alpha": 10.0,
+  "A2_candidate_and_noise_design": [
+    {
+      "outer_fold": 0,
+      "train": 38,
+      "test": 11,
+      "half_contrast_noise_sd": 0.408248290463863,
+      "trials_per_cell_half_class": 6,
+      "selected_cells": 2,
+      "trial_noise_variance": 1.0,
+      "repeat_noise_reduction": false
+    },
+    {
+      "outer_fold": 1,
+      "train": 38,
+      "test": 11,
+      "half_contrast_noise_sd": 0.408248290463863,
+      "trials_per_cell_half_class": 6,
+      "selected_cells": 2,
+      "trial_noise_variance": 1.0,
+      "repeat_noise_reduction": false
+    },
+    {
+      "outer_fold": 2,
+      "train": 41,
+      "test": 8,
+      "half_contrast_noise_sd": 0.408248290463863,
+      "trials_per_cell_half_class": 6,
+      "selected_cells": 2,
+      "trial_noise_variance": 1.0,
+      "repeat_noise_reduction": false
+    },
+    {
+      "outer_fold": 3,
+      "train": 40,
+      "test": 9,
+      "half_contrast_noise_sd": 0.408248290463863,
+      "trials_per_cell_half_class": 6,
+      "selected_cells": 2,
+      "trial_noise_variance": 1.0,
+      "repeat_noise_reduction": false
+    },
+    {
+      "outer_fold": 4,
+      "train": 39,
+      "test": 10,
+      "half_contrast_noise_sd": 0.408248290463863,
+      "trials_per_cell_half_class": 6,
+      "selected_cells": 2,
+      "trial_noise_variance": 1.0,
+      "repeat_noise_reduction": false
+    }
+  ],
+  "A2_fold_rule": "world_index % 5; same qualified frozen Omega counts in all shared W conditions",
+  "A2_missingness_scope": "post-eligibility equal quotas; excluded candidates are not imputed",
+  "N_candidates": {
+    "total": 60,
+    "train": 36,
+    "test": 24
+  },
+  "N1_N3_trials_per_candidate": 600,
+  "N2_bags_per_candidate": 80,
+  "N2_trials_per_bag": 8,
+  "G0_fixture_trials_per_candidate": 8,
+  "G0_dimensions": [
+    64,
+    400
+  ],
+  "G0_injection_coordinate": 0,
+  "G0_injection_class_mean_difference": 2.0,
+  "G0_null_worlds": 30,
+  "G0_injected_worlds": 30,
+  "G0_scope": "small independent feature-dimension fixtures; not real split/cohort power",
+  "raw_scores_only": true,
+  "calibration_status": "BUDGET_LIMITED_NO_INNER_OOF",
+  "head_seed": 11,
+  "world_seed_rule": "SHA256 of base_seed=20260917/packet/mechanism/repetition, first32bits",
+  "bootstrap_seed_rule": "separate SHA256 stream candidate_bootstrap/world_id/base_seed; shared within each world",
+  "paired_candidate_bootstrap": 2000,
+  "bootstrap_scope": "fixed fitted predictions, no refit",
+  "population": {
+    "N1": "P_nat",
+    "N2": "P_bal",
+    "N3": "P_nat",
+    "G0": "P_bal",
+    "A2": "equal_candidate"
+  },
+  "family_barrier": "all630NN initial1000; if any unstable all to2000; no test predictions before terminal budget",
+  "hard_budget_gpu_hours": 2,
+  "timeout_status": "BUDGET_LIMITED; no reduced-sample retry",
+  "claims": "mechanism diagnostics; not empirical power fitted to real EEG or clinical validation",
+  "A2_conditions_share_draw": true,
+  "N3_families_share_draw": true,
+  "incomplete_required_heads": "whole world unresolved; retained in planned denominator",
+  "source_task_plan_hash": "e7027e2a4784a9e30d094659b68dc1f68070243acec45e4012349e238d7f3beb",
+  "source_config_hash": "e7b5cca60e0f3b4a4a4c919b4196c06e99f5d86bbef64a75ffcff835d0d1e5a6",
+  "source_registry_hash": "e14776267ea6fe74e3015a608cc4d151f5d64d908c070e36ca90de5c36502412",
+  "source_site_hash": "a9932e22efaa306cd7f58a5978075272eb681ba00c1b215886da8a7e3c1cafd4",
+  "clinical_inputs": false
+}

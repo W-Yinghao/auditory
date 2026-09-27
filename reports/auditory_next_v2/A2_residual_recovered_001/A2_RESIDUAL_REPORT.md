@@ -1,0 +1,7 @@
+# A2 残差审计输出恢复
+
+原运行已完成四种表示、五个外折的20次alpha=10背景ridge，并保存每折predictor、background_axis和完整pair_matrices。随后重复独占写入input_hashes.json导致FileExistsError。此次仅修复输出终结：新增回归/PCA/scaler/encoder拟合均为0；原20次拟合保留在原任务预算。原失败目录完整保留。
+
+恢复程序核验原失败位置、原代码快照、初始依赖哈希及20个相关S0任务和15个encoder checkpoint；重新校验训练/测试scope、模型维度、每对候选四项内积恒等式及已存向量统计。原最终扩展输入清单未成功写入，因此完整输出摘要哈希首次在本次恢复建立，此限制保留在私有回执。
+
+Delta、P、R的cosine和内积按原外折匹配矩阵汇总；每折描述和全五折区间复用原seed及2000次候选身份抽样，重复身份不进入异候选参照。这些是fixed OOF区间，不包含模型重拟合。未定义bootstrap保留状态，不能填0。背景为post共同响应、pre共同响应和pre差异；固定quality数组缺失时明确保留缺失限制。本结果始终DIAGNOSTIC_ONLY，残差转正不替代未校正A2主终点，不构成刺激特异性或临床有效性证据。

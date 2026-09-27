@@ -1,0 +1,77 @@
+# auditory_pf: positive-claim falsification round (docs/auditory_pf/PF_PROTOCOL_FROZEN.md).
+project:
+  name: auditory_pf
+  version: "1.0"
+  protocol: docs/auditory_pf/PF_PROTOCOL_FROZEN.md
+  source_plan: 发散_最终版_正面主张与查否实验.md
+paths:
+  private_relative: private/auditory_pf
+  results_relative: results/auditory_pf
+sources:
+  gx_config: configs/auditory_gx_v1.yaml
+  stage_run: GX_stage_001
+  lane: bdf_puretone
+  ha_cohort: private/auditory_repair/ha_prepare_001/cohort.csv
+  pta: private/auditory_repair/pta_007/candidate_covariates.csv
+  nh_override: private/auditory_gx/clinical_override.csv
+  st_records: private/auditory_st/ST1_scope_001/records.csv
+  gx_record_meta: private/auditory_gx/GX1_bdf_puretone_shared/record_meta.json
+  r4_pairs: results/auditory_gx/R4_experience/matched_pairs.csv
+  r5_child_table: results/auditory_gx/R5_wlate/child_table_r5.csv
+  d1_bdf_run: D1_bdf_001
+labels:
+  stage1_min_months: 13          # stage1 = duration >= 13; stage0 = 0..12
+  new_max_months: 2              # sensitivity: 0..2 vs >= 13
+  sir_threshold: 3               # SIR > 3 vs <= 3
+  h15_stratum: [12, 24]
+  h15_sensitivity: [12, 36]
+budget:
+  k_per_class: 80
+  draws: 10
+folds:
+  seeds: [101, 202, 303]
+  n_outer: 5
+  n_inner: 5
+  val_fraction: 0.15
+windows:
+  width_s: 0.08
+  step_s: 0.04
+  template_min_centre_s: 0.04     # R5 curve definition (centres 0.04..0.56)
+  late_centres_s: [0.24, 0.28]    # H9 late window
+  h3_target_centre_s: 0.28        # H3 window 0.24..0.32
+blocks:
+  block_seconds: 60
+  guard_seconds: 5
+  first_minutes: 5
+channel_groups:
+  frontocentral: [Fz, Cz, F3, F4]
+  lateral: [F7, F8, T3, T4]
+  temporoparietal: [T5, T6, P3, P4]
+  frontopolar: [Fp1, Fp2]
+  occipital: [O1, O2, Oz]
+  centroparietal: [C3, C4, Pz]
+e2e:
+  records_per_batch: 8
+  epochs_per_class: 16
+  steps_per_epoch: 150
+  max_epochs: 40
+  patience: 6
+stats:
+  perm_a: 2000
+  perm_b: 1000
+  perm_c: 200
+  shuffles_h12: 200
+  bootstrap: 2000
+  query_perm: 10000
+  logistic_C: [0.0001, 0.001, 0.01, 0.1, 1.0]
+  ordinal_lambda: [0.01, 0.1, 1.0, 10.0, 100.0, 1000.0]
+  ridge_alpha: [0.1, 1.0, 10.0, 100.0, 1000.0, 10000.0]
+b2:
+  random_draws: 5
+b3:
+  h18_panels: 6
+  h18_panel_size: 12
+  h18_seeds: [1, 2, 3]
+  h18_alloc: [[60, 450], [30, 900]]
+  h20_sizes: [40, 60, 72]
+  h20_seeds: [1, 2]

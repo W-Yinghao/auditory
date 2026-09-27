@@ -1,0 +1,43 @@
+# auditory_dv: divergence round 2 (docs/DIVERGENCE_ROUND2_20260927.md; protocol docs/auditory_dv/DV_PROTOCOL_FROZEN.md)
+project:
+  name: auditory_dv
+  version: "1.0"
+  protocol: docs/auditory_dv/DV_PROTOCOL_FROZEN.md
+paths:
+  private_relative: private/auditory_dv
+  results_relative: results/auditory_dv
+sources:
+  gx_config: configs/auditory_gx_v1.yaml
+  stage_run: GX_stage_001
+  d1_mff_run: D1_mff_001
+  st_records: private/auditory_st/ST1_scope_001/records.csv
+  canonical_labels: results/phase3_ci_linkage_005/canonical_source_labels.csv
+  ci_rows: private/phase3_ci_clinical_004/candidate_rows_index.csv
+  ci_schema: private/phase3_ci_clinical_004/schema_private.json
+  ci_eligibility: results/phase3_ci_clinical_feasibility_001/eligibility.csv
+  pf_config_v2: configs/auditory_pf_v2.yaml
+  pf_prepare_v2: prepare_002
+  pf_stim_v2: stim_002
+  pf_features: private/auditory_pf/features_001/features.npz
+budget:
+  k_per_class: 80
+  draws: 10
+mff:
+  seeds: [111, 222, 333]
+  n_outer: 5
+montage:
+  seeds: [11, 22, 33]
+stats:
+  ridge_alpha: [0.1, 1.0, 10.0, 100.0, 1000.0, 10000.0]
+  perm_a3: 2000
+  bootstrap: 2000
+g:
+  half_life: 20
+runs:
+  prepare_mff: prepare_mff_001
+  stim_mff: stim_mff_001
+  features_mff: features_mff_001
+  montages: montages_001
+  montage_lane: montage_lane_001
+  audit_c: audit_c_001
+  audit_d: audit_d_001
