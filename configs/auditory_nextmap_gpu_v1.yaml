@@ -1,0 +1,180 @@
+# auditory_nextmap: age-information source (A0/A1), MFF semantic/identity recovery (B0), SIR predictive headroom (C0).
+# Specification: AUDITORY_SERVER_EXECUTION_v1_20260927_b9c0d9f.md section 14, plus the server adaptations of
+# docs/auditory_nextmap/NEXTMAP_SERVER_PLAN_v1.md (approved by the user 2026-10-01, including additions (a) and (b)).
+project:
+  name: auditory_nextmap
+  version: "1.1-gpu"
+  base_commit: b9c0d9fdbe1da394c6d3b4ca4372e6dd3d96ba9d
+  content_commit: ab9c340807aff8f1be7e2a173a61d565a8345101
+  research_document: AUDITORY_RESEARCH_REFRESH_v1_20260927_b9c0d9f.md
+  execution_document: AUDITORY_SERVER_EXECUTION_v1_20260927_b9c0d9f.md
+  server_plan: docs/auditory_nextmap/NEXTMAP_SERVER_PLAN_v1.md
+  protocol: docs/auditory_nextmap/NEXTMAP_GPU_PROTOCOL_FROZEN.md
+  parent_protocol: docs/auditory_nextmap/NEXTMAP_PROTOCOL_FROZEN.md
+permissions:
+  contact_clinicians: false
+  download_new_datasets: false
+  modify_raw_data: false
+  train_new_eeg_encoders: true        # user 2026-10-01: "做GPU实验" (G1 equal-capacity age models, G2 protocol sharing)
+  run_pooled_dv_direction_f: false
+  publish_or_push: false
+paths:
+  private_relative: private/auditory_nextmap
+  results_relative: results/auditory_nextmap
+  documentation_root: docs/auditory_nextmap
+sources:
+  pf_config: configs/auditory_pf_v2.yaml            # PF2: seeds 404..808, prepare_002 / stim_002
+  pf_config_round1: configs/auditory_pf_v1.yaml     # PF round 1: seeds 101/202/303 (H14 clinical model)
+  dv_config: configs/auditory_dv_v1.yaml
+  gx_config: configs/auditory_gx_v1.yaml
+  pf_prepare_run: prepare_002
+  pf_stim_run: stim_002
+  pf_prepare_round1: prepare_001
+  pf_feature_file: private/auditory_pf/features_001/features.npz
+  pf_h14_private: private/auditory_pf/analyze_004/private_real.json
+  pf_h14_public: results/auditory_pf/analyze_004
+  pta_file: private/auditory_repair/pta_007/candidate_covariates.csv
+  ha_cohort: private/auditory_repair/ha_prepare_001/cohort.csv
+  nh_override: private/auditory_gx/clinical_override.csv
+  stage_run: GX_stage_001
+  d1_bdf_run: D1_bdf_001
+  d1_mff_run: D1_mff_001
+  st_scope_run: ST1_scope_001
+  mff_registry: private/mff_001/registry.json
+  mff_history: private/mff_001/history.json
+  canonical_labels: results/phase3_ci_linkage_005/canonical_source_labels.csv
+  dv_components: private/auditory_dv/audit_c_001/components.csv
+  file_path_map: private/inventory_001/file_path_map.csv
+  ci_rows: private/phase3_ci_clinical_004/candidate_rows_index.csv
+  ci_schema: private/phase3_ci_clinical_004/schema_private.json
+age:
+  primary_group: labelled
+  primary_visit: source_primary_rec
+  outer_seeds: [404, 505, 606, 707, 808]
+  outer_folds: 5
+  new_outer_splits: false
+  k_per_class: 80
+  primary_draw: 0
+  sensitivity_draw_average: 10
+  pair_scale: train_pooled_equal_class_equal_child
+  scale_floor: 1.0e-8
+  rotate_after_scale: true
+  rescale_after_rotation: false
+  alpha_sse: [1.0, 100.0, 10000.0]
+  kernel_alpha: [0.01, 1.0, 100.0]
+  kernel_gamma_fallback: 1.0
+  inner_folds: 3
+  inner_metric: mae
+  tie_break: larger_alpha
+  tie_tolerance: 1.0e-12
+  primary_views: [std, dev, common, contrast, joint]
+  baselines: [spectral_ridge, spectral_rbf, technical, median_train, mean_train]
+  equivalence_view: pair_equivalence
+  sensitivity_views: [common, joint]
+  approved_additions: [contrast_bs, joint_bs, technical_noscale]   # plan section 3 (a)(b); labelled sensitivities
+  technical_fields: [record_scale, accept_fraction, qc_over_mean, log1p_n_acc, log1p_d1_seconds]
+  primary_contrast: common_minus_joint_mae
+  prediction_aggregation: mean_absolute_error_across_source_seeds_per_child
+  new_significance_gate: false
+  bootstrap_children: 2000
+  bootstrap_seed: 27092701
+  equivalence_rel_tol: 1.0e-8
+controls:
+  enabled: true
+  refit_matching_reference: true        # refit only when the matched support is a strict subset (else reuse A0 common)
+  random_networks: 25
+  random_initialization_seed: 27092702
+  raw_bin_seconds: 0.02
+  rate_hz: 250
+  nonaligned:
+    physical_block_seconds: 60
+    source_epoch_seconds: 0.8
+    pre_seconds: 0.2
+    interval_guard_seconds: 2.0
+    anchor_exclusion_seconds: 0.08
+    exclusion_event_kinds: [target, unknown_sound]   # conservative: never align to any recorded sound-like event
+    match_block_counts: true
+    infer_silence: false
+    seed: 27092703
+  consistency:
+    embedding_abs_tol: 0.05            # |re-inferred draw0 aggregate - stored agg_base| in embedding units (bf16 kernels)
+recovery:
+  units: [U1, U3, U2, U4]
+  start_from_existing_ledgers: true
+  identity_from_eeg: false
+  semantic_labels_from_performance: false
+  expected_recovered_subjects: null
+  expected_recovered_tone_records: null
+  train_after_recovery: false
+  preserve_unknown_and_conflict: true
+  exposure_ledger_required: true
+headroom:
+  target: sir_ordinal_1_5
+  secondary_target: sir_gt_3
+  levels: 5
+  round1_seeds: [101, 202, 303]
+  prefer_existing_probabilities: true
+  allow_exact_clinical_only_refit: true
+  reproduce_tolerance: 1.0e-9
+  amendment_001:                      # docs/auditory_nextmap/NEXTMAP_PROTOCOL_ADDENDUM_001.md (L-BFGS-B end-point tolerance)
+    auc_tol: 1.0e-12
+    mae_tol: 1.0e-4
+    child_error_tol: 1.0e-3
+    diag_unit: [101, 0]
+    source_run: c0_001
+  allow_new_eeg_models: false
+  probability_floor: 0.000001
+  renormalize_after_floor: true
+  prior_pseudocount: 0.5
+  log_base: 2
+  formal_cmi_confidence_claim: false
+  bootstrap_children: 2000
+  bootstrap_seed: 27092704
+resources:
+  slurm_required: true
+  default_qos: false
+  qos: runfill                        # user 2026-10-01: submit with runfill; preemptible (REQUEUE) -> requeue-safe units
+  allowed_gpu_partitions: [A100, A40, L40S, A30]
+  forbidden_gpu: [P100, RTX6000PRO, H100]
+  cpu_jobs_max: 2
+  gpu_jobs_max: 10                    # array tasks under runfill (10 GPUs per user)
+  new_encoder_fits_max: 130           # G1 50 + G2 75 (+5 spare for an explicit, recorded retry)
+  trained_encoder_inference_units_max: 25
+  random_encoder_inference_units_max: 25
+  small_age_fits_max: 1500            # G1 CPU readouts (ridge 750 + RBF 250)
+  ordinal_optimizer_calls_max: 600
+  synthetic_worlds_max: 24
+privacy:
+  identifying_outputs_private: true
+  exact_dates_private: true
+  per_person_predictions_private: true
+  source_paths_private: true
+  auto_release: false
+
+# ---------------------------------------------------------------------- GPU extension (NEXTMAP_GPU_PROTOCOL_FROZEN.md)
+g1:                                   # equal-capacity age models on HA/BDF (same 55 children, PF2 units)
+  arms: [age_trial, age_subavg]       # EEGNet trained to predict age from single trials / 20-trial same-class sub-averages
+  inference_arms: [stim_avginput]     # frozen M_o applied to the draw0 class-average waveform
+  subavg_trials: 20
+  eval_subavg_groups: 4               # 4 disjoint 20-trial sub-averages per class from the draw0 80
+  validation_key: AGE
+  loss: mse_on_train_standardised_age
+  early_stop_metric: validation_child_mae_months
+  max_epochs: 40                      # as the stimulus encoders (auditory_gx_v1.yaml train.*)
+  patience: 6
+  readout_views: [age_trial_direct, age_trial_common_ridge, age_subavg_direct, age_subavg_common_ridge,
+                  stim_avginput_common_ridge, raw_common_rbf]
+  references: {trained_common: "a0_001:single_draw80/common", raw_common: "a1_001:raw_common",
+               random_common: "a1_001:random_common"}
+  primary_contrast: trained_common_minus_age_trial_direct
+  inputs_run: a1_prep_001
+g2:                                   # protocol-conditioned sharing on MFF (adds to GX4: 3rd protocol, naive pooling, step budget)
+  lanes: [mff_puretone, mff_bapa, mff_unknown_event]
+  arms: [target_only, naive_pool, shared_heads]
+  seeds: [701, 702, 703]
+  n_folds: 5
+  validation_fraction: 0.15
+  max_steps: 4000                     # identical optimisation budget for every arm (OneCycle over max_steps)
+  eval_every_steps: 100
+  patience_evals: 10
+  metric: child_mean_auc

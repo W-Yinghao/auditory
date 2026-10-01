@@ -1,12 +1,21 @@
 # 儿童听觉 EEG：数据审计与科学探索
 
-本仓库保存面向 IEEE JBHI 同级期刊研究的 **Phase 0–3、Auditory5、v2/v2.1、V3、F1–F4 功能分析、PTA 修正与扩展分析，以及修正队列完整重训**的代码、方案、报告、汇总结果和图表。最新一轮已完成 40 个学习型编码器和 5 个 L0 表征任务，并通过独立执行核验；临床增益仍小且不确定，尚无独立临床验证或真实随访预测。原始 EEG、身份映射、逐人临床信息、逐 epoch 数据、个体预测和模型权重不在仓库中。
+本仓库保存面向 IEEE JBHI 同级期刊研究的 **Phase 0–3、Auditory5、v2/v2.1、V3、F1–F4 功能分析、PTA 修正与扩展分析，以及修正队列完整重训**的代码、方案、报告、汇总结果和图表。修正队列重训轮已完成 40 个学习型编码器和 5 个 L0 表征任务，并通过独立执行核验；临床增益仍小且不确定，尚无独立临床验证或真实随访预测。原始 EEG、身份映射、逐人临床信息、逐 epoch 数据、个体预测和模型权重不在仓库中。
 
 优先阅读[重训完整报告](reports/auditory_retrain_v1/verification_001/REPORT.md)、[结果解读](docs/auditory_retrain/INTERPRETATION.md)、[PTA 修正与扩展分析](reports/auditory_repair/verification_001/REPORT.md)和[最新状态](docs/auditory_retrain/STATUS.md)。**历史 PTA 勘误：旧 Phase 3 协变量使用了错误的临床行号映射，57 条比较中裸耳 PTA 有 55 条、助听 PTA 有 47 条变化。**旧 PTA 调整结果和 Auditory5 D 表只能作为历史记录；后续复用划分的间接影响也不能笼统排除。见[来源勘误](docs/auditory_fseries_archival/LEGACY_PTA_LINEAGE_AMENDMENT.md)与[修正复现说明](docs/auditory_repair/REPRODUCTION.md)。
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## 最新：修正队列与新划分下完整重训
+## 最新（2026-10-01/02）：NEXTMAP 轮
+
+本轮依据 `AUDITORY_RESEARCH_REFRESH_v1_20260927_b9c0d9f.md` 与 `AUDITORY_SERVER_EXECUTION_v1_20260927_b9c0d9f.md` 执行，随后在研究者授权下补做 GPU 与 H 系列实验。入口：[最终研究决策](docs/auditory_nextmap/FINAL_RESEARCH_DECISIONS.md)、[H 系列报告](docs/auditory_nextmap/H_SERIES_REPORT.md)、[年龄信息来源](docs/auditory_nextmap/AGE_INFORMATION_SOURCE_REPORT.md)、[G1](docs/auditory_nextmap/G1_EQUAL_CAPACITY_REPORT.md) / [G2](docs/auditory_nextmap/G2_PROTOCOL_SHARING_REPORT.md)、[SIR 预测余量](docs/auditory_nextmap/SIR_PREDICTIVE_HEADROOM_REPORT.md)、[MFF 语义恢复](docs/auditory_nextmap/SEMANTIC_RECOVERY_REPORT.md)、[净新增队列](docs/auditory_nextmap/NET_COHORT_ADDITIONS.md)；各冻结协议与带日期附录在同一目录。
+
+- **事件锁定表示读出年龄（A 线）**：在 HA/BDF 系统内成立（刺激训练、时间锁定、刺激后 0.16–0.20 s 与 0.44–0.56 s 的听觉相关脑区；55 名被多轮探索的 HA 儿童），但不跨到 MFF 系统；对最强的组合谱特征只有约 3–5 月的优势，线性读出下没有确立。
+- **连续 EEG 年龄（D2 线）**：在 D2 谱上加入非周期指数、α 重心与相对功率后，线性解码在 MFF 上 13.0 → 10.5 月、在 BDF 上 26.9 → 24.0 月；D2 的电极数与约 2 分钟时长结论不变。属于事后发现，已用同一协议跨系统重复，仍需独立数据确认。
+- **SIR**：二元排序接近完美，但五级概率的经验交叉熵仍有 1.35 bit/人，"由病历决定"不成立。**MFF 语义与身份**：132 条未知任务记录基本无法恢复；有证据的净新增儿童只有 1 名。
+- 各轮发布回执见 `docs/GITHUB_PUBLICATION_*.md`（本轮为 `docs/GITHUB_PUBLICATION_NEXTMAP.md`）。
+
+## 修正队列与新划分下完整重训
 
 修正后的临床完整支持为 **52 个候选身份组**，外层总体为 60 组，其中 37 组外折分配变化。使用 5 外折 × 3 临床内折隔离，重新训练 20 个 R_SUP 和 20 个 R_SIM 编码器，并重新拟合 L0 的刺激头/投影；未沿用旧权重初始化。两条 GPU 作业均使用 L40S。三种表征的 81 个核心模型配置、99 个敏感性配置、121 项对照状态和 60 项 FP32 检查均完成；Slurm 999581 完成独立核验，汇总没有重新拟合模型。
 
@@ -121,7 +130,8 @@ C2-S几何重建精确，但两个新增空间成分没有共同显示明确预�
 
 ## 阅读与复现入口
 
-- 最新完整重训：[冻结方案](docs/auditory_retrain/PROTOCOL_v1.md)、[状态](docs/auditory_retrain/STATUS.md)、[解读](docs/auditory_retrain/INTERPRETATION.md)、[复现导航](docs/auditory_retrain/REPRODUCTION.md)、[全部模型指标](results/auditory_retrain_v1/verification_001/model_metrics.csv)、[全部比较](results/auditory_retrain_v1/verification_001/contrasts.csv)。
+- NEXTMAP 轮：[执行方案](AUDITORY_SERVER_EXECUTION_v1_20260927_b9c0d9f.md)、[研究版](AUDITORY_RESEARCH_REFRESH_v1_20260927_b9c0d9f.md)、[最终研究决策](docs/auditory_nextmap/FINAL_RESEARCH_DECISIONS.md)、[H 系列](docs/auditory_nextmap/H_SERIES_REPORT.md)、[冻结协议](docs/auditory_nextmap/NEXTMAP_PROTOCOL_FROZEN.md)、[聚合结果](results/auditory_nextmap/)。
+- 修正队列完整重训：[冻结方案](docs/auditory_retrain/PROTOCOL_v1.md)、[状态](docs/auditory_retrain/STATUS.md)、[解读](docs/auditory_retrain/INTERPRETATION.md)、[复现导航](docs/auditory_retrain/REPRODUCTION.md)、[全部模型指标](results/auditory_retrain_v1/verification_001/model_metrics.csv)、[全部比较](results/auditory_retrain_v1/verification_001/contrasts.csv)。
 - 功能与修正：[F1–F4 方案](AUDITORY_FUNCTIONAL_DECODING_F1_F4_RESEARCH_PLAN_v1.md)、[资格审计](reports/auditory_fseries/STAGE1_QUALIFICATION_REPORT.md)、[档案初筛](reports/auditory_fseries_archival/verification_003/REPORT.md)、[扩展与修正方案](docs/auditory_repair/PROTOCOL_v2.md)、[扩展最终报告](reports/auditory_repair/verification_001/REPORT.md)、[复现导航](docs/auditory_repair/REPRODUCTION.md)。
 - V3：[执行方案](AUDITORY_V3_DESIGN_AND_EXECUTION_PLAN_eb24106.md)、[机器配置](auditory_v3_plan.yaml)、[最终报告](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)、[复现导航](docs/auditory_v3/REPRODUCTION.md)、[执行修订](docs/auditory_v3/EXECUTION_DECISIONS.md)、[作业记录](docs/auditory_v3/JOB_LEDGER.md)、[完整主效应表](results/auditory_v3/final_002/primary_results.csv)。
 - v2.1：[审阅修订方案](AUDITORY_V2_1_REVIEW_AMENDMENT_79b3521%20%281%29.md)、[科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[复现导航](docs/auditory_v21/REPRODUCTION.md)、[作业记录](docs/auditory_v21/JOB_LEDGER.md)、[路线状态](results/auditory_v21/final_001/four_axis_routes.csv)、[PDF/PNG 图表](reports/auditory_v21/figures_002/)。
