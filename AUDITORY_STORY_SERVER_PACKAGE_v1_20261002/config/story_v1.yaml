@@ -1,0 +1,235 @@
+project:
+  name: auditory_story
+  version: '1.0'
+  date: '2026-10-02'
+  base_commit: 558e6509d64e0decb4d796ee51964f7ff6a30ee2
+  story_file: 01_STORY.md
+  method_file: 03_METHOD_SPEC.md
+  status: PROPOSED_NOT_RUN
+permissions:
+  raw_data_read_only: true
+  contact_clinicians: false
+  download_new_data: false
+  publish_or_push: false
+  train_new_raw_eeg_backbones: false
+  train_small_profiles: true
+  train_clinical_heads: true
+  automatic_story_switch: false
+sources:
+  pf_config: configs/auditory_pf_v2.yaml
+  gx_config: configs/auditory_gx_v1.yaml
+  nextmap_config: configs/auditory_nextmap_v1.yaml
+  pf_prepare_run: prepare_002
+  pf_stim_run: stim_002
+  stage_run: GX_stage_001
+  st_scope_run: ST1_scope_001
+  clinical_cohort: private/auditory_repair/ha_prepare_001/cohort.csv
+  pta: private/auditory_repair/pta_007/candidate_covariates.csv
+  spectral: private/auditory_pf/features_001/features.npz
+  spectral_plus: RESOLVE_FROM_EXISTING_H4_H8_RECEIPT
+  whole_trial_embeddings: REUSE_IF_WEIGHT_SCOPE_AND_TRIAL_INDEX_MATCH
+cohort:
+  main: PF2_NEXTMAP_LABELLED_HA_PRIMARY
+  expected_n: 55
+  expected_n_is_target: false
+  unit: child
+  clinical_visits: primary_only
+  fit_secondary_visits: false
+  nh_in_main: false
+  unknown_dates_block_archive_analysis: false
+  target_conflict_action: record_and_resolve_without_averaging
+targets:
+  primary: sir_ordinal_1_5
+  secondary: muss_original
+  sir_levels:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  automatic_target_replacement: false
+  age_primary: false
+  cap_training: false
+  itmais_training: false
+splits:
+  outer_seeds:
+  - 404
+  - 505
+  - 606
+  outer_folds: 5
+  reuse_pf2: true
+  group_all_visits_by_identity: true
+  clinical_inner_folds: 3
+  auxiliary_pool: outer_train_main_cohort_only
+  inner_validation_eeg_visible_to_auxiliary_pretraining: true
+  inner_validation_clinical_targets_visible_to_auxiliary_pretraining: false
+label_budgets:
+  values:
+  - 12
+  - 24
+  - all
+  repeats:
+    '12': 3
+    '24': 3
+    all: 1
+  nested_subsets: true
+  sampling: uniform_identity_without_target_stratification
+  seed: 2026100212
+  share_across_all_arms: true
+inputs:
+  epoch_rate_hz: 250
+  epoch_samples: 200
+  channels: 20
+  clinical_representation: all_accepted_trials_equal_class
+  transform: train_pool_child_class_equal_standardize_pca
+  embedding_dim: 192
+  projected_dim_max: 32
+  pca_fit_trials_per_child_per_class_max: 128
+  pca_seed: 2026100201
+  physical_block_seconds: 60
+  block_guard_seconds: 5
+  support_query_directions:
+  - A_to_B
+  - B_to_A
+  support_per_class: 32
+  query_per_class: 32
+  history_fields:
+  - log1p_previous_run_length
+  - log1p_previous_gap_s
+  - position_fraction
+  history_impute: auxiliary_train_median
+profile:
+  arms:
+  - conditional
+  - pooled
+  latent_dim: 8
+  phi_hidden: 32
+  phi_output: 16
+  history_dim: 3
+  population_ridge_weighted_mean_alpha: 0.1
+  population_logvar_bounds:
+  - -4.0
+  - 3.0
+  posterior_logvar_bounds:
+  - -6.0
+  - 2.0
+  beta_kl_per_latent_dimension: 0.01
+  nll_reduction: equal_child_equal_class_mean_query_mean_dimension
+  optimizer: Adam
+  learning_rate: 0.001
+  steps: 3000
+  children_per_batch: 4
+  gradient_clip: 5.0
+  checkpoint_every_steps: 100
+  checkpoint_selection: last_fixed_step
+  clinical_labels_visible: false
+  frozen_encoder_mode: eval_no_grad
+clinical:
+  sir_arms:
+  - PRIOR
+  - C
+  - C_MEAN
+  - C_MEAN8
+  - C_SPEC
+  - C_POOL
+  - C_SRP
+  - SRP_ONLY
+  fitted_sir_arms:
+  - C
+  - C_MEAN
+  - C_MEAN8
+  - C_SPEC
+  - C_POOL
+  - C_SRP
+  - SRP_ONLY
+  muss_arms:
+  - C
+  - C_MEAN
+  - C_SPEC
+  - C_SRP
+  muss_budgets:
+  - all
+  technical_full_label_arms:
+  - C_TECH
+  - C_TECH_SRP
+  clinical_fields:
+  - age_months
+  - log1p_device_months
+  clinical_spline:
+    degree: 2
+    n_knots: 3
+    include_bias: false
+    knots: labelled_train_quantiles
+    insufficient_unique_values: linear_fallback
+  sir_head: regularized_proportional_odds
+  threshold_prior_weight: 0.001
+  threshold_prior: logit(k/5),k=1..4
+  lambda_mean_loss:
+  - 0.01
+  - 0.1
+  - 1.0
+  inner_selection: sir_RPS_muss_MAE
+  tie_break: larger_lambda
+  max_optimizer_iterations: 400
+  optimizer_tolerance: 1.0e-06
+  prior_pseudocount_per_class: 0.5
+  full_label_C_anchor_not_used_to_select_low_label_models: true
+  mean8_transform: PCA8 on per-child condition means, fit outer auxiliary training
+    pool only; no clinical labels
+evaluation:
+  sir_primary_metric: normalized_RPS
+  primary_low_budget_summary: mean(RPS_12,RPS_24)
+  primary_contrasts:
+  - C_minus_C_SRP
+  - C_MEAN_minus_C_SRP
+  secondary_metrics:
+  - nll_bits
+  - brier
+  - expected_score_mae
+  - probability_auc_sir_gt3
+  probability_floor: 1.0e-06
+  rescore_floors:
+  - 1.0e-08
+  - 0.0001
+  bootstrap_children: 2000
+  bootstrap_seed: 2026100299
+  aggregate: average_loss_per_child_across_masks_and_seeds_then_children
+  formal_independent_confirmation: false
+  clinical_error_rate_certificate: false
+resources:
+  slurm_required_for_server_computation: true
+  qos: runfill
+  cpu_jobs_max: 2
+  gpu_jobs_max: 1
+  allowed_gpu_partitions:
+  - A100
+  - A40
+  - L40S
+  - A30
+  forbidden_gpu:
+  - P100
+  - RTX6000PRO
+  - H100
+  new_raw_eeg_backbone_fits_max: 0
+  small_profile_fits_max: 30
+  new_frozen_inference_units_max: 15
+  clinical_optimizer_calls_max: 9000
+  expected_clinical_optimizer_calls: 8250
+  requeue_safe: true
+mff_validation:
+  enabled: false
+  lanes:
+  - mff_puretone
+  - mff_bapa
+  new_backbones: false
+  small_profile_fits_additional_cap_if_enabled: 60
+  clinical_external_validation: false
+competitor:
+  enabled: false
+  config: config/competitor_optional.yaml
+privacy:
+  per_child_outputs_private: true
+  weights_private: true
+  identity_edges_private: true
+  exact_dates_private: true
+  auto_release: false

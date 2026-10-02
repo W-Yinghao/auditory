@@ -6,7 +6,20 @@
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## 最新（2026-10-01/02）：NEXTMAP 轮
+## 最新（2026-10-02）：STORY v1（低标注功能学习）
+
+本轮执行 `AUDITORY_STORY_SERVER_PACKAGE_v1_20261002.zip`（同名目录为逐字节一致的解压内容）。问题是：用已知刺激的跨块条件响应学习紧凑儿童表示（SRP），能否在 12、24 或全部临床标签下改善档案 SIR（主）与 MUSS（次）读出。入口：[结果](docs/auditory_story/RESULTS.md)、[冻结协议](docs/auditory_story/PROTOCOL.md)、[事后描述附录](docs/auditory_story/PROTOCOL_ADDENDUM_001.md)、[实现说明](docs/auditory_story/IMPLEMENTATION_NOTES.md)。
+
+- **执行**：
+  - 复用 PF2 冻结编码器的全试次嵌入，新推理 0 次；
+  - 训练 30 个小型摘要模型；8250 次临床头拟合全部收敛；
+  - 55 名被多轮探索的 HA 儿童上做内部验证。
+- **SIR**：年龄＋佩戴时长基线已很强（全标签 RPS 0.038，SIR>3 的 AUC 0.985）。加入 SRP 摘要后，12/24 标签下显著变差（低标签 RPS −0.011 [−0.015, −0.008]），全标签持平。冻结规则判为 METHOD_GAIN_WITHOUT_CLINICAL_INCREMENT；这里的"方法增益"只是相对 64 维普通刺激均值而言。
+- **MUSS**：与基线持平；高维 EEG 视图（64 维均值、340 维谱）在低标签下都明显变差。
+- **辅助结果**：摘要在记录内高度稳定（分半相关 0.95），能预测另一时间块的响应（+0.018 nats/维）；但条件组织不起作用，也不携带 SIR/MUSS 信息。这正是方案预先列出的反例。
+- **结论**：本实例在现有 55 名儿童上结束；继续这个问题需要新的数据。本轮发布回执：`docs/GITHUB_PUBLICATION_STORY.md`。
+
+## NEXTMAP 轮（2026-10-01/02）
 
 本轮依据 `AUDITORY_RESEARCH_REFRESH_v1_20260927_b9c0d9f.md` 与 `AUDITORY_SERVER_EXECUTION_v1_20260927_b9c0d9f.md` 执行，随后在研究者授权下补做 GPU 与 H 系列实验。入口：[最终研究决策](docs/auditory_nextmap/FINAL_RESEARCH_DECISIONS.md)、[H 系列报告](docs/auditory_nextmap/H_SERIES_REPORT.md)、[年龄信息来源](docs/auditory_nextmap/AGE_INFORMATION_SOURCE_REPORT.md)、[G1](docs/auditory_nextmap/G1_EQUAL_CAPACITY_REPORT.md) / [G2](docs/auditory_nextmap/G2_PROTOCOL_SHARING_REPORT.md)、[SIR 预测余量](docs/auditory_nextmap/SIR_PREDICTIVE_HEADROOM_REPORT.md)、[MFF 语义恢复](docs/auditory_nextmap/SEMANTIC_RECOVERY_REPORT.md)、[净新增队列](docs/auditory_nextmap/NET_COHORT_ADDITIONS.md)；各冻结协议与带日期附录在同一目录。
 
@@ -130,6 +143,7 @@ C2-S几何重建精确，但两个新增空间成分没有共同显示明确预�
 
 ## 阅读与复现入口
 
+- STORY v1：[材料包](AUDITORY_STORY_SERVER_PACKAGE_v1_20261002/00_README.md)、[结果](docs/auditory_story/RESULTS.md)、[冻结协议](docs/auditory_story/PROTOCOL.md)、[实现说明](docs/auditory_story/IMPLEMENTATION_NOTES.md)、[聚合结果](results/auditory_story/)。
 - NEXTMAP 轮：[执行方案](AUDITORY_SERVER_EXECUTION_v1_20260927_b9c0d9f.md)、[研究版](AUDITORY_RESEARCH_REFRESH_v1_20260927_b9c0d9f.md)、[最终研究决策](docs/auditory_nextmap/FINAL_RESEARCH_DECISIONS.md)、[H 系列](docs/auditory_nextmap/H_SERIES_REPORT.md)、[冻结协议](docs/auditory_nextmap/NEXTMAP_PROTOCOL_FROZEN.md)、[聚合结果](results/auditory_nextmap/)。
 - 修正队列完整重训：[冻结方案](docs/auditory_retrain/PROTOCOL_v1.md)、[状态](docs/auditory_retrain/STATUS.md)、[解读](docs/auditory_retrain/INTERPRETATION.md)、[复现导航](docs/auditory_retrain/REPRODUCTION.md)、[全部模型指标](results/auditory_retrain_v1/verification_001/model_metrics.csv)、[全部比较](results/auditory_retrain_v1/verification_001/contrasts.csv)。
 - 功能与修正：[F1–F4 方案](AUDITORY_FUNCTIONAL_DECODING_F1_F4_RESEARCH_PLAN_v1.md)、[资格审计](reports/auditory_fseries/STAGE1_QUALIFICATION_REPORT.md)、[档案初筛](reports/auditory_fseries_archival/verification_003/REPORT.md)、[扩展与修正方案](docs/auditory_repair/PROTOCOL_v2.md)、[扩展最终报告](reports/auditory_repair/verification_001/REPORT.md)、[复现导航](docs/auditory_repair/REPRODUCTION.md)。

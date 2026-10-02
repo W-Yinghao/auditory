@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Auditory Story aggregate completion summary",
+  "type": "object",
+  "required": [
+    "status",
+    "base_commit",
+    "actual_cohort_n",
+    "primary_target",
+    "metrics",
+    "fit_counts",
+    "limitations"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "PLANNED_NOT_RUN",
+        "COMPLETED",
+        "PARTIAL",
+        "TECHNICAL_FAILURE",
+        "SUPPORT_LIMITED"
+      ]
+    },
+    "base_commit": {
+      "type": "string"
+    },
+    "actual_cohort_n": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "primary_target": {
+      "const": "sir_ordinal_1_5"
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "fit_counts": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "independent_clinical_validation": {
+      "const": false
+    }
+  },
+  "additionalProperties": true
+}

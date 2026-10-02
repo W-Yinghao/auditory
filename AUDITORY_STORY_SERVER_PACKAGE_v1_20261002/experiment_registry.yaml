@@ -1,0 +1,68 @@
+E1:
+  claim: label_efficient_function_prediction
+  target: sir_ordinal_1_5
+  phase: clinical
+  mandatory: true
+  arms:
+  - PRIOR
+  - C
+  - C_MEAN
+  - C_MEAN8
+  - C_SPEC
+  - C_POOL
+  - C_SRP
+  - SRP_ONLY
+  budgets:
+  - 12
+  - 24
+  - all
+  primary_metric: normalized_RPS
+E2:
+  claim: secondary_speech_use_validation
+  target: muss_original
+  mandatory: true
+  arms:
+  - C
+  - C_MEAN
+  - C_SPEC
+  - C_SRP
+  budgets:
+  - all
+  primary_metric: MAE
+E3:
+  claim: response_profile_predictivity
+  target: heldout_query_trial_embedding
+  mandatory: true
+  arms:
+  - population
+  - pooled
+  - conditional
+  clinical_targets_used: false
+  not_a_substitute_for: E1/E2
+E4:
+  claim: beyond_technical_background
+  mandatory: true
+  target: sir_ordinal_1_5
+  arms:
+  - C_TECH
+  - C_TECH_SRP
+  budgets:
+  - all
+E5:
+  claim: same_record_input_sensitivity
+  mandatory: true
+  arms:
+  - C_MEAN
+  - C_SRP
+  new_fits: 0
+  independent_clinical_replication: false
+E6_optional:
+  claim: method_principle_in_other_known_tasks
+  mandatory: false
+  enabled: false
+  clinical_validation: false
+S2_optional:
+  claim: individual_response_assessment
+  mandatory: false
+  enabled: false
+  automatic_fallback: false
