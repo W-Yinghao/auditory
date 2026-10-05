@@ -1,0 +1,66 @@
+{
+  "nonlinear_common_cause": {
+    "true_I_XY_given_Z_bits": 0.0,
+    "gcmi_ccc_bits": 0.5572140262284999,
+    "gcmi_XY_bits": 0.5572108572430658,
+    "assumption": "X=Z^2+independent noise; Y=Z^2+independent noise"
+  },
+  "mixed_cmi_entropy_bound": {
+    "conditional_discrete_entropy_upper_bound_bits": 1.0,
+    "raw_cmi_model_gdd_bits": 2.599527389793433,
+    "stratified_surrogate_mean_bits": -2.3284420264778483e-05,
+    "surrogate_subtracted_bits": 2.5995506742136976,
+    "within_stratum_copnorm_model_bits": 0.7305008048589763,
+    "note": "The last value is an alternative estimate, not a validated patch or the true MI."
+  },
+  "rare_class": {
+    "counts": [
+      181,
+      19
+    ],
+    "classes_after_collapse": [
+      0
+    ],
+    "returned_MI_bits": 0.0,
+    "target_entropy_bits": 0.4529425481872832,
+    "note": "A strongly separated rare category is silently removed; this is not evidence of independence."
+  },
+  "small_condition_strata": {
+    "stratum_counts": [
+      30,
+      30
+    ],
+    "returned_CMI_bits": 0.0
+  },
+  "ties": {
+    "true_MI_of_constant_bits": 0.0,
+    "copnorm_constant_std": 0.9981768824133476,
+    "gcmi_constant_with_time_trend_bits": 0.5687577605509251,
+    "note": "Order tie-breaking injects a sample-index signal."
+  },
+  "noisy_age_conditioning": {
+    "true_I_E_D_given_age_bits": 0.0,
+    "estimated_given_age_bits": 3.188175555113304e-06,
+    "estimated_given_noisy_eeg_age_bits": 0.08506473399582104,
+    "analytic_noisy_proxy_bits": 0.08496250072115623
+  },
+  "current_via_history_only": {
+    "model": "score = previous class + independent noise",
+    "I_score_current_bits": 0.03464483277621078,
+    "I_score_current_given_history_bits": -3.3717249510139348e-06,
+    "true_conditional_information_bits": 0.0,
+    "deviant_fraction": 0.19781497268715859
+  },
+  "sampling_rate_duplicate": {
+    "example": "T=A+noise with noise variance 1; one independent draw each second repeated m times",
+    "true_information_per_original_second_bits": 0.5,
+    "naive_I_times_fs_at_1Hz_bits_per_s": 0.5,
+    "naive_I_times_fs_at_128Hz_bits_per_s": 64.0,
+    "note": "Duplicating the same observation creates no new joint information."
+  },
+  "null_chain_consistency": {
+    "symbolic": "[I_AB-b_AB]-[I_A-b_A] = I_B_given_A-(b_AB-b_A); equals separate corrected CMI only if b_CMI=b_AB-b_A",
+    "consequence": "Use a common surrogate law for a decomposition; keep null-excess statistics distinct from PID atoms."
+  },
+  "source_sha256": "ae615282e1cd4429d1838a51ba12a26a9ca0932160951ae1e72318228c1ce564"
+}

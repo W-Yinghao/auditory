@@ -1,0 +1,30 @@
+{
+  "package": "AUDITORY_C3_SERVER_PACKAGE_v1_20261003",
+  "private_baseline_sha": "dfb154fdb83a96040154c5f755e8f4bd78901942",
+  "sources": [
+    {"source_id": "fau_tud_ha", "population": "adult HA users, bilateral, own clinical devices", "n_reported": 29,
+     "doi": "10.5281/zenodo.17927767", "license": "CC-BY-4.0", "stimulus_audio": true,
+     "stimulus_pairs": ["acoustic_vs_linguistic", "attended_vs_ignored"], "role": "public_main", "status": "METADATA_VERIFIED_NOT_DOWNLOADED"},
+    {"source_id": "fau_tud_ci", "population": "adult CI users, bilateral", "n_reported": 24,
+     "doi": "10.5281/zenodo.17952844", "license": "CC-BY-4.0", "stimulus_audio": true,
+     "stimulus_pairs": ["acoustic_vs_linguistic", "attended_vs_ignored"], "role": "public_main", "status": "METADATA_VERIFIED_NOT_DOWNLOADED"},
+    {"source_id": "fau_tud_th", "population": "adult typical hearing", "n_reported": 29,
+     "doi": "10.5281/zenodo.17952231", "license": "CC-BY-4.0", "stimulus_audio": true,
+     "stimulus_pairs": ["acoustic_vs_linguistic", "attended_vs_ignored"], "role": "public_main_reference_group", "status": "METADATA_VERIFIED_NOT_DOWNLOADED"},
+    {"source_id": "dtu_snhl", "population": "older adults HI 22 / NH 22, unaided linear amplification", "n_reported": 44,
+     "doi": "10.5281/zenodo.3618205", "license": "check_record", "stimulus_audio": "on_request",
+     "stimulus_pairs": ["attended_vs_ignored_envelope", "acoustic_vs_linguistic_if_audio"], "role": "conditional", "decision": "D1", "status": "METADATA_VERIFIED_NOT_DOWNLOADED"},
+    {"source_id": "federici_ci_children", "population": "children 3-18y CI / HC / vocoded HC", "n_reported": {"CI": 32, "HC": 37, "HCv": 16, "note": "per V4 register, verify in files"},
+     "doi": "10.17632/nzg5g2gzrd.2", "license": "CC-BY-4.0", "stimulus_audio": false, "preprocessed_only": true,
+     "stimulus_pairs": ["envelope_tmif", "envelope_vs_onset"], "role": "pediatric_ci_convergence", "decision": "D2", "status": "METADATA_VERIFIED_NOT_DOWNLOADED"},
+    {"source_id": "private_bdf_ha", "population": "children 6-186 months, HA 64 / NH 9", "n_reported": 73,
+     "stimulus_audio": "discrete_events", "stimulus_pairs": ["current_vs_history"], "role": "private_core_H4_H5",
+     "caches": ["GX trial logits", "PF2 frozen encoder", "D2/H8 age model"], "status": "SIGNAL_TASK_READY_PER_REPO"},
+    {"source_id": "private_mff_ci", "population": "children, CI-labelled 13 (39 records), non-CI 33", "n_reported": 46,
+     "stimulus_audio": "discrete_events", "stimulus_pairs": ["current_vs_history", "lowband_vs_highband_evidence"], "role": "private_H6",
+     "status": "SIGNAL_TASK_READY_PER_REPO"}
+  ],
+  "excluded": ["sparrkulee", "southampton_d2578", "etard_reichenbach"],
+  "decisions": {"D1": "request DTU raw audio; default = send request, do not block P0",
+                "D2": "if Federici bandwidth cannot support lags < 150 ms, report long-lag TMIF only"}
+}

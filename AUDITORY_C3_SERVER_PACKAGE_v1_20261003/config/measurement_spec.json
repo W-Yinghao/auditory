@@ -1,0 +1,23 @@
+{
+  "frozen": false,
+  "freeze_gate": "G1",
+  "estimator": {"name": "gaussian_copula_mi", "bias_correction": true, "units": "bits",
+                "continuous_discrete": "class_conditional_gaussian", "reference_impl": "reference/gcmi_core.py",
+                "production_impl": "ince_gcmi_toolbox", "agreement_tolerance_bits": 1e-6},
+  "pid": {"primary": "I_ccs", "secondary": "MMI_gaussian", "claim_rule": "same_sign_under_both",
+          "primary_status": "REQUIRES_INCE_REFERENCE_CODE_P1", "fallback": "CMI_layer_only"},
+  "dimensionality": {"stimulus_pca_k": 5, "sensitivity_k": [3, 8], "eeg_roi_pcs": 3, "pca_fit_side": "train_only"},
+  "paths": {"primary": "direct_roi_vs_reduced_stimulus", "secondary": "ridge_prediction_mediated"},
+  "surrogates": {"continuous": {"type": "circular_shift", "min_shift_s": 5, "cross_trial": false, "n": 200},
+                 "oddball": {"type": "within_child_label_permutation", "preserve_class_ratio": true, "recompute_history": true, "n": 200},
+                 "between_group": "correct_each_group_separately"},
+  "lag_windows_ms": {"speech_adult": [[0, 80], [90, 300], [300, 600]], "speech_federici": [[0, 150], [150, 600]],
+                     "oddball_private": [[120, 200], [240, 320]], "diagnostic": [-200, 0]},
+  "roi": ["frontocentral", "left_temporal", "right_temporal"],
+  "filters_hz": {"speech_main": [1, 8], "speech_sensitivity": [1, 20], "oddball_evidence": "as_in_frozen_model"},
+  "linguistic_layer_selection": {"group": "fau_tud_th", "fraction": 0.5, "criterion": "max_cmi_given_acoustic", "frozen_after": true},
+  "private": {"stage_bins_months": {"early": [0, 2], "mid": [2, 13], "late": [13, null]}, "nh_separate": true,
+              "history_vars": ["prev_class", "events_since_last_deviant_capped_8", "run_length"],
+              "paired_visit_rule": "one_pair_per_child_earliest_to_latest_confirmed"},
+  "function_chain": ["C", "C+MI_total", "C+MI_total+CMI_ling", "C+PID_terms"]
+}

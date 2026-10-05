@@ -1,0 +1,277 @@
+{
+ "frozen_at": "2026-10-04T23:26:36+02:00",
+ "gate": "G1",
+ "package": "AUDITORY_C3_SERVER_PACKAGE_v1_20261003",
+ "package_zip_sha256": "ae4087a16d24be1c17a5167ee0c93457fbe25ff4004b93134212a9f7a39a22ba",
+ "measurement_spec": {
+  "frozen": true,
+  "freeze_gate": "G1",
+  "estimator": {
+   "name": "gaussian_copula_mi",
+   "bias_correction": true,
+   "units": "bits",
+   "continuous_discrete": "class_conditional_gaussian",
+   "reference_impl": "reference/gcmi_core.py",
+   "production_impl": "ince_gcmi_toolbox",
+   "agreement_tolerance_bits": 1e-06
+  },
+  "pid": {
+   "primary": "I_ccs",
+   "secondary": "MMI_gaussian",
+   "claim_rule": "same_sign_under_both",
+   "primary_status": "REQUIRES_INCE_REFERENCE_CODE_P1",
+   "fallback": "CMI_layer_only"
+  },
+  "dimensionality": {
+   "stimulus_pca_k": 5,
+   "sensitivity_k": [
+    3,
+    8
+   ],
+   "eeg_roi_pcs": 3,
+   "pca_fit_side": "train_only"
+  },
+  "paths": {
+   "primary": "direct_roi_vs_reduced_stimulus",
+   "secondary": "ridge_prediction_mediated"
+  },
+  "surrogates": {
+   "continuous": {
+    "type": "circular_shift",
+    "min_shift_s": 5,
+    "cross_trial": false,
+    "n": 200
+   },
+   "oddball": {
+    "type": "within_child_label_permutation",
+    "preserve_class_ratio": true,
+    "recompute_history": true,
+    "n": 200
+   },
+   "between_group": "correct_each_group_separately"
+  },
+  "lag_windows_ms": {
+   "speech_adult": [
+    [
+     0,
+     80
+    ],
+    [
+     90,
+     300
+    ],
+    [
+     300,
+     600
+    ]
+   ],
+   "speech_federici": [
+    [
+     0,
+     150
+    ],
+    [
+     150,
+     600
+    ]
+   ],
+   "oddball_private": [
+    [
+     120,
+     200
+    ],
+    [
+     240,
+     320
+    ]
+   ],
+   "diagnostic": [
+    -200,
+    0
+   ]
+  },
+  "roi": [
+   "frontocentral",
+   "left_temporal",
+   "right_temporal"
+  ],
+  "filters_hz": {
+   "speech_main": [
+    1,
+    8
+   ],
+   "speech_sensitivity": [
+    1,
+    20
+   ],
+   "oddball_evidence": "as_in_frozen_model"
+  },
+  "linguistic_layer_selection": {
+   "group": "fau_tud_th",
+   "fraction": 0.5,
+   "criterion": "max_cmi_given_acoustic",
+   "frozen_after": true
+  },
+  "private": {
+   "stage_bins_months": {
+    "early": [
+     0,
+     2
+    ],
+    "mid": [
+     2,
+     13
+    ],
+    "late": [
+     13,
+     null
+    ]
+   },
+   "nh_separate": true,
+   "history_vars": [
+    "prev_class",
+    "events_since_last_deviant_capped_8",
+    "run_length"
+   ],
+   "paired_visit_rule": "one_pair_per_child_earliest_to_latest_confirmed"
+  },
+  "function_chain": [
+   "C",
+   "C+MI_total",
+   "C+MI_total+CMI_ling",
+   "C+PID_terms"
+  ]
+ },
+ "amendment": "docs/auditory_c3/MEASUREMENT_AMENDMENT_001.md",
+ "layer_selection": {
+  "criterion": "mean over 14 TH selection-half subjects and 3 ROIs of bias- and surrogate-corrected I(T; L_l,tau | y_Ac) averaged over 0-600 ms, attended stream, all 20 trials",
+  "per_layer_mean_bits": {
+   "L03": 0.00018027810264411564,
+   "L04": 0.0001898285760125224,
+   "L05": 0.000193546795601591,
+   "L06": 0.00022291631160515393,
+   "L07": 0.0002371278886796719,
+   "L08": 0.00021282791857021697,
+   "L09": 0.00021626022508608865,
+   "L10": 0.00019899134693535244,
+   "L11": 0.00023174432569247118,
+   "L12": 0.00024222182049179003,
+   "L13": 0.00022785055650416928,
+   "L14": 0.00023262198367483307,
+   "L15": 0.00023159984270026157,
+   "L16": 0.0002800990004639425,
+   "L17": 0.0002666648972193555,
+   "L18": 0.00033953811818821243,
+   "L19": 0.00033113767408001187,
+   "L20": 0.000288458530511486,
+   "L21": 0.0003187785407717628,
+   "L22": 0.00031595148837108454,
+   "L23": 0.00036047822320040706,
+   "L24": 0.000405010914571338,
+   "L25": 0.00037282373678838366,
+   "L26": 0.00038758105320359383,
+   "L27": 0.00041993394026145094,
+   "L28": 0.0004021700095138062,
+   "L29": 0.00033782057801752844,
+   "L30": 0.00033951950281141917,
+   "L31": 0.00033325049142835737,
+   "L32": 0.000381738448519133
+  },
+  "per_layer_sd_over_subjects": {
+   "L03": 0.00011275147962224449,
+   "L04": 0.00011637598292743733,
+   "L05": 0.0001122303485897696,
+   "L06": 0.00011279014481112049,
+   "L07": 0.0001025691295396717,
+   "L08": 9.598776653481139e-05,
+   "L09": 8.786691937403117e-05,
+   "L10": 9.847202013858007e-05,
+   "L11": 0.00010404399302350151,
+   "L12": 0.00011051160030168205,
+   "L13": 0.00010458349119406995,
+   "L14": 0.00011669310538829763,
+   "L15": 0.00012884858075325837,
+   "L16": 0.00013670263475355375,
+   "L17": 0.00013564655235053283,
+   "L18": 0.00016189894956095062,
+   "L19": 0.00014287373670259542,
+   "L20": 0.00011734624618653569,
+   "L21": 0.00013233314626814305,
+   "L22": 0.00012787976593417273,
+   "L23": 0.00013445070121414083,
+   "L24": 0.00014550639793235251,
+   "L25": 0.00012366294913217587,
+   "L26": 0.00012985913192265053,
+   "L27": 0.0001423191274692251,
+   "L28": 0.00013505002280756766,
+   "L29": 0.0001284596347547128,
+   "L30": 0.0001309651554983806,
+   "L31": 0.00013380354541968326,
+   "L32": 0.00016981130682605487
+  },
+  "per_roi_best": {
+   "frontocentral": 27,
+   "left_temporal": 27,
+   "right_temporal": 24
+  },
+  "per_subject_best": {
+   "301": 18,
+   "302": 19,
+   "304": 27,
+   "311": 27,
+   "314": 24,
+   "315": 32,
+   "317": 30,
+   "319": 32,
+   "321": 32,
+   "322": 31,
+   "325": 27,
+   "327": 22,
+   "330": 18,
+   "331": 29
+  },
+  "selected_whisper_layer": 27,
+  "xlsr_counterpart_layer": 20
+ },
+ "feature_caches": {
+  "asr_words_whisper_large_v3.json": "ce8bac2f4e0ff9f7031cd18c3dec020b21a7e4b616465b88fef636cc195a11b9",
+  "gpt2_german_word_surprisal.json": "eb1714aae1e7aee498c48a9c04bfe79a0966bc8b2bb561f177c50700ffcfaf31",
+  "pca_k8_128hz_whisper.h5": "57d9425c923254c7edbb8c0f765f6d0aa29a4093a2f243461fba1f852d205699",
+  "pca_k8_128hz_whisper_shallow.h5": "f23888eb214680800563325974a84d8e36d57a64306755e6df016e1dea2105db",
+  "pca_k8_128hz_xlsr.h5": "b50896bbd40208be25b631c908aa8b718c07578d89b492802a2b117f2732080d",
+  "whisper_large_v3_hidden.h5": "d01f6d23b1440e33e603bda62e5adfb5efa8269a5b89a47b9d5f4e23c4e740e9",
+  "whisper_logmel128.h5": "02b6295a35f1b0dab6192fddfe0ba6875eb894cc2d24fa91c166528369cb3f23",
+  "xlsr300m_hidden.h5": "0f1df1580877e850ada5264d0d848f7894526651ae9c3bf3312b7441ac34a661"
+ },
+ "file_sha256": {
+  "auditory_c3/__init__.py": "c2bb0b69fa628af7ac0d6a10f9f13c43da9546364635fe9e347abaa7097ae422",
+  "auditory_c3/engine.py": "693efeaf4521c7b50497f00e5ca45882ce9ebcfa4c6700f227fa8c5a8a1cb84e",
+  "auditory_c3/features.py": "a8eb3f82a8f7185a055c65834301606edf785428752efe0016289c0f86c7e657",
+  "auditory_c3/federici_mi.py": "bf9fa2636102ac68d55cc927afc75ed6fb1ba38315969291aa28e0be632a892a",
+  "auditory_c3/freeze.py": "56fd2a5303fc0763084b04d0e6b67b1e50bbe21bb20fac11d013cf18a7b0ac9b",
+  "auditory_c3/h1a_jehn.py": "7034200cb0b0d1959c8bdfa84e445b31985d1a39f00275d6f84a6f620cd852f0",
+  "auditory_c3/p0_audit.py": "918ebfc1f78a0386d016331292c35b2b206d8f0ece6f2a0c90e4f3d936584073",
+  "auditory_c3/pca.py": "5366f6117c53d4129b4eae7795525e22b8f3ed0177dbc4d2a1a88bf0403cd305",
+  "auditory_c3/pid_ccs.py": "ec9263f6c3f2a60bf11088df4c37c0ba9260206cc2dc2eb0dbd394c5945bf90f",
+  "auditory_c3/preproc.py": "d7485939363630e3b9ea1c1af0fb9ddff3f6196247473110747ab210589dc325",
+  "auditory_c3/public_mi.py": "51cd06b8bfc7d8e26cd3187854a32fc58b0126f679094aadc82e1b92614646ad",
+  "auditory_c3/stageb.py": "c084e46128af941cdb56f3fa9e234d1d66ad0a71c02b7797ab20de5abc417e23",
+  "auditory_c3/stats.py": "d4514c6c17ccc4e2acba62dabb310f9ee28aab8b26aff1129d55d6d5a6881e28",
+  "auditory_c3/vendor/LICENSE_gcmi": "db49b21d4f023f30f218a6bf0e08b3c790398035dacd653611bd96415362db29",
+  "auditory_c3/vendor/LICENSE_partial_info_decomp": "db49b21d4f023f30f218a6bf0e08b3c790398035dacd653611bd96415362db29",
+  "auditory_c3/vendor/SOURCE.txt": "c3797b1d0efadc7e05d32235a077274b2419991aeab2c1b2913ae9dd32b74e10",
+  "auditory_c3/vendor/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "auditory_c3/vendor/gcmi_ince.py": "99983bb75d3f8d38fc0d5099a88c09ef57147bc4d150eb8ea1b1169fedf1c52c",
+  "auditory_c3/vendor/gcmi_ince_numpy2.patch": "3a94fb18eda01dbb5d07ce35287bd79fbaae37d87b6b0b1ec117126d18926b99",
+  "auditory_c3/vendor/pid_mvn_ince.py": "1b2e5d43de6c194f51bcf7d726f68c4da7f52fe6934349477d180d0fdacaa5f9",
+  "docs/auditory_c3/MEASUREMENT_AMENDMENT_001.md": "981a0c318b567767e0d2efc192ac75fa68e6c3f8ed77311e7792a26338332c20",
+  "private/auditory_c3/public/fau_tud/th_split.json": "49b85e57496278b5c0d13b3709ecd03013f0e51a485cb0a59ffc96ffddda88bc",
+  "private/auditory_c3/vendor_jehn/ridge.py": "a36c3953daf4aa96d4a7fafcdc49cd492782005715f15cedf9a726b758361297",
+  "private/auditory_c3/vendor_jehn/utils_reference_only.py": "dceb55a33ac363e3a0cc51edfcc4695569b74a10e1eae17f35e65aefffbe31f1",
+  "slurm/auditory_c3_cpu.sbatch": "c7b6f41d349c2797809a3973bdfbf0f98e5cba78f0e10a5a878c893e805ef03f",
+  "slurm/auditory_c3_cpu_shared.sbatch": "c9fd7e83b20fcb27ef9508679d3d5135d5f7e9d6a6705dbfb84617abff17374c",
+  "slurm/auditory_c3_download.sbatch": "16e05dfe8755ebaf12d47a984c09ac745af0475eb87b6d539272c40ee8871264",
+  "slurm/auditory_c3_gpu.sbatch": "d899fa998a1a36b820e703c44447eb1ad14303c174de9c8267a56a97b0903b01",
+  "slurm/auditory_c3_probe.sbatch": "a2f6cd82ef578ec77216a21b958af0cbab0a62a2d32ebcbe9914bd4bd726366c"
+ }
+}

@@ -6,7 +6,27 @@
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## 最新（2026-10-02）：STORY v1（低标注功能学习）
+## 最新（2026-10-05）：C3（信息分解与深度条件解码，公开成人语音数据 + 私有儿童纯音数据）
+
+本轮执行 `AUDITORY_C3_SERVER_PACKAGE_v1_20261003.zip`，并纳入复核补充（`AUDITORY_C3_REVIEW_ADDENDUM_20261005.zip`）与深度条件解码方案（`AUDITORY_C3_DEEP_CONDITIONAL_DECODING_PLAN_v1_20261005.md`、`AUDITORY_C3_DL_MATH_CHECKS_v1_20261005.zip`）；三个同名目录都是逐字节一致的解压内容。
+
+公开数据为 FAU/TUD（TH/HA/CI 成人，德语）、DTU（NH/HI 成人，丹麦语）和 Federici（CI 儿童），均从公开来源获取，本仓库不再分发。DTU 原始音频按数据集说明申请获得，仅用于研究，不在仓库中。
+
+入口：
+- [C3 结果 v2](docs/auditory_c3/C3_RESULTS_v2.md)、[C3-DL 全量结果](docs/auditory_c3/C3DL_FULL_RESULTS.md)、[扩展结果](docs/auditory_c3/C3_EXTENSIONS_RESULTS.md)；
+- [落地方案](docs/auditory_c3/C3_LANDING_PLAN_v1.md)、[测量修正案 001](docs/auditory_c3/MEASUREMENT_AMENDMENT_001.md)、[G2 之后的决定](docs/auditory_c3/DECISION_001_POST_G2.md)、[冻结后变更记录](docs/auditory_c3/POST_G1_CHANGELOG.md)、[C3-DL 冻结方案](docs/auditory_c3/C3DL_PROTOCOL_v1_FROZEN.md)；
+- [聚合结果](results/auditory_c3/)。
+
+要点（数值见各结果文档；全部为 Gaussian-copula 模型下的条件依赖量，或留出数据上的条件预测增益）：
+- **超出声学的深层表示依赖**：EEG 与 Whisper 深层表示之间存在超出声学的依赖。在一个交叉拟合、训练到收敛的非线性声学背景之上，约七成仍然保留。深度条件解码在强背景之上，用新被试、未见内容评估，得到小而稳健的 EEG 特异增益：TH 与 HA 约 0.003–0.004 比特每采样点，30 个训练单元中 26 个为正。
+- **条件匹配的对比训练没有建立额外作用**。不加条件的 CLIP 式对比检索主要靠声学追踪；最小预处理会使 EEG 特异增益消失；去除眼电伪迹提升声学追踪，但不改变深层与条件效应。
+- **惊讶度跨语言复现，放大听损用户保留**：GPT-2/mGPT 惊讶度在德语与丹麦语中都可检出，放大后的听损用户（HA、HI）与正常听力相当。CI 低于 TH，对线性、非线性声学背景与模拟设备包络都稳健，但只在两个 ROI 中区间不含 0，为提示性结果。
+- **CI 测量受植入体伪迹主导**，组间比较只作描述。
+- **功能层**（CI 的 HSM/Freiburg、DTU 的 SRT）没有建立增量预测价值。私有儿童数据中，新训练的深度模型不如冻结的 GX 读出。
+
+私有儿童数据的逐人输出、凭据、与数据提供者的往来通信、论文 PDF 与日志都留在服务器上。本轮发布回执：`docs/GITHUB_PUBLICATION_C3.md`。
+
+## STORY v1（2026-10-02，低标注功能学习）
 
 本轮执行 `AUDITORY_STORY_SERVER_PACKAGE_v1_20261002.zip`（同名目录为逐字节一致的解压内容）。问题是：用已知刺激的跨块条件响应学习紧凑儿童表示（SRP），能否在 12、24 或全部临床标签下改善档案 SIR（主）与 MUSS（次）读出。入口：[结果](docs/auditory_story/RESULTS.md)、[冻结协议](docs/auditory_story/PROTOCOL.md)、[事后描述附录](docs/auditory_story/PROTOCOL_ADDENDUM_001.md)、[实现说明](docs/auditory_story/IMPLEMENTATION_NOTES.md)。
 
@@ -143,6 +163,7 @@ C2-S几何重建精确，但两个新增空间成分没有共同显示明确预�
 
 ## 阅读与复现入口
 
+- C3：[材料包](AUDITORY_C3_SERVER_PACKAGE_v1_20261003/00_README.md)、[复核补充](AUDITORY_C3_REVIEW_ADDENDUM_20261005/)、[深度条件解码方案](AUDITORY_C3_DEEP_CONDITIONAL_DECODING_PLAN_v1_20261005.md)、[C3 结果 v2](docs/auditory_c3/C3_RESULTS_v2.md)、[C3-DL 全量结果](docs/auditory_c3/C3DL_FULL_RESULTS.md)、[扩展结果](docs/auditory_c3/C3_EXTENSIONS_RESULTS.md)、[聚合结果](results/auditory_c3/)。
 - STORY v1：[材料包](AUDITORY_STORY_SERVER_PACKAGE_v1_20261002/00_README.md)、[结果](docs/auditory_story/RESULTS.md)、[冻结协议](docs/auditory_story/PROTOCOL.md)、[实现说明](docs/auditory_story/IMPLEMENTATION_NOTES.md)、[聚合结果](results/auditory_story/)。
 - NEXTMAP 轮：[执行方案](AUDITORY_SERVER_EXECUTION_v1_20260927_b9c0d9f.md)、[研究版](AUDITORY_RESEARCH_REFRESH_v1_20260927_b9c0d9f.md)、[最终研究决策](docs/auditory_nextmap/FINAL_RESEARCH_DECISIONS.md)、[H 系列](docs/auditory_nextmap/H_SERIES_REPORT.md)、[冻结协议](docs/auditory_nextmap/NEXTMAP_PROTOCOL_FROZEN.md)、[聚合结果](results/auditory_nextmap/)。
 - 修正队列完整重训：[冻结方案](docs/auditory_retrain/PROTOCOL_v1.md)、[状态](docs/auditory_retrain/STATUS.md)、[解读](docs/auditory_retrain/INTERPRETATION.md)、[复现导航](docs/auditory_retrain/REPRODUCTION.md)、[全部模型指标](results/auditory_retrain_v1/verification_001/model_metrics.csv)、[全部比较](results/auditory_retrain_v1/verification_001/contrasts.csv)。
