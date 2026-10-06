@@ -1,0 +1,82 @@
+{
+  "experiment_family": "auditory_alignment_kernel_cs_v1",
+  "design_date": "2026-10-05",
+  "reference_sha": "3de8fc2b4df09834c035604a371e058edb39b10d",
+  "mode": "full_experiments",
+  "objectives": ["NCE", "FMCA", "CS_SINGLE", "CS_MULTI"],
+  "seeds": [1, 2, 3],
+  "subject_folds": 5,
+  "defaults": {
+    "projection_dim": 16,
+    "kernel_rows": 256,
+    "bandwidth_multiplier": 1.0,
+    "bandwidth_scales": [0.5, 1.0, 2.0],
+    "bandwidth_policy": "training_calibration_initial_median_then_fixed",
+    "output_scale": "l2_normalized",
+    "temperature": 0.1,
+    "fmca_relative_ridge": 0.001,
+    "audio_projection": "trainable",
+    "epochs_initial": 200,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "kernel_precision": "float64",
+    "early_stop_research_directions": false,
+    "save_best_and_last": true
+  },
+  "datasets": {
+    "fau": {
+      "content_folds": 2,
+      "evaluation_protocol": "participant_out_and_content_part_out",
+      "development_TH": "reuse_exposed_14_as_training_only",
+      "train_population": "TH_HA_CI",
+      "scenarios": [["Ac", "full"], ["Lz", "full"], ["local", "full"], ["local", "early"], ["local", "late"], ["local", "joint"]],
+      "windows_ms": {"full": [0, 600], "early": [0, 80], "late": [90, 300], "late_equalwidth": [90, 170]}
+    },
+    "dtu": {
+      "content_folds": 2,
+      "evaluation_protocol": "participant_out_and_confirmed_content_groups_out",
+      "train_population": "NH_HI",
+      "scenarios": [["Ac", "full"], ["Lz", "full"], ["local", "full"], ["local", "early"], ["local", "late"], ["local", "joint"]],
+      "windows_ms": {"full": [0, 600], "early": [0, 80], "late": [90, 300]}
+    },
+    "federici": {
+      "content_folds": 1,
+      "evaluation_protocol": "participant_out_with_available_story_or_block_split",
+      "train_population": "HC_CI_available_vocoder_conditions",
+      "scenarios": [["envelope", "full"], ["envelope", "early"], ["envelope", "late"], ["envelope", "joint"]],
+      "windows_ms": {"full": [0, 600], "early": [0, 150], "late": [150, 600], "late_equalwidth": [150, 300]},
+      "identity_note": "HC and HC-v from the same child stay in one outer fold"
+    },
+    "private_bdf": {
+      "content_folds": 1,
+      "evaluation_protocol": "identity_out_and_physical_block_validation",
+      "train_population": "HA_NH",
+      "scenarios": [["current_class", "full"], ["current_class", "early"], ["current_class", "late"], ["current_class", "joint"]],
+      "windows_ms": {"full": [0, 600], "early": [120, 200], "late": [240, 320]},
+      "audio_projection": "not_applicable_category_kernel_or_fixed_class_code"
+    }
+  },
+  "extensions": {
+    "optimization": {
+      "enabled": true,
+      "datasets": ["fau", "private_bdf"],
+      "projection_dims": [8, 32],
+      "kernel_rows": [128, 512],
+      "nce_temperatures": [0.05, 0.2],
+      "fmca_relative_ridges": [0.0001, 0.01],
+      "cs_single_bandwidth_multipliers": [0.5, 2.0],
+      "frozen_audio_projection_datasets": ["fau"]
+    },
+    "attention": {"enabled": true, "datasets": ["fau", "dtu"], "targets": ["local", "Lz"]},
+    "exclude_CI_training": {"enabled": true, "dataset": "fau", "targets": ["Ac", "Lz", "local"]},
+    "equal_width": {"enabled": true, "datasets": ["fau", "federici"]},
+    "wrong_pair_training": {"enabled": true, "datasets": ["fau", "dtu", "federici", "private_bdf"]}
+  },
+  "paths": {
+    "fau_features_reference": "/projects/EEG-foundation-model/auditory_public/derived/c3_features_v1/fau_tud",
+    "fau_eeg_reference": "/projects/EEG-foundation-model/auditory_public/derived/c3_preproc_v1/fau_tud_stageB",
+    "other_loaders": "resolve_existing_server_manifests_do_not_invent_paths"
+  },
+  "expected_default_fits": 4410,
+  "status": "plan_only_not_a_training_controller"
+}

@@ -6,7 +6,38 @@
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## 最新（2026-10-05）：C3（信息分解与深度条件解码，公开成人语音数据 + 私有儿童纯音数据）
+## 最新（2026-10-06）：核 CS-QMI 声音–EEG 对齐全量轮（Kernel CS / FMCA / InfoNCE）
+
+本轮执行 `AUDITORY_KERNEL_CS_FULL_EXPERIMENTS_SERVER_PACKAGE_v1_20261005.zip`；同名目录是逐字节一致的解压内容。
+
+完成情况：
+- 计划中的 4,410 个编码器拟合单元：4 种目标 × FAU/TUD、DTU、Federici、私有 BDF × 外折、内容折与 3 个 seed；
+- 登记扩展 E10–E12：1,800 个单元；
+- 不训练的线性参照 E9：160 个单元；
+- 事后个体重复性分析 R1：780 个单元。
+
+没有失败单元。代码在 `auditory_alignment/`。
+
+入口：
+- [实现说明](docs/auditory_alignment_kernel_cs/IMPLEMENTATION_NOTES.md)：包括偏离规格之处、追加实验登记与运行记录；
+- [解读草稿](docs/auditory_alignment_kernel_cs/NEXT_INTERPRETATION.md)：框架待定；
+- 结果表：[核心与对照](docs/auditory_alignment_kernel_cs/FULL_RESULTS.md)、[优化与容量](docs/auditory_alignment_kernel_cs/OPTIMIZATION_RESULTS.md)、[时间结构](docs/auditory_alignment_kernel_cs/TEMPORAL_RESULTS.md)、[组别、发育与功能](docs/auditory_alignment_kernel_cs/GROUP_DEVELOPMENT_RESULTS.md)；
+- [聚合结果](results/auditory_alignment_kernel_cs/)。
+
+要点（区间为参与者 bootstrap；增益为同一组真实候选下，错配 EEG 与真实 EEG 的对数损失之差）：
+- **检索有用**：在未见内容上，EEG 能识别所听的 5 s 语音片段，三个语音队列都高于错配 EEG。
+- **方法排序**：在 FAU 与 DTU 上，NCE > CS_SINGLE > FMCA ≈ CS_MULTI。传统核 CS-QMI 能学到有用的表示，但不优于 InfoNCE。
+- **线性参照很强**：不训练的线性参照，除 NCE 外不弱于任何方法；在 Federici 上高于全部深度方法。
+- **组别模式与 C3 一致**：CI 低于 TH 与 HA，HI 高于 NH。私有儿童标准/偏差任务约为 0。发育与功能层没有关联。
+- **评价陷阱**：运行前与运行中修正了四个评价问题，每个都有修正前后的数值。
+  - 统一读出的打分方式；
+  - 原始 CS 值选 checkpoint 的偏差；
+  - Federici 段落划分的内容泄漏；
+  - 私有分类头在受过梯度的数据上拟合导致过度自信。
+
+逐单元记录、逐人结果、checkpoint、日志与 Federici 内容分组表都留在服务器上。本轮发布回执：`docs/GITHUB_PUBLICATION_KERNEL_CS.md`。
+
+## C3（2026-10-05，信息分解与深度条件解码，公开成人语音数据 + 私有儿童纯音数据）
 
 本轮执行 `AUDITORY_C3_SERVER_PACKAGE_v1_20261003.zip`，并纳入复核补充（`AUDITORY_C3_REVIEW_ADDENDUM_20261005.zip`）与深度条件解码方案（`AUDITORY_C3_DEEP_CONDITIONAL_DECODING_PLAN_v1_20261005.md`、`AUDITORY_C3_DL_MATH_CHECKS_v1_20261005.zip`）；三个同名目录都是逐字节一致的解压内容。
 
