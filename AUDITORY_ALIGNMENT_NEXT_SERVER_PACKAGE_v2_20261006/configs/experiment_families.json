@@ -1,0 +1,598 @@
+{
+  "schema_version": "ALN2-2.0",
+  "note": "All enabled families are full experiments; ordering is technical, never performance/significance gated. Defaults are adjustable, not scientific stop thresholds.",
+  "families": [
+    {
+      "family_id": "A_TIME",
+      "module": "A",
+      "question": "时间表示与固定目标，局部/联合/完整比较",
+      "datasets": [
+        "fau",
+        "dtu",
+        "federici"
+      ],
+      "axes": {
+        "architecture": [
+          "legacy_pool4",
+          "density_tokens",
+          "lag_local_tokens"
+        ],
+        "window": [
+          "full",
+          "early",
+          "late",
+          "joint"
+        ],
+        "objective": [
+          "NCE",
+          "CS_SINGLE"
+        ]
+      },
+      "fixed": {
+        "target": "@cohort_default",
+        "audio_head": "fixed_features",
+        "context_mode": "restricted_window",
+        "training_task": "paired_alignment"
+      },
+      "work_type": "full_fit",
+      "technical_dependencies": [
+        "data_adapter",
+        "split_manifest"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "family_id": "A_TARGET_TIME",
+      "module": "A",
+      "question": "声音表示层级的时间扩展",
+      "datasets": [
+        "fau",
+        "dtu"
+      ],
+      "axes": {
+        "architecture": [
+          "density_tokens"
+        ],
+        "target": [
+          "Ac",
+          "Lz"
+        ],
+        "window": [
+          "full",
+          "early",
+          "late",
+          "joint"
+        ],
+        "objective": [
+          "NCE",
+          "CS_SINGLE"
+        ]
+      },
+      "fixed": {
+        "audio_head": "fixed_features",
+        "context_mode": "restricted_window",
+        "training_task": "paired_alignment"
+      },
+      "work_type": "full_fit",
+      "technical_dependencies": [
+        "data_adapter",
+        "split_manifest"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "family_id": "A_ANCHOR",
+      "module": "A",
+      "question": "固定、随机与可训练声音参照",
+      "datasets": [
+        "fau",
+        "dtu"
+      ],
+      "axes": {
+        "objective": [
+          "NCE",
+          "CS_SINGLE",
+          "FMCA"
+        ],
+        "audio_head": [
+          "fixed_features",
+          "frozen_random",
+          "trainable_head",
+          "anchored_head"
+        ]
+      },
+      "fixed": {
+        "architecture": "density_tokens",
+        "target": "local",
+        "window": "full",
+        "context_mode": "restricted_window",
+        "training_task": "paired_alignment"
+      },
+      "work_type": "full_fit",
+      "technical_dependencies": [
+        "data_adapter",
+        "split_manifest"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": "Exactly identical resolved configurations may reuse another family result; do not duplicate training just to fill a table."
+    },
+    {
+      "family_id": "B_FM",
+      "module": "B",
+      "question": "预训练、冻结和不同微调深度",
+      "datasets": [
+        "fau",
+        "dtu",
+        "federici"
+      ],
+      "axes": {
+        "architecture": [
+          "cbramod",
+          "reve"
+        ],
+        "adaptation": [
+          "random_full",
+          "pretrained_frozen",
+          "pretrained_peft",
+          "pretrained_partial",
+          "pretrained_full"
+        ],
+        "objective": [
+          "NCE",
+          "CS_SINGLE"
+        ]
+      },
+      "fixed": {
+        "target": "@cohort_default",
+        "audio_head": "fixed_features",
+        "window": "full_context",
+        "context_mode": "foundation_segment",
+        "training_task": "paired_alignment"
+      },
+      "work_type": "full_fit",
+      "technical_dependencies": [
+        "data_adapter",
+        "split_manifest",
+        "foundation_adapter",
+        "pinned_checkpoint_for_pretrained_arms"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": "Random-full requires architecture but not pretrained weights. Full-context is a separate information-budget stratum."
+    },
+    {
+      "family_id": "B_AUDITORY_CONTINUE",
+      "module": "B",
+      "question": "听觉继续训练是否补充通用预训练",
+      "datasets": [
+        "fau",
+        "dtu"
+      ],
+      "axes": {
+        "architecture": [
+          "cbramod",
+          "reve"
+        ],
+        "adaptation": [
+          "auditory_continued_partial",
+          "auditory_continued_full"
+        ],
+        "objective": [
+          "NCE",
+          "CS_SINGLE"
+        ]
+      },
+      "fixed": {
+        "target": "local",
+        "audio_head": "fixed_features",
+        "window": "full_context",
+        "context_mode": "foundation_segment",
+        "training_task": "paired_alignment",
+        "donor_policy": "outer_fold_safe_public_sources"
+      },
+      "work_type": "staged_full_fit",
+      "technical_dependencies": [
+        "data_adapter",
+        "split_manifest",
+        "foundation_adapter",
+        "outer_safe_auditory_donor"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": "Each staged unit includes/points to an outer-fold-safe continued-pretraining donor, not an arbitrary best checkpoint."
+    },
+    {
+      "family_id": "C_ATTENTION",
+      "module": "C",
+      "question": "总体对应与同试次选择",
+      "datasets": [
+        "fau",
+        "dtu"
+      ],
+      "axes": {
+        "architecture": [
+          "density_tokens",
+          "cbramod"
+        ],
+        "training_task": [
+          "attended_alignment",
+          "alignment_plus_selection"
+        ],
+        "objective": [
+          "NCE",
+          "CS_SINGLE"
+        ]
+      },
+      "fixed": {
+        "target": "local",
+        "audio_head": "fixed_features",
+        "window": "task_context",
+        "context_mode": "architecture_native",
+        "adaptation": "resolve_by_architecture"
+      },
+      "work_type": "full_fit",
+      "technical_dependencies": [
+        "competing_speech_adapter",
+        "split_manifest",
+        "simultaneous_stream_labels"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": "Joint objectives include a separately declared selection term; do not call them pure NCE or pure CS."
+    },
+    {
+      "family_id": "C_SELECTION",
+      "module": "C",
+      "question": "相同候选任务的纯选择性监督对照",
+      "datasets": [
+        "fau",
+        "dtu"
+      ],
+      "axes": {
+        "architecture": [
+          "density_tokens",
+          "cbramod"
+        ],
+        "objective": [
+          "SELECTION_CE"
+        ]
+      },
+      "fixed": {
+        "training_task": "selection_only",
+        "target": "local",
+        "audio_head": "fixed_features",
+        "window": "task_context",
+        "context_mode": "architecture_native",
+        "adaptation": "resolve_by_architecture",
+        "selection_score": "declared_common_bilinear_or_cosine"
+      },
+      "work_type": "full_fit",
+      "technical_dependencies": [
+        "competing_speech_adapter",
+        "split_manifest",
+        "simultaneous_stream_labels"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": "No alignment-loss term. Compare to alignment-plus-selection without pretending this is a pure CS objective."
+    },
+    {
+      "family_id": "C_COVERAGE",
+      "module": "C",
+      "question": "训练覆盖与测试人群的同面板比较",
+      "datasets": [
+        "fau"
+      ],
+      "axes": {
+        "architecture": [
+          "density_tokens",
+          "cbramod"
+        ],
+        "train_population": [
+          "TH_ONLY",
+          "TH_HA",
+          "TH_HA_CI"
+        ],
+        "objective": [
+          "NCE",
+          "CS_SINGLE"
+        ]
+      },
+      "fixed": {
+        "target": "local",
+        "audio_head": "fixed_features",
+        "window": "task_context",
+        "context_mode": "architecture_native",
+        "training_task": "paired_alignment",
+        "adaptation": "resolve_by_architecture"
+      },
+      "work_type": "full_fit",
+      "technical_dependencies": [
+        "data_adapter",
+        "split_manifest"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "family_id": "C_ADAPT",
+      "module": "C",
+      "question": "共享读出与个人支持适配",
+      "datasets": [
+        "fau",
+        "dtu",
+        "private_bdf"
+      ],
+      "axes": {
+        "architecture": [
+          "density_tokens",
+          "cbramod"
+        ],
+        "adapter_kind": [
+          "none",
+          "spatial_adapter",
+          "personal_low_rank"
+        ],
+        "objective": [
+          "NCE",
+          "CS_SINGLE"
+        ]
+      },
+      "fixed": {
+        "target": "@cohort_default",
+        "audio_head": "fixed_features_or_category_prototype",
+        "window": "task_context",
+        "context_mode": "architecture_native",
+        "support_policy": "nested_support_fixed_query",
+        "base_checkpoint_policy": "same_outer_model"
+      },
+      "work_type": "adaptation_bundle",
+      "technical_dependencies": [
+        "compatible_outer_checkpoint",
+        "support_query_split"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": "A bundle includes participant-specific small fits/evaluations; it is not one whole-backbone fit. No-adapter row is a reuseable evaluation control."
+    },
+    {
+      "family_id": "D_TASK_LOCAL",
+      "module": "D",
+      "question": "私有任务匹配和时间保留",
+      "datasets": [
+        "private_bdf"
+      ],
+      "axes": {
+        "architecture": [
+          "legacy_pool4",
+          "density_tokens",
+          "lag_local_tokens"
+        ],
+        "window": [
+          "full",
+          "early",
+          "late",
+          "joint"
+        ],
+        "objective": [
+          "NCE",
+          "CS_SINGLE"
+        ]
+      },
+      "fixed": {
+        "target": "current_class",
+        "audio_head": "category_prototype_or_label_kernel",
+        "context_mode": "restricted_window",
+        "training_task": "current_class"
+      },
+      "work_type": "full_fit",
+      "technical_dependencies": [
+        "data_adapter",
+        "split_manifest"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "family_id": "D_GX",
+      "module": "D",
+      "question": "GX与新模型使用相同有效儿童/输入/测试规则",
+      "datasets": [
+        "private_bdf"
+      ],
+      "axes": {
+        "architecture": [
+          "gx_protocol_matched"
+        ],
+        "window": [
+          "full",
+          "early",
+          "late",
+          "joint"
+        ],
+        "objective": [
+          "task_native_CE"
+        ]
+      },
+      "fixed": {
+        "target": "current_class",
+        "context_mode": "restricted_window",
+        "training_task": "current_class",
+        "legacy_comparison": "same_new_protocol_not_claim_exact_old_result"
+      },
+      "work_type": "full_fit",
+      "technical_dependencies": [
+        "gx_adapter",
+        "split_manifest"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "family_id": "D_FM_GENERIC",
+      "module": "D",
+      "question": "通用EEG先验到私有类别",
+      "datasets": [
+        "private_bdf"
+      ],
+      "axes": {
+        "architecture": [
+          "cbramod",
+          "reve"
+        ],
+        "adaptation": [
+          "random_full",
+          "pretrained_frozen",
+          "pretrained_peft",
+          "pretrained_partial",
+          "pretrained_full"
+        ],
+        "objective": [
+          "NCE",
+          "CS_SINGLE"
+        ]
+      },
+      "fixed": {
+        "target": "current_class",
+        "window": "full_epoch",
+        "context_mode": "padded_private_epoch_no_extra_EEG",
+        "training_task": "current_class",
+        "audio_head": "category_prototype_or_label_kernel"
+      },
+      "work_type": "full_fit",
+      "technical_dependencies": [
+        "private_adapter",
+        "split_manifest",
+        "foundation_adapter",
+        "pinned_checkpoint_for_pretrained_arms"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "family_id": "D_FM_PUBLIC",
+      "module": "D",
+      "question": "公共听觉适配到私有儿童任务",
+      "datasets": [
+        "private_bdf"
+      ],
+      "axes": {
+        "architecture": [
+          "cbramod",
+          "reve"
+        ],
+        "adaptation": [
+          "auditory_pretrained_peft",
+          "auditory_pretrained_full"
+        ],
+        "objective": [
+          "NCE",
+          "CS_SINGLE"
+        ]
+      },
+      "fixed": {
+        "target": "current_class",
+        "window": "full_epoch",
+        "context_mode": "padded_private_epoch_no_extra_EEG",
+        "training_task": "current_class",
+        "donor_policy": "public_only_no_private_test_exposure",
+        "audio_head": "category_prototype_or_label_kernel"
+      },
+      "work_type": "transfer_full_fit",
+      "technical_dependencies": [
+        "private_adapter",
+        "split_manifest",
+        "public_auditory_donor"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "family_id": "D_LOCAL_DISTILL",
+      "module": "D",
+      "question": "强教师是否帮助私有局部响应读取",
+      "datasets": [
+        "private_bdf"
+      ],
+      "axes": {
+        "teacher": [
+          "cbramod_auditory",
+          "reve_auditory"
+        ],
+        "window": [
+          "early",
+          "late",
+          "joint"
+        ],
+        "objective": [
+          "NCE",
+          "CS_SINGLE"
+        ]
+      },
+      "fixed": {
+        "architecture": "lag_local_tokens",
+        "target": "current_class",
+        "context_mode": "restricted_window",
+        "training_task": "current_class_plus_distillation",
+        "audio_head": "category_prototype_or_label_kernel"
+      },
+      "work_type": "transfer_full_fit",
+      "technical_dependencies": [
+        "private_adapter",
+        "split_manifest",
+        "outer_safe_teacher"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "family_id": "S_CONTROLS",
+      "module": "SUPPORT",
+      "question": "配对训练增量与线性/随机表征参照",
+      "datasets": [
+        "fau",
+        "dtu",
+        "federici"
+      ],
+      "axes": {
+        "architecture": [
+          "density_tokens"
+        ],
+        "objective": [
+          "NCE",
+          "CS_SINGLE"
+        ],
+        "pairing": [
+          "correct",
+          "declared_wrong_pair"
+        ]
+      },
+      "fixed": {
+        "target": "@cohort_default",
+        "audio_head": "fixed_features",
+        "window": "full",
+        "context_mode": "restricted_window",
+        "training_task": "paired_alignment"
+      },
+      "work_type": "full_fit",
+      "technical_dependencies": [
+        "data_adapter",
+        "split_manifest"
+      ],
+      "scientific_gate": null,
+      "enabled": true,
+      "notes": "Only unresolved nonidentical models need training; linear/rand feature probes are in analysis plan, not additional deep fits."
+    }
+  ]
+}

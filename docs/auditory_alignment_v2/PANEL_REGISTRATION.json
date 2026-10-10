@@ -1,0 +1,22 @@
+{
+  "registered": "2026-10-07 22:55 CEST, before any unit with the repaired readout (amendment A1) existed",
+  "purpose": "multi-seed panel of the principal foundation-model comparisons, accompanying the one-seed (3401) full repaired matrix (user decision 2026-10-07)",
+  "rows": {"families": ["B_FM", "D_FM_GENERIC"], "objective": "NCE",
+           "adaptations": ["random_full", "pretrained_frozen", "pretrained_peft", "pretrained_full"],
+           "architectures": ["cbramod", "reve"], "datasets": "all (fau, dtu, federici; private_bdf)", "folds": "all outer folds and content folds",
+           "extra_seeds": [3407, 3413], "n_units": 480},
+  "why_these": "pretrained versus random initialisation and the principal adaptation choices (frozen, PEFT, full); NCE is the reference objective of the donors and transfer families; CS_SINGLE and pretrained_partial are covered by the full one-seed matrix",
+  "small_encoder_references": "A_TIME density_tokens and lag_local_tokens, full window, NCE (and CS_SINGLE), already complete for seeds 3401/3407/3413",
+  "estimands": {
+    "P1_pretraining": "per architecture and dataset: pretrained_{frozen,peft,full} minus random_full, participant-paired, unified gain (bits) and native gain; private: head AUC and head gain vs base",
+    "P2_architecture": "REVE minus CBraMod for the same adaptation",
+    "P3_reference": "each foundation configuration minus the small-encoder references (density_tokens full; lag_local_tokens full)",
+    "P4_probe": "the channels-preserved linear-probe readout for every panel unit (fixed reference)",
+    "seed_sensitivity": "per configuration: estimate for each seed, across-seed mean and SD of the configuration mean; Spearman agreement of configuration rankings between seeds"
+  },
+  "rules": ["the panel is completed regardless of which configurations look successful",
+            "no configuration selected by HA/CI differences or clinical significance",
+            "no probe-performance threshold gates any training",
+            "participant-bootstrap intervals are conditional on the fitted models; across-seed spread is reported separately"],
+  "queue_order": "after the one-seed repaired matrix (incl. its dependent families)"
+}

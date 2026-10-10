@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ALN2 planned comparison unit",
+  "type": "object",
+  "required": [
+    "experiment_id",
+    "family_id",
+    "module",
+    "dataset",
+    "spec",
+    "subject_fold",
+    "content_fold",
+    "seed",
+    "work_type",
+    "status",
+    "scientific_gate",
+    "implementation_status",
+    "technical_dependencies"
+  ],
+  "properties": {
+    "experiment_id": {
+      "type": "string"
+    },
+    "family_id": {
+      "type": "string"
+    },
+    "module": {
+      "type": "string"
+    },
+    "dataset": {
+      "enum": [
+        "fau",
+        "dtu",
+        "federici",
+        "private_bdf"
+      ]
+    },
+    "spec": {
+      "type": "object"
+    },
+    "subject_fold": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "content_fold": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "seed": {
+      "type": "integer"
+    },
+    "work_type": {
+      "enum": [
+        "full_fit",
+        "staged_full_fit",
+        "transfer_full_fit",
+        "adaptation_bundle"
+      ]
+    },
+    "status": {
+      "const": "planned"
+    },
+    "scientific_gate": {
+      "type": "null"
+    },
+    "implementation_status": {
+      "const": "requires_server_integration"
+    },
+    "technical_dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

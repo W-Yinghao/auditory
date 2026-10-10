@@ -1,0 +1,210 @@
+{
+  "schema_version": "ALN2-2.0",
+  "phase": "ALN2",
+  "created": "2026-10-06",
+  "repository": "W-Yinghao/auditory",
+  "evidence_sha": "e993e3777989f3048f4c802c1697b0db3de3c205",
+  "research_policy": {
+    "negative_result_led_story": false,
+    "automatic_negative_paper_fallback": false,
+    "significance_gates": false,
+    "single_seed_scientific_stopping": false,
+    "retain_all_valid_results": true,
+    "report_unfavorable_comparisons": true,
+    "select_on_group_or_clinical_effects": false,
+    "allow_registered_full_extensions": true,
+    "technical_checks_are_not_scientific_gates": true,
+    "new_private_data_or_weight_publication_authorized": false,
+    "doctor_contact_required": false,
+    "vcs_qmi_allowed": false,
+    "neural_critic_allowed": false
+  },
+  "repeats": {
+    "subject_folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "seeds": [
+      3401,
+      3407,
+      3413
+    ],
+    "content_folds": {
+      "fau": [
+        0,
+        1
+      ],
+      "dtu": [
+        0,
+        1
+      ],
+      "federici": [
+        0
+      ],
+      "private_bdf": [
+        0
+      ]
+    }
+  },
+  "cohorts": {
+    "fau": {
+      "target_default": "local",
+      "task": "speech_retrieval",
+      "fs_hz": 128,
+      "n_channels_last_round": 31,
+      "source": "existing_ALN1_loader",
+      "clinical_truth": "only_verified_fields"
+    },
+    "dtu": {
+      "target_default": "local",
+      "task": "speech_retrieval",
+      "fs_hz": 128,
+      "n_channels_last_round": 64,
+      "source": "existing_ALN1_loader",
+      "clinical_truth": "only_verified_fields"
+    },
+    "federici": {
+      "target_default": "envelope",
+      "task": "speech_retrieval",
+      "fs_hz": 100,
+      "n_channels_last_round": 32,
+      "source": "author_preprocessed_2_8Hz",
+      "clinical_truth": "only_verified_fields",
+      "artifact_samples": "separate_controls"
+    },
+    "private_bdf": {
+      "target_default": "current_class",
+      "task": "current_class",
+      "fs_hz": 250,
+      "n_channels_last_round": 20,
+      "source": "current_valid_identity_and_GX_epochs",
+      "clinical_truth": "archival_no_SRT"
+    }
+  },
+  "starting_recipes": {
+    "note": "Training hyperparameters, NOT scientific thresholds or fixed resource limits. Resolve changes in a new recipe.",
+    "small_encoder": {
+      "epochs_initial": 200,
+      "optimizer": "AdamW",
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "scheduler": "cosine_by_actual_updates"
+    },
+    "foundation": {
+      "epochs_initial": 100,
+      "optimizer": "AdamW",
+      "backbone_lr_candidates": [
+        1e-05,
+        3e-05,
+        0.0001
+      ],
+      "head_lr_candidates": [
+        0.0001,
+        0.001
+      ],
+      "selection": "training_side_task_validation",
+      "continue_training": "registered_resume_or_longer_recipe"
+    },
+    "peft": {
+      "kind": "adapter_or_lora_resolve_per_model",
+      "rank_start": 8,
+      "exact_layers": null
+    },
+    "partial": {
+      "rule": "last_transformer_blocks_and_task_head",
+      "exact_layers": null
+    },
+    "temporal": {
+      "token_step_ms_start": 20,
+      "local_patch_ms_start": 40,
+      "embedding_dim_start": 32,
+      "preserve_time_axis": true,
+      "window_endpoint": "half_open_new_version"
+    },
+    "NCE": {
+      "temperature_start": 0.1,
+      "real_stimulus_key_dedup": true
+    },
+    "CS_SINGLE": {
+      "implementation": "reuse_validated_traditional_kernel_formula",
+      "sigma_recipe": "initial_training_calibration_median",
+      "sigma_multiplier_start": 1.0,
+      "rows_start": 256,
+      "diagonal": "consistent_KDE_all_terms"
+    },
+    "FMCA": {
+      "implementation": "centered_logdet",
+      "relative_ridge_start": 0.001,
+      "rows_start": 512,
+      "readout": "training_side_canonical_pair_coordinates"
+    },
+    "anchored_head": {
+      "loss": "mse_reconstruct_fixed_standardized_audio_features",
+      "weight_candidates": [
+        0.1,
+        1.0
+      ],
+      "not_a_new_divergence": true
+    },
+    "selection": {
+      "candidates": "simultaneous_attended_and_ignored",
+      "swap_order_and_label": true,
+      "weight_candidates": [
+        0.1,
+        1.0
+      ],
+      "tuning": "training_side_task_only"
+    },
+    "personal_support": {
+      "fractions_start": [
+        0.1,
+        0.3
+      ],
+      "query": "same_disjoint_query_for_all_support_variants",
+      "updates": "resolve_on_training_participants",
+      "clinical_label_use": false
+    }
+  },
+  "foundation_registry": {
+    "cbramod": {
+      "source": "https://github.com/wjq-learning/CBraMod",
+      "code_sha": null,
+      "checkpoint_path": null,
+      "checkpoint_sha256": null,
+      "model_revision": null,
+      "input_fs_hz": 200,
+      "input_contract": "resolve_official_native_preprocessing_and_patch_interface",
+      "pretraining_overlap": "unresolved"
+    },
+    "reve": {
+      "source": "https://github.com/elouayas/reve_eeg",
+      "model_id": "brain-bzh/reve-base",
+      "code_sha": null,
+      "checkpoint_path": null,
+      "checkpoint_sha256": null,
+      "model_revision": null,
+      "input_fs_hz": 200,
+      "input_contract": "resolve_electrode_positions_amplitude_and_time_patches",
+      "pretraining_overlap": "unresolved"
+    }
+  },
+  "outputs": {
+    "new_namespace": "auditory_alignment_v2",
+    "private_root": "private/auditory_alignment_v2",
+    "aggregate_root": "results/auditory_alignment_v2"
+  },
+  "scheduling": {
+    "execution_backend": "Slurm",
+    "parallelism": "server_resolve",
+    "science_gate": null,
+    "resource_limit": "server_and_user_resolve_not_a_scientific_claim"
+  },
+  "interpretation": {
+    "result_scope": "specific_task_recipe_cohort",
+    "training_repeats_are_not_independent_children": true,
+    "negative_values_preserved": true
+  }
+}

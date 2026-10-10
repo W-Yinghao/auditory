@@ -6,7 +6,33 @@
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## 最新（2026-10-06）：核 CS-QMI 声音–EEG 对齐全量轮（Kernel CS / FMCA / InfoNCE）
+## 最新（2026-10-10）：ALN2 时间保留对齐、EEG 基础模型、注意选择与私有迁移
+
+本轮执行 `AUDITORY_ALIGNMENT_NEXT_SERVER_PACKAGE_v2_20261006.zip`；同名目录是逐字节一致的解压内容。代码在 `auditory_alignment_v2/`。
+
+完成情况：
+- 研究者决定方法探索阶段先用单个 seed（3401）；A_TIME 保留 3 个 seed 作为 seed 波动参照。
+- 基础模型（CBraMod、REVE）的对齐头最初先对通道取无权重平均，探针显示这会丢掉大部分可用信息。经研究者批准，按包修正 A1 改为保留通道身份的带符号空间滤波读出，并附保留通道的线性探针参照；全部基础模型族从原始初始化重跑。旧结果作为"通道平均变体"保留在服务器上，不作为基础模型的证据。
+- 另登记了一个多 seed 面板（B_FM 与 D_FM_GENERIC，NCE，四种适配，seed 3407/3413，480 个单元），在任何修复结果产生之前登记。
+- 范围内 4,560 个单元全部完成，最终审计无问题。
+
+入口：
+- [修复后基础模型结果摘要](docs/auditory_alignment_v2/REPAIRED_FM_RESULTS.md)；
+- [全部结果表](docs/auditory_alignment_v2/FULL_RESULTS.md)（自动生成）；
+- [实现回执](docs/auditory_alignment_v2/IMPLEMENTATION_RECEIPT.md)：数据接入、偏离与修正、运行事故与修复来源；
+- [多 seed 面板登记](docs/auditory_alignment_v2/PANEL_REGISTRATION.json)；
+- [聚合结果](results/auditory_alignment_v2/)。
+
+要点（区间为参与者 bootstrap；增益为错配 EEG 与真实 EEG 的对数损失之差，比特/查询）：
+- **时间表示**：新的时滞局部编码器（lag_local_tokens）在三个语音队列上都优于旧编码器；晚窗与联合窗承载大部分信息。
+- **正确配对训练**明显优于错误配对训练。
+- **修复后的基础模型**稳定高于同架构随机初始化（三个 seed 方向一致），但在 FAU/DTU 上仍远低于小编码器（最好 0.055 / 0.164，对 0.665 / 1.580 比特）；Federici 上冻结 REVE 与最好的小编码器相当。全量微调常不如冻结或 LoRA；DTU 上保留通道的线性探针明显高于训练出的读出。
+- **私有儿童当前类别任务**：所有模型 AUC 0.50–0.55；公开听觉 donor 与蒸馏的变化约 ±0.01–0.02。
+- 这些是当前接口与训练配方的结果，不是对基础模型或数据听觉信息的结论。
+
+逐单元记录、逐人结果、checkpoint（含通道平均变体）、日志与运行状态都留在服务器上。
+
+## 核 CS-QMI 声音–EEG 对齐全量轮（2026-10-06，Kernel CS / FMCA / InfoNCE）
 
 本轮执行 `AUDITORY_KERNEL_CS_FULL_EXPERIMENTS_SERVER_PACKAGE_v1_20261005.zip`；同名目录是逐字节一致的解压内容。
 

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ALN2 server result summary",
+  "type": "object",
+  "required": [
+    "experiment_id",
+    "status",
+    "provenance",
+    "support",
+    "metrics",
+    "comparison_scope",
+    "next_interventions"
+  ],
+  "properties": {
+    "experiment_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "running",
+        "technical_blocked",
+        "data_unavailable_for_this_task",
+        "invalidated_with_reason",
+        "pending_resume"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "code_sha",
+        "config_hash",
+        "split_id",
+        "checkpoint_id",
+        "input_support",
+        "pretraining_overlap"
+      ]
+    },
+    "support": {
+      "type": "object",
+      "required": [
+        "independent_participants",
+        "unique_content_count",
+        "test_query_count"
+      ]
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "comparison_scope": {
+      "type": "string"
+    },
+    "method_result": {
+      "enum": [
+        "improvement_observed",
+        "mixed",
+        "no_improvement_established",
+        "not_evaluated"
+      ]
+    },
+    "next_interventions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "all_valid_runs_retained": {
+      "const": true
+    },
+    "automatic_paper_fallback": {
+      "type": "null"
+    }
+  },
+  "additionalProperties": true
+}
