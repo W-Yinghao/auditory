@@ -1,5 +1,77 @@
+# CURRENT PRIORITY — ALN3.1, 2026-10-11
+
+Preserve history; put these rules before conflicting old summaries. ALN3.1 amends ALN3 and inherits its launch authorization. No full-round restart and no second manual "go" after relevant engineering checks.
+
+1. Do not turn weak performance into proof of no EEG information, no developmental effect, universal model failure or a ceiling. Keep all valid negative/reversed results; do not select subjects/seeds/models for clinical significance.
+2. Finish the registered valid small-encoder seed work. Defer redundant old coarse-FM repeats; retain completed core panels and fill only essential matched controls. 3a proceeds; 3b/3c are mapped into B, not duplicated.
+3. Broad full experiments use3401. Core paired comparisons use3401/3407/3413; repeat comparators and source dependencies as declared, not just the winning head. Do not count seed×subject as independent n.
+4. HC-v identities and demographics are separate from HC; filename numbers are not identity evidence. No same-child HC–HC-v contrast. Artifact is one phantom with nine sessions, outside human inference.
+5. Preserve spatial channel identity, actual time access and fixed audio target coordinates. Dense output is not evidence of equally dense local neural access. Never use actual query audio as the EEG decoder input.
+6. Continue private tasks and independent ALN3 work immediately when ready. Do not make public significance, new datasets, all documentation, or a probe score a gate. Scope a bug to its affected dependencies.
+7. Only traditional kernel CS, NCE and justified FMCA comparisons; no VCS-QMI/unpublished variational theory/new critic. No forced CI–TH gap reduction or unsupported language/clinical labels.
+8. Apply scheduling changes only to this project's exact owned jobs; keep aggregate10-GPU authorization. Reference scripts are read-only planners, not cluster commands.
+
+(Inserted 2026-10-11 from `AUDITORY_ALN3_SERVER_PACKAGE_v3_1_20261011/AGENTS_APPEND.md` at the user's instruction to adjust the multi-seed priorities per that package; ALN3.1 amends ALN3 — the ALN3 block, the ALN2 block and the history below are preserved. Privacy, data-authorisation, read-only-source and Slurm rules remain in force. User 2026-10-11: any newly downloaded dataset goes under `/projects/EEG-foundation-model` (e.g. `auditory_public/`), never under the home workspace.)
+
+- 2026-10-11 (user instructions, storage): (1) the D1 continuous-export arrays were deleted (`private/auditory_d1/D1_*_001/arrays`, 1,392 files, 42.3 GiB; plans, receipts, logs and a per-file sha256 manifest kept; regeneration recipe in `private/auditory_d1/DELETED_ARRAYS_20261011.md`); the D-series sentence below about the ~43 GiB export describes the state at that time. (2) ALN3 checkpoints of completed units are offloaded to `<private checkpoint storage>/auditory_alignment_v3/ckpt` (0700) as per-file symlinks by `private/auditory_alignment_v3/ckpt_offload.py` (Slurm `slurm/aln3_ckpt_offload.sbatch`; manifest `private/auditory_alignment_v3/ckpt_offload_manifest.tsv`); before re-running a completed unit remove its symlink first. (3) Workspace reorganisation executed the same day — see the archive block below; the deletion list `private/workspace_cleanup_20261011/DELETE_LIST.md` (section A, recommended B items) awaits the user's own deletion run.
+
+# 工作区归档路径图（2026-10-11，用户指示整理 ~/EEG_auditory）
+
+已结束且不再使用的轮次已按原相对路径整体移到 `archive/<原路径>`（633 项，同一文件系统内 `mv`，字节和权限未改，移动过程中未删除任何文件）：
+D2 电极/通道预算研究及其稿件、Phase 0–3、auditory5 除代码包 `auditory5/` 外的全部内容（配置/文档/脚本/Slurm/测试/报告/结果/私有）、retrain 全部、auditory_next v2 / v2.1 / v3、repair / F 系列代码与结果、
+FN1 / FN1-A / K0 / K1 / R0、ST1（含代码）、GX 的配置/Slurm/文档/结果/测试（GX 代码留在原处）、PF / DV / NEXTMAP / STORY 的代码/文档/结果、两份项目总览文档（`docs/PROJECT_PLAN.md`、`docs/PROJECT_OVERALL_SUMMARY_20260927.md` 等）、publish kit 001–005 与 007–014。
+旧路径→新路径见 `archive/ARCHIVE_PATH_MAP.tsv`，规则与例外见 `archive/README.md`，计划与审查材料见 `private/workspace_cleanup_20261011/`。
+
+- 下文历史条目保留原路径（保留历史）。工作区相对路径若不存在，按 `archive/<该路径>` 读取。
+- 不得移动：live 代码 `auditory_alignment*/`、`auditory_c3/`、`auditory_gx/`、`AUDITORY_C3_SERVER_PACKAGE_v1_20261003/`；
+  ALN2/ALN3/ALN3.1/KCS 包；`private/auditory_alignment_{v2,v3,kernel_cs}`、`private/auditory_{gx,pf,c3}`；
+  隐私扫描词表来源（`private/github_publish_{006,017}`、`private/clinical_001`、`private/phase3_ci_clinical_004`、
+  `private/auditory_{fn1a,fseries_archival,repair,dv,st,nextmap,story}`）；根目录方案文件；README.md、AGENTS.md。
+- 归档代码不能原处运行；需要重跑时按映射表把整轮移回。今后发布 kit 不得把 `archive/` 路径作为候选，
+  GitHub 的目录迁移只在用户单独指示的发布轮中用 `git mv` 完成。
+- 第二批（ALN3 结束后）：`results/assets_001`、`results/phase3_ci_sources_001`、`results/phase3_metadata_addendum_001`；
+  `auditory5/` 与 D1 配方输入 `private/mff_001`、`private/inventory_001` 只在不再需要 D1 配方与 C3 测试原处可跑时才移动；
+  `private/cleanup_audit_001` 在用户完成删除后最后归档（待移动清单 `archive/_cleanup/pending_moves.tsv`）。
+
+(Inserted 2026-10-11 at the user's instruction to reorganise the workspace ("开始按计划清理"); the ALN3.1/ALN3/ALN2 blocks and the history below are preserved. The only other change: item (3) of the 2026-10-11 storage note above was updated to say the reorganisation was executed.)
+
 # Project working rules
 
+# ALN3优先规则（置于工作副本规则文件最前；保留历史原文）
+
+本轮以AUDITORY_ALN3_SERVER_PACKAGE_v3_20261010为执行依据。历史“无信息/天花板/方向关闭/禁止新模型/自动地图稿”不支配本轮。
+
+建设有用的声音–EEG局部时空对齐与听觉先验，不以负结果为导向；同时所有有效弱结果与反向效应完整报告，不筛儿童、不按组差显著性选模型。独立儿童数不由seed、fold或job扩大。
+
+Full experiments按登记问题执行，无AUC/信度/p值绩效门槛；允许训练侧解释驱动的配置扩展，不同模块仅由真实技术依赖串联。
+
+Federici人类/幻影头分离，同儿童HC与HC-v按身份聚类；重汇总不覆盖旧表。局部/全局context/support-conditioned的信息访问区别保留，不把密集token当精确神经潜伏期。
+
+保留传统核CS、NCE与有理由的FMCA对照，不引入未发表VCS-QMI。私有当前声音与验配阶段是正文研究，不转成ERP峰/量表天花板/采集预算故事。
+
+所有改动、复用、teacher/donor/迁移来源可追踪；真实训练未发生不得写完成；禁止公开逐人身份、预测或私有权重。
+
+(Inserted 2026-10-10 from `AUDITORY_ALN3_SERVER_PACKAGE_v3_20261010/AGENTS_APPEND.md` at the user's instruction ('这是下一步计划'); the ALN2 block and the history below are preserved. Privacy, data-authorisation, read-only-source and Slurm rules remain in force.)
+
+# ALN2 研究方向更新（建议置于工作副本 AGENTS.md 最前，2026-10-06）
+
+本段为用户最新研究指令，覆盖历史科学关闭/负结果收束建议；不覆盖隐私、数据授权、只读来源和Slurm计算规则。
+
+当前方向是时间保留的声音–EEG对齐、EEG基础模型的群体听觉微调、注意选择和私有儿童HA任务迁移。HA、CI、正常对照与儿童发育/验配阶段仍是研究问题，不预设组序和早晚机制。
+
+**不得以负结果为研究或论文导向。当前样本和设计不支持用反复未检出构造广泛的‘无信息、天花板、任何方法无效’结论。方法学完备、bootstrap和大量run不能代替独立样本与科学贡献。**
+
+完整报告所有负/反向结果，但将其用于精确定位和方法调整，不自动生成能力地图、失败论文或停止所有建模。具体配置可归档，科学不存在不能由此推出。不要为了阳性删样本、弱化基线、切换终点或按组差选模型。
+
+执行完整配置族、全部外折、多seed及合理训练日程。无科研p值/AUC/信度准入门槛；冻结模型弱不阻止微调；公开弱不阻止私有；只有真实技术依赖需要等待。资源不够时分批/续跑并报告，不标为科学阴性。
+
+主训练基线InfoNCE；传统核CS为主要竞争；FMCA保留固定声音目标/统计batch改进。不使用未发表VCS-QMI或神经critic。保留旧结果，不覆盖C3和上一轮核CS。
+
+先阅读本包`docs/00_RESEARCH_DISCIPLINE.md`、`02_SERVER_MASTER_PLAN.md`及当前代码，按`SERVER_START_PROMPT.md`接入。旧V3‘自动转地图稿’‘不训练任何新编码器’‘研究方向关闭’不再执行。
+
+(Inserted 2026-10-06 from `AUDITORY_ALIGNMENT_NEXT_SERVER_PACKAGE_v2_20261006/AGENTS_APPEND.md` at the user's instruction to execute ALN2; the rules below are the preserved history. Privacy, data-authorisation, read-only-source and Slurm rules below remain in force.)
+
+- The user subsequently instructed "现在push一版到github" (2026-10-11, mid-ALN3) and asked for light checks because the new work is on public datasets. GitHub `W-Yinghao/auditory` main content commit is `8f505de397cd9f3cf0729484c75666e90f164abd`, remotely verified by `git ls-remote`. Read `docs/GITHUB_PUBLICATION_ALN3.md`. The release carries both ALN3 packages (zip plus byte-identical extracted copy), `auditory_alignment_v3/` incl. the docs/13 science-round module `sci_r1/` with tests and Slurm entry points, orchestration copies under `scripts/auditory_alignment_v3/`, docs/auditory_alignment_v3 (publication copies of the science-round prereg and overview without private-task values), the science-round group-level aggregates and figures for FAU/DTU/Federici, and ALN2 follow-ups (item-1/3a code, round report, item-3 prereg/addendum, updated results/scripts). Per-unit records, per-participant/per-child outputs, checkpoints, private-task aggregates and documents, the ALN2 item-1/item-3a result documents and the 2026-10-11 workspace reorganisation remain unpublished. The ALN3 fleet was ~55% complete at publication; no ALN3 method-comparison results are published yet. This supersedes historical no-push statements for this selected release only.
 - The user subsequently instructed "push到github上" (first push, then supplementary analyses and experiments) for the ALN2 round. GitHub `W-Yinghao/auditory` main content commit is `d8f6d8e19a6c142561a0aab5fa6d179ccbbec0ae`, remotely verified by `git ls-remote`. Read `docs/GITHUB_PUBLICATION_ALN2.md`, `docs/auditory_alignment_v2/IMPLEMENTATION_RECEIPT.md` (§11-§12: foundation-model channel-mean head, user-approved amendment A1 readout repair, legacy_chmean_v1) and `docs/auditory_alignment_v2/REPAIRED_FM_RESULTS.md`. The release carries the ALN2 package (zip plus byte-identical extracted copy), `auditory_alignment_v2/` with tests, the ALN2 Slurm entry points, orchestration/repair/diagnostic script copies, docs (incl. the multi-seed panel registration) and aggregate results; the implementation receipt is a publication copy with the private checkpoint storage path replaced. Per-unit records, per-participant tables, checkpoints (incl. the channel-mean legacy variant), logs and two early probe scripts remain on the server. This supersedes historical no-push statements for this selected code/aggregate release only; do not repeat completed work.
 - The user subsequently instructed "push到github上" for the kernel CS-QMI round. GitHub `W-Yinghao/auditory` main content commit is `84c73924ad3da12181e83400f58f0f67a37af8c4`, remotely verified by `git ls-remote`. Read `docs/GITHUB_PUBLICATION_KERNEL_CS.md`, `docs/auditory_alignment_kernel_cs/IMPLEMENTATION_NOTES.md` and `docs/auditory_alignment_kernel_cs/NEXT_INTERPRETATION.md`. The release carries the kernel CS package (zip plus byte-identical extracted copy), `auditory_alignment/` (protocol, extension runner, linear reference, R1, probes, aggregation, report), the GPU pool Slurm script, orchestration scripts, six docs with three figures and nine aggregate result files; the split manifest is a publication copy with private per-fold child counts collapsed to group totals. Per-unit records, per-participant values, checkpoints, logs and the Federici content-group table remain under private/ or data storage. This supersedes historical no-push statements for this selected code/aggregate release only; do not repeat completed work.
 - The user subsequently instructed "push到github上" for the C3 round. GitHub `W-Yinghao/auditory` main content commit is `421f554a02bfbcec6d693e7fc6555cd387841451`, remotely verified by `git ls-remote`. Read `docs/GITHUB_PUBLICATION_C3.md`, `docs/auditory_c3/C3_RESULTS_v2.md`, `docs/auditory_c3/C3DL_FULL_RESULTS.md` and `docs/auditory_c3/C3_EXTENSIONS_RESULTS.md`. The release carries the three C3 packages (zips plus byte-identical extracted copies), the C3-DL plan, `auditory_c3/` (incl. c3dl, wordlevel, ci_edg, vendored GPL gcmi/pid) with tests, config, Slurm scripts, docs and 26 aggregate summaries; four result files are aggregate-only publication copies and two docs drop a restricted URL / contact address. Correspondence with data providers, the paper PDF, credentials, per-participant outputs and logs remain under private/. This supersedes historical no-push statements for this selected code/aggregate release only; do not repeat completed work.
@@ -31,3 +103,4 @@
 - Auditory5 interim screening002 records80/90 representations and173 passing module tests (contracts023). A's prespecified history×position balancing has zero eligible candidates among55; valid independent-reset sensitivity has50, so balancing is unsupported rather than a code failure. C linear L0/SUP/RAND is complete in C_linear_L0_SUP_RAND_002 (summary-only repair, no refits); full L0 and supervised MLP attempts failed numerically. E0_native_003 has valid complete linear results for7 pairs while5 MLP record-head failures prevent any MLP aggregate; E1 bapa support is16<20. Final execution_status_003/job995977 and S4_final_001/job995979 are queued after the remaining SIM lanes; check receipts and Slurm before submitting anything. The final name does not imply scientific success. Read docs/AUDITORY5_REPRODUCTION_v1.md for frozen-source commands and preserve all intermediate reports.
 - Subsequent update supersedes the queued state: all90 representations and S4_final_001 completed. Read docs/AUDITORY5_FINAL_STATUS_v1.md. Primary SIM B gain−0.002169 bits and D gain0.108730 source points both yield NEGATIVE_SCREEN; A remains support-limited, all full C MLP attempts fail numerically, and E retains partial failure/support limits. User-authorized GitHub publication is complete at main191b3a189bea116c4c91fdcfcb6d3bd2945b8dfa; see docs/GITHUB_PUBLICATION_AUDITORY5_v1.md. The published checkout is separate and excludes private participant artifacts and model weights. Do not repeat completed jobs or overwrite historical outputs.
 - STORY v1 (`AUDITORY_STORY_SERVER_PACKAGE_v1_20261002.zip`, extracted unchanged to the same-named folder) has run: read `docs/auditory_story/RESULTS.md`, the frozen read-only `docs/auditory_story/PROTOCOL.md` and `PROTOCOL_ADDENDUM_001.md`. Frozen-rule status METHOD_GAIN_WITHOUT_CLINICAL_INCREMENT: C+SRP is worse than the age + device-duration baseline at 12/24 labels (low-label RPS -0.011 [-0.015, -0.008]) and equal at full labels; MUSS is equal; the method contrast is only against the 64-d mean view. The SRP summary is highly reliable within a recording (split-half r 0.95) and predicts held-out-block responses (+0.018 nats/dim), but carries no SIR/MUSS information and conditional organisation adds nothing. 30 profile fits and 8250 clinical calls are complete (0 new inference); do not repeat them, and do not start the disabled MFF-validation, competitor or age branches without a separate decision. `auditory_nextmap/gpu_age.train_age` never restores train mode after validation (affects G1 direct-age arms and H3 ft_from_stim; recorded, not rerun).
+- Kernel CS-QMI round (`AUDITORY_KERNEL_CS_FULL_EXPERIMENTS_SERVER_PACKAGE_v1_20261005.zip`, extracted unchanged to the same-named folder) has run in full: 4,410/4,410 planned units, registered extensions E10-E12 1,800/1,800, linear reference E9 160/160, post-hoc R1 reliability 780/780; 0 failed, 0 rejected. Read `docs/auditory_alignment_kernel_cs/IMPLEMENTATION_NOTES.md` (deviations §5, extensions §5b, run log §6) and `NEXT_INTERPRETATION.md` before extending; tables in `FULL_RESULTS.md`, `OPTIMIZATION_RESULTS.md`, `TEMPORAL_RESULTS.md`, `GROUP_DEVELOPMENT_RESULTS.md`. Four evaluation fixes precede all reported numbers (unified readout scoring, mismatch-debiased checkpoint selection, Federici content-group split, private heads fitted on early-stop blocks only); valid code hashes are listed in `private/auditory_alignment_kernel_cs/fleet_code_hashes.json`. NCE > CS_SINGLE > FMCA ≈ CS_MULTI on FAU/DTU; an untrained linear ridge reference matches or beats every method except NCE; private class task ≈ 0; no function/development link. Checkpoints for every unit are kept under private/ (evaluation-only reruns via `run.py --reeval-from`); do not retrain completed units. Framing awaits the user; no auto-push.
