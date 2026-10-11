@@ -1,0 +1,547 @@
+version: ALN3_v3.0_20261010
+base_commit: d5b2315b465519fa2017ff3180fd34a090787164
+seed_breadth:
+- 3401
+seed_panel_extra:
+- 3407
+- 3413
+datasets:
+  fau:
+    subject_folds:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    content_folds:
+    - 0
+    - 1
+    default_target: local
+  dtu:
+    subject_folds:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    content_folds:
+    - 0
+    - 1
+    default_target: local
+  federici:
+    subject_folds:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    content_folds:
+    - 0
+    default_target: envelope
+  private_bdf:
+    subject_folds:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    content_folds:
+    - 0
+    default_target: current_class
+common:
+  projection_dim: 32
+  target_contract: dense20ms_v1_pending_source_binding
+  status: planned_needs_binding
+families:
+- id: R_FEDERICI
+  datasets:
+  - federici
+  job_kind: reaggregate
+  folded: false
+  grid: {}
+  constants:
+    source: ALN2_private_unit_outputs
+    scope: all_registered_models
+    target_contract: inherit_ALN2_predictions_without_target_change
+    seed_role: aggregation_or_calibration_rng_not_source_training_seed
+  logical_dependencies:
+  - verified_identity_manifest
+  - normalized_unit_export
+  panel_rules: []
+  exclude: []
+- id: R_PRIVATE_CALIBRATION
+  datasets:
+  - private_bdf
+  job_kind: reevaluate
+  folded: false
+  grid: {}
+  constants:
+    scope: all_available_native_predictions
+    methods:
+    - temperature
+    - positive_affine
+    - existing_probe
+    - class_kernel
+    target_contract: inherit_ALN2_predictions_without_target_change
+    seed_role: aggregation_or_calibration_rng_not_source_training_seed
+  logical_dependencies:
+  - training_calibration_predictions
+  - heldout_query_predictions
+  panel_rules: []
+  exclude: []
+- id: A_LOCAL
+  datasets:
+  - fau
+  - dtu
+  - federici
+  job_kind: train
+  folded: true
+  grid:
+    architecture:
+    - legacy_pool4
+    - density_tokens
+    - lag_local_tokens
+    window:
+    - early
+    - late
+    - joint
+    - full
+    objective:
+    - NCE
+    - CS_SINGLE
+  constants:
+    information_stratum: local_only
+  logical_dependencies: []
+  panel_rules:
+  - architecture:
+    - lag_local_tokens
+    window:
+    - full
+    - early
+    - late
+    - joint
+  exclude: []
+- id: A_LOCAL_FACTORS
+  datasets: &id001
+  - fau
+  - dtu
+  - federici
+  job_kind: train
+  folded: true
+  grid:
+    architecture:
+    - lag_local_capacity_control
+    - local_unshared_control
+    window:
+    - full
+    objective:
+    - NCE
+    - CS_SINGLE
+  constants:
+    information_stratum: local_only
+  logical_dependencies: []
+  panel_rules: []
+  exclude: []
+- id: A_TARGETS
+  datasets: &id002
+  - fau
+  - dtu
+  job_kind: train
+  folded: true
+  grid:
+    architecture:
+    - lag_local_tokens
+    window:
+    - early
+    - late
+    - joint
+    - full
+    objective:
+    - NCE
+    - CS_SINGLE
+    target:
+    - Ac
+    - Lz
+  constants:
+    information_stratum: local_only
+  logical_dependencies: []
+  panel_rules: []
+  exclude: []
+- id: A_DIMENSION
+  datasets: *id001
+  job_kind: train
+  folded: true
+  grid:
+    architecture:
+    - lag_local_tokens
+    window:
+    - full
+    objective:
+    - NCE
+    - CS_SINGLE
+    projection_dim:
+    - 16
+    - 64
+  constants:
+    information_stratum: local_only
+  logical_dependencies: []
+  panel_rules: []
+  exclude: []
+- id: B_DENSE
+  datasets: *id001
+  job_kind: train
+  folded: true
+  grid:
+    architecture:
+    - cbramod
+    - reve
+    adaptation:
+    - random_full
+    - pretrained_frozen
+    - pretrained_peft
+    - pretrained_partial
+    - pretrained_full
+    readout:
+    - channel_phase_linear
+    - dense_query
+    objective:
+    - NCE
+    - CS_SINGLE
+  constants:
+    information_stratum: foundation_context
+  logical_dependencies: []
+  panel_rules:
+  - readout:
+    - dense_query
+    adaptation:
+    - random_full
+    - pretrained_frozen
+    - pretrained_peft
+  exclude: []
+- id: B_LAYER_PROBE
+  datasets: *id001
+  job_kind: probe_fit
+  folded: true
+  grid:
+    architecture:
+    - cbramod
+    - reve
+    layer:
+    - patch_embedding
+    - middle
+    - last
+    readout:
+    - channel_linear_ridge
+    objective:
+    - RIDGE
+  constants:
+    adaptation: pretrained_frozen
+    information_stratum: foundation_context
+  logical_dependencies: []
+  panel_rules: []
+  exclude: []
+- id: C_COMPLEMENT
+  datasets: *id001
+  job_kind: staged_train
+  folded: true
+  grid:
+    architecture:
+    - cbramod
+    - reve
+    variant:
+    - concat_pretrained
+    - residual_pretrained_frozen
+    - residual_pretrained_peft
+    - residual_pretrained_full
+    - residual_random_frozen
+    - residual_random_trainable
+    objective:
+    - NCE
+    - CS_SINGLE
+  constants:
+    information_stratum: foundation_context
+    local_architecture: lag_local_tokens
+    window: full
+  logical_dependencies:
+  - local_base_same_fold
+  panel_rules:
+  - variant:
+    - residual_pretrained_peft
+    - residual_random_trainable
+  exclude: []
+- id: C_CAPACITY_CONTROL
+  datasets: *id001
+  job_kind: staged_train
+  folded: true
+  grid:
+    architecture:
+    - small_capacity_branch
+    variant:
+    - residual_small_capacity
+    objective:
+    - NCE
+    - CS_SINGLE
+  constants:
+    information_stratum: foundation_context
+    local_architecture: lag_local_tokens
+    window: full
+  logical_dependencies:
+  - local_base_same_fold
+  panel_rules: []
+  exclude: []
+- id: D_ATTENTION
+  datasets: *id002
+  job_kind: train
+  folded: true
+  grid:
+    architecture:
+    - lag_local_tokens
+    - dense_fm_policy
+    - complement_policy
+    training_task:
+    - attended_alignment
+    - selection_only
+    - alignment_plus_selection
+    integrator:
+    - mean_score
+    - learned_temporal
+    objective:
+    - NCE
+    - CS_SINGLE
+  constants:
+    evaluation_seconds:
+    - 5
+    - 10
+    - 20
+    information_stratum: task_declared_context
+  logical_dependencies:
+  - training_only_model_policy
+  panel_rules: []
+  exclude:
+  - training_task:
+    - selection_only
+    objective:
+    - CS_SINGLE
+- id: D_COVERAGE
+  datasets:
+  - fau
+  job_kind: train
+  folded: true
+  grid:
+    architecture:
+    - lag_local_tokens
+    - complement_policy
+    population:
+    - TH_ONLY
+    - TH_HA
+    - TH_HA_CI
+    objective:
+    - NCE
+    - CS_SINGLE
+  constants:
+    information_stratum: task_declared_context
+    sampling_control:
+    - full_available
+    - matched_exposure
+  logical_dependencies:
+  - training_only_model_policy
+  panel_rules: []
+  exclude: []
+- id: D_ADAPT
+  datasets: *id002
+  job_kind: support_adapt
+  folded: true
+  grid:
+    architecture:
+    - lag_local_tokens
+    - dense_fm_policy
+    - complement_policy
+    adapter:
+    - none
+    - input_spatial
+    - output_low_rank
+    objective:
+    - NCE
+    - CS_SINGLE
+  constants:
+    support_fractions:
+    - 0.1
+    - 0.3
+    query_fraction: 0.7
+    information_stratum: support_conditioned_local_or_declared_context
+  logical_dependencies:
+  - base_same_fold
+  - fixed_support_query_manifest
+  panel_rules: []
+  exclude: []
+- id: E_GX
+  datasets:
+  - private_bdf
+  job_kind: train
+  folded: true
+  grid:
+    architecture:
+    - GX
+    window:
+    - early
+    - late
+    - joint
+    - full
+    objective:
+    - GX_NATIVE
+  constants:
+    information_stratum: local_only
+  logical_dependencies: []
+  panel_rules:
+  - window:
+    - full
+  exclude: []
+- id: E_LOCAL
+  datasets:
+  - private_bdf
+  job_kind: train
+  folded: true
+  grid:
+    architecture:
+    - legacy_pool4
+    - density_tokens
+    - lag_local_tokens
+    window:
+    - early
+    - late
+    - joint
+    - full
+    objective:
+    - NCE
+    - CS_SINGLE
+  constants:
+    information_stratum: local_only
+  logical_dependencies: []
+  panel_rules:
+  - architecture:
+    - lag_local_tokens
+    window:
+    - full
+  exclude: []
+- id: E_GENERIC
+  datasets:
+  - private_bdf
+  job_kind: train
+  folded: true
+  grid:
+    architecture:
+    - cbramod
+    - reve
+    adaptation:
+    - random_full
+    - pretrained_frozen
+    - pretrained_peft
+    - pretrained_partial
+    - pretrained_full
+    objective:
+    - NCE
+    - CS_SINGLE
+  constants:
+    information_stratum: padded_private_epoch_no_extra_EEG
+  logical_dependencies: []
+  panel_rules:
+  - adaptation:
+    - random_full
+    - pretrained_peft
+  exclude: []
+- id: E_PUBLIC_TRANSFER
+  datasets:
+  - private_bdf
+  job_kind: staged_train
+  folded: true
+  grid:
+    source_architecture:
+    - lag_local_tokens
+    - cbramod
+    - reve
+    adaptation:
+    - task_partial
+    - task_full
+    objective:
+    - NCE
+    - CS_SINGLE
+  constants:
+    information_stratum: private_task_declared_input
+  logical_dependencies:
+  - public_donor_no_private_child
+  - transfer_tensor_map
+  panel_rules: []
+  exclude: []
+- id: E_COMPLEMENT
+  datasets:
+  - private_bdf
+  job_kind: staged_train
+  folded: true
+  grid:
+    architecture:
+    - cbramod
+    - reve
+    variant:
+    - residual_pretrained_frozen
+    - residual_pretrained_peft
+    - residual_random_trainable
+    objective:
+    - NCE
+    - CS_SINGLE
+  constants:
+    information_stratum: private_task_declared_input
+    local_architecture: lag_local_tokens
+    output_space: logit
+  logical_dependencies:
+  - private_local_base_same_fold
+  panel_rules: []
+  exclude: []
+- id: E_DISTILL
+  datasets:
+  - private_bdf
+  job_kind: staged_train
+  folded: true
+  grid:
+    student:
+    - lag_local_tokens
+    teacher_policy:
+    - local_teacher
+    - generic_pretrained_teacher
+    - auditory_adapted_teacher
+    - legacy_full_teacher_control
+    window:
+    - early
+    - late
+    - full
+    objective:
+    - NCE
+    - CS_SINGLE
+  constants:
+    information_stratum: local_only
+    distillation_targets: task_output_distribution
+    include_lambda_zero: true
+  logical_dependencies:
+  - teacher_selected_training_only
+  - teacher_target_same_fold
+  panel_rules: []
+  exclude: []
+- id: F_SCIENCE
+  datasets:
+  - fau
+  - dtu
+  - federici
+  - private_bdf
+  job_kind: analysis
+  folded: false
+  grid: {}
+  constants:
+    scope: all_predeclared_main_methods
+    information_stratum: inherited_not_pooled
+    target_contract: inherited_per_source_model_do_not_pool_tasks
+    seed_role: analysis_rng_not_source_training_seed
+  logical_dependencies:
+  - completed_query_predictions
+  - verified_identity_manifest
+  - available_clinical_metadata
+  panel_rules: []
+  exclude: []

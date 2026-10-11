@@ -1,0 +1,7 @@
+# 计划绑定说明
+
+units.jsonl是逻辑比较，不是立即可提交的Slurm命令。每个planned_needs_binding单元需解析真实split/target/candidate、代码版本、输入时间支持、model/teacher/donor来源。
+
+`*_policy`必须在训练侧从预先登记的配置集合解析，保存选择记录，不允许读测试HA/CI/年龄结果。带有两个采样控制或多个支持比例的条目是组合任务，server可拆成独立子单元并保留parent_id，不能把组合任务当一次等成本训练。
+
+旧结果复用只有在合同完全相同时允许；没有相同dense网格时只能作legacy连接，不能标reused_fit。analysis/reevaluation不计为新训练。不要以总行数推算几天完成；先用实际profile与checkpoint复用情况排程。

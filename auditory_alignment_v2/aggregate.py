@@ -7,7 +7,7 @@ family run with 3 seeds, also gets a seed-stability table. Metric definitions ar
 (auditory_alignment.aggregate.unit_rows): gain_bits = logloss(mismatched EEG) - logloss(true EEG), bits per query, same
 candidates and calibration; rank_gain, hard_gain_bits; private head/native AUC and gain over the base rate; history minus twin.
 
-Usage: python -m auditory_alignment_v2.aggregate
+Usage: python -m auditory_alignment_v2.aggregate [--seeds 3401[,3407,3413]]
 Outputs: results/auditory_alignment_v2/aggregate.json (aggregates only), docs/auditory_alignment_v2/FULL_RESULTS.md,
 private/auditory_alignment_v2/agg/participant_table.json (per participant; stays private).
 """
@@ -106,8 +106,13 @@ def cfg_key(row):
     return row["family_id"] + "|" + row["dataset"] + "|" + json.dumps(row["spec"], sort_keys=True)
 
 
+ART = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))  # phantom-head recordings, kept apart (filled by table())
+
+
 def table(plan, recs, seeds):
-    """cfg -> pid -> metric -> mean over the configuration's units; plus counts and group labels."""
+    """cfg -> pid -> metric -> mean over the configuration's units; plus counts and group labels. Federici 'Artifact'
+    (phantom-head) recordings are excluded from the participant table and collected in ART (QC table, section 8)."""
+    ART.clear()
     T = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
     n_units, n_plan, group = Counter(), Counter(), {}
     for row in plan:
@@ -123,6 +128,11 @@ def table(plan, recs, seeds):
         n_units[k] += 1
         for pid, m in rs.items():
             group[(row["dataset"], pid)] = m.get("group")
+            if m.get("group") == "Artifact":  # Federici phantom-head recordings: never pooled with participants (package §7.5)
+                for mm, v in m.items():
+                    if mm != "group" and v is not None and np.isfinite(v):
+                        ART[k][pid][mm].append(v)
+                continue
             for mm, v in m.items():
                 if mm != "group" and v is not None and np.isfinite(v):
                     T[k][pid][mm].append(v)
@@ -167,9 +177,11 @@ def fmt(s, digits=3):
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser(); ap.add_argument("--seeds", default="3401")  # main tables: one seed unless a complete set is named
+    seeds = {int(x) for x in ap.parse_args().seeds.split(",")}
     t0 = time.time()
     plan, scope, recs = load()
-    seeds = set(scope["seeds"])
     P, n_units, n_plan, group = table(plan, recs, seeds)
     os.makedirs(RES, exist_ok=True); os.makedirs(os.path.join(PRIV, "agg"), exist_ok=True)
     json.dump({"participants": P, "groups": {f"{d}|{p}": g for (d, p), g in group.items()}},
@@ -439,6 +451,20 @@ def main():
                         d = [Pd[a][p][m] - Pd[b0][p][m] for p in Pd.get(a, {}) if p in Pd.get(b0, {}) and m in Pd[a][p] and m in Pd[b0][p]]
                         cells.append(fmt(boot(d)) if d else "–")
                     w(f"| {x['architecture']} · {x['adaptation']} | " + " | ".join(cells) + " |")
+    # ---------------------------------------------------------------- phantom-head QC (Federici 'Artifact')
+    P0, _, _, _ = table(plan, recs, seeds)  # refills ART for the main seed scope
+    w("\n## 8. 幻影头质控（Federici Artifact 记录，n≈9；不计入任何参与者结果）\n\n幻影头没有脑活动；这里的正 gain 只能来自与刺激相关的非神经伪迹（如播放设备的电串扰）。"
+      "自 2026-10-10 起所有 Federici 参与者结果都排除这些记录（此前的表把它们计入了均值，见实现回执 §15）。\n")
+    w("| 配置 | Artifact 统一读出 gain | n |\n|---|---|---|")
+    agg["phantom_qc"] = {}
+    for k in sorted(ART, key=lambda k: (k.split("|")[0], k)):
+        x = [r["unified/gain_bits"] for r in {p: {m: float(np.mean(v)) for m, v in ms.items()} for p, ms in ART[k].items()}.values() if "unified/gain_bits" in r]
+        if not x:
+            continue
+        b = boot(x); agg["phantom_qc"][k] = b
+        sp = json.loads(k.split("|", 2)[2])
+        lab = k.split("|")[0] + " · " + " · ".join(str(sp.get(f)) for f in ("architecture", "adaptation", "window", "pairing", "objective") if sp.get(f) is not None)
+        w(f"| {lab} | {fmt(b)} | {b['n']} |")
     # ---------------------------------------------------------------- probe failures (never silent)
     perr = [r["experiment_id"] for r in recs.values() if "channel_probe_error" in r.get("eval", {})]
     agg["channel_probe_errors"] = perr

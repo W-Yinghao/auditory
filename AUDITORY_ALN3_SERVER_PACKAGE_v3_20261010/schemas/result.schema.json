@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "experiment_id",
+    "status",
+    "resolved_code_sha",
+    "plan_hash",
+    "split_hash",
+    "target_contract_hash",
+    "information_stratum",
+    "artifact_lineage",
+    "execution_kind"
+  ],
+  "properties": {
+    "experiment_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "technical_failure",
+        "interrupted",
+        "not_run"
+      ]
+    },
+    "resolved_code_sha": {
+      "type": "string"
+    },
+    "plan_hash": {
+      "type": "string"
+    },
+    "split_hash": {
+      "type": "string"
+    },
+    "target_contract_hash": {
+      "type": "string"
+    },
+    "information_stratum": {
+      "type": "string"
+    },
+    "artifact_lineage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "role",
+          "sha256",
+          "origin"
+        ],
+        "properties": {
+          "role": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "execution_kind": {
+      "enum": [
+        "new_fit",
+        "reused_fit",
+        "reevaluation_only",
+        "aggregation_only",
+        "reference_test"
+      ]
+    },
+    "counts": {
+      "type": "object"
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "failure_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "model_conditional_uncertainty": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "complete"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "counts",
+          "metrics"
+        ]
+      }
+    }
+  ]
+}

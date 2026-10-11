@@ -1,6 +1,6 @@
 # ALN2 全部结果（自动生成；完成情况见第 0 节，未完成的族只含已完成单元）
 
-生成时间：2026-10-10 13:40。范围：seed [3401]（A_TIME 另列 3 seed）。数值为参与者均值及参与者 bootstrap 95% 区间；对比为同一批参与者的配对差。gain = 错配 EEG 的 log loss − 真实 EEG 的 log loss（比特/查询，统一读出 unified 或原生读出 native）。单 seed 不含训练波动；区间以已训练模型为条件。
+生成时间：2026-10-10 23:04。范围：seed [3401]（A_TIME 另列 3 seed）。数值为参与者均值及参与者 bootstrap 95% 区间；对比为同一批参与者的配对差。gain = 错配 EEG 的 log loss − 真实 EEG 的 log loss（比特/查询，统一读出 unified 或原生读出 native）。单 seed 不含训练波动；区间以已训练模型为条件。
 
 ## 0. 完成情况
 
@@ -97,35 +97,35 @@
 
 | 配置 | 单元 | n | unified/gain_bits | native/gain_bits | unified/regular/top1 |
 |---|---|---|---|---|---|
-| density_tokens · early · envelope | 5/5 | 95 | 0.144 [0.106, 0.185] | 0.200 [0.154, 0.250] | 0.009 [0.005, 0.014] |
-| density_tokens · full · envelope | 5/5 | 95 | 0.086 [0.059, 0.113] | 0.147 [0.110, 0.184] | 0.006 [0.003, 0.009] |
-| density_tokens · joint · envelope | 5/5 | 95 | 0.066 [0.044, 0.088] | 0.106 [0.076, 0.140] | 0.007 [0.004, 0.011] |
-| density_tokens · late · envelope | 5/5 | 95 | 0.017 [0.006, 0.029] | 0.042 [0.024, 0.059] | 0.007 [0.004, 0.011] |
-| lag_local_tokens · early · envelope | 5/5 | 95 | 0.223 [0.176, 0.272] | 0.286 [0.229, 0.344] | 0.011 [0.007, 0.015] |
-| lag_local_tokens · full · envelope | 5/5 | 95 | 0.258 [0.213, 0.303] | 0.348 [0.291, 0.409] | 0.012 [0.007, 0.016] |
-| lag_local_tokens · joint · envelope | 5/5 | 95 | 0.258 [0.211, 0.305] | 0.364 [0.304, 0.425] | 0.009 [0.005, 0.014] |
-| lag_local_tokens · late · envelope | 5/5 | 95 | 0.144 [0.115, 0.175] | 0.241 [0.197, 0.289] | 0.008 [0.004, 0.013] |
-| legacy_pool4 · early · envelope | 5/5 | 95 | 0.157 [0.118, 0.199] | 0.220 [0.164, 0.283] | 0.007 [0.004, 0.011] |
-| legacy_pool4 · full · envelope | 5/5 | 95 | 0.086 [0.055, 0.122] | 0.122 [0.082, 0.168] | 0.007 [0.003, 0.010] |
-| legacy_pool4 · joint · envelope | 5/5 | 95 | 0.072 [0.047, 0.098] | 0.118 [0.087, 0.150] | 0.004 [0.002, 0.007] |
-| legacy_pool4 · late · envelope | 5/5 | 95 | 0.037 [0.023, 0.052] | 0.057 [0.039, 0.075] | 0.008 [0.005, 0.012] |
+| density_tokens · early · envelope | 5/5 | 86 | 0.157 [0.117, 0.197] | 0.211 [0.161, 0.260] | 0.009 [0.005, 0.014] |
+| density_tokens · full · envelope | 5/5 | 86 | 0.095 [0.068, 0.124] | 0.162 [0.124, 0.202] | 0.006 [0.003, 0.010] |
+| density_tokens · joint · envelope | 5/5 | 86 | 0.070 [0.047, 0.094] | 0.109 [0.075, 0.144] | 0.007 [0.004, 0.011] |
+| density_tokens · late · envelope | 5/5 | 86 | 0.018 [0.006, 0.032] | 0.044 [0.025, 0.064] | 0.008 [0.004, 0.012] |
+| lag_local_tokens · early · envelope | 5/5 | 86 | 0.233 [0.184, 0.283] | 0.285 [0.230, 0.342] | 0.011 [0.007, 0.016] |
+| lag_local_tokens · full · envelope | 5/5 | 86 | 0.280 [0.235, 0.325] | 0.376 [0.317, 0.436] | 0.012 [0.008, 0.017] |
+| lag_local_tokens · joint · envelope | 5/5 | 86 | 0.276 [0.228, 0.326] | 0.388 [0.324, 0.452] | 0.009 [0.005, 0.014] |
+| lag_local_tokens · late · envelope | 5/5 | 86 | 0.153 [0.122, 0.187] | 0.259 [0.212, 0.309] | 0.008 [0.004, 0.014] |
+| legacy_pool4 · early · envelope | 5/5 | 86 | 0.169 [0.126, 0.212] | 0.234 [0.172, 0.297] | 0.007 [0.003, 0.011] |
+| legacy_pool4 · full · envelope | 5/5 | 86 | 0.093 [0.060, 0.132] | 0.133 [0.090, 0.184] | 0.007 [0.004, 0.011] |
+| legacy_pool4 · joint · envelope | 5/5 | 86 | 0.082 [0.055, 0.110] | 0.130 [0.096, 0.166] | 0.004 [0.002, 0.007] |
+| legacy_pool4 · late · envelope | 5/5 | 86 | 0.039 [0.024, 0.055] | 0.061 [0.041, 0.080] | 0.008 [0.005, 0.012] |
 
 ### A_TIME · federici · CS_SINGLE
 
 | 配置 | 单元 | n | unified/gain_bits | native/gain_bits | unified/regular/top1 |
 |---|---|---|---|---|---|
-| density_tokens · early · envelope | 5/5 | 95 | 0.171 [0.130, 0.211] | 0.001 [0.000, 0.001] | 0.010 [0.006, 0.015] |
-| density_tokens · full · envelope | 5/5 | 95 | 0.150 [0.118, 0.185] | 0.007 [0.005, 0.009] | 0.008 [0.005, 0.013] |
-| density_tokens · joint · envelope | 5/5 | 95 | 0.194 [0.156, 0.233] | 0.003 [0.002, 0.005] | 0.010 [0.006, 0.015] |
-| density_tokens · late · envelope | 5/5 | 95 | 0.044 [0.023, 0.065] | 0.001 [0.000, 0.001] | 0.003 [0.001, 0.005] |
-| lag_local_tokens · early · envelope | 5/5 | 95 | 0.186 [0.142, 0.231] | 0.001 [0.001, 0.001] | 0.008 [0.005, 0.012] |
-| lag_local_tokens · full · envelope | 5/5 | 95 | 0.235 [0.192, 0.276] | 0.007 [0.005, 0.009] | 0.013 [0.008, 0.018] |
-| lag_local_tokens · joint · envelope | 5/5 | 95 | 0.232 [0.191, 0.274] | 0.009 [0.006, 0.012] | 0.011 [0.007, 0.016] |
-| lag_local_tokens · late · envelope | 5/5 | 95 | 0.101 [0.075, 0.128] | 0.001 [0.001, 0.002] | 0.007 [0.004, 0.011] |
-| legacy_pool4 · early · envelope | 5/5 | 95 | 0.197 [0.147, 0.248] | 0.001 [0.000, 0.001] | 0.011 [0.007, 0.016] |
-| legacy_pool4 · full · envelope | 5/5 | 95 | 0.170 [0.137, 0.203] | 0.010 [0.006, 0.013] | 0.010 [0.006, 0.014] |
-| legacy_pool4 · joint · envelope | 5/5 | 95 | 0.169 [0.134, 0.204] | 0.003 [0.002, 0.005] | 0.008 [0.005, 0.012] |
-| legacy_pool4 · late · envelope | 5/5 | 95 | 0.061 [0.041, 0.080] | 0.001 [0.000, 0.001] | 0.006 [0.003, 0.008] |
+| density_tokens · early · envelope | 5/5 | 86 | 0.180 [0.140, 0.222] | 0.001 [0.001, 0.001] | 0.009 [0.005, 0.014] |
+| density_tokens · full · envelope | 5/5 | 86 | 0.155 [0.121, 0.190] | 0.007 [0.005, 0.009] | 0.009 [0.005, 0.014] |
+| density_tokens · joint · envelope | 5/5 | 86 | 0.219 [0.182, 0.258] | 0.004 [0.003, 0.005] | 0.011 [0.006, 0.016] |
+| density_tokens · late · envelope | 5/5 | 86 | 0.049 [0.027, 0.071] | 0.001 [0.000, 0.001] | 0.003 [0.001, 0.005] |
+| lag_local_tokens · early · envelope | 5/5 | 86 | 0.199 [0.156, 0.245] | 0.001 [0.001, 0.001] | 0.009 [0.005, 0.013] |
+| lag_local_tokens · full · envelope | 5/5 | 86 | 0.250 [0.206, 0.293] | 0.007 [0.005, 0.010] | 0.013 [0.008, 0.020] |
+| lag_local_tokens · joint · envelope | 5/5 | 86 | 0.250 [0.210, 0.293] | 0.010 [0.007, 0.013] | 0.012 [0.007, 0.017] |
+| lag_local_tokens · late · envelope | 5/5 | 86 | 0.111 [0.082, 0.139] | 0.001 [0.001, 0.002] | 0.007 [0.003, 0.011] |
+| legacy_pool4 · early · envelope | 5/5 | 86 | 0.218 [0.167, 0.272] | 0.001 [0.001, 0.001] | 0.012 [0.007, 0.017] |
+| legacy_pool4 · full · envelope | 5/5 | 86 | 0.185 [0.152, 0.220] | 0.011 [0.007, 0.015] | 0.010 [0.006, 0.014] |
+| legacy_pool4 · joint · envelope | 5/5 | 86 | 0.186 [0.153, 0.222] | 0.004 [0.003, 0.006] | 0.009 [0.005, 0.013] |
+| legacy_pool4 · late · envelope | 5/5 | 86 | 0.068 [0.048, 0.089] | 0.001 [0.001, 0.001] | 0.006 [0.003, 0.009] |
 
 **配对对比（统一读出 gain，比特）**
 
@@ -175,28 +175,28 @@
 | dtu · CS_SINGLE · lag_local_tokens：joint − full | 0.022 [-0.025, 0.066] | 44 |
 | dtu · CS_SINGLE · lag_local_tokens：joint − early | 0.950 [0.843, 1.066] | 44 |
 | dtu · CS_SINGLE · lag_local_tokens：joint − late | 0.192 [0.141, 0.243] | 44 |
-| federici · NCE · density_tokens − legacy_pool4（完整窗） | -0.001 [-0.041, 0.037] | 95 |
-| federici · NCE · lag_local_tokens − legacy_pool4（完整窗） | 0.171 [0.132, 0.212] | 95 |
-| federici · NCE · legacy_pool4：joint − full | -0.014 [-0.042, 0.013] | 95 |
-| federici · NCE · legacy_pool4：joint − early | -0.085 [-0.115, -0.054] | 95 |
-| federici · NCE · legacy_pool4：joint − late | 0.035 [0.007, 0.063] | 95 |
-| federici · NCE · density_tokens：joint − full | -0.020 [-0.053, 0.012] | 95 |
-| federici · NCE · density_tokens：joint − early | -0.078 [-0.118, -0.041] | 95 |
-| federici · NCE · density_tokens：joint − late | 0.049 [0.027, 0.070] | 95 |
-| federici · NCE · lag_local_tokens：joint − full | 0.000 [-0.025, 0.026] | 95 |
-| federici · NCE · lag_local_tokens：joint − early | 0.035 [-0.008, 0.081] | 95 |
-| federici · NCE · lag_local_tokens：joint − late | 0.114 [0.080, 0.147] | 95 |
-| federici · CS_SINGLE · density_tokens − legacy_pool4（完整窗） | -0.020 [-0.048, 0.008] | 95 |
-| federici · CS_SINGLE · lag_local_tokens − legacy_pool4（完整窗） | 0.064 [0.036, 0.094] | 95 |
-| federici · CS_SINGLE · legacy_pool4：joint − full | -0.001 [-0.031, 0.028] | 95 |
-| federici · CS_SINGLE · legacy_pool4：joint − early | -0.028 [-0.075, 0.017] | 95 |
-| federici · CS_SINGLE · legacy_pool4：joint − late | 0.108 [0.076, 0.139] | 95 |
-| federici · CS_SINGLE · density_tokens：joint − full | 0.044 [0.011, 0.076] | 95 |
-| federici · CS_SINGLE · density_tokens：joint − early | 0.024 [-0.013, 0.060] | 95 |
-| federici · CS_SINGLE · density_tokens：joint − late | 0.151 [0.113, 0.189] | 95 |
-| federici · CS_SINGLE · lag_local_tokens：joint − full | -0.003 [-0.034, 0.029] | 95 |
-| federici · CS_SINGLE · lag_local_tokens：joint − early | 0.045 [0.009, 0.081] | 95 |
-| federici · CS_SINGLE · lag_local_tokens：joint − late | 0.130 [0.097, 0.164] | 95 |
+| federici · NCE · density_tokens − legacy_pool4（完整窗） | 0.002 [-0.043, 0.044] | 86 |
+| federici · NCE · lag_local_tokens − legacy_pool4（完整窗） | 0.186 [0.146, 0.227] | 86 |
+| federici · NCE · legacy_pool4：joint − full | -0.011 [-0.041, 0.018] | 86 |
+| federici · NCE · legacy_pool4：joint − early | -0.087 [-0.122, -0.054] | 86 |
+| federici · NCE · legacy_pool4：joint − late | 0.043 [0.015, 0.072] | 86 |
+| federici · NCE · density_tokens：joint − full | -0.025 [-0.059, 0.010] | 86 |
+| federici · NCE · density_tokens：joint − early | -0.087 [-0.126, -0.046] | 86 |
+| federici · NCE · density_tokens：joint − late | 0.052 [0.029, 0.075] | 86 |
+| federici · NCE · lag_local_tokens：joint − full | -0.004 [-0.031, 0.023] | 86 |
+| federici · NCE · lag_local_tokens：joint − early | 0.043 [-0.006, 0.093] | 86 |
+| federici · NCE · lag_local_tokens：joint − late | 0.123 [0.089, 0.157] | 86 |
+| federici · CS_SINGLE · density_tokens − legacy_pool4（完整窗） | -0.030 [-0.060, -0.000] | 86 |
+| federici · CS_SINGLE · lag_local_tokens − legacy_pool4（完整窗） | 0.064 [0.033, 0.096] | 86 |
+| federici · CS_SINGLE · legacy_pool4：joint − full | 0.001 [-0.032, 0.031] | 86 |
+| federici · CS_SINGLE · legacy_pool4：joint − early | -0.032 [-0.084, 0.016] | 86 |
+| federici · CS_SINGLE · legacy_pool4：joint − late | 0.118 [0.087, 0.150] | 86 |
+| federici · CS_SINGLE · density_tokens：joint − full | 0.064 [0.032, 0.096] | 86 |
+| federici · CS_SINGLE · density_tokens：joint − early | 0.039 [0.002, 0.076] | 86 |
+| federici · CS_SINGLE · density_tokens：joint − late | 0.170 [0.133, 0.209] | 86 |
+| federici · CS_SINGLE · lag_local_tokens：joint − full | 0.000 [-0.035, 0.035] | 86 |
+| federici · CS_SINGLE · lag_local_tokens：joint − early | 0.051 [0.011, 0.089] | 86 |
+| federici · CS_SINGLE · lag_local_tokens：joint − late | 0.139 [0.105, 0.174] | 86 |
 
 ### A_TIME 的 seed 稳定性（3 seed）
 
@@ -303,10 +303,10 @@
 
 | 配置 | 单元 | n | unified/gain_bits | native/gain_bits | unified/regular/top1 |
 |---|---|---|---|---|---|
-| correct · CS_SINGLE · envelope | 5/5 | 95 | 0.150 [0.118, 0.185] | 0.007 [0.005, 0.009] | 0.008 [0.005, 0.013] |
-| correct · NCE · envelope | 5/5 | 95 | 0.086 [0.059, 0.113] | 0.147 [0.110, 0.184] | 0.006 [0.003, 0.009] |
-| declared_wrong_pair · CS_SINGLE · envelope | 5/5 | 95 | 0.026 [0.005, 0.046] | 0.000 [-0.000, 0.000] | 0.004 [0.001, 0.007] |
-| declared_wrong_pair · NCE · envelope | 5/5 | 95 | 0.004 [-0.007, 0.015] | 0.002 [-0.003, 0.008] | 0.003 [0.001, 0.005] |
+| correct · CS_SINGLE · envelope | 5/5 | 86 | 0.155 [0.121, 0.190] | 0.007 [0.005, 0.009] | 0.009 [0.005, 0.014] |
+| correct · NCE · envelope | 5/5 | 86 | 0.095 [0.068, 0.124] | 0.162 [0.124, 0.202] | 0.006 [0.003, 0.010] |
+| declared_wrong_pair · CS_SINGLE · envelope | 5/5 | 86 | 0.037 [0.017, 0.057] | 0.000 [0.000, 0.000] | 0.004 [0.001, 0.006] |
+| declared_wrong_pair · NCE · envelope | 5/5 | 86 | 0.003 [-0.010, 0.015] | 0.003 [-0.003, 0.009] | 0.002 [0.000, 0.004] |
 
 **正确配对 − 错误配对训练（S_CONTROLS，统一读出 gain）**
 
@@ -316,12 +316,12 @@
 | fau · CS_SINGLE · local | 0.570 [0.502, 0.634] | 67 |
 | dtu · NCE · local | 1.471 [1.317, 1.634] | 44 |
 | dtu · CS_SINGLE · local | 1.060 [0.943, 1.173] | 44 |
-| federici · NCE · envelope | 0.082 [0.055, 0.110] | 95 |
-| federici · CS_SINGLE · envelope | 0.124 [0.092, 0.157] | 95 |
+| federici · NCE · envelope | 0.093 [0.064, 0.123] | 86 |
+| federici · CS_SINGLE · envelope | 0.118 [0.086, 0.149] | 86 |
 
 ## 3. B_FM：基础模型（CBraMod / REVE）× 适配方式
 
-> 读出层（修正 A1，实现回执 §11–§12）：保留通道身份与空间对比，由学习的带符号空间滤波器组合，保留 patch 时间轴；另列保留通道的线性探针参照（probe/*）。本节单元的读出层版本：spatial_signed_k8_e32_v1 1420, ? 20。通道平均的旧结果见附录 L，不作为基础模型结论。
+> 读出层（修正 A1，实现回执 §11–§12）：保留通道身份与空间对比，由学习的带符号空间滤波器组合，保留 patch 时间轴；另列保留通道的线性探针参照（probe/*）。本节单元的读出层版本：spatial_signed_k8_e32_v1 1494, ? 22。通道平均的旧结果见附录 L，不作为基础模型结论。
 
 
 ### B_FM · fau · NCE
@@ -392,33 +392,33 @@
 
 | 配置 | 单元 | n | unified/gain_bits | native/gain_bits | unified/regular/top1 | probe/gain_bits |
 |---|---|---|---|---|---|---|
-| cbramod · pretrained_frozen | 5/5 | 95 | 0.005 [0.001, 0.009] | 0.024 [0.014, 0.034] | 0.005 [0.003, 0.009] | 0.011 [0.001, 0.022] |
-| cbramod · pretrained_full | 5/5 | 95 | 0.095 [0.071, 0.119] | 0.082 [0.060, 0.105] | 0.006 [0.003, 0.010] | 0.067 [0.043, 0.091] |
-| cbramod · pretrained_partial | 5/5 | 95 | 0.016 [0.007, 0.026] | 0.033 [0.022, 0.045] | 0.004 [0.001, 0.007] | 0.012 [0.001, 0.023] |
-| cbramod · pretrained_peft | 5/5 | 95 | 0.009 [0.002, 0.016] | 0.043 [0.029, 0.058] | 0.004 [0.002, 0.006] | 0.007 [-0.003, 0.018] |
-| cbramod · random_full | 5/5 | 95 | 0.006 [0.001, 0.012] | 0.009 [0.004, 0.015] | 0.003 [0.001, 0.005] | 0.012 [0.004, 0.021] |
-| reve · pretrained_frozen | 5/5 | 95 | 0.287 [0.230, 0.344] | 0.141 [0.110, 0.172] | 0.009 [0.006, 0.013] | -0.003 [-0.008, 0.001] |
-| reve · pretrained_full | 5/5 | 95 | 0.041 [0.024, 0.058] | 0.019 [0.007, 0.031] | 0.008 [0.004, 0.013] | 0.034 [0.018, 0.049] |
-| reve · pretrained_partial | 5/5 | 95 | 0.086 [0.061, 0.111] | 0.051 [0.034, 0.069] | 0.008 [0.004, 0.013] | 0.072 [0.050, 0.094] |
-| reve · pretrained_peft | 5/5 | 95 | 0.073 [0.055, 0.093] | 0.059 [0.042, 0.076] | 0.004 [0.002, 0.008] | 0.028 [0.014, 0.043] |
-| reve · random_full | 5/5 | 95 | 0.003 [-0.005, 0.010] | 0.003 [-0.002, 0.009] | 0.005 [0.002, 0.007] | -0.000 [-0.011, 0.010] |
-| 参照：A_TIME density_tokens · full · envelope | 5/5 | 95 | 0.086 [0.059, 0.113] | 0.147 [0.110, 0.184] | 0.006 [0.003, 0.009] | – |
+| cbramod · pretrained_frozen | 5/5 | 86 | 0.006 [0.002, 0.010] | 0.028 [0.018, 0.038] | 0.006 [0.003, 0.009] | 0.012 [0.001, 0.024] |
+| cbramod · pretrained_full | 5/5 | 86 | 0.099 [0.073, 0.126] | 0.086 [0.063, 0.113] | 0.006 [0.003, 0.011] | 0.072 [0.047, 0.098] |
+| cbramod · pretrained_partial | 5/5 | 86 | 0.018 [0.008, 0.028] | 0.037 [0.026, 0.049] | 0.004 [0.001, 0.007] | 0.012 [0.001, 0.024] |
+| cbramod · pretrained_peft | 5/5 | 86 | 0.010 [0.002, 0.018] | 0.048 [0.033, 0.065] | 0.004 [0.002, 0.006] | 0.008 [-0.003, 0.020] |
+| cbramod · random_full | 5/5 | 86 | 0.007 [0.001, 0.013] | 0.010 [0.004, 0.016] | 0.002 [0.000, 0.005] | 0.012 [0.003, 0.022] |
+| reve · pretrained_frozen | 5/5 | 86 | 0.314 [0.255, 0.377] | 0.156 [0.125, 0.189] | 0.009 [0.006, 0.014] | -0.003 [-0.008, 0.001] |
+| reve · pretrained_full | 5/5 | 86 | 0.045 [0.026, 0.063] | 0.019 [0.006, 0.032] | 0.008 [0.004, 0.014] | 0.037 [0.020, 0.054] |
+| reve · pretrained_partial | 5/5 | 86 | 0.098 [0.073, 0.123] | 0.060 [0.042, 0.078] | 0.009 [0.004, 0.014] | 0.078 [0.055, 0.102] |
+| reve · pretrained_peft | 5/5 | 86 | 0.079 [0.058, 0.101] | 0.066 [0.048, 0.085] | 0.005 [0.002, 0.008] | 0.030 [0.015, 0.047] |
+| reve · random_full | 5/5 | 86 | 0.003 [-0.005, 0.011] | 0.004 [-0.002, 0.011] | 0.005 [0.003, 0.008] | -0.001 [-0.013, 0.011] |
+| 参照：A_TIME density_tokens · full · envelope | 5/5 | 86 | 0.095 [0.068, 0.124] | 0.162 [0.124, 0.202] | 0.006 [0.003, 0.010] | – |
 
 ### B_FM · federici · CS_SINGLE
 
 | 配置 | 单元 | n | unified/gain_bits | native/gain_bits | unified/regular/top1 | probe/gain_bits |
 |---|---|---|---|---|---|---|
-| cbramod · pretrained_frozen | 5/5 | 95 | 0.000 [-0.001, 0.002] | -0.000 [-0.001, 0.001] | 0.003 [0.002, 0.005] | 0.011 [0.001, 0.022] |
-| cbramod · pretrained_full | 5/5 | 95 | 0.002 [-0.003, 0.007] | 0.001 [-0.001, 0.002] | 0.004 [0.002, 0.007] | 0.006 [-0.004, 0.016] |
-| cbramod · pretrained_partial | 5/5 | 95 | 0.004 [0.001, 0.007] | 0.000 [-0.000, 0.001] | 0.003 [0.001, 0.005] | 0.003 [-0.005, 0.012] |
-| cbramod · pretrained_peft | 5/5 | 95 | -0.005 [-0.009, -0.000] | -0.000 [-0.001, 0.001] | 0.002 [0.000, 0.005] | 0.014 [-0.000, 0.027] |
-| cbramod · random_full | 5/5 | 95 | 0.002 [-0.001, 0.006] | 0.000 [-0.000, 0.001] | 0.003 [0.001, 0.006] | -0.006 [-0.015, 0.003] |
-| reve · pretrained_frozen | 5/5 | 95 | 0.097 [0.058, 0.139] | 0.032 [0.015, 0.049] | 0.006 [0.003, 0.010] | -0.003 [-0.008, 0.001] |
-| reve · pretrained_full | 5/5 | 95 | 0.035 [0.020, 0.050] | 0.030 [0.018, 0.043] | 0.005 [0.003, 0.008] | 0.026 [0.013, 0.040] |
-| reve · pretrained_partial | 5/5 | 95 | 0.040 [0.021, 0.060] | 0.036 [0.022, 0.050] | 0.006 [0.003, 0.009] | 0.024 [0.011, 0.038] |
-| reve · pretrained_peft | 5/5 | 95 | 0.074 [0.046, 0.104] | 0.030 [0.016, 0.045] | 0.004 [0.002, 0.007] | 0.053 [0.032, 0.075] |
-| reve · random_full | 5/5 | 95 | 0.006 [-0.001, 0.013] | 0.000 [-0.000, 0.001] | 0.004 [0.002, 0.007] | 0.001 [-0.008, 0.010] |
-| 参照：A_TIME density_tokens · full · envelope | 5/5 | 95 | 0.150 [0.118, 0.185] | 0.007 [0.005, 0.009] | 0.008 [0.005, 0.013] | – |
+| cbramod · pretrained_frozen | 5/5 | 86 | 0.001 [-0.001, 0.002] | -0.000 [-0.001, 0.001] | 0.003 [0.001, 0.005] | 0.012 [0.001, 0.024] |
+| cbramod · pretrained_full | 5/5 | 86 | 0.003 [-0.003, 0.008] | 0.001 [-0.001, 0.003] | 0.005 [0.002, 0.008] | 0.007 [-0.003, 0.018] |
+| cbramod · pretrained_partial | 5/5 | 86 | 0.004 [0.001, 0.007] | 0.000 [-0.001, 0.001] | 0.003 [0.001, 0.005] | 0.005 [-0.004, 0.013] |
+| cbramod · pretrained_peft | 5/5 | 86 | -0.006 [-0.011, -0.001] | -0.000 [-0.001, 0.000] | 0.002 [0.000, 0.005] | 0.015 [-0.001, 0.030] |
+| cbramod · random_full | 5/5 | 86 | 0.002 [-0.002, 0.006] | 0.000 [-0.000, 0.001] | 0.003 [0.001, 0.006] | -0.007 [-0.018, 0.002] |
+| reve · pretrained_frozen | 5/5 | 86 | 0.107 [0.065, 0.149] | 0.036 [0.018, 0.053] | 0.007 [0.003, 0.010] | -0.003 [-0.008, 0.001] |
+| reve · pretrained_full | 5/5 | 86 | 0.038 [0.022, 0.054] | 0.033 [0.020, 0.047] | 0.005 [0.002, 0.008] | 0.028 [0.014, 0.044] |
+| reve · pretrained_partial | 5/5 | 86 | 0.045 [0.025, 0.065] | 0.041 [0.027, 0.055] | 0.006 [0.003, 0.009] | 0.026 [0.011, 0.040] |
+| reve · pretrained_peft | 5/5 | 86 | 0.078 [0.047, 0.110] | 0.033 [0.018, 0.048] | 0.004 [0.001, 0.007] | 0.056 [0.032, 0.079] |
+| reve · random_full | 5/5 | 86 | 0.007 [-0.001, 0.014] | 0.000 [-0.000, 0.001] | 0.005 [0.002, 0.008] | 0.003 [-0.007, 0.013] |
+| 参照：A_TIME density_tokens · full · envelope | 5/5 | 86 | 0.155 [0.121, 0.190] | 0.007 [0.005, 0.009] | 0.009 [0.005, 0.014] | – |
 
 **配对对比（统一读出 gain）**
 
@@ -496,42 +496,42 @@
 | dtu · CS_SINGLE · cbramod pretrained_full − 小编码器 density_tokens（完整窗） | -1.309 [-1.423, -1.195] | 44 |
 | dtu · CS_SINGLE · reve：pretrained_full − random_full | 0.011 [-0.015, 0.036] | 44 |
 | dtu · CS_SINGLE · reve pretrained_full − 小编码器 density_tokens（完整窗） | -1.292 [-1.410, -1.176] | 44 |
-| federici · NCE · cbramod random_full − 小编码器 density_tokens（完整窗） | -0.079 [-0.106, -0.052] | 95 |
-| federici · NCE · reve random_full − 小编码器 density_tokens（完整窗） | -0.083 [-0.110, -0.056] | 95 |
-| federici · NCE · cbramod：pretrained_frozen − random_full | -0.002 [-0.009, 0.005] | 95 |
-| federici · NCE · cbramod pretrained_frozen − 小编码器 density_tokens（完整窗） | -0.081 [-0.108, -0.055] | 95 |
-| federici · NCE · reve：pretrained_frozen − random_full | 0.284 [0.228, 0.342] | 95 |
-| federici · NCE · reve pretrained_frozen − 小编码器 density_tokens（完整窗） | 0.201 [0.149, 0.258] | 95 |
-| federici · NCE · cbramod：pretrained_peft − random_full | 0.002 [-0.006, 0.011] | 95 |
-| federici · NCE · cbramod pretrained_peft − 小编码器 density_tokens（完整窗） | -0.077 [-0.104, -0.050] | 95 |
-| federici · NCE · reve：pretrained_peft − random_full | 0.071 [0.052, 0.091] | 95 |
-| federici · NCE · reve pretrained_peft − 小编码器 density_tokens（完整窗） | -0.012 [-0.038, 0.014] | 95 |
-| federici · NCE · cbramod：pretrained_partial − random_full | 0.010 [-0.001, 0.020] | 95 |
-| federici · NCE · cbramod pretrained_partial − 小编码器 density_tokens（完整窗） | -0.069 [-0.096, -0.042] | 95 |
-| federici · NCE · reve：pretrained_partial − random_full | 0.083 [0.058, 0.110] | 95 |
-| federici · NCE · reve pretrained_partial − 小编码器 density_tokens（完整窗） | 0.000 [-0.034, 0.035] | 95 |
-| federici · NCE · cbramod：pretrained_full − random_full | 0.088 [0.065, 0.112] | 95 |
-| federici · NCE · cbramod pretrained_full − 小编码器 density_tokens（完整窗） | 0.009 [-0.023, 0.039] | 95 |
-| federici · NCE · reve：pretrained_full − random_full | 0.039 [0.021, 0.056] | 95 |
-| federici · NCE · reve pretrained_full − 小编码器 density_tokens（完整窗） | -0.044 [-0.074, -0.015] | 95 |
-| federici · CS_SINGLE · cbramod random_full − 小编码器 density_tokens（完整窗） | -0.148 [-0.182, -0.116] | 95 |
-| federici · CS_SINGLE · reve random_full − 小编码器 density_tokens（完整窗） | -0.145 [-0.179, -0.114] | 95 |
-| federici · CS_SINGLE · cbramod：pretrained_frozen − random_full | -0.002 [-0.006, 0.002] | 95 |
-| federici · CS_SINGLE · cbramod pretrained_frozen − 小编码器 density_tokens（完整窗） | -0.150 [-0.184, -0.118] | 95 |
-| federici · CS_SINGLE · reve：pretrained_frozen − random_full | 0.091 [0.053, 0.134] | 95 |
-| federici · CS_SINGLE · reve pretrained_frozen − 小编码器 density_tokens（完整窗） | -0.054 [-0.102, -0.008] | 95 |
-| federici · CS_SINGLE · cbramod：pretrained_peft − random_full | -0.007 [-0.014, -0.001] | 95 |
-| federici · CS_SINGLE · cbramod pretrained_peft − 小编码器 density_tokens（完整窗） | -0.155 [-0.189, -0.123] | 95 |
-| federici · CS_SINGLE · reve：pretrained_peft − random_full | 0.068 [0.039, 0.100] | 95 |
-| federici · CS_SINGLE · reve pretrained_peft − 小编码器 density_tokens（完整窗） | -0.077 [-0.119, -0.036] | 95 |
-| federici · CS_SINGLE · cbramod：pretrained_partial − random_full | 0.002 [-0.003, 0.006] | 95 |
-| federici · CS_SINGLE · cbramod pretrained_partial − 小编码器 density_tokens（完整窗） | -0.147 [-0.180, -0.114] | 95 |
-| federici · CS_SINGLE · reve：pretrained_partial − random_full | 0.034 [0.015, 0.055] | 95 |
-| federici · CS_SINGLE · reve pretrained_partial − 小编码器 density_tokens（完整窗） | -0.110 [-0.149, -0.075] | 95 |
-| federici · CS_SINGLE · cbramod：pretrained_full − random_full | -0.000 [-0.005, 0.005] | 95 |
-| federici · CS_SINGLE · cbramod pretrained_full − 小编码器 density_tokens（完整窗） | -0.148 [-0.182, -0.116] | 95 |
-| federici · CS_SINGLE · reve：pretrained_full − random_full | 0.029 [0.013, 0.046] | 95 |
-| federici · CS_SINGLE · reve pretrained_full − 小编码器 density_tokens（完整窗） | -0.116 [-0.153, -0.081] | 95 |
+| federici · NCE · cbramod random_full − 小编码器 density_tokens（完整窗） | -0.089 [-0.118, -0.061] | 86 |
+| federici · NCE · reve random_full − 小编码器 density_tokens（完整窗） | -0.092 [-0.120, -0.064] | 86 |
+| federici · NCE · cbramod：pretrained_frozen − random_full | -0.001 [-0.008, 0.006] | 86 |
+| federici · NCE · cbramod pretrained_frozen − 小编码器 density_tokens（完整窗） | -0.090 [-0.119, -0.063] | 86 |
+| federici · NCE · reve：pretrained_frozen − random_full | 0.311 [0.253, 0.374] | 86 |
+| federici · NCE · reve pretrained_frozen − 小编码器 density_tokens（完整窗） | 0.219 [0.160, 0.282] | 86 |
+| federici · NCE · cbramod：pretrained_peft − random_full | 0.003 [-0.006, 0.013] | 86 |
+| federici · NCE · cbramod pretrained_peft − 小编码器 density_tokens（完整窗） | -0.085 [-0.114, -0.058] | 86 |
+| federici · NCE · reve：pretrained_peft − random_full | 0.076 [0.055, 0.098] | 86 |
+| federici · NCE · reve pretrained_peft − 小编码器 density_tokens（完整窗） | -0.016 [-0.044, 0.013] | 86 |
+| federici · NCE · cbramod：pretrained_partial − random_full | 0.011 [-0.000, 0.023] | 86 |
+| federici · NCE · cbramod pretrained_partial − 小编码器 density_tokens（完整窗） | -0.077 [-0.106, -0.050] | 86 |
+| federici · NCE · reve：pretrained_partial − random_full | 0.095 [0.068, 0.121] | 86 |
+| federici · NCE · reve pretrained_partial − 小编码器 density_tokens（完整窗） | 0.003 [-0.034, 0.039] | 86 |
+| federici · NCE · cbramod：pretrained_full − random_full | 0.093 [0.067, 0.119] | 86 |
+| federici · NCE · cbramod pretrained_full − 小编码器 density_tokens（完整窗） | 0.004 [-0.029, 0.037] | 86 |
+| federici · NCE · reve：pretrained_full − random_full | 0.041 [0.023, 0.061] | 86 |
+| federici · NCE · reve pretrained_full − 小编码器 density_tokens（完整窗） | -0.051 [-0.081, -0.020] | 86 |
+| federici · CS_SINGLE · cbramod random_full − 小编码器 density_tokens（完整窗） | -0.153 [-0.187, -0.119] | 86 |
+| federici · CS_SINGLE · reve random_full − 小编码器 density_tokens（完整窗） | -0.148 [-0.182, -0.114] | 86 |
+| federici · CS_SINGLE · cbramod：pretrained_frozen − random_full | -0.002 [-0.006, 0.002] | 86 |
+| federici · CS_SINGLE · cbramod pretrained_frozen − 小编码器 density_tokens（完整窗） | -0.155 [-0.189, -0.121] | 86 |
+| federici · CS_SINGLE · reve：pretrained_frozen − random_full | 0.100 [0.057, 0.143] | 86 |
+| federici · CS_SINGLE · reve pretrained_frozen − 小编码器 density_tokens（完整窗） | -0.049 [-0.097, 0.000] | 86 |
+| federici · CS_SINGLE · cbramod：pretrained_peft − random_full | -0.008 [-0.015, -0.002] | 86 |
+| federici · CS_SINGLE · cbramod pretrained_peft − 小编码器 density_tokens（完整窗） | -0.161 [-0.196, -0.127] | 86 |
+| federici · CS_SINGLE · reve：pretrained_peft − random_full | 0.071 [0.039, 0.105] | 86 |
+| federici · CS_SINGLE · reve pretrained_peft − 小编码器 density_tokens（完整窗） | -0.077 [-0.121, -0.035] | 86 |
+| federici · CS_SINGLE · cbramod：pretrained_partial − random_full | 0.002 [-0.004, 0.007] | 86 |
+| federici · CS_SINGLE · cbramod pretrained_partial − 小编码器 density_tokens（完整窗） | -0.151 [-0.185, -0.117] | 86 |
+| federici · CS_SINGLE · reve：pretrained_partial − random_full | 0.038 [0.017, 0.060] | 86 |
+| federici · CS_SINGLE · reve pretrained_partial − 小编码器 density_tokens（完整窗） | -0.110 [-0.146, -0.073] | 86 |
+| federici · CS_SINGLE · cbramod：pretrained_full − random_full | 0.000 [-0.006, 0.007] | 86 |
+| federici · CS_SINGLE · cbramod pretrained_full − 小编码器 density_tokens（完整窗） | -0.153 [-0.187, -0.119] | 86 |
+| federici · CS_SINGLE · reve：pretrained_full − random_full | 0.031 [0.013, 0.049] | 86 |
+| federici · CS_SINGLE · reve pretrained_full − 小编码器 density_tokens（完整窗） | -0.117 [-0.155, -0.080] | 86 |
 
 ## 3b. B_AUDITORY_CONTINUE：公开听觉配对数据上继续训练的主干（donor 不含目标队列）
 
@@ -885,25 +885,25 @@
 
 | 架构 · 适配 | seed 3401 | seed 3407 | seed 3413 | 跨 seed 均值 | 跨 seed SD |
 |---|---|---|---|---|---|
-| cbramod · pretrained_frozen | 0.005 [0.001, 0.009] | 0.007 [0.001, 0.012] | 0.003 [-0.002, 0.009] | 0.005 | 0.002 |
-| cbramod · pretrained_full | 0.095 [0.071, 0.119] | 0.055 [0.036, 0.075] | 0.060 [0.041, 0.079] | 0.070 | 0.022 |
-| cbramod · pretrained_peft | 0.009 [0.002, 0.016] | 0.006 [-0.003, 0.016] | 0.006 [-0.000, 0.012] | 0.007 | 0.002 |
-| cbramod · random_full | 0.006 [0.001, 0.012] | 0.001 [-0.001, 0.002] | 0.000 [-0.003, 0.003] | 0.002 | 0.004 |
-| reve · pretrained_frozen | 0.287 [0.230, 0.344] | 0.248 [0.206, 0.292] | 0.246 [0.201, 0.289] | 0.260 | 0.023 |
-| reve · pretrained_full | 0.041 [0.024, 0.058] | 0.076 [0.056, 0.097] | 0.061 [0.040, 0.081] | 0.059 | 0.017 |
-| reve · pretrained_peft | 0.073 [0.055, 0.093] | 0.041 [0.023, 0.059] | 0.047 [0.034, 0.061] | 0.054 | 0.017 |
-| reve · random_full | 0.003 [-0.005, 0.010] | -0.000 [-0.003, 0.002] | 0.004 [-0.002, 0.010] | 0.002 | 0.002 |
+| cbramod · pretrained_frozen | 0.006 [0.002, 0.010] | 0.008 [0.002, 0.013] | 0.003 [-0.002, 0.010] | 0.006 | 0.002 |
+| cbramod · pretrained_full | 0.099 [0.073, 0.126] | 0.059 [0.039, 0.080] | 0.065 [0.045, 0.086] | 0.075 | 0.022 |
+| cbramod · pretrained_peft | 0.010 [0.002, 0.018] | 0.007 [-0.003, 0.017] | 0.006 [-0.000, 0.012] | 0.008 | 0.002 |
+| cbramod · random_full | 0.007 [0.001, 0.013] | 0.001 [-0.001, 0.002] | 0.000 [-0.003, 0.004] | 0.002 | 0.004 |
+| reve · pretrained_frozen | 0.314 [0.255, 0.377] | 0.270 [0.226, 0.314] | 0.261 [0.215, 0.306] | 0.282 | 0.029 |
+| reve · pretrained_full | 0.045 [0.026, 0.063] | 0.082 [0.060, 0.103] | 0.064 [0.042, 0.085] | 0.063 | 0.019 |
+| reve · pretrained_peft | 0.079 [0.058, 0.101] | 0.046 [0.027, 0.064] | 0.051 [0.037, 0.066] | 0.059 | 0.018 |
+| reve · random_full | 0.003 [-0.005, 0.011] | 0.000 [-0.003, 0.003] | 0.004 [-0.002, 0.011] | 0.003 | 0.002 |
 
 预训练 − 随机初始化（配对，unified/gain_bits），按 seed：
 
 | 架构 · 适配 | seed 3401 | seed 3407 | seed 3413 |
 |---|---|---|---|
-| cbramod · pretrained_frozen | -0.002 [-0.009, 0.005] | 0.006 [0.000, 0.011] | 0.003 [-0.002, 0.010] |
-| cbramod · pretrained_full | 0.088 [0.065, 0.112] | 0.055 [0.035, 0.074] | 0.060 [0.041, 0.079] |
-| cbramod · pretrained_peft | 0.002 [-0.006, 0.011] | 0.005 [-0.003, 0.015] | 0.006 [-0.001, 0.012] |
-| reve · pretrained_frozen | 0.284 [0.228, 0.342] | 0.248 [0.206, 0.292] | 0.242 [0.199, 0.284] |
-| reve · pretrained_full | 0.039 [0.021, 0.056] | 0.076 [0.055, 0.097] | 0.057 [0.037, 0.077] |
-| reve · pretrained_peft | 0.071 [0.052, 0.091] | 0.041 [0.023, 0.059] | 0.043 [0.031, 0.056] |
+| cbramod · pretrained_frozen | -0.001 [-0.008, 0.006] | 0.007 [0.001, 0.013] | 0.003 [-0.003, 0.010] |
+| cbramod · pretrained_full | 0.093 [0.067, 0.119] | 0.059 [0.039, 0.079] | 0.065 [0.045, 0.086] |
+| cbramod · pretrained_peft | 0.003 [-0.006, 0.013] | 0.006 [-0.004, 0.016] | 0.006 [-0.001, 0.013] |
+| reve · pretrained_frozen | 0.311 [0.253, 0.374] | 0.270 [0.226, 0.314] | 0.257 [0.211, 0.302] |
+| reve · pretrained_full | 0.041 [0.023, 0.061] | 0.082 [0.059, 0.104] | 0.059 [0.038, 0.081] |
+| reve · pretrained_peft | 0.076 [0.055, 0.098] | 0.045 [0.027, 0.064] | 0.047 [0.033, 0.061] |
 
 ### D_FM_GENERIC · private_bdf · NCE（head_auc）
 
@@ -928,6 +928,61 @@
 | reve · pretrained_frozen | 0.010 [0.002, 0.018] | 0.012 [0.002, 0.022] | 0.003 [-0.006, 0.013] |
 | reve · pretrained_full | -0.007 [-0.016, 0.001] | 0.004 [-0.005, 0.013] | -0.006 [-0.016, 0.003] |
 | reve · pretrained_peft | 0.001 [-0.007, 0.009] | -0.001 [-0.009, 0.008] | -0.005 [-0.014, 0.004] |
+
+## 8. 幻影头质控（Federici Artifact 记录，n≈9；不计入任何参与者结果）
+
+幻影头没有脑活动；这里的正 gain 只能来自与刺激相关的非神经伪迹（如播放设备的电串扰）。自 2026-10-10 起所有 Federici 参与者结果都排除这些记录（此前的表把它们计入了均值，见实现回执 §15）。
+
+| 配置 | Artifact 统一读出 gain | n |
+|---|---|---|
+| A_TIME · density_tokens · early · CS_SINGLE | 0.082 [-0.030, 0.216] | 9 |
+| A_TIME · density_tokens · full · CS_SINGLE | 0.106 [-0.006, 0.237] | 9 |
+| A_TIME · density_tokens · joint · CS_SINGLE | -0.037 [-0.123, 0.066] | 9 |
+| A_TIME · density_tokens · late · CS_SINGLE | -0.004 [-0.033, 0.024] | 9 |
+| A_TIME · density_tokens · early · NCE | 0.021 [-0.085, 0.126] | 9 |
+| A_TIME · density_tokens · full · NCE | -0.007 [-0.036, 0.020] | 9 |
+| A_TIME · density_tokens · joint · NCE | 0.021 [-0.009, 0.052] | 9 |
+| A_TIME · density_tokens · late · NCE | 0.004 [-0.005, 0.013] | 9 |
+| A_TIME · lag_local_tokens · early · CS_SINGLE | 0.067 [-0.054, 0.217] | 9 |
+| A_TIME · lag_local_tokens · full · CS_SINGLE | 0.093 [-0.041, 0.234] | 9 |
+| A_TIME · lag_local_tokens · joint · CS_SINGLE | 0.059 [-0.066, 0.201] | 9 |
+| A_TIME · lag_local_tokens · late · CS_SINGLE | 0.009 [-0.021, 0.041] | 9 |
+| A_TIME · lag_local_tokens · early · NCE | 0.126 [-0.031, 0.291] | 9 |
+| A_TIME · lag_local_tokens · full · NCE | 0.049 [-0.057, 0.170] | 9 |
+| A_TIME · lag_local_tokens · joint · NCE | 0.087 [-0.064, 0.229] | 9 |
+| A_TIME · lag_local_tokens · late · NCE | 0.057 [0.005, 0.121] | 9 |
+| A_TIME · legacy_pool4 · early · CS_SINGLE | -0.006 [-0.096, 0.099] | 9 |
+| A_TIME · legacy_pool4 · full · CS_SINGLE | 0.027 [-0.065, 0.125] | 9 |
+| A_TIME · legacy_pool4 · joint · CS_SINGLE | 0.006 [-0.084, 0.112] | 9 |
+| A_TIME · legacy_pool4 · late · CS_SINGLE | -0.006 [-0.023, 0.009] | 9 |
+| A_TIME · legacy_pool4 · early · NCE | 0.040 [-0.057, 0.138] | 9 |
+| A_TIME · legacy_pool4 · full · NCE | 0.019 [-0.017, 0.061] | 9 |
+| A_TIME · legacy_pool4 · joint · NCE | -0.023 [-0.059, 0.019] | 9 |
+| A_TIME · legacy_pool4 · late · NCE | 0.024 [-0.001, 0.051] | 9 |
+| B_FM · cbramod · pretrained_frozen · full_context · CS_SINGLE | 0.000 [-0.001, 0.001] | 9 |
+| B_FM · cbramod · pretrained_frozen · full_context · NCE | -0.002 [-0.006, 0.001] | 9 |
+| B_FM · reve · pretrained_frozen · full_context · CS_SINGLE | 0.006 [-0.039, 0.049] | 9 |
+| B_FM · reve · pretrained_frozen · full_context · NCE | 0.025 [-0.081, 0.123] | 9 |
+| B_FM · cbramod · pretrained_full · full_context · CS_SINGLE | -0.001 [-0.010, 0.007] | 9 |
+| B_FM · cbramod · pretrained_full · full_context · NCE | 0.049 [0.013, 0.085] | 9 |
+| B_FM · reve · pretrained_full · full_context · CS_SINGLE | 0.005 [-0.010, 0.019] | 9 |
+| B_FM · reve · pretrained_full · full_context · NCE | 0.009 [-0.018, 0.037] | 9 |
+| B_FM · cbramod · pretrained_partial · full_context · CS_SINGLE | 0.004 [-0.001, 0.009] | 9 |
+| B_FM · cbramod · pretrained_partial · full_context · NCE | 0.001 [-0.013, 0.013] | 9 |
+| B_FM · reve · pretrained_partial · full_context · CS_SINGLE | -0.009 [-0.032, 0.011] | 9 |
+| B_FM · reve · pretrained_partial · full_context · NCE | -0.032 [-0.063, -0.003] | 9 |
+| B_FM · cbramod · pretrained_peft · full_context · CS_SINGLE | 0.007 [-0.002, 0.016] | 9 |
+| B_FM · cbramod · pretrained_peft · full_context · NCE | -0.001 [-0.008, 0.008] | 9 |
+| B_FM · reve · pretrained_peft · full_context · CS_SINGLE | 0.033 [-0.025, 0.083] | 9 |
+| B_FM · reve · pretrained_peft · full_context · NCE | 0.017 [-0.009, 0.041] | 9 |
+| B_FM · cbramod · random_full · full_context · CS_SINGLE | 0.004 [-0.002, 0.010] | 9 |
+| B_FM · cbramod · random_full · full_context · NCE | 0.006 [0.002, 0.011] | 9 |
+| B_FM · reve · random_full · full_context · CS_SINGLE | -0.006 [-0.013, 0.000] | 9 |
+| B_FM · reve · random_full · full_context · NCE | -0.002 [-0.009, 0.005] | 9 |
+| S_CONTROLS · density_tokens · full · correct · CS_SINGLE | 0.106 [-0.006, 0.237] | 9 |
+| S_CONTROLS · density_tokens · full · declared_wrong_pair · CS_SINGLE | -0.080 [-0.122, -0.035] | 9 |
+| S_CONTROLS · density_tokens · full · correct · NCE | -0.007 [-0.036, 0.020] | 9 |
+| S_CONTROLS · density_tokens · full · declared_wrong_pair · NCE | 0.013 [-0.004, 0.029] | 9 |
 
 探针参照出错的单元：0。
 
@@ -1001,31 +1056,31 @@
 
 | 配置 | 单元 | n | unified/gain_bits | native/gain_bits | unified/regular/top1 |
 |---|---|---|---|---|---|
-| cbramod · pretrained_frozen | 5/5 | 95 | 0.001 [-0.005, 0.008] | 0.001 [-0.000, 0.002] | 0.005 [0.003, 0.009] |
-| cbramod · pretrained_full | 5/5 | 95 | 0.028 [0.017, 0.039] | 0.031 [0.021, 0.041] | 0.005 [0.002, 0.007] |
-| cbramod · pretrained_partial | 5/5 | 95 | 0.019 [0.008, 0.030] | 0.011 [0.006, 0.015] | 0.005 [0.003, 0.008] |
-| cbramod · pretrained_peft | 5/5 | 95 | 0.004 [-0.003, 0.011] | 0.008 [0.002, 0.015] | 0.004 [0.001, 0.007] |
-| cbramod · random_full | 5/5 | 95 | -0.001 [-0.004, 0.002] | 0.000 [-0.001, 0.001] | 0.005 [0.002, 0.009] |
-| reve · pretrained_frozen | 5/5 | 95 | 0.001 [-0.002, 0.003] | 0.008 [0.003, 0.014] | 0.004 [0.001, 0.007] |
-| reve · pretrained_full | 5/5 | 95 | 0.018 [0.010, 0.025] | 0.023 [0.011, 0.035] | 0.004 [0.002, 0.006] |
-| reve · pretrained_partial | 5/5 | 95 | 0.075 [0.054, 0.095] | 0.060 [0.042, 0.078] | 0.007 [0.003, 0.012] |
-| reve · pretrained_peft | 5/5 | 95 | 0.103 [0.075, 0.130] | 0.086 [0.060, 0.111] | 0.007 [0.004, 0.011] |
-| reve · random_full | 4/5 | 78 | 0.003 [-0.001, 0.008] | 0.004 [0.000, 0.008] | 0.005 [0.002, 0.008] |
+| cbramod · pretrained_frozen | 5/5 | 86 | 0.001 [-0.006, 0.008] | 0.001 [-0.000, 0.002] | 0.006 [0.003, 0.009] |
+| cbramod · pretrained_full | 5/5 | 86 | 0.026 [0.014, 0.038] | 0.032 [0.021, 0.043] | 0.005 [0.002, 0.007] |
+| cbramod · pretrained_partial | 5/5 | 86 | 0.017 [0.005, 0.030] | 0.010 [0.005, 0.015] | 0.005 [0.002, 0.008] |
+| cbramod · pretrained_peft | 5/5 | 86 | 0.004 [-0.004, 0.011] | 0.008 [0.001, 0.015] | 0.004 [0.001, 0.007] |
+| cbramod · random_full | 5/5 | 86 | -0.001 [-0.005, 0.002] | -0.000 [-0.001, 0.001] | 0.005 [0.002, 0.009] |
+| reve · pretrained_frozen | 5/5 | 86 | 0.001 [-0.002, 0.004] | 0.010 [0.004, 0.016] | 0.004 [0.001, 0.008] |
+| reve · pretrained_full | 5/5 | 86 | 0.018 [0.010, 0.027] | 0.023 [0.010, 0.036] | 0.004 [0.002, 0.006] |
+| reve · pretrained_partial | 5/5 | 86 | 0.079 [0.057, 0.101] | 0.063 [0.044, 0.083] | 0.007 [0.002, 0.012] |
+| reve · pretrained_peft | 5/5 | 86 | 0.110 [0.082, 0.139] | 0.094 [0.067, 0.120] | 0.007 [0.003, 0.012] |
+| reve · random_full | 4/5 | 69 | 0.003 [-0.001, 0.008] | 0.004 [-0.000, 0.009] | 0.005 [0.002, 0.008] |
 
 ### L · B_FM · federici · CS_SINGLE
 
 | 配置 | 单元 | n | unified/gain_bits | native/gain_bits | unified/regular/top1 |
 |---|---|---|---|---|---|
-| cbramod · pretrained_frozen | 5/5 | 95 | 0.004 [-0.002, 0.010] | 0.000 [-0.000, 0.000] | 0.003 [0.001, 0.005] |
-| cbramod · pretrained_full | 5/5 | 95 | -0.000 [-0.006, 0.005] | -0.000 [-0.001, 0.000] | 0.003 [0.001, 0.006] |
-| cbramod · pretrained_partial | 5/5 | 95 | 0.001 [-0.003, 0.005] | -0.000 [-0.001, 0.001] | 0.003 [0.001, 0.005] |
-| cbramod · pretrained_peft | 5/5 | 95 | -0.002 [-0.007, 0.004] | 0.000 [-0.000, 0.000] | 0.002 [0.000, 0.003] |
-| cbramod · random_full | 5/5 | 95 | 0.003 [-0.003, 0.008] | 0.000 [-0.000, 0.001] | 0.004 [0.001, 0.007] |
-| reve · pretrained_frozen | 5/5 | 95 | 0.000 [-0.000, 0.000] | 0.000 [-0.000, 0.000] | 0.005 [0.002, 0.008] |
-| reve · pretrained_full | 5/5 | 95 | 0.004 [-0.001, 0.008] | 0.000 [-0.001, 0.001] | 0.003 [0.001, 0.005] |
-| reve · pretrained_partial | 5/5 | 95 | 0.015 [0.008, 0.023] | 0.010 [0.004, 0.016] | 0.006 [0.003, 0.010] |
-| reve · pretrained_peft | 5/5 | 95 | 0.152 [0.116, 0.188] | 0.054 [0.042, 0.065] | 0.005 [0.002, 0.008] |
-| reve · random_full | 5/5 | 95 | -0.000 [-0.003, 0.003] | -0.000 [-0.001, 0.001] | 0.003 [0.001, 0.005] |
+| cbramod · pretrained_frozen | 5/5 | 86 | 0.004 [-0.002, 0.011] | 0.000 [-0.000, 0.000] | 0.003 [0.001, 0.005] |
+| cbramod · pretrained_full | 5/5 | 86 | -0.001 [-0.007, 0.004] | -0.000 [-0.001, 0.000] | 0.003 [0.001, 0.006] |
+| cbramod · pretrained_partial | 5/5 | 86 | 0.001 [-0.004, 0.005] | 0.000 [-0.001, 0.002] | 0.003 [0.001, 0.005] |
+| cbramod · pretrained_peft | 5/5 | 86 | -0.003 [-0.009, 0.004] | -0.000 [-0.000, 0.000] | 0.001 [0.000, 0.003] |
+| cbramod · random_full | 5/5 | 86 | 0.003 [-0.004, 0.009] | 0.000 [-0.001, 0.001] | 0.004 [0.001, 0.008] |
+| reve · pretrained_frozen | 5/5 | 86 | 0.000 [-0.000, 0.000] | 0.000 [-0.000, 0.000] | 0.005 [0.002, 0.008] |
+| reve · pretrained_full | 5/5 | 86 | 0.004 [-0.001, 0.008] | 0.000 [-0.001, 0.002] | 0.003 [0.001, 0.006] |
+| reve · pretrained_partial | 5/5 | 86 | 0.016 [0.008, 0.024] | 0.010 [0.004, 0.017] | 0.006 [0.003, 0.011] |
+| reve · pretrained_peft | 5/5 | 86 | 0.165 [0.127, 0.202] | 0.057 [0.045, 0.070] | 0.005 [0.002, 0.009] |
+| reve · random_full | 5/5 | 86 | -0.000 [-0.003, 0.003] | -0.000 [-0.001, 0.001] | 0.003 [0.001, 0.006] |
 
 ### L · D_FM_GENERIC
 

@@ -55,6 +55,11 @@ for i, r in enumerate(R):
         if b and resolve_unit(b["experiment_id"], O)[0] is not None:
             dep.append((i, r))
 ready = [(i, r) for i, r in ready if in_scope(r)]; dep = [(i, r) for i, r in dep if in_scope(r)]
+# user 2026-10-10: the old item-2 foundation-model rows (seeds 3407/3413 outside the registered panel) are deprioritised behind
+# ALN3 and must not take GPUs it needs; they are re-enabled only by the switch file ITEM2_FM_RESUME (rows are kept in the plan)
+if not os.path.exists(f"{O}/ITEM2_FM_RESUME"):
+    ready = [(i, r) for i, r in ready if r["seed"] == 3401 or in_panel(r)]; dep = [(i, r) for i, r in dep if r["seed"] == 3401 or in_panel(r)]
+    dlines = [d for d in dlines if d.endswith("__s3401")]
 # order: the one-seed matrix and its dependent families first, the registered multi-seed panel afterwards
 lines = [t for t in ready + dep if not in_panel(t[1])] + [t for t in ready + dep if in_panel(t[1])]
 # per-unit GPU weights for the pool's admission. User 2026-10-07: units that train a foundation model get a whole card
@@ -72,9 +77,28 @@ def weight(r=None, donor=None):
     if sp.get("architecture") in ("cbramod", "reve"):
         return EXCLUSIVE
     return 2
-wt = [f"{d} {weight(donor=d)}" for d in dlines] + [f"{r['experiment_id']} {weight(r)}" for i, r in lines]
+# item 3 (docs/auditory_alignment_v2/ITEM3_PREREG_FROZEN.md): only after the user's go (switch file ITEM3_GO); placed first
+xlines, xw = [], []
+if os.path.exists(f"{O}/ITEM3_GO"):
+    XR = [json.loads(l) for l in open(f"{O}/plan_item3.jsonl")]
+    keys = sorted({f"LRX__{r['spec']['architecture']}__pretrained_{r['spec']['adaptation'].split('_')[-1]}__{r['dataset']}__{r['spec']['objective']}" for r in XR if r["family_id"] == "X_FT_REG"})
+    for k in keys[:0]:  # X_FT_REG learning-rate selection not run: 3c folded into ALN3 B (item-3 addendum 01)
+        if not os.path.exists(f"{O}/fm_recipe_ext/{k[5:]}.json"):
+            xlines.append(f"{k}|-2"); xw.append(f"{k} 1000")
+    order = {"X_READOUT_DIAG": 0, "X_FT_VAL": 1, "X_PHASE": 2, "X_FT_REG": 3}
+    for j, r in sorted(enumerate(XR), key=lambda t: (order[t[1]["family_id"]], t[1]["dataset"], t[1]["subject_fold"], t[1]["content_fold"])):
+        if r["family_id"] != "X_READOUT_DIAG":  # user 2026-10-10: 3b/3c folded into ALN3 workpackage B (addendum A1 to the item-3 registration)
+            continue
+        if r["family_id"] == "X_READOUT_DIAG" and not os.path.exists(f"{O}/units/{r['base_unit']}.json"):
+            continue
+        if r["family_id"] == "X_FT_REG":
+            k = f"{r['spec']['architecture']}__pretrained_{r['spec']['adaptation'].split('_')[-1]}__{r['dataset']}__{r['spec']['objective']}"
+            if not os.path.exists(f"{O}/fm_recipe_ext/{k}.json"):
+                continue
+        xlines.append(f"{r['experiment_id']}|{100000 + j}"); xw.append(f"{r['experiment_id']} {20 if r['family_id'] == 'X_READOUT_DIAG' else 1000}")
+wt = xw + [f"{d} {weight(donor=d)}" for d in dlines] + [f"{r['experiment_id']} {weight(r)}" for i, r in lines]
 open(f"{O}/queue_fm_weights.txt.tmp", "w").write("\n".join(wt) + "\n"); os.replace(f"{O}/queue_fm_weights.txt.tmp", f"{O}/queue_fm_weights.txt")
 tmp = f"{O}/queue_fm.txt.tmp"
-open(tmp, "w").write("".join(f"{d}|-1\n" for d in dlines) + "".join(f"{r['experiment_id']}|{i}\n" for i, r in lines)); os.replace(tmp, f"{O}/queue_fm.txt")
+open(tmp, "w").write("".join(f"{x}\n" for x in xlines) + "".join(f"{d}|-1\n" for d in dlines) + "".join(f"{r['experiment_id']}|{i}\n" for i, r in lines)); os.replace(tmp, f"{O}/queue_fm.txt")
 print("donor lines", len(dlines), "dependency rows", len(dep))
 print(len(keys), "recipe keys;", len(ready), "runnable foundation rows")

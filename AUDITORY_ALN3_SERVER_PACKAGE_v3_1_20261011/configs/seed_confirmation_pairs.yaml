@@ -1,0 +1,209 @@
+version: ALN3.1
+seeds:
+- 3401
+- 3407
+- 3413
+status: prospective_role_registration_after_ALN2_not_blind_cohort
+binding: server_assigns_exact_training_recipe_and_execution_hash_before_new_seed_results
+not_a_fleet_command: true
+preserve_already_running_valid_panels: true
+extra_existing_roles: not_deleted_defer_noncore_pending_only_with_audit
+panels:
+- id: P1_LOCAL
+  question: local structure and objective
+  roles:
+  - role: legacy_full
+    selector:
+      family_id: A_LOCAL
+      architecture:
+      - legacy_pool4
+      window:
+      - full
+  - role: density_full
+    selector:
+      family_id: A_LOCAL
+      architecture:
+      - density_tokens
+      window:
+      - full
+  - role: lag_full
+    selector:
+      family_id: A_LOCAL
+      architecture:
+      - lag_local_tokens
+      window:
+      - full
+  - role: lag_windows
+    selector:
+      family_id: A_LOCAL
+      architecture:
+      - lag_local_tokens
+      window:
+      - early
+      - late
+      - joint
+      objective:
+      - NCE
+- id: P2_DENSE_PRETRAINING
+  question: matched initialization, readout, and practical adaptation
+  roles:
+  - role: random_full_dense
+    selector:
+      family_id: B_DENSE
+      adaptation:
+      - random_full
+      readout:
+      - dense_query
+      objective:
+      - NCE
+  - role: pretrained_full_dense
+    selector:
+      family_id: B_DENSE
+      adaptation:
+      - pretrained_full
+      readout:
+      - dense_query
+      objective:
+      - NCE
+  - role: pretrained_frozen_dense
+    selector:
+      family_id: B_DENSE
+      adaptation:
+      - pretrained_frozen
+      readout:
+      - dense_query
+      objective:
+      - NCE
+  - role: pretrained_peft_dense
+    selector:
+      family_id: B_DENSE
+      adaptation:
+      - pretrained_peft
+      readout:
+      - dense_query
+      objective:
+      - NCE
+  - role: frozen_phase_control
+    selector:
+      family_id: B_DENSE
+      adaptation:
+      - pretrained_frozen
+      readout:
+      - channel_phase_linear
+      objective:
+      - NCE
+- id: P3_COMPLEMENT
+  question: pretraining contribution versus arbitrary added capacity
+  roles:
+  - role: local_base
+    selector:
+      family_id: A_LOCAL
+      architecture:
+      - lag_local_tokens
+      window:
+      - full
+      objective:
+      - NCE
+  - role: concat
+    selector:
+      family_id: C_COMPLEMENT
+      variant:
+      - concat_pretrained
+      objective:
+      - NCE
+  - role: pretrained_residual
+    selector:
+      family_id: C_COMPLEMENT
+      variant:
+      - residual_pretrained_full
+      objective:
+      - NCE
+  - role: random_residual
+    selector:
+      family_id: C_COMPLEMENT
+      variant:
+      - residual_random_trainable
+      objective:
+      - NCE
+  - role: small_capacity
+    selector:
+      family_id: C_CAPACITY_CONTROL
+      objective:
+      - NCE
+- id: P4_ATTENTION_ADAPT
+  question: task and individual adaptation of the strong local pathway
+  roles:
+  - role: attention
+    selector:
+      family_id: D_ATTENTION
+      architecture:
+      - lag_local_tokens
+      objective:
+      - NCE
+      - SELECTION_CE
+      training_task:
+      - attended_alignment
+      - alignment_plus_selection
+  - role: no_adaptation
+    selector:
+      family_id: D_ADAPT
+      architecture:
+      - lag_local_tokens
+      adapter:
+      - none
+      objective:
+      - NCE
+  - role: spatial_adaptation
+    selector:
+      family_id: D_ADAPT
+      architecture:
+      - lag_local_tokens
+      adapter:
+      - input_spatial
+      objective:
+      - NCE
+- id: P5_PRIVATE
+  question: native task and transferable prior
+  roles:
+  - role: native_gx
+    selector:
+      family_id: E_GX
+      window:
+      - full
+  - role: local_native
+    selector:
+      family_id: E_LOCAL
+      architecture:
+      - lag_local_tokens
+      window:
+      - full
+  - role: random_full
+    selector:
+      family_id: E_GENERIC
+      adaptation:
+      - random_full
+  - role: pretrained_full
+    selector:
+      family_id: E_GENERIC
+      adaptation:
+      - pretrained_full
+  - role: pretrained_peft
+    selector:
+      family_id: E_GENERIC
+      adaptation:
+      - pretrained_peft
+  - role: public_task_transfer
+    selector:
+      family_id: E_PUBLIC_TRANSFER
+      source_architecture:
+      - lag_local_tokens
+      adaptation:
+      - task_partial
+      objective:
+      - NCE
+      - CS_SINGLE
+scope_note: Default compact confirmation uses NCE for foundation/time-task panels;
+  traditional CS remains full breadth and in paired local/private objective panels.
+  Already launched valid larger panels are preserved. Additional primary CS/FM claims
+  require their matched confirmation controls before publication, not a blanket new
+  grid.

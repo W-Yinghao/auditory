@@ -1,0 +1,144 @@
+version: ALN3_v3.1_20261011
+repository: W-Yinghao/auditory
+base_commit: d5b2315b465519fa2017ff3180fd34a090787164
+status: prospective_execution_extension_after_ALN2_review_not_new_blind_cohort
+research:
+  primary: time_preserving_auditory_EEG_alignment_with_optional_pretrained_complement
+  negative_result_driven: false
+  performance_gates: null
+  clinical_significance_model_selection: false
+  unpublished_VCS_QMI: false
+  new_neural_critic: false
+seeds:
+  breadth:
+  - 3401
+  panel:
+  - 3401
+  - 3407
+  - 3413
+  panel_selection: predeclared_configuration_rules
+  policy_document: docs/12_MULTISEED_AND_SCHEDULING.md
+target_contract:
+  reference_id: dense20ms_v1_pending_source_binding
+  grid_step_ms: 20
+  projection: training_only_fixed
+  primary_projection_dim: 32
+  sensitivity_dims:
+  - 16
+  - 64
+  legacy_bridge_dim: 16
+  audio_backbone_frozen: true
+  target_sources: ALN2_verified_features
+  max_query_context: resolved_per_information_stratum
+  real_candidate_pool: ALN2_source_bound_same_grid
+time_access:
+  local_only: declared_query_EEG_window_only
+  foundation_context: declared_full_forward_EEG_support
+  support_conditioned_local: independent_support_plus_declared_query_window
+windows_ms:
+  fau:
+    full:
+    - 0
+    - 600
+    early:
+    - 0
+    - 80
+    late:
+    - 90
+    - 300
+  dtu:
+    full:
+    - 0
+    - 600
+    early:
+    - 0
+    - 80
+    late:
+    - 90
+    - 300
+  federici:
+    full:
+    - 0
+    - 600
+    early:
+    - 0
+    - 150
+    late:
+    - 150
+    - 600
+  private_bdf:
+    full:
+    - 0
+    - 600
+    early:
+    - 120
+    - 200
+    late:
+    - 240
+    - 320
+defaults_not_thresholds:
+  local_patch_ms: 40
+  lag_step_ms: 20
+  dense_head:
+    hidden: 128
+    heads: 4
+    signed_spatial_filters: 8
+    feature_projection_dim: 32
+  residual_head_hidden: 64
+  base_local_freeze_then_joint_extension: true
+  epochs_start:
+    small: 100
+    cbramod: 100
+    reve: 50
+  allow_registered_continuation: true
+  learning_rate_start:
+    small:
+    - 0.0001
+    - 0.0003
+    - 0.001
+    frozen_head:
+    - 0.0001
+    - 0.001
+    peft:
+    - 0.0001
+    - 0.0003
+    - 0.001
+    pretrained_backbone:
+    - 1.0e-05
+    - 3.0e-05
+    - 0.0001
+  support_fractions:
+  - 0.1
+  - 0.3
+  query_fraction_fixed: 0.7
+  attention_eval_seconds:
+  - 5
+  - 10
+  - 20
+  calibration: positive_slope_affine_with_intercept_on_training_only
+  bootstrap_replicates: 4000
+  fm_recipe_amendment:
+    head_warmup_then_unfreeze: where_applicable
+    validation: every_epoch_multiple_fixed_training_side_development_blocks
+    layerwise_lr_decay: bind_on_development_split
+    old_recipe: retain_control_no_full_duplicate_sweep
+evaluation:
+  primary_risk: true_query_NLL_or_task_risk
+  mismatch_gain: secondary_correspondence_sensitivity
+  pairing_unit: query_uid_plus_candidate_and_target_contract
+  population_unit: verified_subject_identity
+  federici: condition_separate_HC_CI_HCv_artifact_separate
+  retain_negative_values: true
+runtime:
+  gpu_cap_default: 10
+  large_model_jobs_per_gpu: 1
+  submit_from_package: false
+  runner_binding: server_required
+  private_outputs: private/auditory_alignment_v3
+  launch_authorization: inherited_user_authorization_no_second_go_after_engineering_checks
+inherits_logical_plan: ALN3_v3.0_20261010_5996_rows_no_global_regeneration
+identity_policy:
+  HCv: separate_source_identities_no_filename_pairing
+  phantom: one_entity_nine_sessions
+  demographics: original_metadata_not_HC_alias
+  old_predictions: reuse_if_training_and_selection_unaffected
