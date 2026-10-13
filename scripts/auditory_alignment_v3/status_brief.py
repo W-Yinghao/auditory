@@ -54,5 +54,15 @@ print(f"  refresh.log age {age / 60:.0f} min")
 log = [l.strip() for l in open(f"{O}/logs/ckpt_offload.log") if " pass" in l or "ERROR" in l]
 print("  offload:", log[-1][:160] if log else "no pass yet", "| ERROR lines", sum("ERROR" in l for l in log))
 du = subprocess.run(["du", "-sk", f"{O}/ckpt"], capture_output=True, text=True).stdout.split()
-df = subprocess.run(["df", "-h", "--output=avail,pcent", "/projects/EEG-foundation-model"], capture_output=True, text=True).stdout.split()
-print(f"  home ALN3 ckpt real files {int(du[0]) / 2 ** 20:.1f} GiB | /projects avail {df[-2]} ({df[-1]} used)" if du and df else "  storage: n/a")
+df = subprocess.run(["df", "-B1", "--output=avail,used,size", "/projects/EEG-foundation-model"], capture_output=True, text=True).stdout.split()
+av, us, sz = (int(x) for x in df[-3:])
+log_p = f"{O}/logs/projects_free_gib.tsv"  # trend of the shared volume (other users write to it too)
+prev = [l.split() for l in open(log_p)] if os.path.exists(log_p) else []
+open(log_p, "a").write(f"{int(now)}\t{av / 2**30:.1f}\n")
+rate = ""
+if prev:
+    t0, a0 = float(prev[max(0, len(prev) - 6)][0]), float(prev[max(0, len(prev) - 6)][1])
+    if now - t0 > 1200:
+        r = (a0 - av / 2**30) / ((now - t0) / 3600)
+        rate = f", trend {r:+.1f} GiB/h consumed" + (f" -> full in ~{(av / 2**30) / r:.0f} h" if r > 0 else "")
+print(f"  home ALN3 ckpt real files {int(du[0]) / 2 ** 20:.1f} GiB | /projects avail {av / 2**30:.0f} GiB ({100 * us / sz:.1f}% used{rate})" if du else "  storage: n/a")

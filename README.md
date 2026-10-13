@@ -6,12 +6,12 @@
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## 最新（2026-10-11）：ALN3 / ALN3.1（进行中）与 docs/13 并行科学分析第 1 轮
+## 最新（2026-10-13 更新）：ALN3 / ALN3.1（进行中）与 docs/13 并行科学分析第 1 轮
 
 本轮执行 `AUDITORY_ALN3_SERVER_PACKAGE_v3_20261010.zip` 及其增补 `AUDITORY_ALN3_SERVER_PACKAGE_v3_1_20261011.zip`，同名目录是逐字节一致的解压内容。代码在 `auditory_alignment_v3/`。
 
 完成情况（发布时）：
-- ALN3 GPU 队列仍在运行：6,496 个有效单元中约 55% 已完成，0 失败。ALN3 各族的汇总尚未生成，所以本发布不含 ALN3 方法比较的结论。
+- ALN3 GPU 队列仍在运行（2026-10-13）：6,496 个有效单元中约 75% 已完成，0 失败。seed 3401 的 B_DENSE（1,000 个）与 C_COMPLEMENT（600 个）已全部完成；D 族的两类策略臂（700 行）随后按只用训练侧的选择规则绑定再运行。ALN3 各族的汇总尚未生成，所以本发布不含 ALN3 方法比较的结论。
 - 已按 ALN3.1 调整多 seed 优先级：广覆盖用 seed 3401，3407/3413 只用于登记的配对角色，见 [ADDENDUM_03](docs/auditory_alignment_v3/ADDENDUM_03_ALN3_1_SEED_PANEL.md)。
 - docs/13 并行科学分析第 1 轮已完成（670/670 个任务，0 失败）。先冻结预登记，再在已完成的 checkpoint 上用 CPU 计算逐 lag 可读性、时间泛化、模型依赖与可替代性、空间读数，以及组间、发育、功能对比。
 
