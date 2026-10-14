@@ -15,7 +15,8 @@
 - B/C 阶段性汇总（只有 seed 3401）：按看结果前冻结的 [ADDENDUM_05](docs/auditory_alignment_v3/ADDENDUM_05_BC_INTERIM_AGGREGATION.md) 生成，见 [B 结果](docs/auditory_alignment_v3/B_DENSE_READOUT_RESULTS.md)、[C 结果](docs/auditory_alignment_v3/C_COMPLEMENT_RESULTS.md)、[QC 说明](docs/auditory_alignment_v3/BC_INTERIM_QC_NOTES.md)。
   - 在本实现中，基础模型（CBraMod、REVE）的密集读出几乎没有学到声音对齐：`dense_query` 在所有格子都处于机会水平，`channel_phase_linear` 仅略高于机会，120 个配置全部不如同折的局部模型。
   - 局部＋预训练互补：FAU/DTU 的全部变体（包括不含基础模型的容量对照）都比局部基线差；Federici 上与局部基线没有可分辨的差异（区间含 0，或差值约为 0）。
-  - 定位探针（[计划](docs/auditory_alignment_v3/BC_PROBE_PLAN_20261014.md)、[结果](docs/auditory_alignment_v3/BC_PROBE_RESULTS.md)）排除了评价路径、查询时间与时间错位问题。冻结 backbone 各层（含 patch embedding）也只含很少的刺激锁定信息，问题在读出上游（输入准备，或 1 秒 patch 的时间分辨率），两者尚未分开。这是实现层面的失败定位，不是“预训练无益”的结论。
+  - 定位探针（[计划 01](docs/auditory_alignment_v3/BC_PROBE_PLAN_20261014.md)、[02](docs/auditory_alignment_v3/BC_PROBE_PLAN_02_INPUT_PATH_20261014.md)、[03](docs/auditory_alignment_v3/BC_PROBE_PLAN_03_ALIGNED_TOKENS_20261014.md)，[结果](docs/auditory_alignment_v3/BC_PROBE_RESULTS.md)）排除了评价路径、查询时间、时间错位和输入准备（重采样、缩放、截断、通道顺序）这几类问题。
+  - 原因定位到读出接口：B_DENSE 所用的、不与查询对齐的固定 patch 网格 token 几乎不含线性可读的刺激信息；与查询对齐的单个 patch 保留了大部分信息（DTU 为原始同窗的 0.75–0.97，FAU 统计功效不足）。这是实现层面的失败定位，不是“预训练无益”的结论。下一步登记与查询对齐的 B 变体。
   - 因此剩余的 seed 3407/3413 重复（909 个单元）与 D 族基础模型/互补策略臂（约 200 个）已暂停，待上游问题定位后再定。私有任务汇总未发布。
 - 已按 ALN3.1 调整多 seed 优先级：广覆盖用 seed 3401，3407/3413 只用于登记的配对角色，见 [ADDENDUM_03](docs/auditory_alignment_v3/ADDENDUM_03_ALN3_1_SEED_PANEL.md)。
 - docs/13 并行科学分析第 1 轮已完成（670/670 个任务，0 失败）。先冻结预登记，再在已完成的 checkpoint 上用 CPU 计算逐 lag 可读性、时间泛化、模型依赖与可替代性、空间读数，以及组间、发育、功能对比。

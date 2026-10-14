@@ -103,3 +103,78 @@ at this time resolution. These probes do not separate those two.
 
 **Not run** (plan "deferred"): the C variant with a `channel_phase_linear` context branch and an epoch-0 candidate. With
 P1 clean and P3 showing no usable FM signal, it would test a branch with no information. It waits on the input-path question.
+
+## P5 · FM input path (plan 02, `BC_PROBE_PLAN_02_INPUT_PATH_20261014.md`; GPU job 1039636, A40)
+
+Training participants only; subject fold 0, content fold 0, target `local`. 300 fit / 160 early-stopping segments. Ridge
+r = mean Pearson r over target dimensions on early-stopping half B.
+
+| dataset | view | dims | r(Δ=0) | ratio to F0 | peak Δ (steps) | floor | r first 0.5 s / middle / last 0.5 s |
+|---|---|---|---|---|---|---|---|
+| FAU | F0 native window (128 Hz) | 2,387 | 0.0207 | 1.00 | +1 | 0.004 | 0.031 / 0.015 / 0.055 |
+| FAU | F1 CBraMod input (padded, resampled, × 0.15) | 3,720 | 0.0211 | 1.02 | +1 | 0.005 | 0.030 / 0.016 / 0.057 |
+| FAU | F2 REVE input (resampled, clipped) | 3,720 | 0.0221 | 1.07 | +1 | 0.006 | 0.029 / 0.017 / 0.056 |
+| DTU | F0 native window | 4,928 | 0.0453 | 1.00 | +2 | 0.002 | 0.032 / 0.046 / 0.051 |
+| DTU | F1 CBraMod input | 7,680 | 0.0440 | 0.97 | +2 | 0.003 | 0.032 / 0.045 / 0.051 |
+| DTU | F2 REVE input | 7,680 | 0.0443 | 0.98 | +2 | 0.003 | 0.032 / 0.045 / 0.051 |
+
+**Input statistics (P5b)**:
+- Native per-channel SD: mean 0.89 for FAU (range 0.008–5.9), 0.97 for DTU (0.11–4.6).
+- Samples clipped by REVE (|z| > 15): 5.6e-5 (FAU), 1.4e-6 (DTU).
+- FFT resampling vs linear interpolation of the same context, relative RMS for first 0.5 s / middle / last 0.5 s: FAU 3 % /
+  5 % / 9 %; DTU 4 % / 6 % / 11 %.
+- The larger end difference does not lower readability: the last 0.5 s has the highest r in every view.
+
+**Channel order (P5c)**:
+- FAU: 81 / 81 participant files have exactly the order of `foundation_adapter.CHANNELS["fau"]`.
+- DTU: the stored channel names equal `CHANNELS["dtu"]`.
+
+**Reading (plan 02)**:
+- r(F1) and r(F2) ≥ 0.9 · r(F0) at Δ = 0, above the floor, in both datasets. The adapter input preserves the
+  stimulus-locked information that is linearly present in the local lag window.
+- The views share the same peak lag, so there is no resampling time shift. Channel order is correct, so there is no
+  position misassignment.
+- The loss therefore happens inside the backbones: patch embedding, transformer or optimisation. This holds for frozen
+  pretrained layers (P0) and for randomly initialised REVE trained end to end (P3).
+
+For scale only (different features and fits, not a contrast): the trained local encoder reaches r = 0.060 on the same FAU
+training-side scan (P3). The linear readout of its own 0.6 s input window reaches 0.021 here.
+
+## P6 · Query-aligned backbone tokens (plan 03, `BC_PROBE_PLAN_03_ALIGNED_TOKENS_20261014.md`; GPU job 1039800)
+
+Frozen backbones; no training. Linear kernel ridge → target A(t); r on early-stopping half B. The ratio is r(view) / r(R10),
+where R10 is the raw EEG of exactly the aligned patch window [t − 0.4 s, t + 0.6 s).
+
+**DTU** (R06 r = 0.038, R10 r = 0.034, floors ≤ 0.014):
+
+| backbone | layer | ALIGNED pretrained | UNALIGNED pretrained (B_DENSE tokens) | ALIGNED random init |
+|---|---|---|---|---|
+| CBraMod | patch_embedding | 0.030 (0.87) | 0.005 (0.16) | 0.023 (0.66) |
+| CBraMod | last | 0.031 (0.90) | 0.003 (0.07) | 0.020 (0.59) |
+| REVE | patch_embedding | 0.026 (0.75) | −0.003 (−0.09) | 0.035 (1.01) |
+| REVE | last | 0.034 (0.97) | −0.000 (−0.01) | 0.033 (0.96) |
+
+**FAU** (R06 r = 0.015, R10 r = 0.005, floors −0.012 … +0.003):
+
+| backbone | layer | ALIGNED pretrained | UNALIGNED pretrained | ALIGNED random init |
+|---|---|---|---|---|
+| CBraMod | patch_embedding | 0.005 | −0.006 | 0.015 |
+| CBraMod | last | 0.014 | −0.007 | 0.014 |
+| REVE | patch_embedding | −0.004 | 0.005 | 0.008 |
+| REVE | last | 0.011 | 0.007 | 0.005 |
+
+**Reading (plan 03)**:
+- **DTU**: ALIGNED pretrained ≥ 0.5 · r(R10) for every backbone and layer (0.75–0.97), and above UNALIGNED, which is ≈ 0.
+  Reading: aligned patching recovers the information. Next step: a registered query-aligned B variant.
+  - The pretrained weights are not consistently better than random initialisation for this linear readability. CBraMod:
+    pretrained 0.87–0.90 vs random 0.59–0.66. REVE: pretrained 0.75–0.97 vs random 0.96–1.01.
+- **FAU**: not readable as a ratio. R10 itself is barely above the floor (0.005), below R06 (0.015): the wider window
+  with fewer queries is underpowered here. Aligned views exceed unaligned in 3 of 4 pairs; REVE patch_embedding is the
+  reversal. FAU therefore neither supports nor contradicts the DTU result.
+
+**What this localises**:
+- At the 20 ms grid, the backbone tokens of a fixed patch grid that is not aligned with the query carry essentially no
+  linear stimulus information, even though the patch content contains it.
+- A patch aligned with the query keeps most of it (DTU).
+- The B_DENSE failure is therefore consistent with the patch-to-query alignment of the readout interface, not with an
+  absence of information in the backbone.

@@ -101,3 +101,20 @@
 - 新文件（不属于任何训练代码哈希）：`auditory_alignment_v3/bc_interim.py`、`bc_interim_report.py`；复用 `sci_r1/stats.py`（未改动）；`slurm/bc_interim_cpu.sbatch`。
 - 合成数据测试：`tests/auditory_alignment_v3/test_bc_interim.py` 5/5，连同 `test_sci_r1_core.py` 共 17/17（作业 1039548）。
 - 输出：`docs/auditory_alignment_v3/B_DENSE_READOUT_RESULTS.md`、`C_COMPLEMENT_RESULTS.md`、`results/auditory_alignment_v3/bc_interim/`；私有部分在 `private/auditory_alignment_v3/bc_interim/`（0700/0600），未经用户批准不发布。
+
+## 10. B/C 失败定位、暂停与发布（2026-10-14）
+
+- **暂停**（用户："两个都按你推荐的做"）：
+  - `private/auditory_alignment_v3/families_on_hold.json` 列入 B_DENSE、C_COMPLEMENT、C_CAPACITY_CONTROL、E_GENERIC、D_ADAPT、D_ATTENTION（备份 `*.before_bcprobe_20261014`），即剩余的 seed 3407/3413 重复与 D 族基础模型/互补策略臂。
+  - 在跑单元自然结束；keeper 不再提交新 worker；没有删除任何记录或 checkpoint。
+  - 恢复方法：还原为 `[]`，再运行 `make_queue.py`。
+- **定位探针**：每份计划都在运行前冻结（0444），sha256 记在 `private/auditory_alignment_v3/probe_bc/code_sha256_at_freeze*.txt`。结果见 `BC_PROBE_RESULTS.md`。
+  - P0：冻结层探针。
+  - P1–P4：C 评价路径、训练/评价查询一致性、训练侧 lag 扫描、查询敏感性。作业 1039559 / 1039560。
+  - P5：基础模型输入路径（`BC_PROBE_PLAN_02_INPUT_PATH_20261014.md`，作业 1039636）。
+  - P6：与查询对齐的 patch token（`BC_PROBE_PLAN_03_ALIGNED_TOKENS_20261014.md`，作业 1039800）。
+- **结论**：
+  - 排除了 C 评价路径、查询时间、音频配对、时间错位、输入准备（重采样、缩放、截断、通道顺序）这几类问题。
+  - 在 20 ms 网格上，不与查询对齐的固定 patch 网格 token（B_DENSE 所用）几乎不含线性可读的刺激信息。
+  - 与查询对齐的单个 patch 保留了大部分信息：DTU 为原始同窗的 0.75–0.97；FAU 统计功效不足，无法判读。
+- **发布**：publish_020（内容 `e4d6f3a`，回执 `1ce7c01`）。
