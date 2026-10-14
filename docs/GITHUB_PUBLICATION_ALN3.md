@@ -49,3 +49,29 @@
 - `scripts/auditory_alignment_v3/status_brief.py` 的发布副本：增加 `/projects` 剩余空间趋势。
 
 内容提交 `1950ab44ddcb8e34c65d0f5d4a446415ca744e43`（`git ls-remote` 已核对）。构建扫描（Slurm 1037228）只有一项已知良性路径（共享数据卷根路径，同上次）；`verify_staged`（Slurm 1037229）PASS。仍未发布：ALN3 方法比较结果、逐单元记录、checkpoint、私有任务内容；2026-10-11 的目录整理仍未镜像。
+
+## B/C 阶段性汇总与定位探针（2026-10-14，publish_020）
+
+研究者指示“两个都按你推荐的做，先跑定位探针，push一版到github上”。本次发布：
+
+- D 族策略臂绑定：`ADDENDUM_04_D_POLICY_BINDING.md` 与对应代码（`policy.py`、`policy_models.py`、三个策略臂运行器、`fm_attention.py`、`complement_coverage_train.py`，以及 `registry.py` / `run.py` 的路由）、测试与探针副本。
+- B/C 阶段性汇总（只有 seed 3401）：
+  - 看结果前冻结的 `ADDENDUM_05_BC_INTERIM_AGGREGATION.md`；
+  - `bc_interim` 代码与测试；
+  - `B_DENSE_READOUT_RESULTS.md`、`C_COMPLEMENT_RESULTS.md`、聚合 JSON，以及事后 `BC_INTERIM_QC_NOTES.md`。
+- 定位探针：冻结计划 `BC_PROBE_PLAN_20261014.md` 与 `BC_PROBE_RESULTS.md`。
+- 编排副本：
+  - `make_queue.py`、`ckpt_offload.py`；
+  - `families_on_hold.json`：暂停剩余的 seed 3407/3413 重复与 D 族基础模型/互补策略臂；
+  - `aln3_gpu_pool.sbatch`：加入 V100。
+- 发布专用派生（未改变逻辑）：
+  - 实现回执与 `ckpt_offload.py` 中的私有存储根路径换成占位符；
+  - `test_bc_interim.py` 的合成儿童编号改名，派生副本在 Slurm 1039596 中 5/5 通过。
+
+内容提交 `e4d6f3af72f8141f1e7974e8dfbacb4c81c41ff6`（`git ls-remote` 已核对）。
+
+- 第一次构建（Slurm 1039591）发现两个问题，已修正并清回干净的 HEAD：新 `.gitignore` 块会把已跟踪文件重新忽略；测试中的合成编号与私有化名同形。
+- 重建（Slurm 1039597）只剩两项已知良性路径，即共享数据卷根路径，与 publish_018 相同。
+- `verify_staged`（Slurm 1039610）PASS。
+
+仍未发布：逐单元记录、checkpoint、逐人表、私有任务内容（含 E 族阶段性汇总）。2026-10-11 的目录整理仍未镜像。
