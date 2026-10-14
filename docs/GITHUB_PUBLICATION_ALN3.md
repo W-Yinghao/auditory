@@ -86,3 +86,16 @@
 - README 进度条目。
 
 内容提交 `8962b5c458c46e2561539c28155232b9801d85c4`（`git ls-remote` 已核对）。构建扫描（Slurm 1039805）只有已知良性的共享数据卷根路径；`verify_staged` PASS。仍未发布的内容同 publish_020。
+
+## B_ALIGNED 登记与启动（2026-10-14，publish_022）
+
+研究者指示“做你觉得所有该做的，并push”。本次发布：
+
+- `ADDENDUM_06_B_ALIGNED.md`：运行前冻结。
+- B_ALIGNED 代码：`fm_aligned.py`、`run_aligned.py`，以及出结果前写好的分析代码 `aligned_interim.py`。
+- 合成数据测试、生成器与工程探针脚本副本。
+- `registry.py` / `run.py` 的绑定（既有代码哈希不变）。
+- 队列、卸载与 `plan_ext.jsonl` 的副本（第 3 块共 250 行）。
+- 实现回执 §11（发布副本中私有存储根路径换成占位符），以及 README 进度条目。
+
+内容提交 `6326b9b38256236d9801800077c9ef26cb11c6d8`（`git ls-remote` 已核对）。构建扫描（Slurm 1039851）只有已知良性的共享数据卷根路径；`verify_staged` PASS。B_ALIGNED 结果尚未产生。仍未发布的内容同 publish_020。
