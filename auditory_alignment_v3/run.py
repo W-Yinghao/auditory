@@ -10,7 +10,7 @@ from .core import FAMILY_GROUP, OUT, bind, code_hash, grid_samples, load_rows  #
 
 RUNNER = {"local": "run_local", "private": "run_private", "dense": "run_dense", "local_factors": "run_local_factors", "complement": "run_complement", "dense_ext": "run_dense_ext", "adapt": "run_adapt3", "coverage": "run_coverage", "attention": "run_attention", "e_complement": "run_e_complement", "distill": "run_distill", "layer_probe": "run_layer_probe", "transfer": "run_transfer",
           "adapt_policy": "run_adapt_policy", "coverage_policy": "run_coverage_policy",
-          "attention_policy": "run_attention_policy"}
+          "attention_policy": "run_attention_policy", "aligned": "run_aligned"}
 EXT_OFFSET = 100000  # queue index >= EXT_OFFSET -> row (index - EXT_OFFSET) of private/auditory_alignment_v3/plan_ext.jsonl
 LOCAL_FAMILIES = {f for f, g in FAMILY_GROUP.items() if g in ("local", "local_factors")}
 PRIVATE_FAMILIES = {f for f, g in FAMILY_GROUP.items() if g == "private"}

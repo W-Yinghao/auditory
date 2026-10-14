@@ -54,7 +54,7 @@ FATAL_ERRNO = {errno.ENOSPC, errno.EDQUOT, errno.EIO, errno.ESTALE, errno.EROFS}
 TAG = f"{socket.gethostname()}.{os.getpid()}.{uuid.uuid4().hex[:8]}"
 # families whose units read no other unit's checkpoint (plain training / probes); D_* only for the lag-local arms
 NO_DEPS = {"A_LOCAL", "A_TARGETS", "A_DIMENSION", "A_LOCAL_FACTORS", "B_DENSE", "B_CTRL_ONESTEP", "B_LR_PANEL", "B_LAYER_PROBE",
-           "E_LOCAL", "E_GX", "E_GENERIC", "D_COVERAGE", "D_ATTENTION"}
+           "E_LOCAL", "E_GX", "E_GENERIC", "D_COVERAGE", "D_ATTENTION", "B_ALIGNED"}  # B_ALIGNED: ADDENDUM_06, no checkpoint dependencies
 HANDLED = {"C_COMPLEMENT", "C_CAPACITY_CONTROL", "D_ADAPT", "E_COMPLEMENT", "E_PUBLIC_TRANSFER", "E_DISTILL", "D_ATTENTION"}
 _term = False
 _POLICY = {}  # D_ADAPT policy cell -> chosen unit (the B/C seed-3401 candidates are complete and immutable)

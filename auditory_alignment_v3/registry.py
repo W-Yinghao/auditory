@@ -21,7 +21,9 @@ FAMILY_CODE = {
                                                                "policy.py", "run_coverage_policy.py")] + [("auditory_alignment_v3/aln3_reference", "readouts.py")],
     "attention_policy": [("auditory_alignment_v3", f) for f in ("core.py", "local_train.py", "fm_dense.py", "fm_complement.py", "fm_attention.py", "run_attention.py",
                                                                 "policy.py", "run_attention_policy.py")] + [("auditory_alignment_v3/aln3_reference", "readouts.py")],
+    # ADDENDUM_06 (2026-10-14): query-aligned foundation-model readout
+    "aligned": [("auditory_alignment_v3", f) for f in ("core.py", "local_train.py", "fm_dense.py", "fm_aligned.py", "run_aligned.py")] + [("auditory_alignment_v3/aln3_reference", "readouts.py")],
 }
 POLICY_GROUP = {"D_ADAPT": "adapt_policy", "D_COVERAGE": "coverage_policy", "D_ATTENTION": "attention_policy"}  # D family -> code group of its bound policy arms (families not listed stay unbound)
 FAMILY_GROUP = {"A_LOCAL": "local", "A_TARGETS": "local", "A_DIMENSION": "local", "E_LOCAL": "private", "E_GX": "private", "E_GENERIC": "private",
-                "B_DENSE": "dense", "A_LOCAL_FACTORS": "local_factors", "C_COMPLEMENT": "complement", "C_CAPACITY_CONTROL": "complement", "B_CTRL_ONESTEP": "dense_ext", "B_LR_PANEL": "dense_ext", "D_ADAPT": "adapt", "D_COVERAGE": "coverage", "D_ATTENTION": "attention", "E_COMPLEMENT": "e_complement", "E_DISTILL": "distill", "B_LAYER_PROBE": "layer_probe", "E_PUBLIC_TRANSFER": "transfer"}
+                "B_DENSE": "dense", "A_LOCAL_FACTORS": "local_factors", "C_COMPLEMENT": "complement", "C_CAPACITY_CONTROL": "complement", "B_CTRL_ONESTEP": "dense_ext", "B_LR_PANEL": "dense_ext", "D_ADAPT": "adapt", "D_COVERAGE": "coverage", "D_ATTENTION": "attention", "E_COMPLEMENT": "e_complement", "E_DISTILL": "distill", "B_LAYER_PROBE": "layer_probe", "E_PUBLIC_TRANSFER": "transfer", "B_ALIGNED": "aligned"}

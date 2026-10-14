@@ -17,7 +17,7 @@ rows = core.load_rows()
 # 2026-10-11 10:00: E_DISTILL moved small -> fm. The small queue had drained (09:30), the FM keeper took all 10 runfill slots and
 # FM workers only exit when a full pass claims nothing, so dependency-released E_DISTILL rows starved behind them (small workers
 # pending on QOSMaxGRESPerUser). On FM workers an E_DISTILL row keeps weight 12 (never co-admitted with a whole-card unit).
-QUEUES = {"small": ["E_GX", "E_LOCAL", "A_LOCAL", "A_TARGETS", "A_DIMENSION", "A_LOCAL_FACTORS", "D_COVERAGE", "D_ADAPT", "D_ATTENTION", "E_PUBLIC_TRANSFER"], "fm": ["E_GENERIC", "B_DENSE", "B_CTRL_ONESTEP", "B_LR_PANEL", "C_COMPLEMENT", "C_CAPACITY_CONTROL", "E_COMPLEMENT", "E_DISTILL", "B_LAYER_PROBE", "E_PUBLIC_TRANSFER", "D_ADAPT", "D_COVERAGE", "D_ATTENTION"]}
+QUEUES = {"small": ["E_GX", "E_LOCAL", "A_LOCAL", "A_TARGETS", "A_DIMENSION", "A_LOCAL_FACTORS", "D_COVERAGE", "D_ADAPT", "D_ATTENTION", "E_PUBLIC_TRANSFER"], "fm": ["E_GENERIC", "B_DENSE", "B_CTRL_ONESTEP", "B_LR_PANEL", "C_COMPLEMENT", "C_CAPACITY_CONTROL", "E_COMPLEMENT", "E_DISTILL", "B_LAYER_PROBE", "E_PUBLIC_TRANSFER", "D_ADAPT", "D_COVERAGE", "D_ATTENTION", "B_ALIGNED"]}  # B_ALIGNED: ADDENDUM_06 (2026-10-14)
 EXT = [json.loads(l) for l in open(f"{O}/plan_ext.jsonl")] if os.path.exists(f"{O}/plan_ext.jsonl") else []
 ALL = rows + EXT  # dependency lookups (bases / twins / donors / teachers) over plan rows and registered extension rows
 DEF_FILE = f"{O}/governance/deferred_redundant_v30_panel.json"

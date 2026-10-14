@@ -118,3 +118,24 @@
   - 在 20 ms 网格上，不与查询对齐的固定 patch 网格 token（B_DENSE 所用）几乎不含线性可读的刺激信息。
   - 与查询对齐的单个 patch 保留了大部分信息：DTU 为原始同窗的 0.75–0.97；FAU 统计功效不足，无法判读。
 - **发布**：publish_020（内容 `e4d6f3a`，回执 `1ce7c01`）。
+
+## 11. 与查询对齐的基础模型读出 B_ALIGNED（2026-10-14）
+
+- **依据**：P6 的预写判读（对齐的 patch 恢复了信息，下一步是登记对齐的 B 变体），以及用户指示“做你觉得所有该做的，并push”。
+- **冻结**：设计、行与分析计划在任何 B_ALIGNED 单元或探针运行之前冻结为 `ADDENDUM_06_B_ALIGNED.md`（0444，sha256 `7088a817…`）。代码哈希记在 `private/auditory_alignment_v3/aligned/code_sha256_at_freeze.txt`。
+- **代码**（只新增文件；已完成单元的代码哈希不变，B_DENSE 仍为 `040d7189…`）：
+  - `fm_aligned.py`：由 `private/auditory_alignment_v3/gen_fm_aligned.py` 生成，训练函数是 `fm_dense.fit_dense` 的文本副本，只做 5 处声明替换。
+  - `run_aligned.py`、`aligned_interim.py`（分析代码，在出结果前写好）。
+  - `registry.py` 新增 `aligned` 组与 B_ALIGNED 族；`run.py` 新增运行器路由。
+- **行**：`plan_ext.jsonl` 第 3 块共 250 行（`make_plan_ext_block3.py`）：2 个 backbone × 5 种适配 × 25 个格子，只用 NCE 与 seed 3401。前 1,250 行逐字节核对不变。
+- **测试**：合成数据 `test_aligned.py` 4/4、`test_aligned_interim.py` 1/1，连同既有测试通过（作业 1039827、1039831）。冻结后改过一处测试：registry 测试原先搜索整个模块，误把列出替换字符串的 docstring 也算进去，现改为只查代码部分。
+- **工程探针**（作业 1039828，V100S，每单元 2 个 epoch，结果写在 scratch 目录）：
+  - FAU reve frozen 与 Federici cbramod random_full 两个单元都完成；
+  - 训练路径与评价路径的表示差 ≤ 4e-7；
+  - 窗口等于 EEG 切片，段首之前为 0；
+  - 显存峰值 2.9 GB；
+  - FAU REVE 每个 epoch 约 21 秒，评价约 6 分钟。
+- **放行**（13:25）：
+  - `make_queue.py` 把 B_ALIGNED 放进 FM 队列；`ckpt_offload.py` 把它列入 `NO_DEPS`（备份均为 `*.before_aligned_20261014`）；
+  - 卸载守护重启为作业 1039850；keeper 开始提交 worker；
+  - 暂停中的各族保持暂停。
