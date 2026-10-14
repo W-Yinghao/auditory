@@ -6,7 +6,7 @@
 # under CUDA MPS. A preempted/requeued worker releases its own claims; the unit then resumes from its epoch checkpoint.
 # Stale claims of workers no longer in the queue are released; a unit is tried at most 3 times.
 #SBATCH --qos=runfill
-#SBATCH --partition=A100,A40,L40S,A30
+#SBATCH --partition=A100,A40,L40S,A30,V100  # V100 added 2026-10-14 at the user's request (probe 1038748 on V100-16GB passed)
 #SBATCH --gres=gpu:1
 #SBATCH --exclude=node52
 #SBATCH --cpus-per-task=12

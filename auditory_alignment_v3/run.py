@@ -8,7 +8,9 @@ import os
 
 from .core import FAMILY_GROUP, OUT, bind, code_hash, grid_samples, load_rows  # noqa: F401 (re-exported for probes/tests)
 
-RUNNER = {"local": "run_local", "private": "run_private", "dense": "run_dense", "local_factors": "run_local_factors", "complement": "run_complement", "dense_ext": "run_dense_ext", "adapt": "run_adapt3", "coverage": "run_coverage", "attention": "run_attention", "e_complement": "run_e_complement", "distill": "run_distill", "layer_probe": "run_layer_probe", "transfer": "run_transfer"}
+RUNNER = {"local": "run_local", "private": "run_private", "dense": "run_dense", "local_factors": "run_local_factors", "complement": "run_complement", "dense_ext": "run_dense_ext", "adapt": "run_adapt3", "coverage": "run_coverage", "attention": "run_attention", "e_complement": "run_e_complement", "distill": "run_distill", "layer_probe": "run_layer_probe", "transfer": "run_transfer",
+          "adapt_policy": "run_adapt_policy", "coverage_policy": "run_coverage_policy",
+          "attention_policy": "run_attention_policy"}
 EXT_OFFSET = 100000  # queue index >= EXT_OFFSET -> row (index - EXT_OFFSET) of private/auditory_alignment_v3/plan_ext.jsonl
 LOCAL_FAMILIES = {f for f, g in FAMILY_GROUP.items() if g in ("local", "local_factors")}
 PRIVATE_FAMILIES = {f for f, g in FAMILY_GROUP.items() if g == "private"}
@@ -21,6 +23,14 @@ def run_unit(row, out=OUT, epochs=None):
     g = FAMILY_GROUP.get(row["family_id"])
     if g is None:
         print("technical_pending (family not bound yet)", row["experiment_id"], row["family_id"]); return
+    if row["family_id"].startswith("D_") and row["spec"].get("architecture") in ("dense_fm_policy", "complement_policy"):
+        # ADDENDUM_04: a bound policy arm runs its own code group; this process records that group's code_group / code_hash
+        from . import core
+        from .registry import POLICY_GROUP
+        g = POLICY_GROUP.get(row["family_id"])
+        if g is None:
+            print("technical_pending (policy arm not bound yet)", row["experiment_id"], row["family_id"]); return
+        core.FAMILY_GROUP = {**core.FAMILY_GROUP, row["family_id"]: g}
     importlib.import_module(f"auditory_alignment_v3.{RUNNER[g]}").run(row, out, epochs)
 
 

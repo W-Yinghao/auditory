@@ -71,3 +71,33 @@
   - 结果文档：`SCI_R1_RESULTS.md`（总览，先披露意外）、`SCI_TIME_CURVES.md`、`SCI_TEMPORAL_GENERALIZATION.md`、`SCI_SPATIAL_READOUT.md`、`SCI_GROUP_DEVELOPMENT.md`、`SCI_FEATURE_INCREMENT.md`（部分），以及私有的 `SCI_R1_PRIVATE_RESULTS.md`（0600）。
   - 表格由 `auditory_alignment_v3/sci_r1/report.py` 从汇总 JSON 直接生成。
   - 框架等待用户决定。
+
+## 8. D 族策略臂绑定（2026-10-13）
+
+- 依据：用户批准选择规则（"plan I go"）。设计在任何策略臂单元或探针之前冻结为 `ADDENDUM_04_D_POLICY_BINDING.md`（0444，sha256 `5876deb4…`，记录在 `private/auditory_alignment_v3/logs/operations.log`）。
+- 规则：每个（数据集、外折、内容折、seed、目标函数）格子里，取训练侧 `best_selection_score` 最低的候选，候选为 B_DENSE 20 个或 C_COMPLEMENT 12 个。不读任何测试/查询结果。
+- 代码只新增文件，已完成单元的代码哈希不变：
+  - 选择与模型重建：`policy.py`、`policy_models.py`。
+  - 三个族的运行器：`run_adapt_policy.py`、`run_coverage_policy.py`、`run_attention_policy.py`。
+  - 训练器：`fm_attention.py`；`complement_coverage_train.py` 由 `private/auditory_alignment_v3/gen_complement_coverage.py` 对 `fm_complement.fit_complement` 做 3 处声明替换生成。
+  - 不进哈希的调度文件：`registry.py` 新增 `adapt_policy` / `coverage_policy` / `attention_policy` 三个代码组，`POLICY_GROUP` 控制放行；`run.py` 按行路由。
+  - 测试：`tests/auditory_alignment_v3/test_policy.py` 3/3。
+- 探针（`probe_out/`，全部通过）：
+  - D_ADAPT（作业 1037235）：重建模型的重评与所选单元的记录一致，824 个数值全部吻合（最大差 6e-14 / 4e-7）；适配器初始恒等；两个 DTU 单元完整，显存峰值约 11 GB。
+  - D_COVERAGE（作业 1037242）：两种采样对照完成；matched_exposure 的更新上限生效（2 个 epoch 106 步 vs 210 步）。
+  - D_ATTENTION（作业 1037249）：dense × alignment_plus_selection（两个选择权重候选，按早停 2AFC 选出 1.0）、complement × selection_only，以及 learned_temporal 派生记录；注意窗口均已评估。
+- 放行（13:50）：
+  - `make_queue.py` 与 `ckpt_offload.py` 换为新版本（备份 `*.before_dpolicy_20261013`）。策略臂进 FM 队列；卸载依赖覆盖三个族，在 700 行上核对无 fail-closed。
+  - 卸载守护重启为作业 1037426。
+  - FM 队列最前是 500 个未完成的策略臂行；200 个 learned_temporal 行等对应的 mean_score 完成后入队。
+- 所选配置（仅训练侧）：
+  - dense：REVE PEFT + channel_phase_linear 占 18/40 个格子。
+  - complement：concat_pretrained 占 28/40，残差变体 12/40。残差变体的初值恒等（`init_max_abs_diff_vs_base`）逐单元记录，便于事后检查。
+
+## 9. B/C 阶段性汇总（2026-10-14）
+
+- 依据：用户批准阶段性汇总方案（"可以，按这个方案开始"）。汇总规则在看到任何 B/C/E 汇总值之前冻结为 `ADDENDUM_05_BC_INTERIM_AGGREGATION.md`（0444，sha256 `a7b27951…`，全文见 `private/auditory_alignment_v3/bc_interim/code_sha256_at_freeze.txt`）。
+- 冻结前的唯一预检只比较人数与候选/查询数：seed 3401 的 1,650 个 B/C 单元全部完成，且与同折局部基线逐人匹配。
+- 新文件（不属于任何训练代码哈希）：`auditory_alignment_v3/bc_interim.py`、`bc_interim_report.py`；复用 `sci_r1/stats.py`（未改动）；`slurm/bc_interim_cpu.sbatch`。
+- 合成数据测试：`tests/auditory_alignment_v3/test_bc_interim.py` 5/5，连同 `test_sci_r1_core.py` 共 17/17（作业 1039548）。
+- 输出：`docs/auditory_alignment_v3/B_DENSE_READOUT_RESULTS.md`、`C_COMPLEMENT_RESULTS.md`、`results/auditory_alignment_v3/bc_interim/`；私有部分在 `private/auditory_alignment_v3/bc_interim/`（0700/0600），未经用户批准不发布。

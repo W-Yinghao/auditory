@@ -17,19 +17,43 @@ rows = core.load_rows()
 # 2026-10-11 10:00: E_DISTILL moved small -> fm. The small queue had drained (09:30), the FM keeper took all 10 runfill slots and
 # FM workers only exit when a full pass claims nothing, so dependency-released E_DISTILL rows starved behind them (small workers
 # pending on QOSMaxGRESPerUser). On FM workers an E_DISTILL row keeps weight 12 (never co-admitted with a whole-card unit).
-QUEUES = {"small": ["E_GX", "E_LOCAL", "A_LOCAL", "A_TARGETS", "A_DIMENSION", "A_LOCAL_FACTORS", "D_COVERAGE", "D_ADAPT", "D_ATTENTION", "E_PUBLIC_TRANSFER"], "fm": ["E_GENERIC", "B_DENSE", "B_CTRL_ONESTEP", "B_LR_PANEL", "C_COMPLEMENT", "C_CAPACITY_CONTROL", "E_COMPLEMENT", "E_DISTILL", "B_LAYER_PROBE", "E_PUBLIC_TRANSFER"]}
+QUEUES = {"small": ["E_GX", "E_LOCAL", "A_LOCAL", "A_TARGETS", "A_DIMENSION", "A_LOCAL_FACTORS", "D_COVERAGE", "D_ADAPT", "D_ATTENTION", "E_PUBLIC_TRANSFER"], "fm": ["E_GENERIC", "B_DENSE", "B_CTRL_ONESTEP", "B_LR_PANEL", "C_COMPLEMENT", "C_CAPACITY_CONTROL", "E_COMPLEMENT", "E_DISTILL", "B_LAYER_PROBE", "E_PUBLIC_TRANSFER", "D_ADAPT", "D_COVERAGE", "D_ATTENTION"]}
 EXT = [json.loads(l) for l in open(f"{O}/plan_ext.jsonl")] if os.path.exists(f"{O}/plan_ext.jsonl") else []
 ALL = rows + EXT  # dependency lookups (bases / twins / donors / teachers) over plan rows and registered extension rows
 DEF_FILE = f"{O}/governance/deferred_redundant_v30_panel.json"
 DEFERRED = set(json.load(open(DEF_FILE))["ids"]) if os.path.exists(DEF_FILE) and not os.path.exists(f"{O}/PANEL_V30_RESUME") else set()
 from auditory_alignment_v3 import run_complement
+from auditory_alignment_v3 import policy as POL
+from auditory_alignment_v3.registry import POLICY_GROUP
+_POL = {}
+
+
+def policy_ok(r):  # memoised per policy cell (candidates are read from the fleet records, core.OUT)
+    k = (r["family_id"], r["dataset"], r["subject_fold"], r["content_fold"], r["seed"], r["spec"]["objective"], r["spec"]["architecture"])
+    if k not in _POL:
+        _POL[k] = POL.resolve(r, ALL, core.OUT) is not None
+    return _POL[k]
+
+
+def policy_base_ok(r):  # ADDENDUM_04: the complement arms of D_COVERAGE / D_ATTENTION (mean_score) need their lag-local base complete
+    from auditory_alignment_v3 import run_attention_policy, run_coverage_policy
+    if r["family_id"] == "D_COVERAGE":
+        return run_coverage_policy.lag_base_ready(r, ALL) is not None
+    if r["family_id"] == "D_ATTENTION" and r["spec"]["architecture"] == "complement_policy" and r["spec"]["integrator"] == "mean_score":
+        return run_attention_policy.lag_twin_ready(r, ALL) is not None
+    return True
+
+
 for q, fams in QUEUES.items():
     ready = set(core.FAMILY_GROUP) - set(json.load(open(f"{O}/families_on_hold.json"))) if os.path.exists(f"{O}/families_on_hold.json") else set(core.FAMILY_GROUP)
     sel = [(i, r) for i, r in enumerate(rows) if r["family_id"] in fams and r["family_id"] in ready]
     sel += [(100000 + j, r) for j, r in enumerate(EXT) if r["family_id"] in fams and r["family_id"] in ready]
     sel = [(i, r) for i, r in sel if r["experiment_id"] not in DEFERRED]  # ALN3.1 deferred_redundant (reversible: PANEL_V30_RESUME)
     sel = [(i, r) for i, r in sel if not r["family_id"].startswith("C_") or run_complement.base_ready(r, ALL, O) is not None]  # same-fold base complete
-    sel = [(i, r) for i, r in sel if not r["family_id"].startswith("D_") or r["spec"].get("architecture") == "lag_local_tokens"]  # policy arms wait for B/C
+    # ADDENDUM_04 (2026-10-13): lag_local_tokens D arms on the small queue; a policy arm (dense_fm_policy / complement_policy) on the FM
+    # queue (whole card) once its family is bound (registry.POLICY_GROUP) and its training-only model policy resolves
+    sel = [(i, r) for i, r in sel if not r["family_id"].startswith("D_") or ((q == "small") if r["spec"].get("architecture") == "lag_local_tokens"
+                                                                          else (q == "fm" and r["family_id"] in POLICY_GROUP and policy_ok(r) and policy_base_ok(r)))]
     from auditory_alignment_v3 import run_attention, run_distill, run_e_complement, run_transfer
     # E_PUBLIC_TRANSFER: foundation sources on the FM queue (whole card), the lag_local source on the small queue; donor must exist
     sel = [(i, r) for i, r in sel if r["family_id"] != "E_PUBLIC_TRANSFER" or ((r["spec"]["source_architecture"] == "lag_local_tokens") == (q == "small")
@@ -37,7 +61,7 @@ for q, fams in QUEUES.items():
     sel = [(i, r) for i, r in sel if r["family_id"] != "E_COMPLEMENT" or run_e_complement.base_ready(r, ALL, O) is not None]
     sel = [(i, r) for i, r in sel if r["family_id"] != "E_DISTILL" or run_distill.teachers_ready(r, ALL) is not None]  # all candidates complete
     sel = [(i, r) for i, r in sel if r["family_id"] != "D_ATTENTION" or r["spec"]["integrator"] == "mean_score" or run_attention.twin_ready(r, ALL, O) is not None]
-    sel = [(i, r) for i, r in sel if r["family_id"] != "D_ADAPT" or run_complement.base_ready({**r, "spec": {**r["spec"], "local_architecture": "lag_local_tokens", "window": "full"}}, ALL, O) is not None]
+    sel = [(i, r) for i, r in sel if r["family_id"] != "D_ADAPT" or r["spec"]["architecture"] != "lag_local_tokens" or run_complement.base_ready({**r, "spec": {**r["spec"], "local_architecture": "lag_local_tokens", "window": "full"}}, ALL, O) is not None]
     # dependency-driven priority: the same-fold bases of C_COMPLEMENT (A_LOCAL lag_local_tokens full) and E_COMPLEMENT /
     # E_DISTILL (E_LOCAL lag_local_tokens full) first, so dependent families can start as early as possible
     base = lambda r: r["family_id"] in ("A_LOCAL", "E_LOCAL") and r["spec"].get("architecture") == "lag_local_tokens" and r["spec"].get("window") == "full"

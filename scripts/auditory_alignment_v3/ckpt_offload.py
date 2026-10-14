@@ -57,6 +57,7 @@ NO_DEPS = {"A_LOCAL", "A_TARGETS", "A_DIMENSION", "A_LOCAL_FACTORS", "B_DENSE", 
            "E_LOCAL", "E_GX", "E_GENERIC", "D_COVERAGE", "D_ATTENTION"}
 HANDLED = {"C_COMPLEMENT", "C_CAPACITY_CONTROL", "D_ADAPT", "E_COMPLEMENT", "E_PUBLIC_TRANSFER", "E_DISTILL", "D_ATTENTION"}
 _term = False
+_POLICY = {}  # D_ADAPT policy cell -> chosen unit (the B/C seed-3401 candidates are complete and immutable)
 
 
 def _on_term(signum, frame):  # noqa: ARG001
@@ -117,7 +118,29 @@ def deps_of(pending, rows):
         f, s = r["family_id"], r["spec"]
         lag = s.get("architecture") == "lag_local_tokens"
         if f.startswith(("D_ADAPT", "D_ATTENTION", "D_COVERAGE")) and not lag:
-            why = why or f"{f} policy arm {e} (dependency model unknown)"; continue
+            # ADDENDUM_04 (2026-10-13) policy arms: D_ADAPT reads the chosen B/C unit (frozen base); the D_COVERAGE complement arm
+            # reads the same-population D_COVERAGE lag unit; the D_ATTENTION complement mean_score arm reads the lag-arm unit of the
+            # same training task; dense_fm_policy attention rows and learned_temporal derived records read no checkpoint
+            from auditory_alignment_v3 import run_attention_policy, run_coverage_policy
+            if f == "D_ADAPT":
+                k = (r["dataset"], r["subject_fold"], r["content_fold"], r["seed"], s["objective"], s["architecture"])
+                if _POLICY.get(k) is None:  # unresolvable cells are re-checked on every pass
+                    from auditory_alignment_v3 import policy
+                    p = policy.resolve(r, rows, OUT); _POLICY[k] = p["chosen"] if p else None
+                if _POLICY[k] is None:
+                    why = why or f"D_ADAPT policy arm {e}: training-only policy not resolvable"; continue
+                out.add(_POLICY[k]); continue
+            if f == "D_COVERAGE":
+                lb = run_coverage_policy.lag_base_row(r, rows)
+                if lb is None:
+                    why = why or f"D_COVERAGE policy arm {e}: no lag base row"; continue
+                out.add(lb["experiment_id"]); continue
+            if s.get("integrator") == "mean_score" and s["architecture"] == "complement_policy":
+                lt = run_attention_policy.lag_twin_row(r, rows)
+                if lt is None:
+                    why = why or f"D_ATTENTION policy arm {e}: no lag twin row"; continue
+                out.add(lt["experiment_id"])
+            continue
         if f not in HANDLED and f not in NO_DEPS:
             why = why or f"unmodelled family {f} ({e})"; continue
         try:
