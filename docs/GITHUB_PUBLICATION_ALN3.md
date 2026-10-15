@@ -142,3 +142,19 @@
 内容提交 `257a3774afbb5241f68d1c753598c6cbdba3158c`（`git ls-remote` 已核对）。构建扫描（Slurm 1041333）无命中；`verify_staged`（Slurm 1041334）PASS。
 
 仍未发布：`PRIVATE_E_INTERIM.md` 与 `private_e.json`（其方法比较表已随上述汇总 §2 公开）、其他私有任务文档、checkpoint 清理工具与清单。
+
+## B_ALIGNED 结果与存储清理记录（2026-10-16，publish_026）
+
+研究者指示“提交一版到github”，并在发布过程中指示“B_ALIGNED结果文档和聚合JSON以后改为发布”。本次发布：
+
+- `docs/auditory_alignment_v3/B_ALIGNED_RESULTS.md`：发布副本，在标题下加发布说明，并在第 4 节开头加一行指向 CORRECTION_01。第 4 节“initialization (matched full update)”这个标签实为配方比较；数值和其余内容不变。
+- `results/auditory_alignment_v3/b_aligned/b_aligned.json`：逐字发布，只含组级聚合，没有逐人字段。
+- `docs/auditory_alignment_v2/IMPLEMENTATION_RECEIPT.md`：记录 2026-10-15 按研究者指示删除的 ALN2 legacy 与 B 族基础模型权重。发布副本把私有存储路径换成占位符，与以往相同。
+- `AGENTS.md`：补记存储清理第 (4) 条，以及本次发布。
+- README：进度条目。
+
+内容提交 `3fa78818f181fea810d89987ede40448d759faf1`（`git ls-remote` 已核对）。
+- 构建扫描（Slurm 1042395）无命中。
+- 第一次 `verify_staged`（1042396）只因为 `.gitignore` 未暂存而 FAIL，没有内容问题；暂存后重跑（1042398）PASS。
+
+以后公开数据集的结果文档与聚合会直接发布，不再等定框架。私有任务产物仍须逐项批准。仍未发布的内容：`PRIVATE_E_INTERIM.md`、`private_e.json`、checkpoint 清理工具与清单；其余同 publish_020。
