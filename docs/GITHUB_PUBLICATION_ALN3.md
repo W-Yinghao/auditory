@@ -158,3 +158,16 @@
 - 第一次 `verify_staged`（1042396）只因为 `.gitignore` 未暂存而 FAIL，没有内容问题；暂存后重跑（1042398）PASS。
 
 以后公开数据集的结果文档与聚合会直接发布，不再等定框架。私有任务产物仍须逐项批准。仍未发布的内容：`PRIVATE_E_INTERIM.md`、`private_e.json`、checkpoint 清理工具与清单；其余同 publish_020。
+
+## 私有 E 族中期汇总（2026-10-16，publish_027）
+
+研究者批准发布（“PRIVATE_E_INTERIM 和 private_e.json 也发布”）：
+
+- `docs/auditory_alignment_v3/PRIVATE_E_INTERIM.md`：发布副本。原标题中的“not for publication”换成发布说明；第 2 节开头加一行指向 CORRECTION_01，因为第 2 节的“matched-update initialization”标签实为配方比较。数值和其余内容不变。
+- `results/auditory_alignment_v3/bc_interim_private/private_e.json`：逐字发布。
+
+两份只含组级聚合（n = 64，其中 HA 55、NH 9）：没有 n < 5 的数值格，也没有逐儿童数值或编号。原件仍在私有目录（0600）。
+
+内容提交 `c93318ba2fa1416b8fb8c1c1d757c37708811783`（`git ls-remote` 已核对）。构建扫描（Slurm 1042411）无命中；`verify_staged`（Slurm 1042412）PASS。
+
+仍未发布：SCI_R1 私有结果、私有校准结果、Federici 再聚合回执、ALN2 第 1 项与第 3a 项结果文档、checkpoint 清理工具与清单。
