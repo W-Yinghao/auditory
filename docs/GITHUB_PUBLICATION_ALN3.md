@@ -99,3 +99,20 @@
 - 实现回执 §11（发布副本中私有存储根路径换成占位符），以及 README 进度条目。
 
 内容提交 `6326b9b38256236d9801800077c9ef26cb11c6d8`（`git ls-remote` 已核对）。构建扫描（Slurm 1039851）只有已知良性的共享数据卷根路径；`verify_staged` PASS。B_ALIGNED 结果尚未产生。仍未发布的内容同 publish_020。
+
+## ALN3.2 登记、代码与工程回执（2026-10-15，publish_023）
+
+研究者指示“push一版到github”。本次发布：
+
+- ALN3.2 包（zip 与逐字节一致的解压副本，44 个文件）。
+- `CORRECTION_01_FULL_UPDATE_LABEL.md`：`pretrained_full − random_full` 改称配方比较，数值不变。
+- 运行前冻结的 ADDENDUM_07、09、10、11、12 与 `SCI_R2_PREREG.md`，以及对应的运行器、分析代码（均在出结果前写定）和合成数据测试。
+- `PUBLIC_AUDITORY_PRETRAINING_RECEIPT.md`（SparrKULee 下载与数据合同探针）。
+- `ALN32_IMPLEMENTATION_RECEIPT.md`：发布副本把一份未发布结果文档的结论摘要换成指向说明。
+- `registry.py` / `run.py` 的新代码组路由（既有代码哈希不变）；`scripts/auditory_alignment_v3/` 副本刷新：按执行指定的暂停清单、队列（未完成行优先）、卸载、状态与监控脚本、`plan_ext.jsonl` 第 4–7 块、生成器与工程探针。
+- `slurm/aln3_gpu_pool.sbatch`：显存小于 20 GB 的卡跳过已知会显存不足的单元。
+- README 进度条目。
+
+内容提交 `862295f16a88b01dec908a3dd0e70b52fb34e7ae`（`git ls-remote` 已核对）。构建扫描（Slurm 1041322）只有已复核的良性命中：ALN3.2 包与脚本中的共享数据卷根路径，以及 SparrKULee 回执中引用其公开 README 的 BIDS 编号（与公开数据集编号同名）。`verify_staged`（Slurm 1041325）PASS。
+
+未发布：ALN3.2 结果文档与聚合（低复杂度互补、D 族局部臂、SCI_R2、实际更新范围核算；待研究者定框架）、私有研究者汇总 ADDENDUM_08 及其代码、公共先验增补草稿 ADDENDUM_13、checkpoint 清理工具与清单；其余同 publish_020。
