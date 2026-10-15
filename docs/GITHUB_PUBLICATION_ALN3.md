@@ -129,3 +129,16 @@
 内容提交 `da47d3c5a4859decfd67822e67416333a7c47595`（`git ls-remote` 已核对）。构建扫描（Slurm 1041327）无命中；`verify_staged`（Slurm 1041328）PASS。
 
 仍未发布：ADDENDUM_08 的产物（`PRIVATE_RESEARCHER_SUMMARY.md`、`private_age_stage.json`，0600；批准范围是增补文档与代码）、checkpoint 清理工具与清单；其余同 publish_020。
+
+## 私有研究者汇总（2026-10-15，publish_025）
+
+研究者批准发布 ADDENDUM_08 的产物（“这个也发布”）：
+
+- `docs/auditory_alignment_v3/PRIVATE_RESEARCHER_SUMMARY.md`：发布副本。原标题中的“not for publication”换成发布说明，并加一行指向 CORRECTION_01（§2 原样收录 ADDENDUM_05 私有中期表，其中“matched-update initialization”标签已由 CORRECTION_01 更正为配方比较）；其余内容不变。
+- `results/auditory_alignment_v3/aln32_private/private_age_stage.json`：逐字发布。
+
+两份都只含组级聚合（均值、区间、n）；n < 5 的格子只报告 n；没有逐儿童数值或编号。原件仍在私有目录（0600）。
+
+内容提交 `257a3774afbb5241f68d1c753598c6cbdba3158c`（`git ls-remote` 已核对）。构建扫描（Slurm 1041333）无命中；`verify_staged`（Slurm 1041334）PASS。
+
+仍未发布：`PRIVATE_E_INTERIM.md` 与 `private_e.json`（其方法比较表已随上述汇总 §2 公开）、其他私有任务文档、checkpoint 清理工具与清单。
