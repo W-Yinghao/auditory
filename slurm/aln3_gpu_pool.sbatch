@@ -92,6 +92,7 @@ while true; do
     [ -e "$OUT/units/$eid.json" ] && continue
     [ -e "$C/$eid.failed" ] && continue
     [ -d "$C/$eid.claim" ] && continue
+    [ -e "$C/$eid.oomtries" ] && [ "${GPU_MB:-0}" -lt 20000 ] && continue  # 2026-10-14: a unit that ran out of memory is left to cards >= 20 GB
     w=${WT[$eid]:-8}
     while true; do
       if [ -e $C/.oom_$ME ]; then rm -f $C/.oom_$ME; CAP=$(( CAP - 6 )); [ $CAP -lt 12 ] && CAP=12; echo "$(date +%T) memory budget now $CAP GB"; fi

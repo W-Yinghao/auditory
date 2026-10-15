@@ -1,0 +1,25 @@
+version: ALN3.2
+legacy:
+  name: legacy_progressive_prefix
+  change_running_jobs: false
+  warmup_epochs: 5
+  open_one_group_every: 5
+  llrd: 0.75
+  epochs: {cbramod: 100, reve: 50}
+new_recipes:
+  full_onestep_v1:
+    first_epoch_with_all_allowed_parameters: 1
+    warmup_epochs: 0
+    llrd_primary_control: 1.0
+  warmup_then_all_v1:
+    first_epoch_with_all_allowed_parameters: 6
+    warmup_epochs: 5
+    llrd_primary_control: 1.0
+common:
+  initial_epochs_not_hard_ceiling: {cbramod: 100, reve: 50}
+  optimizer: AdamW
+  record_actual_steps_and_weight_deltas: true
+  development_selection: fixed_inner_participants_and_content
+  initialization_control: shared_recipe_and_identical_numeric_lr_cell
+  separately_tuned_recipes: label_as_recipe_comparisons
+  frozen_and_peft_respect_allowed_parameter_masks: true

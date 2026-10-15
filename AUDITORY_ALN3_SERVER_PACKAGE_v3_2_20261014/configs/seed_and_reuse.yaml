@@ -1,0 +1,25 @@
+version: ALN3.2
+breadth_seed: 3401
+confirmation_seeds: [3407, 3413]
+confirmation_scope: paired_core_roles_not_entire_cartesian_matrix
+core_roles:
+  - {comparison: aligned_access_matched, reference: local_aligned1000, candidate: aligned_pretrained_frozen}
+  - {comparison: initialization_true_full, reference: aligned_random_full_onestep, candidate: aligned_pretrained_full_onestep}
+  - {comparison: adaptation, reference: aligned_pretrained_frozen, candidate: aligned_pretrained_peft}
+  - {comparison: complement_source, reference: residual_aligned_random, candidate: residual_aligned_pretrained}
+  - {comparison: complement_value, reference: local_only_epoch0, candidate: residual_aligned_pretrained}
+  - {comparison: capacity, reference: residual_small_capacity, candidate: residual_aligned_pretrained}
+  - {comparison: private_transfer, reference: private_local_native, candidate: private_public_audio_prior}
+policies:
+  select_roles_before_new_test_results: true
+  report_seed_panel_even_if_unfavorable: true
+  pair_upstream_base_teacher_seed: true
+  separate_probe_rng_from_training_seed: true
+  do_not_resume_all_old_fm_repeats: true
+reuse_actions:
+  B_ALIGNED_current: continue_registered_rows
+  old_dense_complement_versions: hold_specific_execution_and_descendants
+  local_A_D_and_independent_private: continue
+  old_completed_units: retain_and_reuse_if_contract_identical
+  new_schedule_or_input: new_execution_not_overwrite
+  missing_provenance: resolve_dependency_without_fabricating

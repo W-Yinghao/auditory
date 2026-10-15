@@ -19,6 +19,11 @@ O = "private/auditory_alignment_v3"
 DEF = f"{O}/governance/deferred_redundant_v30_panel.json"
 deferred = set(json.load(open(DEF))["ids"]) if os.path.exists(DEF) and not os.path.exists(f"{O}/PANEL_V30_RESUME") else set()
 rows = [r for r in r3.all_rows() if r["experiment_id"] not in deferred]
+HOLD = f"{O}/families_on_hold.json"  # families make_queue.py leaves out (2026-10-14: ETA counts only rows that can run)
+held = set(json.load(open(HOLD))) if os.path.exists(HOLD) else set()
+HELD_EX = f"{O}/governance/held_executions.json"  # ALN3.2 (2026-10-14 16:49): execution-specific hold, ids make_queue.py skips
+held_ids = set(json.load(open(HELD_EX))["ids"]) if os.path.exists(HELD_EX) else set()
+nheld = collections.Counter()
 now = time.time()
 fam = collections.defaultdict(lambda: [0, 0]); recent = 0; tech_failed = 0
 bc = collections.defaultdict(lambda: [0, 0])
@@ -26,6 +31,8 @@ for r in rows:
     p = f"{O}/units/{r['experiment_id']}.json"
     done = os.path.exists(p)
     fam[r["family_id"]][1] += 1
+    if not done and (r["family_id"] in held or r["experiment_id"] in held_ids):
+        nheld[r["family_id"]] += 1
     if done:
         fam[r["family_id"]][0] += 1
         if now - os.path.getmtime(p) < 3600:
@@ -37,9 +44,10 @@ for r in rows:
 tot_d = sum(v[0] for v in fam.values()); tot = sum(v[1] for v in fam.values())
 left = {f: v for f, v in fam.items() if v[0] < v[1]}
 unbound = {"F_SCIENCE"} | {f for f in left if f.startswith("D_") and fam[f][0] == 0}
+runnable = sum(t - d - nheld[f] for f, (d, t) in fam.items())
 print(f"{time.strftime('%H:%M')} active {tot_d}/{tot} ({100 * tot_d / tot:.1f}%), last hour +{recent}"
-      + (f", naive ETA {(tot - tot_d) / recent:.0f} h" if recent else ""))
-print("  left:", ", ".join(f"{f} {d}/{t}" for f, (d, t) in sorted(left.items())))
+      + f", runnable (not held) left {runnable}" + (f", naive ETA {runnable / recent:.0f} h" if recent and runnable else ""))
+print("  left:", ", ".join(f"{f} {d}/{t}" + (" HELD" if f in held else f" ({nheld[f]} held)" if nheld[f] else "") for f, (d, t) in sorted(left.items())))
 print("  B/C breadth s3401:", ", ".join(f"{f} {d}/{t}" for f, (d, t) in sorted(bc.items())),
       "-> D policy arms can be bound" if bc and all(d == t for d, t in bc.values()) else "")
 F = glob.glob(f"{O}/pool/*/*.failed")

@@ -1,7 +1,8 @@
 #!/bin/bash
 # Host-independent fleet watcher (the orchestrators may run on another host, invisible to ps). Exits, printing EVENT ..., on the
 # first condition needing attention; polls every 60 s. v2 (2026-10-11): also watches the checkpoint offload daemon and the
-# B/C breadth milestone that gates the D policy arms.
+# B/C breadth milestone that gates the D policy arms. v3 (2026-10-14 13:35): no keeper strike while the keeper log is < 3 min old
+# (the 13:32 ramp-up after the B_ALIGNED release was a false alarm).
 cd /home/infres/yinwang/EEG_auditory
 OUT=private/auditory_alignment_v3
 PY=/home/infres/yinwang/anaconda3/envs/eeg2025/bin/python
@@ -34,7 +35,8 @@ while true; do
     set -- $spec; q=$1; name=$2; maxg=$3
     [ -e "$OUT/STOP_$q" ] || [ "$jobs" = SQUEUE_FAIL ] && continue
     g=$(grep -cx "$name" <<< "$jobs"); n=$(squeue -u $USER -h -t PENDING -o "%j" | grep -cx "$name")
-    if [ $g -lt $maxg ] && [ $n -lt 3 ] && [ "$(unclaimed $OUT/$q.txt)" -gt 0 ]; then strikes[$q]=$(( ${strikes[$q]:-0} + 1 )); else strikes[$q]=0; fi
+    klog=$OUT/logs/keeper_${q#queue_v3_}.log; kage=$(( $(date +%s) - $(stat -c %Y $klog 2>/dev/null || echo 0) ))  # keeper submitted within 3 min = alive (ramp-up from 0 takes ~10 min at 1 worker/min)
+    if [ $g -lt $maxg ] && [ $n -lt 3 ] && [ $kage -gt 180 ] && [ "$(unclaimed $OUT/$q.txt)" -gt 0 ]; then strikes[$q]=$(( ${strikes[$q]:-0} + 1 )); else strikes[$q]=0; fi
     [ ${strikes[$q]} -ge 10 ] && { echo "EVENT keeper for $q seems dead: $g/$maxg workers, $n pending, unclaimed rows, for 10 min"; exit 0; }
   done
   age=$(( $(date +%s) - $(stat -c %Y $OUT/logs/refresh.log) ))

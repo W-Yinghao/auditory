@@ -54,8 +54,8 @@ FATAL_ERRNO = {errno.ENOSPC, errno.EDQUOT, errno.EIO, errno.ESTALE, errno.EROFS}
 TAG = f"{socket.gethostname()}.{os.getpid()}.{uuid.uuid4().hex[:8]}"
 # families whose units read no other unit's checkpoint (plain training / probes); D_* only for the lag-local arms
 NO_DEPS = {"A_LOCAL", "A_TARGETS", "A_DIMENSION", "A_LOCAL_FACTORS", "B_DENSE", "B_CTRL_ONESTEP", "B_LR_PANEL", "B_LAYER_PROBE",
-           "E_LOCAL", "E_GX", "E_GENERIC", "D_COVERAGE", "D_ATTENTION", "B_ALIGNED"}  # B_ALIGNED: ADDENDUM_06, no checkpoint dependencies
-HANDLED = {"C_COMPLEMENT", "C_CAPACITY_CONTROL", "D_ADAPT", "E_COMPLEMENT", "E_PUBLIC_TRANSFER", "E_DISTILL", "D_ATTENTION"}
+           "E_LOCAL", "E_GX", "E_GENERIC", "D_COVERAGE", "D_ATTENTION", "B_ALIGNED", "ALN32_LOCAL_SUPPORT", "ALN32_POSTONLY_FM", "ALN32_TRUE_FULL"}  # B_ALIGNED: ADDENDUM_06, no checkpoint dependencies
+HANDLED = {"C_COMPLEMENT", "C_CAPACITY_CONTROL", "D_ADAPT", "E_COMPLEMENT", "E_PUBLIC_TRANSFER", "E_DISTILL", "D_ATTENTION", "ALN32_RESIDUAL", "ALN32_SIMPLE_COMPLEMENT"}
 _term = False
 _POLICY = {}  # D_ADAPT policy cell -> chosen unit (the B/C seed-3401 candidates are complete and immutable)
 
@@ -151,6 +151,12 @@ def deps_of(pending, rows):
                 got = [run_complement.base_row({**r, "spec": {**s, "local_architecture": "lag_local_tokens", "window": "full"}}, rows)]
             elif f == "E_COMPLEMENT":
                 got = [run_e_complement.base_row(r, rows)]
+            elif f == "ALN32_RESIDUAL":
+                from auditory_alignment_v3 import residual32
+                got = [residual32.base_row(r, rows)]
+            elif f == "ALN32_SIMPLE_COMPLEMENT":
+                from auditory_alignment_v3 import complement32
+                got = [complement32.base_row(r, rows)]
             elif f == "E_PUBLIC_TRANSFER" and s.get("source_architecture") == "lag_local_tokens":
                 got = [run_transfer.local_donor_row(r, rows)]
             elif f == "E_DISTILL":

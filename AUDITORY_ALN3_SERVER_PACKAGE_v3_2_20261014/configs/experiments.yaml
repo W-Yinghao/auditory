@@ -1,0 +1,72 @@
+version: ALN3.2
+status: proposed_specs_needs_server_binding
+base_repository_sha: 9b9e03eb229b93c357f6d222a93ba354deb85b06
+principle: Complete declared comparisons across all existing outer/content folds; no performance gate.
+inherited:
+  - family: B_ALIGNED
+    registration: ADDENDUM_06_B_ALIGNED.md
+    expected_registered_rows: 250
+    action: continue_no_duplicate
+    objectives: [NCE]
+    seeds: [3401]
+    preserve_recipe: true
+families:
+  - id: ALN32_LOCAL_SUPPORT
+    question: Separate extra past EEG from encoder/interface gains.
+    datasets: [fau, dtu, federici]
+    variants: [existing_local_post600, local_post_exact_matched_to_F2, local_aligned1000, raw_aligned1000_ridge]
+    objectives: [NCE]
+    coverage: all_existing_subject_and_content_folds
+    reuse: [existing_local_post600]
+    execution: train_and_probe
+  - id: ALN32_POSTONLY_FM
+    question: Compare FM with local under the same real post-query EEG access.
+    datasets: [fau, dtu, federici]
+    backbones: [cbramod, reve]
+    adaptations: [pretrained_frozen, pretrained_peft]
+    variants: [aligned_post600_zero_left]
+    objectives: [NCE]
+    coverage: all_existing_subject_and_content_folds
+    execution: train
+  - id: ALN32_TRUE_FULL
+    question: Test initialization and actual full-update recipes, not labels.
+    datasets: [fau, dtu, federici]
+    backbones: [cbramod, reve]
+    initializations: [random, pretrained]
+    recipes: [full_onestep_v1, warmup_then_all_v1]
+    readout: aligned_patch_linear
+    objectives: [NCE]
+    coverage: all_existing_subject_and_content_folds
+    execution: train
+  - id: ALN32_SIMPLE_COMPLEMENT
+    question: Does aligned pretrained EEG add predictive value beyond a valid local base?
+    datasets: [fau, dtu, federici]
+    variants: [local_only, local_refit_capacity, aligned_pretrained, aligned_random, small_context, concat]
+    representation_policy: fixed_prediction_space
+    fit_policy: outer_train_group_crossfit_or_disjoint_stack_fit
+    coverage: all_existing_subject_and_content_folds
+    execution: fit_low_complexity_readouts
+  - id: ALN32_RESIDUAL
+    question: Can training exploit complement without losing the useful local map?
+    datasets: [fau, dtu, federici]
+    variants: [local_only_epoch0, residual_aligned_pretrained, residual_aligned_random, residual_small_capacity]
+    recipes: [freeze_local]
+    objectives: [NCE, CS_SINGLE]
+    selection: inner_group_true_query_risk
+    coverage: all_existing_subject_and_content_folds
+    execution: train
+  - id: ALN32_PUBLIC_AUDIO_PRIOR
+    question: Does task-specific speech supervision improve group and target adaptation?
+    targets: [fau, dtu, federici, private_bdf]
+    sources: [verified_existing_public_speech, sparrkulee_if_licensed]
+    variants: [target_from_scratch, audio_pair_pretrain, cross_person_pretrain, joint_pretrain]
+    objectives: [NCE, CS_SINGLE]
+    coverage: all_target_outer_folds_and_defined_content_splits
+    execution: pretrain_then_adapt
+    no_target_test_identities_or_content_in_donor: true
+  - id: ALN32_SCIENCE_R2
+    question: Which sound evidence is shared, when is it readable, and what changes with adaptation?
+    datasets: [fau, dtu, federici, private_bdf]
+    analyses: [common_time_support, explicit_sound_features, temporal_generalization, groups_and_adaptation, private_history_development]
+    execution: analysis_and_declared_window_training
+    does_not_wait_for_fm_success: true
