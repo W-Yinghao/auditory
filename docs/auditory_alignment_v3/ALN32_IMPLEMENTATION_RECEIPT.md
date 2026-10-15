@@ -145,4 +145,7 @@
 
 **ALN32_SIMPLE_COMPLEMENT 分析（2026-10-15 06:32）**：
 - 100/100 个单元完成后运行冻结的 `aln32_complement_interim.py`（运行前 sha 全部核对 OK）。作业 1040973，隐私扫描 PASS，600 对全部纳入。
-- 结果文档 `COMPLEMENT_REVISED_RESULTS.md` 待研究者定框架，本发布副本不含其结论。
+- 结果见 `COMPLEMENT_REVISED_RESULTS.md`。机械措辞规则判定：
+  - FAU、Federici：8 个 cell 均为 no complement resolved；
+  - DTU：4 个 cell 均为“加入对齐特征降低风险，但来源未分离”，即 pretrained 不优于 random 或 small_context。
+- 解读待用户定框架。

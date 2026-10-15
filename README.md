@@ -21,10 +21,11 @@
   - 因此剩余的 seed 3407/3413 重复（909 个单元）与 D 族基础模型/互补策略臂（约 200 个）已暂停，待上游问题定位后再定。私有任务汇总未发布。
 - ALN3.2（[实现回执](docs/auditory_alignment_v3/ALN32_IMPLEMENTATION_RECEIPT.md)）：
   - [更正 01](docs/auditory_alignment_v3/CORRECTION_01_FULL_UPDATE_LABEL.md)：`pretrained_full − random_full` 是配方比较（backbone 学习率相差 30 倍，且是逐步开放前缀的日程），不是“匹配全量更新”下的初始化对照；数值与区间不变，只改标签与解读。
-  - 运行前冻结并已开始运行：[ADDENDUM_07](docs/auditory_alignment_v3/ADDENDUM_07_ALN32_SUPPORT_AND_TRUE_FULL.md)（local 对齐窗口与 ridge 参照 125 个、post-only FM 100 个、真正全量更新对照 800 个）、[ADDENDUM_09](docs/auditory_alignment_v3/ADDENDUM_09_ALN32_SIMPLE_COMPLEMENT.md)（低复杂度互补 100 个，已全部完成）、[ADDENDUM_10](docs/auditory_alignment_v3/ADDENDUM_10_ALN32_RESIDUAL.md)（零初始化残差、epoch 0 为合法候选，500 个）、[ADDENDUM_11](docs/auditory_alignment_v3/ADDENDUM_11_ALN32_SEED_PANEL.md)（seed 3407/3413 面板）。各族数量含 seed 面板。
-  - D 族局部臂（注意、覆盖、个人适配，280 个单元）的结果分析按 [ADDENDUM_12](docs/auditory_alignment_v3/ADDENDUM_12_D_LAG_RESULTS.md) 在汇总前冻结；docs/13 第 2 轮科学分析按冻结的 [SCI_R2 预登记](docs/auditory_alignment_v3/SCI_R2_PREREG.md) 完成（25/25 个任务）。
-  - 公共听觉数据：SparrKULee 已下载并逐文件核对，数据合同探针通过（[回执](docs/auditory_alignment_v3/PUBLIC_AUDITORY_PRETRAINING_RECEIPT.md)）；公共先验的增补仍是草稿，待研究者决定。
-  - 上述结果文档（低复杂度互补、D 族局部臂、SCI_R2、实际更新范围核算）待研究者定框架后再发布。
+  - 运行前冻结并已开始运行：[ADDENDUM_07](docs/auditory_alignment_v3/ADDENDUM_07_ALN32_SUPPORT_AND_TRUE_FULL.md)（local 对齐窗口与 ridge 参照 125 个、post-only FM 100 个、真正全量更新对照 800 个）、[ADDENDUM_09](docs/auditory_alignment_v3/ADDENDUM_09_ALN32_SIMPLE_COMPLEMENT.md)（低复杂度互补 100 个，已全部完成，[结果](docs/auditory_alignment_v3/COMPLEMENT_REVISED_RESULTS.md)）、[ADDENDUM_10](docs/auditory_alignment_v3/ADDENDUM_10_ALN32_RESIDUAL.md)（零初始化残差、epoch 0 为合法候选，500 个）、[ADDENDUM_11](docs/auditory_alignment_v3/ADDENDUM_11_ALN32_SEED_PANEL.md)（seed 3407/3413 面板）。各族数量含 seed 面板。
+  - D 族局部臂（注意、覆盖、个人适配，280 个单元）的结果分析按 [ADDENDUM_12](docs/auditory_alignment_v3/ADDENDUM_12_D_LAG_RESULTS.md) 在汇总前冻结，结果见 [注意](docs/auditory_alignment_v3/D_ATTENTION_RESULTS.md)、[个人适配](docs/auditory_alignment_v3/D_ADAPT_RESULTS.md)、[覆盖矩阵](docs/auditory_alignment_v3/D_COVERAGE_MATRIX.md)；docs/13 第 2 轮科学分析按冻结的 [SCI_R2 预登记](docs/auditory_alignment_v3/SCI_R2_PREREG.md) 完成（25/25 个任务，[结果](docs/auditory_alignment_v3/SCI_R2_RESULTS.md)）。
+  - 公共听觉数据：SparrKULee 已下载并逐文件核对，数据合同探针通过（[回执](docs/auditory_alignment_v3/PUBLIC_AUDITORY_PRETRAINING_RECEIPT.md)）；公共先验的增补仍是[草稿](docs/auditory_alignment_v3/ADDENDUM_13_ALN32_PUBLIC_AUDIO_PRIOR_DRAFT.md)，未冻结，待研究者决定。
+  - 实际更新范围核算见 [EFFECTIVE_UPDATE_REPORT](docs/auditory_alignment_v3/EFFECTIVE_UPDATE_REPORT.md)；聚合 JSON 在 `results/auditory_alignment_v3/` 下。以上结果文档按冻结的分析代码机械生成，尚未加研究者的解读框架。
+  - 私有研究者汇总的分析设计见 [ADDENDUM_08](docs/auditory_alignment_v3/ADDENDUM_08_PRIVATE_RESEARCHER_SUMMARY.md)（含代码）；汇总本身不在仓库中。
 - 已按 ALN3.1 调整多 seed 优先级：广覆盖用 seed 3401，3407/3413 只用于登记的配对角色，见 [ADDENDUM_03](docs/auditory_alignment_v3/ADDENDUM_03_ALN3_1_SEED_PANEL.md)。
 - docs/13 并行科学分析第 1 轮已完成（670/670 个任务，0 失败）。先冻结预登记，再在已完成的 checkpoint 上用 CPU 计算逐 lag 可读性、时间泛化、模型依赖与可替代性、空间读数，以及组间、发育、功能对比。
 
@@ -38,7 +39,7 @@
 - 逐单元记录、逐参与者/逐儿童输出、模型 checkpoint；
 - 私有任务的组聚合与私有文档（待研究者批准）；
 - ALN2 第 1 项与第 3a 项的结果文档（待研究者定框架）；
-- ALN3.2 的结果文档、私有研究者汇总（ADDENDUM_08）与公共先验增补草稿。
+- ALN3.2 私有研究者汇总的输出（ADDENDUM_08 的产物）。
 
 工作区在 2026-10-11 做了目录整理（归档），尚未镜像到本仓库。
 
