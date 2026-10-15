@@ -116,3 +116,16 @@
 内容提交 `862295f16a88b01dec908a3dd0e70b52fb34e7ae`（`git ls-remote` 已核对）。构建扫描（Slurm 1041322）只有已复核的良性命中：ALN3.2 包与脚本中的共享数据卷根路径，以及 SparrKULee 回执中引用其公开 README 的 BIDS 编号（与公开数据集编号同名）。`verify_staged`（Slurm 1041325）PASS。
 
 未发布：ALN3.2 结果文档与聚合（低复杂度互补、D 族局部臂、SCI_R2、实际更新范围核算；待研究者定框架）、私有研究者汇总 ADDENDUM_08 及其代码、公共先验增补草稿 ADDENDUM_13、checkpoint 清理工具与清单；其余同 publish_020。
+
+## ALN3.2 结果文档与草稿（2026-10-15，publish_024）
+
+研究者在 publish_023 之后批准发布其中暂缓的三组内容（“这三个全可以发布”）：
+
+- 冻结分析代码生成的结果文档及聚合 JSON：低复杂度互补（`COMPLEMENT_REVISED_RESULTS.md`）、D 族局部臂（`D_ATTENTION_RESULTS.md`、`D_ADAPT_RESULTS.md`、`D_COVERAGE_MATRIX.md`）、`SCI_R2_RESULTS.md`、实际更新范围核算（`EFFECTIVE_UPDATE_REPORT.md`）。尚未加研究者的解读框架。
+- `ADDENDUM_08_PRIVATE_RESEARCHER_SUMMARY.md` 及其代码 `aln32_private_summary.py` 与合成数据测试。
+- `ADDENDUM_13_ALN32_PUBLIC_AUDIO_PRIOR_DRAFT.md`：仍是草稿，未冻结。
+- `ALN32_IMPLEMENTATION_RECEIPT.md` 改为逐字发布；README 链接。
+
+内容提交 `da47d3c5a4859decfd67822e67416333a7c47595`（`git ls-remote` 已核对）。构建扫描（Slurm 1041327）无命中；`verify_staged`（Slurm 1041328）PASS。
+
+仍未发布：ADDENDUM_08 的产物（`PRIVATE_RESEARCHER_SUMMARY.md`、`private_age_stage.json`，0600；批准范围是增补文档与代码）、checkpoint 清理工具与清单；其余同 publish_020。
