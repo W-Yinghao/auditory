@@ -176,7 +176,7 @@
 
 - **决定**：停止通道平均接口的基础模型单元，暂停依赖其任务训练基础单元或教师输出的下游单元，保留不受影响的小编码器工作；替换接口后重新选择学习率，从原始预训练或随机初始化重跑受影响的全部族，并重新生成 donor、教师、蒸馏目标和迁移基础。不为凑齐旧接口的矩阵继续消耗算力。
 - **包的修正 A1**（用户提出）：在学习的任务特定操作组合之前，保留通道身份与空间对比；在声明的时间汇总阶段之前，保留时间 token 轴。无权重通道平均是消融，不是基础模型的默认接口。
-- **停止与保留**（22:38）：取消全部基础模型 worker。按依赖而不是族名，把受影响的产物移入 `private/auditory_alignment_v2/legacy_chmean_v1/`（只移动，不删除，不修改）：739 条单元记录（B_FM、D_FM_GENERIC 及 C 族 cbramod 臂，加 20 个 donor 标记）、701 个复用指针、760 份日志、129 个学习率配方、40 个 donor 文件；`MANIFEST.json` 记录每条单元记录的 sha256。权重 726 个（约 82 GB）在 `<private checkpoint storage>/auditory_alignment_v2/legacy_chmean_v1/ckpt/`，作为可用状态保留。修改前的代码副本为 `legacy_chmean_v1/code_*.py`。
+- **停止与保留**（22:38）：取消全部基础模型 worker。按依赖而不是族名，把受影响的产物移入 `private/auditory_alignment_v2/legacy_chmean_v1/`（只移动，不删除，不修改）：739 条单元记录（B_FM、D_FM_GENERIC 及 C 族 cbramod 臂，加 20 个 donor 标记）、701 个复用指针、760 份日志、129 个学习率配方、40 个 donor 文件；`MANIFEST.json` 记录每条单元记录的 sha256。权重 726 个（约 82 GB）在 `<private checkpoint storage>/auditory_alignment_v2/legacy_chmean_v1/ckpt/`，作为可用状态保留。（2026-10-15 按研究者指示删除这些权重，见下文“存储清理”；单元记录、复用指针、日志与 `MANIFEST.json` 仍保留。）修改前的代码副本为 `legacy_chmean_v1/code_*.py`。
   - 旧代码哈希：FM `60d363ffe7c32f70`，STAGE `fc5af9f62078e891`，ADAPT `49805706b6bd69a5`。
   - 不受影响的小编码器 C_ADAPT 最后 30 个单元在修改代码之前用旧 ADAPT 哈希跑完（150/150，同一哈希；这条路径不经过基础模型代码）。
 - **新读出层**（`auditory_alignment_v2/fm_readout.py`，版本 `spatial_signed_k8_e32_v1`）：
@@ -214,3 +214,9 @@
 - **修正**：汇总脚本排除 Artifact 记录，另设第 8 节"幻影头质控"表；`FULL_RESULTS.md`、`aggregate.json`、`REPAIRED_FM_RESULTS.md` 已重新生成或更新（例：REVE 冻结 NCE 0.287 [0.230, 0.344] → 0.314 [0.255, 0.377]；density_tokens 完整窗 0.086 → 0.095）。已发布的 `d8f6d8e` 含旧数值，下次发布时更正并在回执中说明。FAU、DTU 与私有任务不受影响。
 - **质控发现**：幻影头上，不训练的线性参照 gain 为 0.179 [0.038, 0.322]（n=9），CBraMod 全量微调 0.049 [0.013, 0.085]，density_tokens CS 0.106 [−0.006, 0.237]；大多数深度模型接近 0（REVE 冻结 0.025 [−0.081, 0.123]）。说明 Federici 中存在可被读出的、与刺激相关的非神经成分。上一轮"线性参照在 Federici 上高于全部深度方法"的结论也应在这一背景下重新审视。
 - **主表的 seed 范围**：`seed_scope.json` 已改为三个 seed（第 2 项），但第 2 项未完成前混入部分完成的 seed 会使配置均值有偏。汇总脚本增加 `--seeds`（默认 3401）；第 2 项完成后再生成三 seed 版本。
+
+## 存储清理（2026-10-15）
+
+- 研究者指示“现在就把没用了的删除吧”。删除了 `<private checkpoint storage>/auditory_alignment_v2/legacy_chmean_v1/ckpt/`（732 个文件，79.9 GiB）和 `<private checkpoint storage>/auditory_alignment_v2/ckpt/` 中的 `ALN2_B_FM_*`、`ALN2_B_AUDITORY_CONTINUE_*`（1,108 个文件，151.8 GiB），以及空目录 `ckpt/lrsel`。
+- 删除前核对过没有代码读取这些权重（清单 `private/ckpt_cleanup_20261012/DELETE_LIST.md`）。单元记录、预测与汇总全部保留；重新评估这些单元需要重训。
+- `D_FM_GENERIC`、`D_FM_PUBLIC` 权重（D1，32.1 GiB）未删除，待研究者决定。删除回执：`private/ckpt_cleanup_20261015/DELETED_20261015.md`。

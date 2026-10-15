@@ -6,18 +6,18 @@
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## 最新（2026-10-15 更新）：ALN3 / ALN3.1 / ALN3.2（进行中）与 docs/13 并行科学分析第 1、2 轮
+## 最新（2026-10-16 更新）：ALN3 / ALN3.1 / ALN3.2（进行中）与 docs/13 并行科学分析第 1、2 轮
 
 本轮执行 `AUDITORY_ALN3_SERVER_PACKAGE_v3_20261010.zip` 及其增补 `AUDITORY_ALN3_SERVER_PACKAGE_v3_1_20261011.zip`、`AUDITORY_ALN3_SERVER_PACKAGE_v3_2_20261014.zip`，同名目录是逐字节一致的解压内容。代码在 `auditory_alignment_v3/`。
 
 完成情况（发布时）：
-- ALN3 GPU 队列（2026-10-15）：加入 ALN3.2 后共 8,571 个有效单元，约 72% 已完成，0 失败；另有 1,002 个旧 dense/互补执行及依赖它们的 D 策略臂按 ALN3.2 的执行清单暂停（`scripts/auditory_alignment_v3/governance/held_executions.json`）。seed 3401 的 B_DENSE（1,000 个）、C_COMPLEMENT（600 个）、C_CAPACITY_CONTROL（50 个）与私有 E 族已全部完成；D 族的两类策略臂按只用训练侧的选择规则绑定（[ADDENDUM_04](docs/auditory_alignment_v3/ADDENDUM_04_D_POLICY_BINDING.md)）。
+- ALN3 GPU 队列（2026-10-16）：加入 ALN3.2 后共 8,571 个有效单元，约 75% 已完成，0 失败；另有 1,002 个旧 dense/互补执行及依赖它们的 D 策略臂按 ALN3.2 的执行清单暂停（`scripts/auditory_alignment_v3/governance/held_executions.json`）。seed 3401 的 B_DENSE（1,000 个）、C_COMPLEMENT（600 个）、C_CAPACITY_CONTROL（50 个）与私有 E 族已全部完成；D 族的两类策略臂按只用训练侧的选择规则绑定（[ADDENDUM_04](docs/auditory_alignment_v3/ADDENDUM_04_D_POLICY_BINDING.md)）。
 - B/C 阶段性汇总（只有 seed 3401）：按看结果前冻结的 [ADDENDUM_05](docs/auditory_alignment_v3/ADDENDUM_05_BC_INTERIM_AGGREGATION.md) 生成，见 [B 结果](docs/auditory_alignment_v3/B_DENSE_READOUT_RESULTS.md)、[C 结果](docs/auditory_alignment_v3/C_COMPLEMENT_RESULTS.md)、[QC 说明](docs/auditory_alignment_v3/BC_INTERIM_QC_NOTES.md)。
   - 在本实现中，基础模型（CBraMod、REVE）的密集读出几乎没有学到声音对齐：`dense_query` 在所有格子都处于机会水平，`channel_phase_linear` 仅略高于机会，120 个配置全部不如同折的局部模型。
   - 局部＋预训练互补：FAU/DTU 的全部变体（包括不含基础模型的容量对照）都比局部基线差；Federici 上与局部基线没有可分辨的差异（区间含 0，或差值约为 0）。
   - 定位探针（[计划 01](docs/auditory_alignment_v3/BC_PROBE_PLAN_20261014.md)、[02](docs/auditory_alignment_v3/BC_PROBE_PLAN_02_INPUT_PATH_20261014.md)、[03](docs/auditory_alignment_v3/BC_PROBE_PLAN_03_ALIGNED_TOKENS_20261014.md)，[结果](docs/auditory_alignment_v3/BC_PROBE_RESULTS.md)）排除了评价路径、查询时间、时间错位和输入准备（重采样、缩放、截断、通道顺序）这几类问题。
   - 原因定位到读出接口：B_DENSE 所用的、不与查询对齐的固定 patch 网格 token 几乎不含线性可读的刺激信息；与查询对齐的单个 patch 保留了大部分信息（DTU 为原始同窗的 0.75–0.97，FAU 统计功效不足）。这是实现层面的失败定位，不是“预训练无益”的结论。
-  - 已登记并开始运行与查询对齐的变体 B_ALIGNED（[ADDENDUM_06](docs/auditory_alignment_v3/ADDENDUM_06_B_ALIGNED.md)，运行前冻结）：每个查询读取 [t−0.4 s, t+0.6 s) 的单个 patch，训练配方与 B_DENSE 相同；2 个 backbone × 5 种适配 × 25 个格子，共 250 个单元（NCE，seed 3401）。工程探针通过；2026-10-15 时 250 个中 170 个已完成，结果尚未汇总。
+  - 已登记并开始运行与查询对齐的变体 B_ALIGNED（[ADDENDUM_06](docs/auditory_alignment_v3/ADDENDUM_06_B_ALIGNED.md)，运行前冻结）：每个查询读取 [t−0.4 s, t+0.6 s) 的单个 patch，训练配方与 B_DENSE 相同；2 个 backbone × 5 种适配 × 25 个格子，共 250 个单元（NCE，seed 3401）。工程探针通过；250 个已全部完成（2026-10-15），按冻结的分析代码生成的[结果](docs/auditory_alignment_v3/B_ALIGNED_RESULTS.md)与 `results/auditory_alignment_v3/b_aligned/` 下的聚合 JSON 已发布，尚未加研究者的解读框架（第 4 节“matched full update”标签以 [CORRECTION_01](docs/auditory_alignment_v3/CORRECTION_01_FULL_UPDATE_LABEL.md) 为准）。
   - 因此剩余的 seed 3407/3413 重复（909 个单元）与 D 族基础模型/互补策略臂（约 200 个）已暂停，待上游问题定位后再定。私有任务汇总未发布。
 - ALN3.2（[实现回执](docs/auditory_alignment_v3/ALN32_IMPLEMENTATION_RECEIPT.md)）：
   - [更正 01](docs/auditory_alignment_v3/CORRECTION_01_FULL_UPDATE_LABEL.md)：`pretrained_full − random_full` 是配方比较（backbone 学习率相差 30 倍，且是逐步开放前缀的日程），不是“匹配全量更新”下的初始化对照；数值与区间不变，只改标签与解读。
