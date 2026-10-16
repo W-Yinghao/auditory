@@ -1,6 +1,6 @@
 # 儿童听觉 EEG：数据审计与科学探索
 
-本仓库保存面向 IEEE JBHI 同级期刊研究的 **Phase 0–3、Auditory5、v2/v2.1、V3、F1–F4 功能分析、PTA 修正与扩展分析，以及修正队列完整重训**的代码、方案、报告、汇总结果和图表。修正队列重训轮已完成 40 个学习型编码器和 5 个 L0 表征任务，并通过独立执行核验；临床增益仍小且不确定，尚无独立临床验证或真实随访预测。原始 EEG、身份映射、逐人临床信息、逐 epoch 数据、个体预测和模型权重不在仓库中。
+本仓库保存面向 IEEE JBHI 同级期刊研究的 **Phase 0–3、Auditory5、v2/v2.1、V3、F1–F4 功能分析、PTA 修正与扩展分析，以及修正队列完整重训**的代码、方案、报告、汇总结果和图表。修正队列重训轮已完成 40 个学习型编码器和 5 个 L0 表征任务，并通过独立执行核验；临床增益仍小且不确定，尚无独立临床验证或真实随访预测。原始 EEG、身份映射、逐人临床信息、逐 epoch 数据、个体预测和模型权重不在仓库中（例外：ALN3 逐单元记录含私有队列每个儿童的模型得分、月龄与助听器佩戴时长，经研究者决定原样发布，见 `results/auditory_alignment_v3/unit_records/`）。
 
 优先阅读[重训完整报告](reports/auditory_retrain_v1/verification_001/REPORT.md)、[结果解读](docs/auditory_retrain/INTERPRETATION.md)、[PTA 修正与扩展分析](reports/auditory_repair/verification_001/REPORT.md)和[最新状态](docs/auditory_retrain/STATUS.md)。**历史 PTA 勘误：旧 Phase 3 协变量使用了错误的临床行号映射，57 条比较中裸耳 PTA 有 55 条、助听 PTA 有 47 条变化。**旧 PTA 调整结果和 Auditory5 D 表只能作为历史记录；后续复用划分的间接影响也不能笼统排除。见[来源勘误](docs/auditory_fseries_archival/LEGACY_PTA_LINEAGE_AMENDMENT.md)与[修正复现说明](docs/auditory_repair/REPRODUCTION.md)。
 
@@ -25,6 +25,7 @@
   - D 族局部臂（注意、覆盖、个人适配，280 个单元）的结果分析按 [ADDENDUM_12](docs/auditory_alignment_v3/ADDENDUM_12_D_LAG_RESULTS.md) 在汇总前冻结，结果见 [注意](docs/auditory_alignment_v3/D_ATTENTION_RESULTS.md)、[个人适配](docs/auditory_alignment_v3/D_ADAPT_RESULTS.md)、[覆盖矩阵](docs/auditory_alignment_v3/D_COVERAGE_MATRIX.md)；docs/13 第 2 轮科学分析按冻结的 [SCI_R2 预登记](docs/auditory_alignment_v3/SCI_R2_PREREG.md) 完成（25/25 个任务，[结果](docs/auditory_alignment_v3/SCI_R2_RESULTS.md)）。
   - 公共听觉数据：SparrKULee 已下载并逐文件核对，数据合同探针通过（[回执](docs/auditory_alignment_v3/PUBLIC_AUDITORY_PRETRAINING_RECEIPT.md)）；公共先验的增补仍是[草稿](docs/auditory_alignment_v3/ADDENDUM_13_ALN32_PUBLIC_AUDIO_PRIOR_DRAFT.md)，未冻结，待研究者决定。
   - 实际更新范围核算见 [EFFECTIVE_UPDATE_REPORT](docs/auditory_alignment_v3/EFFECTIVE_UPDATE_REPORT.md)；聚合 JSON 在 `results/auditory_alignment_v3/` 下。以上结果文档按冻结的分析代码机械生成，尚未加研究者的解读框架。
+  - 逐单元记录：2026-10-16 快照共 6,452 个，按数据集打包在 [`results/auditory_alignment_v3/unit_records/`](results/auditory_alignment_v3/unit_records/README.md)，与服务器原文件逐字节相同，附清单与字段说明；私有队列的 547 个记录经研究者决定原样发布（含逐儿童月龄与佩戴时长）。
   - 私有儿童任务的研究者汇总（按 [ADDENDUM_08](docs/auditory_alignment_v3/ADDENDUM_08_PRIVATE_RESEARCHER_SUMMARY.md) 生成，只含组级聚合）：[汇总](docs/auditory_alignment_v3/PRIVATE_RESEARCHER_SUMMARY.md)，聚合 JSON 在 `results/auditory_alignment_v3/aln32_private/`。经研究者批准发布。
 - 已按 ALN3.1 调整多 seed 优先级：广覆盖用 seed 3401，3407/3413 只用于登记的配对角色，见 [ADDENDUM_03](docs/auditory_alignment_v3/ADDENDUM_03_ALN3_1_SEED_PANEL.md)。
 - docs/13 并行科学分析第 1 轮已完成（670/670 个任务，0 失败）。先冻结预登记，再在已完成的 checkpoint 上用 CPU 计算逐 lag 可读性、时间泛化、模型依赖与可替代性、空间读数，以及组间、发育、功能对比。
@@ -38,7 +39,7 @@
 
 不在仓库中：
 - 私有数据集本身：原始 EEG/音频/刺激、文件索引与事件台账、临床元数据、身份键，以及逐儿童的记录与预测；
-- 逐单元记录、模型 checkpoint；
+- 模型 checkpoint；
 - 人名与联系方式（通信记录的发布版已去除）；
 
 工作区在 2026-10-11 做了目录整理（归档），尚未镜像到本仓库。
