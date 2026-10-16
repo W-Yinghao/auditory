@@ -30,15 +30,16 @@
 - docs/13 并行科学分析第 1 轮已完成（670/670 个任务，0 失败）。先冻结预登记，再在已完成的 checkpoint 上用 CPU 计算逐 lag 可读性、时间泛化、模型依赖与可替代性、空间读数，以及组间、发育、功能对比。
 
 入口：
-- [科学分析第 1 轮结果总览](docs/auditory_alignment_v3/SCI_R1_RESULTS.md)（发布副本，已移除私有任务数值）；[冻结预登记](docs/auditory_alignment_v3/SCI_R1_PREREG.md)（发布副本）；[实现说明](docs/auditory_alignment_v3/SCI_R1_ADDENDUM_01_IMPLEMENTATION_NOTES.md)。
+- [科学分析第 1 轮结果总览](docs/auditory_alignment_v3/SCI_R1_RESULTS.md)（含私有任务组聚合；详见[私有任务结果](docs/auditory_alignment_v3/SCI_R1_PRIVATE_RESULTS.md)，聚合与图在 `results/auditory_alignment_v3/sci_r1/private_agg/`）；[冻结预登记](docs/auditory_alignment_v3/SCI_R1_PREREG.md)（与冻结原件逐字相同）；[实现说明](docs/auditory_alignment_v3/SCI_R1_ADDENDUM_01_IMPLEMENTATION_NOTES.md)。
 - 详细结果：[逐 lag 曲线与窗口三件套](docs/auditory_alignment_v3/SCI_TIME_CURVES.md)、[时间泛化](docs/auditory_alignment_v3/SCI_TEMPORAL_GENERALIZATION.md)、[空间读数](docs/auditory_alignment_v3/SCI_SPATIAL_READOUT.md)、[人群/发育/功能](docs/auditory_alignment_v3/SCI_GROUP_DEVELOPMENT.md)、[显式特征（部分）](docs/auditory_alignment_v3/SCI_FEATURE_INCREMENT.md)。
 - [实现回执](docs/auditory_alignment_v3/IMPLEMENTATION_RECEIPT.md)、[ALN3.2 实现回执](docs/auditory_alignment_v3/ALN32_IMPLEMENTATION_RECEIPT.md)；[聚合结果与图](results/auditory_alignment_v3/sci_r1/)；编排脚本副本在 `scripts/auditory_alignment_v3/`。
-- ALN2 后续：[ALN2 轮报告](docs/auditory_alignment_v2/ALN2_ROUND_REPORT.md)；第 3 项的[预登记](docs/auditory_alignment_v2/ITEM3_PREREG_FROZEN.md)与[增补](docs/auditory_alignment_v2/ITEM3_ADDENDUM_01.md)。
+- ALN2 后续：[ALN2 轮报告](docs/auditory_alignment_v2/ALN2_ROUND_REPORT.md)；[第 1 项分析](docs/auditory_alignment_v2/ITEM1_ANALYSES.md)；第 3 项的[预登记](docs/auditory_alignment_v2/ITEM3_PREREG_FROZEN.md)、[增补](docs/auditory_alignment_v2/ITEM3_ADDENDUM_01.md)与[第 3a 项结果](docs/auditory_alignment_v2/ITEM3A_RESULTS.md)。
+- ALN3 接口与再汇总：[私有任务概率校准](docs/auditory_alignment_v3/R_PRIVATE_CALIBRATION_RESULTS.md)；[Federici 实体/身份重汇总回执](docs/auditory_alignment_v3/FEDERICI_REAGGREGATION_RECEIPT.md)。
 
 不在仓库中：
-- 逐单元记录、逐参与者/逐儿童输出、模型 checkpoint；
-- 其余私有任务的组聚合与私有文档（待研究者批准）；
-- ALN2 第 1 项与第 3a 项的结果文档（待研究者定框架）；
+- 私有数据集本身：原始 EEG/音频/刺激、文件索引与事件台账、临床元数据、身份键，以及逐儿童的记录与预测；
+- 逐单元记录、模型 checkpoint；
+- 人名与联系方式（通信记录的发布版已去除）；
 
 工作区在 2026-10-11 做了目录整理（归档），尚未镜像到本仓库。
 

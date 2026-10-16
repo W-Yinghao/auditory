@@ -1,7 +1,5 @@
 # ALN3.1 并行科学分析第 1 轮预登记（docs/13 的 S1、S3、S4；S2 在第 2 轮）
 
-> **发布副本**：隐去了一处私有任务汇总数值（§0），其余与冻结原件逐字相同；冻结原件（sha256 `aab58bc13b27ace76d8ab312ea160fb7a3def1cb027d8672a2d04673b75a158e`）保存在服务器上。
-
 **状态**：**冻结 v3（2026-10-11 17:57 CEST）**，已并入协议审查与方法/代码审查两份意见；sha256 记入 `IMPLEMENTATION_RECEIPT.md` §7，文件只读。冻结前没有在真实数据上做任何分析计算（只有合成数据单元测试）。此后的任何改动都另写增补。
 
 **依据**：
@@ -27,7 +25,7 @@
 - ALN2 `docs/01` 表与 `FULL_RESULTS.md`，例如 FAU Local NCE 统一读出 legacy_pool4 0.740 → lag_local_tokens 1.026。
 - ALN2 A_TIME 窗级汇总；核 CS 轮 `TEMPORAL_RESULTS.md`。
 - ALN3 R 项中对 ALN2 单元的重汇总（R_FEDERICI、R_PRIVATE_CALIBRATION）。
-- 接口报告转引的一项私有汇总，即 ALN2 D_TASK_LOCAL（本轮 P1）合并表示的 AUC（出自未发布的私有文档；发布副本隐去数值）。接口报告除此之外不含数据结果。
+- 接口报告转引的私有 lag_local full 汇总 AUC（CS 0.541、NCE 0.530），即 ALN2 D_TASK_LOCAL（本轮 P1）合并表示的 AUC（`R_PRIVATE_CALIBRATION_RESULTS.md`）。接口报告除此之外不含数据结果。
 
 **ALN3 单元**：E_LOCAL、E_COMPLEMENT、E_DISTILL、E_GENERIC、B_DENSE、C_COMPLEMENT 及 A 族已有完成记录。作者在 fleet 监控中只读取完成计数、失败计数与耗时；据会话记录，没有查看过任何 ALN3 单元的成绩。
 
