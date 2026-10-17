@@ -1,0 +1,9 @@
+# New-lane analysis addendum, 2026-10-17 16:35 CEST
+
+The earlier note and its initial snapshots remain intact. At this addition, no new policy, episode, fusion, private-science or private-episode production outcome has been read; historical baselines, engineering probes and12 data/inner completion statuses were seen.
+
+Add the direct group-by-intervention comparison required by ALN3.4: compute each identity's paired risk change first, then compare these changes between every available hearing group within the same cohort/configuration/readout/seed scope. Bootstrap identities independently within each group, with the same group resampling indices across all candidate and group-pair contrasts. A max-t family covers these interactions together; it is distinct from the pooled and within-group candidate families. Fewer than three complete identities in either group gives coverage only. No claim follows from significance in one group but not another. Group membership is observational; no treatment interpretation or causal ordering is inferred.
+
+Add the direct fixed episode100-minus-ordinary100 contrasts at equal support and adapter steps, in addition to their individual differences from source0 and the selected-policy contrast. This implements the original episode design explicitly; it does not change training or choose an endpoint after reading an effect.
+
+Strong-fusion functional summaries use the frozen inner-selected residual step, with local kept fixed under the mismatched-FM intervention. Aggregate relative residual/parallel/orthogonal norm, pre/post-normalisation displacement, angle, score/probability/argmax changes, and true NLL change. Retain the whole fixed step trajectory and all source/readout references in the unit records. These exploratory mechanism diagnostics describe a finite intervention and do not prove causal information flow. All original direct outputs remain reported.

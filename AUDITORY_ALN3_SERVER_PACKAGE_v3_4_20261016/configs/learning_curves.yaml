@@ -1,0 +1,34 @@
+version: ALN3.4
+status: proposed_defaults_not_performance_thresholds
+main_backbone: cbramod
+representative_secondary: reve
+initializations:
+- random
+- pretrained
+main_recipe: full_onestep_v1
+primary_lr: 0.0003
+existing_lr_control: 1.0e-05
+data_axes:
+  people_fraction:
+  - 0.25
+  - 0.5
+  - 1.0
+  content_fraction:
+  - 0.25
+  - 0.5
+  - 1.0
+  crossing: one_axis_at_a_time_shared_full_data_reference
+  subset_rule: nested_groups_in_outer_train_only_shared_across_methods
+trace_fractions:
+- 0.25
+- 0.5
+- 1.0
+representative_budget_multiplier: 2.0
+budget_policy: same_paired_dev_rule_no_hard_scientific_stop_or_test_peeking
+selection:
+- fixed_recipe_initialization_contrast
+- same_dev_budget_separately_tuned_system_contrast
+readouts:
+- native
+- unified
+new_retraining_if_saved_trace_missing: only_selected_registered_comparisons

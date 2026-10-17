@@ -1,0 +1,15 @@
+# ALN3.4 author update — exploratory research, effective immediately
+
+This block supersedes conflicting wording/approval rules in older ALN3 instructions. Preserve historical documents; do not rewrite their execution identities.
+
+1. The project is in continuing experimentation, not manuscript finalization. Do not ask the researcher to approve wording, paper sections, a fixed contribution list or a final story before doing authorized analysis or training.
+2. A preregistration records design and what was known, not a dictionary of permitted sentences. Report favorable and unfavorable results symmetrically. Correct errors with versioned provenance. New result-informed analyses may be done and labeled exploratory; changing a sentence does not require a new experiment.
+3. No negative-result-driven endpoint. Weak results remain fully reported, but do not establish absence of auditory information, developmental effects, or a universal ceiling. Do not select favorable children, seeds or hearing-group significance. Full experiments continue without performance entry gates.
+4. The supplied Oct-16 brief reports matched true-full CBraMod advantages. Promote it alongside the effective local model. Do not silently generalize those single-seed results to all models, optimizers, data regimes, or neuroscience mechanisms. Retain random/same-access controls and a representative REVE track.
+5. Aggregate the already-completed D multi-seed panel now after a short transparent analysis note. Reuse compatible TF/L1 seed pairs; missing preregistered summary wording is not a reason to leave completed results unread. Report actual paired coverage, not seeds times subjects as new n.
+6. Continue the ALN3.3 public auditory-prior contract without reapproval. New adaptation-ready training and science analyses progress independently of a foundation-model or fusion performance threshold.
+7. Keep completed old policy results, retain holds on their unfinished obsolete executions, and register new aligned/true-full downstream versions with new IDs. Do not clear all holds. Keep actual dependencies and availability of old checkpoints visible.
+8. Fusion comparisons retain original direct local and strong standalone FM outputs. Examine normalized residual and prediction changes. Whole-pipeline held-out-person development differs from ridge-only OOF; declare the level actually achieved.
+9. Hearing-group, temporal and developmental analyses are allowed when appropriately defined. A restriction on interpreting an old pooled method table is not a global ban. No causal treatment claims, fixed early-acoustic/late-language story, or neural latency claims from a peak alone.
+10. Individual-level publication of the already authorized fields is confirmed. Do not ask again or block publication for that same scope. This does not add raw EEG, names or identity mappings to publication.
+11. Maintain the existing 10-GPU cap, training/test separation and valid target contracts. No whole-project restart. Escalate only actual unresolvable correctness, data-use or resource issues, not ordinary research interpretation.

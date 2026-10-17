@@ -56,6 +56,15 @@ TAG = f"{socket.gethostname()}.{os.getpid()}.{uuid.uuid4().hex[:8]}"
 NO_DEPS = {"A_LOCAL", "A_TARGETS", "A_DIMENSION", "A_LOCAL_FACTORS", "B_DENSE", "B_CTRL_ONESTEP", "B_LR_PANEL", "B_LAYER_PROBE",
            "E_LOCAL", "E_GX", "E_GENERIC", "D_COVERAGE", "D_ATTENTION", "B_ALIGNED", "ALN32_LOCAL_SUPPORT", "ALN32_POSTONLY_FM", "ALN32_TRUE_FULL"}  # B_ALIGNED: ADDENDUM_06, no checkpoint dependencies
 HANDLED = {"C_COMPLEMENT", "C_CAPACITY_CONTROL", "D_ADAPT", "E_COMPLEMENT", "E_PUBLIC_TRANSFER", "E_DISTILL", "D_ATTENTION", "ALN32_RESIDUAL", "ALN32_SIMPLE_COMPLEMENT"}
+# E34_PUBLIC_PRIOR (ALN3.4, PUBLIC_PRIOR_DESIGN.md §6.5): core / panel and CSX donor groups read no other unit's checkpoint (the CSX
+# group reads only the core group's record); the rich group also loads the core AP checkpoint (donor-side readout). For every
+# prior row deps_of asks prior33.deps.ckpt_deps for the owning group ids (a continuation group names its source, too).
+# one_pass counts EVERY prior plan row without a unit record as pending, queued or not: make_queue.py writes queue_v3_prior.txt
+# empty on a prior-queue error and leaves blocked and held rows out of it, so the queue file alone would fail open.
+NO_DEPS |= {"ALN32_PUBLIC_AUDIO_PRIOR_DONOR", "ALN32_PUBLIC_AUDIO_PRIOR_CSX_DONOR"}
+HANDLED |= {"ALN32_PUBLIC_AUDIO_PRIOR_RICH_DONOR", "ALN32_PUBLIC_AUDIO_PRIOR_BRIDGE", "ALN32_PUBLIC_AUDIO_PRIOR_TARGET",
+            "ALN32_PUBLIC_AUDIO_PRIOR_ZEROSHOT"}
+P33_FAMILIES = {f for f in NO_DEPS | HANDLED if f.startswith("ALN32_PUBLIC_AUDIO_PRIOR_")}  # the six families of QUEUES["prior"]
 _term = False
 _POLICY = {}  # D_ADAPT policy cell -> chosen unit (the B/C seed-3401 candidates are complete and immutable)
 
@@ -163,6 +172,9 @@ def deps_of(pending, rows):
                 out |= set(run_distill.candidates(r, rows) or [])
             elif f == "D_ATTENTION" and s.get("integrator") != "mean_score":
                 got = [run_attention.twin_row(r, rows)]
+            elif f in P33_FAMILIES:  # E34_PUBLIC_PRIOR: owners of the *_best.pt files the row loads
+                from auditory_alignment_v3.prior33 import deps as P33  # light (stdlib only), not hashed; `by` is indexed once
+                out |= set(P33.ckpt_deps(r, by))
             out |= {g["experiment_id"] for g in got if g}
         except Exception as ex:  # noqa: BLE001
             why = why or f"dependency lookup failed for {e} ({f}): {ex!r}"
@@ -250,6 +262,7 @@ def one_pass(dry=False, max_files=None, families=None):
     done_ids = {os.path.basename(p)[:-5] for p in glob.glob(f"{OUT}/units/ALN3*.json") if not p.endswith(".FAILED.json")}
     cl = claims()
     pending = cl | {e for e in queued() if e not in done_ids}
+    pending |= {r["experiment_id"] for r in rows if r["family_id"] in P33_FAMILIES and r["experiment_id"] not in done_ids}  # E34_PUBLIC_PRIOR
     deps, why = deps_of(pending, rows)
     if why:
         log(f"pass skipped (fail closed): {why}")

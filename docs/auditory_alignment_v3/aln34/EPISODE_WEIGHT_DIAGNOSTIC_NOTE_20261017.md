@@ -1,0 +1,5 @@
+# Exploratory continuation-weight diagnostic, 2026-10-17
+
+Written after CPU1044405 reported the first completed public episode bundle (CBpre, DTU seed3401/personfold0/contentfold0). Its selected episode-minus-ordinary risk benefits are approximately−9e−5/−8e−5 native and−3e−6/−2e−5 unified at10%/30%support. Both selected100-update continuations also have worse outer risk than the original source in this cell. No general inference or outer-test fallback follows.
+
+Check both inner and outer source checkpoints against their frozen SHA256s and their ordinary/episode continuation hashes. Quantify the parameter difference between regimes relative to source norm and relative to the ordinary update, plus the cosine between their update vectors and the loss-curve difference. These are descriptive weight-space measures, not a functional-equivalence test or a statement about all episode learning. Preserve the original first-returned aggregate and report; write a separate diagnostic. No retraining or new candidate selection.

@@ -36,3 +36,25 @@ FAMILY_GROUP = {"A_LOCAL": "local", "A_TARGETS": "local", "A_DIMENSION": "local"
                 "B_DENSE": "dense", "A_LOCAL_FACTORS": "local_factors", "C_COMPLEMENT": "complement", "C_CAPACITY_CONTROL": "complement", "B_CTRL_ONESTEP": "dense_ext", "B_LR_PANEL": "dense_ext", "D_ADAPT": "adapt", "D_COVERAGE": "coverage", "D_ATTENTION": "attention", "E_COMPLEMENT": "e_complement", "E_DISTILL": "distill", "B_LAYER_PROBE": "layer_probe", "E_PUBLIC_TRANSFER": "transfer", "B_ALIGNED": "aligned",
                 "ALN32_LOCAL_SUPPORT": "local_support", "ALN32_POSTONLY_FM": "aligned32", "ALN32_TRUE_FULL": "aligned32",
                 "ALN32_SIMPLE_COMPLEMENT": "complement32", "ALN32_RESIDUAL": "residual32"}
+# E34_PUBLIC_PRIOR (ALN3.4; PUBLIC_PRIOR_DESIGN.md §6.3, module M9): the five prior33 code groups and the six
+# ALN32_PUBLIC_AUDIO_PRIOR_* families, appended after FAMILY_GROUP. Each group hashes core.py, local_train.py and its prior33
+# files (and V2_DEPS, like every group). Design delta: prior33_donor and prior33_rich_donor also hash prior33/select.py,
+# which run_donor.py / donor_train.py import at run time (joint choice, checkpoint and stable-state names); §6.3 lists it for
+# the bridge, target and zero-shot groups only. Runners: RUNNER.update in run.py (run.prior33.patch).
+_p33 = lambda *fs: [("auditory_alignment_v3", "core.py"), ("auditory_alignment_v3", "local_train.py")] + \
+                   [("auditory_alignment_v3/prior33", f) for f in fs]  # noqa: E731
+FAMILY_CODE.update({
+    "prior33_donor":      _p33("contract.py", "views.py", "model.py", "losses.py", "sampler.py", "select.py", "donor_train.py", "run_donor.py"),
+    "prior33_rich_donor": _p33("contract.py", "views.py", "model.py", "losses.py", "sampler.py", "rich.py", "select.py", "donor_train.py", "run_donor.py"),
+    "prior33_bridge":     _p33("contract.py", "views.py", "model.py", "losses.py", "sampler.py", "select.py", "bridge.py", "run_bridge.py"),
+    "prior33_target":     _p33("contract.py", "views.py", "model.py", "losses.py", "select.py", "gen_fit_target.py", "fit_target.py", "target_train.py", "run_target.py") + [("auditory_alignment_v3", "calib.py"), ("auditory_alignment_v3/aln3_reference", "calibration.py")],
+    "prior33_zeroshot":   _p33("contract.py", "views.py", "model.py", "select.py", "bridge.py", "zeroshot.py", "run_zeroshot.py"),
+})
+FAMILY_GROUP.update({
+    "ALN32_PUBLIC_AUDIO_PRIOR_DONOR":      "prior33_donor",
+    "ALN32_PUBLIC_AUDIO_PRIOR_CSX_DONOR":  "prior33_donor",
+    "ALN32_PUBLIC_AUDIO_PRIOR_RICH_DONOR": "prior33_rich_donor",
+    "ALN32_PUBLIC_AUDIO_PRIOR_BRIDGE":     "prior33_bridge",
+    "ALN32_PUBLIC_AUDIO_PRIOR_TARGET":     "prior33_target",
+    "ALN32_PUBLIC_AUDIO_PRIOR_ZEROSHOT":   "prior33_zeroshot",
+})

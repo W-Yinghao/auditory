@@ -1,0 +1,102 @@
+{
+ "eid": "ALN3X_544007987cb9cc3f",
+ "cfg": "RS|federici|NCE|cbramod|residual_aligned_random",
+ "base": "ALN3_bb7f17fd355d32ab",
+ "row": {
+  "dataset": "federici",
+  "subject_fold": 3,
+  "content_fold": 0,
+  "seed": 3401,
+  "seed_scope": "breadth",
+  "experiment_id": "ALN3X_544007987cb9cc3f",
+  "family_id": "ALN32_RESIDUAL",
+  "job_kind": "train",
+  "spec": {
+   "objective": "NCE",
+   "target": "envelope",
+   "target_contract": "dense20ms_v1_pending_source_binding",
+   "projection_dim": 32,
+   "variant": "residual_aligned_random",
+   "architecture": "cbramod",
+   "information_stratum": "foundation_context",
+   "recipe": "freeze_local",
+   "selection": "inner_group_dev_risk_epoch0_candidate"
+  },
+  "base_plan_row": "ALN3_bb7f17fd355d32ab",
+  "registered": "ADDENDUM_10 (docs/auditory_alignment_v3/ADDENDUM_10_ALN32_RESIDUAL.md)",
+  "logical_dependencies": [
+   "ALN3_bb7f17fd355d32ab"
+  ],
+  "status": "registered_extension"
+ },
+ "selected_epoch": 1,
+ "epoch0_selected": false,
+ "limits": {
+  "tiny": false,
+  "max_test_participants": null,
+  "max_queries": null,
+  "max_readout_segs": 400,
+  "max_calib_queries": 300,
+  "max_dev_segments": 300
+ },
+ "comparable_to_record": true,
+ "dev_only": true,
+ "device": "cpu",
+ "device_name": "cpu",
+ "torch": "2.6.0+cu124",
+ "code_sha256": {
+  "complement_function.py": "783beb72f72dd73bb96a811cd6b7ba1cbe27d29118a64ef29b0509377c150698",
+  "residual32.py": "742de06416de33d5405b3c9106dc91cac47a04a78cada681e27964c86f1e23ed",
+  "reference residuals.py": "022d29ef51cba3dbe5774fbb8d464b947a0e8b732bcdc195cb88e6ddbd428c99"
+ },
+ "build_seconds": 13.5,
+ "checkpoint_zero_last_layer": false,
+ "dev": {
+  "n_dev_segments": 300,
+  "n_cal_segments": 300,
+  "anchors_per_segment": 8,
+  "selected": {
+   "risk_bits": 7.988568305969238,
+   "rank": 0.39849939942359924,
+   "tau": 0.02138860736682614,
+   "record_risk_bits": 7.988569736480713,
+   "abs_diff": 1.430511474609375e-06
+  },
+  "epoch0": {
+   "risk_bits": 7.989709377288818,
+   "rank": 0.39837637543678284,
+   "tau": 0.021546201170990407,
+   "record_risk_bits": 7.98970890045166,
+   "abs_diff": 4.76837158203125e-07
+  },
+  "epoch0_max_abs_diff_vs_base": 5.960464477539063e-08,
+  "seconds": 79.4,
+  "layers": {
+   "n_rows": 2400,
+   "n_nonzero_base_rows": 2400,
+   "n_zero_or_tiny_base_rows": 0,
+   "relative_residual_norm_mean": 0.010659627030310922,
+   "relative_parallel_norm_mean": 0.009248924325689278,
+   "relative_orthogonal_norm_mean": 0.0052833462378349275,
+   "normalized_change_mean": 0.005234950393165934,
+   "pre_normalization_change_mean": 0.010659627027752985,
+   "parallel_coef_mean": 0.009248924325689278,
+   "frac_parallel_coef_le_minus1": 0.0,
+   "angle_deg_mean": 0.29994090984069277,
+   "angle_deg_p90": 0.3232136660276605,
+   "relative_residual_norm_p90": 0.010854668905789372
+  },
+  "layers_reference": {
+   "n_rows": 2400,
+   "n_nonzero_base_rows": 2400,
+   "n_zero_or_tiny_base_rows": 0,
+   "relative_residual_norm_mean": 0.010659627030310922,
+   "relative_parallel_norm_mean": 0.009248924325689278,
+   "relative_orthogonal_norm_mean": 0.0052833462378349275,
+   "normalized_change_mean": 0.005234950393165934,
+   "pre_normalization_change_mean": 0.010659627027752985
+  },
+  "forward_check": 0.0
+ },
+ "seconds": 131.4
+}

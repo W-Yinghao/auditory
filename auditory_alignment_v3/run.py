@@ -12,6 +12,10 @@ RUNNER = {"local": "run_local", "private": "run_private", "dense": "run_dense", 
           "adapt_policy": "run_adapt_policy", "coverage_policy": "run_coverage_policy",
           "attention_policy": "run_attention_policy", "aligned": "run_aligned",
           "local_support": "local_support", "aligned32": "run_aligned32", "complement32": "complement32", "residual32": "residual32"}
+# E34_PUBLIC_PRIOR (ALN3.4; PUBLIC_PRIOR_DESIGN.md §6.3, module M9): the prior33 runners, imported as
+# auditory_alignment_v3.<value>; the rich groups run prior33.run_donor under their own code group (prior33_rich_donor).
+RUNNER.update({"prior33_donor": "prior33.run_donor", "prior33_rich_donor": "prior33.run_donor", "prior33_bridge": "prior33.run_bridge",
+               "prior33_target": "prior33.run_target", "prior33_zeroshot": "prior33.run_zeroshot"})
 EXT_OFFSET = 100000  # queue index >= EXT_OFFSET -> row (index - EXT_OFFSET) of private/auditory_alignment_v3/plan_ext.jsonl
 LOCAL_FAMILIES = {f for f, g in FAMILY_GROUP.items() if g in ("local", "local_factors")}
 PRIVATE_FAMILIES = {f for f, g in FAMILY_GROUP.items() if g == "private"}

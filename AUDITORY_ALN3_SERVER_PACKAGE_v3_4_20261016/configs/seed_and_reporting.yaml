@@ -1,0 +1,21 @@
+version: ALN3.4
+breadth_seed: 3401
+paired_panel_seeds:
+- 3407
+- 3413
+existing_D_panel: aggregate_now_known_NCE_subset_only
+TF_local: reuse_actual_same_contract_pairs_then_fill_missing
+all_old_rows_times_three: false
+repeat_only_winners: false
+upstream_seed_scope: donor_base_adapter_and_readout_seeds_separately_recorded
+counting_unit: unique_test_identity_not_seed_fold_or_session
+effect_presentation:
+- per_seed_paired_effect
+- identity_mean_across_seeds
+- coverage_and_missing
+- between_seed_range
+bootstrap_scope: conditional_on_available_fitted_models_not_full_training_population
+sources:
+  brief: sources/ALN3_BRIEF_20261016.md
+  fresh_remote_verified: false
+report_template: templates/EXPERIMENT_UPDATE.md

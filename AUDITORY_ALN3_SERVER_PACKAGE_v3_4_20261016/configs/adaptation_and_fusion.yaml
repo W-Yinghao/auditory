@@ -1,0 +1,54 @@
+version: ALN3.4
+base_candidates:
+- local_L0
+- local_L1
+- CB_true_full
+- representative_REVE
+adapters:
+- none
+- diagonal_spatial
+- lowrank_spatial
+- full_spatial
+- output_low_rank
+- declared_window_temporal
+spatial_rank_start: 4
+legacy_support_fractions:
+- 0.1
+- 0.3
+fixed_query_fraction: 0.7
+regimes:
+- ordinary_group
+- source_person_episode
+selection: whole_pipeline_inner_dev_people_for_new_work
+fusion_baselines:
+- local_direct
+- FM_direct
+- SC_remapped_local
+- dev_selected_strong_single
+fusion_models:
+- convex_probability
+- common_sound_linear
+- zero_output_residual
+sources:
+- generic_frozen
+- auditory_adapted_true_full
+- random_same_architecture
+- small_capacity
+do_not_full_cross_all_axes: true
+epoch_zero_candidate: true
+diagnostics:
+- residual_parallel_orthogonal
+- normalization_change
+- native_prediction_change
+- unified_prediction_change
+- dev_test_effect
+attention:
+  orders: both_A_B_and_B_A
+  new_logit: half_h_d_minus_h_minus_d
+  tie_credit: 0.5
+  refit: head_only_when_possible
+  windows_seconds:
+  - 5
+  - 10
+  - 20
+clinical_significance_as_selector: false

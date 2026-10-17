@@ -1,6 +1,7 @@
 """ALN3 queues (rebuilt every 10 min by refresh.sh as families are bound / dependencies resolve):
   queue_v3_small.txt  local / private / small staged families (shared GPUs; weight 2 GB)
   queue_v3_fm.txt     foundation-model families                   (one per GPU; weight 1000; E_DISTILL 12, since 2026-10-11)
+  queue_v3_prior.txt  E34_PUBLIC_PRIOR families (ALN3.4)          (prior33.deps.write_queue: eid|idx|up1,up2,... and counters)
 Line: <experiment_id>|<plan index> (index >= 100000: row index-100000 of plan_ext.jsonl). Order (docs/12 §6, a resource order,
 not a performance gate): breadth seed 3401 before the seed panel; within a block dependency feeders (same-fold bases, teacher
 candidates) first, then round-robin across families so every bound family progresses.
@@ -18,6 +19,11 @@ rows = core.load_rows()
 # FM workers only exit when a full pass claims nothing, so dependency-released E_DISTILL rows starved behind them (small workers
 # pending on QOSMaxGRESPerUser). On FM workers an E_DISTILL row keeps weight 12 (never co-admitted with a whole-card unit).
 QUEUES = {"small": ["E_GX", "E_LOCAL", "A_LOCAL", "A_TARGETS", "A_DIMENSION", "A_LOCAL_FACTORS", "D_COVERAGE", "D_ADAPT", "D_ATTENTION", "E_PUBLIC_TRANSFER", "ALN32_LOCAL_SUPPORT"], "fm": ["E_GENERIC", "B_DENSE", "B_CTRL_ONESTEP", "B_LR_PANEL", "C_COMPLEMENT", "C_CAPACITY_CONTROL", "E_COMPLEMENT", "E_DISTILL", "B_LAYER_PROBE", "E_PUBLIC_TRANSFER", "D_ADAPT", "D_COVERAGE", "D_ATTENTION", "B_ALIGNED", "ALN32_LOCAL_SUPPORT", "ALN32_POSTONLY_FM", "ALN32_TRUE_FULL", "ALN32_RESIDUAL", "ALN32_SIMPLE_COMPLEMENT"]}  # B_ALIGNED: ADDENDUM_06; ALN32_*: ADDENDUM_07 (2026-10-14)
+# E34_PUBLIC_PRIOR (ALN3.4, PUBLIC_PRIOR_DESIGN.md §6.5): queue_v3_prior.txt is written by prior33.deps.write_queue (prior_queue
+# below; lines eid|idx|up1,up2,..., weights, counters .remaining / .waiting / .blocked), never by the generic path, and served
+# only by keeper_prior.sh and slurm/aln33_prior_pool.sbatch. Last in QUEUES, so the fm and small queues are written first.
+QUEUES["prior"] = ["ALN32_PUBLIC_AUDIO_PRIOR_DONOR", "ALN32_PUBLIC_AUDIO_PRIOR_CSX_DONOR", "ALN32_PUBLIC_AUDIO_PRIOR_RICH_DONOR",
+                   "ALN32_PUBLIC_AUDIO_PRIOR_BRIDGE", "ALN32_PUBLIC_AUDIO_PRIOR_TARGET", "ALN32_PUBLIC_AUDIO_PRIOR_ZEROSHOT"]
 EXT = [json.loads(l) for l in open(f"{O}/plan_ext.jsonl")] if os.path.exists(f"{O}/plan_ext.jsonl") else []
 ALL = rows + EXT  # dependency lookups (bases / twins / donors / teachers) over plan rows and registered extension rows
 DEF_FILE = f"{O}/governance/deferred_redundant_v30_panel.json"
@@ -46,7 +52,44 @@ def policy_base_ok(r):  # ADDENDUM_04: the complement arms of D_COVERAGE / D_ATT
     return True
 
 
+def prior_queue(fams):
+    """E34_PUBLIC_PRIOR (PUBLIC_PRIOR_DESIGN.md §6.5): the prior queue files from prior33.deps.write_queue, with held = HELD |
+    families_on_hold.json and bound = the families of QUEUES["prior"] bound in core.FAMILY_GROUP. When nothing is left in scope
+    (.remaining 0) while a prior row without a unit record or .failed marker is held or unbound, .remaining is rewritten as 'held':
+    the lane is paused, not complete (keeper_prior.sh ends only on 0). Any exception (the prior33 import included) is printed,
+    and queue_v3_prior.txt, its weights and .blocked are written empty and .remaining / .waiting 'unknown' (never 0:
+    keeper_prior.sh keeps running on a non-integer; watch_anyhost.sh raises an EVENT after 20 min of a non-integer other than
+    'held'); the fm and small queues are unaffected."""
+    try:
+        from auditory_alignment_v3.prior33 import deps as P33
+        hold = set(json.load(open(f"{O}/families_on_hold.json"))) if os.path.exists(f"{O}/families_on_hold.json") else set()
+        held, bound = HELD | hold, set(core.FAMILY_GROUP) & set(fams)
+        s = P33.write_queue(O, ALL, held=held, bound=bound, ext=EXT)
+        paused = [r["experiment_id"] for r in ALL if r["family_id"] in fams and (r["experiment_id"] in held or r["family_id"] in held
+                  or r["family_id"] not in bound) and not os.path.exists(f"{O}/units/{r['experiment_id']}.json")
+                  and not os.path.exists(f"{O}/pool/queue_v3_prior/{r['experiment_id']}.failed")]
+        if s["remaining"] == 0 and paused:  # deps.write_queue wrote 0; the keeper reads 0 twice, a minute apart, before it ends
+            with open(f"{O}/queue_v3_prior.remaining.tmp", "w") as f:
+                f.write("held\n")
+            os.replace(f"{O}/queue_v3_prior.remaining.tmp", f"{O}/queue_v3_prior.remaining")
+        print("prior", s["queued"], {k: s[k] for k in ("ready", "waiting", "blocked", "done", "failed")}, f"held_out={s['held']}",
+              f"paused={len(paused)}", f"unresolved={len(s['unresolved'])}")
+    except Exception as ex:  # noqa: BLE001
+        print(f"prior queue error {ex!r}: queue_v3_prior written empty, .remaining unknown")
+        for suf, txt in ((".txt", ""), ("_weights.txt", ""), (".blocked", ""), (".remaining", "unknown\n"), (".waiting", "unknown\n")):
+            p = f"{O}/queue_v3_prior{suf}"
+            try:
+                with open(p + ".tmp", "w") as f:
+                    f.write(txt)
+                os.replace(p + ".tmp", p)
+            except OSError as ex2:
+                print(f"prior queue: cannot write {p}: {ex2!r}")
+
+
 for q, fams in QUEUES.items():
+    if q == "prior":  # E34_PUBLIC_PRIOR: written by prior33.deps (prior_queue); the generic path below never runs for it
+        prior_queue(fams)
+        continue
     ready = set(core.FAMILY_GROUP) - set(json.load(open(f"{O}/families_on_hold.json"))) if os.path.exists(f"{O}/families_on_hold.json") else set(core.FAMILY_GROUP)
     sel = [(i, r) for i, r in enumerate(rows) if r["family_id"] in fams and r["family_id"] in ready]
     sel += [(100000 + j, r) for j, r in enumerate(EXT) if r["family_id"] in fams and r["family_id"] in ready]

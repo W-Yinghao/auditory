@@ -1,0 +1,9 @@
+# Correction 02 — scope of the private-recipe statement, 2026-10-17
+
+CORRECTION_01_FULL_UPDATE_LABEL.md item 3 incorrectly extends the public `fm_dense` learning-rate table and progressive-prefix schedule to the private E recipes. E_MULTI_SEED_RESULTS.md §1.16 and §6 documented this mismatch; the present note closes that outstanding correction. The historical correction and frozen records remain unchanged.
+
+For the private E_GENERIC panel, `run_private.fm_recipe` resolves ALN2 private task recipes, and `local_train.fit_private_fm` trains every permitted backbone parameter from the start. In the random_full versus pretrained_full pairs, the backbone is fully trainable in both arms. Their learning-rate cells differ: the pretrained backbone rate is 3–100 times smaller in these records, with different head rates in three of four objective/backbone scopes. They share epochs within the pair. These remain **recipe comparisons**, because initialization and learning rates change together; the public progressive-prefix criticism does not describe their executed private training.
+
+The private E_PUBLIC_TRANSFER panel uses `lag_local_tokens/task_partial`, AdamW at 1e-3 for 200 epochs, with declared loaded temporal tensors frozen and the private input/projection components reinitialized. It does not use the public FM progressive-prefix schedule. Non-panel FM transfer configurations resolve their private ALN2 recipe through run_private.fm_recipe and retain their own executed adaptation records; this note does not turn them into matched-initialization comparisons.
+
+Evidence: E_MULTI_SEED_RESULTS.md §1.16 (per-record recipes, parameter counts and selection), `auditory_alignment_v3/run_private.py`, `local_train.py`, and `run_transfer.py`. No training code, unit values, confidence interval or historical execution ID changed. The separate ALN32_TRUE_FULL public comparisons retain their matched-recipe interpretation.
