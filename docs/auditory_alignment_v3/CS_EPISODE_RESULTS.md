@@ -1,6 +1,6 @@
 # Public local CS episode continuation
 
-2026-10-18T16:04:50.099707+02:00; CPU job 1045980; **12/40 complete**.
+2026-10-18T19:49:00.778100+02:00; CPU job 1045980; **22/40 complete**.
 
 Forty bundles reuse NCE local sources: DTU30 (three seeds), FAU10 (seed3401). These are CS continuations, not from-scratch CS models. Each independent person requires all registered folds/seeds; seeds do not increase n. Engineering probes are excluded. All candidate risk and mismatch-gain families, direct group interactions and actual paired coverage are retained in the aggregate JSON.
 
@@ -30,25 +30,25 @@ Paired n=44/44. positive = candidate minus reference mismatch gain, bits/query; 
 
 ## dtu / episode/cs/mismatch_gain/support_0.1 / native / 3407
 
-Paired n=10/44. positive = candidate minus reference mismatch gain, bits/query; not true-risk benefit.
+Paired n=44/44. positive = candidate minus reference mismatch gain, bits/query; not true-risk benefit.
 
 | Contrast | Difference | Simultaneous95% interval |
 |---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.00004 | [-0.00040, +0.00033] |
-| fixed_episode/20 versus fixed_ordinary/20 | +0.00005 | [-0.00034, +0.00044] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.00003 | [-0.00040, +0.00034] |
-| episode_selected versus ordinary_selected | +0.03714 | [-0.07814, +0.15242] |
-| episode_selected versus source_no_adaptation | +0.08010 | [-0.09599, +0.25619] |
-| fixed_episode/0 versus source_no_adaptation | +0.04134 | [-0.15637, +0.23904] |
-| fixed_episode/20 versus source_no_adaptation | +0.04337 | [-0.18940, +0.27615] |
-| fixed_episode/5 versus source_no_adaptation | +0.04267 | [-0.15553, +0.24086] |
-| fixed_ordinary/0 versus source_no_adaptation | +0.04137 | [-0.15634, +0.23908] |
-| fixed_ordinary/20 versus source_no_adaptation | +0.04332 | [-0.18935, +0.27600] |
-| fixed_ordinary/5 versus source_no_adaptation | +0.04270 | [-0.15547, +0.24087] |
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00013 | [-0.00027, +0.00002] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00011 | [-0.00035, +0.00012] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00013 | [-0.00027, +0.00001] |
+| episode_selected versus ordinary_selected | +0.00841 | [-0.00988, +0.02670] |
+| episode_selected versus source_no_adaptation | -0.04536 | [-0.13720, +0.04649] |
+| fixed_episode/0 versus source_no_adaptation | -0.10622 | [-0.22158, +0.00914] |
+| fixed_episode/20 versus source_no_adaptation | -0.11895 | [-0.24686, +0.00896] |
+| fixed_episode/5 versus source_no_adaptation | -0.10519 | [-0.22099, +0.01060] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.10610 | [-0.22140, +0.00920] |
+| fixed_ordinary/20 versus source_no_adaptation | -0.11884 | [-0.24670, +0.00902] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.10507 | [-0.22081, +0.01067] |
 | fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
-| fixed_source/20 versus source_no_adaptation | +0.08958 | [-0.03984, +0.21901] |
-| fixed_source/5 versus source_no_adaptation | +0.00793 | [-0.00225, +0.01810] |
-| ordinary_selected versus source_no_adaptation | +0.04296 | [-0.07487, +0.16079] |
+| fixed_source/20 versus source_no_adaptation | +0.08884 | [+0.02286, +0.15482] |
+| fixed_source/5 versus source_no_adaptation | +0.00742 | [+0.00381, +0.01102] |
+| ordinary_selected versus source_no_adaptation | -0.05377 | [-0.14108, +0.03355] |
 
 ## dtu / episode/cs/mismatch_gain/support_0.1 / unified / 3401
 
@@ -74,25 +74,25 @@ Paired n=44/44. positive = candidate minus reference mismatch gain, bits/query; 
 
 ## dtu / episode/cs/mismatch_gain/support_0.1 / unified / 3407
 
-Paired n=10/44. positive = candidate minus reference mismatch gain, bits/query; not true-risk benefit.
+Paired n=44/44. positive = candidate minus reference mismatch gain, bits/query; not true-risk benefit.
 
 | Contrast | Difference | Simultaneous95% interval |
 |---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.00017 | [-0.00056, +0.00021] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.00011 | [-0.00046, +0.00024] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.00016 | [-0.00055, +0.00023] |
-| episode_selected versus ordinary_selected | +0.01219 | [-0.09569, +0.12008] |
-| episode_selected versus source_no_adaptation | +0.00105 | [-0.14922, +0.15131] |
-| fixed_episode/0 versus source_no_adaptation | -0.05540 | [-0.22418, +0.11339] |
-| fixed_episode/20 versus source_no_adaptation | -0.05526 | [-0.23712, +0.12660] |
-| fixed_episode/5 versus source_no_adaptation | -0.05438 | [-0.22398, +0.11523] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.05522 | [-0.22418, +0.11374] |
-| fixed_ordinary/20 versus source_no_adaptation | -0.05515 | [-0.23710, +0.12679] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.05422 | [-0.22400, +0.11557] |
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00021 | [-0.00037, -0.00005] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00029 | [-0.00055, -0.00004] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00021 | [-0.00037, -0.00006] |
+| episode_selected versus ordinary_selected | +0.00271 | [-0.01624, +0.02166] |
+| episode_selected versus source_no_adaptation | -0.03457 | [-0.08547, +0.01633] |
+| fixed_episode/0 versus source_no_adaptation | -0.05646 | [-0.13681, +0.02390] |
+| fixed_episode/20 versus source_no_adaptation | -0.10048 | [-0.19682, -0.00414] |
+| fixed_episode/5 versus source_no_adaptation | -0.05749 | [-0.13854, +0.02356] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.05625 | [-0.13658, +0.02409] |
+| fixed_ordinary/20 versus source_no_adaptation | -0.10019 | [-0.19650, -0.00388] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.05728 | [-0.13830, +0.02375] |
 | fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
-| fixed_source/20 versus source_no_adaptation | +0.01520 | [-0.12683, +0.15723] |
-| fixed_source/5 versus source_no_adaptation | +0.00500 | [-0.00452, +0.01452] |
-| ordinary_selected versus source_no_adaptation | -0.01114 | [-0.10331, +0.08102] |
+| fixed_source/20 versus source_no_adaptation | -0.03896 | [-0.09553, +0.01760] |
+| fixed_source/5 versus source_no_adaptation | +0.00112 | [-0.00213, +0.00437] |
+| ordinary_selected versus source_no_adaptation | -0.03728 | [-0.08341, +0.00885] |
 
 ## dtu / episode/cs/mismatch_gain/support_0.3 / native / 3401
 
@@ -118,25 +118,25 @@ Paired n=44/44. positive = candidate minus reference mismatch gain, bits/query; 
 
 ## dtu / episode/cs/mismatch_gain/support_0.3 / native / 3407
 
-Paired n=10/44. positive = candidate minus reference mismatch gain, bits/query; not true-risk benefit.
+Paired n=44/44. positive = candidate minus reference mismatch gain, bits/query; not true-risk benefit.
 
 | Contrast | Difference | Simultaneous95% interval |
 |---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.00004 | [-0.00039, +0.00032] |
-| fixed_episode/20 versus fixed_ordinary/20 | +0.00011 | [-0.00052, +0.00075] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.00002 | [-0.00039, +0.00034] |
-| episode_selected versus ordinary_selected | +0.00000 | [+0.00000, +0.00000] |
-| episode_selected versus source_no_adaptation | +0.00797 | [-0.00179, +0.01773] |
-| fixed_episode/0 versus source_no_adaptation | +0.04134 | [-0.14822, +0.23089] |
-| fixed_episode/20 versus source_no_adaptation | +0.07534 | [-0.14391, +0.29458] |
-| fixed_episode/5 versus source_no_adaptation | +0.04392 | [-0.14640, +0.23424] |
-| fixed_ordinary/0 versus source_no_adaptation | +0.04137 | [-0.14819, +0.23093] |
-| fixed_ordinary/20 versus source_no_adaptation | +0.07523 | [-0.14392, +0.29437] |
-| fixed_ordinary/5 versus source_no_adaptation | +0.04394 | [-0.14639, +0.23428] |
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00013 | [-0.00027, +0.00002] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00013 | [-0.00032, +0.00007] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00013 | [-0.00027, +0.00002] |
+| episode_selected versus ordinary_selected | -0.00006 | [-0.00012, +0.00000] |
+| episode_selected versus source_no_adaptation | -0.06242 | [-0.14502, +0.02017] |
+| fixed_episode/0 versus source_no_adaptation | -0.10622 | [-0.22127, +0.00882] |
+| fixed_episode/20 versus source_no_adaptation | -0.09747 | [-0.22886, +0.03391] |
+| fixed_episode/5 versus source_no_adaptation | -0.10411 | [-0.21981, +0.01159] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.10610 | [-0.22108, +0.00889] |
+| fixed_ordinary/20 versus source_no_adaptation | -0.09735 | [-0.22867, +0.03398] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.10399 | [-0.21963, +0.01165] |
 | fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
-| fixed_source/20 versus source_no_adaptation | +0.10357 | [-0.03153, +0.23867] |
-| fixed_source/5 versus source_no_adaptation | +0.00797 | [-0.00179, +0.01773] |
-| ordinary_selected versus source_no_adaptation | +0.00797 | [-0.00179, +0.01773] |
+| fixed_source/20 versus source_no_adaptation | +0.10907 | [+0.02058, +0.19755] |
+| fixed_source/5 versus source_no_adaptation | +0.00855 | [+0.00360, +0.01350] |
+| ordinary_selected versus source_no_adaptation | -0.06237 | [-0.14494, +0.02021] |
 
 ## dtu / episode/cs/mismatch_gain/support_0.3 / unified / 3401
 
@@ -162,43 +162,43 @@ Paired n=44/44. positive = candidate minus reference mismatch gain, bits/query; 
 
 ## dtu / episode/cs/mismatch_gain/support_0.3 / unified / 3407
 
-Paired n=10/44. positive = candidate minus reference mismatch gain, bits/query; not true-risk benefit.
+Paired n=44/44. positive = candidate minus reference mismatch gain, bits/query; not true-risk benefit.
 
 | Contrast | Difference | Simultaneous95% interval |
 |---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.00017 | [-0.00066, +0.00031] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.00002 | [-0.00073, +0.00070] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.00016 | [-0.00067, +0.00035] |
-| episode_selected versus ordinary_selected | +0.00000 | [+0.00000, +0.00000] |
-| episode_selected versus source_no_adaptation | +0.00466 | [-0.00654, +0.01586] |
-| fixed_episode/0 versus source_no_adaptation | -0.05540 | [-0.27137, +0.16058] |
-| fixed_episode/20 versus source_no_adaptation | -0.02537 | [-0.24251, +0.19177] |
-| fixed_episode/5 versus source_no_adaptation | -0.05313 | [-0.26932, +0.16306] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.05522 | [-0.27142, +0.16097] |
-| fixed_ordinary/20 versus source_no_adaptation | -0.02535 | [-0.24271, +0.19200] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.05297 | [-0.26941, +0.16346] |
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00021 | [-0.00036, -0.00005] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00027 | [-0.00047, -0.00007] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00021 | [-0.00038, -0.00005] |
+| episode_selected versus ordinary_selected | -0.00009 | [-0.00017, -0.00001] |
+| episode_selected versus source_no_adaptation | -0.03143 | [-0.07012, +0.00726] |
+| fixed_episode/0 versus source_no_adaptation | -0.05646 | [-0.13616, +0.02325] |
+| fixed_episode/20 versus source_no_adaptation | -0.08254 | [-0.18227, +0.01719] |
+| fixed_episode/5 versus source_no_adaptation | -0.05638 | [-0.13715, +0.02439] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.05625 | [-0.13593, +0.02344] |
+| fixed_ordinary/20 versus source_no_adaptation | -0.08227 | [-0.18196, +0.01742] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.05617 | [-0.13691, +0.02458] |
 | fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
-| fixed_source/20 versus source_no_adaptation | +0.02307 | [-0.14919, +0.19534] |
-| fixed_source/5 versus source_no_adaptation | +0.00466 | [-0.00654, +0.01586] |
-| ordinary_selected versus source_no_adaptation | +0.00466 | [-0.00654, +0.01586] |
+| fixed_source/20 versus source_no_adaptation | -0.03099 | [-0.09629, +0.03431] |
+| fixed_source/5 versus source_no_adaptation | +0.00175 | [-0.00188, +0.00537] |
+| ordinary_selected versus source_no_adaptation | -0.03134 | [-0.06999, +0.00731] |
 
 ## dtu / episode/cs_vs_nce_package/support_0.1 / unified / 3401
 
-Paired n=10/44. positive = reference minus candidate true NLL, bits/query.
+Paired n=20/44. positive = reference minus candidate true NLL, bits/query.
 
 | Contrast | Difference | Simultaneous95% interval |
 |---|---:|---:|
-| CS/episode versus NCE/episode | -0.04013 | [-0.10916, +0.02890] |
-| CS/ordinary versus NCE/ordinary | -0.03995 | [-0.10891, +0.02901] |
+| CS/episode versus NCE/episode | -0.02825 | [-0.06515, +0.00865] |
+| CS/ordinary versus NCE/ordinary | -0.02818 | [-0.06506, +0.00871] |
 
 ## dtu / episode/cs_vs_nce_package/support_0.3 / unified / 3401
 
-Paired n=10/44. positive = reference minus candidate true NLL, bits/query.
+Paired n=20/44. positive = reference minus candidate true NLL, bits/query.
 
 | Contrast | Difference | Simultaneous95% interval |
 |---|---:|---:|
-| CS/episode versus NCE/episode | -0.09827 | [-0.18410, -0.01243] |
-| CS/ordinary versus NCE/ordinary | -0.09816 | [-0.18395, -0.01237] |
+| CS/episode versus NCE/episode | -0.06123 | [-0.11177, -0.01069] |
+| CS/ordinary versus NCE/ordinary | -0.06114 | [-0.11167, -0.01061] |
 
 ## dtu / episode/local/support_0.1 / native / 3401
 
@@ -224,25 +224,25 @@ Paired n=44/44. positive = reference minus candidate true NLL, bits/query.
 
 ## dtu / episode/local/support_0.1 / native / 3407
 
-Paired n=10/44. positive = reference minus candidate true NLL, bits/query.
+Paired n=44/44. positive = reference minus candidate true NLL, bits/query.
 
 | Contrast | Difference | Simultaneous95% interval |
 |---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.00008 | [-0.00036, +0.00019] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.00005 | [-0.00027, +0.00016] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.00008 | [-0.00036, +0.00019] |
-| episode_selected versus ordinary_selected | +0.00912 | [-0.04946, +0.06771] |
-| episode_selected versus source_no_adaptation | -0.00829 | [-0.12251, +0.10594] |
-| fixed_episode/0 versus source_no_adaptation | -0.02084 | [-0.12669, +0.08501] |
-| fixed_episode/20 versus source_no_adaptation | -0.04006 | [-0.18704, +0.10692] |
-| fixed_episode/5 versus source_no_adaptation | -0.02126 | [-0.12925, +0.08672] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.02075 | [-0.12655, +0.08504] |
-| fixed_ordinary/20 versus source_no_adaptation | -0.04001 | [-0.18691, +0.10688] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.02118 | [-0.12911, +0.08675] |
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00010 | [-0.00021, +0.00000] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00016 | [-0.00032, +0.00000] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00010 | [-0.00020, +0.00000] |
+| episode_selected versus ordinary_selected | +0.00205 | [-0.00654, +0.01065] |
+| episode_selected versus source_no_adaptation | -0.03662 | [-0.07776, +0.00452] |
+| fixed_episode/0 versus source_no_adaptation | -0.05243 | [-0.11122, +0.00635] |
+| fixed_episode/20 versus source_no_adaptation | -0.07798 | [-0.15692, +0.00095] |
+| fixed_episode/5 versus source_no_adaptation | -0.05281 | [-0.11253, +0.00691] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.05233 | [-0.11107, +0.00641] |
+| fixed_ordinary/20 versus source_no_adaptation | -0.07782 | [-0.15671, +0.00107] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.05271 | [-0.11239, +0.00696] |
 | fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
-| fixed_source/20 versus source_no_adaptation | -0.01662 | [-0.12006, +0.08681] |
-| fixed_source/5 versus source_no_adaptation | +0.00221 | [-0.00455, +0.00897] |
-| ordinary_selected versus source_no_adaptation | -0.01741 | [-0.10630, +0.07149] |
+| fixed_source/20 versus source_no_adaptation | -0.03810 | [-0.09845, +0.02226] |
+| fixed_source/5 versus source_no_adaptation | +0.00103 | [-0.00180, +0.00386] |
+| ordinary_selected versus source_no_adaptation | -0.03867 | [-0.07826, +0.00091] |
 
 ## dtu / episode/local/support_0.1 / unified / 3401
 
@@ -268,25 +268,25 @@ Paired n=44/44. positive = reference minus candidate true NLL, bits/query.
 
 ## dtu / episode/local/support_0.1 / unified / 3407
 
-Paired n=10/44. positive = reference minus candidate true NLL, bits/query.
+Paired n=44/44. positive = reference minus candidate true NLL, bits/query.
 
 | Contrast | Difference | Simultaneous95% interval |
 |---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.00012 | [-0.00036, +0.00012] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.00010 | [-0.00032, +0.00013] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.00011 | [-0.00035, +0.00012] |
-| episode_selected versus ordinary_selected | -0.00357 | [-0.08898, +0.08185] |
-| episode_selected versus source_no_adaptation | -0.00228 | [-0.11306, +0.10849] |
-| fixed_episode/0 versus source_no_adaptation | -0.06204 | [-0.18359, +0.05951] |
-| fixed_episode/20 versus source_no_adaptation | -0.07637 | [-0.19535, +0.04261] |
-| fixed_episode/5 versus source_no_adaptation | -0.06234 | [-0.18328, +0.05860] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.06192 | [-0.18358, +0.05974] |
-| fixed_ordinary/20 versus source_no_adaptation | -0.07627 | [-0.19525, +0.04271] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.06223 | [-0.18327, +0.05882] |
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00014 | [-0.00026, -0.00001] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00027 | [-0.00044, -0.00010] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00014 | [-0.00026, -0.00002] |
+| episode_selected versus ordinary_selected | -0.00084 | [-0.01551, +0.01382] |
+| episode_selected versus source_no_adaptation | -0.05138 | [-0.09937, -0.00339] |
+| fixed_episode/0 versus source_no_adaptation | -0.08082 | [-0.15195, -0.00969] |
+| fixed_episode/20 versus source_no_adaptation | -0.12639 | [-0.21904, -0.03374] |
+| fixed_episode/5 versus source_no_adaptation | -0.08240 | [-0.15453, -0.01027] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.08068 | [-0.15180, -0.00956] |
+| fixed_ordinary/20 versus source_no_adaptation | -0.12612 | [-0.21873, -0.03351] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.08226 | [-0.15438, -0.01014] |
 | fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
-| fixed_source/20 versus source_no_adaptation | +0.01852 | [-0.08674, +0.12378] |
-| fixed_source/5 versus source_no_adaptation | +0.00486 | [-0.00214, +0.01186] |
-| ordinary_selected versus source_no_adaptation | +0.00128 | [-0.06164, +0.06421] |
+| fixed_source/20 versus source_no_adaptation | -0.03553 | [-0.08933, +0.01828] |
+| fixed_source/5 versus source_no_adaptation | +0.00129 | [-0.00163, +0.00421] |
+| ordinary_selected versus source_no_adaptation | -0.05054 | [-0.09608, -0.00500] |
 
 ## dtu / episode/local/support_0.3 / native / 3401
 
@@ -312,25 +312,25 @@ Paired n=44/44. positive = reference minus candidate true NLL, bits/query.
 
 ## dtu / episode/local/support_0.3 / native / 3407
 
-Paired n=10/44. positive = reference minus candidate true NLL, bits/query.
+Paired n=44/44. positive = reference minus candidate true NLL, bits/query.
 
 | Contrast | Difference | Simultaneous95% interval |
 |---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.00008 | [-0.00033, +0.00016] |
-| fixed_episode/20 versus fixed_ordinary/20 | +0.00000 | [-0.00027, +0.00028] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.00008 | [-0.00032, +0.00017] |
-| episode_selected versus ordinary_selected | +0.00000 | [+0.00000, +0.00000] |
-| episode_selected versus source_no_adaptation | +0.00181 | [-0.00360, +0.00722] |
-| fixed_episode/0 versus source_no_adaptation | -0.02084 | [-0.11242, +0.07075] |
-| fixed_episode/20 versus source_no_adaptation | -0.00950 | [-0.12059, +0.10159] |
-| fixed_episode/5 versus source_no_adaptation | -0.02013 | [-0.11261, +0.07236] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.02075 | [-0.11229, +0.07079] |
-| fixed_ordinary/20 versus source_no_adaptation | -0.00950 | [-0.12055, +0.10154] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.02005 | [-0.11249, +0.07240] |
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00010 | [-0.00021, +0.00001] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00013 | [-0.00028, +0.00002] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00010 | [-0.00021, +0.00001] |
+| episode_selected versus ordinary_selected | -0.00004 | [-0.00009, +0.00002] |
+| episode_selected versus source_no_adaptation | -0.03255 | [-0.06885, +0.00374] |
+| fixed_episode/0 versus source_no_adaptation | -0.05243 | [-0.11265, +0.00779] |
+| fixed_episode/20 versus source_no_adaptation | -0.06261 | [-0.13891, +0.01368] |
+| fixed_episode/5 versus source_no_adaptation | -0.05179 | [-0.11267, +0.00909] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.05233 | [-0.11251, +0.00784] |
+| fixed_ordinary/20 versus source_no_adaptation | -0.06248 | [-0.13877, +0.01380] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.05170 | [-0.11253, +0.00914] |
 | fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
-| fixed_source/20 versus source_no_adaptation | -0.01261 | [-0.10778, +0.08256] |
-| fixed_source/5 versus source_no_adaptation | +0.00181 | [-0.00360, +0.00722] |
-| ordinary_selected versus source_no_adaptation | +0.00181 | [-0.00360, +0.00722] |
+| fixed_source/20 versus source_no_adaptation | -0.03916 | [-0.11493, +0.03661] |
+| fixed_source/5 versus source_no_adaptation | +0.00129 | [-0.00233, +0.00491] |
+| ordinary_selected versus source_no_adaptation | -0.03252 | [-0.06880, +0.00376] |
 
 ## dtu / episode/local/support_0.3 / unified / 3401
 
@@ -356,23 +356,217 @@ Paired n=44/44. positive = reference minus candidate true NLL, bits/query.
 
 ## dtu / episode/local/support_0.3 / unified / 3407
 
-Paired n=10/44. positive = reference minus candidate true NLL, bits/query.
+Paired n=44/44. positive = reference minus candidate true NLL, bits/query.
 
 | Contrast | Difference | Simultaneous95% interval |
 |---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.00012 | [-0.00040, +0.00016] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.00004 | [-0.00039, +0.00032] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.00011 | [-0.00040, +0.00018] |
-| episode_selected versus ordinary_selected | +0.00000 | [+0.00000, +0.00000] |
-| episode_selected versus source_no_adaptation | +0.00434 | [-0.00378, +0.01246] |
-| fixed_episode/0 versus source_no_adaptation | -0.06204 | [-0.20268, +0.07860] |
-| fixed_episode/20 versus source_no_adaptation | -0.04761 | [-0.17953, +0.08431] |
-| fixed_episode/5 versus source_no_adaptation | -0.06105 | [-0.20092, +0.07882] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.06192 | [-0.20269, +0.07884] |
-| fixed_ordinary/20 versus source_no_adaptation | -0.04758 | [-0.17962, +0.08447] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.06093 | [-0.20094, +0.07907] |
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00014 | [-0.00026, -0.00001] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00019 | [-0.00031, -0.00006] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00014 | [-0.00026, -0.00001] |
+| episode_selected versus ordinary_selected | -0.00005 | [-0.00012, +0.00003] |
+| episode_selected versus source_no_adaptation | -0.04552 | [-0.08854, -0.00249] |
+| fixed_episode/0 versus source_no_adaptation | -0.08082 | [-0.15342, -0.00822] |
+| fixed_episode/20 versus source_no_adaptation | -0.10130 | [-0.19273, -0.00987] |
+| fixed_episode/5 versus source_no_adaptation | -0.08060 | [-0.15423, -0.00697] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.08068 | [-0.15328, -0.00809] |
+| fixed_ordinary/20 versus source_no_adaptation | -0.10112 | [-0.19255, -0.00968] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.08046 | [-0.15408, -0.00684] |
 | fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
-| fixed_source/20 versus source_no_adaptation | +0.02252 | [-0.10083, +0.14587] |
-| fixed_source/5 versus source_no_adaptation | +0.00434 | [-0.00378, +0.01246] |
-| ordinary_selected versus source_no_adaptation | +0.00434 | [-0.00378, +0.01246] |
+| fixed_source/20 versus source_no_adaptation | -0.02962 | [-0.09524, +0.03600] |
+| fixed_source/5 versus source_no_adaptation | +0.00185 | [-0.00158, +0.00528] |
+| ordinary_selected versus source_no_adaptation | -0.04547 | [-0.08846, -0.00248] |
+
+## fau / episode/cs/mismatch_gain/support_0.1 / native / 3401
+
+Paired n=14/67. positive = candidate minus reference mismatch gain, bits/query; not true-risk benefit.
+
+| Contrast | Difference | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00005 | [-0.00012, +0.00003] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00007 | [-0.00017, +0.00004] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00005 | [-0.00013, +0.00003] |
+| episode_selected versus ordinary_selected | -0.00005 | [-0.00012, +0.00003] |
+| episode_selected versus source_no_adaptation | +0.11663 | [+0.02011, +0.21315] |
+| fixed_episode/0 versus source_no_adaptation | +0.11663 | [+0.02011, +0.21315] |
+| fixed_episode/20 versus source_no_adaptation | +0.11783 | [+0.00692, +0.22875] |
+| fixed_episode/5 versus source_no_adaptation | +0.11696 | [+0.01974, +0.21417] |
+| fixed_ordinary/0 versus source_no_adaptation | +0.11668 | [+0.02019, +0.21317] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.11790 | [+0.00703, +0.22876] |
+| fixed_ordinary/5 versus source_no_adaptation | +0.11701 | [+0.01983, +0.21419] |
+| fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
+| fixed_source/20 versus source_no_adaptation | +0.02364 | [+0.00152, +0.04576] |
+| fixed_source/5 versus source_no_adaptation | +0.00147 | [+0.00042, +0.00252] |
+| ordinary_selected versus source_no_adaptation | +0.11668 | [+0.02019, +0.21317] |
+
+## fau / episode/cs/mismatch_gain/support_0.1 / unified / 3401
+
+Paired n=14/67. positive = candidate minus reference mismatch gain, bits/query; not true-risk benefit.
+
+| Contrast | Difference | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00003 | [-0.00011, +0.00006] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00005 | [-0.00015, +0.00006] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00002 | [-0.00011, +0.00007] |
+| episode_selected versus ordinary_selected | -0.00003 | [-0.00011, +0.00006] |
+| episode_selected versus source_no_adaptation | -0.02926 | [-0.08433, +0.02581] |
+| fixed_episode/0 versus source_no_adaptation | -0.02926 | [-0.08433, +0.02581] |
+| fixed_episode/20 versus source_no_adaptation | -0.04977 | [-0.12541, +0.02587] |
+| fixed_episode/5 versus source_no_adaptation | -0.03032 | [-0.08642, +0.02577] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.02924 | [-0.08426, +0.02579] |
+| fixed_ordinary/20 versus source_no_adaptation | -0.04972 | [-0.12529, +0.02584] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.03030 | [-0.08634, +0.02574] |
+| fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
+| fixed_source/20 versus source_no_adaptation | -0.00134 | [-0.02860, +0.02593] |
+| fixed_source/5 versus source_no_adaptation | +0.00001 | [-0.00136, +0.00138] |
+| ordinary_selected versus source_no_adaptation | -0.02924 | [-0.08426, +0.02579] |
+
+## fau / episode/cs/mismatch_gain/support_0.3 / native / 3401
+
+Paired n=14/67. positive = candidate minus reference mismatch gain, bits/query; not true-risk benefit.
+
+| Contrast | Difference | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00005 | [-0.00012, +0.00003] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00005 | [-0.00014, +0.00005] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00005 | [-0.00013, +0.00003] |
+| episode_selected versus ordinary_selected | -0.00005 | [-0.00012, +0.00003] |
+| episode_selected versus source_no_adaptation | +0.11663 | [+0.02495, +0.20831] |
+| fixed_episode/0 versus source_no_adaptation | +0.11663 | [+0.02495, +0.20831] |
+| fixed_episode/20 versus source_no_adaptation | +0.11835 | [+0.01200, +0.22470] |
+| fixed_episode/5 versus source_no_adaptation | +0.11698 | [+0.02449, +0.20948] |
+| fixed_ordinary/0 versus source_no_adaptation | +0.11668 | [+0.02503, +0.20833] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.11840 | [+0.01209, +0.22471] |
+| fixed_ordinary/5 versus source_no_adaptation | +0.11703 | [+0.02457, +0.20949] |
+| fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
+| fixed_source/20 versus source_no_adaptation | +0.01750 | [-0.00577, +0.04077] |
+| fixed_source/5 versus source_no_adaptation | +0.00120 | [-0.00001, +0.00241] |
+| ordinary_selected versus source_no_adaptation | +0.11668 | [+0.02503, +0.20833] |
+
+## fau / episode/cs/mismatch_gain/support_0.3 / unified / 3401
+
+Paired n=14/67. positive = candidate minus reference mismatch gain, bits/query; not true-risk benefit.
+
+| Contrast | Difference | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00003 | [-0.00011, +0.00006] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00003 | [-0.00014, +0.00009] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00002 | [-0.00011, +0.00007] |
+| episode_selected versus ordinary_selected | -0.00003 | [-0.00011, +0.00006] |
+| episode_selected versus source_no_adaptation | -0.02926 | [-0.08399, +0.02546] |
+| fixed_episode/0 versus source_no_adaptation | -0.02926 | [-0.08399, +0.02546] |
+| fixed_episode/20 versus source_no_adaptation | -0.04572 | [-0.12237, +0.03093] |
+| fixed_episode/5 versus source_no_adaptation | -0.03004 | [-0.08587, +0.02578] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.02924 | [-0.08392, +0.02544] |
+| fixed_ordinary/20 versus source_no_adaptation | -0.04570 | [-0.12227, +0.03088] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.03002 | [-0.08580, +0.02575] |
+| fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
+| fixed_source/20 versus source_no_adaptation | -0.00811 | [-0.03559, +0.01938] |
+| fixed_source/5 versus source_no_adaptation | -0.00021 | [-0.00171, +0.00130] |
+| ordinary_selected versus source_no_adaptation | -0.02924 | [-0.08392, +0.02544] |
+
+## fau / episode/cs_vs_nce_package/support_0.1 / unified / 3401
+
+Paired n=14/67. positive = reference minus candidate true NLL, bits/query.
+
+| Contrast | Difference | Simultaneous95% interval |
+|---|---:|---:|
+| CS/episode versus NCE/episode | -0.03441 | [-0.07072, +0.00191] |
+| CS/ordinary versus NCE/ordinary | -0.03439 | [-0.07067, +0.00188] |
+
+## fau / episode/cs_vs_nce_package/support_0.3 / unified / 3401
+
+Paired n=14/67. positive = reference minus candidate true NLL, bits/query.
+
+| Contrast | Difference | Simultaneous95% interval |
+|---|---:|---:|
+| CS/episode versus NCE/episode | -0.04101 | [-0.07696, -0.00507] |
+| CS/ordinary versus NCE/ordinary | -0.04099 | [-0.07689, -0.00508] |
+
+## fau / episode/local/support_0.1 / native / 3401
+
+Paired n=14/67. positive = reference minus candidate true NLL, bits/query.
+
+| Contrast | Difference | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00001 | [-0.00009, +0.00006] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00004 | [-0.00014, +0.00006] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00002 | [-0.00009, +0.00006] |
+| episode_selected versus ordinary_selected | -0.00001 | [-0.00009, +0.00006] |
+| episode_selected versus source_no_adaptation | -0.02356 | [-0.13676, +0.08965] |
+| fixed_episode/0 versus source_no_adaptation | -0.02356 | [-0.13676, +0.08965] |
+| fixed_episode/20 versus source_no_adaptation | -0.04968 | [-0.19896, +0.09961] |
+| fixed_episode/5 versus source_no_adaptation | -0.02481 | [-0.13991, +0.09030] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.02354 | [-0.13669, +0.08961] |
+| fixed_ordinary/20 versus source_no_adaptation | -0.04963 | [-0.19885, +0.09958] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.02479 | [-0.13985, +0.09027] |
+| fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
+| fixed_source/20 versus source_no_adaptation | -0.00281 | [-0.02918, +0.02357] |
+| fixed_source/5 versus source_no_adaptation | -0.00000 | [-0.00127, +0.00127] |
+| ordinary_selected versus source_no_adaptation | -0.02354 | [-0.13669, +0.08961] |
+
+## fau / episode/local/support_0.1 / unified / 3401
+
+Paired n=14/67. positive = reference minus candidate true NLL, bits/query.
+
+| Contrast | Difference | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00002 | [-0.00012, +0.00008] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00004 | [-0.00016, +0.00009] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00002 | [-0.00012, +0.00008] |
+| episode_selected versus ordinary_selected | -0.00002 | [-0.00012, +0.00008] |
+| episode_selected versus source_no_adaptation | -0.03447 | [-0.10065, +0.03171] |
+| fixed_episode/0 versus source_no_adaptation | -0.03447 | [-0.10065, +0.03171] |
+| fixed_episode/20 versus source_no_adaptation | -0.05167 | [-0.14830, +0.04497] |
+| fixed_episode/5 versus source_no_adaptation | -0.03526 | [-0.10296, +0.03243] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.03445 | [-0.10058, +0.03168] |
+| fixed_ordinary/20 versus source_no_adaptation | -0.05163 | [-0.14818, +0.04492] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.03525 | [-0.10288, +0.03239] |
+| fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
+| fixed_source/20 versus source_no_adaptation | +0.00022 | [-0.03491, +0.03535] |
+| fixed_source/5 versus source_no_adaptation | +0.00016 | [-0.00155, +0.00186] |
+| ordinary_selected versus source_no_adaptation | -0.03445 | [-0.10058, +0.03168] |
+
+## fau / episode/local/support_0.3 / native / 3401
+
+Paired n=14/67. positive = reference minus candidate true NLL, bits/query.
+
+| Contrast | Difference | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00001 | [-0.00009, +0.00006] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00004 | [-0.00014, +0.00006] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00001 | [-0.00009, +0.00006] |
+| episode_selected versus ordinary_selected | -0.00001 | [-0.00009, +0.00006] |
+| episode_selected versus source_no_adaptation | -0.02356 | [-0.12928, +0.08217] |
+| fixed_episode/0 versus source_no_adaptation | -0.02356 | [-0.12928, +0.08217] |
+| fixed_episode/20 versus source_no_adaptation | -0.04559 | [-0.17819, +0.08702] |
+| fixed_episode/5 versus source_no_adaptation | -0.02460 | [-0.13187, +0.08266] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.02354 | [-0.12922, +0.08213] |
+| fixed_ordinary/20 versus source_no_adaptation | -0.04555 | [-0.17809, +0.08700] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.02459 | [-0.13181, +0.08263] |
+| fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
+| fixed_source/20 versus source_no_adaptation | -0.00814 | [-0.03716, +0.02087] |
+| fixed_source/5 versus source_no_adaptation | -0.00025 | [-0.00184, +0.00135] |
+| ordinary_selected versus source_no_adaptation | -0.02354 | [-0.12922, +0.08213] |
+
+## fau / episode/local/support_0.3 / unified / 3401
+
+Paired n=14/67. positive = reference minus candidate true NLL, bits/query.
+
+| Contrast | Difference | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.00002 | [-0.00012, +0.00008] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.00003 | [-0.00015, +0.00009] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.00002 | [-0.00012, +0.00008] |
+| episode_selected versus ordinary_selected | -0.00002 | [-0.00012, +0.00008] |
+| episode_selected versus source_no_adaptation | -0.03447 | [-0.09615, +0.02721] |
+| fixed_episode/0 versus source_no_adaptation | -0.03447 | [-0.09615, +0.02721] |
+| fixed_episode/20 versus source_no_adaptation | -0.04625 | [-0.13320, +0.04070] |
+| fixed_episode/5 versus source_no_adaptation | -0.03494 | [-0.09789, +0.02800] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.03445 | [-0.09608, +0.02718] |
+| fixed_ordinary/20 versus source_no_adaptation | -0.04621 | [-0.13308, +0.04065] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.03492 | [-0.09782, +0.02797] |
+| fixed_source/0 versus source_no_adaptation | +0.00000 | [+0.00000, +0.00000] |
+| fixed_source/20 versus source_no_adaptation | -0.00505 | [-0.03583, +0.02572] |
+| fixed_source/5 versus source_no_adaptation | -0.00006 | [-0.00171, +0.00160] |
+| ordinary_selected versus source_no_adaptation | -0.03445 | [-0.09608, +0.02718] |
 

@@ -1,6 +1,6 @@
 # Public-prior content, time and private-task science
 
-Snapshot 2026-10-18T16:10:08.410406+02:00: **interim**, 208/300 frozen primary targets.
+Snapshot 2026-10-18T18:09:41.893653+02:00: **complete**, 300/300 frozen primary targets.
 
 Representative seed3401 only; complete person/content folds and all five arms are required within each dataset×objective before a family is summarized. Public start shifts retain the actual38-sample/593.75ms access. Private input contains0–578.125ms sample times and no pre-event condition. These are decoding/masked-input analyses, not neural latencies or an online-causal pipeline. Public spectra/Ac/Lz are outside this64Hz feature version.
 
@@ -10,10 +10,10 @@ Representative seed3401 only; complete person/content folds and all five arms ar
 | dtu/NCE | 50/50 | True |
 | fau/CS_SINGLE | 50/50 | True |
 | fau/NCE | 50/50 | True |
-| federici/CS_SINGLE | 4/25 | False |
-| federici/NCE | 4/25 | False |
-| private_bdf/CS_SINGLE | 0/25 | False |
-| private_bdf/NCE | 0/25 | False |
+| federici/CS_SINGLE | 25/25 | True |
+| federici/NCE | 25/25 | True |
+| private_bdf/CS_SINGLE | 25/25 | True |
+| private_bdf/NCE | 25/25 | True |
 
 All temporal cells, per-arm levels, paired scratch contrasts, direct group-effect differences and declared private developmental models are retained in `results/auditory_alignment_v3/aln34/prior_science/science.json`.4000 identity bootstrap-t; source-arm levels use their full cell family, and arm contrasts jointly cover four arms×all cells. Source-training ES readout fitting is not whole-pipeline held-out-person selection. Historical native S34 results use a different input/target contract.
 
@@ -145,3 +145,115 @@ All temporal cells, per-arm levels, paired scratch contrasts, direct group-effec
 - fau / public/NCE/raw/onset/direct / mismatch_minus_matched_mse: 67 paired identities; 100 contrasts in the full simultaneous family.
 - fau / public/NCE/raw/onset/direct / mse: 67 paired identities; 100 contrasts in the full simultaneous family.
 - fau / public/NCE/raw/onset/direct / r: 67 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/env/direct / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/env/direct / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/env/direct / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/env/direct / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/env/history_conditional / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/env/history_conditional / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/env/history_conditional / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/env/history_conditional / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/onset/conditional / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/onset/conditional / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/onset/conditional / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/onset/conditional / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/onset/direct / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/onset/direct / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/onset/direct / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/model/onset/direct / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/env/direct / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/env/direct / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/env/direct / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/env/direct / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/env/history_conditional / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/env/history_conditional / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/env/history_conditional / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/env/history_conditional / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/onset/conditional / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/onset/conditional / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/onset/conditional / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/onset/conditional / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/onset/direct / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/onset/direct / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/onset/direct / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/CS_SINGLE/raw/onset/direct / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/env/direct / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/env/direct / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/env/direct / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/env/direct / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/env/history_conditional / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/env/history_conditional / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/env/history_conditional / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/env/history_conditional / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/onset/conditional / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/onset/conditional / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/onset/conditional / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/onset/conditional / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/onset/direct / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/onset/direct / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/onset/direct / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/model/onset/direct / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/env/direct / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/env/direct / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/env/direct / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/env/direct / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/env/history_conditional / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/env/history_conditional / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/env/history_conditional / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/env/history_conditional / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/onset/conditional / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/onset/conditional / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/onset/conditional / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/onset/conditional / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/onset/direct / matched_minus_mismatch_r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/onset/direct / mismatch_minus_matched_mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/onset/direct / mse: 86 paired identities; 100 contrasts in the full simultaneous family.
+- federici / public/NCE/raw/onset/direct / r: 86 paired identities; 100 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/CS_SINGLE/0.1 / auc: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/CS_SINGLE/0.1 / benefit_bits: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/CS_SINGLE/0.1 / brier: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/CS_SINGLE/0.1 / history_gain_bits: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/CS_SINGLE/0.1 / nll_bits: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/CS_SINGLE/0.3 / auc: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/CS_SINGLE/0.3 / benefit_bits: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/CS_SINGLE/0.3 / brier: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/CS_SINGLE/0.3 / history_gain_bits: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/CS_SINGLE/0.3 / nll_bits: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/NCE/0.1 / auc: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/NCE/0.1 / benefit_bits: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/NCE/0.1 / brier: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/NCE/0.1 / history_gain_bits: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/NCE/0.1 / nll_bits: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/NCE/0.3 / auc: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/NCE/0.3 / benefit_bits: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/NCE/0.3 / brier: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/NCE/0.3 / history_gain_bits: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/adapt/NCE/0.3 / nll_bits: 64 paired identities; 12 contrasts in the full simultaneous family.
+- private_bdf / private/tg/CS_SINGLE/original_calibration / auc: 64 paired identities; 36 contrasts in the full simultaneous family.
+- private_bdf / private/tg/CS_SINGLE/original_calibration / brier: 64 paired identities; 36 contrasts in the full simultaneous family.
+- private_bdf / private/tg/CS_SINGLE/original_calibration / nll_bits: 64 paired identities; 36 contrasts in the full simultaneous family.
+- private_bdf / private/tg/CS_SINGLE/source_only_destination_calibration / auc: 64 paired identities; 36 contrasts in the full simultaneous family.
+- private_bdf / private/tg/CS_SINGLE/source_only_destination_calibration / brier: 64 paired identities; 36 contrasts in the full simultaneous family.
+- private_bdf / private/tg/CS_SINGLE/source_only_destination_calibration / nll_bits: 64 paired identities; 36 contrasts in the full simultaneous family.
+- private_bdf / private/tg/NCE/original_calibration / auc: 64 paired identities; 36 contrasts in the full simultaneous family.
+- private_bdf / private/tg/NCE/original_calibration / brier: 64 paired identities; 36 contrasts in the full simultaneous family.
+- private_bdf / private/tg/NCE/original_calibration / nll_bits: 64 paired identities; 36 contrasts in the full simultaneous family.
+- private_bdf / private/tg/NCE/source_only_destination_calibration / auc: 64 paired identities; 36 contrasts in the full simultaneous family.
+- private_bdf / private/tg/NCE/source_only_destination_calibration / brier: 64 paired identities; 36 contrasts in the full simultaneous family.
+- private_bdf / private/tg/NCE/source_only_destination_calibration / nll_bits: 64 paired identities; 36 contrasts in the full simultaneous family.
+- private_bdf / private/windows/CS_SINGLE/ / auc: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/CS_SINGLE/ / brier: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/CS_SINGLE/ / gain_vs_base_bits: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/CS_SINGLE/ / history_gain_bits: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/CS_SINGLE/ / history_gain_common_support_bits: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/CS_SINGLE/ / history_minus_twin_bits: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/CS_SINGLE/ / history_twin_gain_bits: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/CS_SINGLE/ / nll_bits: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/NCE/ / auc: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/NCE/ / brier: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/NCE/ / gain_vs_base_bits: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/NCE/ / history_gain_bits: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/NCE/ / history_gain_common_support_bits: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/NCE/ / history_minus_twin_bits: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/NCE/ / history_twin_gain_bits: 64 paired identities; 16 contrasts in the full simultaneous family.
+- private_bdf / private/windows/NCE/ / nll_bits: 64 paired identities; 16 contrasts in the full simultaneous family.

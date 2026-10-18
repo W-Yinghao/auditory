@@ -1,4 +1,4 @@
-# ALN3 per-unit records (snapshot 2026-10-18 16:29 CEST)
+# ALN3 per-unit records (snapshot 2026-10-18 20:09 CEST)
 
 One JSON record per completed ALN3 unit, written by the unit runners. Each dataset's records are in one archive, and each archive member is
 byte-identical to the server file `private/auditory_alignment_v3/units/<id>.json`. `MANIFEST.tsv` lists every member with its experiment id,
@@ -45,32 +45,32 @@ with tarfile.open('results/auditory_alignment_v3/unit_records/fau.tar.gz') as ta
 
 Group-level results built from these records are in `docs/auditory_alignment_v3/` and `results/auditory_alignment_v3/`.
 
-## ALN3.4 lane supplement — publish_031
+## ALN3.4 lane supplement — publish_032
 
-The 2 independently readable `aln34_lanes_031_*.tar.gz` parts contain 1009 completed non-probe records at 2026-10-18T16:30:23.196977+02:00. `ALN34_MANIFEST_031.tsv` maps every member to its archive and SHA256. Every member is byte-identical to the frozen source record, with no omissions or duplicates.
+The 4 independently readable `aln34_lanes_032_*.tar.gz` parts contain 1269 completed non-probe records at 2026-10-18T20:10:53.660559+02:00. `ALN34_MANIFEST_032.tsv` maps every member to its archive and SHA256. Every member is byte-identical to the frozen source record, with no omissions or duplicates.
 
-The previous `aln34_lanes.tar.gz` and `ALN34_MANIFEST.tsv` remain the publish_030 historical snapshot. Do not combine the two releases as independent observations. A record can bundle several evaluations; reused v1/v2 records and seeds never increase independent participant n.
+The previous `aln34_lanes.tar.gz` and `ALN34_MANIFEST.tsv` remain the publish_030 historical snapshot. The `aln34_lanes_031_*.tar.gz` parts and `ALN34_MANIFEST_031.tsv` remain the publish_031 snapshot. Do not combine releases as independent observations. A record can bundle several evaluations; reused v1/v2 records and seeds never increase independent participant n.
 
-- `adaptation_policy_v1`: 22
-- `attention_transfer_v1`: 28
-- `breadth_budget_v1`: 1
-- `breadth_episode_v1`: 7
-- `breadth_fusion_v1`: 4
-- `breadth_inner_v1`: 23
-- `breadth_policy_v1`: 10
+- `adaptation_policy_v1`: 31
+- `attention_transfer_v1`: 51
+- `breadth_budget_v1`: 4
+- `breadth_episode_v1`: 12
+- `breadth_fusion_v1`: 6
+- `breadth_inner_v1`: 37
+- `breadth_policy_v1`: 15
 - `causal_filter_v1`: 10
-- `cb_auditory_v1`: 11
+- `cb_auditory_v1`: 20
 - `content_time_v1`: 180
-- `cs_episode_v1`: 12
-- `data_inner_v1`: 169
-- `episode_training_v1`: 14
-- `learning_budget_v2`: 18
-- `prior_private_loo_v1`: 58
-- `prior_science_v1`: 216
+- `cs_episode_v1`: 22
+- `data_inner_v1`: 198
+- `episode_training_v1`: 20
+- `learning_budget_v2`: 27
+- `prior_private_loo_v1`: 71
+- `prior_science_v1`: 300
 - `private_calibration_loo_v1`: 4
-- `private_cb_factorial_v1`: 26
+- `private_cb_factorial_v1`: 40
 - `private_current_time_v1`: 26
 - `private_current_time_v2`: 130
 - `private_episode_v1`: 1
-- `private_episode_v2`: 22
-- `strong_fusion_v1`: 17
+- `private_episode_v2`: 44
+- `strong_fusion_v1`: 20
