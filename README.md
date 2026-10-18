@@ -6,21 +6,22 @@
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## 最新（2026-10-18）：ALN3.4 阶段发布，实验继续进行
+## 最新（2026-10-18 下午）：ALN3.4 主面板完成，扩展实验继续进行
 
 当前方向是刺激锚定的局部时空声音–EEG 学习、公共听觉先验、注意与个人适配，以及 HA/CI/正常对照和儿童发育问题。执行依据为 [ALN3.4 包](AUDITORY_ALN3_SERVER_PACKAGE_v3_4_20261016/README.md)及其继承合同；zip 与解压内容逐字节一致。代码在 `auditory_alignment_v3/aln34/`、`auditory_alignment_v3/prior33/`。本次发布保留有利、不利和不确定结果，不把实验单元或 seed 当作新的独立受试者。
 
 本次快照包括：
 
 - **已完成的面板与修正**：[D 三 seed](docs/auditory_alignment_v3/D_MULTI_SEED_RESULTS.md)、[注意顺序修正](docs/auditory_alignment_v3/ATTENTION_ORDER_CORRECTION.md)、[D_ADAPT 同 query 真实风险](docs/auditory_alignment_v3/D_ADAPT_TRUE_RISK_RESULTS.md)、[E 三 seed](docs/auditory_alignment_v3/E_MULTI_SEED_RESULTS.md)及[私有配方标签更正](docs/auditory_alignment_v3/CORRECTION_02_PRIVATE_RECIPE_SCOPE.md)。私有 E 的独立样本仍是 64 个儿童。
-- **真正全量更新与同 EEG 访问的 local 对照**：[对齐接口结果](docs/auditory_alignment_v3/ALIGNED_INTERFACE_RESULTS.md)、[多 seed 配对证据](docs/auditory_alignment_v3/TRUE_FULL_PAIRED_EVIDENCE.md)。后者在 10 月 18 日 00:13 的分析覆盖 734/800 个 true-full 单元，其中新增 seed 面板 334/400；表格逐项声明实际配对身份覆盖，仍为中期结果。
-- **公共听觉先验已进入生产运行**：FIXC、rich PCA 重拟合、生产版 core/rich manifest、M12 GPU 探针和 M13 冻结执行记录均已完成。[执行状态与已知限制](docs/auditory_alignment_v3/PUBLIC_PRIOR_EXECUTION_STATUS.md)、[M13](docs/auditory_alignment_v3/aln34/E34_PUBLIC_PRIOR_EXECUTION_RECORD.md)、[M12 回执](results/auditory_alignment_v3/prior33/M12_receipt.json)、[公开 manifest](results/auditory_alignment_v3/prior33/manifests/)、[先验结果](docs/auditory_alignment_v3/PUBLIC_PRIOR_RESULTS.md)。00:44 的分析有 670/1,154 个新生产单元完成，另列 30 个复用历史参照；不把参照算成新训练。后续结果、训练轨迹与未完成比较均保留各自时间戳。
+- **真正全量更新与同 EEG 访问的 local 对照已完成**：TRUE_FULL 800/800，其中新增 seed one-step 面板 400/400；[多 seed 配对证据](docs/auditory_alignment_v3/TRUE_FULL_PAIRED_EVIDENCE.md)声明各项实际身份覆盖，[正式 ADDENDUM_11 汇总](docs/auditory_alignment_v3/ALN32_SEED_PANEL_RESULTS.md)已于 13:28 完成。三个 seed 的配对支持当前配方下 CBraMod 与有效 local 并行推进；REVE、随机初始化及弱/反向配置均完整保留，不外推到所有训练设置。
+- **公共听觉先验主训练已完成**：1,154/1,154 个新生产单元；[最终先验报告](docs/auditory_alignment_v3/PUBLIC_PRIOR_RESULTS.md)另列 30 个历史参照，总计 1,184/1,184、0 个工程排除。FIXC、rich PCA、[生产 core/rich manifest](results/auditory_alignment_v3/prior33/manifests/)、[M12](results/auditory_alignment_v3/prior33/M12_receipt.json)与[M13](docs/auditory_alignment_v3/aln34/E34_PUBLIC_PRIOR_EXECUTION_RECORD.md)已在上一版发布。先验效应随配置而异，完成训练不等于每种配置都有改善。
+- **数值修复与复核**：[私有时间分析 v2](docs/auditory_alignment_v3/NEW_SCIENCE_RESULTS_V2.md)的生产执行已达 130/130，报告保留其实际汇总覆盖；[同目标校准修正](docs/auditory_alignment_v3/aln34/PRIVATE_TIME_CALIBRATION_CORRECTION_20261018.md)复用 26 个兼容 v1 结果，完整 GPU 验证通过。先验校准的原设备复核在 node42/V100 上通过，AUC/NLL/Brier 差值均为 0，容差和原失败记录保留；见[执行证据](results/auditory_alignment_v3/publication_031/evidence/)。
 - **功能与机制边界分析**：[互补功能的完整解释](docs/auditory_alignment_v3/COMPLEMENT_FUNCTION_FINAL_INTERPRETATION.md)、[去自身参考的私有校准](docs/auditory_alignment_v3/PRIVATE_CALIBRATION_LOO_RESULTS.md)、[滤波边界](docs/auditory_alignment_v3/CAUSAL_FILTER_BOUNDARY_RESULTS.md)、[人群/内容/时间与适配](docs/auditory_alignment_v3/HEARING_CONTENT_TIME_ADAPTATION.md)。滤波对照和条件于已有模型的区间不能升级为神经因果或普遍能力结论。
 - **下一阶段已登记并运行**：训练数据量与预算、整条流程的跨人开发、强融合、episode 适配、私有初始化×学习率、冻结源注意迁移及先验科学分析。设计与冻结计划分别在 [设计文档](docs/auditory_alignment_v3/aln34/)和[执行脚本/计划](scripts/auditory_alignment_v3/aln34/)。[private episode v2 修正](docs/auditory_alignment_v3/aln34/PRIVATE_EPISODE_SINGLETON_CORRECTION_20261017.md)保留旧执行身份，修复单支持样本下 CS 不可估计的工程问题；探针通过不等于疗效成立。
 - **执行与资源管理**：[优先级判断](docs/auditory_alignment_v3/EXPERIMENT_PRIORITIES_20261017.md)、[效率监控 loop](docs/auditory_alignment_v3/aln34/EFFICIENCY_LOOP_20261017.md)。GPU 使用 Slurm runfill、项目最多 10 张运行卡；监控按真实依赖补队并对快卡作路由判断。1,002 个旧执行保持暂停，A3c 删除仍暂缓。
-- **逐单元记录**：[01:00 快照](results/auditory_alignment_v3/unit_records/README.md)含 8,229 份主 runner 记录，并附稍后生成的 ALN3.4 lane 补充包、逐成员哈希和字段说明。公开数据集的 query 得分数组用于复核注意/互补分析，不包含原始 EEG/音频。
+- **逐单元记录**：[本轮更新快照](results/auditory_alignment_v3/unit_records/README.md)包含 8,719 份主 runner 记录及 1,009 份 ALN3.4 lane 记录；扩展记录按文件大小分包，并保留逐成员哈希和字段说明。代码与结果快照时间分别记录，不将复用记录、实验单元或 seed 当作新的独立受试者。公开 query 得分数组不包含原始 EEG/音频。
 
-[阶段性项目评估](docs/PROJECT_PROGRESS_REVIEW_20261017_v2.md)保留 10 月 17 日的判断与时间范围；最新结果以各结果文档自己的生成时间和覆盖表为准。[复现与发布布局](docs/auditory_alignment_v3/RELEASE_030.md)说明公开副本、服务器路径与运行证据的对应关系。 [发布清单](results/auditory_alignment_v3/publication_030/MANIFEST.tsv)记录源文件与发布副本的逐文件哈希。**ALN3.4 尚未全部完成，本次是进行中的研究快照。**
+[阶段性项目评估](docs/PROJECT_PROGRESS_REVIEW_20261017_v2.md)保留 10 月 17 日的判断与时间范围；最新结果以各结果文档自己的生成时间和覆盖表为准。[复现与发布布局](docs/auditory_alignment_v3/RELEASE_031.md)说明本轮修复、公开副本和运行证据；[剩余工期估算](results/auditory_alignment_v3/publication_031/evidence/runtime_forecast_20261018.json)为运行规划快照，并非完成承诺。 [发布清单](results/auditory_alignment_v3/publication_031/MANIFEST.tsv)记录源文件与发布副本的逐文件哈希。**ALN3.4 尚未全部完成，本次是进行中的研究快照。**
 
 本次不上传私有数据集本身、身份映射、人名/联系方式、原始公共数据、模型权重、运行日志及 checkpoint 清理工具。已授权的逐人模型输出保留，不因结果方向选择性删减。
 

@@ -1,4 +1,4 @@
-# ALN3 per-unit records (snapshot 2026-10-18 01:00 CEST)
+# ALN3 per-unit records (snapshot 2026-10-18 16:29 CEST)
 
 One JSON record per completed ALN3 unit, written by the unit runners. Each dataset's records are in one archive, and each archive member is
 byte-identical to the server file `private/auditory_alignment_v3/units/<id>.json`. `MANIFEST.tsv` lists every member with its experiment id,
@@ -6,12 +6,12 @@ dataset, family, seed, seed scope, status, size and sha256.
 
 | archive | records | content |
 |---|---|---|
-| `dtu.tar.gz` | 3,223 | DTU (public; NH/HI adults) |
-| `fau.tar.gz` | 3,165 | FAU/TUD (public; TH/HA/CI adults) |
-| `federici.tar.gz` | 1,130 | Federici (public; CI children, incl. the phantom-head records) |
-| `private_bdf.tar.gz` | 711 | private children's HA cohort (E families, R_PRIVATE_CALIBRATION) |
+| `dtu.tar.gz` | 3,353 | DTU (public; NH/HI adults) |
+| `fau.tar.gz` | 3,209 | FAU/TUD (public; TH/HA/CI adults) |
+| `federici.tar.gz` | 1,286 | Federici (public; CI children, incl. the phantom-head records) |
+| `private_bdf.tar.gz` | 871 | private children's HA cohort (E families, R_PRIVATE_CALIBRATION) |
 
-The ALN3 and ALN3.4 fleets are still running. This snapshot contains 8,229 main-runner records; it is not a declaration that the registered experiments are complete. Later authorized pushes may refresh it.
+The ALN3 and ALN3.4 fleets are still running. This snapshot contains 8,719 main-runner records; it is not a declaration that the registered experiments are complete. Later authorized pushes may refresh it.
 
 ## What a record contains
 
@@ -45,25 +45,32 @@ with tarfile.open('results/auditory_alignment_v3/unit_records/fau.tar.gz') as ta
 
 Group-level results built from these records are in `docs/auditory_alignment_v3/` and `results/auditory_alignment_v3/`.
 
-## ALN3.4 lane supplement
+## ALN3.4 lane supplement — publish_031
 
-`aln34_lanes.tar.gz` contains 205 completed non-probe lane records at the later supplement snapshot; `ALN34_MANIFEST.tsv` records member hashes. Members are verbatim runner outputs. A lane may bundle several evaluations; these counts must not be added to participant n. Historical plans and corrected v2 plans retain their own identities.
+The 2 independently readable `aln34_lanes_031_*.tar.gz` parts contain 1009 completed non-probe records at 2026-10-18T16:30:23.196977+02:00. `ALN34_MANIFEST_031.tsv` maps every member to its archive and SHA256. Every member is byte-identical to the frozen source record, with no omissions or duplicates.
 
-- `adaptation_policy_v1`: 6
-- `attention_transfer_v1`: 4
-- `breadth_inner_v1`: 4
-- `breadth_policy_v1`: 2
+The previous `aln34_lanes.tar.gz` and `ALN34_MANIFEST.tsv` remain the publish_030 historical snapshot. Do not combine the two releases as independent observations. A record can bundle several evaluations; reused v1/v2 records and seeds never increase independent participant n.
+
+- `adaptation_policy_v1`: 22
+- `attention_transfer_v1`: 28
+- `breadth_budget_v1`: 1
+- `breadth_episode_v1`: 7
+- `breadth_fusion_v1`: 4
+- `breadth_inner_v1`: 23
+- `breadth_policy_v1`: 10
 - `causal_filter_v1`: 10
-- `cb_auditory_v1`: 2
-- `content_time_v1`: 26
-- `cs_episode_v1`: 2
-- `data_inner_v1`: 71
-- `episode_training_v1`: 3
-- `learning_budget_v2`: 6
-- `prior_science_v1`: 24
+- `cb_auditory_v1`: 11
+- `content_time_v1`: 180
+- `cs_episode_v1`: 12
+- `data_inner_v1`: 169
+- `episode_training_v1`: 14
+- `learning_budget_v2`: 18
+- `prior_private_loo_v1`: 58
+- `prior_science_v1`: 216
 - `private_calibration_loo_v1`: 4
-- `private_cb_factorial_v1`: 6
+- `private_cb_factorial_v1`: 26
 - `private_current_time_v1`: 26
+- `private_current_time_v2`: 130
 - `private_episode_v1`: 1
-- `private_episode_v2`: 4
-- `strong_fusion_v1`: 4
+- `private_episode_v2`: 22
+- `strong_fusion_v1`: 17

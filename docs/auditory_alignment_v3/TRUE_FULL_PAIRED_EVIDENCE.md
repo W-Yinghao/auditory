@@ -1,10 +1,10 @@
-# True-full FM vs same-access local L1, and matched initialization, across seeds — INTERIM
+# True-full FM vs same-access local L1, and matched initialization, across seeds
 
-> **Interim.** Generated 2026-10-18 00:13:26 CEST by `python -B -m auditory_alignment_v3.aln34.tf_l1_pairs` (analysis note `private/auditory_alignment_v3/aln34/TF_L1_NOTE.md`, written before any value was computed; its Correction 1 was appended at 2026-10-16 20:36, before the corrected code ran). ALN32_TRUE_FULL panel (seeds 3407/3413, one-step): **334/400 units complete**. Every panel number below covers only the identities whose fold cells are complete and changes when the script is rerun. TF-LOCAL across seeds is a new exploratory paired summary (not an ADDENDUM_11 role). TF-INIT per seed is an interim view of ADDENDUM_11's frozen role; the official version is `aln32_panel_interim.py` after the panel completes.
+> **Panel complete.** Generated 2026-10-18 13:26:03 CEST by `python -B -m auditory_alignment_v3.aln34.tf_l1_pairs` (analysis note `private/auditory_alignment_v3/aln34/TF_L1_NOTE.md`, written before any value was computed; its Correction 1 was appended at 2026-10-16 20:36, before the corrected code ran). ALN32_TRUE_FULL panel (seeds 3407/3413, one-step): **400/400 units complete**. TF-LOCAL across seeds is a new exploratory paired summary (not an ADDENDUM_11 role). TF-INIT per seed is an interim view of ADDENDUM_11's frozen role; the official version is `aln32_panel_interim.py` (run it now that the panel is complete).
 
-日期／代码与数据版本 · Date, code and data: 2026-10-18 00:13:26 CEST; code sha256 `aln34/tf_l1_pairs.py` 6674ed303e7d, `bc_interim.py` 2840df81b608, `sci_r1/stats.py` 8bb141cf6070; unit code hashes recomputed now: A_LOCAL `89df1dde3d7a49df`, ALN32_LOCAL_SUPPORT `1b6595fc9ac72f77`, ALN32_TRUE_FULL `88aafcdbd2424299`.
+日期／代码与数据版本 · Date, code and data: 2026-10-18 13:26:03 CEST; code sha256 `aln34/tf_l1_pairs.py` 6674ed303e7d, `bc_interim.py` 2840df81b608, `sci_r1/stats.py` 8bb141cf6070; unit code hashes recomputed now: A_LOCAL `89df1dde3d7a49df`, ALN32_LOCAL_SUPPORT `1b6595fc9ac72f77`, ALN32_TRUE_FULL `88aafcdbd2424299`.
 
-本轮完成／运行／待依赖 · Live state (units by role · seed, summed over datasets): L0 · 3401 complete 25; L0 · 3407 complete 25; L0 · 3413 complete 25; L1 · 3401 complete 25; L1 · 3407 complete 25; L1 · 3413 complete 25; TF/full_onestep_v1 · 3401 complete 200; TF/full_onestep_v1 · 3407 complete 167, queued 32, running 1; TF/full_onestep_v1 · 3413 complete 167, queued 32, running 1; TF/warmup_then_all_v1 · 3401 complete 200.
+本轮完成／运行／待依赖 · Live state (units by role · seed, summed over datasets): L0 · 3401 complete 25; L0 · 3407 complete 25; L0 · 3413 complete 25; L1 · 3401 complete 25; L1 · 3407 complete 25; L1 · 3413 complete 25; TF/full_onestep_v1 · 3401 complete 200; TF/full_onestep_v1 · 3407 complete 200; TF/full_onestep_v1 · 3413 complete 200; TF/warmup_then_all_v1 · 3401 complete 200.
 
 已见信息与本轮新增信息 · Seen before / new here: all seed-3401 values were already reported in `ALIGNED_INTERFACE_RESULTS.md` (TF-INIT §7, TF-LOCAL §10). The 3401 point estimates here reproduce them exactly. The 3401 intervals do not: bootstrap replicates are seeded by the family label, and the families here have other labels and other members (§1.3, §1.4; §1.6 also recomputes the frozen families). New here: the seed-3407/3413 paired values, the identity mean over seeds, the between-seed range, and the pairing audit. Earlier runs of this script (the first at 2026-10-16 20:09) had been read before this run; the corrections made since then are listed in §5 and in the analysis note (Correction 1).
 
@@ -31,11 +31,11 @@ Identities (human, test): fau 67, dtu 44, federici 86; phantom entities excluded
 | TF-INIT · onestep · fau · reve · 3407 | 2 | 10 / 0 / 0 | 67 | 67 / 67 |
 | TF-INIT · onestep · fau · reve · 3413 | 2 | 10 / 0 / 0 | 67 | 67 / 67 |
 | TF-INIT · onestep · federici · cbramod · 3401 | 2 | 5 / 0 / 0 | 86 | 86 / 86 |
-| TF-INIT · onestep · federici · cbramod · 3407 | 2 | 1 / 4 / 0 | 19 | 19 / 86 |
-| TF-INIT · onestep · federici · cbramod · 3413 | 2 | 1 / 4 / 0 | 19 | 19 / 86 |
+| TF-INIT · onestep · federici · cbramod · 3407 | 2 | 5 / 0 / 0 | 86 | 86 / 86 |
+| TF-INIT · onestep · federici · cbramod · 3413 | 2 | 5 / 0 / 0 | 86 | 86 / 86 |
 | TF-INIT · onestep · federici · reve · 3401 | 2 | 5 / 0 / 0 | 86 | 86 / 86 |
-| TF-INIT · onestep · federici · reve · 3407 | 2 | 0–1 / 4–5 / 0 | 0–19 | 19 / 86 |
-| TF-INIT · onestep · federici · reve · 3413 | 2 | 0–1 / 4–5 / 0 | 0–19 | 19 / 86 |
+| TF-INIT · onestep · federici · reve · 3407 | 2 | 5 / 0 / 0 | 86 | 86 / 86 |
+| TF-INIT · onestep · federici · reve · 3413 | 2 | 5 / 0 / 0 | 86 | 86 / 86 |
 | TF-INIT · warmup · dtu · cbramod · 3401 | 2 | 10 / 0 / 0 | 44 | 44 / 44 |
 | TF-INIT · warmup · dtu · reve · 3401 | 2 | 10 / 0 / 0 | 44 | 44 / 44 |
 | TF-INIT · warmup · fau · cbramod · 3401 | 2 | 10 / 0 / 0 | 67 | 67 / 67 |
@@ -55,11 +55,11 @@ Identities (human, test): fau 67, dtu 44, federici 86; phantom entities excluded
 | TF-LOCAL · onestep · fau · reve · 3407 | 4 | 10 / 0 / 0 | 67 | 67 / 67 |
 | TF-LOCAL · onestep · fau · reve · 3413 | 4 | 10 / 0 / 0 | 67 | 67 / 67 |
 | TF-LOCAL · onestep · federici · cbramod · 3401 | 4 | 5 / 0 / 0 | 86 | 86 / 86 |
-| TF-LOCAL · onestep · federici · cbramod · 3407 | 4 | 1 / 4 / 0 | 19 | 19 / 86 |
-| TF-LOCAL · onestep · federici · cbramod · 3413 | 4 | 1 / 4 / 0 | 19 | 19 / 86 |
+| TF-LOCAL · onestep · federici · cbramod · 3407 | 4 | 5 / 0 / 0 | 86 | 86 / 86 |
+| TF-LOCAL · onestep · federici · cbramod · 3413 | 4 | 5 / 0 / 0 | 86 | 86 / 86 |
 | TF-LOCAL · onestep · federici · reve · 3401 | 4 | 5 / 0 / 0 | 86 | 86 / 86 |
-| TF-LOCAL · onestep · federici · reve · 3407 | 4 | 0–1 / 4–5 / 0 | 0–19 | 19 / 86 |
-| TF-LOCAL · onestep · federici · reve · 3413 | 4 | 0–1 / 4–5 / 0 | 0–19 | 19 / 86 |
+| TF-LOCAL · onestep · federici · reve · 3407 | 4 | 5 / 0 / 0 | 86 | 86 / 86 |
+| TF-LOCAL · onestep · federici · reve · 3413 | 4 | 5 / 0 / 0 | 86 | 86 / 86 |
 | TF-LOCAL · warmup · dtu · cbramod · 3401 | 4 | 10 / 0 / 0 | 44 | 44 / 44 |
 | TF-LOCAL · warmup · dtu · reve · 3401 | 4 | 10 / 0 / 0 | 44 | 44 / 44 |
 | TF-LOCAL · warmup · fau · cbramod · 3401 | 4 | 10 / 0 / 0 | 67 | 67 / 67 |
@@ -94,14 +94,14 @@ Each per-seed cell: ΔR [95 % simultaneous within dataset × backbone × seed, 4
 | dtu · reve | L1->random_full/lr0.0003 | -0.059 [-0.132, +0.014] n 44 | -0.001 [-0.082, +0.080] n 44 | -0.077 [-0.148, -0.005] n 44 | -0.046 [-0.114, +0.023] n 44 | -0.077 … -0.001 (3401: -0.059, 3407: -0.001, 3413: -0.077; n 44) |
 | dtu · reve | L1->pretrained_full/lr1e-05 | -0.006 [-0.110, +0.098] n 44 | +0.052 [-0.038, +0.143] n 44 | +0.037 [-0.055, +0.128] n 44 | +0.028 [-0.061, +0.116] n 44 | -0.006 … +0.052 (3401: -0.006, 3407: +0.052, 3413: +0.037; n 44) |
 | dtu · reve | L1->pretrained_full/lr0.0003 | +0.003 [-0.094, +0.100] n 44 | +0.114 [-0.016, +0.244] n 44 | +0.130 [+0.035, +0.224] n 44 | +0.082 [-0.015, +0.180] n 44 | +0.003 … +0.130 (3401: +0.003, 3407: +0.114, 3413: +0.130; n 44) |
-| federici · cbramod | L1->random_full/lr1e-05 | +0.063 [+0.018, +0.108] n 86 | +0.006 [-0.094, +0.106] n 19 | +0.084 [-0.013, +0.180] n 19 | +0.048 [-0.027, +0.122] n 19 | +0.006 … +0.084 (3401: +0.054, 3407: +0.006, 3413: +0.084; n 19) |
-| federici · cbramod | L1->random_full/lr0.0003 | +0.141 [+0.073, +0.209] n 86 | +0.081 [-0.062, +0.224] n 19 | +0.159 [+0.011, +0.307] n 19 | +0.144 [+0.002, +0.286] n 19 | +0.081 … +0.192 (3401: +0.192, 3407: +0.081, 3413: +0.159; n 19) |
-| federici · cbramod | L1->pretrained_full/lr1e-05 | +0.180 [+0.103, +0.258] n 86 | +0.139 [-0.025, +0.303] n 19 | +0.135 [-0.024, +0.294] n 19 | +0.147 [-0.008, +0.303] n 19 | +0.135 … +0.168 (3401: +0.168, 3407: +0.139, 3413: +0.135; n 19) |
-| federici · cbramod | L1->pretrained_full/lr0.0003 | +0.196 [+0.118, +0.275] n 86 | +0.142 [-0.054, +0.338] n 19 | +0.193 [+0.029, +0.356] n 19 | +0.176 [-0.001, +0.354] n 19 | +0.142 … +0.194 (3401: +0.194, 3407: +0.142, 3413: +0.193; n 19) |
-| federici · reve | L1->random_full/lr1e-05 | +0.175 [+0.093, +0.256] n 86 | +0.159 [-0.018, +0.335] n 19 | +0.160 [-0.002, +0.322] n 19 | +0.163 [-0.001, +0.326] n 19 | +0.159 … +0.170 (3401: +0.170, 3407: +0.159, 3413: +0.160; n 19) |
-| federici · reve | L1->random_full/lr0.0003 | +0.183 [+0.105, +0.261] n 86 | +0.126 [-0.063, +0.316] n 19 | +0.110 [-0.071, +0.292] n 19 | +0.135 [-0.041, +0.311] n 19 | +0.110 … +0.169 (3401: +0.169, 3407: +0.126, 3413: +0.110; n 19) |
-| federici · reve | L1->pretrained_full/lr1e-05 | +0.087 [+0.024, +0.151] n 86 | +0.014 [-0.083, +0.112] n 19 | +0.060 [-0.024, +0.145] n 19 | +0.024 [-0.054, +0.102] n 19 | -0.002 … +0.060 (3401: -0.002, 3407: +0.014, 3413: +0.060; n 19) |
-| federici · reve | L1->pretrained_full/lr0.0003 | +0.167 [+0.096, +0.238] n 86 | not available (n 0/86) | not available (n 0/86) | not available (n 0/86) | not available |
+| federici · cbramod | L1->random_full/lr1e-05 | +0.063 [+0.018, +0.108] n 86 | +0.007 [-0.034, +0.049] n 86 | +0.073 [+0.026, +0.119] n 86 | +0.048 [+0.012, +0.083] n 86 | +0.007 … +0.073 (3401: +0.063, 3407: +0.007, 3413: +0.073; n 86) |
+| federici · cbramod | L1->random_full/lr0.0003 | +0.141 [+0.073, +0.209] n 86 | +0.104 [+0.054, +0.154] n 86 | +0.141 [+0.086, +0.195] n 86 | +0.129 [+0.077, +0.180] n 86 | +0.104 … +0.141 (3401: +0.141, 3407: +0.104, 3413: +0.141; n 86) |
+| federici · cbramod | L1->pretrained_full/lr1e-05 | +0.180 [+0.103, +0.258] n 86 | +0.152 [+0.091, +0.212] n 86 | +0.150 [+0.086, +0.213] n 86 | +0.160 [+0.098, +0.223] n 86 | +0.150 … +0.180 (3401: +0.180, 3407: +0.152, 3413: +0.150; n 86) |
+| federici · cbramod | L1->pretrained_full/lr0.0003 | +0.196 [+0.118, +0.275] n 86 | +0.153 [+0.085, +0.221] n 86 | +0.191 [+0.124, +0.258] n 86 | +0.180 [+0.113, +0.246] n 86 | +0.153 … +0.196 (3401: +0.196, 3407: +0.153, 3413: +0.191; n 86) |
+| federici · reve | L1->random_full/lr1e-05 | +0.175 [+0.093, +0.256] n 86 | +0.154 [+0.088, +0.220] n 86 | +0.163 [+0.101, +0.224] n 86 | +0.164 [+0.099, +0.228] n 86 | +0.154 … +0.175 (3401: +0.175, 3407: +0.154, 3413: +0.163; n 86) |
+| federici · reve | L1->random_full/lr0.0003 | +0.183 [+0.105, +0.261] n 86 | +0.158 [+0.091, +0.224] n 86 | +0.164 [+0.100, +0.229] n 86 | +0.168 [+0.104, +0.233] n 86 | +0.158 … +0.183 (3401: +0.183, 3407: +0.158, 3413: +0.164; n 86) |
+| federici · reve | L1->pretrained_full/lr1e-05 | +0.087 [+0.024, +0.151] n 86 | +0.032 [-0.015, +0.079] n 86 | +0.074 [+0.018, +0.131] n 86 | +0.065 [+0.016, +0.113] n 86 | +0.032 … +0.087 (3401: +0.087, 3407: +0.032, 3413: +0.074; n 86) |
+| federici · reve | L1->pretrained_full/lr0.0003 | +0.167 [+0.096, +0.238] n 86 | +0.115 [+0.056, +0.175] n 86 | +0.158 [+0.097, +0.218] n 86 | +0.147 [+0.092, +0.201] n 86 | +0.115 … +0.167 (3401: +0.167, 3407: +0.115, 3413: +0.158; n 86) |
 
 ### 1.3 TF-LOCAL warm-up recipe (seed 3401 only; not registered in the panel)
 
@@ -148,10 +148,10 @@ One-step, per seed: ΔR [95 % simultaneous within dataset × backbone × seed, 2
 | dtu · cbramod | full_onestep_v1/lr0.0003 · interim | +0.231 [+0.162, +0.301] n 44 | +0.172 [+0.114, +0.230] n 44 | +0.196 [+0.130, +0.261] n 44 |
 | dtu · reve | full_onestep_v1/lr1e-05 · interim | +0.015 [-0.076, +0.106] n 44 | +0.073 [-0.017, +0.162] n 44 | +0.040 [-0.042, +0.122] n 44 |
 | dtu · reve | full_onestep_v1/lr0.0003 · interim | +0.062 [-0.018, +0.142] n 44 | +0.115 [+0.024, +0.205] n 44 | +0.206 [+0.120, +0.293] n 44 |
-| federici · cbramod | full_onestep_v1/lr1e-05 · interim | +0.117 [+0.064, +0.170] n 86 | +0.133 [-0.015, +0.281] n 19 | +0.051 [-0.065, +0.167] n 19 |
-| federici · cbramod | full_onestep_v1/lr0.0003 · interim | +0.055 [+0.018, +0.091] n 86 | +0.061 [-0.026, +0.149] n 19 | +0.034 [-0.028, +0.095] n 19 |
-| federici · reve | full_onestep_v1/lr1e-05 · interim | -0.087 [-0.148, -0.027] n 86 | -0.144 [-0.252, -0.036] n 19 | -0.099 [-0.213, +0.014] n 19 |
-| federici · reve | full_onestep_v1/lr0.0003 · interim | -0.016 [-0.057, +0.026] n 86 | not available (n 0/86) | not available (n 0/86) |
+| federici · cbramod | full_onestep_v1/lr1e-05 · interim | +0.117 [+0.064, +0.170] n 86 | +0.144 [+0.087, +0.202] n 86 | +0.077 [+0.032, +0.122] n 86 |
+| federici · cbramod | full_onestep_v1/lr0.0003 · interim | +0.055 [+0.018, +0.091] n 86 | +0.049 [+0.015, +0.083] n 86 | +0.050 [+0.016, +0.084] n 86 |
+| federici · reve | full_onestep_v1/lr1e-05 · interim | -0.087 [-0.148, -0.027] n 86 | -0.122 [-0.176, -0.067] n 86 | -0.089 [-0.143, -0.035] n 86 |
+| federici · reve | full_onestep_v1/lr0.0003 · interim | -0.016 [-0.057, +0.026] n 86 | -0.043 [-0.085, -0.000] n 86 | -0.007 [-0.043, +0.030] n 86 |
 
 Warm-up recipe (seed 3401 only):
 
@@ -192,14 +192,14 @@ TF-LOCAL one-step:
 | dtu · reve | L1->random_full/lr0.0003 | -0.206 [-0.323, -0.089] n 44 | -0.083 [-0.199, +0.033] n 44 | -0.251 [-0.373, -0.128] n 44 | -0.180 [-0.289, -0.071] n 44 | -0.251 … -0.083 (3401: -0.206, 3407: -0.083, 3413: -0.251; n 44) |
 | dtu · reve | L1->pretrained_full/lr1e-05 | +0.067 [-0.050, +0.185] n 44 | +0.067 [-0.045, +0.178] n 44 | +0.100 [-0.017, +0.217] n 44 | +0.078 [-0.025, +0.181] n 44 | +0.067 … +0.100 (3401: +0.067, 3407: +0.067, 3413: +0.100; n 44) |
 | dtu · reve | L1->pretrained_full/lr0.0003 | +0.062 [-0.055, +0.179] n 44 | +0.260 [+0.115, +0.405] n 44 | +0.186 [+0.040, +0.332] n 44 | +0.169 [+0.052, +0.287] n 44 | +0.062 … +0.260 (3401: +0.062, 3407: +0.260, 3413: +0.186; n 44) |
-| federici · cbramod | L1->random_full/lr1e-05 | +0.065 [+0.003, +0.127] n 86 | -0.023 [-0.147, +0.102] n 19 | +0.071 [-0.052, +0.194] n 19 | +0.027 [-0.079, +0.133] n 19 | -0.023 … +0.071 (3401: +0.032, 3407: -0.023, 3413: +0.071; n 19) |
-| federici · cbramod | L1->random_full/lr0.0003 | +0.176 [+0.108, +0.244] n 86 | +0.072 [-0.080, +0.225] n 19 | +0.123 [+0.005, +0.241] n 19 | +0.107 [-0.020, +0.235] n 19 | +0.072 … +0.126 (3401: +0.126, 3407: +0.072, 3413: +0.123; n 19) |
-| federici · cbramod | L1->pretrained_full/lr1e-05 | +0.211 [+0.129, +0.293] n 86 | +0.136 [-0.010, +0.282] n 19 | +0.150 [+0.029, +0.271] n 19 | +0.143 [+0.005, +0.280] n 19 | +0.136 … +0.150 (3401: +0.142, 3407: +0.136, 3413: +0.150; n 19) |
-| federici · cbramod | L1->pretrained_full/lr0.0003 | +0.220 [+0.126, +0.313] n 86 | +0.138 [-0.117, +0.393] n 19 | +0.194 [+0.038, +0.349] n 19 | +0.164 [-0.055, +0.382] n 19 | +0.138 … +0.194 (3401: +0.159, 3407: +0.138, 3413: +0.194; n 19) |
-| federici · reve | L1->random_full/lr1e-05 | +0.170 [+0.093, +0.247] n 86 | +0.155 [+0.001, +0.310] n 19 | +0.158 [+0.036, +0.279] n 19 | +0.154 [+0.021, +0.286] n 19 | +0.149 … +0.158 (3401: +0.149, 3407: +0.155, 3413: +0.158; n 19) |
-| federici · reve | L1->random_full/lr0.0003 | +0.208 [+0.128, +0.289] n 86 | +0.131 [-0.042, +0.305] n 19 | +0.154 [+0.011, +0.296] n 19 | +0.147 [-0.004, +0.299] n 19 | +0.131 … +0.157 (3401: +0.157, 3407: +0.131, 3413: +0.154; n 19) |
-| federici · reve | L1->pretrained_full/lr1e-05 | +0.109 [+0.038, +0.180] n 86 | -0.013 [-0.141, +0.116] n 19 | +0.029 [-0.094, +0.151] n 19 | -0.012 [-0.114, +0.091] n 19 | -0.051 … +0.029 (3401: -0.051, 3407: -0.013, 3413: +0.029; n 19) |
-| federici · reve | L1->pretrained_full/lr0.0003 | +0.208 [+0.116, +0.299] n 86 | not available (n 0/86) | not available (n 0/86) | not available (n 0/86) | not available |
+| federici · cbramod | L1->random_full/lr1e-05 | +0.065 [+0.003, +0.127] n 86 | -0.008 [-0.068, +0.053] n 86 | +0.085 [+0.028, +0.141] n 86 | +0.047 [-0.000, +0.095] n 86 | -0.008 … +0.085 (3401: +0.065, 3407: -0.008, 3413: +0.085; n 86) |
+| federici · cbramod | L1->random_full/lr0.0003 | +0.176 [+0.108, +0.244] n 86 | +0.130 [+0.069, +0.192] n 86 | +0.155 [+0.087, +0.222] n 86 | +0.154 [+0.097, +0.210] n 86 | +0.130 … +0.176 (3401: +0.176, 3407: +0.130, 3413: +0.155; n 86) |
+| federici · cbramod | L1->pretrained_full/lr1e-05 | +0.211 [+0.129, +0.293] n 86 | +0.186 [+0.117, +0.255] n 86 | +0.188 [+0.111, +0.265] n 86 | +0.195 [+0.125, +0.265] n 86 | +0.186 … +0.211 (3401: +0.211, 3407: +0.186, 3413: +0.188; n 86) |
+| federici · cbramod | L1->pretrained_full/lr0.0003 | +0.220 [+0.126, +0.313] n 86 | +0.180 [+0.094, +0.266] n 86 | +0.218 [+0.132, +0.304] n 86 | +0.206 [+0.125, +0.286] n 86 | +0.180 … +0.220 (3401: +0.220, 3407: +0.180, 3413: +0.218; n 86) |
+| federici · reve | L1->random_full/lr1e-05 | +0.170 [+0.093, +0.247] n 86 | +0.150 [+0.079, +0.221] n 86 | +0.167 [+0.079, +0.254] n 86 | +0.162 [+0.088, +0.236] n 86 | +0.150 … +0.170 (3401: +0.170, 3407: +0.150, 3413: +0.167; n 86) |
+| federici · reve | L1->random_full/lr0.0003 | +0.208 [+0.128, +0.289] n 86 | +0.191 [+0.112, +0.270] n 86 | +0.216 [+0.135, +0.297] n 86 | +0.205 [+0.130, +0.281] n 86 | +0.191 … +0.216 (3401: +0.208, 3407: +0.191, 3413: +0.216; n 86) |
+| federici · reve | L1->pretrained_full/lr1e-05 | +0.109 [+0.038, +0.180] n 86 | +0.024 [-0.038, +0.086] n 86 | +0.080 [+0.007, +0.153] n 86 | +0.071 [+0.012, +0.130] n 86 | +0.024 … +0.109 (3401: +0.109, 3407: +0.024, 3413: +0.080; n 86) |
+| federici · reve | L1->pretrained_full/lr0.0003 | +0.208 [+0.116, +0.299] n 86 | +0.142 [+0.071, +0.212] n 86 | +0.203 [+0.126, +0.279] n 86 | +0.184 [+0.113, +0.255] n 86 | +0.142 … +0.208 (3401: +0.208, 3407: +0.142, 3413: +0.203; n 86) |
 
 TF-INIT one-step (interim):
 
@@ -213,10 +213,10 @@ TF-INIT one-step (interim):
 | dtu · cbramod | full_onestep_v1/lr0.0003 · interim | +0.466 [+0.371, +0.561] n 44 | +0.338 [+0.250, +0.425] n 44 | +0.410 [+0.331, +0.489] n 44 |
 | dtu · reve | full_onestep_v1/lr1e-05 · interim | +0.266 [+0.145, +0.386] n 44 | +0.155 [+0.030, +0.279] n 44 | +0.234 [+0.127, +0.341] n 44 |
 | dtu · reve | full_onestep_v1/lr0.0003 · interim | +0.268 [+0.141, +0.394] n 44 | +0.344 [+0.212, +0.475] n 44 | +0.436 [+0.268, +0.605] n 44 |
-| federici · cbramod | full_onestep_v1/lr1e-05 · interim | +0.146 [+0.094, +0.198] n 86 | +0.159 [+0.021, +0.297] n 19 | +0.078 [-0.015, +0.171] n 19 |
-| federici · cbramod | full_onestep_v1/lr0.0003 · interim | +0.044 [-0.004, +0.092] n 86 | +0.066 [-0.074, +0.206] n 19 | +0.071 [-0.024, +0.165] n 19 |
-| federici · reve | full_onestep_v1/lr1e-05 · interim | -0.061 [-0.129, +0.007] n 86 | -0.168 [-0.267, -0.068] n 19 | -0.129 [-0.215, -0.043] n 19 |
-| federici · reve | full_onestep_v1/lr0.0003 · interim | -0.001 [-0.051, +0.049] n 86 | not available (n 0/86) | not available (n 0/86) |
+| federici · cbramod | full_onestep_v1/lr1e-05 · interim | +0.146 [+0.094, +0.198] n 86 | +0.194 [+0.131, +0.257] n 86 | +0.103 [+0.049, +0.157] n 86 |
+| federici · cbramod | full_onestep_v1/lr0.0003 · interim | +0.044 [-0.004, +0.092] n 86 | +0.049 [+0.005, +0.094] n 86 | +0.063 [+0.021, +0.106] n 86 |
+| federici · reve | full_onestep_v1/lr1e-05 · interim | -0.061 [-0.129, +0.007] n 86 | -0.126 [-0.195, -0.058] n 86 | -0.086 [-0.171, -0.002] n 86 |
+| federici · reve | full_onestep_v1/lr0.0003 · interim | -0.001 [-0.051, +0.049] n 86 | -0.049 [-0.104, +0.005] n 86 | -0.013 [-0.059, +0.032] n 86 |
 
 TF-LOCAL warm-up (seed 3401 only):
 
@@ -289,25 +289,19 @@ Derived fields per role and dataset (complete units only; every unit's values ar
 | L1 · federici | 15 | 15 | `1b6595fc9ac72f77` (True: 15) | aligned1000, [-40, 60], zero_before_segment_start | local encoder 15 (15) | local_only |
 | TF · dtu | 320 | 320 | `88aafcdbd2424299` (True: 320) | aligned1000, [-51, 77], zero_before_segment_start | cbramod/pretrained_full 80, cbramod/random_full 80, reve/pretrained_full 80, reve/random_full 80 (320) | foundation_context |
 | TF · fau | 320 | 320 | `88aafcdbd2424299` (True: 320) | aligned1000, [-51, 77], zero_before_segment_start | cbramod/pretrained_full 80, cbramod/random_full 80, reve/pretrained_full 80, reve/random_full 80 (320) | foundation_context |
-| TF · federici | 94 | 94 | `88aafcdbd2424299` (True: 94) | aligned1000, [-40, 60], zero_before_segment_start | cbramod/pretrained_full 24, cbramod/random_full 24, reve/pretrained_full 22, reve/random_full 24 (94) | foundation_context |
+| TF · federici | 160 | 160 | `88aafcdbd2424299` (True: 160) | aligned1000, [-40, 60], zero_before_segment_start | cbramod/pretrained_full 40, cbramod/random_full 40, reve/pretrained_full 40, reve/random_full 40 (160) | foundation_context |
 
 Pair statuses (fold cell × seed × member; L0 rows are audit-only access extensions):
 
 | contrast | status | reason | pairs |
 |---|---|---|---|
 | L0-L1 (audit only) | complete | – | 75 |
-| L0-TF (audit only) | complete | – | 734 |
+| L0-TF (audit only) | complete | – | 800 |
 | L0-TF (audit only) | missing | candidate not registered | 400 |
-| L0-TF (audit only) | pending | candidate queued | 64 |
-| L0-TF (audit only) | pending | candidate running | 2 |
-| TF-INIT | complete | – | 366 |
+| TF-INIT | complete | – | 400 |
 | TF-INIT | missing | reference and candidate not registered | 200 |
-| TF-INIT | pending | candidate running | 2 |
-| TF-INIT | pending | reference queued; candidate queued | 32 |
-| TF-LOCAL | complete | – | 734 |
+| TF-LOCAL | complete | – | 800 |
 | TF-LOCAL | missing | candidate not registered | 400 |
-| TF-LOCAL | pending | candidate queued | 64 |
-| TF-LOCAL | pending | candidate running | 2 |
 
 Match-field mismatches among complete units: **0** (checked per complete pair: record rows, split, target, evaluation, access and initialization). Largest relative deviation of the target calibration statistics (sigma_v, ridge_v) within complete pairs: 3.3e-16.
 
@@ -341,31 +335,19 @@ TF-INIT is not judged across seeds here: the analysis note declares no seed mean
 | dtu · reve | TF-LOCAL · L1->random_full/lr0.0003 | – | 3401 (n 44), 3407 (n 44) | 3413 (n 44) | – | -0.046 [-0.114, +0.023] n 44 (contains 0) |
 | dtu · reve | TF-LOCAL · L1->pretrained_full/lr1e-05 | – | 3401 (n 44), 3407 (n 44), 3413 (n 44) | – | – | +0.028 [-0.061, +0.116] n 44 (contains 0) |
 | dtu · reve | TF-LOCAL · L1->pretrained_full/lr0.0003 | 3413 (n 44) | 3401 (n 44), 3407 (n 44) | – | – | +0.082 [-0.015, +0.180] n 44 (contains 0) |
-| federici · cbramod | TF-LOCAL · L1->random_full/lr1e-05 | 3401 (n 86) | 3407 (n 19), 3413 (n 19) | – | – | +0.048 [-0.027, +0.122] n 19 (contains 0) |
-| federici · cbramod | TF-LOCAL · L1->random_full/lr0.0003 | 3401 (n 86), 3413 (n 19) | 3407 (n 19) | – | – | +0.144 [+0.002, +0.286] n 19 (I>0) |
-| federici · cbramod | TF-LOCAL · L1->pretrained_full/lr1e-05 | 3401 (n 86) | 3407 (n 19), 3413 (n 19) | – | – | +0.147 [-0.008, +0.303] n 19 (contains 0) |
-| federici · cbramod | TF-LOCAL · L1->pretrained_full/lr0.0003 | 3401 (n 86), 3413 (n 19) | 3407 (n 19) | – | – | +0.176 [-0.001, +0.354] n 19 (contains 0) |
-| federici · reve | TF-LOCAL · L1->random_full/lr1e-05 | 3401 (n 86) | 3407 (n 19), 3413 (n 19) | – | – | +0.163 [-0.001, +0.326] n 19 (contains 0) |
-| federici · reve | TF-LOCAL · L1->random_full/lr0.0003 | 3401 (n 86) | 3407 (n 19), 3413 (n 19) | – | – | +0.135 [-0.041, +0.311] n 19 (contains 0) |
-| federici · reve | TF-LOCAL · L1->pretrained_full/lr1e-05 | 3401 (n 86) | 3407 (n 19), 3413 (n 19) | – | – | +0.024 [-0.054, +0.102] n 19 (contains 0) |
-| federici · reve | TF-LOCAL · L1->pretrained_full/lr0.0003 | 3401 (n 86) | – | – | 3407, 3413 | not available |
+| federici · cbramod | TF-LOCAL · L1->random_full/lr1e-05 | 3401 (n 86), 3413 (n 86) | 3407 (n 86) | – | – | +0.048 [+0.012, +0.083] n 86 (I>0) |
+| federici · cbramod | TF-LOCAL · L1->random_full/lr0.0003 | 3401 (n 86), 3407 (n 86), 3413 (n 86) | – | – | – | +0.129 [+0.077, +0.180] n 86 (I>0) |
+| federici · cbramod | TF-LOCAL · L1->pretrained_full/lr1e-05 | 3401 (n 86), 3407 (n 86), 3413 (n 86) | – | – | – | +0.160 [+0.098, +0.223] n 86 (I>0) |
+| federici · cbramod | TF-LOCAL · L1->pretrained_full/lr0.0003 | 3401 (n 86), 3407 (n 86), 3413 (n 86) | – | – | – | +0.180 [+0.113, +0.246] n 86 (I>0) |
+| federici · reve | TF-LOCAL · L1->random_full/lr1e-05 | 3401 (n 86), 3407 (n 86), 3413 (n 86) | – | – | – | +0.164 [+0.099, +0.228] n 86 (I>0) |
+| federici · reve | TF-LOCAL · L1->random_full/lr0.0003 | 3401 (n 86), 3407 (n 86), 3413 (n 86) | – | – | – | +0.168 [+0.104, +0.233] n 86 (I>0) |
+| federici · reve | TF-LOCAL · L1->pretrained_full/lr1e-05 | 3401 (n 86), 3413 (n 86) | 3407 (n 86) | – | – | +0.065 [+0.016, +0.113] n 86 (I>0) |
+| federici · reve | TF-LOCAL · L1->pretrained_full/lr0.0003 | 3401 (n 86), 3407 (n 86), 3413 (n 86) | – | – | – | +0.147 [+0.092, +0.201] n 86 (I>0) |
 
-Identity-subset check (TF-LOCAL one-step, unified; descriptive means, no intervals). Where the panel covers only part of a cohort, seed 3401 restricted to the same identities shows how much of the gap between the 3401 column and the panel columns of §1.2 comes from the identity subset rather than from the seed:
-
-| dataset · backbone | member | seed 3401, all identities | seed 3401, seed-mean identities | panel seeds, same identities |
-|---|---|---|---|---|
-| federici · cbramod | L1->random_full/lr1e-05 | +0.063 (n 86) | +0.054 (n 19) | 3407: +0.006, 3413: +0.084 |
-| federici · cbramod | L1->random_full/lr0.0003 | +0.141 (n 86) | +0.192 (n 19) | 3407: +0.081, 3413: +0.159 |
-| federici · cbramod | L1->pretrained_full/lr1e-05 | +0.180 (n 86) | +0.168 (n 19) | 3407: +0.139, 3413: +0.135 |
-| federici · cbramod | L1->pretrained_full/lr0.0003 | +0.196 (n 86) | +0.194 (n 19) | 3407: +0.142, 3413: +0.193 |
-| federici · reve | L1->random_full/lr1e-05 | +0.175 (n 86) | +0.170 (n 19) | 3407: +0.159, 3413: +0.160 |
-| federici · reve | L1->random_full/lr0.0003 | +0.183 (n 86) | +0.169 (n 19) | 3407: +0.126, 3413: +0.110 |
-| federici · reve | L1->pretrained_full/lr1e-05 | +0.087 (n 86) | -0.002 (n 19) | 3407: +0.014, 3413: +0.060 |
-
-On the same identities the seeds still differ: over the 23 TF-LOCAL one-step members with all three seeds, the between-seed range of the per-seed means runs from 0.011 to 0.150 bits (largest: dtu · cbramod L1->random_full/lr1e-05, 3401: -0.373, 3407: -0.223, 3413: -0.339; n 44). These are descriptive means of three seeds, not an estimate of a seed distribution.
+On the same identities the seeds still differ: over the 24 TF-LOCAL one-step members with all three seeds, the between-seed range of the per-seed means runs from 0.018 to 0.150 bits (largest: dtu · cbramod L1->random_full/lr1e-05, 3401: -0.373, 3407: -0.223, 3413: -0.339; n 44). These are descriptive means of three seeds, not an estimate of a seed distribution.
 
 Scope of these judgements:
-- Seeds 3407/3413 currently contribute only in: dtu, fau, federici; the panel-seed entries cover the identities counted in §1.1 (the outer folds completed so far), not the whole cohort. Datasets without a complete panel pair rest on seed 3401 alone.
+- All registered panel units are complete; identity counts per family are in §1.1.
 - What is compared is this registered recipe: aligned [−0.4, +0.6) s interface, one-step full update with backbone lr 1e-5 or 3e-4 (head 1e-3, LLRD 1), 100 (CBraMod) / 50 (REVE) epochs, checkpoint by the training-side early-stopping rule. It is not a statement about other optimizers, budgets, data amounts or backbones.
 - TF-LOCAL is an FM-versus-local contrast under the same EEG access, target and evaluation. It is not a pure pretraining or pure architecture effect (§3). Only TF-INIT is an initialization contrast, and it remains interim until the panel is complete.
 
@@ -376,7 +358,6 @@ Scope of these judgements:
 - **TF-INIT at a fixed budget** does not separate faster optimization from transferable content (package docs/01, question 1). Whether the initialization effect shrinks or grows from lr 1e-5 to 3e-4 does not by itself distinguish the two.
 - **Unified vs native readout.** The unified readout fits a ridge bridge into the standardized target space on training participants; the native readout is the model's own NCE score. They can rank models differently; a difference between them is about the bridge, not the EEG access.
 - **Seed variation.** A panel seed changes the whole pipeline (initialization of random parts, data order, readout subsample, calibration rows). Identity-level intervals condition on the fitted models; three seeds can show whether results are stable across these draws; they are not a seed distribution, and §2 shows large spreads on the same identities.
-- **Interim coverage.** The panel queue runs DTU first and outer folds in order; the current panel identities are the earliest folds and need not represent the cohort. This is availability, not selection by performance, but it limits what the panel entries say now.
 
 ## 4. 下一轮干预 · Next interventions
 
@@ -387,7 +368,7 @@ Scope of these judgements:
 
 ## 5. 复用与运行 · Reuse and running
 
-- Reused unit records: L0 75, L1 75, TF 734. No training, no GPU job, no queue or hold change. CPU aggregation run locally (4 s).
+- Reused unit records: L0 75, L1 75, TF 800. No training, no GPU job, no queue or hold change. CPU aggregation run locally (9 s).
 - Outputs: `results/auditory_alignment_v3/aln34/tf_l1/tf_l1_pairs.json` (pairing audit with every pair's status and checks, coverage, all families with pointwise and simultaneous intervals, seed means, ranges, native readout) and this document. Both mode 600.
 - Blocking: none. Missing panel pairs are pending in the queue, not failed.
 - Implementation details relative to the analysis note. Decided while coding, before the first real run: the target calibration statistics (sigma_v, ridge_v) are compared with relative tolerance 1e-6 next to the hash of the exact target fields rather than inside the hash (largest deviation observed 3.3e-16, so both readings agree here); the evaluation key also lists the readout set (unified, native). Added after the first real run had been seen: the parameter counts in §3, the per-role table of derived fields in §1.6, and the identity-subset check in §2 (prompted by the DTU panel identities showing smaller seed-3401 effects than the full cohort). These are descriptive and change no estimate, family or interval.
@@ -532,22 +513,22 @@ Scope of these judgements:
 | TF-INIT · onestep · federici · cbramod · 3401 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr0.0003 | 86 (86) | +0.055 | [+0.023, +0.087] | [+0.018, +0.091] | I>0 |
 | TF-INIT · warmup · federici · cbramod · 3401 | warm-up, 3401 only | warmup_then_all_v1/lr1e-05 | 86 (86) | +0.124 | [+0.077, +0.171] | [+0.070, +0.178] | I>0 |
 | TF-INIT · warmup · federici · cbramod · 3401 | warm-up, 3401 only | warmup_then_all_v1/lr0.0003 | 86 (86) | +0.068 | [+0.031, +0.104] | [+0.026, +0.109] | I>0 |
-| TF-LOCAL · onestep · federici · cbramod · 3407 | exploratory; partial coverage | L1->random_full/full_onestep_v1/lr1e-05 | 19 (19) | +0.006 | [-0.075, +0.087] | [-0.094, +0.106] | contains 0 |
-| TF-LOCAL · onestep · federici · cbramod · 3407 | exploratory; partial coverage | L1->random_full/full_onestep_v1/lr0.0003 | 19 (19) | +0.081 | [-0.034, +0.196] | [-0.062, +0.224] | contains 0 |
-| TF-LOCAL · onestep · federici · cbramod · 3407 | exploratory; partial coverage | L1->pretrained_full/full_onestep_v1/lr1e-05 | 19 (19) | +0.139 | [+0.010, +0.268] | [-0.025, +0.303] | contains 0 |
-| TF-LOCAL · onestep · federici · cbramod · 3407 | exploratory; partial coverage | L1->pretrained_full/full_onestep_v1/lr0.0003 | 19 (19) | +0.142 | [-0.014, +0.298] | [-0.054, +0.338] | contains 0 |
-| TF-INIT · onestep · federici · cbramod · 3407 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr1e-05 | 19 (19) | +0.133 | [+0.002, +0.264] | [-0.015, +0.281] | contains 0 |
-| TF-INIT · onestep · federici · cbramod · 3407 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr0.0003 | 19 (19) | +0.061 | [-0.016, +0.138] | [-0.026, +0.149] | contains 0 |
-| TF-LOCAL · onestep · federici · cbramod · 3413 | exploratory; partial coverage | L1->random_full/full_onestep_v1/lr1e-05 | 19 (19) | +0.084 | [+0.004, +0.163] | [-0.013, +0.180] | contains 0 |
-| TF-LOCAL · onestep · federici · cbramod · 3413 | exploratory; partial coverage | L1->random_full/full_onestep_v1/lr0.0003 | 19 (19) | +0.159 | [+0.036, +0.282] | [+0.011, +0.307] | I>0 |
-| TF-LOCAL · onestep · federici · cbramod · 3413 | exploratory; partial coverage | L1->pretrained_full/full_onestep_v1/lr1e-05 | 19 (19) | +0.135 | [+0.006, +0.263] | [-0.024, +0.294] | contains 0 |
-| TF-LOCAL · onestep · federici · cbramod · 3413 | exploratory; partial coverage | L1->pretrained_full/full_onestep_v1/lr0.0003 | 19 (19) | +0.193 | [+0.061, +0.325] | [+0.029, +0.356] | I>0 |
-| TF-INIT · onestep · federici · cbramod · 3413 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr1e-05 | 19 (19) | +0.051 | [-0.050, +0.152] | [-0.065, +0.167] | contains 0 |
-| TF-INIT · onestep · federici · cbramod · 3413 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr0.0003 | 19 (19) | +0.034 | [-0.020, +0.088] | [-0.028, +0.095] | contains 0 |
-| TF-LOCAL · onestep · federici · cbramod · seedmean | exploratory; partial coverage | L1->random_full/full_onestep_v1/lr1e-05 | 19 (19) | +0.048 | [-0.013, +0.108] | [-0.027, +0.122] | contains 0 |
-| TF-LOCAL · onestep · federici · cbramod · seedmean | exploratory; partial coverage | L1->random_full/full_onestep_v1/lr0.0003 | 19 (19) | +0.144 | [+0.025, +0.262] | [+0.002, +0.286] | I>0 |
-| TF-LOCAL · onestep · federici · cbramod · seedmean | exploratory; partial coverage | L1->pretrained_full/full_onestep_v1/lr1e-05 | 19 (19) | +0.147 | [+0.020, +0.275] | [-0.008, +0.303] | contains 0 |
-| TF-LOCAL · onestep · federici · cbramod · seedmean | exploratory; partial coverage | L1->pretrained_full/full_onestep_v1/lr0.0003 | 19 (19) | +0.176 | [+0.030, +0.323] | [-0.001, +0.354] | contains 0 |
+| TF-LOCAL · onestep · federici · cbramod · 3407 | exploratory | L1->random_full/full_onestep_v1/lr1e-05 | 86 (86) | +0.007 | [-0.027, +0.041] | [-0.034, +0.049] | contains 0 |
+| TF-LOCAL · onestep · federici · cbramod · 3407 | exploratory | L1->random_full/full_onestep_v1/lr0.0003 | 86 (86) | +0.104 | [+0.062, +0.145] | [+0.054, +0.154] | I>0 |
+| TF-LOCAL · onestep · federici · cbramod · 3407 | exploratory | L1->pretrained_full/full_onestep_v1/lr1e-05 | 86 (86) | +0.152 | [+0.102, +0.202] | [+0.091, +0.212] | I>0 |
+| TF-LOCAL · onestep · federici · cbramod · 3407 | exploratory | L1->pretrained_full/full_onestep_v1/lr0.0003 | 86 (86) | +0.153 | [+0.097, +0.209] | [+0.085, +0.221] | I>0 |
+| TF-INIT · onestep · federici · cbramod · 3407 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr1e-05 | 86 (86) | +0.144 | [+0.093, +0.196] | [+0.087, +0.202] | I>0 |
+| TF-INIT · onestep · federici · cbramod · 3407 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr0.0003 | 86 (86) | +0.049 | [+0.019, +0.079] | [+0.015, +0.083] | I>0 |
+| TF-LOCAL · onestep · federici · cbramod · 3413 | exploratory | L1->random_full/full_onestep_v1/lr1e-05 | 86 (86) | +0.073 | [+0.034, +0.111] | [+0.026, +0.119] | I>0 |
+| TF-LOCAL · onestep · federici · cbramod · 3413 | exploratory | L1->random_full/full_onestep_v1/lr0.0003 | 86 (86) | +0.141 | [+0.094, +0.188] | [+0.086, +0.195] | I>0 |
+| TF-LOCAL · onestep · federici · cbramod · 3413 | exploratory | L1->pretrained_full/full_onestep_v1/lr1e-05 | 86 (86) | +0.150 | [+0.098, +0.202] | [+0.086, +0.213] | I>0 |
+| TF-LOCAL · onestep · federici · cbramod · 3413 | exploratory | L1->pretrained_full/full_onestep_v1/lr0.0003 | 86 (86) | +0.191 | [+0.134, +0.247] | [+0.124, +0.258] | I>0 |
+| TF-INIT · onestep · federici · cbramod · 3413 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr1e-05 | 86 (86) | +0.077 | [+0.038, +0.116] | [+0.032, +0.122] | I>0 |
+| TF-INIT · onestep · federici · cbramod · 3413 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr0.0003 | 86 (86) | +0.050 | [+0.020, +0.079] | [+0.016, +0.084] | I>0 |
+| TF-LOCAL · onestep · federici · cbramod · seedmean | exploratory | L1->random_full/full_onestep_v1/lr1e-05 | 86 (86) | +0.048 | [+0.018, +0.077] | [+0.012, +0.083] | I>0 |
+| TF-LOCAL · onestep · federici · cbramod · seedmean | exploratory | L1->random_full/full_onestep_v1/lr0.0003 | 86 (86) | +0.129 | [+0.085, +0.172] | [+0.077, +0.180] | I>0 |
+| TF-LOCAL · onestep · federici · cbramod · seedmean | exploratory | L1->pretrained_full/full_onestep_v1/lr1e-05 | 86 (86) | +0.160 | [+0.108, +0.213] | [+0.098, +0.223] | I>0 |
+| TF-LOCAL · onestep · federici · cbramod · seedmean | exploratory | L1->pretrained_full/full_onestep_v1/lr0.0003 | 86 (86) | +0.180 | [+0.124, +0.236] | [+0.113, +0.246] | I>0 |
 | TF-LOCAL · onestep · federici · reve · 3401 | exploratory | L1->random_full/full_onestep_v1/lr1e-05 | 86 (86) | +0.175 | [+0.106, +0.243] | [+0.093, +0.256] | I>0 |
 | TF-LOCAL · onestep · federici · reve · 3401 | exploratory | L1->random_full/full_onestep_v1/lr0.0003 | 86 (86) | +0.183 | [+0.118, +0.247] | [+0.105, +0.261] | I>0 |
 | TF-LOCAL · onestep · federici · reve · 3401 | exploratory | L1->pretrained_full/full_onestep_v1/lr1e-05 | 86 (86) | +0.087 | [+0.036, +0.139] | [+0.024, +0.151] | I>0 |
@@ -560,22 +541,22 @@ Scope of these judgements:
 | TF-INIT · onestep · federici · reve · 3401 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr0.0003 | 86 (86) | -0.016 | [-0.051, +0.020] | [-0.057, +0.026] | contains 0 |
 | TF-INIT · warmup · federici · reve · 3401 | warm-up, 3401 only | warmup_then_all_v1/lr1e-05 | 86 (86) | -0.082 | [-0.131, -0.034] | [-0.138, -0.026] | I<0 |
 | TF-INIT · warmup · federici · reve · 3401 | warm-up, 3401 only | warmup_then_all_v1/lr0.0003 | 86 (86) | -0.104 | [-0.158, -0.049] | [-0.164, -0.043] | I<0 |
-| TF-LOCAL · onestep · federici · reve · 3407 | exploratory; partial coverage | L1->random_full/full_onestep_v1/lr1e-05 | 19 (19) | +0.159 | [+0.007, +0.310] | [-0.018, +0.335] | contains 0 |
-| TF-LOCAL · onestep · federici · reve · 3407 | exploratory; partial coverage | L1->random_full/full_onestep_v1/lr0.0003 | 19 (19) | +0.126 | [-0.037, +0.289] | [-0.063, +0.316] | contains 0 |
-| TF-LOCAL · onestep · federici · reve · 3407 | exploratory; partial coverage | L1->pretrained_full/full_onestep_v1/lr1e-05 | 19 (19) | +0.014 | [-0.069, +0.098] | [-0.083, +0.112] | contains 0 |
-| TF-LOCAL · onestep · federici · reve · 3407 | exploratory; partial coverage | L1->pretrained_full/full_onestep_v1/lr0.0003 | 0 (0) | – | – | – | – |
-| TF-INIT · onestep · federici · reve · 3407 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr1e-05 | 19 (19) | -0.144 | [-0.252, -0.036] | [-0.252, -0.036] | I<0 |
-| TF-INIT · onestep · federici · reve · 3407 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr0.0003 | 0 (0) | – | – | – | – |
-| TF-LOCAL · onestep · federici · reve · 3413 | exploratory; partial coverage | L1->random_full/full_onestep_v1/lr1e-05 | 19 (19) | +0.160 | [+0.023, +0.296] | [-0.002, +0.322] | contains 0 |
-| TF-LOCAL · onestep · federici · reve · 3413 | exploratory; partial coverage | L1->random_full/full_onestep_v1/lr0.0003 | 19 (19) | +0.110 | [-0.041, +0.262] | [-0.071, +0.292] | contains 0 |
-| TF-LOCAL · onestep · federici · reve · 3413 | exploratory; partial coverage | L1->pretrained_full/full_onestep_v1/lr1e-05 | 19 (19) | +0.060 | [-0.010, +0.131] | [-0.024, +0.145] | contains 0 |
-| TF-LOCAL · onestep · federici · reve · 3413 | exploratory; partial coverage | L1->pretrained_full/full_onestep_v1/lr0.0003 | 0 (0) | – | – | – | – |
-| TF-INIT · onestep · federici · reve · 3413 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr1e-05 | 19 (19) | -0.099 | [-0.213, +0.014] | [-0.213, +0.014] | contains 0 |
-| TF-INIT · onestep · federici · reve · 3413 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr0.0003 | 0 (0) | – | – | – | – |
-| TF-LOCAL · onestep · federici · reve · seedmean | exploratory; partial coverage | L1->random_full/full_onestep_v1/lr1e-05 | 19 (19) | +0.163 | [+0.024, +0.302] | [-0.001, +0.326] | contains 0 |
-| TF-LOCAL · onestep · federici · reve · seedmean | exploratory; partial coverage | L1->random_full/full_onestep_v1/lr0.0003 | 19 (19) | +0.135 | [-0.014, +0.284] | [-0.041, +0.311] | contains 0 |
-| TF-LOCAL · onestep · federici · reve · seedmean | exploratory; partial coverage | L1->pretrained_full/full_onestep_v1/lr1e-05 | 19 (19) | +0.024 | [-0.044, +0.093] | [-0.054, +0.102] | contains 0 |
-| TF-LOCAL · onestep · federici · reve · seedmean | exploratory; partial coverage | L1->pretrained_full/full_onestep_v1/lr0.0003 | 0 (0) | – | – | – | – |
+| TF-LOCAL · onestep · federici · reve · 3407 | exploratory | L1->random_full/full_onestep_v1/lr1e-05 | 86 (86) | +0.154 | [+0.101, +0.207] | [+0.088, +0.220] | I>0 |
+| TF-LOCAL · onestep · federici · reve · 3407 | exploratory | L1->random_full/full_onestep_v1/lr0.0003 | 86 (86) | +0.158 | [+0.103, +0.212] | [+0.091, +0.224] | I>0 |
+| TF-LOCAL · onestep · federici · reve · 3407 | exploratory | L1->pretrained_full/full_onestep_v1/lr1e-05 | 86 (86) | +0.032 | [-0.007, +0.071] | [-0.015, +0.079] | contains 0 |
+| TF-LOCAL · onestep · federici · reve · 3407 | exploratory | L1->pretrained_full/full_onestep_v1/lr0.0003 | 86 (86) | +0.115 | [+0.066, +0.165] | [+0.056, +0.175] | I>0 |
+| TF-INIT · onestep · federici · reve · 3407 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr1e-05 | 86 (86) | -0.122 | [-0.169, -0.075] | [-0.176, -0.067] | I<0 |
+| TF-INIT · onestep · federici · reve · 3407 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr0.0003 | 86 (86) | -0.043 | [-0.080, -0.005] | [-0.085, -0.000] | I<0 |
+| TF-LOCAL · onestep · federici · reve · 3413 | exploratory | L1->random_full/full_onestep_v1/lr1e-05 | 86 (86) | +0.163 | [+0.111, +0.215] | [+0.101, +0.224] | I>0 |
+| TF-LOCAL · onestep · federici · reve · 3413 | exploratory | L1->random_full/full_onestep_v1/lr0.0003 | 86 (86) | +0.164 | [+0.110, +0.218] | [+0.100, +0.229] | I>0 |
+| TF-LOCAL · onestep · federici · reve · 3413 | exploratory | L1->pretrained_full/full_onestep_v1/lr1e-05 | 86 (86) | +0.074 | [+0.026, +0.122] | [+0.018, +0.131] | I>0 |
+| TF-LOCAL · onestep · federici · reve · 3413 | exploratory | L1->pretrained_full/full_onestep_v1/lr0.0003 | 86 (86) | +0.158 | [+0.107, +0.208] | [+0.097, +0.218] | I>0 |
+| TF-INIT · onestep · federici · reve · 3413 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr1e-05 | 86 (86) | -0.089 | [-0.137, -0.041] | [-0.143, -0.035] | I<0 |
+| TF-INIT · onestep · federici · reve · 3413 | interim (ADDENDUM_11 role); partial coverage | full_onestep_v1/lr0.0003 | 86 (86) | -0.007 | [-0.038, +0.025] | [-0.043, +0.030] | contains 0 |
+| TF-LOCAL · onestep · federici · reve · seedmean | exploratory | L1->random_full/full_onestep_v1/lr1e-05 | 86 (86) | +0.164 | [+0.108, +0.220] | [+0.099, +0.228] | I>0 |
+| TF-LOCAL · onestep · federici · reve · seedmean | exploratory | L1->random_full/full_onestep_v1/lr0.0003 | 86 (86) | +0.168 | [+0.114, +0.222] | [+0.104, +0.233] | I>0 |
+| TF-LOCAL · onestep · federici · reve · seedmean | exploratory | L1->pretrained_full/full_onestep_v1/lr1e-05 | 86 (86) | +0.065 | [+0.024, +0.105] | [+0.016, +0.113] | I>0 |
+| TF-LOCAL · onestep · federici · reve · seedmean | exploratory | L1->pretrained_full/full_onestep_v1/lr0.0003 | 86 (86) | +0.147 | [+0.101, +0.192] | [+0.092, +0.201] | I>0 |
 
 ## Appendix B. Notes
 

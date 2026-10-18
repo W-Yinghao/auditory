@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name=c3_scicheck18
+#SBATCH --partition=CPU
+#SBATCH --qos=normal
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
+#SBATCH --time=00:30:00
+#SBATCH --output=private/auditory_alignment_v3/logs/%x-%j.log
+set -euo pipefail
+umask 077
+cd "$SLURM_SUBMIT_DIR"
+export PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$PWD"
+export OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4
+PY=/home/infres/yinwang/anaconda3/envs/eeg2025/bin/python
+"$PY" -B -u -m auditory_alignment_v3.aln34.science_aggregate_v2
+"$PY" -B -u private/auditory_alignment_v3/aln34/status_new_lanes.py

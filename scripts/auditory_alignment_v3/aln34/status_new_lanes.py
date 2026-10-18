@@ -8,7 +8,7 @@ from auditory_alignment_v3.aln34 import learning_budget as B
 assert os.environ.get('SLURM_JOB_ID')
 base=Path('private/auditory_alignment_v3/aln34')
 result={'time':datetime.now().astimezone().isoformat(),'job':os.environ['SLURM_JOB_ID'],'lanes':{}}
-from private.auditory_alignment_v3.aln34.milestone_monitor_v10 import LANES
+from private.auditory_alignment_v3.aln34.milestone_monitor_v11 import LANES
 for name in LANES:
     plan=json.loads((base/name/'plan.json').read_text());rows=plan['rows'];states=Counter();complete=[];failed=[]
     for r in rows:
