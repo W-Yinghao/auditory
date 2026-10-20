@@ -285,3 +285,20 @@
 **核验**：Slurm CPU `1046603` 冻结快照；`1046612` 完成构建、JSON 解析、Python/Slurm 语法、四个 ALN3 包一致性、逐文件与逐压缩包成员扫描、无损拆包及清单生成；`1046635` 最终暂存区检查 **PASS**，共 102 个路径。没有遗漏、意外文件、未暂存更改或未解决匹配，`git diff --cached --check` 通过。扫描覆盖 321 个已知姓名、158 个全拼形式和 9,386 个标识符；匹配项仅为已公开编号、已授权儿童代号和非身份性模型来源路径。最终检查复用 93 个字节完全一致的已扫描 index blob；四个新包另校验原包与暂存包哈希、所有成员往返一致性，再复用已完成的成员扫描。新说明和清单重新扫描。
 
 本轮使用 `private/github_publish_032/checkout`；publish_031 副本保持原状态。私有原始数据、文件/事件/临床源表、身份映射、人名/联系方式、公共原始数据、模型权重、运行日志、checkpoint 清理清单及工作区 archive 迁移未纳入本次发布。GPU 训练与监控继续运行；发布没有重复训练、清除旧暂停或改变实验日程。
+
+## ALN3.5 有限比较完成、已完成汇总首次读出与 Claude Code 接手（2026-10-20，publish_033）
+
+研究者本次指示：`push到github上`。沿用既有发布范围；本轮起由 Claude Code 操作。内容提交 `1361ba06c44d255ce21279ac0075e78e85313ccb` 已推送，`git ls-remote origin refs/heads/main` 读回一致。
+
+- 发布 ALN3.5 包（zip 与 50 个解压成员逐字节一致）与独立的 ALN3.4 全量实验文档；`auditory_alignment_v3/aln35/` 代码、测试、`slurm/aln35_*` 入口；`scripts/auditory_alignment_v3/aln35/` 下的编排副本（fleet v2/v3、证据服务、插件登记、绑定记录、fleet v3 回执）及 `docs/auditory_alignment_v3/aln35/ops/` 下的接入回执。
+- 发布 ALN3.5 已完成比较（APwrong、44 人三 seed 融合归因、注意顺序、B×T 分解、CB 状态、history 接口、成对科学与组差、私有 pre 输入勘误）和 support / episode 压力 / 同更新次数 / true-risk 选模的完整汇总（1050758 及其历史快照）。
+- 发布已完成汇总的首次读出与解读：1050758 解读、science v2（内容/时间 180 + 私有当前声音/时间 130）与公共先验科学（300）的可读报告和全部格子 CSV、私有 C10/H10 温度选择核查，以及 2026-10-20 项目梳理。读出只读取冻结聚合，未重拟合、未重新 bootstrap。
+- 发布两条新登记有界实验的冻结设计、代码、计划与测试（S35_CBAUD_PEOPLE 20 单元；seed-3407 episode 复核 10 单元）；两者工程探针已通过，正式结果不在本次发布中。
+- 刷新 ALN3.4 扩展结果（注意迁移、breadth、预算/数据曲线中期、CB 听觉续训、CS episode、强融合、私有 episode/factorial、先验诊断），各自保留生成时间与实际覆盖。
+- 逐单元记录：主 runner 8,719 份与 publish_032 相同，未重新上传。新增 `lanes_033_*.tar.gz` 四个包（157/674/337/261 个成员，各小于 35 MiB）及 `LANES_MANIFEST_033.tsv`：1,070 份此前未逐字节发布过的 ALN3.4 lane 记录（与 publish_030/031/032 清单按成员名与 SHA256 比对），以及 359 份 ALN3.5 lane 记录（前缀 `aln35/`），快照 10:29 CEST。所有成员与服务器原件逐字节一致；旧包与清单保持原样。记录、发布版本与 seed 不增加独立参与者 n。
+
+入口为 [RELEASE_033](auditory_alignment_v3/RELEASE_033.md)，来源与发布哈希见 [publication_033/MANIFEST.tsv](../results/auditory_alignment_v3/publication_033/MANIFEST.tsv)。63 个发布副本沿用私有 checkpoint 存储占位符，数值不变。原样授权的单元记录保留 540 条按实验哈希命名的 checkpoint/缓存/ledger 来源路径，不含姓名、记录编号或权重字节。
+
+**核验**：CPU normal 作业数高于 27 的提交线，因此快照、构建与门禁均以 `srun --overlap` 步骤在证据作业分配 1047358 内运行，未新开 CPU 批作业（日志 `private/github_publish_033/{prepare,build,verify}-step.log`）。构建完成 JSON 解析、Python/Slurm 语法、五个 ALN3 包 zip/解压一致性、逐文件与逐压缩包成员扫描、无损拆包及清单生成；扫描覆盖 321 个已知姓名、158 个全拼形式和 9,386 个标识符，未批准标识符 0。人工复核 6 项为良性：ALN3.5 包与一个运行检查脚本中的裸共享盘根路径、两份代码中的矩阵乘法写法、上述归档来源路径。最终暂存区检查 **PASS**：918 个路径，无遗漏、意外文件、私有/扣留路径、未暂存更改或未解决匹配；909 个与构建字节相同的 index blob 复用已完成扫描，四个新包复用逐成员往返校验。`git diff --cached --check` 仅报告 3 个读出 CSV 的 CRLF 换行（RFC 4180）和 2 个读出 Markdown 末尾空行，保留与服务器输出逐字节一致。
+
+本轮未发布：私有原始数据、文件/事件/临床源表、身份映射、人名/联系方式、仅限服务器的支持集几何绑定、模型权重、运行日志、存储清理工具/清单与入口、交接记录及其核查脚本。本轮使用 `private/github_publish_033/checkout`；publish_032 副本保持原状态。GPU 训练与监控继续运行，发布未重复训练或改变实验日程。
