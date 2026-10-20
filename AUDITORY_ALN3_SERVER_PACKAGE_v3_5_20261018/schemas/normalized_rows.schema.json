@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:aln35:normalized-row:v1",
+  "title": "ALN3.5 per-identity, per-seed, per-content-cell evaluation row",
+  "description": "One JSONL object. Runtime additionally checks finite values, duplicate row keys, matched query sets, provenance intersections, and the declared completeness contract. Outer subject folds are metadata, not required within-person replicates.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["dataset", "identity", "group", "fold", "seed", "arm", "window", "metric", "unit", "value", "query_set_id", "analysis_role"],
+  "properties": {
+    "dataset": {"type": "string", "minLength": 1},
+    "identity": {"type": "string", "minLength": 1},
+    "group": {"type": "string", "minLength": 1},
+    "stratum": {"type": "string", "minLength": 1},
+    "fold": {"type": "string", "minLength": 1, "description": "An actual repeated content/session evaluation cell, never the list of outer subject folds."},
+    "seed": {"type": "integer", "minimum": 0},
+    "arm": {"type": "string", "minLength": 1},
+    "window": {"type": "string", "minLength": 1},
+    "metric": {"type": "string", "minLength": 1},
+    "unit": {"type": "string", "minLength": 1},
+    "value": {"type": "number"},
+    "query_set_id": {"type": "string", "minLength": 1, "description": "Stable ID or hash of the matched underlying evaluation query set; a label is not independently verified evidence of separation."},
+    "analysis_role": {"enum": ["outer_test", "inner_dev"]},
+    "metadata": {"type": "object"},
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "query_ids": {"$ref": "#/$defs/nonempty_ids"},
+        "support_ids": {"$ref": "#/$defs/ids"},
+        "population_fit_identities": {"$ref": "#/$defs/ids"},
+        "selection_identities": {"$ref": "#/$defs/ids"},
+        "outer_fold": {"type": "string", "minLength": 1},
+        "source_record": {"type": "string", "minLength": 1},
+        "source_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "aggregation_note": {"type": "string", "minLength": 1},
+        "source_fold_ids": {"$ref": "#/$defs/ids"},
+        "source_seed_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "integer", "minimum": 0}}
+      }
+    }
+  },
+  "$defs": {
+    "ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "nonempty_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+  },
+  "allOf": [{
+    "if": {"properties": {"fold": {"const": "reported_identity_mean"}}},
+    "then": {"required": ["provenance"], "properties": {"provenance": {
+      "required": ["aggregation_note", "source_fold_ids", "source_seed_ids"],
+      "properties": {"source_fold_ids": {"$ref": "#/$defs/nonempty_ids"}}
+    }}}
+  }]
+}

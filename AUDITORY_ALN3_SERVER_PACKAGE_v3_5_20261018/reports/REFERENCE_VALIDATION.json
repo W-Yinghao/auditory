@@ -1,0 +1,127 @@
+{
+  "created_utc": "2026-10-18T20:53:28.957386+00:00",
+  "status": "passed",
+  "reference_tests": {
+    "count": 28,
+    "passed": 28,
+    "command": "python3 -B -m unittest discover -s tests -v",
+    "scope": "synthetic and declared physical geometry only"
+  },
+  "jsonl_example_rows_validated": 128,
+  "runtime_vs_schema_field_contract": "matched",
+  "external_json_schema_engine_run": false,
+  "science_family_specs_after_declarative_field_conversion": [
+    {
+      "family_id": "SCI35_PRIVATE_PRIOR_NCE_AUC4",
+      "n_contrasts": 4
+    },
+    {
+      "family_id": "SCI35_PRIVATE_PRIOR_NCE_HISTORY2",
+      "n_contrasts": 2
+    },
+    {
+      "family_id": "SCI35_PRIVATE_PRIOR_NCE_TWIN2",
+      "n_contrasts": 2
+    },
+    {
+      "family_id": "SCI35_PRIVATE_HA_NH_PRIOR_EFFECT2",
+      "n_contrasts": 2
+    },
+    {
+      "family_id": "SCI35_FAU_PRIOR_GROUP_EFFECT2",
+      "n_contrasts": 2
+    },
+    {
+      "family_id": "SCI35_DTU_NATIVE_CONTENT6",
+      "n_contrasts": 6
+    },
+    {
+      "family_id": "SCI35_FAU_NATIVE_CONTENT6",
+      "n_contrasts": 6
+    },
+    {
+      "family_id": "SCI35_FEDERICI_NATIVE_ENV2",
+      "n_contrasts": 2
+    },
+    {
+      "family_id": "SCI35_DTU_NATIVE_TEMPORAL_MAP2",
+      "n_contrasts": 2
+    },
+    {
+      "family_id": "SCI35_FAU_NATIVE_TEMPORAL_MAP2",
+      "n_contrasts": 2
+    }
+  ],
+  "main_endpoint_plan_counts": {
+    "families": 3,
+    "contrasts": 10
+  },
+  "science_document_synthetic_example": "runtime field validation passed; no research observation generated",
+  "mask_geometry_reference": {
+    "reference_only": true,
+    "interval_convention": "half-open integer samples [start,stop), relative to the same query anchor",
+    "mask_operation": "keep samples inside the requested window; set all other input positions to zero",
+    "input_values_inspected": false,
+    "all_zero_field_semantics": "true means zero is forced at every input position; null means some positions are retained and their actual values were not inspected",
+    "sample_rate_hz": 250.0,
+    "contexts": [
+      {
+        "id": "local_pre",
+        "input_samples": [
+          0,
+          150
+        ],
+        "input_samples_count": 150,
+        "mask_samples": [
+          -50,
+          0
+        ],
+        "overlap_samples": 0,
+        "overlap_seconds": 0.0,
+        "overlap_interval": null,
+        "retained_samples": 0,
+        "retained_seconds": 0.0,
+        "zeroed_samples": 150,
+        "has_requested_data": false,
+        "all_zero_input_after_keep_mask": true,
+        "requested_mask_fraction_present": 0.0,
+        "expected_overlap_samples": 0,
+        "matches_expected": true
+      },
+      {
+        "id": "fm_pre",
+        "input_samples": [
+          -50,
+          150
+        ],
+        "input_samples_count": 200,
+        "mask_samples": [
+          -50,
+          0
+        ],
+        "overlap_samples": 50,
+        "overlap_seconds": 0.2,
+        "overlap_interval": [
+          -50,
+          0
+        ],
+        "retained_samples": 50,
+        "retained_seconds": 0.2,
+        "zeroed_samples": 150,
+        "has_requested_data": true,
+        "all_zero_input_after_keep_mask": null,
+        "requested_mask_fraction_present": 1.0,
+        "expected_overlap_samples": 50,
+        "matches_expected": true
+      }
+    ],
+    "all_declared_counts_match": true,
+    "limitation": "Counts depend on supplied physical input intervals and keep-mask semantics. Retained/zeroed positions do not establish whether actual EEG values changed. This does not verify loading, resampling, normalization, masks in memory, encoder receptive fields, or EEG effects."
+  },
+  "real_eeg_used": false,
+  "server_exporter_validated": false,
+  "notes": [
+    "Actual unit and roster binding remains on the server.",
+    "Synthetic tests validate implementation, not exact coverage probability of clinical inference."
+  ]
+}

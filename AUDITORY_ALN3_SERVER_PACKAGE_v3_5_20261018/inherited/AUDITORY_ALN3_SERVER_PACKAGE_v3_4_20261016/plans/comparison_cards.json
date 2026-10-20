@@ -1,0 +1,320 @@
+[
+  {
+    "id": "R34_D_PANEL",
+    "kind": "reaggregate",
+    "question": "已完成D面板的方法差值是否跨训练seed保持？",
+    "source": "B01:L763-L767",
+    "reference": "matched_3401_3407_3413_local_controls",
+    "candidates": [
+      "attended_vs_alignment_selection",
+      "none_vs_input_spatial"
+    ],
+    "datasets": [
+      "fau",
+      "dtu"
+    ],
+    "objectives": [
+      "NCE"
+    ],
+    "depends_on": [
+      "existing_completed_D_records"
+    ],
+    "start": "immediate_after_short_analysis_note",
+    "output": "D_MULTI_SEED_RESULTS",
+    "training_needed": "only_if_actual_required_record_missing_no_default_retrain",
+    "status": "planned_intent_not_a_server_job",
+    "performance_entry_gate": null,
+    "test_based_model_selection": false
+  },
+  {
+    "id": "R34_TF_L1_PANEL",
+    "kind": "reaggregate_then_fill_missing",
+    "question": "匹配真全量初始化及同访问local比较是否在可用seed中保持？",
+    "source": "B01:L257-L285,L333-L350",
+    "reference": "same_lr_random_and_same_access_L1",
+    "candidates": [
+      "cbramod_pretrained_true_full",
+      "reve_pretrained_true_full"
+    ],
+    "datasets": [
+      "fau",
+      "dtu",
+      "federici"
+    ],
+    "objectives": [
+      "NCE"
+    ],
+    "depends_on": [
+      "existing_TRUE_FULL_records",
+      "existing_L1_records"
+    ],
+    "start": "reuse_available_pairs_now",
+    "output": "TRUE_FULL_PAIRED_EVIDENCE",
+    "training_needed": "missing_valid_pairs_only",
+    "status": "planned_intent_not_a_server_job",
+    "performance_entry_gate": null,
+    "test_based_model_selection": false
+  },
+  {
+    "id": "E34_LEARNING_CURVES",
+    "kind": "target_training",
+    "question": "初始化收益如何随人数、不同声音内容和优化预算改变？",
+    "source": "D34; motivated by B01:L338-L350",
+    "reference": "random_matched_recipe_and_optimized_local",
+    "candidates": [
+      "pretrained_true_full"
+    ],
+    "datasets": [
+      "fau",
+      "dtu",
+      "federici"
+    ],
+    "objectives": [
+      "NCE"
+    ],
+    "depends_on": [
+      "current_target_splits"
+    ],
+    "start": "independent_after_contract_binding",
+    "output": "PRETRAINING_LEARNING_EVIDENCE",
+    "training_needed": "full_predeclared_axis_comparisons_no_pilot_screen",
+    "status": "planned_intent_not_a_server_job",
+    "performance_entry_gate": null,
+    "test_based_model_selection": false
+  },
+  {
+    "id": "E34_PUBLIC_PRIOR",
+    "kind": "inherit_execute",
+    "question": "声音配对、跨人或联合公共听觉训练能否改善新听者与儿童任务？",
+    "source": "P33; already_authorized",
+    "reference": "target_from_scratch_same_new_contract",
+    "candidates": [
+      "audio_pair_pretrain",
+      "cross_person_pretrain",
+      "joint_pretrain"
+    ],
+    "datasets": [
+      "fau",
+      "dtu",
+      "federici",
+      "private_bdf"
+    ],
+    "objectives": [
+      "NCE",
+      "CS_SINGLE"
+    ],
+    "depends_on": [
+      "verified_donor_data_contract"
+    ],
+    "start": "do_not_wait_for_fusion_or_all_FM_seeds",
+    "output": "PUBLIC_PRIOR_EXECUTION_STATUS_AND_RESULTS",
+    "training_needed": "deduplicate_existing_ALN33_registration",
+    "status": "planned_intent_not_a_server_job",
+    "performance_entry_gate": null,
+    "test_based_model_selection": false
+  },
+  {
+    "id": "R34_FUSION_FUNCTION",
+    "kind": "reevaluate",
+    "question": "残差是否改变归一化表示、声音预测和新听者风险？",
+    "source": "B01:L558-L604; D34_math_examples",
+    "reference": "original_direct_local_and_SC_remapped_local",
+    "candidates": [
+      "SC_variants",
+      "RS_selected_vs_epoch0"
+    ],
+    "datasets": [
+      "fau",
+      "dtu",
+      "federici"
+    ],
+    "objectives": [
+      "NCE",
+      "CS_SINGLE"
+    ],
+    "depends_on": [
+      "available_predictions_logs_checkpoints"
+    ],
+    "start": "no_full_new_training_dependency",
+    "output": "COMPLEMENT_FUNCTION_REPORT",
+    "training_needed": "evaluation_only_where_assets_exist",
+    "status": "planned_intent_not_a_server_job",
+    "performance_entry_gate": null,
+    "test_based_model_selection": false
+  },
+  {
+    "id": "E34_STRONG_FUSION",
+    "kind": "limited_training",
+    "question": "两个有效单模型是否有可泛化的互补？",
+    "source": "D34",
+    "reference": "local_direct_FM_direct_and_dev_selected_strong_single",
+    "candidates": [
+      "convex_probability_fusion",
+      "sound_prediction_linear_fusion",
+      "zero_output_residual"
+    ],
+    "datasets": [
+      "fau",
+      "dtu",
+      "federici"
+    ],
+    "objectives": [
+      "NCE"
+    ],
+    "depends_on": [
+      "legal_local_base",
+      "legal_task_adapted_CB_base"
+    ],
+    "start": "per_fold_when_bases_available",
+    "output": "STRONG_MODEL_COMPLEMENT",
+    "training_needed": "small_question_oriented_comparison_with_random_capacity_controls",
+    "status": "planned_intent_not_a_server_job",
+    "performance_entry_gate": null,
+    "test_based_model_selection": false
+  },
+  {
+    "id": "R34_ATTENTION_ORDER",
+    "kind": "reevaluate_and_head_refit",
+    "question": "候选交换后的注意整合器比较是否保持？",
+    "source": "B01:L750-L759; prior_code_review",
+    "reference": "same_window_mean_score",
+    "candidates": [
+      "legacy_learned_paired_order",
+      "antisymmetric_learned"
+    ],
+    "datasets": [
+      "fau",
+      "dtu"
+    ],
+    "objectives": [
+      "NCE",
+      "CS_SINGLE"
+    ],
+    "depends_on": [
+      "available_segment_scores_or_checkpoints"
+    ],
+    "start": "immediate_no_backbone_gate",
+    "output": "ATTENTION_ORDER_CORRECTION",
+    "training_needed": "head_only_if_needed",
+    "status": "planned_intent_not_a_server_job",
+    "performance_entry_gate": null,
+    "test_based_model_selection": false
+  },
+  {
+    "id": "E34_NEW_D_POLICY",
+    "kind": "downstream_training",
+    "question": "真全量/对齐方法的声音收益能否用于注意或个人适配？",
+    "source": "D34; B01:L768-L775",
+    "reference": "task_matched_local_policy",
+    "candidates": [
+      "aligned_CB_true_full_policy",
+      "representative_REVE_policy"
+    ],
+    "datasets": [
+      "fau",
+      "dtu"
+    ],
+    "objectives": [
+      "NCE"
+    ],
+    "depends_on": [
+      "task_side_inner_development",
+      "legal_source_base"
+    ],
+    "start": "per_fold_new_version_not_old_ID_overwrite",
+    "output": "D_NEW_POLICY_RESULTS",
+    "training_needed": "new_executions_old_completed_results_retained",
+    "status": "planned_intent_not_a_server_job",
+    "performance_entry_gate": null,
+    "test_based_model_selection": false
+  },
+  {
+    "id": "E34_ADAPT_READY",
+    "kind": "group_episode_training",
+    "question": "受限个人空间修正与episode训练是否降低个人支持需求？",
+    "source": "D34; B01:L673-L675,L693-L701",
+    "reference": "ordinary_group_with_same_adapter",
+    "candidates": [
+      "episode_group_with_same_adapter"
+    ],
+    "datasets": [
+      "fau",
+      "dtu",
+      "private_bdf"
+    ],
+    "objectives": [
+      "NCE",
+      "CS_SINGLE"
+    ],
+    "depends_on": [
+      "source_people_support_query_contract"
+    ],
+    "start": "local_first_and_CB_parallel_when_available",
+    "output": "ADAPTATION_READY_RESULTS",
+    "training_needed": "full_pairs_same_support_and_query",
+    "status": "planned_intent_not_a_server_job",
+    "performance_entry_gate": null,
+    "test_based_model_selection": false
+  },
+  {
+    "id": "S34_CONTENT_TIME",
+    "kind": "scientific_analysis",
+    "question": "方法改善对应哪些声音属性、时间组织和适配变化？",
+    "source": "B01:L855-L976; D34",
+    "reference": "raw_linear_and_fixed_local",
+    "candidates": [
+      "fixed_CB_true_full",
+      "representative_REVE",
+      "new_public_prior_when_ready"
+    ],
+    "datasets": [
+      "fau",
+      "dtu",
+      "federici"
+    ],
+    "objectives": [
+      "NCE",
+      "CS_SINGLE"
+    ],
+    "depends_on": [
+      "fixed_representative_models",
+      "valid_sound_targets"
+    ],
+    "start": "parallel_not_after_whole_matrix",
+    "output": "HEARING_CONTENT_TIME_ADAPTATION",
+    "training_needed": "targeted_readout_fits_and_declared_window_models_only",
+    "status": "planned_intent_not_a_server_job",
+    "performance_entry_gate": null,
+    "test_based_model_selection": false
+  },
+  {
+    "id": "S34_PRIVATE",
+    "kind": "task_transfer_and_analysis",
+    "question": "先验与适配能否改善HA儿童当前声音、历史条件和时间读出？",
+    "source": "B01:L1151-L1167; D34",
+    "reference": "GX_native_and_local_CS_with_matching_controls",
+    "candidates": [
+      "generic_CB_task_adaptation",
+      "public_auditory_transfer",
+      "personal_adapter",
+      "train_side_temporal_sign_correction"
+    ],
+    "datasets": [
+      "private_bdf"
+    ],
+    "objectives": [
+      "NCE",
+      "CS_SINGLE"
+    ],
+    "depends_on": [
+      "verified_private_splits",
+      "donor_only_for_transfer_arm"
+    ],
+    "start": "nontransfer_work_does_not_wait_for_donor",
+    "output": "PRIVATE_CURRENT_HISTORY_TIME_UPDATE",
+    "training_needed": "targeted_existing_plan_pairs_and_new_defined_variants",
+    "status": "planned_intent_not_a_server_job",
+    "performance_entry_gate": null,
+    "test_based_model_selection": false
+  }
+]

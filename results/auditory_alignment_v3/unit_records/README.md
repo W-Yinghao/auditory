@@ -74,3 +74,36 @@ The previous `aln34_lanes.tar.gz` and `ALN34_MANIFEST.tsv` remain the publish_03
 - `private_episode_v1`: 1
 - `private_episode_v2`: 44
 - `strong_fusion_v1`: 20
+
+## Lane supplement — publish_033
+
+The 4 independently readable `lanes_033_*.tar.gz` parts contain 1429 completed non-probe records frozen at 2026-10-20T10:29:35.059006+02:00; `LANES_MANIFEST_033.tsv` maps every member to its part and SHA256. Members are byte-identical to the server records.
+
+- Members without a prefix are ALN3.4 lane records that were **not** already published byte-identically in the publish_030/031/032 lane snapshots (new completions or changed records). The complete ALN3.4 lane set at this snapshot is the publish_032 parts plus these members; where a member name occurs in several releases, the latest release is the current record.
+- Members under `aln35/` are ALN3.5 lane records (all completed, non-probe). Server-only support/query geometry bindings are not included; plans publish their hash.
+
+A record can bundle several evaluations; records, releases, seeds and reused results never increase independent participant n.
+
+- `adaptation_policy_v1`: 89
+- `aln35/apwrong_v1`: 53
+- `aln35/episode_lineage_v2`: 2
+- `aln35/episode_pressure_v1`: 58
+- `aln35/fusion`: 36
+- `aln35/matched_updates_v1`: 120
+- `aln35/support_coverage_v1`: 30
+- `aln35/true_risk_selection_v1`: 60
+- `attention_transfer_v1`: 109
+- `breadth_budget_v1`: 56
+- `breadth_episode_v1`: 28
+- `breadth_fusion_v1`: 9
+- `breadth_inner_v1`: 240
+- `breadth_policy_v1`: 25
+- `cb_auditory_v1`: 124
+- `cs_episode_v1`: 18
+- `data_inner_v1`: 187
+- `episode_training_v1`: 60
+- `learning_budget_v2`: 70
+- `prior_private_loo_v1`: 19
+- `private_cb_factorial_v1`: 20
+- `private_episode_v2`: 6
+- `strong_fusion_v1`: 10

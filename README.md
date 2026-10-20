@@ -6,7 +6,30 @@
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## 最新（2026-10-18 晚间）：内容/时间与先验科学分析完成，扩展实验继续进行
+## 最新（2026-10-20）：ALN3.5 有限比较完成，已完成汇总首次解读，两条新实验线运行中
+
+执行依据为 [ALN3.5 包](AUDITORY_ALN3_SERVER_PACKAGE_v3_5_20261018/README.md)，延续 ALN3.4，不是全项目重启；zip 与解压内容逐字节一致。代码在 `auditory_alignment_v3/aln35/`。本次起项目由 Claude Code 接手运行。所有结果保留有利、不利和不确定方向，实验单元、seed 和发布版本都不增加独立受试者数。
+
+- **ALN3.5 已完成的比较**：[APwrong 正确/错误音频配对](docs/auditory_alignment_v3/aln35/AP_WRONG_RESULTS_V2.md)、[融合归因（44 人三 seed）](docs/auditory_alignment_v3/aln35/FUSION_ATTRIBUTION_RESULTS_1047619.md)、[注意顺序](docs/auditory_alignment_v3/aln35/ATTENTION_ORDER_RESULTS_1049394.md)、[B×T 映射分解](docs/auditory_alignment_v3/aln35/BRIDGE_FACTOR_RESULTS.md)、[CB 状态诊断](docs/auditory_alignment_v3/aln35/CB_AUDIO_STATE_RESULTS.md)、[history 接口](docs/auditory_alignment_v3/aln35/HISTORY_INTERFACE_RESULTS.md)、[成对科学与组差](docs/auditory_alignment_v3/aln35/SCIENCE_PRIVATE_RESULTS.md)、[私有 pre 输入勘误](docs/auditory_alignment_v3/aln35/CORRECTION_PRIVATE_PRE_ACCESS.md)，以及 support / episode 压力 / 同更新次数 / true-risk 选模的[完整汇总](results/auditory_alignment_v3/aln35/support_summary_v1/)。
+- **[完整汇总解读](docs/auditory_alignment_v3/aln35/SUPPORT_EPISODE_SELECTION_INTERPRETATION.md)**（DTU 44 人、私有 64 人）：
+  - 同等更新次数下，50% 源人数比 100% 的真实风险高 0.27–0.77 bits/query，6 个配置都如此。
+  - 数据少时，按源端 true-risk 选模比旧 gain 规则好 0.10–0.33；数据全时两者基本一致。
+  - 30% 支持下低秩个人适配有益；10% 支持下不确定。支持数量相同时，未检出内容覆盖的作用。私有儿童几乎没有个人适配空间。
+  - episode 训练在 100 内步时对 local native 有益（约 +0.03），对 CBpre 不利或不确定；20 内步无变化。
+- **[已完成汇总的首次读出](docs/auditory_alignment_v3/aln35/SCIENCE_V2_PRIOR_INTERPRETATION.md)**：
+  - 公开数据中，六种声音属性在所有模型里都可读，扣除前序属性后的残差仍可读；严格的 20 ms 原始参照在 +200 ms 处最强。
+  - 私有共同读出的 AUC 为 0.51–0.54，信息只在 0–400 ms，加入 EEG 不超过刺激历史；1,088 个发育系数无一排除 0。
+  - 公共先验不提高声音属性解码；对私有 AUC 的小幅提升，不配对对照同样存在。
+  - 全部格子见 [science v2 读出](docs/auditory_alignment_v3/aln35/SCIENCE_V2_READOUT.md)、[先验读出](docs/auditory_alignment_v3/aln35/PRIOR_SCIENCE_READOUT.md)及 `results/auditory_alignment_v3/aln35/science_readout_v1/`。
+- **两条新实验线（设计先于结果冻结）**：[人少时听觉续训起点能否替代源人数](docs/auditory_alignment_v3/aln35/CBAUD_PEOPLE_DESIGN.md)（20 单元）、[episode 收益的 seed-3407 复核](docs/auditory_alignment_v3/aln35/EPISODE_REPLICATION_S3407_DESIGN.md)（10 单元）。工程探针均已通过，正式结果不在本次发布中。
+- **仍在运行**：DTU 与 breadth 的学习预算和数据量曲线。调度改为 fleet v3：运行与排队合计不超过 10 张 GPU，DTU 尾巴的基础并发为 3。
+- **逐单元记录**：主 runner 8,719 份与上一版相同；`lanes_033_*.tar.gz` 补充此前未发布的 ALN3.4 lane 记录与全部 ALN3.5 lane 记录，见[说明](results/auditory_alignment_v3/unit_records/README.md)。
+
+[项目梳理（2026-10-20）](docs/PROJECT_PROGRESS_REVIEW_20261020.md)汇总 10-17 以来的全部进展；[本次发布说明](docs/auditory_alignment_v3/RELEASE_033.md)列出范围与未发布内容；[发布清单](results/auditory_alignment_v3/publication_033/MANIFEST.tsv)记录逐文件来源与发布哈希。**这是进行中的研究快照。**
+
+本次不上传私有数据集本身、身份映射、人名/联系方式、仅限服务器的支持集几何绑定、模型权重、运行日志、存储清理工具和交接记录。
+
+## 2026-10-18 晚间：内容/时间与先验科学分析完成，扩展实验继续进行
 
 当前方向是刺激锚定的局部时空声音–EEG 学习、公共听觉先验、注意与个人适配，以及 HA/CI/正常对照和儿童发育问题。执行依据为 [ALN3.4 包](AUDITORY_ALN3_SERVER_PACKAGE_v3_4_20261016/README.md)及其继承合同；zip 与解压内容逐字节一致。代码在 `auditory_alignment_v3/aln34/`、`auditory_alignment_v3/prior33/`。本次发布保留有利、不利和不确定结果，不把实验单元或 seed 当作新的独立受试者。
 

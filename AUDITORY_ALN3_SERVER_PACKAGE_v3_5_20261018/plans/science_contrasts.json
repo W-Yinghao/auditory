@@ -1,0 +1,308 @@
+{
+  "schema_version": "ALN35_SCIENCE_DECLARATIVE_PLAN_v1",
+  "plan_id": "ALN35_SCIENCE_PRIVATE_20261018",
+  "recorded_date": "2026-10-18",
+  "reviewed_repository": "W-Yinghao/auditory",
+  "reviewed_commit": "5ef4a60bf77eeaeab5582c2cb076077c0b15bd11",
+  "execution_mode": "declarative_binding_manifest_not_direct_cli_input",
+  "status": "authorized_analysis_specification_requires_real_site_binding",
+  "analysis_origin": "exploratory_after_2026_10_18_review",
+  "companion_document": "docs/02_SCIENCE_PRIVATE_AND_CORRECTIONS.md",
+  "purpose": "把已有声音内容、时间组织与私有儿童结果转为有限的直接配对问题；不重训已完成科学模型。",
+  "global_rules": {
+    "read_current_head_plans_and_actual_queue_first": true,
+    "preserve_original_units_plans_hashes_and_statistics": true,
+    "no_training_or_queue_commands_in_this_manifest": true,
+    "aggregate_gpu_cap_inherited": 10,
+    "no_performance_or_significance_entry_gate": true,
+    "independent_unit": "human_identity",
+    "pairing_order": ["within_identity_and_repetition", "mean_repetitions", "mean_required_seeds", "equal_identity_mean"],
+    "reject_duplicate_observation_keys": true,
+    "require_common_complete_identity_set_within_family": true,
+    "missing_values_are_not_zero": true,
+    "do_not_infer_pairwise_covariance_from_aggregate_intervals": true,
+    "do_not_select_seeds_windows_groups_or_models_by_outer_test_results": true,
+    "do_not_count_seed_content_fold_or_session_as_independent_n": true,
+    "do_not_pool_main_native_5s_metrics_with_science_probe_metrics": true,
+    "individual_output_publication_scope": "inherit_user_authorized_derived_results_excluding_raw_data_names_and_identity_mapping"
+  },
+  "path_resolution": {
+    "repo_root": "resolve_from_auditory_alignment_v3.core.REPO",
+    "core_out": "resolve_from_auditory_alignment_v3.core.OUT",
+    "output_dir_relative_to_repo": "results/auditory_alignment_v3/aln35/science",
+    "do_not_guess_private_absolute_paths": true
+  },
+  "sources": {
+    "prior_science": {
+      "plan_relative_to_core_out": "aln34/prior_science_v1/plan.json",
+      "units_relative_to_core_out": "aln34/prior_science_v1/units",
+      "bindings_relative_to_core_out": "aln34/prior_science_v1/bindings",
+      "aggregate_relative_to_repo": "results/auditory_alignment_v3/aln34/prior_science/science.json",
+      "upstream_family_id": "ALN32_PUBLIC_AUDIO_PRIOR_TARGET",
+      "upstream_filters": {"spec.block": "core", "spec.objective": "NCE", "seed": 3401},
+      "logical_arm_resolver": "auditory_alignment_v3.prior33.target_train.arm_of(row)[0]",
+      "allowed_arms": ["S", "AP", "XP", "J*", "XM"],
+      "private_value_path": "per_participant[identity].windows[window][metric]",
+      "public_value_path": "decoding[representation+'/'+target][train_center+'/'+test_center].per_participant[record_id][metric]",
+      "validate": ["status_complete", "probe_false", "plan_sha256", "unit_source_matches_plan", "binding_sha256", "source_record_sha256", "resolved_access_and_readout_contract", "exact_query_pairing"],
+      "private_contract": {"fs_hz": 64, "input_samples": 38, "sample_times_ms": {"first": 0.0, "last": 578.125}, "nominal_windows": ["0_200", "200_400", "400_600", "full"], "pre_event_condition_available": false, "readout": "source_ES_linear_probe"},
+      "public_contract": {"fs_hz": 64, "input_samples": 38, "access_duration_ms": 593.75, "window_position_semantics": "start_shift_relative_to_current_sound_anchor", "available_targets": ["env/direct", "env/history_conditional", "onset/direct", "onset/conditional"], "new_contrast_cell": "0/0"}
+    },
+    "native_public_science": {
+      "plan_relative_to_core_out": "aln34/content_time_v1/plan.json",
+      "units_relative_to_core_out": "aln34/content_time_v1/units",
+      "aggregate_relative_to_repo": "results/auditory_alignment_v3/aln34/science_v2/science.json",
+      "value_path": "decoding[representation+'/'+target][train_center+'/'+test_center].per_participant[record_id][metric]",
+      "readout": "source_fit_ES_selected_ridge_refit_on_source_fit_plus_ES",
+      "query_definition": "eight_fixed_anchors_per_eligible_5s_segment_not_5s_native_retrieval",
+      "access_definition_ms": "[center-400,center+600)",
+      "logical_arms": {
+        "CB_PRE": {"family_id": "ALN32_TRUE_FULL", "spec.architecture": "cbramod", "spec.adaptation": "pretrained_full", "spec.recipe": "full_onestep_v1", "spec.lr_backbone": 0.0003, "spec.objective": "NCE"},
+        "CB_RANDOM": {"family_id": "ALN32_TRUE_FULL", "spec.architecture": "cbramod", "spec.adaptation": "random_full", "spec.recipe": "full_onestep_v1", "spec.lr_backbone": 0.0003, "spec.objective": "NCE"},
+        "LOCAL": {"family_id": "ALN32_LOCAL_SUPPORT", "spec.architecture": "lag_local_tokens", "spec.variant": "local_aligned1000", "spec.objective": "NCE"}
+      },
+      "fixed_seeds_by_dataset": {"dtu": [3401, 3407, 3413], "fau": [3401], "federici": [3401]},
+      "available_targets_by_dataset": {
+        "dtu": ["env/direct", "env/history_conditional", "onset/direct", "onset/conditional", "spec/direct", "spec/conditional", "flux/direct", "flux/conditional", "Ac/direct", "Ac/conditional", "Lz/direct", "Lz/conditional"],
+        "fau": ["env/direct", "env/history_conditional", "onset/direct", "onset/conditional", "spec/direct", "spec/conditional", "flux/direct", "flux/conditional", "Ac/direct", "Ac/conditional", "Lz/direct", "Lz/conditional"],
+        "federici": ["env/direct", "env/history_conditional"]
+      }
+    },
+    "native_private_science": {
+      "plan_relative_to_core_out": "aln34/private_current_time_v2/plan.json",
+      "units_relative_to_core_out": "aln34/private_current_time_v2/units",
+      "aggregate_relative_to_repo": "results/auditory_alignment_v3/aln34/science_v2/science.json",
+      "value_path": "per_participant[identity].windows[window][metric]",
+      "track_v1_reuse": ["execution_version", "reused_from", "unit.previous_id"],
+      "use_in_this_plan": ["correction_manifest", "existing_poststimulus_context", "existing_support_and_developmental_context"],
+      "cross_architecture_full_comparison_is_not_same_access": true,
+      "common_post_mask_scope": "evaluation_access_sensitivity_only_target_training_access_unchanged",
+      "post_only_forward_label": "evaluation_post_only_training_access_unchanged",
+      "cross_architecture_access_attribution_rule": "match_target_training_selection_and_evaluation_access_use_existing_legitimate_post_only_training_sources_first_register_limited_new_training_only_if_the_specific_attribution_question_requires_it_never_replace_training_match_with_forward_only"
+    }
+  },
+  "population_binding": {
+    "expected_names_must_come_from_site_manifest": true,
+    "reported_snapshot_counts_are_checks_not_synthetic_rows": {
+      "private_bdf": {"total": 64, "groups": {"HA": 55, "NH": 9}},
+      "dtu": {"total": 44, "groups": {"hi": 22, "nh": 22}},
+      "fau": {"total": 67, "groups": {"ha": 29, "ci": 24, "th": 14}},
+      "federici": {"total": 86, "groups": {"CI": 33, "HC": 37, "HC-v": 16}}
+    },
+    "repetition_fold_semantics": "content/session_repetition_not_outer_subject_fold",
+    "required_folds_by_dataset": {"private_bdf": ["evaluation"], "dtu": ["content_0", "content_1"], "fau": ["content_0", "content_1"], "federici": ["content_0"]},
+    "federici_session_rule": "resolve_existing_manifest_and_average_required_sessions_within_identity_seed_content_before_export_preserving_session_provenance",
+    "subject_fold_rule": "retain_source.subject_fold_in_metadata.subject_fold_and_convert_to_nonempty_string_provenance.outer_fold_e.g._0_to_subject_0_then_check_consistency_across_arms",
+    "allowed_identity_specific_override": "required_folds_by_identity_from_actual_registered_manifest_never_from_available_results_only",
+    "HC_v_rule": "distinct_humans_not_paired_with_HC_without_explicit_identity_evidence",
+    "exclude_nonhuman_entities": ["phantom:junior"]
+  },
+  "observation_export": {
+    "format": "JSONL",
+    "required_fields": ["dataset", "identity", "group", "fold", "seed", "arm", "window", "metric", "unit", "value", "query_set_id", "analysis_role"],
+    "analysis_role": "outer_test",
+    "key_fields": ["dataset", "identity", "fold", "seed", "arm", "window", "metric"],
+    "provenance_fields": ["query_ids", "support_ids", "population_fit_identities", "selection_identities", "outer_fold", "source_record", "source_sha256", "aggregation_note", "source_fold_ids", "source_seed_ids"],
+    "metadata_fields": ["source_commit", "source_unit_id", "source_plan_sha256", "subject_fold", "content_fold", "representation_contract_id", "readout_contract_id", "additional_source_records_and_hashes_if_aggregated"],
+    "provenance_types": {"outer_fold": "nonempty_string_e.g._subject_0", "source_record": "nonempty_string", "source_sha256": "64_lowercase_hex_characters", "query_ids": "nonempty_list_of_unique_real_query_ID_strings_when_supplied", "source_seed_ids": "single_element_integer_list_equal_to_row.seed"},
+    "synthetic_example_policy": "documentation_schema_validation_only_never_include_synthetic_rows_or_placeholder_hashes_in_research_observations",
+    "source_seed_ids_if_supplied": "must_equal_singleton_current_observation_seed_never_expand_an_already_cross_seed_average",
+    "cli_spec_binding": {"keep": ["family_id", "dataset", "metric", "unit", "required_seeds", "required_folds", "group_sets", "contrasts"], "add_from_real_manifest": ["expected_identities", "required_folds_by_identity_if_needed"], "bootstrap": {"B": 4000, "seed": "family.bootstrap_seed", "alpha": 0.05, "resampling": "independent"}, "analysis_role": "outer_test", "retain_non_CLI_annotations_in_binding_manifest": ["source", "interpretation"], "command": "python -B scripts/paired_contrasts.py contrast --rows NORMALIZED.jsonl --spec BOUND_FAMILY.json", "never_overwrite_original_outputs": true},
+    "query_set_id_rule": "hash_actual_ordered_identity_trial_or_segment_anchor_keys_for_the_paired_evaluation_scope_not_arm_or_source_unit_id",
+    "query_ids_missing_from_unit_rule": "derive_only_from_bound_deterministic_extractor_and_existing_cache_metadata_record_method_and_hash_otherwise_mark_dependency_unavailable",
+    "window_aliases": {"full": "full", "early": "0_200", "mid": "200_400", "late": "400_600"},
+    "public_window_encoding": "target@train_center/test_center; representation_fixed_as_model",
+    "metric_units": {"auc": "AUC", "r": "Pearson_r", "history_gain_bits": "bits/trial", "history_minus_twin_bits": "bits/trial"}
+  },
+  "statistics": {
+    "method_for_new_exploratory_families": "identity_bootstrap_simultaneous_max_abs_standardized_error_with_original_SE",
+    "tool_name_for_studentization": "fixed_original_SE_bootstrap_max_abs_zstar",
+    "B": 4000,
+    "confidence_level": 0.95,
+    "preserve_old_registered_bootstrap_t_results": true,
+    "do_not_relabel_new_method_as_old_bootstrap_t": true,
+    "resampling": "independent_analysis_groups_with_shared_draws_for_all_contrasts_in_a_family",
+    "use_common_complete_people_per_group_per_family": true,
+    "reject_overlapping_analysis_groups_in_same_family": true,
+    "zero_variance_or_n_below_three": "retain_point_estimate_mark_nonregular_and_no_invented_interval",
+    "family_scope": "only_listed_contrasts_not_all_historical_models_targets_or_populations"
+  },
+  "families": [
+    {
+      "family_id": "SCI35_PRIVATE_PRIOR_NCE_AUC4",
+      "source": "prior_science", "dataset": "private_bdf", "metric": "auc", "unit": "AUC", "required_seeds": [3401], "required_folds": ["evaluation"], "bootstrap_seed": 351801,
+      "group_sets": {"all": ["HA", "NH"]}, "direction": "positive_is_candidate_minus_reference_AUC",
+      "contrasts": [
+        {"id": "AP_minus_XM_full", "terms": [{"group": "all", "arm": "AP", "window": "full", "weight": 1}, {"group": "all", "arm": "XM", "window": "full", "weight": -1}]},
+        {"id": "Jstar_minus_XM_full", "terms": [{"group": "all", "arm": "J*", "window": "full", "weight": 1}, {"group": "all", "arm": "XM", "window": "full", "weight": -1}]},
+        {"id": "AP_early_minus_late", "terms": [{"group": "all", "arm": "AP", "window": "0_200", "weight": 1}, {"group": "all", "arm": "AP", "window": "400_600", "weight": -1}]},
+        {"id": "AP_mid_minus_late", "terms": [{"group": "all", "arm": "AP", "window": "200_400", "weight": 1}, {"group": "all", "arm": "AP", "window": "400_600", "weight": -1}]}
+      ],
+      "interpretation": "AP对XM是特定先验包差异；直接窗差是固定模型掩蔽输入可读性差，不是神经潜伏期或正确声音配对的纯因果效应。"
+    },
+    {
+      "family_id": "SCI35_PRIVATE_PRIOR_NCE_HISTORY2",
+      "source": "prior_science", "dataset": "private_bdf", "metric": "history_gain_bits", "unit": "bits/trial", "required_seeds": [3401], "required_folds": ["evaluation"], "bootstrap_seed": 351802,
+      "group_sets": {"all": ["HA", "NH"]},
+      "contrasts": [
+        {"id": "AP_minus_XM_full", "terms": [{"group": "all", "arm": "AP", "window": "full", "weight": 1}, {"group": "all", "arm": "XM", "window": "full", "weight": -1}]},
+        {"id": "Jstar_minus_XM_full", "terms": [{"group": "all", "arm": "J*", "window": "full", "weight": 1}, {"group": "all", "arm": "XM", "window": "full", "weight": -1}]}
+      ],
+      "interpretation": "指定history-offset预测增量的先验差；另列每臂绝对gain，不把相对改善当作已超过history基线。"
+    },
+    {
+      "family_id": "SCI35_PRIVATE_PRIOR_NCE_TWIN2",
+      "source": "prior_science", "dataset": "private_bdf", "metric": "history_minus_twin_bits", "unit": "bits/trial", "required_seeds": [3401], "required_folds": ["evaluation"], "bootstrap_seed": 351803,
+      "group_sets": {"all": ["HA", "NH"]},
+      "contrasts": [
+        {"id": "AP_minus_XM_full", "terms": [{"group": "all", "arm": "AP", "window": "full", "weight": 1}, {"group": "all", "arm": "XM", "window": "full", "weight": -1}]},
+        {"id": "Jstar_minus_XM_full", "terms": [{"group": "all", "arm": "J*", "window": "full", "weight": 1}, {"group": "all", "arm": "XM", "window": "full", "weight": -1}]}
+      ],
+      "interpretation": "沿用原history-matched twin的增量差，必须同时报告原twin异block及自身回退覆盖；不是严格条件互信息。"
+    },
+    {
+      "family_id": "SCI35_PRIVATE_HA_NH_PRIOR_EFFECT2",
+      "source": "prior_science", "dataset": "private_bdf", "metric": "auc", "unit": "AUC", "required_seeds": [3401], "required_folds": ["evaluation"], "bootstrap_seed": 351804,
+      "group_sets": {"HA": ["HA"], "NH": ["NH"]},
+      "contrasts": [
+        {"id": "HA_minus_NH_AP_minus_XM", "terms": [{"group": "HA", "arm": "AP", "window": "full", "weight": 1}, {"group": "HA", "arm": "XM", "window": "full", "weight": -1}, {"group": "NH", "arm": "AP", "window": "full", "weight": -1}, {"group": "NH", "arm": "XM", "window": "full", "weight": 1}]},
+        {"id": "HA_minus_NH_Jstar_minus_XM", "terms": [{"group": "HA", "arm": "J*", "window": "full", "weight": 1}, {"group": "HA", "arm": "XM", "window": "full", "weight": -1}, {"group": "NH", "arm": "J*", "window": "full", "weight": -1}, {"group": "NH", "arm": "XM", "window": "full", "weight": 1}]}
+      ],
+      "interpretation": "直接比较每儿童改善的组均值，不能从两组p值差推断交互；私有没有CI组。"
+    },
+    {
+      "family_id": "SCI35_FAU_PRIOR_GROUP_EFFECT2",
+      "source": "prior_science", "dataset": "fau", "metric": "r", "unit": "Pearson_r", "required_seeds": [3401], "required_folds": ["content_0", "content_1"], "bootstrap_seed": 351805,
+      "group_sets": {"ha": ["ha"], "ci": ["ci"], "th": ["th"]},
+      "contrasts": [
+        {"id": "HA_minus_TH_AP_minus_XM_history_r", "terms": [{"group": "ha", "arm": "AP", "window": "env/history_conditional@0/0", "weight": 1}, {"group": "ha", "arm": "XM", "window": "env/history_conditional@0/0", "weight": -1}, {"group": "th", "arm": "AP", "window": "env/history_conditional@0/0", "weight": -1}, {"group": "th", "arm": "XM", "window": "env/history_conditional@0/0", "weight": 1}]},
+        {"id": "CI_minus_TH_AP_minus_XM_history_r", "terms": [{"group": "ci", "arm": "AP", "window": "env/history_conditional@0/0", "weight": 1}, {"group": "ci", "arm": "XM", "window": "env/history_conditional@0/0", "weight": -1}, {"group": "th", "arm": "AP", "window": "env/history_conditional@0/0", "weight": -1}, {"group": "th", "arm": "XM", "window": "env/history_conditional@0/0", "weight": 1}]}
+      ],
+      "interpretation": "64Hz科学probe的history残差读出改善差，非主5s检索风险，非治疗或纯声音配对效应。"
+    },
+    {
+      "family_id": "SCI35_DTU_NATIVE_CONTENT6",
+      "source": "native_public_science", "dataset": "dtu", "metric": "r", "unit": "Pearson_r", "required_seeds": [3401, 3407, 3413], "required_folds": ["content_0", "content_1"], "bootstrap_seed": 351806,
+      "group_sets": {"all": ["hi", "nh"]},
+      "contrasts": [
+        {"id": "CBpre_minus_CBrand_env_history", "terms": [{"group": "all", "arm": "CB_PRE", "window": "env/history_conditional@0/0", "weight": 1}, {"group": "all", "arm": "CB_RANDOM", "window": "env/history_conditional@0/0", "weight": -1}]},
+        {"id": "CBpre_minus_LOCAL_env_history", "terms": [{"group": "all", "arm": "CB_PRE", "window": "env/history_conditional@0/0", "weight": 1}, {"group": "all", "arm": "LOCAL", "window": "env/history_conditional@0/0", "weight": -1}]},
+        {"id": "CBpre_minus_CBrand_spec", "terms": [{"group": "all", "arm": "CB_PRE", "window": "spec/conditional@0/0", "weight": 1}, {"group": "all", "arm": "CB_RANDOM", "window": "spec/conditional@0/0", "weight": -1}]},
+        {"id": "CBpre_minus_LOCAL_spec", "terms": [{"group": "all", "arm": "CB_PRE", "window": "spec/conditional@0/0", "weight": 1}, {"group": "all", "arm": "LOCAL", "window": "spec/conditional@0/0", "weight": -1}]},
+        {"id": "CBpre_minus_CBrand_flux", "terms": [{"group": "all", "arm": "CB_PRE", "window": "flux/conditional@0/0", "weight": 1}, {"group": "all", "arm": "CB_RANDOM", "window": "flux/conditional@0/0", "weight": -1}]},
+        {"id": "CBpre_minus_LOCAL_flux", "terms": [{"group": "all", "arm": "CB_PRE", "window": "flux/conditional@0/0", "weight": 1}, {"group": "all", "arm": "LOCAL", "window": "flux/conditional@0/0", "weight": -1}]}
+      ]
+    },
+    {
+      "family_id": "SCI35_FAU_NATIVE_CONTENT6",
+      "source": "native_public_science", "dataset": "fau", "metric": "r", "unit": "Pearson_r", "required_seeds": [3401], "required_folds": ["content_0", "content_1"], "bootstrap_seed": 351807,
+      "group_sets": {"all": ["ha", "ci", "th"]},
+      "contrasts": [
+        {"id": "CBpre_minus_CBrand_env_history", "terms": [{"group": "all", "arm": "CB_PRE", "window": "env/history_conditional@0/0", "weight": 1}, {"group": "all", "arm": "CB_RANDOM", "window": "env/history_conditional@0/0", "weight": -1}]},
+        {"id": "CBpre_minus_LOCAL_env_history", "terms": [{"group": "all", "arm": "CB_PRE", "window": "env/history_conditional@0/0", "weight": 1}, {"group": "all", "arm": "LOCAL", "window": "env/history_conditional@0/0", "weight": -1}]},
+        {"id": "CBpre_minus_CBrand_spec", "terms": [{"group": "all", "arm": "CB_PRE", "window": "spec/conditional@0/0", "weight": 1}, {"group": "all", "arm": "CB_RANDOM", "window": "spec/conditional@0/0", "weight": -1}]},
+        {"id": "CBpre_minus_LOCAL_spec", "terms": [{"group": "all", "arm": "CB_PRE", "window": "spec/conditional@0/0", "weight": 1}, {"group": "all", "arm": "LOCAL", "window": "spec/conditional@0/0", "weight": -1}]},
+        {"id": "CBpre_minus_CBrand_flux", "terms": [{"group": "all", "arm": "CB_PRE", "window": "flux/conditional@0/0", "weight": 1}, {"group": "all", "arm": "CB_RANDOM", "window": "flux/conditional@0/0", "weight": -1}]},
+        {"id": "CBpre_minus_LOCAL_flux", "terms": [{"group": "all", "arm": "CB_PRE", "window": "flux/conditional@0/0", "weight": 1}, {"group": "all", "arm": "LOCAL", "window": "flux/conditional@0/0", "weight": -1}]}
+      ]
+    },
+    {
+      "family_id": "SCI35_FEDERICI_NATIVE_ENV2",
+      "source": "native_public_science", "dataset": "federici", "metric": "r", "unit": "Pearson_r", "required_seeds": [3401], "required_folds": ["content_0"], "bootstrap_seed": 351808,
+      "group_sets": {"all": ["CI", "HC", "HC-v"]},
+      "contrasts": [
+        {"id": "CBpre_minus_CBrand_env_history", "terms": [{"group": "all", "arm": "CB_PRE", "window": "env/history_conditional@0/0", "weight": 1}, {"group": "all", "arm": "CB_RANDOM", "window": "env/history_conditional@0/0", "weight": -1}]},
+        {"id": "CBpre_minus_LOCAL_env_history", "terms": [{"group": "all", "arm": "CB_PRE", "window": "env/history_conditional@0/0", "weight": 1}, {"group": "all", "arm": "LOCAL", "window": "env/history_conditional@0/0", "weight": -1}]}
+      ],
+      "interpretation": "只用实际2–8Hz缓存及包络目标；HC-v身份独立，phantom排除。"
+    },
+    {
+      "family_id": "SCI35_DTU_NATIVE_TEMPORAL_MAP2",
+      "source": "native_public_science", "dataset": "dtu", "metric": "r", "unit": "Pearson_r", "required_seeds": [3401, 3407, 3413], "required_folds": ["content_0", "content_1"], "bootstrap_seed": 351809,
+      "group_sets": {"all": ["hi", "nh"]},
+      "contrasts": [
+        {"id": "aligned_readout_loss_at_shift600", "terms": [{"group": "all", "arm": "CB_PRE", "window": "env/direct@0/0", "weight": 1}, {"group": "all", "arm": "CB_PRE", "window": "env/direct@0/600", "weight": -1}]},
+        {"id": "readout_refit_recovery_at_shift600", "terms": [{"group": "all", "arm": "CB_PRE", "window": "env/direct@600/600", "weight": 1}, {"group": "all", "arm": "CB_PRE", "window": "env/direct@0/600", "weight": -1}]}
+      ],
+      "interpretation": "每个中心仍访问完整一秒窗；读出位置敏感性与恢复，不是600ms单点神经潜伏期。"
+    },
+    {
+      "family_id": "SCI35_FAU_NATIVE_TEMPORAL_MAP2",
+      "source": "native_public_science", "dataset": "fau", "metric": "r", "unit": "Pearson_r", "required_seeds": [3401], "required_folds": ["content_0", "content_1"], "bootstrap_seed": 351810,
+      "group_sets": {"all": ["ha", "ci", "th"]},
+      "contrasts": [
+        {"id": "aligned_readout_loss_at_shift600", "terms": [{"group": "all", "arm": "CB_PRE", "window": "env/direct@0/0", "weight": 1}, {"group": "all", "arm": "CB_PRE", "window": "env/direct@0/600", "weight": -1}]},
+        {"id": "readout_refit_recovery_at_shift600", "terms": [{"group": "all", "arm": "CB_PRE", "window": "env/direct@600/600", "weight": 1}, {"group": "all", "arm": "CB_PRE", "window": "env/direct@0/600", "weight": -1}]}
+      ]
+    }
+  ],
+  "corrections": [
+    {
+      "correction_id": "SCI35-C01",
+      "dataset": "private_bdf",
+      "upstream_families": ["E_LOCAL", "E_PUBLIC_TRANSFER"],
+      "architecture_or_source_architecture": "lag_local_tokens",
+      "objectives": ["NCE", "CS_SINGLE"],
+      "condition": "pre",
+      "requested_original_epoch_samples": [0, 50],
+      "actual_original_epoch_samples": [50, 200],
+      "interval_semantics": "half_open_250Hz_epoch_with_onset_at50",
+      "expected_retained_sample_count": 0,
+      "replacement_interpretation": "all_zero_input_control_no_pre_access",
+      "valid_for_pre_event_inference": false,
+      "affected_paths": ["per_participant[*].windows.pre.*", "per_participant[*].temporal_generalization[pre/*].*", "per_participant[*].temporal_generalization[*/pre].*", "their_group_or_plot_or_claim_derivatives"],
+      "unaffected_conditions": ["0_200", "200_400", "400_600", "local_full_poststimulus", "private_support_query_adaptation", "full_window_developmental_endpoints", "FM_true_pre_condition", "public_science", "new_prior_three_window_and_full_science"],
+      "required_action": "verify_resolved_patch_mask_intersection_at_site_then_append_correction_manifest_preserving_original_values_and_hashes",
+      "no_whole_science_invalidation": true,
+      "code_evidence": ["auditory_alignment/model.py:8-12", "auditory_alignment_v2/temporal.py:29-41", "auditory_alignment_v2/train.py:263-284", "auditory_alignment_v3/aln34/private_current_time.py:68-75", "auditory_alignment_v3/aln34/private_current_time_v2.py:75-84", "auditory_alignment_v2/train_fm.py:215-223"]
+    }
+  ],
+  "readout_extensions": [
+    {
+      "id": "SCI35_PRIVATE_HISTORY_INTERFACE",
+      "kind": "versioned_source_only_readout_sensitivity_not_encoder_training",
+      "dataset": "private_bdf", "source": "prior_science", "objective": "NCE", "seeds": [3401], "arms": ["S", "AP", "J*", "XM"], "windows": ["full"],
+      "definitions": {
+        "B0_original": "fixed_source_q0_table_of_six_since_last_deviant_bins",
+        "B1_source_calibrated": "sigmoid(logit(q0(h))+b0)_intercept_only_fit_on_same_source_ES_rows",
+        "EEG_offset": "sigmoid(logit(q0(h))+b+w^Tz)_same_source_ES_rows_original_penalty_and_standardization_recorded",
+        "strict_twin_offset": "same_child_same_history_different_physical_block_nonself_partner_on_common_eligible_rows_no_label_or_error_based_partner_selection"
+      },
+      "reuse_original_predictions_when_exactly_available": true,
+      "source_and_test_rows_for_strict_comparison_must_be_common": true,
+      "keep_original_full_query_results_as_separate_scope": true,
+      "report_metrics": ["B1_minus_B0_logscore_bits", "EEG_minus_B0_logscore_bits", "EEG_minus_B1_logscore_bits", "EEG_minus_strict_twin_logscore_bits", "auc", "nll_bits", "brier"],
+      "coverage_fields": ["n_trials", "n_standard", "n_deviant", "n_history_bins", "n_common_support", "n_strict_twin", "n_fallback_same_block", "n_self_twin", "strict_fraction", "source_ES_class_counts", "query_class_counts", "source_row_hash", "query_row_hash", "twin_map_hash"],
+      "numerical_receipt_fields": ["optimizer_success", "optimizer_message", "objective_finite", "gradient_norm", "tolerance", "retry_reason", "source_rows_unchanged"],
+      "forbidden_inferences": ["exact_CMI", "unique_neural_information", "clinical_improvement_from_calibration_alone"],
+      "if_cache_unavailable": "record_actual_missing_source_dependency_and_recover_only_needed_embeddings_with_frozen_checkpoint_under_existing_GPU_cap"
+    }
+  ],
+  "late_bound_extensions": [
+    {
+      "id": "SCI35_APWRONG_MINIMAL_SCIENCE",
+      "dependency": "matching_target_excluded_donor_and_target_sources_from_ALN35_public_prior_plan",
+      "logical_arm": "APwrong",
+      "do_not_alias_old_XM_to_APwrong": true,
+      "seeds": [3401],
+      "datasets": ["private_bdf", "dtu", "fau"],
+      "required_matching": ["donor_lineage", "target_exclusion", "sample_exposure", "architecture", "audio_target_geometry", "target_training_recipe", "checkpoint_selection_definition", "query_set", "readout_definition"],
+      "minimal_science_extraction": {"private_bdf": ["full", "0_200", "200_400", "400_600"], "public": ["model/env/direct@0/0", "model/env/history_conditional@0/0"]},
+      "first_new_contrasts": ["private_full_AUC_AP_minus_APwrong", "dtu_history_residual_r_AP_minus_APwrong_at0/0", "fau_history_residual_r_AP_minus_APwrong_at0/0"],
+      "family_rule": "one_explicit_separate_dataset_endpoint_family_per_listed_comparison_with_actual_source_hashes_and_real_complete_identity_binding",
+      "do_not_expand_all_time_by_group_grid": true,
+      "unready_dependency_does_not_block_existing_families": true,
+      "execution_ids": "new_ALN35_ids_never_reuse_ALN34_primary_source_identity"
+    }
+  ],
+  "continue_existing_dependencies": {
+    "refresh_real_site_status_before_action": true,
+    "known_snapshot_not_live_status": {"native_public_science": "180/180_complete", "native_private_science_v2": "130/130_complete", "prior_science": "300/300_complete", "original_private_LOO": "120/120_complete"},
+    "incomplete_lane_status_source": "docs/01_BASELINE_AND_INTAKE.md_latest_published_snapshot_then_refresh_actual_site_status_do_not_reuse_earlier_counts",
+    "action": "reuse_completed_compatible_units_continue_only_real_missing_registered_dependencies_and_independent_ready_scopes",
+    "no_reapproval_for_ordinary_scientific_interpretation": true,
+    "no_duplicate_training_for_completed_science": true
+  },
+  "deliverables": ["correction_manifest.json", "binding_manifest.json", "observations.jsonl", "coverage.json", "contrasts.json", "history_interface.json", "SCIENCE_PRIVATE_RESULTS.md"],
+  "final_report_requirements": ["lead_with_supported_auditory_findings", "separate_stable_question_changeable_hypotheses_replaceable_implementations", "report_actual_identity_seed_repetition_and_query_scope", "retain_favorable_and_unfavorable_results", "state_exploratory_origin_and_multiplicity_scope", "state_what_next_result_would_change_the_working_hypothesis", "do_not_end_with_waiting_for_manuscript_framing"]
+}

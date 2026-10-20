@@ -1,0 +1,54 @@
+{
+  "schema_version": "ALN35_MAIN_ENDPOINT_GROUP_PLAN_v1",
+  "status": "exploratory_after_2026_10_18_review_requires_site_binding",
+  "not_direct_cli_input": true,
+  "purpose": "Direct differences of improvements on the original main endpoints; do not substitute science probe r/AUC for these endpoints.",
+  "families": [
+    {
+      "family_id": "S35_MAIN_FAU_APS_GROUP",
+      "dataset": "fau",
+      "source": "public_prior main target-supervised modeT, block core, NCE, original unified readout",
+      "required_seeds": [3401],
+      "arm_contrast": "true_query_risk_S minus true_query_risk_AP",
+      "group_effect_differences": ["HA minus CI", "HA minus TH", "CI minus TH"],
+      "n_contrasts": 3,
+      "bootstrap_seed": 351301,
+      "expected_group_counts_for_inventory_only": {"ha":29,"ci":24,"th":14},
+      "interpretation": "Direct group differences of AP-versus-scratch improvement; cannot identify pure auditory pairing because APwrong is a separate control. Group mean directions were already seen."
+    },
+    {
+      "family_id": "S35_MAIN_FAU_TF_GROUP",
+      "dataset": "fau",
+      "source": "matched true-full one-step LR3e-4 versus same-access L1 and random CB; original unified 5-second retrieval risk",
+      "required_seeds": [3401,3407,3413],
+      "arm_contrasts": ["true_query_risk_L1 minus true_query_risk_CBpre", "true_query_risk_CBrand minus true_query_risk_CBpre"],
+      "group_effect_differences_for_each": ["HA minus CI", "HA minus TH", "CI minus TH"],
+      "n_contrasts": 6,
+      "bootstrap_seed": 351302,
+      "expected_group_counts_for_inventory_only": {"ha":29,"ci":24,"th":14},
+      "interpretation": "FAU is selected because it contains HA, CI and a normal comparison group under one cohort protocol; do not infer architecture-only or treatment effects."
+    },
+    {
+      "family_id": "S35_MAIN_PRIVATE_APS_GROUP",
+      "dataset": "private_bdf",
+      "source": "public_prior main target-supervised modeT NCE original native class endpoint, not science linear probe",
+      "required_seeds": [3401,3407,3413],
+      "arm_contrast": "AUC_AP minus AUC_S",
+      "group_effect_differences": ["HA minus NH"],
+      "n_contrasts": 1,
+      "bootstrap_seed": 351303,
+      "expected_group_counts_for_inventory_only": {"HA":55,"NH":9},
+      "interpretation": "Current-sound task transfer in children. Limited NH precision does not establish equal or unequal benefits."
+    }
+  ],
+  "binding_rules": [
+    "Export actual per-person per-seed values with the same content-fold completeness rule as each primary source.",
+    "Resolve real authorized identity rosters and exact group codes from source manifests; do not create observations from counts.",
+    "Compile group differences as weighted arm terms, preserving same-person pairing and independent group resampling.",
+    "Use B4000 identity bootstrap with fixed original SE max-abs-z for these new explicitly exploratory families; retain old primary estimates/intervals.",
+    "Require matched query sets, access, target coordinates and readout contracts within each family.",
+    "Source aggregation may yield one reported_identity_mean per person and seed only with complete fold provenance; never expand an existing cross-seed mean into seed rows.",
+    "Do not choose group pairs, models or seeds by new outer results; all listed contrasts remain in their family.",
+    "These are CPU analyses of existing outputs. Missing exact source values blocks only the affected family; no automatic new training."
+  ]
+}

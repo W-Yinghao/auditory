@@ -1,0 +1,2348 @@
+{
+  "source_unit": {
+    "config": [
+      "XM",
+      "NCE"
+    ],
+    "design_sha256": "e9b96ac48511f0b8dc583d627ad7e130fd8ff2a45127c0c4054b48848836a276",
+    "id": "ALN34PS_8541bf42a7cee18c",
+    "source": {
+      "content_fold": 0,
+      "dataset": "private_bdf",
+      "experiment_id": "ALN3X_693457493bd49cab",
+      "family_id": "ALN32_PUBLIC_AUDIO_PRIOR_TARGET",
+      "job_kind": "train",
+      "logical_dependencies": [
+        "ALN3X_01f0b9a2dbe53328"
+      ],
+      "registered": "E34_PUBLIC_PRIOR execution record private/auditory_alignment_v3/aln34/E34_PUBLIC_PRIOR_EXECUTION_RECORD.md sha256 07466ebce053d1886baf093510aa8e4990818067d1193f5628152fc46b28af03",
+      "seed": 3401,
+      "seed_scope": "breadth",
+      "spec": {
+        "architecture": "lag_local_tokens",
+        "block": "core",
+        "card": "E34_PUBLIC_PRIOR",
+        "channel_map": "name_indexed_signed_v1",
+        "donor_group": "ALN3X_01f0b9a2dbe53328",
+        "donor_seed": 3401,
+        "epochs": 200,
+        "execution_contract": "aln33_env64_125ms_v1",
+        "fs": 64,
+        "init": "donor",
+        "input_samples": [
+          0,
+          38
+        ],
+        "logical_family": "ALN32_PUBLIC_AUDIO_PRIOR",
+        "manifest_sha256": "b751976b9238590026f26a6fbe6c84177b69802ef9e55e687425af210b627426",
+        "member": "XM",
+        "nce": "contract_lse_mask2s_v1",
+        "objective": "NCE",
+        "private_input": "p64_lp20_z64_v1",
+        "projection_dim": 32,
+        "queue_tier": 1,
+        "readout_seeds": "runner-defined: target_seed + {5, 98, 99, 1000}; bridge rows 20261016; τ pools 20261017",
+        "recipe": "a_local_recipe_on_aln33_v2",
+        "sampler_seed": 3401,
+        "seed_scope": "breadth",
+        "selection": {
+          "primary": "min_es_loss",
+          "sensitivity": "min_es_loss_minus_mismatch"
+        },
+        "split_hash": "d5a2a8d075d00ac3a8f8dcc11be9386eb32e343a68a69c1dccfad35146deffaf",
+        "stage": "target",
+        "target": "current_class",
+        "target_contract": "bab500bf0abbf9d69482b0d210c5f198aaf8649bb94791947faf9c7c4ad92288",
+        "target_seed": 3401,
+        "training_task": "current_class",
+        "variant": "XM",
+        "window": "full"
+      },
+      "status": "registered_extension",
+      "subject_fold": 2
+    }
+  },
+  "arm": "XM",
+  "status": "complete",
+  "seed": 3401,
+  "subject_fold": 2,
+  "source_fits": {
+    "full_query": {
+      "n_source_ES": 7429,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1451
+      },
+      "source_row_hash": "b5f3b85a891c53b3bccd59a88b3692fb90b903d3af599a077ed8243f583acba0",
+      "source_child_ids": [
+        "child2",
+        "child3",
+        "child4",
+        "child6",
+        "child7",
+        "child8",
+        "child11",
+        "child13",
+        "child14",
+        "child15",
+        "child18",
+        "child19",
+        "child21",
+        "child23",
+        "child24",
+        "child25",
+        "child27",
+        "child28",
+        "child29",
+        "child30",
+        "child31",
+        "child32",
+        "child33",
+        "child34",
+        "child35",
+        "child36",
+        "child37",
+        "child39",
+        "child40",
+        "child41",
+        "child42",
+        "child44",
+        "child46",
+        "child47",
+        "child48",
+        "child49",
+        "child51",
+        "child53",
+        "child54",
+        "child55",
+        "child56",
+        "child57",
+        "child58",
+        "child59",
+        "child60",
+        "child61",
+        "child63",
+        "child64",
+        "child66",
+        "child71",
+        "child72"
+      ],
+      "n_ES_children_with_rows": 51,
+      "standardization": "mean/std on same source ES row set; same scaler for EEG and twin",
+      "standardization_sha256": "b64d522f6fa4dd47c566e296ee4ab1b24e689533f184070620cc5c8b031f493f",
+      "strict_source_partner_pool": "source ES rows of same child only",
+      "fits": {
+        "EEG": [
+          {
+            "optimizer_success": true,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "objective_finite": true,
+            "objective": 2506.557029633267,
+            "gradient_norm": 0.004819833291709195,
+            "gradient_maxabs_per_source_row": 2.0407980229302415e-07,
+            "tolerance": {
+              "gradient_maxabs_per_source_row": 1e-07,
+              "maxiter": 5000,
+              "ftol": 1e-12,
+              "gtol": 1e-08,
+              "maxls": 50
+            },
+            "retry_reason": null,
+            "source_rows_unchanged": true,
+            "iterations": 324,
+            "C": 1.0,
+            "objective_definition": "sum logistic NLL + 0.5 * squared slopes; intercept unpenalized"
+          },
+          {
+            "optimizer_success": true,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "objective_finite": true,
+            "objective": 2506.5570295466837,
+            "gradient_norm": 7.753739255996275e-05,
+            "gradient_maxabs_per_source_row": 3.775140120349834e-09,
+            "tolerance": {
+              "gradient_maxabs_per_source_row": 1e-07,
+              "maxiter": 10000,
+              "ftol": 1e-15,
+              "gtol": 1e-10,
+              "maxls": 100
+            },
+            "retry_reason": "source optimizer status/gradient criterion unmet",
+            "source_rows_unchanged": true,
+            "iterations": 98,
+            "C": 1.0,
+            "objective_definition": "sum logistic NLL + 0.5 * squared slopes; intercept unpenalized"
+          }
+        ],
+        "B1": [
+          {
+            "optimizer_success": true,
+            "optimizer_message": "converged",
+            "objective_finite": true,
+            "objective": 2534.155447062744,
+            "gradient_norm": 1.1368683772161603e-13,
+            "gradient_maxabs_per_source_row": 1.5303114513610987e-17,
+            "tolerance": {
+              "xtol": 1e-12,
+              "rtol": 1e-12,
+              "gradient_maxabs_per_source_row": 1e-07
+            },
+            "retry_reason": null,
+            "source_rows_unchanged": true,
+            "iterations": 16,
+            "objective_definition": "sum logistic NLL with history offset; one unpenalized intercept"
+          }
+        ]
+      }
+    },
+    "strict_other_block": {
+      "n_source_ES": 7428,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1450
+      },
+      "source_row_hash": "0f0920b13c08ba1d802d4cee1867ee1b9365fd28dbc80ab6f5591000f4424a79",
+      "source_child_ids": [
+        "child2",
+        "child3",
+        "child4",
+        "child6",
+        "child7",
+        "child8",
+        "child11",
+        "child13",
+        "child14",
+        "child15",
+        "child18",
+        "child19",
+        "child21",
+        "child23",
+        "child24",
+        "child25",
+        "child27",
+        "child28",
+        "child29",
+        "child30",
+        "child31",
+        "child32",
+        "child33",
+        "child34",
+        "child35",
+        "child36",
+        "child37",
+        "child39",
+        "child40",
+        "child41",
+        "child42",
+        "child44",
+        "child46",
+        "child47",
+        "child48",
+        "child49",
+        "child51",
+        "child53",
+        "child54",
+        "child55",
+        "child56",
+        "child57",
+        "child58",
+        "child59",
+        "child60",
+        "child61",
+        "child63",
+        "child64",
+        "child66",
+        "child71",
+        "child72"
+      ],
+      "n_ES_children_with_rows": 51,
+      "standardization": "mean/std on same source ES row set; same scaler for EEG and twin",
+      "standardization_sha256": "41ca7b9b9fdf400ad6656c98564bae42499b55931496e7981e34bec2870ab42f",
+      "strict_source_partner_pool": "source ES rows of same child only",
+      "fits": {
+        "EEG": [
+          {
+            "optimizer_success": true,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "objective_finite": true,
+            "objective": 2506.4242943727468,
+            "gradient_norm": 0.001668817966168949,
+            "gradient_maxabs_per_source_row": 9.903608594907336e-08,
+            "tolerance": {
+              "gradient_maxabs_per_source_row": 1e-07,
+              "maxiter": 5000,
+              "ftol": 1e-12,
+              "gtol": 1e-08,
+              "maxls": 50
+            },
+            "retry_reason": null,
+            "source_rows_unchanged": true,
+            "iterations": 334,
+            "C": 1.0,
+            "objective_definition": "sum logistic NLL + 0.5 * squared slopes; intercept unpenalized"
+          }
+        ],
+        "B1": [
+          {
+            "optimizer_success": true,
+            "optimizer_message": "converged",
+            "objective_finite": true,
+            "objective": 2534.0441331789393,
+            "gradient_norm": 3.694822225952521e-13,
+            "gradient_maxabs_per_source_row": 4.97418177968837e-17,
+            "tolerance": {
+              "xtol": 1e-12,
+              "rtol": 1e-12,
+              "gradient_maxabs_per_source_row": 1e-07
+            },
+            "retry_reason": null,
+            "source_rows_unchanged": true,
+            "iterations": 16,
+            "objective_definition": "sum logistic NLL with history offset; one unpenalized intercept"
+          }
+        ],
+        "strict_twin": [
+          {
+            "optimizer_success": true,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "objective_finite": true,
+            "objective": 2519.135212411481,
+            "gradient_norm": 0.007108656089683808,
+            "gradient_maxabs_per_source_row": 2.7847006325182924e-07,
+            "tolerance": {
+              "gradient_maxabs_per_source_row": 1e-07,
+              "maxiter": 5000,
+              "ftol": 1e-12,
+              "gtol": 1e-08,
+              "maxls": 50
+            },
+            "retry_reason": null,
+            "source_rows_unchanged": true,
+            "iterations": 311,
+            "C": 1.0,
+            "objective_definition": "sum logistic NLL + 0.5 * squared slopes; intercept unpenalized"
+          },
+          {
+            "optimizer_success": true,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "objective_finite": true,
+            "objective": 2519.1352123328847,
+            "gradient_norm": 0.00017703344303004385,
+            "gradient_maxabs_per_source_row": 7.57923449463675e-09,
+            "tolerance": {
+              "gradient_maxabs_per_source_row": 1e-07,
+              "maxiter": 10000,
+              "ftol": 1e-15,
+              "gtol": 1e-10,
+              "maxls": 100
+            },
+            "retry_reason": "source optimizer status/gradient criterion unmet",
+            "source_rows_unchanged": true,
+            "iterations": 112,
+            "C": 1.0,
+            "objective_definition": "sum logistic NLL + 0.5 * squared slopes; intercept unpenalized"
+          }
+        ]
+      }
+    }
+  },
+  "per_participant": {
+    "child0": {
+      "group": "HA",
+      "n_trials": 866,
+      "n_standard": 698,
+      "n_deviant": 168,
+      "n_history_bins": 6,
+      "n_strict_twin": 866,
+      "strict_fraction": 1.0,
+      "n_fallback_same_block": 0,
+      "n_self_twin": 0,
+      "original_twin_same_history_fraction": 1.0,
+      "original_twin_different_block_fraction": 1.0,
+      "original_twin_self_fraction": 0.0,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1451
+      },
+      "query_class_counts": {
+        "standard": 698,
+        "deviant": 168
+      },
+      "scopes": {
+        "full_query": {
+          "all_queries": {
+            "n_trials": 866,
+            "n_standard": 698,
+            "n_deviant": 168,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8443469436485196,
+              "nll_bits": 0.46677498557941227,
+              "brier": 0.10748806728414727
+            },
+            "B1": {
+              "auc": 0.8443469436485196,
+              "nll_bits": 0.46674476862636716,
+              "brier": 0.10740228673412253
+            },
+            "EEG": {
+              "auc": 0.854900054577705,
+              "nll_bits": 0.46129055114876916,
+              "brier": 0.10580654400443905
+            },
+            "B1_minus_B0_logscore_bits": 3.021695304514129e-05,
+            "EEG_minus_B0_logscore_bits": 0.005484434430643183,
+            "EEG_minus_B1_logscore_bits": 0.005454217477598042,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "q0_common_support": {
+            "n_trials": 524,
+            "n_standard": 356,
+            "n_deviant": 168,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6948150749063671,
+              "nll_bits": 0.7700695343293731,
+              "brier": 0.17764104387934235
+            },
+            "B1": {
+              "auc": 0.6948150749063671,
+              "nll_bits": 0.7701308873721115,
+              "brier": 0.17749950465440753
+            },
+            "EEG": {
+              "auc": 0.7155062867843767,
+              "nll_bits": 0.7611411442159915,
+              "brier": 0.17486224085263882
+            },
+            "B1_minus_B0_logscore_bits": -6.135304273823174e-05,
+            "EEG_minus_B0_logscore_bits": 0.008928390113381477,
+            "EEG_minus_B1_logscore_bits": 0.008989743156119712,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "n_common_support": 524,
+          "query_row_hash": "14445b5bf7a40b29bc3f4222633ae5cb7daa9f425e832198091030c1c47ab0e5",
+          "common_query_row_hash": "9156e12f2c38c6ea5c72c80baa044c16f60fd739fa9de0b02d47075236815737",
+          "source_row_hash": "b5f3b85a891c53b3bccd59a88b3692fb90b903d3af599a077ed8243f583acba0",
+          "twin_map_hash": null,
+          "original_full_query_gain_bits": 0.005490118163114636,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately",
+          "difference_from_original_history_gain_bits": -5.6837324714526655e-06
+        },
+        "strict_other_block": {
+          "all_queries": {
+            "n_trials": 866,
+            "n_standard": 698,
+            "n_deviant": 168,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8443469436485196,
+              "nll_bits": 0.46677498557941227,
+              "brier": 0.10748806728414727
+            },
+            "B1": {
+              "auc": 0.8443469436485196,
+              "nll_bits": 0.4667455979308836,
+              "brier": 0.10740239981462586
+            },
+            "EEG": {
+              "auc": 0.8549597489425569,
+              "nll_bits": 0.4612892278870789,
+              "brier": 0.10580519293264773
+            },
+            "strict_twin": {
+              "auc": 0.8405776708964388,
+              "nll_bits": 0.47047981828302043,
+              "brier": 0.10846597849576231
+            },
+            "B1_minus_B0_logscore_bits": 2.938764852869275e-05,
+            "EEG_minus_B0_logscore_bits": 0.005485757692333334,
+            "EEG_minus_B1_logscore_bits": 0.005456370043804641,
+            "EEG_minus_strict_twin_logscore_bits": 0.009190590395941412
+          },
+          "q0_common_support": {
+            "n_trials": 524,
+            "n_standard": 356,
+            "n_deviant": 168,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6948150749063671,
+              "nll_bits": 0.7700695343293731,
+              "brier": 0.17764104387934235
+            },
+            "B1": {
+              "auc": 0.6948150749063671,
+              "nll_bits": 0.7701324147047747,
+              "brier": 0.17749969184661488
+            },
+            "EEG": {
+              "auc": 0.7156233279828785,
+              "nll_bits": 0.7611392423852779,
+              "brier": 0.17486000846696095
+            },
+            "strict_twin": {
+              "auc": 0.6874247592295345,
+              "nll_bits": 0.7762965799954991,
+              "brier": 0.17925738960910373
+            },
+            "B1_minus_B0_logscore_bits": -6.288037540176555e-05,
+            "EEG_minus_B0_logscore_bits": 0.008930291944095262,
+            "EEG_minus_B1_logscore_bits": 0.008993172319497032,
+            "EEG_minus_strict_twin_logscore_bits": 0.015157337610221235
+          },
+          "n_common_support": 524,
+          "query_row_hash": "14445b5bf7a40b29bc3f4222633ae5cb7daa9f425e832198091030c1c47ab0e5",
+          "common_query_row_hash": "9156e12f2c38c6ea5c72c80baa044c16f60fd739fa9de0b02d47075236815737",
+          "source_row_hash": "0f0920b13c08ba1d802d4cee1867ee1b9365fd28dbc80ab6f5591000f4424a79",
+          "twin_map_hash": "fb9181224a5264fe2c664fda515faf765570a706b58c8a551b8af2d1f4fad5d1",
+          "original_full_query_gain_bits": 0.005490118163114636,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately"
+        }
+      }
+    },
+    "child5": {
+      "group": "HA",
+      "n_trials": 985,
+      "n_standard": 789,
+      "n_deviant": 196,
+      "n_history_bins": 6,
+      "n_strict_twin": 985,
+      "strict_fraction": 1.0,
+      "n_fallback_same_block": 0,
+      "n_self_twin": 0,
+      "original_twin_same_history_fraction": 1.0,
+      "original_twin_different_block_fraction": 1.0,
+      "original_twin_self_fraction": 0.0,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1451
+      },
+      "query_class_counts": {
+        "standard": 789,
+        "deviant": 196
+      },
+      "scopes": {
+        "full_query": {
+          "all_queries": {
+            "n_trials": 985,
+            "n_standard": 789,
+            "n_deviant": 196,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8466736504487726,
+              "nll_bits": 0.473133443994599,
+              "brier": 0.10984827205893924
+            },
+            "B1": {
+              "auc": 0.8466736504487726,
+              "nll_bits": 0.47418209585739785,
+              "brier": 0.11008656847992859
+            },
+            "EEG": {
+              "auc": 0.8423605183518275,
+              "nll_bits": 0.4810248696133595,
+              "brier": 0.1119806181133068
+            },
+            "B1_minus_B0_logscore_bits": -0.0010486518627988418,
+            "EEG_minus_B0_logscore_bits": -0.007891425618760398,
+            "EEG_minus_B1_logscore_bits": -0.006842773755961553,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "q0_common_support": {
+            "n_trials": 590,
+            "n_standard": 394,
+            "n_deviant": 196,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6929581477260955,
+              "nll_bits": 0.7884935371531796,
+              "brier": 0.18338925796204233
+            },
+            "B1": {
+              "auc": 0.6929581477260955,
+              "nll_bits": 0.7903590261325403,
+              "brier": 0.18378732791189892
+            },
+            "EEG": {
+              "auc": 0.684320936496426,
+              "nll_bits": 0.8017043622362602,
+              "brier": 0.1869491853750264
+            },
+            "B1_minus_B0_logscore_bits": -0.0018654889793605935,
+            "EEG_minus_B0_logscore_bits": -0.013210825083080515,
+            "EEG_minus_B1_logscore_bits": -0.011345336103719916,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "n_common_support": 590,
+          "query_row_hash": "7ed40d97870e5403ff53852df6c31a9d37960984383a9c6773310e7ae6947ca5",
+          "common_query_row_hash": "73c30be50b682ff7e5c2c8e91e9a27b7868bf506e9c2f4f9ffa237f091808c7f",
+          "source_row_hash": "b5f3b85a891c53b3bccd59a88b3692fb90b903d3af599a077ed8243f583acba0",
+          "twin_map_hash": null,
+          "original_full_query_gain_bits": -0.007874858754708074,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately",
+          "difference_from_original_history_gain_bits": -1.656686405232359e-05
+        },
+        "strict_other_block": {
+          "all_queries": {
+            "n_trials": 985,
+            "n_standard": 789,
+            "n_deviant": 196,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8466736504487726,
+              "nll_bits": 0.473133443994599,
+              "brier": 0.10984827205893924
+            },
+            "B1": {
+              "auc": 0.8466736504487726,
+              "nll_bits": 0.4741845047150615,
+              "brier": 0.11008714930064083
+            },
+            "EEG": {
+              "auc": 0.8422570549132201,
+              "nll_bits": 0.4810569314999795,
+              "brier": 0.11199010871262943
+            },
+            "strict_twin": {
+              "auc": 0.8497452212824294,
+              "nll_bits": 0.47459820824262,
+              "brier": 0.1101515602368388
+            },
+            "B1_minus_B0_logscore_bits": -0.0010510607204624394,
+            "EEG_minus_B0_logscore_bits": -0.007923487505380461,
+            "EEG_minus_B1_logscore_bits": -0.0068724267849180195,
+            "EEG_minus_strict_twin_logscore_bits": -0.006458723257359486
+          },
+          "q0_common_support": {
+            "n_trials": 590,
+            "n_standard": 394,
+            "n_deviant": 196,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6929581477260955,
+              "nll_bits": 0.7884935371531796,
+              "brier": 0.18338925796204233
+            },
+            "B1": {
+              "auc": 0.6929581477260955,
+              "nll_bits": 0.7903632093690341,
+              "brier": 0.1837882979055028
+            },
+            "EEG": {
+              "auc": 0.6841137470216512,
+              "nll_bits": 0.8017577240221362,
+              "brier": 0.18696502944498544
+            },
+            "strict_twin": {
+              "auc": 0.6991090852584689,
+              "nll_bits": 0.7910358797277707,
+              "brier": 0.18389572356560296
+            },
+            "B1_minus_B0_logscore_bits": -0.0018696722158545356,
+            "EEG_minus_B0_logscore_bits": -0.01326418686895653,
+            "EEG_minus_B1_logscore_bits": -0.011394514653102,
+            "EEG_minus_strict_twin_logscore_bits": -0.010721844294365394
+          },
+          "n_common_support": 590,
+          "query_row_hash": "7ed40d97870e5403ff53852df6c31a9d37960984383a9c6773310e7ae6947ca5",
+          "common_query_row_hash": "73c30be50b682ff7e5c2c8e91e9a27b7868bf506e9c2f4f9ffa237f091808c7f",
+          "source_row_hash": "0f0920b13c08ba1d802d4cee1867ee1b9365fd28dbc80ab6f5591000f4424a79",
+          "twin_map_hash": "fdc98de7d25d05e1e1aef062a0ee07fc058b1937f102f8ff10a935d36d2cfc2e",
+          "original_full_query_gain_bits": -0.007874858754708074,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately"
+        }
+      }
+    },
+    "child16": {
+      "group": "NH",
+      "n_trials": 961,
+      "n_standard": 770,
+      "n_deviant": 191,
+      "n_history_bins": 6,
+      "n_strict_twin": 961,
+      "strict_fraction": 1.0,
+      "n_fallback_same_block": 0,
+      "n_self_twin": 0,
+      "original_twin_same_history_fraction": 1.0,
+      "original_twin_different_block_fraction": 1.0,
+      "original_twin_self_fraction": 0.0,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1451
+      },
+      "query_class_counts": {
+        "standard": 770,
+        "deviant": 191
+      },
+      "scopes": {
+        "full_query": {
+          "all_queries": {
+            "n_trials": 961,
+            "n_standard": 770,
+            "n_deviant": 191,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8445706126334398,
+              "nll_bits": 0.4739434081659557,
+              "brier": 0.10986108447968153
+            },
+            "B1": {
+              "auc": 0.8445706126334398,
+              "nll_bits": 0.4748385625007168,
+              "brier": 0.11004465023572631
+            },
+            "EEG": {
+              "auc": 0.8391922213911743,
+              "nll_bits": 0.4804201498377291,
+              "brier": 0.11118097326382682
+            },
+            "B1_minus_B0_logscore_bits": -0.0008951543347611263,
+            "EEG_minus_B0_logscore_bits": -0.006476741671773326,
+            "EEG_minus_B1_logscore_bits": -0.005581587337012198,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "q0_common_support": {
+            "n_trials": 579,
+            "n_standard": 388,
+            "n_deviant": 191,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6915447724941977,
+              "nll_bits": 0.7852539873699795,
+              "brier": 0.1823413586094008
+            },
+            "B1": {
+              "auc": 0.6915447724941977,
+              "nll_bits": 0.7868527558048004,
+              "brier": 0.18264626574832676
+            },
+            "EEG": {
+              "auc": 0.6808711610082583,
+              "nll_bits": 0.796130877890156,
+              "brier": 0.1845322610081154
+            },
+            "B1_minus_B0_logscore_bits": -0.0015987684348208538,
+            "EEG_minus_B0_logscore_bits": -0.010876890520176525,
+            "EEG_minus_B1_logscore_bits": -0.009278122085355668,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "n_common_support": 579,
+          "query_row_hash": "4835e2cfeed7009eb3752dc0cdde8544adcfa20940a7e77e03bdbf9672596eac",
+          "common_query_row_hash": "6f5e69c3e3ad38f7a886e046ab736853eda25a7c1eef9227cb89dc1360c41aea",
+          "source_row_hash": "b5f3b85a891c53b3bccd59a88b3692fb90b903d3af599a077ed8243f583acba0",
+          "twin_map_hash": null,
+          "original_full_query_gain_bits": -0.0064625136175435385,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately",
+          "difference_from_original_history_gain_bits": -1.4228054229787138e-05
+        },
+        "strict_other_block": {
+          "all_queries": {
+            "n_trials": 961,
+            "n_standard": 770,
+            "n_deviant": 191,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8445706126334398,
+              "nll_bits": 0.4739434081659557,
+              "brier": 0.10986108447968153
+            },
+            "B1": {
+              "auc": 0.8445706126334398,
+              "nll_bits": 0.47484074822025657,
+              "brier": 0.1100451515810628
+            },
+            "EEG": {
+              "auc": 0.8390970286258245,
+              "nll_bits": 0.4804274071010713,
+              "brier": 0.11118139132454985
+            },
+            "strict_twin": {
+              "auc": 0.8451213707758211,
+              "nll_bits": 0.47596204472409226,
+              "brier": 0.1103131685002096
+            },
+            "B1_minus_B0_logscore_bits": -0.0008973400543008048,
+            "EEG_minus_B0_logscore_bits": -0.006483998935115559,
+            "EEG_minus_B1_logscore_bits": -0.005586658880814753,
+            "EEG_minus_strict_twin_logscore_bits": -0.004465362376979014
+          },
+          "q0_common_support": {
+            "n_trials": 579,
+            "n_standard": 388,
+            "n_deviant": 191,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6915447724941977,
+              "nll_bits": 0.7852539873699795,
+              "brier": 0.1823413586094008
+            },
+            "B1": {
+              "auc": 0.6915447724941977,
+              "nll_bits": 0.7868565427819235,
+              "brier": 0.18264709817368613
+            },
+            "EEG": {
+              "auc": 0.6806822475306309,
+              "nll_bits": 0.7961431267162172,
+              "brier": 0.18453295520601132
+            },
+            "strict_twin": {
+              "auc": 0.6926377719004697,
+              "nll_bits": 0.788696932135674,
+              "brier": 0.18309186731805543
+            },
+            "B1_minus_B0_logscore_bits": -0.001602555411944068,
+            "EEG_minus_B0_logscore_bits": -0.010889139346237791,
+            "EEG_minus_B1_logscore_bits": -0.009286583934293722,
+            "EEG_minus_strict_twin_logscore_bits": -0.007446194580543326
+          },
+          "n_common_support": 579,
+          "query_row_hash": "4835e2cfeed7009eb3752dc0cdde8544adcfa20940a7e77e03bdbf9672596eac",
+          "common_query_row_hash": "6f5e69c3e3ad38f7a886e046ab736853eda25a7c1eef9227cb89dc1360c41aea",
+          "source_row_hash": "0f0920b13c08ba1d802d4cee1867ee1b9365fd28dbc80ab6f5591000f4424a79",
+          "twin_map_hash": "541f5465b455d007e3d4f18ee9412923d9f24b1c582116029fc6648f3bcb4fc9",
+          "original_full_query_gain_bits": -0.0064625136175435385,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately"
+        }
+      }
+    },
+    "child17": {
+      "group": "HA",
+      "n_trials": 737,
+      "n_standard": 595,
+      "n_deviant": 142,
+      "n_history_bins": 6,
+      "n_strict_twin": 737,
+      "strict_fraction": 1.0,
+      "n_fallback_same_block": 0,
+      "n_self_twin": 0,
+      "original_twin_same_history_fraction": 1.0,
+      "original_twin_different_block_fraction": 1.0,
+      "original_twin_self_fraction": 0.0,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1451
+      },
+      "query_class_counts": {
+        "standard": 595,
+        "deviant": 142
+      },
+      "scopes": {
+        "full_query": {
+          "all_queries": {
+            "n_trials": 737,
+            "n_standard": 595,
+            "n_deviant": 142,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8371996685998343,
+              "nll_bits": 0.47246954019571913,
+              "brier": 0.10890122914504438
+            },
+            "B1": {
+              "auc": 0.8371996685998343,
+              "nll_bits": 0.47241622908348724,
+              "brier": 0.10880573868401912
+            },
+            "EEG": {
+              "auc": 0.8334477452953012,
+              "nll_bits": 0.47701124595525857,
+              "brier": 0.10982017243008162
+            },
+            "B1_minus_B0_logscore_bits": 5.3311112231936796e-05,
+            "EEG_minus_B0_logscore_bits": -0.004541705759539309,
+            "EEG_minus_B1_logscore_bits": -0.004595016871771245,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "q0_common_support": {
+            "n_trials": 448,
+            "n_standard": 306,
+            "n_deviant": 142,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6834438000552333,
+              "nll_bits": 0.7758965450922697,
+              "brier": 0.17915077809263197
+            },
+            "B1": {
+              "auc": 0.6834438000552333,
+              "nll_bits": 0.7759202765876612,
+              "brier": 0.17899391848112822
+            },
+            "EEG": {
+              "auc": 0.6761483936297523,
+              "nll_bits": 0.7833871398961572,
+              "brier": 0.1806624750984384
+            },
+            "B1_minus_B0_logscore_bits": -2.373149539125634e-05,
+            "EEG_minus_B0_logscore_bits": -0.007490594803887326,
+            "EEG_minus_B1_logscore_bits": -0.007466863308496068,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "n_common_support": 448,
+          "query_row_hash": "d2a11c931f4ca19d3998308b5b7beb89d53624d9403e06c56d7938ca9e075fe5",
+          "common_query_row_hash": "345213a146e3aac4a0ebd9ab5f7dbea5fb3820f66877217362c84cac4a90dfb7",
+          "source_row_hash": "b5f3b85a891c53b3bccd59a88b3692fb90b903d3af599a077ed8243f583acba0",
+          "twin_map_hash": null,
+          "original_full_query_gain_bits": -0.004552713125892615,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately",
+          "difference_from_original_history_gain_bits": 1.1007366353305709e-05
+        },
+        "strict_other_block": {
+          "all_queries": {
+            "n_trials": 737,
+            "n_standard": 595,
+            "n_deviant": 142,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8371996685998343,
+              "nll_bits": 0.47246954019571913,
+              "brier": 0.10890122914504438
+            },
+            "B1": {
+              "auc": 0.8371996685998343,
+              "nll_bits": 0.4724170316814475,
+              "brier": 0.10880583986460779
+            },
+            "EEG": {
+              "auc": 0.8335305953367262,
+              "nll_bits": 0.4770225379539485,
+              "brier": 0.10982244161912086
+            },
+            "strict_twin": {
+              "auc": 0.833453663155403,
+              "nll_bits": 0.4772856706074345,
+              "brier": 0.10997867068083027
+            },
+            "B1_minus_B0_logscore_bits": 5.2508514271752305e-05,
+            "EEG_minus_B0_logscore_bits": -0.00455299775822935,
+            "EEG_minus_B1_logscore_bits": -0.004605506272501105,
+            "EEG_minus_strict_twin_logscore_bits": 0.0002631326534859776
+          },
+          "q0_common_support": {
+            "n_trials": 448,
+            "n_standard": 306,
+            "n_deviant": 142,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6834438000552333,
+              "nll_bits": 0.7758965450922697,
+              "brier": 0.17915077809263197
+            },
+            "B1": {
+              "auc": 0.6834438000552333,
+              "nll_bits": 0.7759217538966064,
+              "brier": 0.17899408524333488
+            },
+            "EEG": {
+              "auc": 0.6763094909325233,
+              "nll_bits": 0.783406012820243,
+              "brier": 0.18066620873612219
+            },
+            "strict_twin": {
+              "auc": 0.6761599005799503,
+              "nll_bits": 0.7839381483526565,
+              "brier": 0.18092345501085763
+            },
+            "B1_minus_B0_logscore_bits": -2.5208804336746787e-05,
+            "EEG_minus_B0_logscore_bits": -0.0075094677279732265,
+            "EEG_minus_B1_logscore_bits": -0.0074842589236364795,
+            "EEG_minus_strict_twin_logscore_bits": 0.0005321355324133942
+          },
+          "n_common_support": 448,
+          "query_row_hash": "d2a11c931f4ca19d3998308b5b7beb89d53624d9403e06c56d7938ca9e075fe5",
+          "common_query_row_hash": "345213a146e3aac4a0ebd9ab5f7dbea5fb3820f66877217362c84cac4a90dfb7",
+          "source_row_hash": "0f0920b13c08ba1d802d4cee1867ee1b9365fd28dbc80ab6f5591000f4424a79",
+          "twin_map_hash": "50725deaace94717c1c8e30b51a6db93cc4d2e2c2d8585f757f6ee83964a96dd",
+          "original_full_query_gain_bits": -0.004552713125892615,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately"
+        }
+      }
+    },
+    "child26": {
+      "group": "HA",
+      "n_trials": 960,
+      "n_standard": 767,
+      "n_deviant": 193,
+      "n_history_bins": 6,
+      "n_strict_twin": 960,
+      "strict_fraction": 1.0,
+      "n_fallback_same_block": 0,
+      "n_self_twin": 0,
+      "original_twin_same_history_fraction": 1.0,
+      "original_twin_different_block_fraction": 1.0,
+      "original_twin_self_fraction": 0.0,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1451
+      },
+      "query_class_counts": {
+        "standard": 767,
+        "deviant": 193
+      },
+      "scopes": {
+        "full_query": {
+          "all_queries": {
+            "n_trials": 960,
+            "n_standard": 767,
+            "n_deviant": 193,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8429788355141828,
+              "nll_bits": 0.477837667150377,
+              "brier": 0.1110799709636432
+            },
+            "B1": {
+              "auc": 0.8429788355141828,
+              "nll_bits": 0.47895946444748677,
+              "brier": 0.11131320856508538
+            },
+            "EEG": {
+              "auc": 0.836378866588755,
+              "nll_bits": 0.4872295475795916,
+              "brier": 0.11359898213792195
+            },
+            "B1_minus_B0_logscore_bits": -0.0011217972971097636,
+            "EEG_minus_B0_logscore_bits": -0.009391880429214544,
+            "EEG_minus_B1_logscore_bits": -0.008270083132104781,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "q0_common_support": {
+            "n_trials": 578,
+            "n_standard": 385,
+            "n_deviant": 193,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6871812125698136,
+              "nll_bits": 0.7922624872972501,
+              "brier": 0.18449120900422916
+            },
+            "B1": {
+              "auc": 0.6871812125698136,
+              "nll_bits": 0.794238746259965,
+              "brier": 0.18487882542090858
+            },
+            "EEG": {
+              "auc": 0.6740327030482471,
+              "nll_bits": 0.8079743867328189,
+              "brier": 0.18867519701267907
+            },
+            "B1_minus_B0_logscore_bits": -0.0019762589627148473,
+            "EEG_minus_B0_logscore_bits": -0.01571189943556875,
+            "EEG_minus_B1_logscore_bits": -0.013735640472853902,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "n_common_support": 578,
+          "query_row_hash": "6a313c524403feb1e05ba524136bc88687f7c84564b7f4357cfb446ef09bfd4d",
+          "common_query_row_hash": "2bf54d08fa395c8f76de2b5f42c8a5707ed3a0febb602621db91407f0f93c53e",
+          "source_row_hash": "b5f3b85a891c53b3bccd59a88b3692fb90b903d3af599a077ed8243f583acba0",
+          "twin_map_hash": null,
+          "original_full_query_gain_bits": -0.009389446816439847,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately",
+          "difference_from_original_history_gain_bits": -2.4336127746969055e-06
+        },
+        "strict_other_block": {
+          "all_queries": {
+            "n_trials": 960,
+            "n_standard": 767,
+            "n_deviant": 193,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8429788355141828,
+              "nll_bits": 0.477837667150377,
+              "brier": 0.1110799709636432
+            },
+            "B1": {
+              "auc": 0.8429788355141828,
+              "nll_bits": 0.4789619844767485,
+              "brier": 0.11131378176476746
+            },
+            "EEG": {
+              "auc": 0.8364329093230471,
+              "nll_bits": 0.48724888290618756,
+              "brier": 0.11360415208578857
+            },
+            "strict_twin": {
+              "auc": 0.8516932264187906,
+              "nll_bits": 0.4758999113087263,
+              "brier": 0.11067246746506108
+            },
+            "B1_minus_B0_logscore_bits": -0.001124317326371485,
+            "EEG_minus_B0_logscore_bits": -0.00941121575581052,
+            "EEG_minus_B1_logscore_bits": -0.008286898429439034,
+            "EEG_minus_strict_twin_logscore_bits": -0.011348971597461285
+          },
+          "q0_common_support": {
+            "n_trials": 578,
+            "n_standard": 385,
+            "n_deviant": 193,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6871812125698136,
+              "nll_bits": 0.7922624872972501,
+              "brier": 0.18449120900422916
+            },
+            "B1": {
+              "auc": 0.6871812125698136,
+              "nll_bits": 0.7942430910397404,
+              "brier": 0.18487977776111092
+            },
+            "EEG": {
+              "auc": 0.674140367404616,
+              "nll_bits": 0.8080066451157526,
+              "brier": 0.18868378393488272
+            },
+            "strict_twin": {
+              "auc": 0.704542090034318,
+              "nll_bits": 0.789178232890492,
+              "brier": 0.18381460847694034
+            },
+            "B1_minus_B0_logscore_bits": -0.0019806037424903696,
+            "EEG_minus_B0_logscore_bits": -0.015744157818502476,
+            "EEG_minus_B1_logscore_bits": -0.013763554076012105,
+            "EEG_minus_strict_twin_logscore_bits": -0.01882841222526041
+          },
+          "n_common_support": 578,
+          "query_row_hash": "6a313c524403feb1e05ba524136bc88687f7c84564b7f4357cfb446ef09bfd4d",
+          "common_query_row_hash": "2bf54d08fa395c8f76de2b5f42c8a5707ed3a0febb602621db91407f0f93c53e",
+          "source_row_hash": "0f0920b13c08ba1d802d4cee1867ee1b9365fd28dbc80ab6f5591000f4424a79",
+          "twin_map_hash": "7cdddd6e95963f75f5d6682c29228da2e48b8153c3b7e474e114fc867dafedba",
+          "original_full_query_gain_bits": -0.009389446816439847,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately"
+        }
+      }
+    },
+    "child43": {
+      "group": "HA",
+      "n_trials": 960,
+      "n_standard": 773,
+      "n_deviant": 187,
+      "n_history_bins": 6,
+      "n_strict_twin": 960,
+      "strict_fraction": 1.0,
+      "n_fallback_same_block": 0,
+      "n_self_twin": 0,
+      "original_twin_same_history_fraction": 1.0,
+      "original_twin_different_block_fraction": 1.0,
+      "original_twin_self_fraction": 0.0,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1451
+      },
+      "query_class_counts": {
+        "standard": 773,
+        "deviant": 187
+      },
+      "scopes": {
+        "full_query": {
+          "all_queries": {
+            "n_trials": 960,
+            "n_standard": 773,
+            "n_deviant": 187,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8472822740762775,
+              "nll_bits": 0.46763234399154674,
+              "brier": 0.10832494684644738
+            },
+            "B1": {
+              "auc": 0.8472822740762775,
+              "nll_bits": 0.46848321843148155,
+              "brier": 0.10852548910555908
+            },
+            "EEG": {
+              "auc": 0.8544527536993864,
+              "nll_bits": 0.4660893776252791,
+              "brier": 0.10787009327308514
+            },
+            "B1_minus_B0_logscore_bits": -0.0008508744399348165,
+            "EEG_minus_B0_logscore_bits": 0.001542966366267696,
+            "EEG_minus_B1_logscore_bits": 0.0023938408062025135,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "q0_common_support": {
+            "n_trials": 571,
+            "n_standard": 384,
+            "n_deviant": 187,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6925760360962567,
+              "nll_bits": 0.7847925558518393,
+              "brier": 0.18212098264282872
+            },
+            "B1": {
+              "auc": 0.6925760360962567,
+              "nll_bits": 0.7863395703869797,
+              "brier": 0.18245838553322996
+            },
+            "EEG": {
+              "auc": 0.707010360962567,
+              "nll_bits": 0.7822735966952852,
+              "brier": 0.18135631611612585
+            },
+            "B1_minus_B0_logscore_bits": -0.0015470145351402674,
+            "EEG_minus_B0_logscore_bits": 0.0025189591565542603,
+            "EEG_minus_B1_logscore_bits": 0.004065973691694527,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "n_common_support": 571,
+          "query_row_hash": "3f0c1f8fe3f34dd9e09ec558c95ae2bfb714a4ea42c99fdb253d9fbd1a334b3a",
+          "common_query_row_hash": "40f10ec2724d3766074d0e62ddda1aae3b8b44ad30d64446af1e9e6450f5c411",
+          "source_row_hash": "b5f3b85a891c53b3bccd59a88b3692fb90b903d3af599a077ed8243f583acba0",
+          "twin_map_hash": null,
+          "original_full_query_gain_bits": 0.001537510502957247,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately",
+          "difference_from_original_history_gain_bits": 5.455863310449083e-06
+        },
+        "strict_other_block": {
+          "all_queries": {
+            "n_trials": 960,
+            "n_standard": 773,
+            "n_deviant": 187,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8472822740762775,
+              "nll_bits": 0.46763234399154674,
+              "brier": 0.10832494684644738
+            },
+            "B1": {
+              "auc": 0.8472822740762775,
+              "nll_bits": 0.46848533127737774,
+              "brier": 0.10852601497043232
+            },
+            "EEG": {
+              "auc": 0.8544458357257991,
+              "nll_bits": 0.4660990839645425,
+              "brier": 0.10787251786609531
+            },
+            "strict_twin": {
+              "auc": 0.8483580189690835,
+              "nll_bits": 0.47047410599817174,
+              "brier": 0.10924784922430127
+            },
+            "B1_minus_B0_logscore_bits": -0.0008529872858309336,
+            "EEG_minus_B0_logscore_bits": 0.001533260027004306,
+            "EEG_minus_B1_logscore_bits": 0.0023862473128352397,
+            "EEG_minus_strict_twin_logscore_bits": 0.004375022033629274
+          },
+          "q0_common_support": {
+            "n_trials": 571,
+            "n_standard": 384,
+            "n_deviant": 187,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6925760360962567,
+              "nll_bits": 0.7847925558518393,
+              "brier": 0.18212098264282872
+            },
+            "B1": {
+              "auc": 0.6925760360962567,
+              "nll_bits": 0.7863432866944625,
+              "brier": 0.1824592699715987
+            },
+            "EEG": {
+              "auc": 0.7069964349376114,
+              "nll_bits": 0.7822900349631471,
+              "brier": 0.1813603927624494
+            },
+            "strict_twin": {
+              "auc": 0.6947415329768272,
+              "nll_bits": 0.7896676118781079,
+              "brier": 0.1836727924563587
+            },
+            "B1_minus_B0_logscore_bits": -0.0015507308426232177,
+            "EEG_minus_B0_logscore_bits": 0.0025025208886921306,
+            "EEG_minus_B1_logscore_bits": 0.0040532517313153485,
+            "EEG_minus_strict_twin_logscore_bits": 0.007377576914960561
+          },
+          "n_common_support": 571,
+          "query_row_hash": "3f0c1f8fe3f34dd9e09ec558c95ae2bfb714a4ea42c99fdb253d9fbd1a334b3a",
+          "common_query_row_hash": "40f10ec2724d3766074d0e62ddda1aae3b8b44ad30d64446af1e9e6450f5c411",
+          "source_row_hash": "0f0920b13c08ba1d802d4cee1867ee1b9365fd28dbc80ab6f5591000f4424a79",
+          "twin_map_hash": "55bbafdd14c24622d324cddd36f4a3429a2f6a6e5ca8d8a33a3f5cad85b766e6",
+          "original_full_query_gain_bits": 0.001537510502957247,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately"
+        }
+      }
+    },
+    "child50": {
+      "group": "HA",
+      "n_trials": 723,
+      "n_standard": 578,
+      "n_deviant": 145,
+      "n_history_bins": 6,
+      "n_strict_twin": 723,
+      "strict_fraction": 1.0,
+      "n_fallback_same_block": 0,
+      "n_self_twin": 0,
+      "original_twin_same_history_fraction": 1.0,
+      "original_twin_different_block_fraction": 1.0,
+      "original_twin_self_fraction": 0.0,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1451
+      },
+      "query_class_counts": {
+        "standard": 578,
+        "deviant": 145
+      },
+      "scopes": {
+        "full_query": {
+          "all_queries": {
+            "n_trials": 723,
+            "n_standard": 578,
+            "n_deviant": 145,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8421847034960028,
+              "nll_bits": 0.48085551223902745,
+              "brier": 0.11235419290708906
+            },
+            "B1": {
+              "auc": 0.8421847034960028,
+              "nll_bits": 0.48243370719422685,
+              "brier": 0.11271024599985673
+            },
+            "EEG": {
+              "auc": 0.843049755399117,
+              "nll_bits": 0.4845527069149844,
+              "brier": 0.11341300298174416
+            },
+            "B1_minus_B0_logscore_bits": -0.0015781949551994065,
+            "EEG_minus_B0_logscore_bits": -0.0036971946759569744,
+            "EEG_minus_B1_logscore_bits": -0.0021189997207575672,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "q0_common_support": {
+            "n_trials": 431,
+            "n_standard": 286,
+            "n_deviant": 145,
+            "status": "complete",
+            "B0": {
+              "auc": 0.681058596575838,
+              "nll_bits": 0.8052074936648951,
+              "brier": 0.1884719688472985
+            },
+            "B1": {
+              "auc": 0.681058596575838,
+              "nll_bits": 0.8079718213699544,
+              "brier": 0.18906948771340787
+            },
+            "EEG": {
+              "auc": 0.6828068483240897,
+              "nll_bits": 0.8116076201142428,
+              "brier": 0.19024843727595353
+            },
+            "B1_minus_B0_logscore_bits": -0.0027643277050590884,
+            "EEG_minus_B0_logscore_bits": -0.006400126449347542,
+            "EEG_minus_B1_logscore_bits": -0.0036357987442884516,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "n_common_support": 431,
+          "query_row_hash": "429a38bff1c431cbbcc7cd8ae6f66e8fcc60c97e6552a51abf9ec2bcf1d91c78",
+          "common_query_row_hash": "abeae5540eb820464bdf6ccdddd4c1f415385f26b8fec4d01d853945e8be1522",
+          "source_row_hash": "b5f3b85a891c53b3bccd59a88b3692fb90b903d3af599a077ed8243f583acba0",
+          "twin_map_hash": null,
+          "original_full_query_gain_bits": -0.0036889834228605654,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately",
+          "difference_from_original_history_gain_bits": -8.211253096409004e-06
+        },
+        "strict_other_block": {
+          "all_queries": {
+            "n_trials": 723,
+            "n_standard": 578,
+            "n_deviant": 145,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8421847034960028,
+              "nll_bits": 0.48085551223902745,
+              "brier": 0.11235419290708906
+            },
+            "B1": {
+              "auc": 0.8421847034960028,
+              "nll_bits": 0.48243689046316796,
+              "brier": 0.11271099291697702
+            },
+            "EEG": {
+              "auc": 0.8430855506502803,
+              "nll_bits": 0.4845312837763368,
+              "brier": 0.11340769490094636
+            },
+            "strict_twin": {
+              "auc": 0.8377878534781054,
+              "nll_bits": 0.4851716968076765,
+              "brier": 0.11342644289486485
+            },
+            "B1_minus_B0_logscore_bits": -0.0015813782241404241,
+            "EEG_minus_B0_logscore_bits": -0.0036757715373094023,
+            "EEG_minus_B1_logscore_bits": -0.0020943933131689807,
+            "EEG_minus_strict_twin_logscore_bits": 0.0006404130313396049
+          },
+          "q0_common_support": {
+            "n_trials": 431,
+            "n_standard": 286,
+            "n_deviant": 145,
+            "status": "complete",
+            "B0": {
+              "auc": 0.681058596575838,
+              "nll_bits": 0.8052074936648951,
+              "brier": 0.1884719688472985
+            },
+            "B1": {
+              "auc": 0.681058596575838,
+              "nll_bits": 0.8079773259703692,
+              "brier": 0.18907074098867732
+            },
+            "EEG": {
+              "auc": 0.6828791897757415,
+              "nll_bits": 0.8115720917967588,
+              "brier": 0.19023953385901288
+            },
+            "strict_twin": {
+              "auc": 0.6721726549312756,
+              "nll_bits": 0.8125411006970196,
+              "brier": 0.19027082353458832
+            },
+            "B1_minus_B0_logscore_bits": -0.002769832305474074,
+            "EEG_minus_B0_logscore_bits": -0.00636459813186357,
+            "EEG_minus_B1_logscore_bits": -0.0035947658263895004,
+            "EEG_minus_strict_twin_logscore_bits": 0.000969008900260893
+          },
+          "n_common_support": 431,
+          "query_row_hash": "429a38bff1c431cbbcc7cd8ae6f66e8fcc60c97e6552a51abf9ec2bcf1d91c78",
+          "common_query_row_hash": "abeae5540eb820464bdf6ccdddd4c1f415385f26b8fec4d01d853945e8be1522",
+          "source_row_hash": "0f0920b13c08ba1d802d4cee1867ee1b9365fd28dbc80ab6f5591000f4424a79",
+          "twin_map_hash": "96b62872581d6f2facd385e0dbc4b905d62ac5fa92b50619afc798c2ad64fbf3",
+          "original_full_query_gain_bits": -0.0036889834228605654,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately"
+        }
+      }
+    },
+    "child52": {
+      "group": "HA",
+      "n_trials": 987,
+      "n_standard": 791,
+      "n_deviant": 196,
+      "n_history_bins": 6,
+      "n_strict_twin": 987,
+      "strict_fraction": 1.0,
+      "n_fallback_same_block": 0,
+      "n_self_twin": 0,
+      "original_twin_same_history_fraction": 1.0,
+      "original_twin_different_block_fraction": 1.0,
+      "original_twin_self_fraction": 0.0,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1451
+      },
+      "query_class_counts": {
+        "standard": 791,
+        "deviant": 196
+      },
+      "scopes": {
+        "full_query": {
+          "all_queries": {
+            "n_trials": 987,
+            "n_standard": 791,
+            "n_deviant": 196,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8482384736448308,
+              "nll_bits": 0.47106782200398534,
+              "brier": 0.10913919175863705
+            },
+            "B1": {
+              "auc": 0.8482384736448308,
+              "nll_bits": 0.47188653023989063,
+              "brier": 0.10932094610206651
+            },
+            "EEG": {
+              "auc": 0.8564462447431563,
+              "nll_bits": 0.4691500959982068,
+              "brier": 0.10884646652810773
+            },
+            "B1_minus_B0_logscore_bits": -0.0008187082359053028,
+            "EEG_minus_B0_logscore_bits": 0.0019177260057785489,
+            "EEG_minus_B1_logscore_bits": 0.002736434241683852,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "q0_common_support": {
+            "n_trials": 593,
+            "n_standard": 397,
+            "n_deviant": 196,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6976237598313885,
+              "nll_bits": 0.7826685385811112,
+              "brier": 0.1816517741470513
+            },
+            "B1": {
+              "auc": 0.6976237598313885,
+              "nll_bits": 0.7841448844904041,
+              "brier": 0.18195452280618715
+            },
+            "EEG": {
+              "auc": 0.7139772785688583,
+              "nll_bits": 0.7795682130134023,
+              "brier": 0.1811646503141505
+            },
+            "B1_minus_B0_logscore_bits": -0.0014763459092929064,
+            "EEG_minus_B0_logscore_bits": 0.0031003255677089212,
+            "EEG_minus_B1_logscore_bits": 0.0045766714770018296,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "n_common_support": 593,
+          "query_row_hash": "5e8a2bd34288cdcb45d02359cbfe2dd81d35439a7b8853475e6fa60ff1ce182c",
+          "common_query_row_hash": "90289a0002ee171da7841c8fa194ab3126a5b86a6af0aad7ded837e1126b1020",
+          "source_row_hash": "b5f3b85a891c53b3bccd59a88b3692fb90b903d3af599a077ed8243f583acba0",
+          "twin_map_hash": null,
+          "original_full_query_gain_bits": 0.0019207502571369388,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately",
+          "difference_from_original_history_gain_bits": -3.024251358389957e-06
+        },
+        "strict_other_block": {
+          "all_queries": {
+            "n_trials": 987,
+            "n_standard": 791,
+            "n_deviant": 196,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8482384736448308,
+              "nll_bits": 0.47106782200398534,
+              "brier": 0.10913919175863705
+            },
+            "B1": {
+              "auc": 0.8482384736448308,
+              "nll_bits": 0.471888604044739,
+              "brier": 0.10932144687722122
+            },
+            "EEG": {
+              "auc": 0.8565236461209009,
+              "nll_bits": 0.4691486486152451,
+              "brier": 0.10884552023190044
+            },
+            "strict_twin": {
+              "auc": 0.8442265022317397,
+              "nll_bits": 0.47649645845155425,
+              "brier": 0.11045709950713586
+            },
+            "B1_minus_B0_logscore_bits": -0.0008207820407536406,
+            "EEG_minus_B0_logscore_bits": 0.001919173388740246,
+            "EEG_minus_B1_logscore_bits": 0.0027399554294938863,
+            "EEG_minus_strict_twin_logscore_bits": 0.0073478098363091784
+          },
+          "q0_common_support": {
+            "n_trials": 593,
+            "n_standard": 397,
+            "n_deviant": 196,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6976237598313885,
+              "nll_bits": 0.7826685385811112,
+              "brier": 0.1816517741470513
+            },
+            "B1": {
+              "auc": 0.6976237598313885,
+              "nll_bits": 0.7841484962877295,
+              "brier": 0.18195535662021534
+            },
+            "EEG": {
+              "auc": 0.7141314964272863,
+              "nll_bits": 0.7795661606352954,
+              "brier": 0.18116307608492938
+            },
+            "strict_twin": {
+              "auc": 0.6896301341695368,
+              "nll_bits": 0.7917760196854088,
+              "brier": 0.18384541493676287
+            },
+            "B1_minus_B0_logscore_bits": -0.0014799577066184515,
+            "EEG_minus_B0_logscore_bits": 0.003102377945815743,
+            "EEG_minus_B1_logscore_bits": 0.004582335652434193,
+            "EEG_minus_strict_twin_logscore_bits": 0.012209859050113394
+          },
+          "n_common_support": 593,
+          "query_row_hash": "5e8a2bd34288cdcb45d02359cbfe2dd81d35439a7b8853475e6fa60ff1ce182c",
+          "common_query_row_hash": "90289a0002ee171da7841c8fa194ab3126a5b86a6af0aad7ded837e1126b1020",
+          "source_row_hash": "0f0920b13c08ba1d802d4cee1867ee1b9365fd28dbc80ab6f5591000f4424a79",
+          "twin_map_hash": "14619e9f31960391d73df8254502219254172eef77f91fe881a4ac618e087eb5",
+          "original_full_query_gain_bits": 0.0019207502571369388,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately"
+        }
+      }
+    },
+    "child62": {
+      "group": "HA",
+      "n_trials": 915,
+      "n_standard": 727,
+      "n_deviant": 188,
+      "n_history_bins": 6,
+      "n_strict_twin": 915,
+      "strict_fraction": 1.0,
+      "n_fallback_same_block": 0,
+      "n_self_twin": 0,
+      "original_twin_same_history_fraction": 1.0,
+      "original_twin_different_block_fraction": 1.0,
+      "original_twin_self_fraction": 0.0,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1451
+      },
+      "query_class_counts": {
+        "standard": 727,
+        "deviant": 188
+      },
+      "scopes": {
+        "full_query": {
+          "all_queries": {
+            "n_trials": 915,
+            "n_standard": 727,
+            "n_deviant": 188,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8410328075155843,
+              "nll_bits": 0.4855769614476832,
+              "brier": 0.11287825146163802
+            },
+            "B1": {
+              "auc": 0.8410328075155843,
+              "nll_bits": 0.4865998767558753,
+              "brier": 0.1130815591335923
+            },
+            "EEG": {
+              "auc": 0.8434984927858585,
+              "nll_bits": 0.4864413103219653,
+              "brier": 0.11295064696224293
+            },
+            "B1_minus_B0_logscore_bits": -0.0010229153081920891,
+            "EEG_minus_B0_logscore_bits": -0.000864348874282074,
+            "EEG_minus_B1_logscore_bits": 0.00015856643391001557,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "q0_common_support": {
+            "n_trials": 561,
+            "n_standard": 373,
+            "n_deviant": 188,
+            "status": "complete",
+            "B0": {
+              "auc": 0.690163139581313,
+              "nll_bits": 0.7906762773192427,
+              "brier": 0.18410484562413193
+            },
+            "B1": {
+              "auc": 0.690163139581313,
+              "nll_bits": 0.7924519592037561,
+              "brier": 0.18443666282180474
+            },
+            "EEG": {
+              "auc": 0.6949689122126519,
+              "nll_bits": 0.7921174624906943,
+              "brier": 0.18422291114916187
+            },
+            "B1_minus_B0_logscore_bits": -0.0017756818845133528,
+            "EEG_minus_B0_logscore_bits": -0.0014411851714514038,
+            "EEG_minus_B1_logscore_bits": 0.00033449671306194943,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "n_common_support": 561,
+          "query_row_hash": "648c7c5961c854207e067a9722296b93726fd0b074acd79da4f825b42be2a3d9",
+          "common_query_row_hash": "19b54107a63846d32038a9ba6f41a95833d7a39cadeb871b12ebc8898f5a8fbe",
+          "source_row_hash": "b5f3b85a891c53b3bccd59a88b3692fb90b903d3af599a077ed8243f583acba0",
+          "twin_map_hash": null,
+          "original_full_query_gain_bits": -0.0008634506484354368,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately",
+          "difference_from_original_history_gain_bits": -8.982258466371179e-07
+        },
+        "strict_other_block": {
+          "all_queries": {
+            "n_trials": 915,
+            "n_standard": 727,
+            "n_deviant": 188,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8410328075155843,
+              "nll_bits": 0.4855769614476832,
+              "brier": 0.11287825146163802
+            },
+            "B1": {
+              "auc": 0.8410328075155843,
+              "nll_bits": 0.4866022695906643,
+              "brier": 0.11308209478757379
+            },
+            "EEG": {
+              "auc": 0.8436155579618952,
+              "nll_bits": 0.4864096806565595,
+              "brier": 0.11294206231499998
+            },
+            "strict_twin": {
+              "auc": 0.8491176212356228,
+              "nll_bits": 0.48368092173848354,
+              "brier": 0.1125359478770837
+            },
+            "B1_minus_B0_logscore_bits": -0.001025308142981196,
+            "EEG_minus_B0_logscore_bits": -0.0008327192088763235,
+            "EEG_minus_B1_logscore_bits": 0.00019258893410487236,
+            "EEG_minus_strict_twin_logscore_bits": -0.002728758918075954
+          },
+          "q0_common_support": {
+            "n_trials": 561,
+            "n_standard": 373,
+            "n_deviant": 188,
+            "status": "complete",
+            "B0": {
+              "auc": 0.690163139581313,
+              "nll_bits": 0.7906762773192427,
+              "brier": 0.18410484562413193
+            },
+            "B1": {
+              "auc": 0.690163139581313,
+              "nll_bits": 0.7924560130842031,
+              "brier": 0.18443753677750466
+            },
+            "EEG": {
+              "auc": 0.6951970794592436,
+              "nll_bits": 0.792065869669926,
+              "brier": 0.18420890937082415
+            },
+            "strict_twin": {
+              "auc": 0.705920940049056,
+              "nll_bits": 0.7876385800584793,
+              "brier": 0.18354662041997583
+            },
+            "B1_minus_B0_logscore_bits": -0.0017797357649604105,
+            "EEG_minus_B0_logscore_bits": -0.0013895923506831772,
+            "EEG_minus_B1_logscore_bits": 0.0003901434142772339,
+            "EEG_minus_strict_twin_logscore_bits": -0.00442728961144662
+          },
+          "n_common_support": 561,
+          "query_row_hash": "648c7c5961c854207e067a9722296b93726fd0b074acd79da4f825b42be2a3d9",
+          "common_query_row_hash": "19b54107a63846d32038a9ba6f41a95833d7a39cadeb871b12ebc8898f5a8fbe",
+          "source_row_hash": "0f0920b13c08ba1d802d4cee1867ee1b9365fd28dbc80ab6f5591000f4424a79",
+          "twin_map_hash": "6268f269b28f374e4a6698b11dac6b8eb5ad15b0f0945fafffafe326ada71c70",
+          "original_full_query_gain_bits": -0.0008634506484354368,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately"
+        }
+      }
+    },
+    "child65": {
+      "group": "HA",
+      "n_trials": 961,
+      "n_standard": 770,
+      "n_deviant": 191,
+      "n_history_bins": 6,
+      "n_strict_twin": 961,
+      "strict_fraction": 1.0,
+      "n_fallback_same_block": 0,
+      "n_self_twin": 0,
+      "original_twin_same_history_fraction": 1.0,
+      "original_twin_different_block_fraction": 1.0,
+      "original_twin_self_fraction": 0.0,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1451
+      },
+      "query_class_counts": {
+        "standard": 770,
+        "deviant": 191
+      },
+      "scopes": {
+        "full_query": {
+          "all_queries": {
+            "n_trials": 961,
+            "n_standard": 770,
+            "n_deviant": 191,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8469844291833821,
+              "nll_bits": 0.4748735880412574,
+              "brier": 0.11057562139983068
+            },
+            "B1": {
+              "auc": 0.8469844291833821,
+              "nll_bits": 0.4763609997268844,
+              "brier": 0.11095334238369599
+            },
+            "EEG": {
+              "auc": 0.8519208540150949,
+              "nll_bits": 0.4771177837112609,
+              "brier": 0.11066481505182071
+            },
+            "B1_minus_B0_logscore_bits": -0.0014874116856269741,
+            "EEG_minus_B0_logscore_bits": -0.0022441956700034915,
+            "EEG_minus_B1_logscore_bits": -0.0007567839843765166,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "q0_common_support": {
+            "n_trials": 572,
+            "n_standard": 381,
+            "n_deviant": 191,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6907559329952866,
+              "nll_bits": 0.7963999820974403,
+              "brier": 0.18577325143836937
+            },
+            "B1": {
+              "auc": 0.6907559329952866,
+              "nll_bits": 0.7990155260358656,
+              "brier": 0.1864080889348942
+            },
+            "EEG": {
+              "auc": 0.7007324346236824,
+              "nll_bits": 0.800404811729507,
+              "brier": 0.18592349580444856
+            },
+            "B1_minus_B0_logscore_bits": -0.002615543938425241,
+            "EEG_minus_B0_logscore_bits": -0.004004829632066685,
+            "EEG_minus_B1_logscore_bits": -0.0013892856936414458,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "n_common_support": 572,
+          "query_row_hash": "87ceff14e06998ddefa3cc47a5b799481cfb091835e239bbd626cf40f14fffd9",
+          "common_query_row_hash": "3590faf156470a9e32df18b32d8445c8b4b8ac36a23fd9f9d39f6139c894f791",
+          "source_row_hash": "b5f3b85a891c53b3bccd59a88b3692fb90b903d3af599a077ed8243f583acba0",
+          "twin_map_hash": null,
+          "original_full_query_gain_bits": -0.0022318810047742,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately",
+          "difference_from_original_history_gain_bits": -1.2314665229291605e-05
+        },
+        "strict_other_block": {
+          "all_queries": {
+            "n_trials": 961,
+            "n_standard": 770,
+            "n_deviant": 191,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8469844291833821,
+              "nll_bits": 0.4748735880412574,
+              "brier": 0.11057562139983068
+            },
+            "B1": {
+              "auc": 0.8469844291833821,
+              "nll_bits": 0.4763640482410787,
+              "brier": 0.11095412328648638
+            },
+            "EEG": {
+              "auc": 0.8519412524648127,
+              "nll_bits": 0.47711917915557683,
+              "brier": 0.11066418420412237
+            },
+            "strict_twin": {
+              "auc": 0.8507037465152647,
+              "nll_bits": 0.4765298657329463,
+              "brier": 0.11063296057974877
+            },
+            "B1_minus_B0_logscore_bits": -0.001490460199821235,
+            "EEG_minus_B0_logscore_bits": -0.002245591114319374,
+            "EEG_minus_B1_logscore_bits": -0.0007551309144981406,
+            "EEG_minus_strict_twin_logscore_bits": -0.0005893134226304997
+          },
+          "q0_common_support": {
+            "n_trials": 572,
+            "n_standard": 381,
+            "n_deviant": 191,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6907559329952866,
+              "nll_bits": 0.7963999820974403,
+              "brier": 0.18577325143836937
+            },
+            "B1": {
+              "auc": 0.6907559329952866,
+              "nll_bits": 0.7990208119781184,
+              "brier": 0.18640940122957408
+            },
+            "EEG": {
+              "auc": 0.7007736598370229,
+              "nll_bits": 0.8004075364018644,
+              "brier": 0.18592243657998356
+            },
+            "strict_twin": {
+              "auc": 0.698272663561034,
+              "nll_bits": 0.7993627523336663,
+              "brier": 0.18586991844323467
+            },
+            "B1_minus_B0_logscore_bits": -0.002620829880678033,
+            "EEG_minus_B0_logscore_bits": -0.0040075543044240025,
+            "EEG_minus_B1_logscore_bits": -0.0013867244237459704,
+            "EEG_minus_strict_twin_logscore_bits": -0.0010447840681981097
+          },
+          "n_common_support": 572,
+          "query_row_hash": "87ceff14e06998ddefa3cc47a5b799481cfb091835e239bbd626cf40f14fffd9",
+          "common_query_row_hash": "3590faf156470a9e32df18b32d8445c8b4b8ac36a23fd9f9d39f6139c894f791",
+          "source_row_hash": "0f0920b13c08ba1d802d4cee1867ee1b9365fd28dbc80ab6f5591000f4424a79",
+          "twin_map_hash": "3decfbd7c9637f0bd0550c89db09996c5875a74c9eeef42c41cfce805c506741",
+          "original_full_query_gain_bits": -0.0022318810047742,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately"
+        }
+      }
+    },
+    "child68": {
+      "group": "NH",
+      "n_trials": 711,
+      "n_standard": 572,
+      "n_deviant": 139,
+      "n_history_bins": 6,
+      "n_strict_twin": 711,
+      "strict_fraction": 1.0,
+      "n_fallback_same_block": 0,
+      "n_self_twin": 0,
+      "original_twin_same_history_fraction": 1.0,
+      "original_twin_different_block_fraction": 1.0,
+      "original_twin_self_fraction": 0.0,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1451
+      },
+      "query_class_counts": {
+        "standard": 572,
+        "deviant": 139
+      },
+      "scopes": {
+        "full_query": {
+          "all_queries": {
+            "n_trials": 711,
+            "n_standard": 572,
+            "n_deviant": 139,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8471223021582734,
+              "nll_bits": 0.47045506212193394,
+              "brier": 0.10924115186761567
+            },
+            "B1": {
+              "auc": 0.8471223021582734,
+              "nll_bits": 0.4717966511647814,
+              "brier": 0.10959187251545362
+            },
+            "EEG": {
+              "auc": 0.8676233838104341,
+              "nll_bits": 0.4592534589357197,
+              "brier": 0.10618894963242259
+            },
+            "B1_minus_B0_logscore_bits": -0.0013415890428475233,
+            "EEG_minus_B0_logscore_bits": 0.011201603186214177,
+            "EEG_minus_B1_logscore_bits": 0.0125431922290617,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "q0_common_support": {
+            "n_trials": 422,
+            "n_standard": 283,
+            "n_deviant": 139,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6910033810407503,
+              "nll_bits": 0.7912102346311765,
+              "brier": 0.18405168917266695
+            },
+            "B1": {
+              "auc": 0.6910033810407503,
+              "nll_bits": 0.7935878060647185,
+              "brier": 0.1846428360739
+            },
+            "EEG": {
+              "auc": 0.7324401962528917,
+              "nll_bits": 0.772457404948873,
+              "brier": 0.1789094090895382
+            },
+            "B1_minus_B0_logscore_bits": -0.0023775714335419213,
+            "EEG_minus_B0_logscore_bits": 0.018752829682303452,
+            "EEG_minus_B1_logscore_bits": 0.021130401115845375,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "n_common_support": 422,
+          "query_row_hash": "74f05f3765687af7d4811058c7afad79bbaffa34aa31a34037adc9fd20a98d4c",
+          "common_query_row_hash": "47d8b6f35064e95e816727af22bef80e654b774316f16b62fde03517819eb8a0",
+          "source_row_hash": "b5f3b85a891c53b3bccd59a88b3692fb90b903d3af599a077ed8243f583acba0",
+          "twin_map_hash": null,
+          "original_full_query_gain_bits": 0.011194171277895112,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately",
+          "difference_from_original_history_gain_bits": 7.431908319064512e-06
+        },
+        "strict_other_block": {
+          "all_queries": {
+            "n_trials": 711,
+            "n_standard": 572,
+            "n_deviant": 139,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8471223021582734,
+              "nll_bits": 0.47045506212193394,
+              "brier": 0.10924115186761567
+            },
+            "B1": {
+              "auc": 0.8471223021582734,
+              "nll_bits": 0.4717994806550236,
+              "brier": 0.10959261352440616
+            },
+            "EEG": {
+              "auc": 0.8675856517583136,
+              "nll_bits": 0.45925196620846204,
+              "brier": 0.10618753872026768
+            },
+            "strict_twin": {
+              "auc": 0.8449715751874026,
+              "nll_bits": 0.47519535304613164,
+              "brier": 0.11035981775457918
+            },
+            "B1_minus_B0_logscore_bits": -0.0013444185330896813,
+            "EEG_minus_B0_logscore_bits": 0.011203095913471892,
+            "EEG_minus_B1_logscore_bits": 0.012547514446561577,
+            "EEG_minus_strict_twin_logscore_bits": 0.015943386837669552
+          },
+          "q0_common_support": {
+            "n_trials": 422,
+            "n_standard": 283,
+            "n_deviant": 139,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6910033810407503,
+              "nll_bits": 0.7912102346311765,
+              "brier": 0.18405168917266695
+            },
+            "B1": {
+              "auc": 0.6910033810407503,
+              "nll_bits": 0.7935927383964353,
+              "brier": 0.18464408487574185
+            },
+            "EEG": {
+              "auc": 0.7323639321758142,
+              "nll_bits": 0.7724551827965078,
+              "brier": 0.1789070324262238
+            },
+            "strict_twin": {
+              "auc": 0.6866563286473294,
+              "nll_bits": 0.7993197991520913,
+              "brier": 0.18593665182765604
+            },
+            "B1_minus_B0_logscore_bits": -0.0023825037652588595,
+            "EEG_minus_B0_logscore_bits": 0.018755051834668482,
+            "EEG_minus_B1_logscore_bits": 0.021137555599927343,
+            "EEG_minus_strict_twin_logscore_bits": 0.02686461635558316
+          },
+          "n_common_support": 422,
+          "query_row_hash": "74f05f3765687af7d4811058c7afad79bbaffa34aa31a34037adc9fd20a98d4c",
+          "common_query_row_hash": "47d8b6f35064e95e816727af22bef80e654b774316f16b62fde03517819eb8a0",
+          "source_row_hash": "0f0920b13c08ba1d802d4cee1867ee1b9365fd28dbc80ab6f5591000f4424a79",
+          "twin_map_hash": "a542d45d4178da5093d6b51fc160ec2266f9e01b6f48edddac7ddf4162075326",
+          "original_full_query_gain_bits": 0.011194171277895112,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately"
+        }
+      }
+    },
+    "child69": {
+      "group": "HA",
+      "n_trials": 941,
+      "n_standard": 753,
+      "n_deviant": 188,
+      "n_history_bins": 6,
+      "n_strict_twin": 941,
+      "strict_fraction": 1.0,
+      "n_fallback_same_block": 0,
+      "n_self_twin": 0,
+      "original_twin_same_history_fraction": 1.0,
+      "original_twin_different_block_fraction": 1.0,
+      "original_twin_self_fraction": 0.0,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1451
+      },
+      "query_class_counts": {
+        "standard": 753,
+        "deviant": 188
+      },
+      "scopes": {
+        "full_query": {
+          "all_queries": {
+            "n_trials": 941,
+            "n_standard": 753,
+            "n_deviant": 188,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8462956683902687,
+              "nll_bits": 0.4762673955668067,
+              "brier": 0.11089993918557713
+            },
+            "B1": {
+              "auc": 0.8462956683902687,
+              "nll_bits": 0.47760480924244275,
+              "brier": 0.11123191640072094
+            },
+            "EEG": {
+              "auc": 0.8498064479669973,
+              "nll_bits": 0.4790720455758532,
+              "brier": 0.11152217465822206
+            },
+            "B1_minus_B0_logscore_bits": -0.001337413675636045,
+            "EEG_minus_B0_logscore_bits": -0.002804650009046527,
+            "EEG_minus_B1_logscore_bits": -0.001467236333410482,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "q0_common_support": {
+            "n_trials": 562,
+            "n_standard": 374,
+            "n_deviant": 188,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6905364660370918,
+              "nll_bits": 0.7960442759397731,
+              "brier": 0.1856868239452246
+            },
+            "B1": {
+              "auc": 0.6905364660370918,
+              "nll_bits": 0.7983990628710477,
+              "brier": 0.1862429162397199
+            },
+            "EEG": {
+              "auc": 0.6976049607463876,
+              "nll_bits": 0.8008676426387925,
+              "brier": 0.18672885816199744
+            },
+            "B1_minus_B0_logscore_bits": -0.0023547869312744683,
+            "EEG_minus_B0_logscore_bits": -0.004823366699019385,
+            "EEG_minus_B1_logscore_bits": -0.0024685797677449165,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "n_common_support": 562,
+          "query_row_hash": "a57e795d8896ed973e0c90af222e2d6db17d5a1ead24d4a8def2a42729430717",
+          "common_query_row_hash": "d0eb2b466b076c0ade7f379eaf3ffbc6c0e1a0fe866c807258b33a433ac10da5",
+          "source_row_hash": "b5f3b85a891c53b3bccd59a88b3692fb90b903d3af599a077ed8243f583acba0",
+          "twin_map_hash": null,
+          "original_full_query_gain_bits": -0.002797472711933964,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately",
+          "difference_from_original_history_gain_bits": -7.177297112562989e-06
+        },
+        "strict_other_block": {
+          "all_queries": {
+            "n_trials": 941,
+            "n_standard": 753,
+            "n_deviant": 188,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8462956683902687,
+              "nll_bits": 0.4762673955668067,
+              "brier": 0.11089993918557713
+            },
+            "B1": {
+              "auc": 0.8462956683902687,
+              "nll_bits": 0.47760764362240565,
+              "brier": 0.11123263386676167
+            },
+            "EEG": {
+              "auc": 0.8497852561385664,
+              "nll_bits": 0.47910011193067964,
+              "brier": 0.11152846541695662
+            },
+            "strict_twin": {
+              "auc": 0.8386030346698312,
+              "nll_bits": 0.48499187587917797,
+              "brier": 0.11296969774772059
+            },
+            "B1_minus_B0_logscore_bits": -0.001340248055598994,
+            "EEG_minus_B0_logscore_bits": -0.0028327163638729347,
+            "EEG_minus_B1_logscore_bits": -0.0014924683082739405,
+            "EEG_minus_strict_twin_logscore_bits": 0.005891763948498401
+          },
+          "q0_common_support": {
+            "n_trials": 562,
+            "n_standard": 374,
+            "n_deviant": 188,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6905364660370918,
+              "nll_bits": 0.7960442759397731,
+              "brier": 0.1856868239452246
+            },
+            "B1": {
+              "auc": 0.6905364660370918,
+              "nll_bits": 0.7984039713168494,
+              "brier": 0.18624411786836406
+            },
+            "EEG": {
+              "auc": 0.6975622937763113,
+              "nll_bits": 0.8009148770717929,
+              "brier": 0.18673939168722917
+            },
+            "strict_twin": {
+              "auc": 0.6750483558994197,
+              "nll_bits": 0.8107809004143053,
+              "brier": 0.1891526015435185
+            },
+            "B1_minus_B0_logscore_bits": -0.0023596953770761682,
+            "EEG_minus_B0_logscore_bits": -0.004870601132019682,
+            "EEG_minus_B1_logscore_bits": -0.002510905754943512,
+            "EEG_minus_strict_twin_logscore_bits": 0.009866023342512485
+          },
+          "n_common_support": 562,
+          "query_row_hash": "a57e795d8896ed973e0c90af222e2d6db17d5a1ead24d4a8def2a42729430717",
+          "common_query_row_hash": "d0eb2b466b076c0ade7f379eaf3ffbc6c0e1a0fe866c807258b33a433ac10da5",
+          "source_row_hash": "0f0920b13c08ba1d802d4cee1867ee1b9365fd28dbc80ab6f5591000f4424a79",
+          "twin_map_hash": "35f67398e7b17797cb7f0eb323d0dfd9106a109af9bedbf3e9829f54cdb122f7",
+          "original_full_query_gain_bits": -0.002797472711933964,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately"
+        }
+      }
+    },
+    "child70": {
+      "group": "HA",
+      "n_trials": 776,
+      "n_standard": 618,
+      "n_deviant": 158,
+      "n_history_bins": 6,
+      "n_strict_twin": 776,
+      "strict_fraction": 1.0,
+      "n_fallback_same_block": 0,
+      "n_self_twin": 0,
+      "original_twin_same_history_fraction": 1.0,
+      "original_twin_different_block_fraction": 1.0,
+      "original_twin_self_fraction": 0.0,
+      "source_ES_class_counts": {
+        "standard": 5978,
+        "deviant": 1451
+      },
+      "query_class_counts": {
+        "standard": 618,
+        "deviant": 158
+      },
+      "scopes": {
+        "full_query": {
+          "all_queries": {
+            "n_trials": 776,
+            "n_standard": 618,
+            "n_deviant": 158,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8361445659743558,
+              "nll_bits": 0.48964374969012797,
+              "brier": 0.11398260247579212
+            },
+            "B1": {
+              "auc": 0.8361445659743558,
+              "nll_bits": 0.49112143477154147,
+              "brier": 0.11433079264666247
+            },
+            "EEG": {
+              "auc": 0.8436667895620826,
+              "nll_bits": 0.48847013531460903,
+              "brier": 0.11361851641090347
+            },
+            "B1_minus_B0_logscore_bits": -0.0014776850814133251,
+            "EEG_minus_B0_logscore_bits": 0.0011736143755189622,
+            "EEG_minus_B1_logscore_bits": 0.002651299456932289,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "q0_common_support": {
+            "n_trials": 475,
+            "n_standard": 317,
+            "n_deviant": 158,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6805594377670408,
+              "nll_bits": 0.7985990562499025,
+              "brier": 0.1862101563553836
+            },
+            "B1": {
+              "auc": 0.6805594377670408,
+              "nll_bits": 0.8011217849060019,
+              "brier": 0.18677921269469366
+            },
+            "EEG": {
+              "auc": 0.6952242143513158,
+              "nll_bits": 0.7967709354934902,
+              "brier": 0.1856154681449818
+            },
+            "B1_minus_B0_logscore_bits": -0.0025227286560994037,
+            "EEG_minus_B0_logscore_bits": 0.0018281207564123392,
+            "EEG_minus_B1_logscore_bits": 0.004350849412511743,
+            "EEG_minus_strict_twin_logscore_bits": null
+          },
+          "n_common_support": 475,
+          "query_row_hash": "cee5d369e1b3370392302dbc355964a97de208f78adb39de2a92d1d94c1a765c",
+          "common_query_row_hash": "e9322ae77cba0f1ae6fde0b14253c8514ce508e50ef87e6569640169bd007121",
+          "source_row_hash": "b5f3b85a891c53b3bccd59a88b3692fb90b903d3af599a077ed8243f583acba0",
+          "twin_map_hash": null,
+          "original_full_query_gain_bits": 0.0011805181219664356,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately",
+          "difference_from_original_history_gain_bits": -6.903746447473437e-06
+        },
+        "strict_other_block": {
+          "all_queries": {
+            "n_trials": 776,
+            "n_standard": 618,
+            "n_deviant": 158,
+            "status": "complete",
+            "B0": {
+              "auc": 0.8361445659743558,
+              "nll_bits": 0.48964374969012797,
+              "brier": 0.11398260247579212
+            },
+            "B1": {
+              "auc": 0.8361445659743558,
+              "nll_bits": 0.49112449229974625,
+              "brier": 0.11433153630529182
+            },
+            "EEG": {
+              "auc": 0.8436770308467494,
+              "nll_bits": 0.4884959084965664,
+              "brier": 0.11362450433043451
+            },
+            "strict_twin": {
+              "auc": 0.8330875425013313,
+              "nll_bits": 0.4943546662595193,
+              "brier": 0.11512169826510071
+            },
+            "B1_minus_B0_logscore_bits": -0.0014807426096182636,
+            "EEG_minus_B0_logscore_bits": 0.0011478411935616352,
+            "EEG_minus_B1_logscore_bits": 0.0026285838031798988,
+            "EEG_minus_strict_twin_logscore_bits": 0.0058587577629528285
+          },
+          "q0_common_support": {
+            "n_trials": 475,
+            "n_standard": 317,
+            "n_deviant": 158,
+            "status": "complete",
+            "B0": {
+              "auc": 0.6805594377670408,
+              "nll_bits": 0.7985990562499025,
+              "brier": 0.1862101563553836
+            },
+            "B1": {
+              "auc": 0.6805594377670408,
+              "nll_bits": 0.8011269329960583,
+              "brier": 0.18678042789949328
+            },
+            "EEG": {
+              "auc": 0.6952441800103821,
+              "nll_bits": 0.7968132300910399,
+              "brier": 0.18562525088821644
+            },
+            "strict_twin": {
+              "auc": 0.6745996885357186,
+              "nll_bits": 0.8064259507117523,
+              "brier": 0.18807131428503376
+            },
+            "B1_minus_B0_logscore_bits": -0.00252787674615594,
+            "EEG_minus_B0_logscore_bits": 0.0017858261588625539,
+            "EEG_minus_B1_logscore_bits": 0.004313702905018493,
+            "EEG_minus_strict_twin_logscore_bits": 0.00961272062071232
+          },
+          "n_common_support": 475,
+          "query_row_hash": "cee5d369e1b3370392302dbc355964a97de208f78adb39de2a92d1d94c1a765c",
+          "common_query_row_hash": "e9322ae77cba0f1ae6fde0b14253c8514ce508e50ef87e6569640169bd007121",
+          "source_row_hash": "0f0920b13c08ba1d802d4cee1867ee1b9365fd28dbc80ab6f5591000f4424a79",
+          "twin_map_hash": "20e72a76f8ef9ddc1a594565301bb9500b3169d125c4acfbd0467fc4dad88b38",
+          "original_full_query_gain_bits": 0.0011805181219664356,
+          "readout_reexecution": "new source-convergence-checked fit; original reported values retained separately"
+        }
+      }
+    }
+  },
+  "source_checkpoint_sha256": "5e23b4229fa53282ae68532c55c2c33849be34e27722f751e64dab50bb011045",
+  "cache_array_sha256": "2e5afdb61969ede3bb49847f51015fffde79e2622afb1547b09623e4fbfe469b",
+  "strict_source_es_twin_map_hash": "53698092a81e66d57d9ce3103c32a026e69fe01ee6b409a8157a27178d24941d",
+  "strict_query_twin_map_hash": "97d6e2231e94ebb67ec89dbba42fcdf437e391fe086c0290e683c6c9f1570a4f",
+  "source_and_query_labels_never_used_for_partner_choice": true,
+  "source_record_sha256": "cd110c5cc06d86c66c6ad3daf4d4fb92559655bf523e45648d325297eec1f141",
+  "source_record": "private/auditory_alignment_v3/aln34/prior_science_v1/units/ALN34PS_8541bf42a7cee18c.json",
+  "plan_sha256": "7fb9019f8c6943e944c01b32941b2ec226388bacafbb9b57420c60aa3806b5e2"
+}

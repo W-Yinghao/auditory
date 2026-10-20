@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --job-name=c3_s35ordercpu
+#SBATCH --partition=CPU
+#SBATCH --qos=normal
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=8G
+#SBATCH --time=02:00:00
+#SBATCH --output=private/auditory_alignment_v3/aln35/attention-%j.log
+set -euo pipefail
+umask 077
+cd "$SLURM_SUBMIT_DIR"
+export PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=$PWD OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+PY=/home/infres/yinwang/anaconda3/envs/eeg2025/bin/python
+"$PY" -B -m pytest -q -p no:cacheprovider tests/auditory_alignment_v3/aln35/test_attention_sensitivity.py
+"$PY" -B -u -m auditory_alignment_v3.aln35.attention_sensitivity

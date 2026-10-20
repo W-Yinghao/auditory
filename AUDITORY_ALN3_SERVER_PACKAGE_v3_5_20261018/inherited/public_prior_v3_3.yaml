@@ -1,0 +1,116 @@
+version: ALN3.3
+status: author_decisions_ready_for_server_binding
+base_commit: a3eb744411e79e780c83acf8a5d07be135e8241b
+logical_family: ALN32_PUBLIC_AUDIO_PRIOR
+execution_contract: aln33_env64_125ms_v1
+cohorts:
+- fau
+- dtu
+- federici
+- private_bdf
+cohort_cells:
+  fau:
+    subject_folds: 5
+    content_folds: 2
+  dtu:
+    subject_folds: 5
+    content_folds: 2
+  federici:
+    subject_folds: 5
+    content_folds: 1
+  private_bdf:
+    subject_folds: 5
+    content_folds: 1
+donor_sources:
+- sparrkulee
+- fau
+- dtu
+- federici
+donor_policy: exclude_entire_target_cohort_and_any_overlapping_target_identity_or_content
+phantom_training: false
+data_contract:
+  eeg_hz: 64
+  query_step_ms: 20
+  query_indexing: round_from_physical_origin_no_accumulated_stride_drift
+  input_window_seconds:
+  - 0
+  - 0.6
+  target_hz: 64
+  target_duration_ms: 125
+  target_samples: 8
+  target_band_hz:
+  - 2
+  - 8
+  target_origin: waveform_recomputed_or_author_cache_origin_recorded
+  projection_dim: 32
+  target_coordinates: one_source_fit_standardizer_and_one_fixed_projection_shared_by_all_cohorts
+  projection_seed: 20261016
+  private_target: current_class_with_new_task_head
+variants:
+- target_from_scratch
+- audio_pair_pretrain
+- cross_person_pretrain
+- joint_pretrain
+objectives:
+- NCE
+- CS_SINGLE
+breadth_seed: 3401
+channel_map:
+  type: name_indexed_signed
+  aliases:
+    T3: T7
+    T4: T8
+    T5: P7
+    T6: P8
+  source_unseen_zero_shot: zero_contribution_report_coverage
+  target_supervised_new_channels: explicit_new_parameters
+cross_person:
+  positive_keys:
+  - cohort
+  - content_id
+  - presentation_id
+  - condition
+  - attended_stream
+  - time_tick
+  different_participant: true
+  same_eligible_anchor_pool_for_core_variants: true
+  nce_neighbor_exclusion_ms: 2000
+  cs_product_marginals: full_kernel_formula_no_nce_negative_mask
+  match_two_eeg_views_per_anchor: true
+source_sound_bridge:
+  applies_to:
+  - audio_pair_pretrain
+  - cross_person_pretrain
+  - joint_pretrain
+  fit: donor_fit_only
+  calibrate: donor_development_only
+  frozen_on_target_zero_shot: true
+  cross_person_uses_source_audio_for_bridge: true
+  scratch_uses_common_sound_statistics_but_no_source_eeg_training: true
+modes:
+  target_supervised: all_4_variants_same_target_contract
+  zero_shot: 3_pretrained_variants_public_targets_only
+  unlabeled_covariance_adaptation: deferred_separate_definition_not_core
+  zero_shot_normalization: declare_existing_target_preprocessing; no_target_supervised_fit;
+    source_statistics_only_variant_if_supported
+budget:
+  rule: equal_updates_and_eligible_anchor_exposure
+  initial_epoch_equivalent: 30
+  hard_cap: false
+  joint_reports_extra_compute: true
+  continue_when_donor_dev_improves: same_registered_rule_without_target_test_peeking
+rich_target_track:
+  status: parallel_nonblocking
+  targets:
+  - spectral_structure
+  - spectral_change
+  missing_target: masked_not_fabricated
+  same_envelope_core_first: true
+selection:
+  uses_target_test: false
+  uses_group_or_age_significance: false
+  checkpoint: common_donor_sound_readout_on_donor_dev
+  lambda_candidates:
+  - 0.25
+  - 1.0
+  lambda_default: 1.0

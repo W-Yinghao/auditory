@@ -1,16 +1,172 @@
 # FAU/Federici breadth intervention results
 
-Snapshot 2026-10-18T19:44:12.782757+02:00, CPU job 1045980; **interim**.
+Snapshot 2026-10-20T10:05:28.350028+02:00, CPU job 1047358; **interim**.
 
 Seed3401 breadth; independent of the DTU three-seed panel. Strict identity pairing; phantom excluded. Historical baseline comparisons reuse completed records and are not new intervention results.
 
 | Lane | Complete / registered | Failed markers |
 |---|---:|---:|
-| breadth_budget_v1 | 4 / 75 | 0 |
-| breadth_inner_v1 | 36 / 375 | 0 |
-| breadth_policy_v1 | 15 / 40 | 0 |
-| breadth_fusion_v1 | 6 / 15 | 0 |
-| breadth_episode_v1 | 12 / 40 | 0 |
+| breadth_budget_v1 | 60 / 75 | 0 |
+| breadth_inner_v1 | 277 / 375 | 0 |
+| breadth_policy_v1 | 40 / 40 | 0 |
+| breadth_fusion_v1 | 15 / 15 | 0 |
+| breadth_episode_v1 | 40 / 40 | 0 |
+
+## fau / budget/cbramod/pretrained_full / native
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_2.0 versus fixed_1.0 | -0.0028 | [-0.0344,+0.0288] |
+| fixed_0.25 versus historical_selected | -0.1449 | [-0.2034,-0.0864] |
+| fixed_0.5 versus historical_selected | -0.0460 | [-0.0930,+0.0011] |
+| fixed_1.0 versus historical_selected | -0.0317 | [-0.0643,+0.0010] |
+| fixed_2.0 versus historical_selected | -0.0345 | [-0.0648,-0.0042] |
+| new_selected versus historical_selected | -0.0364 | [-0.0650,-0.0078] |
+
+## fau / budget/cbramod/pretrained_full / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_2.0 versus fixed_1.0 | -0.0412 | [-0.0583,-0.0240] |
+| fixed_0.25 versus historical_selected | -0.0523 | [-0.0781,-0.0265] |
+| fixed_0.5 versus historical_selected | -0.0009 | [-0.0209,+0.0191] |
+| fixed_1.0 versus historical_selected | -0.0138 | [-0.0350,+0.0074] |
+| fixed_2.0 versus historical_selected | -0.0549 | [-0.0776,-0.0322] |
+| new_selected versus historical_selected | -0.0486 | [-0.0713,-0.0259] |
+
+## fau / budget/cbramod/random_full / native
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_2.0 versus fixed_1.0 | -0.0786 | [-0.1006,-0.0567] |
+| fixed_0.25 versus historical_selected | -0.1075 | [-0.1545,-0.0604] |
+| fixed_0.5 versus historical_selected | -0.0231 | [-0.0588,+0.0125] |
+| fixed_1.0 versus historical_selected | -0.0326 | [-0.0626,-0.0026] |
+| fixed_2.0 versus historical_selected | -0.1113 | [-0.1471,-0.0754] |
+| new_selected versus historical_selected | -0.0741 | [-0.1093,-0.0390] |
+
+## fau / budget/cbramod/random_full / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_2.0 versus fixed_1.0 | -0.0521 | [-0.0872,-0.0169] |
+| fixed_0.25 versus historical_selected | +0.0250 | [-0.0114,+0.0614] |
+| fixed_0.5 versus historical_selected | +0.0329 | [+0.0026,+0.0632] |
+| fixed_1.0 versus historical_selected | -0.0334 | [-0.0588,-0.0080] |
+| fixed_2.0 versus historical_selected | -0.0855 | [-0.1308,-0.0402] |
+| new_selected versus historical_selected | -0.0497 | [-0.0924,-0.0069] |
+
+## fau / budget/local / native
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_2.0 versus fixed_1.0 | -0.0054 | [-0.0172,+0.0063] |
+| fixed_0.25 versus historical_selected | -0.0374 | [-0.0653,-0.0095] |
+| fixed_0.5 versus historical_selected | -0.0183 | [-0.0350,-0.0016] |
+| fixed_1.0 versus historical_selected | -0.0132 | [-0.0312,+0.0047] |
+| fixed_2.0 versus historical_selected | -0.0187 | [-0.0322,-0.0052] |
+| new_selected versus historical_selected | -0.0108 | [-0.0258,+0.0042] |
+
+## fau / budget/local / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_2.0 versus fixed_1.0 | -0.0219 | [-0.0388,-0.0050] |
+| fixed_0.25 versus historical_selected | +0.0280 | [-0.0084,+0.0645] |
+| fixed_0.5 versus historical_selected | +0.0107 | [-0.0052,+0.0265] |
+| fixed_1.0 versus historical_selected | +0.0035 | [-0.0132,+0.0202] |
+| fixed_2.0 versus historical_selected | -0.0184 | [-0.0333,-0.0035] |
+| new_selected versus historical_selected | -0.0113 | [-0.0266,+0.0041] |
+
+## fau / budget_models/fixed_0.5 / native
+
+new production intervention. Paired n=28/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.0721 | [-0.0048,+0.1490] |
+| cbramod/pretrained_full versus local | +0.1172 | [+0.0275,+0.2069] |
+| cbramod/random_full versus local | +0.0451 | [-0.0423,+0.1324] |
+| reve/pretrained_full versus local | +0.1173 | [-0.0361,+0.2707] |
+| reve/random_full versus local | -0.0024 | [-0.1024,+0.0977] |
+| reve/pretrained_full versus reve/random_full | +0.1197 | [-0.0566,+0.2960] |
+
+## fau / budget_models/fixed_0.5 / unified
+
+new production intervention. Paired n=28/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.0678 | [-0.0067,+0.1424] |
+| cbramod/pretrained_full versus local | +0.1117 | [+0.0019,+0.2215] |
+| cbramod/random_full versus local | +0.0439 | [-0.0485,+0.1362] |
+| reve/pretrained_full versus local | +0.0957 | [-0.0347,+0.2262] |
+| reve/random_full versus local | +0.0539 | [-0.0083,+0.1161] |
+| reve/pretrained_full versus reve/random_full | +0.0419 | [-0.1008,+0.1845] |
+
+## fau / budget_models/fixed_1.0 / native
+
+new production intervention. Paired n=28/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.0863 | [-0.0268,+0.1994] |
+| cbramod/pretrained_full versus local | +0.1248 | [-0.0230,+0.2725] |
+| cbramod/random_full versus local | +0.0385 | [-0.0510,+0.1279] |
+| reve/pretrained_full versus local | -0.0145 | [-0.1802,+0.1512] |
+| reve/random_full versus local | +0.0899 | [-0.0006,+0.1803] |
+| reve/pretrained_full versus reve/random_full | -0.1043 | [-0.2631,+0.0544] |
+
+## fau / budget_models/fixed_1.0 / unified
+
+new production intervention. Paired n=28/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1331 | [+0.0543,+0.2119] |
+| cbramod/pretrained_full versus local | +0.1203 | [-0.0052,+0.2459] |
+| cbramod/random_full versus local | -0.0127 | [-0.1041,+0.0786] |
+| reve/pretrained_full versus local | -0.0003 | [-0.1341,+0.1334] |
+| reve/random_full versus local | +0.0798 | [+0.0019,+0.1578] |
+| reve/pretrained_full versus reve/random_full | -0.0801 | [-0.1904,+0.0301] |
+
+## fau / budget_models/fixed_2.0 / native
+
+new production intervention. Paired n=28/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1794 | [+0.0661,+0.2927] |
+| cbramod/pretrained_full versus local | +0.1377 | [+0.0264,+0.2490] |
+| cbramod/random_full versus local | -0.0417 | [-0.1228,+0.0394] |
+| reve/pretrained_full versus local | -0.1207 | [-0.2979,+0.0565] |
+| reve/random_full versus local | +0.1084 | [+0.0114,+0.2053] |
+| reve/pretrained_full versus reve/random_full | -0.2291 | [-0.4033,-0.0549] |
+
+## fau / budget_models/fixed_2.0 / unified
+
+new production intervention. Paired n=28/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1447 | [+0.0335,+0.2560] |
+| cbramod/pretrained_full versus local | +0.1084 | [+0.0290,+0.1878] |
+| cbramod/random_full versus local | -0.0363 | [-0.1051,+0.0324] |
+| reve/pretrained_full versus local | -0.0549 | [-0.1857,+0.0758] |
+| reve/random_full versus local | +0.0486 | [-0.0433,+0.1404] |
+| reve/pretrained_full versus reve/random_full | -0.1035 | [-0.2416,+0.0346] |
 
 ## fau / budget_models/historical_selected / native
 
@@ -38,251 +194,249 @@ reused historical baseline; not a new training result. Paired n=67/67.
 | reve/random_full versus local | +0.0992 | [+0.0439,+0.1545] |
 | reve/pretrained_full versus reve/random_full | +0.0101 | [-0.0422,+0.0623] |
 
+## fau / budget_models/new_selected / native
+
+new production intervention. Paired n=28/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1237 | [+0.0177,+0.2297] |
+| cbramod/pretrained_full versus local | +0.1301 | [+0.0209,+0.2393] |
+| cbramod/random_full versus local | +0.0064 | [-0.0741,+0.0869] |
+| reve/pretrained_full versus local | -0.1102 | [-0.2938,+0.0733] |
+| reve/random_full versus local | +0.1047 | [+0.0035,+0.2058] |
+| reve/pretrained_full versus reve/random_full | -0.2149 | [-0.3895,-0.0403] |
+
+## fau / budget_models/new_selected / unified
+
+new production intervention. Paired n=28/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.0969 | [-0.0053,+0.1992] |
+| cbramod/pretrained_full versus local | +0.1093 | [+0.0275,+0.1910] |
+| cbramod/random_full versus local | +0.0123 | [-0.0577,+0.0823] |
+| reve/pretrained_full versus local | -0.0522 | [-0.1924,+0.0880] |
+| reve/random_full versus local | +0.0413 | [-0.0591,+0.1417] |
+| reve/pretrained_full versus reve/random_full | -0.0935 | [-0.2366,+0.0497] |
+
+## fau / data/content/cbramod/pretrained_full / native
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | +0.0051 | [-0.0022,+0.0123] |
+| 0.5 versus full | +0.0038 | [-0.0038,+0.0114] |
+
+## fau / data/content/cbramod/pretrained_full / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.0008 | [-0.0117,+0.0100] |
+| 0.5 versus full | -0.0014 | [-0.0123,+0.0095] |
+
+## fau / data/content/cbramod/random_full / native
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | +0.0120 | [-0.0048,+0.0287] |
+| 0.5 versus full | +0.0104 | [-0.0064,+0.0273] |
+
+## fau / data/content/cbramod/random_full / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | +0.0089 | [-0.0049,+0.0227] |
+| 0.5 versus full | +0.0086 | [-0.0051,+0.0223] |
+
+## fau / data/content/local / native
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | +0.0000 | [-0.0000,+0.0000] |
+| 0.5 versus full | +0.0000 | [-0.0000,+0.0000] |
+
+## fau / data/content/local / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.0000 | [-0.0001,+0.0000] |
+| 0.5 versus full | +0.0000 | [-0.0000,+0.0000] |
+
+## fau / data/content/reve/pretrained_full / native
+
+new production intervention. Paired n=14/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | +0.0028 | [-0.0469,+0.0525] |
+| 0.5 versus full | +0.0028 | [-0.0469,+0.0525] |
+
+## fau / data/content/reve/pretrained_full / unified
+
+new production intervention. Paired n=14/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | +0.0054 | [-0.0368,+0.0475] |
+| 0.5 versus full | +0.0054 | [-0.0368,+0.0475] |
+
+## fau / data/people/cbramod/pretrained_full / native
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.3090 | [-0.3893,-0.2287] |
+| 0.5 versus full | -0.1569 | [-0.2232,-0.0906] |
+
+## fau / data/people/cbramod/pretrained_full / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1856 | [-0.2486,-0.1226] |
+| 0.5 versus full | -0.1056 | [-0.1528,-0.0584] |
+
+## fau / data/people/cbramod/random_full / native
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.3469 | [-0.4243,-0.2695] |
+| 0.5 versus full | -0.1660 | [-0.2128,-0.1192] |
+
+## fau / data/people/cbramod/random_full / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1496 | [-0.2016,-0.0976] |
+| 0.5 versus full | -0.0635 | [-0.0963,-0.0307] |
+
+## fau / data/people/local / native
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.3166 | [-0.3785,-0.2547] |
+| 0.5 versus full | -0.1667 | [-0.2191,-0.1143] |
+
+## fau / data/people/local / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1336 | [-0.1788,-0.0884] |
+| 0.5 versus full | -0.0678 | [-0.1086,-0.0270] |
+
+## fau / data/people/reve/pretrained_full / native
+
+new production intervention. Paired n=14/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1716 | [-0.4181,+0.0749] |
+| 0.5 versus full | -0.1345 | [-0.3172,+0.0482] |
+
+## fau / data/people/reve/pretrained_full / unified
+
+new production intervention. Paired n=14/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1532 | [-0.2760,-0.0305] |
+| 0.5 versus full | -0.1421 | [-0.2708,-0.0133] |
+
+## fau / data/people/reve/random_full / native
+
+new production intervention. Paired n=14/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.2667 | [-0.4594,-0.0739] |
+| 0.5 versus full | -0.1579 | [-0.3205,+0.0048] |
+
+## fau / data/people/reve/random_full / unified
+
+new production intervention. Paired n=14/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1233 | [-0.2806,+0.0339] |
+| 0.5 versus full | -0.1249 | [-0.2926,+0.0428] |
+
+## fau / data_models/people/0.25 / native
+
+new production intervention. Paired n=14/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1525 | [-0.0796,+0.3846] |
+| cbramod/pretrained_full versus local | +0.1705 | [-0.0315,+0.3725] |
+| cbramod/random_full versus local | +0.0180 | [-0.1841,+0.2201] |
+| reve/pretrained_full versus local | +0.1153 | [-0.0591,+0.2898] |
+| reve/random_full versus local | +0.0122 | [-0.1560,+0.1803] |
+| reve/pretrained_full versus reve/random_full | +0.1032 | [-0.1126,+0.3190] |
+
+## fau / data_models/people/0.25 / unified
+
+new production intervention. Paired n=14/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.0915 | [-0.2054,+0.3884] |
+| cbramod/pretrained_full versus local | +0.0456 | [-0.3255,+0.4167] |
+| cbramod/random_full versus local | -0.0459 | [-0.2494,+0.1576] |
+| reve/pretrained_full versus local | +0.0137 | [-0.1702,+0.1976] |
+| reve/random_full versus local | -0.0095 | [-0.1703,+0.1514] |
+| reve/pretrained_full versus reve/random_full | +0.0232 | [-0.1713,+0.2177] |
+
+## fau / data_models/people/0.5 / native
+
+new production intervention. Paired n=14/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.0872 | [-0.2435,+0.4179] |
+| cbramod/pretrained_full versus local | +0.0983 | [-0.1607,+0.3573] |
+| cbramod/random_full versus local | +0.0111 | [-0.2255,+0.2478] |
+| reve/pretrained_full versus local | +0.0624 | [-0.1980,+0.3227] |
+| reve/random_full versus local | +0.0309 | [-0.1195,+0.1814] |
+| reve/pretrained_full versus reve/random_full | +0.0314 | [-0.2417,+0.3046] |
+
+## fau / data_models/people/0.5 / unified
+
+new production intervention. Paired n=14/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1141 | [-0.1986,+0.4269] |
+| cbramod/pretrained_full versus local | +0.0808 | [-0.3032,+0.4648] |
+| cbramod/random_full versus local | -0.0333 | [-0.3963,+0.3297] |
+| reve/pretrained_full versus local | +0.0122 | [-0.2502,+0.2747] |
+| reve/random_full versus local | -0.0237 | [-0.4028,+0.3553] |
+| reve/pretrained_full versus reve/random_full | +0.0360 | [-0.3131,+0.3850] |
+
 ## fau / episode/cbramod/pretrained_full/support_0.1 / native
 
-new production intervention. Paired n=14/67.
-
-| Contrast | ΔR bits/query | Simultaneous95% interval |
-|---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus source_no_adaptation | +0.0241 | [-0.0135,+0.0617] |
-| fixed_episode/0 versus source_no_adaptation | +0.0075 | [-0.0219,+0.0370] |
-| fixed_episode/20 versus source_no_adaptation | +0.0241 | [-0.0135,+0.0617] |
-| fixed_episode/5 versus source_no_adaptation | +0.0087 | [-0.0207,+0.0382] |
-| fixed_ordinary/0 versus source_no_adaptation | +0.0076 | [-0.0219,+0.0370] |
-| fixed_ordinary/20 versus source_no_adaptation | +0.0241 | [-0.0135,+0.0617] |
-| fixed_ordinary/5 versus source_no_adaptation | +0.0087 | [-0.0207,+0.0382] |
-| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0161 | [-0.0075,+0.0397] |
-| fixed_source/5 versus source_no_adaptation | +0.0012 | [-0.0004,+0.0028] |
-| ordinary_selected versus source_no_adaptation | +0.0241 | [-0.0135,+0.0617] |
-
-## fau / episode/cbramod/pretrained_full/support_0.1 / unified
-
-new production intervention. Paired n=14/67.
-
-| Contrast | ΔR bits/query | Simultaneous95% interval |
-|---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus source_no_adaptation | -0.0208 | [-0.0676,+0.0259] |
-| fixed_episode/0 versus source_no_adaptation | -0.0340 | [-0.0878,+0.0197] |
-| fixed_episode/20 versus source_no_adaptation | -0.0208 | [-0.0676,+0.0259] |
-| fixed_episode/5 versus source_no_adaptation | -0.0331 | [-0.0861,+0.0199] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.0340 | [-0.0878,+0.0198] |
-| fixed_ordinary/20 versus source_no_adaptation | -0.0208 | [-0.0676,+0.0259] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.0331 | [-0.0861,+0.0200] |
-| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0119 | [-0.0099,+0.0337] |
-| fixed_source/5 versus source_no_adaptation | +0.0009 | [-0.0005,+0.0023] |
-| ordinary_selected versus source_no_adaptation | -0.0208 | [-0.0676,+0.0259] |
-
-## fau / episode/cbramod/pretrained_full/support_0.3 / native
-
-new production intervention. Paired n=14/67.
-
-| Contrast | ΔR bits/query | Simultaneous95% interval |
-|---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus source_no_adaptation | +0.0313 | [-0.0185,+0.0811] |
-| fixed_episode/0 versus source_no_adaptation | +0.0075 | [-0.0275,+0.0426] |
-| fixed_episode/20 versus source_no_adaptation | +0.0313 | [-0.0185,+0.0811] |
-| fixed_episode/5 versus source_no_adaptation | +0.0091 | [-0.0259,+0.0442] |
-| fixed_ordinary/0 versus source_no_adaptation | +0.0076 | [-0.0275,+0.0426] |
-| fixed_ordinary/20 versus source_no_adaptation | +0.0313 | [-0.0185,+0.0811] |
-| fixed_ordinary/5 versus source_no_adaptation | +0.0091 | [-0.0259,+0.0442] |
-| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0236 | [-0.0135,+0.0608] |
-| fixed_source/5 versus source_no_adaptation | +0.0016 | [-0.0010,+0.0042] |
-| ordinary_selected versus source_no_adaptation | +0.0313 | [-0.0185,+0.0811] |
-
-## fau / episode/cbramod/pretrained_full/support_0.3 / unified
-
-new production intervention. Paired n=14/67.
-
-| Contrast | ΔR bits/query | Simultaneous95% interval |
-|---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus source_no_adaptation | -0.0126 | [-0.0624,+0.0372] |
-| fixed_episode/0 versus source_no_adaptation | -0.0340 | [-0.0872,+0.0192] |
-| fixed_episode/20 versus source_no_adaptation | -0.0126 | [-0.0624,+0.0372] |
-| fixed_episode/5 versus source_no_adaptation | -0.0326 | [-0.0851,+0.0199] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.0340 | [-0.0872,+0.0192] |
-| fixed_ordinary/20 versus source_no_adaptation | -0.0126 | [-0.0624,+0.0372] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.0326 | [-0.0851,+0.0199] |
-| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0204 | [-0.0086,+0.0494] |
-| fixed_source/5 versus source_no_adaptation | +0.0013 | [-0.0005,+0.0032] |
-| ordinary_selected versus source_no_adaptation | -0.0126 | [-0.0624,+0.0372] |
-
-## fau / episode/cbramod/random_full/support_0.1 / native
-
-new production intervention. Paired n=14/67.
-
-| Contrast | ΔR bits/query | Simultaneous95% interval |
-|---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus source_no_adaptation | +0.0103 | [-0.0137,+0.0343] |
-| fixed_episode/0 versus source_no_adaptation | +0.0006 | [-0.0300,+0.0312] |
-| fixed_episode/20 versus source_no_adaptation | +0.0151 | [-0.0175,+0.0478] |
-| fixed_episode/5 versus source_no_adaptation | +0.0015 | [-0.0286,+0.0317] |
-| fixed_ordinary/0 versus source_no_adaptation | +0.0006 | [-0.0301,+0.0312] |
-| fixed_ordinary/20 versus source_no_adaptation | +0.0152 | [-0.0175,+0.0478] |
-| fixed_ordinary/5 versus source_no_adaptation | +0.0015 | [-0.0286,+0.0317] |
-| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0141 | [-0.0087,+0.0369] |
-| fixed_source/5 versus source_no_adaptation | +0.0010 | [-0.0004,+0.0024] |
-| ordinary_selected versus source_no_adaptation | +0.0103 | [-0.0137,+0.0343] |
-
-## fau / episode/cbramod/random_full/support_0.1 / unified
-
-new production intervention. Paired n=14/67.
-
-| Contrast | ΔR bits/query | Simultaneous95% interval |
-|---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus source_no_adaptation | -0.0263 | [-0.0825,+0.0299] |
-| fixed_episode/0 versus source_no_adaptation | -0.0398 | [-0.1039,+0.0243] |
-| fixed_episode/20 versus source_no_adaptation | -0.0290 | [-0.0867,+0.0287] |
-| fixed_episode/5 versus source_no_adaptation | -0.0391 | [-0.1028,+0.0246] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.0398 | [-0.1039,+0.0243] |
-| fixed_ordinary/20 versus source_no_adaptation | -0.0290 | [-0.0867,+0.0287] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.0391 | [-0.1028,+0.0246] |
-| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0098 | [-0.0026,+0.0223] |
-| fixed_source/5 versus source_no_adaptation | +0.0007 | [+0.0000,+0.0013] |
-| ordinary_selected versus source_no_adaptation | -0.0263 | [-0.0825,+0.0300] |
-
-## fau / episode/cbramod/random_full/support_0.3 / native
-
-new production intervention. Paired n=14/67.
-
-| Contrast | ΔR bits/query | Simultaneous95% interval |
-|---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus source_no_adaptation | +0.0173 | [-0.0271,+0.0616] |
-| fixed_episode/0 versus source_no_adaptation | +0.0006 | [-0.0412,+0.0423] |
-| fixed_episode/20 versus source_no_adaptation | +0.0213 | [-0.0306,+0.0732] |
-| fixed_episode/5 versus source_no_adaptation | +0.0020 | [-0.0391,+0.0430] |
-| fixed_ordinary/0 versus source_no_adaptation | +0.0006 | [-0.0412,+0.0424] |
-| fixed_ordinary/20 versus source_no_adaptation | +0.0213 | [-0.0306,+0.0732] |
-| fixed_ordinary/5 versus source_no_adaptation | +0.0020 | [-0.0391,+0.0430] |
-| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0215 | [-0.0233,+0.0662] |
-| fixed_source/5 versus source_no_adaptation | +0.0014 | [-0.0015,+0.0044] |
-| ordinary_selected versus source_no_adaptation | +0.0173 | [-0.0271,+0.0616] |
-
-## fau / episode/cbramod/random_full/support_0.3 / unified
-
-new production intervention. Paired n=14/67.
-
-| Contrast | ΔR bits/query | Simultaneous95% interval |
-|---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus source_no_adaptation | -0.0215 | [-0.0840,+0.0410] |
-| fixed_episode/0 versus source_no_adaptation | -0.0398 | [-0.1076,+0.0279] |
-| fixed_episode/20 versus source_no_adaptation | -0.0247 | [-0.0886,+0.0391] |
-| fixed_episode/5 versus source_no_adaptation | -0.0388 | [-0.1061,+0.0284] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.0398 | [-0.1076,+0.0279] |
-| fixed_ordinary/20 versus source_no_adaptation | -0.0247 | [-0.0886,+0.0391] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.0388 | [-0.1061,+0.0285] |
-| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0153 | [-0.0081,+0.0387] |
-| fixed_source/5 versus source_no_adaptation | +0.0010 | [-0.0005,+0.0025] |
-| ordinary_selected versus source_no_adaptation | -0.0215 | [-0.0840,+0.0410] |
-
-## fau / episode/local/support_0.1 / native
-
-new production intervention. Paired n=14/67.
-
-| Contrast | ΔR bits/query | Simultaneous95% interval |
-|---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0001,+0.0001] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0001,+0.0001] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0001,+0.0001] |
-| episode_selected versus ordinary_selected | -0.0000 | [-0.0001,+0.0001] |
-| episode_selected versus source_no_adaptation | +0.0058 | [-0.0273,+0.0389] |
-| fixed_episode/0 versus source_no_adaptation | -0.0125 | [-0.0281,+0.0030] |
-| fixed_episode/20 versus source_no_adaptation | +0.0058 | [-0.0273,+0.0389] |
-| fixed_episode/5 versus source_no_adaptation | -0.0111 | [-0.0258,+0.0036] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.0125 | [-0.0280,+0.0030] |
-| fixed_ordinary/20 versus source_no_adaptation | +0.0058 | [-0.0273,+0.0389] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.0111 | [-0.0258,+0.0036] |
-| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0176 | [-0.0169,+0.0521] |
-| fixed_source/5 versus source_no_adaptation | +0.0014 | [-0.0010,+0.0038] |
-| ordinary_selected versus source_no_adaptation | +0.0058 | [-0.0273,+0.0389] |
-
-## fau / episode/local/support_0.1 / unified
-
-new production intervention. Paired n=14/67.
-
-| Contrast | ΔR bits/query | Simultaneous95% interval |
-|---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | +0.0000 | [-0.0000,+0.0000] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0001,+0.0000] |
-| fixed_episode/5 versus fixed_ordinary/5 | +0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus ordinary_selected | -0.0000 | [-0.0001,+0.0000] |
-| episode_selected versus source_no_adaptation | -0.0001 | [-0.0217,+0.0216] |
-| fixed_episode/0 versus source_no_adaptation | -0.0085 | [-0.0132,-0.0038] |
-| fixed_episode/20 versus source_no_adaptation | -0.0001 | [-0.0217,+0.0216] |
-| fixed_episode/5 versus source_no_adaptation | -0.0079 | [-0.0126,-0.0031] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.0085 | [-0.0132,-0.0038] |
-| fixed_ordinary/20 versus source_no_adaptation | -0.0001 | [-0.0217,+0.0216] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.0079 | [-0.0126,-0.0031] |
-| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0082 | [-0.0124,+0.0288] |
-| fixed_source/5 versus source_no_adaptation | +0.0007 | [-0.0006,+0.0019] |
-| ordinary_selected versus source_no_adaptation | -0.0001 | [-0.0217,+0.0216] |
-
-## fau / episode/local/support_0.3 / native
-
-new production intervention. Paired n=14/67.
-
-| Contrast | ΔR bits/query | Simultaneous95% interval |
-|---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0001,+0.0001] |
-| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0001,+0.0001] |
-| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0001,+0.0001] |
-| episode_selected versus ordinary_selected | -0.0000 | [-0.0001,+0.0001] |
-| episode_selected versus source_no_adaptation | +0.0120 | [-0.0229,+0.0468] |
-| fixed_episode/0 versus source_no_adaptation | -0.0125 | [-0.0298,+0.0047] |
-| fixed_episode/20 versus source_no_adaptation | +0.0120 | [-0.0229,+0.0468] |
-| fixed_episode/5 versus source_no_adaptation | -0.0108 | [-0.0272,+0.0055] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.0125 | [-0.0298,+0.0047] |
-| fixed_ordinary/20 versus source_no_adaptation | +0.0120 | [-0.0229,+0.0468] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.0108 | [-0.0272,+0.0055] |
-| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0245 | [-0.0133,+0.0622] |
-| fixed_source/5 versus source_no_adaptation | +0.0017 | [-0.0008,+0.0043] |
-| ordinary_selected versus source_no_adaptation | +0.0120 | [-0.0229,+0.0468] |
-
-## fau / episode/local/support_0.3 / unified
-
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
@@ -290,397 +444,769 @@ new production intervention. Paired n=14/67.
 | fixed_episode/20 versus fixed_ordinary/20 | +0.0000 | [-0.0000,+0.0000] |
 | fixed_episode/5 versus fixed_ordinary/5 | +0.0000 | [-0.0000,+0.0000] |
 | episode_selected versus ordinary_selected | +0.0000 | [-0.0000,+0.0000] |
-| episode_selected versus source_no_adaptation | +0.0065 | [-0.0135,+0.0266] |
-| fixed_episode/0 versus source_no_adaptation | -0.0085 | [-0.0130,-0.0041] |
-| fixed_episode/20 versus source_no_adaptation | +0.0065 | [-0.0135,+0.0266] |
-| fixed_episode/5 versus source_no_adaptation | -0.0075 | [-0.0124,-0.0027] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.0085 | [-0.0130,-0.0041] |
-| fixed_ordinary/20 versus source_no_adaptation | +0.0065 | [-0.0135,+0.0266] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.0075 | [-0.0124,-0.0027] |
+| episode_selected versus source_no_adaptation | +0.0255 | [+0.0143,+0.0367] |
+| fixed_episode/0 versus source_no_adaptation | +0.0130 | [+0.0048,+0.0213] |
+| fixed_episode/20 versus source_no_adaptation | +0.0260 | [+0.0144,+0.0376] |
+| fixed_episode/5 versus source_no_adaptation | +0.0139 | [+0.0056,+0.0223] |
+| fixed_ordinary/0 versus source_no_adaptation | +0.0130 | [+0.0048,+0.0213] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0260 | [+0.0144,+0.0376] |
+| fixed_ordinary/5 versus source_no_adaptation | +0.0139 | [+0.0056,+0.0222] |
 | fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0158 | [-0.0031,+0.0347] |
-| fixed_source/5 versus source_no_adaptation | +0.0011 | [-0.0001,+0.0023] |
-| ordinary_selected versus source_no_adaptation | +0.0065 | [-0.0135,+0.0266] |
+| fixed_source/20 versus source_no_adaptation | +0.0129 | [+0.0063,+0.0196] |
+| fixed_source/5 versus source_no_adaptation | +0.0009 | [+0.0005,+0.0013] |
+| ordinary_selected versus source_no_adaptation | +0.0255 | [+0.0143,+0.0367] |
+
+## fau / episode/cbramod/pretrained_full/support_0.1 / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus source_no_adaptation | +0.0036 | [-0.0063,+0.0135] |
+| fixed_episode/0 versus source_no_adaptation | -0.0036 | [-0.0143,+0.0071] |
+| fixed_episode/20 versus source_no_adaptation | +0.0039 | [-0.0062,+0.0141] |
+| fixed_episode/5 versus source_no_adaptation | -0.0031 | [-0.0136,+0.0075] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.0036 | [-0.0143,+0.0071] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0039 | [-0.0062,+0.0141] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.0031 | [-0.0136,+0.0075] |
+| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
+| fixed_source/20 versus source_no_adaptation | +0.0073 | [+0.0020,+0.0125] |
+| fixed_source/5 versus source_no_adaptation | +0.0005 | [+0.0002,+0.0009] |
+| ordinary_selected versus source_no_adaptation | +0.0036 | [-0.0063,+0.0135] |
+
+## fau / episode/cbramod/pretrained_full/support_0.3 / native
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | +0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/20 versus fixed_ordinary/20 | +0.0000 | [+0.0000,+0.0000] |
+| fixed_episode/5 versus fixed_ordinary/5 | +0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus ordinary_selected | +0.0000 | [+0.0000,+0.0000] |
+| episode_selected versus source_no_adaptation | +0.0347 | [+0.0229,+0.0465] |
+| fixed_episode/0 versus source_no_adaptation | +0.0130 | [+0.0048,+0.0213] |
+| fixed_episode/20 versus source_no_adaptation | +0.0347 | [+0.0229,+0.0465] |
+| fixed_episode/5 versus source_no_adaptation | +0.0144 | [+0.0061,+0.0228] |
+| fixed_ordinary/0 versus source_no_adaptation | +0.0130 | [+0.0047,+0.0213] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0347 | [+0.0229,+0.0465] |
+| fixed_ordinary/5 versus source_no_adaptation | +0.0144 | [+0.0061,+0.0228] |
+| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
+| fixed_source/20 versus source_no_adaptation | +0.0219 | [+0.0143,+0.0296] |
+| fixed_source/5 versus source_no_adaptation | +0.0014 | [+0.0009,+0.0019] |
+| ordinary_selected versus source_no_adaptation | +0.0347 | [+0.0229,+0.0465] |
+
+## fau / episode/cbramod/pretrained_full/support_0.3 / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus source_no_adaptation | +0.0106 | [-0.0001,+0.0213] |
+| fixed_episode/0 versus source_no_adaptation | -0.0036 | [-0.0144,+0.0072] |
+| fixed_episode/20 versus source_no_adaptation | +0.0106 | [-0.0001,+0.0213] |
+| fixed_episode/5 versus source_no_adaptation | -0.0027 | [-0.0133,+0.0080] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.0036 | [-0.0144,+0.0072] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0106 | [-0.0001,+0.0213] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.0027 | [-0.0133,+0.0080] |
+| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
+| fixed_source/20 versus source_no_adaptation | +0.0140 | [+0.0073,+0.0206] |
+| fixed_source/5 versus source_no_adaptation | +0.0009 | [+0.0005,+0.0014] |
+| ordinary_selected versus source_no_adaptation | +0.0106 | [-0.0001,+0.0213] |
+
+## fau / episode/cbramod/random_full/support_0.1 / native
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus ordinary_selected | +0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus source_no_adaptation | +0.0083 | [+0.0033,+0.0132] |
+| fixed_episode/0 versus source_no_adaptation | +0.0135 | [-0.0080,+0.0350] |
+| fixed_episode/20 versus source_no_adaptation | +0.0211 | [-0.0003,+0.0424] |
+| fixed_episode/5 versus source_no_adaptation | +0.0140 | [-0.0075,+0.0355] |
+| fixed_ordinary/0 versus source_no_adaptation | +0.0135 | [-0.0080,+0.0350] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0211 | [-0.0003,+0.0424] |
+| fixed_ordinary/5 versus source_no_adaptation | +0.0140 | [-0.0075,+0.0355] |
+| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
+| fixed_source/20 versus source_no_adaptation | +0.0078 | [+0.0024,+0.0132] |
+| fixed_source/5 versus source_no_adaptation | +0.0005 | [+0.0002,+0.0009] |
+| ordinary_selected versus source_no_adaptation | +0.0083 | [+0.0033,+0.0132] |
+
+## fau / episode/cbramod/random_full/support_0.1 / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,-0.0000] |
+| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus source_no_adaptation | +0.0017 | [-0.0090,+0.0123] |
+| fixed_episode/0 versus source_no_adaptation | -0.0039 | [-0.0161,+0.0082] |
+| fixed_episode/20 versus source_no_adaptation | +0.0011 | [-0.0104,+0.0125] |
+| fixed_episode/5 versus source_no_adaptation | -0.0036 | [-0.0156,+0.0085] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.0039 | [-0.0161,+0.0082] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0011 | [-0.0104,+0.0125] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.0036 | [-0.0156,+0.0085] |
+| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
+| fixed_source/20 versus source_no_adaptation | +0.0050 | [+0.0015,+0.0085] |
+| fixed_source/5 versus source_no_adaptation | +0.0004 | [+0.0002,+0.0006] |
+| ordinary_selected versus source_no_adaptation | +0.0017 | [-0.0090,+0.0123] |
+
+## fau / episode/cbramod/random_full/support_0.3 / native
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus source_no_adaptation | +0.0151 | [+0.0085,+0.0217] |
+| fixed_episode/0 versus source_no_adaptation | +0.0135 | [-0.0089,+0.0359] |
+| fixed_episode/20 versus source_no_adaptation | +0.0269 | [+0.0043,+0.0495] |
+| fixed_episode/5 versus source_no_adaptation | +0.0144 | [-0.0080,+0.0367] |
+| fixed_ordinary/0 versus source_no_adaptation | +0.0135 | [-0.0089,+0.0359] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0269 | [+0.0043,+0.0496] |
+| fixed_ordinary/5 versus source_no_adaptation | +0.0144 | [-0.0080,+0.0367] |
+| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
+| fixed_source/20 versus source_no_adaptation | +0.0145 | [+0.0078,+0.0212] |
+| fixed_source/5 versus source_no_adaptation | +0.0009 | [+0.0005,+0.0013] |
+| ordinary_selected versus source_no_adaptation | +0.0151 | [+0.0085,+0.0217] |
+
+## fau / episode/cbramod/random_full/support_0.3 / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus source_no_adaptation | +0.0058 | [-0.0062,+0.0178] |
+| fixed_episode/0 versus source_no_adaptation | -0.0039 | [-0.0171,+0.0092] |
+| fixed_episode/20 versus source_no_adaptation | +0.0051 | [-0.0077,+0.0179] |
+| fixed_episode/5 versus source_no_adaptation | -0.0033 | [-0.0164,+0.0097] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.0039 | [-0.0171,+0.0092] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0051 | [-0.0077,+0.0179] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.0033 | [-0.0164,+0.0097] |
+| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
+| fixed_source/20 versus source_no_adaptation | +0.0094 | [+0.0047,+0.0141] |
+| fixed_source/5 versus source_no_adaptation | +0.0006 | [+0.0003,+0.0009] |
+| ordinary_selected versus source_no_adaptation | +0.0058 | [-0.0062,+0.0178] |
+
+## fau / episode/local/support_0.1 / native
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus source_no_adaptation | +0.0111 | [+0.0031,+0.0191] |
+| fixed_episode/0 versus source_no_adaptation | +0.0033 | [-0.0025,+0.0091] |
+| fixed_episode/20 versus source_no_adaptation | +0.0136 | [+0.0047,+0.0226] |
+| fixed_episode/5 versus source_no_adaptation | +0.0041 | [-0.0016,+0.0098] |
+| fixed_ordinary/0 versus source_no_adaptation | +0.0033 | [-0.0024,+0.0091] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0136 | [+0.0047,+0.0226] |
+| fixed_ordinary/5 versus source_no_adaptation | +0.0041 | [-0.0016,+0.0098] |
+| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
+| fixed_source/20 versus source_no_adaptation | +0.0106 | [+0.0028,+0.0183] |
+| fixed_source/5 versus source_no_adaptation | +0.0008 | [+0.0003,+0.0013] |
+| ordinary_selected versus source_no_adaptation | +0.0111 | [+0.0031,+0.0191] |
+
+## fau / episode/local/support_0.1 / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | +0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/20 versus fixed_ordinary/20 | +0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/5 versus fixed_ordinary/5 | +0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus source_no_adaptation | +0.0047 | [-0.0008,+0.0102] |
+| fixed_episode/0 versus source_no_adaptation | -0.0009 | [-0.0034,+0.0017] |
+| fixed_episode/20 versus source_no_adaptation | +0.0050 | [-0.0008,+0.0107] |
+| fixed_episode/5 versus source_no_adaptation | -0.0004 | [-0.0030,+0.0021] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.0009 | [-0.0034,+0.0017] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0050 | [-0.0008,+0.0107] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.0004 | [-0.0030,+0.0021] |
+| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
+| fixed_source/20 versus source_no_adaptation | +0.0061 | [+0.0008,+0.0114] |
+| fixed_source/5 versus source_no_adaptation | +0.0005 | [+0.0002,+0.0008] |
+| ordinary_selected versus source_no_adaptation | +0.0047 | [-0.0008,+0.0102] |
+
+## fau / episode/local/support_0.3 / native
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus ordinary_selected | -0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus source_no_adaptation | +0.0182 | [+0.0107,+0.0257] |
+| fixed_episode/0 versus source_no_adaptation | +0.0033 | [-0.0021,+0.0087] |
+| fixed_episode/20 versus source_no_adaptation | +0.0222 | [+0.0132,+0.0313] |
+| fixed_episode/5 versus source_no_adaptation | +0.0046 | [-0.0008,+0.0100] |
+| fixed_ordinary/0 versus source_no_adaptation | +0.0033 | [-0.0021,+0.0088] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0222 | [+0.0132,+0.0313] |
+| fixed_ordinary/5 versus source_no_adaptation | +0.0046 | [-0.0008,+0.0100] |
+| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
+| fixed_source/20 versus source_no_adaptation | +0.0192 | [+0.0115,+0.0268] |
+| fixed_source/5 versus source_no_adaptation | +0.0013 | [+0.0008,+0.0018] |
+| ordinary_selected versus source_no_adaptation | +0.0182 | [+0.0107,+0.0257] |
+
+## fau / episode/local/support_0.3 / unified
+
+new production intervention. Paired n=67/67.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_episode/0 versus fixed_ordinary/0 | +0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/20 versus fixed_ordinary/20 | +0.0000 | [-0.0000,+0.0000] |
+| fixed_episode/5 versus fixed_ordinary/5 | +0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus ordinary_selected | +0.0000 | [-0.0000,+0.0000] |
+| episode_selected versus source_no_adaptation | +0.0092 | [+0.0039,+0.0146] |
+| fixed_episode/0 versus source_no_adaptation | -0.0009 | [-0.0034,+0.0016] |
+| fixed_episode/20 versus source_no_adaptation | +0.0097 | [+0.0040,+0.0154] |
+| fixed_episode/5 versus source_no_adaptation | -0.0002 | [-0.0027,+0.0024] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.0009 | [-0.0034,+0.0016] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0097 | [+0.0040,+0.0154] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.0002 | [-0.0027,+0.0024] |
+| fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
+| fixed_source/20 versus source_no_adaptation | +0.0111 | [+0.0059,+0.0163] |
+| fixed_source/5 versus source_no_adaptation | +0.0008 | [+0.0004,+0.0011] |
+| ordinary_selected versus source_no_adaptation | +0.0092 | [+0.0039,+0.0146] |
 
 ## fau / episode/reve/pretrained_full/support_0.1 / native
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | +0.0002 | [-0.0002,+0.0006] |
-| fixed_episode/20 versus fixed_ordinary/20 | +0.0003 | [-0.0002,+0.0007] |
-| fixed_episode/5 versus fixed_ordinary/5 | +0.0002 | [-0.0002,+0.0006] |
-| episode_selected versus ordinary_selected | +0.0003 | [-0.0002,+0.0007] |
-| episode_selected versus source_no_adaptation | +0.0114 | [-0.0197,+0.0425] |
-| fixed_episode/0 versus source_no_adaptation | -0.0027 | [-0.0310,+0.0256] |
-| fixed_episode/20 versus source_no_adaptation | +0.0114 | [-0.0197,+0.0425] |
-| fixed_episode/5 versus source_no_adaptation | -0.0017 | [-0.0290,+0.0256] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.0029 | [-0.0311,+0.0252] |
-| fixed_ordinary/20 versus source_no_adaptation | +0.0111 | [-0.0200,+0.0422] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.0019 | [-0.0290,+0.0253] |
+| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0002,+0.0001] |
+| fixed_episode/20 versus fixed_ordinary/20 | +0.0000 | [-0.0002,+0.0003] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0002,+0.0001] |
+| episode_selected versus ordinary_selected | +0.0001 | [-0.0001,+0.0002] |
+| episode_selected versus source_no_adaptation | +0.0126 | [-0.0049,+0.0300] |
+| fixed_episode/0 versus source_no_adaptation | -0.0010 | [-0.0086,+0.0067] |
+| fixed_episode/20 versus source_no_adaptation | +0.0118 | [-0.0063,+0.0299] |
+| fixed_episode/5 versus source_no_adaptation | -0.0000 | [-0.0077,+0.0076] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.0010 | [-0.0086,+0.0067] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0117 | [-0.0064,+0.0299] |
+| fixed_ordinary/5 versus source_no_adaptation | -0.0000 | [-0.0077,+0.0077] |
 | fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0134 | [-0.0194,+0.0461] |
-| fixed_source/5 versus source_no_adaptation | +0.0011 | [-0.0012,+0.0033] |
-| ordinary_selected versus source_no_adaptation | +0.0111 | [-0.0200,+0.0422] |
+| fixed_source/20 versus source_no_adaptation | +0.0125 | [-0.0048,+0.0298] |
+| fixed_source/5 versus source_no_adaptation | +0.0009 | [-0.0003,+0.0022] |
+| ordinary_selected versus source_no_adaptation | +0.0125 | [-0.0049,+0.0300] |
 
 ## fau / episode/reve/pretrained_full/support_0.1 / unified
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | +0.0000 | [-0.0001,+0.0002] |
-| fixed_episode/20 versus fixed_ordinary/20 | +0.0000 | [-0.0002,+0.0003] |
-| fixed_episode/5 versus fixed_ordinary/5 | +0.0000 | [-0.0001,+0.0002] |
-| episode_selected versus ordinary_selected | +0.0000 | [-0.0002,+0.0003] |
-| episode_selected versus source_no_adaptation | +0.0058 | [-0.0078,+0.0194] |
-| fixed_episode/0 versus source_no_adaptation | -0.0010 | [-0.0076,+0.0056] |
-| fixed_episode/20 versus source_no_adaptation | +0.0058 | [-0.0078,+0.0194] |
-| fixed_episode/5 versus source_no_adaptation | -0.0004 | [-0.0068,+0.0059] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.0010 | [-0.0075,+0.0055] |
-| fixed_ordinary/20 versus source_no_adaptation | +0.0058 | [-0.0077,+0.0193] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.0005 | [-0.0067,+0.0058] |
+| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0001,+0.0001] |
+| fixed_episode/20 versus fixed_ordinary/20 | +0.0001 | [-0.0002,+0.0003] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0001,+0.0001] |
+| episode_selected versus ordinary_selected | +0.0000 | [-0.0001,+0.0002] |
+| episode_selected versus source_no_adaptation | +0.0070 | [-0.0063,+0.0203] |
+| fixed_episode/0 versus source_no_adaptation | +0.0002 | [-0.0046,+0.0051] |
+| fixed_episode/20 versus source_no_adaptation | +0.0068 | [-0.0070,+0.0206] |
+| fixed_episode/5 versus source_no_adaptation | +0.0008 | [-0.0041,+0.0056] |
+| fixed_ordinary/0 versus source_no_adaptation | +0.0003 | [-0.0046,+0.0051] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0068 | [-0.0070,+0.0205] |
+| fixed_ordinary/5 versus source_no_adaptation | +0.0008 | [-0.0041,+0.0056] |
 | fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0070 | [-0.0067,+0.0206] |
-| fixed_source/5 versus source_no_adaptation | +0.0006 | [-0.0003,+0.0016] |
-| ordinary_selected versus source_no_adaptation | +0.0058 | [-0.0077,+0.0193] |
+| fixed_source/20 versus source_no_adaptation | +0.0068 | [-0.0066,+0.0203] |
+| fixed_source/5 versus source_no_adaptation | +0.0006 | [-0.0005,+0.0016] |
+| ordinary_selected versus source_no_adaptation | +0.0069 | [-0.0063,+0.0202] |
 
 ## fau / episode/reve/pretrained_full/support_0.3 / native
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | +0.0002 | [-0.0002,+0.0006] |
-| fixed_episode/20 versus fixed_ordinary/20 | +0.0002 | [-0.0002,+0.0007] |
-| fixed_episode/5 versus fixed_ordinary/5 | +0.0002 | [-0.0002,+0.0006] |
-| episode_selected versus ordinary_selected | +0.0002 | [-0.0002,+0.0007] |
-| episode_selected versus source_no_adaptation | +0.0177 | [-0.0291,+0.0646] |
-| fixed_episode/0 versus source_no_adaptation | -0.0027 | [-0.0314,+0.0259] |
-| fixed_episode/20 versus source_no_adaptation | +0.0177 | [-0.0291,+0.0646] |
-| fixed_episode/5 versus source_no_adaptation | -0.0011 | [-0.0289,+0.0266] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.0029 | [-0.0314,+0.0256] |
-| fixed_ordinary/20 versus source_no_adaptation | +0.0175 | [-0.0293,+0.0643] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.0013 | [-0.0289,+0.0263] |
+| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0001,+0.0001] |
+| fixed_episode/20 versus fixed_ordinary/20 | -0.0000 | [-0.0003,+0.0002] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0002,+0.0001] |
+| episode_selected versus ordinary_selected | -0.0001 | [-0.0003,+0.0002] |
+| episode_selected versus source_no_adaptation | +0.0174 | [-0.0009,+0.0357] |
+| fixed_episode/0 versus source_no_adaptation | -0.0010 | [-0.0081,+0.0061] |
+| fixed_episode/20 versus source_no_adaptation | +0.0168 | [-0.0021,+0.0357] |
+| fixed_episode/5 versus source_no_adaptation | +0.0004 | [-0.0068,+0.0075] |
+| fixed_ordinary/0 versus source_no_adaptation | -0.0010 | [-0.0081,+0.0061] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0168 | [-0.0021,+0.0357] |
+| fixed_ordinary/5 versus source_no_adaptation | +0.0004 | [-0.0068,+0.0075] |
 | fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0202 | [-0.0259,+0.0663] |
-| fixed_source/5 versus source_no_adaptation | +0.0016 | [-0.0019,+0.0051] |
-| ordinary_selected versus source_no_adaptation | +0.0175 | [-0.0293,+0.0643] |
+| fixed_source/20 versus source_no_adaptation | +0.0177 | [-0.0000,+0.0354] |
+| fixed_source/5 versus source_no_adaptation | +0.0014 | [+0.0001,+0.0027] |
+| ordinary_selected versus source_no_adaptation | +0.0174 | [-0.0008,+0.0357] |
 
 ## fau / episode/reve/pretrained_full/support_0.3 / unified
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| fixed_episode/0 versus fixed_ordinary/0 | +0.0000 | [-0.0001,+0.0002] |
-| fixed_episode/20 versus fixed_ordinary/20 | +0.0000 | [-0.0003,+0.0004] |
-| fixed_episode/5 versus fixed_ordinary/5 | +0.0000 | [-0.0002,+0.0002] |
-| episode_selected versus ordinary_selected | +0.0000 | [-0.0003,+0.0004] |
-| episode_selected versus source_no_adaptation | +0.0093 | [-0.0144,+0.0329] |
-| fixed_episode/0 versus source_no_adaptation | -0.0010 | [-0.0084,+0.0064] |
-| fixed_episode/20 versus source_no_adaptation | +0.0093 | [-0.0144,+0.0329] |
-| fixed_episode/5 versus source_no_adaptation | -0.0002 | [-0.0075,+0.0071] |
-| fixed_ordinary/0 versus source_no_adaptation | -0.0010 | [-0.0084,+0.0063] |
-| fixed_ordinary/20 versus source_no_adaptation | +0.0092 | [-0.0144,+0.0329] |
-| fixed_ordinary/5 versus source_no_adaptation | -0.0002 | [-0.0074,+0.0070] |
+| fixed_episode/0 versus fixed_ordinary/0 | -0.0000 | [-0.0001,+0.0001] |
+| fixed_episode/20 versus fixed_ordinary/20 | +0.0000 | [-0.0002,+0.0002] |
+| fixed_episode/5 versus fixed_ordinary/5 | -0.0000 | [-0.0001,+0.0001] |
+| episode_selected versus ordinary_selected | -0.0000 | [-0.0002,+0.0001] |
+| episode_selected versus source_no_adaptation | +0.0097 | [-0.0014,+0.0209] |
+| fixed_episode/0 versus source_no_adaptation | +0.0002 | [-0.0032,+0.0036] |
+| fixed_episode/20 versus source_no_adaptation | +0.0100 | [-0.0013,+0.0212] |
+| fixed_episode/5 versus source_no_adaptation | +0.0010 | [-0.0024,+0.0044] |
+| fixed_ordinary/0 versus source_no_adaptation | +0.0003 | [-0.0031,+0.0036] |
+| fixed_ordinary/20 versus source_no_adaptation | +0.0100 | [-0.0013,+0.0212] |
+| fixed_ordinary/5 versus source_no_adaptation | +0.0010 | [-0.0024,+0.0044] |
 | fixed_source/0 versus source_no_adaptation | +0.0000 | [+0.0000,+0.0000] |
-| fixed_source/20 versus source_no_adaptation | +0.0104 | [-0.0133,+0.0342] |
-| fixed_source/5 versus source_no_adaptation | +0.0008 | [-0.0008,+0.0024] |
-| ordinary_selected versus source_no_adaptation | +0.0092 | [-0.0144,+0.0329] |
+| fixed_source/20 versus source_no_adaptation | +0.0099 | [-0.0013,+0.0210] |
+| fixed_source/5 versus source_no_adaptation | +0.0008 | [-0.0001,+0.0016] |
+| ordinary_selected versus source_no_adaptation | +0.0098 | [-0.0014,+0.0209] |
 
 ## fau / fusion/cb_pre / native
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| common_linear versus fm_direct | -0.3015 | [-0.4112,-0.1919] |
-| probability versus fm_direct | +0.0318 | [+0.0005,+0.0631] |
-| residual versus fm_direct | -0.1432 | [-0.2448,-0.0415] |
-| sc_local versus fm_direct | -0.3499 | [-0.5198,-0.1800] |
-| common_linear versus local_direct | -0.1584 | [-0.2413,-0.0754] |
-| probability versus local_direct | +0.1750 | [+0.1014,+0.2486] |
+| common_linear versus fm_direct | -0.3359 | [-0.4205,-0.2512] |
+| probability versus fm_direct | +0.0317 | [+0.0065,+0.0570] |
+| residual versus fm_direct | -0.1698 | [-0.2393,-0.1002] |
+| sc_local versus fm_direct | -0.4135 | [-0.5346,-0.2924] |
+| common_linear versus local_direct | -0.1661 | [-0.2140,-0.1182] |
+| probability versus local_direct | +0.2015 | [+0.1541,+0.2490] |
 | residual versus local_direct | +0.0000 | [+0.0000,+0.0000] |
-| sc_local versus local_direct | -0.2067 | [-0.3230,-0.0905] |
-| common_linear versus strong_single | -0.3015 | [-0.4112,-0.1919] |
-| probability versus strong_single | +0.0318 | [+0.0005,+0.0631] |
-| residual versus strong_single | -0.1432 | [-0.2448,-0.0415] |
-| sc_local versus strong_single | -0.3499 | [-0.5198,-0.1800] |
+| sc_local versus local_direct | -0.2437 | [-0.3150,-0.1724] |
+| common_linear versus strong_single | -0.3086 | [-0.3892,-0.2281] |
+| probability versus strong_single | +0.0590 | [+0.0252,+0.0927] |
+| residual versus strong_single | -0.1426 | [-0.2090,-0.0761] |
+| sc_local versus strong_single | -0.3863 | [-0.5025,-0.2700] |
 
 ## fau / fusion/cb_pre / unified
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| common_linear versus fm_direct | -0.1211 | [-0.1755,-0.0668] |
-| probability versus fm_direct | +0.0361 | [+0.0016,+0.0705] |
-| residual versus fm_direct | -0.1250 | [-0.2194,-0.0306] |
-| sc_local versus fm_direct | -0.1468 | [-0.2550,-0.0386] |
-| common_linear versus local_direct | +0.0039 | [-0.0670,+0.0748] |
-| probability versus local_direct | +0.1611 | [+0.0988,+0.2234] |
+| common_linear versus fm_direct | -0.1351 | [-0.1744,-0.0959] |
+| probability versus fm_direct | +0.0302 | [+0.0100,+0.0503] |
+| residual versus fm_direct | -0.1443 | [-0.2033,-0.0853] |
+| sc_local versus fm_direct | -0.1715 | [-0.2377,-0.1054] |
+| common_linear versus local_direct | +0.0091 | [-0.0294,+0.0477] |
+| probability versus local_direct | +0.1744 | [+0.1342,+0.2147] |
 | residual versus local_direct | +0.0000 | [+0.0000,+0.0000] |
-| sc_local versus local_direct | -0.0218 | [-0.0672,+0.0237] |
-| common_linear versus strong_single | -0.1211 | [-0.1755,-0.0668] |
-| probability versus strong_single | +0.0361 | [+0.0016,+0.0705] |
-| residual versus strong_single | -0.1250 | [-0.2194,-0.0306] |
-| sc_local versus strong_single | -0.1468 | [-0.2550,-0.0386] |
+| sc_local versus local_direct | -0.0272 | [-0.0556,+0.0011] |
+| common_linear versus strong_single | -0.1125 | [-0.1585,-0.0664] |
+| probability versus strong_single | +0.0528 | [+0.0262,+0.0794] |
+| residual versus strong_single | -0.1216 | [-0.1805,-0.0628] |
+| sc_local versus strong_single | -0.1489 | [-0.2190,-0.0788] |
 
 ## fau / fusion/cb_random / native
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| common_linear versus fm_direct | -0.2339 | [-0.3342,-0.1337] |
-| probability versus fm_direct | +0.0731 | [+0.0295,+0.1168] |
-| residual versus fm_direct | -0.0534 | [-0.1455,+0.0386] |
-| sc_local versus fm_direct | -0.2601 | [-0.3999,-0.1204] |
-| common_linear versus local_direct | -0.1805 | [-0.2772,-0.0839] |
-| probability versus local_direct | +0.1265 | [+0.0755,+0.1776] |
+| common_linear versus fm_direct | -0.2578 | [-0.3285,-0.1871] |
+| probability versus fm_direct | +0.0659 | [+0.0386,+0.0931] |
+| residual versus fm_direct | -0.0636 | [-0.1171,-0.0102] |
+| sc_local versus fm_direct | -0.3073 | [-0.4008,-0.2139] |
+| common_linear versus local_direct | -0.1941 | [-0.2503,-0.1380] |
+| probability versus local_direct | +0.1295 | [+0.1014,+0.1576] |
 | residual versus local_direct | +0.0000 | [+0.0000,+0.0000] |
-| sc_local versus local_direct | -0.2067 | [-0.3243,-0.0891] |
-| common_linear versus strong_single | -0.3237 | [-0.4592,-0.1881] |
-| probability versus strong_single | -0.0166 | [-0.0917,+0.0584] |
-| residual versus strong_single | -0.1432 | [-0.2460,-0.0403] |
-| sc_local versus strong_single | -0.3499 | [-0.5218,-0.1780] |
+| sc_local versus local_direct | -0.2437 | [-0.3136,-0.1738] |
+| common_linear versus strong_single | -0.3367 | [-0.4304,-0.2430] |
+| probability versus strong_single | -0.0130 | [-0.0661,+0.0400] |
+| residual versus strong_single | -0.1426 | [-0.2077,-0.0774] |
+| sc_local versus strong_single | -0.3863 | [-0.5003,-0.2723] |
 
 ## fau / fusion/cb_random / unified
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| common_linear versus fm_direct | -0.0427 | [-0.1554,+0.0699] |
-| probability versus fm_direct | +0.0761 | [+0.0349,+0.1172] |
-| residual versus fm_direct | -0.0262 | [-0.1349,+0.0825] |
-| sc_local versus fm_direct | -0.0480 | [-0.1693,+0.0734] |
-| common_linear versus local_direct | -0.0165 | [-0.0716,+0.0386] |
-| probability versus local_direct | +0.1023 | [+0.0312,+0.1733] |
+| common_linear versus fm_direct | -0.0454 | [-0.0933,+0.0025] |
+| probability versus fm_direct | +0.0811 | [+0.0607,+0.1014] |
+| residual versus fm_direct | -0.0245 | [-0.0722,+0.0232] |
+| sc_local versus fm_direct | -0.0518 | [-0.1058,+0.0023] |
+| common_linear versus local_direct | -0.0209 | [-0.0517,+0.0099] |
+| probability versus local_direct | +0.1056 | [+0.0758,+0.1355] |
 | residual versus local_direct | +0.0000 | [+0.0000,+0.0000] |
-| sc_local versus local_direct | -0.0218 | [-0.0778,+0.0343] |
-| common_linear versus strong_single | -0.1415 | [-0.2602,-0.0228] |
-| probability versus strong_single | -0.0227 | [-0.1046,+0.0591] |
-| residual versus strong_single | -0.1250 | [-0.2414,-0.0086] |
-| sc_local versus strong_single | -0.1468 | [-0.2801,-0.0134] |
+| sc_local versus local_direct | -0.0272 | [-0.0567,+0.0022] |
+| common_linear versus strong_single | -0.1425 | [-0.2087,-0.0763] |
+| probability versus strong_single | -0.0160 | [-0.0647,+0.0326] |
+| residual versus strong_single | -0.1216 | [-0.1828,-0.0604] |
+| sc_local versus strong_single | -0.1489 | [-0.2218,-0.0759] |
 
 ## fau / fusion/reve_pre / native
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| common_linear versus fm_direct | -0.2095 | [-0.3425,-0.0766] |
-| probability versus fm_direct | +0.1123 | [+0.0240,+0.2007] |
-| residual versus fm_direct | -0.1174 | [-0.3004,+0.0656] |
-| sc_local versus fm_direct | -0.3241 | [-0.5594,-0.0888] |
-| common_linear versus local_direct | -0.0921 | [-0.2332,+0.0489] |
-| probability versus local_direct | +0.2298 | [+0.1328,+0.3267] |
+| common_linear versus fm_direct | -0.2136 | [-0.2874,-0.1398] |
+| probability versus fm_direct | +0.1131 | [+0.0721,+0.1541] |
+| residual versus fm_direct | -0.1131 | [-0.1980,-0.0282] |
+| sc_local versus fm_direct | -0.3568 | [-0.4803,-0.2333] |
+| common_linear versus local_direct | -0.1005 | [-0.1682,-0.0328] |
+| probability versus local_direct | +0.2262 | [+0.1804,+0.2720] |
 | residual versus local_direct | +0.0000 | [+0.0000,+0.0000] |
-| sc_local versus local_direct | -0.2067 | [-0.3304,-0.0831] |
-| common_linear versus strong_single | -0.2353 | [-0.4038,-0.0667] |
-| probability versus strong_single | +0.0866 | [-0.0280,+0.2012] |
-| residual versus strong_single | -0.1432 | [-0.2513,-0.0351] |
-| sc_local versus strong_single | -0.3499 | [-0.5306,-0.1692] |
+| sc_local versus local_direct | -0.2437 | [-0.3145,-0.1729] |
+| common_linear versus strong_single | -0.2431 | [-0.3371,-0.1490] |
+| probability versus strong_single | +0.0837 | [+0.0227,+0.1446] |
+| residual versus strong_single | -0.1426 | [-0.2086,-0.0765] |
+| sc_local versus strong_single | -0.3863 | [-0.5018,-0.2707] |
 
 ## fau / fusion/reve_pre / unified
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| common_linear versus fm_direct | -0.1299 | [-0.1834,-0.0764] |
-| probability versus fm_direct | +0.0676 | [+0.0084,+0.1267] |
-| residual versus fm_direct | -0.1262 | [-0.2622,+0.0097] |
-| sc_local versus fm_direct | -0.1480 | [-0.2940,-0.0020] |
-| common_linear versus local_direct | -0.0037 | [-0.1234,+0.1160] |
-| probability versus local_direct | +0.1938 | [+0.1137,+0.2739] |
+| common_linear versus fm_direct | -0.1052 | [-0.1409,-0.0695] |
+| probability versus fm_direct | +0.0765 | [+0.0448,+0.1082] |
+| residual versus fm_direct | -0.1093 | [-0.1763,-0.0422] |
+| sc_local versus fm_direct | -0.1365 | [-0.2124,-0.0607] |
+| common_linear versus local_direct | +0.0041 | [-0.0528,+0.0609] |
+| probability versus local_direct | +0.1858 | [+0.1481,+0.2235] |
 | residual versus local_direct | +0.0000 | [+0.0000,+0.0000] |
-| sc_local versus local_direct | -0.0218 | [-0.0714,+0.0279] |
-| common_linear versus strong_single | -0.1287 | [-0.2424,-0.0151] |
-| probability versus strong_single | +0.0688 | [-0.0306,+0.1681] |
-| residual versus strong_single | -0.1250 | [-0.2282,-0.0219] |
-| sc_local versus strong_single | -0.1468 | [-0.2649,-0.0286] |
+| sc_local versus local_direct | -0.0272 | [-0.0566,+0.0021] |
+| common_linear versus strong_single | -0.1175 | [-0.1766,-0.0585] |
+| probability versus strong_single | +0.0642 | [+0.0130,+0.1153] |
+| residual versus strong_single | -0.1216 | [-0.1826,-0.0607] |
+| sc_local versus strong_single | -0.1489 | [-0.2215,-0.0763] |
 
 ## fau / policy/cbramod/pretrained_full / native
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| declared_window_temporal|0.1 versus base | +0.0153 | [-0.0057,+0.0363] |
-| declared_window_temporal|0.3 versus base | +0.0091 | [-0.0044,+0.0226] |
-| diagonal_spatial|0.1 versus base | +0.0118 | [-0.0068,+0.0305] |
-| diagonal_spatial|0.3 versus base | +0.0241 | [-0.0047,+0.0529] |
-| full_spatial|0.1 versus base | +0.0098 | [-0.0775,+0.0972] |
-| full_spatial|0.3 versus base | +0.2755 | [-0.3487,+0.8997] |
-| lowrank_spatial|0.1 versus base | +0.0099 | [-0.0380,+0.0578] |
-| lowrank_spatial|0.3 versus base | +0.1338 | [-0.2634,+0.5310] |
+| declared_window_temporal|0.1 versus base | +0.0159 | [+0.0034,+0.0283] |
+| declared_window_temporal|0.3 versus base | +0.0163 | [+0.0005,+0.0321] |
+| diagonal_spatial|0.1 versus base | +0.0147 | [-0.0017,+0.0311] |
+| diagonal_spatial|0.3 versus base | +0.0294 | [+0.0115,+0.0472] |
+| full_spatial|0.1 versus base | +0.0444 | [-0.0239,+0.1127] |
+| full_spatial|0.3 versus base | +0.2319 | [+0.0080,+0.4557] |
+| lowrank_spatial|0.1 versus base | +0.0121 | [-0.0137,+0.0379] |
+| lowrank_spatial|0.3 versus base | +0.1040 | [-0.0311,+0.2392] |
 | none|0.1 versus base | +0.0000 | [+0.0000,+0.0000] |
 | none|0.3 versus base | +0.0000 | [+0.0000,+0.0000] |
-| output_low_rank|0.1 versus base | +0.0150 | [-0.0302,+0.0602] |
-| output_low_rank|0.3 versus base | +0.0600 | [-0.0401,+0.1600] |
+| output_low_rank|0.1 versus base | +0.0236 | [-0.0167,+0.0639] |
+| output_low_rank|0.3 versus base | +0.0749 | [-0.0126,+0.1624] |
 
 ## fau / policy/cbramod/pretrained_full / unified
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| declared_window_temporal|0.1 versus base | +0.0110 | [-0.0036,+0.0256] |
-| declared_window_temporal|0.3 versus base | +0.0067 | [-0.0019,+0.0153] |
-| diagonal_spatial|0.1 versus base | +0.0039 | [-0.0114,+0.0193] |
-| diagonal_spatial|0.3 versus base | +0.0178 | [-0.0072,+0.0427] |
-| full_spatial|0.1 versus base | +0.0061 | [-0.0642,+0.0764] |
-| full_spatial|0.3 versus base | +0.1909 | [-0.2075,+0.5894] |
-| lowrank_spatial|0.1 versus base | +0.0098 | [-0.0334,+0.0530] |
-| lowrank_spatial|0.3 versus base | +0.0994 | [-0.1457,+0.3446] |
+| declared_window_temporal|0.1 versus base | +0.0091 | [+0.0027,+0.0154] |
+| declared_window_temporal|0.3 versus base | +0.0077 | [+0.0022,+0.0131] |
+| diagonal_spatial|0.1 versus base | +0.0039 | [-0.0041,+0.0119] |
+| diagonal_spatial|0.3 versus base | +0.0156 | [+0.0053,+0.0259] |
+| full_spatial|0.1 versus base | +0.0194 | [-0.0208,+0.0595] |
+| full_spatial|0.3 versus base | +0.1481 | [+0.0034,+0.2928] |
+| lowrank_spatial|0.1 versus base | +0.0027 | [-0.0174,+0.0228] |
+| lowrank_spatial|0.3 versus base | +0.0644 | [-0.0194,+0.1482] |
 | none|0.1 versus base | +0.0000 | [+0.0000,+0.0000] |
 | none|0.3 versus base | +0.0000 | [+0.0000,+0.0000] |
-| output_low_rank|0.1 versus base | +0.0077 | [-0.0312,+0.0466] |
-| output_low_rank|0.3 versus base | +0.0553 | [-0.0314,+0.1419] |
+| output_low_rank|0.1 versus base | +0.0087 | [-0.0242,+0.0416] |
+| output_low_rank|0.3 versus base | +0.0432 | [-0.0100,+0.0964] |
 
 ## fau / policy/cbramod/random_full / native
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| declared_window_temporal|0.1 versus base | +0.0011 | [-0.0199,+0.0221] |
-| declared_window_temporal|0.3 versus base | +0.0039 | [-0.0182,+0.0261] |
-| diagonal_spatial|0.1 versus base | +0.0147 | [-0.0077,+0.0370] |
-| diagonal_spatial|0.3 versus base | +0.0168 | [-0.0088,+0.0424] |
-| full_spatial|0.1 versus base | +0.0417 | [-0.1143,+0.1976] |
-| full_spatial|0.3 versus base | +0.2647 | [-0.1532,+0.6826] |
-| lowrank_spatial|0.1 versus base | +0.0103 | [-0.0525,+0.0730] |
-| lowrank_spatial|0.3 versus base | +0.0989 | [-0.1031,+0.3009] |
+| declared_window_temporal|0.1 versus base | +0.0102 | [-0.0023,+0.0227] |
+| declared_window_temporal|0.3 versus base | +0.0108 | [-0.0038,+0.0253] |
+| diagonal_spatial|0.1 versus base | +0.0090 | [-0.0003,+0.0184] |
+| diagonal_spatial|0.3 versus base | +0.0159 | [+0.0052,+0.0266] |
+| full_spatial|0.1 versus base | +0.0424 | [-0.0281,+0.1128] |
+| full_spatial|0.3 versus base | +0.1875 | [+0.0292,+0.3458] |
+| lowrank_spatial|0.1 versus base | +0.0074 | [-0.0199,+0.0347] |
+| lowrank_spatial|0.3 versus base | +0.0831 | [+0.0014,+0.1648] |
 | none|0.1 versus base | +0.0000 | [+0.0000,+0.0000] |
 | none|0.3 versus base | +0.0000 | [+0.0000,+0.0000] |
-| output_low_rank|0.1 versus base | +0.0145 | [-0.0376,+0.0665] |
-| output_low_rank|0.3 versus base | +0.0573 | [-0.0188,+0.1333] |
+| output_low_rank|0.1 versus base | +0.0133 | [-0.0188,+0.0454] |
+| output_low_rank|0.3 versus base | +0.0649 | [+0.0031,+0.1267] |
 
 ## fau / policy/cbramod/random_full / unified
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| declared_window_temporal|0.1 versus base | +0.0026 | [-0.0120,+0.0172] |
-| declared_window_temporal|0.3 versus base | +0.0065 | [-0.0120,+0.0250] |
-| diagonal_spatial|0.1 versus base | +0.0085 | [-0.0099,+0.0268] |
-| diagonal_spatial|0.3 versus base | +0.0113 | [-0.0094,+0.0319] |
-| full_spatial|0.1 versus base | +0.0284 | [-0.1080,+0.1648] |
-| full_spatial|0.3 versus base | +0.1886 | [-0.1451,+0.5224] |
-| lowrank_spatial|0.1 versus base | +0.0072 | [-0.0452,+0.0596] |
-| lowrank_spatial|0.3 versus base | +0.0718 | [-0.1004,+0.2440] |
+| declared_window_temporal|0.1 versus base | +0.0085 | [-0.0018,+0.0188] |
+| declared_window_temporal|0.3 versus base | +0.0095 | [-0.0010,+0.0200] |
+| diagonal_spatial|0.1 versus base | +0.0050 | [-0.0027,+0.0127] |
+| diagonal_spatial|0.3 versus base | +0.0085 | [+0.0001,+0.0169] |
+| full_spatial|0.1 versus base | +0.0241 | [-0.0317,+0.0799] |
+| full_spatial|0.3 versus base | +0.1254 | [+0.0074,+0.2435] |
+| lowrank_spatial|0.1 versus base | +0.0038 | [-0.0158,+0.0233] |
+| lowrank_spatial|0.3 versus base | +0.0535 | [-0.0102,+0.1171] |
 | none|0.1 versus base | +0.0000 | [+0.0000,+0.0000] |
 | none|0.3 versus base | +0.0000 | [+0.0000,+0.0000] |
-| output_low_rank|0.1 versus base | +0.0185 | [-0.0349,+0.0720] |
-| output_low_rank|0.3 versus base | +0.0433 | [-0.0252,+0.1119] |
+| output_low_rank|0.1 versus base | +0.0116 | [-0.0189,+0.0422] |
+| output_low_rank|0.3 versus base | +0.0501 | [-0.0021,+0.1022] |
 
 ## fau / policy/local / native
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| declared_window_temporal|0.1 versus base | +0.0061 | [-0.0124,+0.0245] |
-| declared_window_temporal|0.3 versus base | +0.0077 | [-0.0112,+0.0267] |
-| diagonal_spatial|0.1 versus base | +0.0221 | [-0.0037,+0.0478] |
-| diagonal_spatial|0.3 versus base | +0.0291 | [+0.0031,+0.0551] |
-| full_spatial|0.1 versus base | +0.0000 | [+0.0000,+0.0000] |
-| full_spatial|0.3 versus base | +0.0682 | [-0.1322,+0.2686] |
-| lowrank_spatial|0.1 versus base | +0.0138 | [-0.0041,+0.0318] |
-| lowrank_spatial|0.3 versus base | +0.0309 | [-0.1270,+0.1887] |
+| declared_window_temporal|0.1 versus base | +0.0065 | [-0.0009,+0.0138] |
+| declared_window_temporal|0.3 versus base | +0.0064 | [-0.0028,+0.0157] |
+| diagonal_spatial|0.1 versus base | +0.0197 | [+0.0069,+0.0324] |
+| diagonal_spatial|0.3 versus base | +0.0330 | [+0.0199,+0.0461] |
+| full_spatial|0.1 versus base | -0.0008 | [-0.0139,+0.0123] |
+| full_spatial|0.3 versus base | +0.0785 | [+0.0052,+0.1517] |
+| lowrank_spatial|0.1 versus base | +0.0112 | [-0.0103,+0.0326] |
+| lowrank_spatial|0.3 versus base | +0.0348 | [-0.0266,+0.0962] |
 | none|0.1 versus base | +0.0000 | [+0.0000,+0.0000] |
 | none|0.3 versus base | +0.0000 | [+0.0000,+0.0000] |
-| output_low_rank|0.1 versus base | +0.0092 | [-0.0350,+0.0533] |
-| output_low_rank|0.3 versus base | +0.0378 | [-0.0318,+0.1074] |
+| output_low_rank|0.1 versus base | +0.0115 | [-0.0144,+0.0373] |
+| output_low_rank|0.3 versus base | +0.0388 | [+0.0043,+0.0734] |
 
 ## fau / policy/local / unified
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| declared_window_temporal|0.1 versus base | +0.0040 | [-0.0086,+0.0166] |
-| declared_window_temporal|0.3 versus base | +0.0025 | [-0.0114,+0.0163] |
-| diagonal_spatial|0.1 versus base | +0.0108 | [-0.0090,+0.0306] |
-| diagonal_spatial|0.3 versus base | +0.0143 | [-0.0020,+0.0305] |
-| full_spatial|0.1 versus base | +0.0000 | [+0.0000,+0.0000] |
-| full_spatial|0.3 versus base | +0.0347 | [-0.0632,+0.1327] |
-| lowrank_spatial|0.1 versus base | +0.0084 | [-0.0048,+0.0215] |
-| lowrank_spatial|0.3 versus base | +0.0123 | [-0.0788,+0.1034] |
+| declared_window_temporal|0.1 versus base | +0.0031 | [-0.0022,+0.0084] |
+| declared_window_temporal|0.3 versus base | +0.0029 | [-0.0032,+0.0090] |
+| diagonal_spatial|0.1 versus base | +0.0088 | [-0.0006,+0.0183] |
+| diagonal_spatial|0.3 versus base | +0.0160 | [+0.0080,+0.0241] |
+| full_spatial|0.1 versus base | +0.0025 | [-0.0101,+0.0150] |
+| full_spatial|0.3 versus base | +0.0348 | [-0.0085,+0.0782] |
+| lowrank_spatial|0.1 versus base | +0.0037 | [-0.0127,+0.0201] |
+| lowrank_spatial|0.3 versus base | +0.0020 | [-0.0391,+0.0431] |
 | none|0.1 versus base | +0.0000 | [+0.0000,+0.0000] |
 | none|0.3 versus base | +0.0000 | [+0.0000,+0.0000] |
-| output_low_rank|0.1 versus base | +0.0123 | [-0.0425,+0.0671] |
-| output_low_rank|0.3 versus base | +0.0217 | [-0.0513,+0.0947] |
+| output_low_rank|0.1 versus base | +0.0113 | [-0.0155,+0.0380] |
+| output_low_rank|0.3 versus base | +0.0210 | [-0.0144,+0.0565] |
 
 ## fau / policy/reve/pretrained_full / native
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| declared_window_temporal|0.1 versus base | +0.0318 | [-0.0291,+0.0926] |
-| declared_window_temporal|0.3 versus base | +0.0330 | [-0.0278,+0.0938] |
-| diagonal_spatial|0.1 versus base | +0.0191 | [-0.0092,+0.0474] |
-| diagonal_spatial|0.3 versus base | +0.0422 | [-0.0198,+0.1043] |
-| full_spatial|0.1 versus base | +0.0574 | [-0.2757,+0.3905] |
-| full_spatial|0.3 versus base | +0.1798 | [-0.5042,+0.8639] |
-| lowrank_spatial|0.1 versus base | +0.0205 | [-0.2382,+0.2793] |
-| lowrank_spatial|0.3 versus base | +0.0691 | [-0.0950,+0.2333] |
+| declared_window_temporal|0.1 versus base | +0.0047 | [-0.0088,+0.0181] |
+| declared_window_temporal|0.3 versus base | +0.0133 | [-0.0034,+0.0301] |
+| diagonal_spatial|0.1 versus base | +0.0154 | [+0.0010,+0.0299] |
+| diagonal_spatial|0.3 versus base | +0.0215 | [+0.0038,+0.0392] |
+| full_spatial|0.1 versus base | +0.0189 | [-0.0402,+0.0781] |
+| full_spatial|0.3 versus base | +0.1297 | [-0.0016,+0.2609] |
+| lowrank_spatial|0.1 versus base | +0.0213 | [-0.0351,+0.0777] |
+| lowrank_spatial|0.3 versus base | +0.0715 | [+0.0043,+0.1387] |
 | none|0.1 versus base | +0.0000 | [+0.0000,+0.0000] |
 | none|0.3 versus base | +0.0000 | [+0.0000,+0.0000] |
-| output_low_rank|0.1 versus base | +0.0271 | [+0.0045,+0.0498] |
-| output_low_rank|0.3 versus base | +0.1270 | [-0.0771,+0.3312] |
+| output_low_rank|0.1 versus base | +0.0315 | [+0.0006,+0.0624] |
+| output_low_rank|0.3 versus base | +0.0843 | [+0.0206,+0.1480] |
 
 ## fau / policy/reve/pretrained_full / unified
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| declared_window_temporal|0.1 versus base | +0.0112 | [-0.0283,+0.0507] |
-| declared_window_temporal|0.3 versus base | +0.0164 | [-0.0316,+0.0643] |
-| diagonal_spatial|0.1 versus base | +0.0101 | [-0.0076,+0.0278] |
-| diagonal_spatial|0.3 versus base | +0.0208 | [-0.0204,+0.0619] |
-| full_spatial|0.1 versus base | +0.0495 | [-0.1898,+0.2888] |
-| full_spatial|0.3 versus base | +0.1314 | [-0.3853,+0.6480] |
-| lowrank_spatial|0.1 versus base | +0.0080 | [-0.1998,+0.2157] |
-| lowrank_spatial|0.3 versus base | +0.0368 | [-0.0948,+0.1684] |
+| declared_window_temporal|0.1 versus base | -0.0005 | [-0.0100,+0.0090] |
+| declared_window_temporal|0.3 versus base | +0.0083 | [-0.0037,+0.0203] |
+| diagonal_spatial|0.1 versus base | +0.0058 | [-0.0039,+0.0154] |
+| diagonal_spatial|0.3 versus base | +0.0099 | [-0.0018,+0.0217] |
+| full_spatial|0.1 versus base | +0.0154 | [-0.0254,+0.0562] |
+| full_spatial|0.3 versus base | +0.0894 | [-0.0120,+0.1907] |
+| lowrank_spatial|0.1 versus base | +0.0056 | [-0.0345,+0.0457] |
+| lowrank_spatial|0.3 versus base | +0.0430 | [-0.0143,+0.1003] |
 | none|0.1 versus base | +0.0000 | [+0.0000,+0.0000] |
 | none|0.3 versus base | +0.0000 | [+0.0000,+0.0000] |
-| output_low_rank|0.1 versus base | +0.0085 | [-0.0078,+0.0248] |
-| output_low_rank|0.3 versus base | +0.0528 | [-0.0705,+0.1762] |
+| output_low_rank|0.1 versus base | +0.0090 | [-0.0141,+0.0320] |
+| output_low_rank|0.3 versus base | +0.0437 | [-0.0083,+0.0957] |
 
 ## federici / budget/cbramod/pretrained_full / native
 
-new production intervention. Paired n=19/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| fixed_2.0 versus fixed_1.0 | -0.0355 | [-0.1027,+0.0317] |
-| fixed_0.25 versus historical_selected | -0.0481 | [-0.1796,+0.0834] |
-| fixed_0.5 versus historical_selected | -0.0551 | [-0.1312,+0.0210] |
-| fixed_1.0 versus historical_selected | -0.0133 | [-0.0799,+0.0532] |
-| fixed_2.0 versus historical_selected | -0.0489 | [-0.1429,+0.0452] |
-| new_selected versus historical_selected | -0.0539 | [-0.1414,+0.0335] |
+| fixed_2.0 versus fixed_1.0 | -0.0260 | [-0.0653,+0.0133] |
+| fixed_0.25 versus historical_selected | -0.0305 | [-0.0769,+0.0158] |
+| fixed_0.5 versus historical_selected | -0.0402 | [-0.0740,-0.0064] |
+| fixed_1.0 versus historical_selected | -0.0074 | [-0.0358,+0.0210] |
+| fixed_2.0 versus historical_selected | -0.0334 | [-0.0799,+0.0131] |
+| new_selected versus historical_selected | -0.0305 | [-0.0734,+0.0123] |
 
 ## federici / budget/cbramod/pretrained_full / unified
 
-new production intervention. Paired n=19/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| fixed_2.0 versus fixed_1.0 | -0.0293 | [-0.0968,+0.0383] |
-| fixed_0.25 versus historical_selected | -0.0636 | [-0.1291,+0.0020] |
-| fixed_0.5 versus historical_selected | -0.0252 | [-0.0752,+0.0249] |
-| fixed_1.0 versus historical_selected | -0.0155 | [-0.0585,+0.0275] |
-| fixed_2.0 versus historical_selected | -0.0448 | [-0.1149,+0.0253] |
-| new_selected versus historical_selected | -0.0368 | [-0.1003,+0.0266] |
+| fixed_2.0 versus fixed_1.0 | -0.0212 | [-0.0501,+0.0077] |
+| fixed_0.25 versus historical_selected | -0.0419 | [-0.0744,-0.0093] |
+| fixed_0.5 versus historical_selected | -0.0230 | [-0.0495,+0.0036] |
+| fixed_1.0 versus historical_selected | -0.0033 | [-0.0263,+0.0196] |
+| fixed_2.0 versus historical_selected | -0.0246 | [-0.0587,+0.0096] |
+| new_selected versus historical_selected | -0.0207 | [-0.0526,+0.0112] |
+
+## federici / budget/cbramod/random_full / native
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_2.0 versus fixed_1.0 | -0.0610 | [-0.0929,-0.0291] |
+| fixed_0.25 versus historical_selected | -0.0216 | [-0.0571,+0.0139] |
+| fixed_0.5 versus historical_selected | -0.0293 | [-0.0606,+0.0020] |
+| fixed_1.0 versus historical_selected | -0.0563 | [-0.0916,-0.0210] |
+| fixed_2.0 versus historical_selected | -0.1172 | [-0.1682,-0.0662] |
+| new_selected versus historical_selected | -0.0643 | [-0.1092,-0.0195] |
+
+## federici / budget/cbramod/random_full / unified
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_2.0 versus fixed_1.0 | -0.0495 | [-0.0779,-0.0210] |
+| fixed_0.25 versus historical_selected | +0.0010 | [-0.0399,+0.0419] |
+| fixed_0.5 versus historical_selected | +0.0022 | [-0.0295,+0.0340] |
+| fixed_1.0 versus historical_selected | -0.0497 | [-0.0925,-0.0069] |
+| fixed_2.0 versus historical_selected | -0.0991 | [-0.1532,-0.0451] |
+| new_selected versus historical_selected | -0.0548 | [-0.1040,-0.0056] |
+
+## federici / budget/local / native
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_2.0 versus fixed_1.0 | -0.0138 | [-0.0327,+0.0051] |
+| fixed_0.25 versus historical_selected | -0.0168 | [-0.0557,+0.0222] |
+| fixed_0.5 versus historical_selected | +0.0011 | [-0.0244,+0.0267] |
+| fixed_1.0 versus historical_selected | -0.0104 | [-0.0364,+0.0156] |
+| fixed_2.0 versus historical_selected | -0.0242 | [-0.0499,+0.0016] |
+| new_selected versus historical_selected | -0.0163 | [-0.0412,+0.0087] |
+
+## federici / budget/local / unified
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| fixed_2.0 versus fixed_1.0 | -0.0072 | [-0.0234,+0.0090] |
+| fixed_0.25 versus historical_selected | -0.0054 | [-0.0345,+0.0237] |
+| fixed_0.5 versus historical_selected | -0.0053 | [-0.0241,+0.0135] |
+| fixed_1.0 versus historical_selected | -0.0196 | [-0.0378,-0.0013] |
+| fixed_2.0 versus historical_selected | -0.0268 | [-0.0474,-0.0061] |
+| new_selected versus historical_selected | -0.0204 | [-0.0404,-0.0004] |
+
+## federici / budget_models/fixed_0.5 / native
+
+new production intervention. Paired n=37/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.0518 | [-0.0432,+0.1469] |
+| cbramod/pretrained_full versus local | +0.1927 | [+0.0061,+0.3793] |
+| cbramod/random_full versus local | +0.1408 | [+0.0056,+0.2761] |
+| reve/pretrained_full versus local | +0.1121 | [-0.0192,+0.2433] |
+| reve/random_full versus local | +0.1055 | [-0.0409,+0.2518] |
+| reve/pretrained_full versus reve/random_full | +0.0066 | [-0.1076,+0.1208] |
+
+## federici / budget_models/fixed_0.5 / unified
+
+new production intervention. Paired n=37/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.0478 | [-0.0270,+0.1226] |
+| cbramod/pretrained_full versus local | +0.2110 | [+0.0675,+0.3545] |
+| cbramod/random_full versus local | +0.1632 | [+0.0494,+0.2769] |
+| reve/pretrained_full versus local | +0.1337 | [+0.0068,+0.2605] |
+| reve/random_full versus local | +0.1843 | [+0.0438,+0.3248] |
+| reve/pretrained_full versus reve/random_full | -0.0506 | [-0.1470,+0.0458] |
+
+## federici / budget_models/fixed_1.0 / native
+
+new production intervention. Paired n=37/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1145 | [+0.0081,+0.2209] |
+| cbramod/pretrained_full versus local | +0.2265 | [+0.0598,+0.3932] |
+| cbramod/random_full versus local | +0.1120 | [+0.0136,+0.2103] |
+| reve/pretrained_full versus local | -0.0921 | [-0.2160,+0.0319] |
+| reve/random_full versus local | +0.2086 | [+0.0877,+0.3295] |
+| reve/pretrained_full versus reve/random_full | -0.3007 | [-0.4233,-0.1781] |
+
+## federici / budget_models/fixed_1.0 / unified
+
+new production intervention. Paired n=37/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1221 | [+0.0256,+0.2186] |
+| cbramod/pretrained_full versus local | +0.2185 | [+0.0794,+0.3575] |
+| cbramod/random_full versus local | +0.0964 | [+0.0103,+0.1825] |
+| reve/pretrained_full versus local | -0.0205 | [-0.1025,+0.0616] |
+| reve/random_full versus local | +0.2271 | [+0.0937,+0.3604] |
+| reve/pretrained_full versus reve/random_full | -0.2475 | [-0.3768,-0.1182] |
+
+## federici / budget_models/fixed_2.0 / native
+
+new production intervention. Paired n=37/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1678 | [+0.0144,+0.3211] |
+| cbramod/pretrained_full versus local | +0.2233 | [+0.0359,+0.4107] |
+| cbramod/random_full versus local | +0.0555 | [-0.0516,+0.1626] |
+| reve/pretrained_full versus local | -0.1023 | [-0.2077,+0.0031] |
+| reve/random_full versus local | +0.2475 | [+0.0908,+0.4041] |
+| reve/pretrained_full versus reve/random_full | -0.3498 | [-0.5035,-0.1961] |
+
+## federici / budget_models/fixed_2.0 / unified
+
+new production intervention. Paired n=37/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1635 | [+0.0429,+0.2842] |
+| cbramod/pretrained_full versus local | +0.2092 | [+0.0736,+0.3448] |
+| cbramod/random_full versus local | +0.0457 | [-0.0373,+0.1287] |
+| reve/pretrained_full versus local | -0.0693 | [-0.1455,+0.0069] |
+| reve/random_full versus local | +0.2213 | [+0.0972,+0.3455] |
+| reve/pretrained_full versus reve/random_full | -0.2907 | [-0.4214,-0.1599] |
 
 ## federici / budget_models/historical_selected / native
 
@@ -708,116 +1234,426 @@ reused historical baseline; not a new training result. Paired n=86/86.
 | reve/random_full versus local | +0.1745 | [+0.0871,+0.2620] |
 | reve/pretrained_full versus reve/random_full | -0.0871 | [-0.1566,-0.0175] |
 
-## federici / fusion/cb_pre / native
+## federici / budget_models/new_selected / native
 
 new production intervention. Paired n=37/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| common_linear versus fm_direct | -0.4722 | [-0.7119,-0.2324] |
-| probability versus fm_direct | -0.0087 | [-0.0381,+0.0206] |
-| residual versus fm_direct | -0.2379 | [-0.4198,-0.0559] |
-| sc_local versus fm_direct | -0.4906 | [-0.7395,-0.2417] |
-| common_linear versus local_direct | -0.2343 | [-0.3689,-0.0997] |
-| probability versus local_direct | +0.2291 | [+0.0629,+0.3954] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1676 | [+0.0133,+0.3219] |
+| cbramod/pretrained_full versus local | +0.2228 | [+0.0308,+0.4147] |
+| cbramod/random_full versus local | +0.0552 | [-0.0511,+0.1615] |
+| reve/pretrained_full versus local | -0.1036 | [-0.2114,+0.0042] |
+| reve/random_full versus local | +0.2550 | [+0.0975,+0.4126] |
+| reve/pretrained_full versus reve/random_full | -0.3586 | [-0.5139,-0.2033] |
+
+## federici / budget_models/new_selected / unified
+
+new production intervention. Paired n=37/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1594 | [+0.0485,+0.2703] |
+| cbramod/pretrained_full versus local | +0.2159 | [+0.0809,+0.3510] |
+| cbramod/random_full versus local | +0.0565 | [-0.0252,+0.1381] |
+| reve/pretrained_full versus local | -0.0682 | [-0.1468,+0.0103] |
+| reve/random_full versus local | +0.2284 | [+0.1017,+0.3550] |
+| reve/pretrained_full versus reve/random_full | -0.2966 | [-0.4296,-0.1636] |
+
+## federici / data/content/cbramod/pretrained_full / native
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1106 | [-0.1658,-0.0553] |
+| 0.5 versus full | -0.0426 | [-0.0751,-0.0101] |
+
+## federici / data/content/cbramod/pretrained_full / unified
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1045 | [-0.1520,-0.0570] |
+| 0.5 versus full | -0.0440 | [-0.0720,-0.0160] |
+
+## federici / data/content/cbramod/random_full / native
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.2206 | [-0.2800,-0.1612] |
+| 0.5 versus full | -0.0910 | [-0.1245,-0.0575] |
+
+## federici / data/content/cbramod/random_full / unified
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1814 | [-0.2362,-0.1267] |
+| 0.5 versus full | -0.0723 | [-0.1097,-0.0349] |
+
+## federici / data/content/local / native
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1613 | [-0.2180,-0.1045] |
+| 0.5 versus full | -0.0813 | [-0.1159,-0.0467] |
+
+## federici / data/content/local / unified
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1257 | [-0.1647,-0.0868] |
+| 0.5 versus full | -0.0736 | [-0.1028,-0.0443] |
+
+## federici / data/content/reve/pretrained_full / native
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.0856 | [-0.1672,-0.0041] |
+| 0.5 versus full | -0.0023 | [-0.1185,+0.1139] |
+
+## federici / data/content/reve/pretrained_full / unified
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.0581 | [-0.1540,+0.0378] |
+| 0.5 versus full | +0.0029 | [-0.0840,+0.0898] |
+
+## federici / data/content/reve/random_full / native
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.2136 | [-0.3646,-0.0626] |
+| 0.5 versus full | -0.0564 | [-0.1123,-0.0005] |
+
+## federici / data/content/reve/random_full / unified
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1506 | [-0.3338,+0.0327] |
+| 0.5 versus full | -0.0288 | [-0.0896,+0.0321] |
+
+## federici / data/people/cbramod/pretrained_full / native
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1019 | [-0.1525,-0.0513] |
+| 0.5 versus full | -0.0564 | [-0.0874,-0.0254] |
+
+## federici / data/people/cbramod/pretrained_full / unified
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1124 | [-0.1531,-0.0716] |
+| 0.5 versus full | -0.0549 | [-0.0848,-0.0249] |
+
+## federici / data/people/cbramod/random_full / native
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.2338 | [-0.2898,-0.1777] |
+| 0.5 versus full | -0.1039 | [-0.1488,-0.0589] |
+
+## federici / data/people/cbramod/random_full / unified
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1689 | [-0.2217,-0.1161] |
+| 0.5 versus full | -0.0952 | [-0.1355,-0.0550] |
+
+## federici / data/people/local / native
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1471 | [-0.2044,-0.0899] |
+| 0.5 versus full | -0.0874 | [-0.1323,-0.0425] |
+
+## federici / data/people/local / unified
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1173 | [-0.1631,-0.0714] |
+| 0.5 versus full | -0.0803 | [-0.1153,-0.0454] |
+
+## federici / data/people/reve/pretrained_full / native
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.0104 | [-0.1252,+0.1043] |
+| 0.5 versus full | -0.0024 | [-0.1005,+0.0957] |
+
+## federici / data/people/reve/pretrained_full / unified
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | +0.0230 | [-0.0951,+0.1410] |
+| 0.5 versus full | +0.0142 | [-0.0880,+0.1164] |
+
+## federici / data/people/reve/random_full / native
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.2018 | [-0.3743,-0.0294] |
+| 0.5 versus full | -0.0841 | [-0.1581,-0.0101] |
+
+## federici / data/people/reve/random_full / unified
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.1420 | [-0.3235,+0.0395] |
+| 0.5 versus full | -0.0806 | [-0.1554,-0.0059] |
+
+## federici / data_models/content/0.25 / native
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1178 | [-0.0131,+0.2486] |
+| cbramod/pretrained_full versus local | +0.2393 | [+0.0124,+0.4662] |
+| cbramod/random_full versus local | +0.1215 | [-0.0214,+0.2644] |
+| reve/pretrained_full versus local | +0.0703 | [-0.1615,+0.3021] |
+| reve/random_full versus local | +0.1423 | [-0.0035,+0.2880] |
+| reve/pretrained_full versus reve/random_full | -0.0720 | [-0.2892,+0.1452] |
+
+## federici / data_models/content/0.25 / unified
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1096 | [+0.0091,+0.2100] |
+| cbramod/pretrained_full versus local | +0.2111 | [+0.0376,+0.3845] |
+| cbramod/random_full versus local | +0.1015 | [-0.0637,+0.2667] |
+| reve/pretrained_full versus local | +0.0551 | [-0.1072,+0.2174] |
+| reve/random_full versus local | +0.1340 | [+0.0043,+0.2636] |
+| reve/pretrained_full versus reve/random_full | -0.0789 | [-0.2498,+0.0920] |
+
+## federici / data_models/content/0.5 / native
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.0434 | [-0.1189,+0.2058] |
+| cbramod/pretrained_full versus local | +0.1913 | [-0.0842,+0.4668] |
+| cbramod/random_full versus local | +0.1478 | [-0.0560,+0.3517] |
+| reve/pretrained_full versus local | +0.0713 | [-0.1480,+0.2905] |
+| reve/random_full versus local | +0.2172 | [+0.0190,+0.4153] |
+| reve/pretrained_full versus reve/random_full | -0.1459 | [-0.2818,-0.0101] |
+
+## federici / data_models/content/0.5 / unified
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.0592 | [-0.0306,+0.1490] |
+| cbramod/pretrained_full versus local | +0.2097 | [-0.0283,+0.4478] |
+| cbramod/random_full versus local | +0.1505 | [-0.0558,+0.3569] |
+| reve/pretrained_full versus local | +0.0860 | [-0.0788,+0.2507] |
+| reve/random_full versus local | +0.2257 | [-0.0082,+0.4596] |
+| reve/pretrained_full versus reve/random_full | -0.1397 | [-0.2795,+0.0001] |
+
+## federici / data_models/people/0.25 / native
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1720 | [+0.0609,+0.2830] |
+| cbramod/pretrained_full versus local | +0.2685 | [+0.0630,+0.4739] |
+| cbramod/random_full versus local | +0.0965 | [-0.0814,+0.2743] |
+| reve/pretrained_full versus local | +0.1427 | [-0.0586,+0.3440] |
+| reve/random_full versus local | +0.1513 | [+0.0077,+0.2950] |
+| reve/pretrained_full versus reve/random_full | -0.0086 | [-0.1661,+0.1489] |
+
+## federici / data_models/people/0.25 / unified
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1283 | [-0.0136,+0.2703] |
+| cbramod/pretrained_full versus local | +0.2294 | [+0.0255,+0.4333] |
+| cbramod/random_full versus local | +0.1011 | [-0.0461,+0.2482] |
+| reve/pretrained_full versus local | +0.1297 | [-0.0436,+0.3029] |
+| reve/random_full versus local | +0.1361 | [+0.0054,+0.2667] |
+| reve/pretrained_full versus reve/random_full | -0.0064 | [-0.1898,+0.1770] |
+
+## federici / data_models/people/0.5 / native
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.0652 | [-0.1303,+0.2606] |
+| cbramod/pretrained_full versus local | +0.1533 | [-0.1498,+0.4565] |
+| cbramod/random_full versus local | +0.0882 | [-0.1192,+0.2955] |
+| reve/pretrained_full versus local | +0.0402 | [-0.1722,+0.2526] |
+| reve/random_full versus local | +0.1585 | [-0.0122,+0.3292] |
+| reve/pretrained_full versus reve/random_full | -0.1183 | [-0.2576,+0.0210] |
+
+## federici / data_models/people/0.5 / unified
+
+new production intervention. Paired n=19/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.0630 | [-0.0593,+0.1852] |
+| cbramod/pretrained_full versus local | +0.1931 | [-0.0329,+0.4191] |
+| cbramod/random_full versus local | +0.1301 | [-0.0352,+0.2955] |
+| reve/pretrained_full versus local | +0.0759 | [-0.0776,+0.2293] |
+| reve/random_full versus local | +0.1524 | [-0.0688,+0.3736] |
+| reve/pretrained_full versus reve/random_full | -0.0765 | [-0.2390,+0.0860] |
+
+## federici / fusion/cb_pre / native
+
+new production intervention. Paired n=86/86.
+
+| Contrast | ΔR bits/query | Simultaneous95% interval |
+|---|---:|---:|
+| common_linear versus fm_direct | -0.4275 | [-0.5720,-0.2829] |
+| probability versus fm_direct | +0.0011 | [-0.0191,+0.0214] |
+| residual versus fm_direct | -0.2199 | [-0.3223,-0.1175] |
+| sc_local versus fm_direct | -0.4381 | [-0.5862,-0.2900] |
+| common_linear versus local_direct | -0.2076 | [-0.2881,-0.1271] |
+| probability versus local_direct | +0.2210 | [+0.1323,+0.3098] |
 | residual versus local_direct | +0.0000 | [+0.0000,+0.0000] |
-| sc_local versus local_direct | -0.2527 | [-0.3939,-0.1114] |
-| common_linear versus strong_single | -0.4722 | [-0.7119,-0.2324] |
-| probability versus strong_single | -0.0087 | [-0.0381,+0.0206] |
-| residual versus strong_single | -0.2379 | [-0.4198,-0.0559] |
-| sc_local versus strong_single | -0.4906 | [-0.7395,-0.2417] |
+| sc_local versus local_direct | -0.2182 | [-0.3012,-0.1352] |
+| common_linear versus strong_single | -0.4252 | [-0.5570,-0.2934] |
+| probability versus strong_single | +0.0035 | [-0.0220,+0.0289] |
+| residual versus strong_single | -0.2176 | [-0.3119,-0.1232] |
+| sc_local versus strong_single | -0.4358 | [-0.5711,-0.3004] |
 
 ## federici / fusion/cb_pre / unified
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| common_linear versus fm_direct | -0.2339 | [-0.3483,-0.1195] |
-| probability versus fm_direct | -0.0005 | [-0.0249,+0.0239] |
-| residual versus fm_direct | -0.2277 | [-0.3717,-0.0837] |
-| sc_local versus fm_direct | -0.3197 | [-0.4846,-0.1549] |
-| common_linear versus local_direct | -0.0062 | [-0.0613,+0.0489] |
-| probability versus local_direct | +0.2271 | [+0.0969,+0.3574] |
+| common_linear versus fm_direct | -0.1888 | [-0.2599,-0.1177] |
+| probability versus fm_direct | +0.0062 | [-0.0133,+0.0257] |
+| residual versus fm_direct | -0.1961 | [-0.2845,-0.1077] |
+| sc_local versus fm_direct | -0.2825 | [-0.3882,-0.1767] |
+| common_linear versus local_direct | +0.0073 | [-0.0304,+0.0450] |
+| probability versus local_direct | +0.2023 | [+0.1295,+0.2751] |
 | residual versus local_direct | +0.0000 | [+0.0000,+0.0000] |
-| sc_local versus local_direct | -0.0921 | [-0.1341,-0.0501] |
-| common_linear versus strong_single | -0.2339 | [-0.3483,-0.1195] |
-| probability versus strong_single | -0.0005 | [-0.0249,+0.0239] |
-| residual versus strong_single | -0.2277 | [-0.3717,-0.0837] |
-| sc_local versus strong_single | -0.3197 | [-0.4846,-0.1549] |
+| sc_local versus local_direct | -0.0864 | [-0.1171,-0.0557] |
+| common_linear versus strong_single | -0.1781 | [-0.2506,-0.1055] |
+| probability versus strong_single | +0.0169 | [-0.0091,+0.0429] |
+| residual versus strong_single | -0.1854 | [-0.2735,-0.0973] |
+| sc_local versus strong_single | -0.2718 | [-0.3763,-0.1672] |
 
 ## federici / fusion/cb_random / native
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| common_linear versus fm_direct | -0.3955 | [-0.5636,-0.2275] |
-| probability versus fm_direct | +0.0043 | [-0.0249,+0.0334] |
-| residual versus fm_direct | -0.1710 | [-0.2986,-0.0435] |
-| sc_local versus fm_direct | -0.4237 | [-0.6045,-0.2429] |
-| common_linear versus local_direct | -0.2245 | [-0.3631,-0.0859] |
-| probability versus local_direct | +0.1753 | [+0.0668,+0.2838] |
+| common_linear versus fm_direct | -0.3758 | [-0.4838,-0.2678] |
+| probability versus fm_direct | +0.0071 | [-0.0107,+0.0248] |
+| residual versus fm_direct | -0.1759 | [-0.2503,-0.1015] |
+| sc_local versus fm_direct | -0.3941 | [-0.5063,-0.2820] |
+| common_linear versus local_direct | -0.1999 | [-0.2797,-0.1201] |
+| probability versus local_direct | +0.1830 | [+0.1231,+0.2429] |
 | residual versus local_direct | +0.0000 | [+0.0000,+0.0000] |
-| sc_local versus local_direct | -0.2527 | [-0.4004,-0.1050] |
-| common_linear versus strong_single | -0.4624 | [-0.7119,-0.2129] |
-| probability versus strong_single | -0.0626 | [-0.1807,+0.0555] |
-| residual versus strong_single | -0.2379 | [-0.4282,-0.0476] |
-| sc_local versus strong_single | -0.4906 | [-0.7508,-0.2303] |
+| sc_local versus local_direct | -0.2182 | [-0.3013,-0.1350] |
+| common_linear versus strong_single | -0.4175 | [-0.5491,-0.2858] |
+| probability versus strong_single | -0.0346 | [-0.0854,+0.0162] |
+| residual versus strong_single | -0.2176 | [-0.3121,-0.1231] |
+| sc_local versus strong_single | -0.4358 | [-0.5713,-0.3002] |
 
 ## federici / fusion/cb_random / unified
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| common_linear versus fm_direct | -0.1733 | [-0.2674,-0.0793] |
-| probability versus fm_direct | +0.0015 | [-0.0291,+0.0320] |
-| residual versus fm_direct | -0.1566 | [-0.2713,-0.0420] |
-| sc_local versus fm_direct | -0.2487 | [-0.3761,-0.1213] |
-| common_linear versus local_direct | -0.0167 | [-0.0621,+0.0287] |
-| probability versus local_direct | +0.1581 | [+0.0557,+0.2605] |
+| common_linear versus fm_direct | -0.1283 | [-0.1881,-0.0684] |
+| probability versus fm_direct | +0.0078 | [-0.0197,+0.0354] |
+| residual versus fm_direct | -0.1413 | [-0.2188,-0.0638] |
+| sc_local versus fm_direct | -0.2277 | [-0.3186,-0.1368] |
+| common_linear versus local_direct | +0.0130 | [-0.0236,+0.0497] |
+| probability versus local_direct | +0.1491 | [+0.0921,+0.2062] |
 | residual versus local_direct | +0.0000 | [+0.0000,+0.0000] |
-| sc_local versus local_direct | -0.0921 | [-0.1356,-0.0486] |
-| common_linear versus strong_single | -0.2444 | [-0.3878,-0.1009] |
-| probability versus strong_single | -0.0696 | [-0.1668,+0.0276] |
-| residual versus strong_single | -0.2277 | [-0.3768,-0.0785] |
-| sc_local versus strong_single | -0.3197 | [-0.4905,-0.1489] |
+| sc_local versus local_direct | -0.0864 | [-0.1174,-0.0553] |
+| common_linear versus strong_single | -0.1724 | [-0.2510,-0.0937] |
+| probability versus strong_single | -0.0362 | [-0.0860,+0.0135] |
+| residual versus strong_single | -0.1854 | [-0.2746,-0.0962] |
+| sc_local versus strong_single | -0.2718 | [-0.3776,-0.1659] |
 
 ## federici / fusion/reve_pre / native
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| common_linear versus fm_direct | -0.2630 | [-0.4236,-0.1024] |
-| probability versus fm_direct | +0.0349 | [-0.0265,+0.0962] |
-| residual versus fm_direct | -0.0643 | [-0.2101,+0.0815] |
-| sc_local versus fm_direct | -0.3170 | [-0.5009,-0.1331] |
-| common_linear versus local_direct | -0.1986 | [-0.3371,-0.0602] |
-| probability versus local_direct | +0.0992 | [+0.0108,+0.1876] |
+| common_linear versus fm_direct | -0.2967 | [-0.4054,-0.1881] |
+| probability versus fm_direct | +0.0293 | [-0.0081,+0.0666] |
+| residual versus fm_direct | -0.1094 | [-0.1904,-0.0284] |
+| sc_local versus fm_direct | -0.3276 | [-0.4489,-0.2063] |
+| common_linear versus local_direct | -0.1873 | [-0.2676,-0.1071] |
+| probability versus local_direct | +0.1387 | [+0.0897,+0.1877] |
 | residual versus local_direct | +0.0000 | [+0.0000,+0.0000] |
-| sc_local versus local_direct | -0.2527 | [-0.3982,-0.1072] |
-| common_linear versus strong_single | -0.4365 | [-0.6748,-0.1983] |
-| probability versus strong_single | -0.1387 | [-0.2851,+0.0077] |
-| residual versus strong_single | -0.2379 | [-0.4253,-0.0504] |
-| sc_local versus strong_single | -0.4906 | [-0.7470,-0.2342] |
+| sc_local versus local_direct | -0.2182 | [-0.3040,-0.1324] |
+| common_linear versus strong_single | -0.4049 | [-0.5368,-0.2730] |
+| probability versus strong_single | -0.0789 | [-0.1584,+0.0007] |
+| residual versus strong_single | -0.2176 | [-0.3151,-0.1200] |
+| sc_local versus strong_single | -0.4358 | [-0.5756,-0.2959] |
 
 ## federici / fusion/reve_pre / unified
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| common_linear versus fm_direct | -0.0821 | [-0.1337,-0.0304] |
-| probability versus fm_direct | +0.0007 | [-0.0396,+0.0410] |
-| residual versus fm_direct | -0.0660 | [-0.1695,+0.0374] |
-| sc_local versus fm_direct | -0.1581 | [-0.2705,-0.0457] |
-| common_linear versus local_direct | -0.0160 | [-0.0918,+0.0598] |
-| probability versus local_direct | +0.0668 | [-0.0107,+0.1442] |
+| common_linear versus fm_direct | -0.0685 | [-0.1141,-0.0228] |
+| probability versus fm_direct | +0.0127 | [-0.0179,+0.0434] |
+| residual versus fm_direct | -0.0875 | [-0.1575,-0.0174] |
+| sc_local versus fm_direct | -0.1738 | [-0.2552,-0.0925] |
+| common_linear versus local_direct | +0.0190 | [-0.0290,+0.0670] |
+| probability versus local_direct | +0.1002 | [+0.0535,+0.1468] |
 | residual versus local_direct | +0.0000 | [+0.0000,+0.0000] |
-| sc_local versus local_direct | -0.0921 | [-0.1358,-0.0484] |
-| common_linear versus strong_single | -0.2437 | [-0.3752,-0.1122] |
-| probability versus strong_single | -0.1609 | [-0.2801,-0.0417] |
-| residual versus strong_single | -0.2277 | [-0.3775,-0.0778] |
-| sc_local versus strong_single | -0.3197 | [-0.4913,-0.1481] |
+| sc_local versus local_direct | -0.0864 | [-0.1176,-0.0551] |
+| common_linear versus strong_single | -0.1664 | [-0.2463,-0.0865] |
+| probability versus strong_single | -0.0852 | [-0.1567,-0.0137] |
+| residual versus strong_single | -0.1854 | [-0.2751,-0.0957] |
+| sc_local versus strong_single | -0.2718 | [-0.3782,-0.1653] |
