@@ -107,3 +107,18 @@ A record can bundle several evaluations; records, releases, seeds and reused res
 - `private_cb_factorial_v1`: 20
 - `private_episode_v2`: 6
 - `strong_fusion_v1`: 10
+
+## Lane supplement — publish_034
+
+The 1 independently readable `lanes_034_*.tar.gz` parts contain 269 completed non-probe records frozen at 2026-10-20T19:58:55.466671+02:00; `LANES_MANIFEST_034.tsv` maps every member to its part and SHA256. Members are byte-identical to the server records.
+
+- Members without a prefix are ALN3.4 lane records and members under `aln35/` are ALN3.5 lane records that were **not** already published byte-identically in the publish_030/031/032/033 lane snapshots (new completions or changed records; member name and SHA256 compared). The complete lane set at this snapshot is the earlier parts plus these members; where a member name occurs in several releases, the latest release is the current record. Server-only support/query geometry bindings are not included; plans publish their hash.
+
+A record can bundle several evaluations; records, releases, seeds and reused results never increase independent participant n.
+
+- `aln35/cbaud_people_v1`: 20
+- `aln35/episode_pressure_s3407_v1`: 10
+- `breadth_budget_v1`: 6
+- `breadth_inner_v1`: 24
+- `data_inner_v1`: 195
+- `learning_budget_v2`: 14

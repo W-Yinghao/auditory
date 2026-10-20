@@ -6,7 +6,27 @@
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## 最新（2026-10-20）：ALN3.5 有限比较完成，已完成汇总首次解读，两条新实验线运行中
+## 最新（2026-10-20 晚间）：两条 ALN3.5 新实验线完成，尾巴实验继续运行
+
+本次发布[两条新实验线](docs/auditory_alignment_v3/RELEASE_034.md)的结果，设计均在出结果前冻结。所有结果保留有利、不利和不确定方向，实验单元、seed 和发布版本都不增加独立受试者数。
+
+- **[听觉续训起点 × 源人数](docs/auditory_alignment_v3/aln35/CBAUD_PEOPLE_RESULTS.md)**（DTU 44 人，seed 3401）：
+  - native 读出下，用 50% 源人数时，听觉续训起点比直接 CBraMod 起点好 +0.156 bits/query [+0.057, +0.256]。
+  - 25% 和 100% 源人数时不确定；unified 读出下所有列都不确定。
+  - 它替代不了源人数：50% 人数加听觉起点的 native 风险为 6.36，仍高于 100% 人数直接起点的 5.99。
+  - 两种起点都沿用 ALN3.4 的 gain 型早停规则，而非源端 true-risk 选模。
+- **[episode 收益的 seed-3407 复核](docs/auditory_alignment_v3/aln35/EPISODE_REPLICATION_S3407_RESULTS.md)**（10/10 单元）：
+  - local native（20 内步，压力 100）下，episode 比 ordinary 好 +0.041（U10）和 +0.034（U30），区间都不含 0，与 seed 3401 的 +0.034 和 +0.037 一致。
+  - ordinary 与源模型基本无差别；unified 下的收益较小（+0.017 和 +0.013），区间下限贴近 0。
+- **运行**：17:17–17:19 四个重排的尾巴 worker 遇到 GPU 不可纠正 ECC 错误，调度器因此暂停。核查确认失败尝试没有写入任何结果或 checkpoint 后，失败标记已存档（未删除），10 卡上限恢复，见 [fleet v3 回执](scripts/auditory_alignment_v3/aln35/fleet_v3_20261020/RECEIPT.md)。
+- **仍在运行**（19:55）：DTU 学习预算剩 39/150，DTU 数据量曲线剩 10/440，breadth 预算剩 9/75，breadth 曲线剩 74/300。
+- **逐单元记录**：`lanes_034_001.tar.gz` 收录 269 份此前未逐字节发布过的 lane 记录（含两条新实验线的 30 份），见[说明](results/auditory_alignment_v3/unit_records/README.md)。
+
+[本次发布说明](docs/auditory_alignment_v3/RELEASE_034.md)列出范围与未发布内容；[发布清单](results/auditory_alignment_v3/publication_034/MANIFEST.tsv)记录逐文件来源与发布哈希。**这是进行中的研究快照。**
+
+本次不上传私有数据集本身、身份映射、人名/联系方式、仅限服务器的支持集几何绑定、模型权重、运行日志、存储清理工具和交接记录。
+
+## 2026-10-20 上午：ALN3.5 有限比较完成，已完成汇总首次解读，两条新实验线运行中
 
 执行依据为 [ALN3.5 包](AUDITORY_ALN3_SERVER_PACKAGE_v3_5_20261018/README.md)，延续 ALN3.4，不是全项目重启；zip 与解压内容逐字节一致。代码在 `auditory_alignment_v3/aln35/`。本次起项目由 Claude Code 接手运行。所有结果保留有利、不利和不确定方向，实验单元、seed 和发布版本都不增加独立受试者数。
 

@@ -1,13 +1,13 @@
 # ALN3.4 new-lane efficacy snapshot
 
-Generated 2026-10-20T10:11:16.306389+02:00 by CPU job 1047358. Status: **interim**.
+Generated 2026-10-20T19:34:12.010825+02:00 by CPU job 1047358. Status: **interim**.
 
 Complete identity pairing is required; seeds and folds do not increase n. Intervals condition on fitted models. Interim snapshots are not sequential significance tests. `historical_selected` tables reuse existing baseline records; they are not new budget results and do not replace the frozen ADDENDUM_11 analysis.
 
 | Lane | Complete / registered | Failed markers |
 |---|---:|---:|
-| learning_budget_v2 | 96 / 150 | 0 |
-| data_inner_v1 | 376 / 590 | 0 |
+| learning_budget_v2 | 109 / 150 | 0 |
+| data_inner_v1 | 571 / 590 | 0 |
 | adaptation_policy_v1 | 120 / 120 | 0 |
 | strong_fusion_v1 | 30 / 30 | 0 |
 | episode_training_v1 | 80 / 80 | 0 |
@@ -328,81 +328,81 @@ Common paired identities: 44 / 44.
 
 ## budget_models/fixed_0.5 · native · 3401
 
-Common paired identities: 10 / 44.
+Common paired identities: 36 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.2900 | [+0.0014, +0.5785] |
-| cbramod/pretrained_full versus local | +0.2618 | [-0.0523, +0.5759] |
-| cbramod/random_full versus local | -0.0282 | [-0.3419, +0.2855] |
-| reve/pretrained_full versus local | +0.1662 | [-0.2795, +0.6120] |
-| reve/random_full versus local | -0.2047 | [-0.5633, +0.1538] |
-| reve/pretrained_full versus reve/random_full | +0.3709 | [-0.1330, +0.8748] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.4040 | [+0.2831, +0.5248] |
+| cbramod/pretrained_full versus local | +0.3115 | [+0.1745, +0.4485] |
+| cbramod/random_full versus local | -0.0925 | [-0.2454, +0.0605] |
+| reve/pretrained_full versus local | +0.1472 | [+0.0112, +0.2833] |
+| reve/random_full versus local | -0.2606 | [-0.4204, -0.1008] |
+| reve/pretrained_full versus reve/random_full | +0.4078 | [+0.2460, +0.5696] |
 
 ## budget_models/fixed_0.5 · unified · 3401
 
-Common paired identities: 10 / 44.
+Common paired identities: 36 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0245 | [-0.1161, +0.1651] |
-| cbramod/pretrained_full versus local | +0.1267 | [-0.0740, +0.3273] |
-| cbramod/random_full versus local | +0.1022 | [-0.0324, +0.2368] |
-| reve/pretrained_full versus local | +0.0475 | [-0.2755, +0.3706] |
-| reve/random_full versus local | -0.0429 | [-0.1763, +0.0905] |
-| reve/pretrained_full versus reve/random_full | +0.0904 | [-0.2239, +0.4048] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1733 | [+0.0786, +0.2680] |
+| cbramod/pretrained_full versus local | +0.1697 | [+0.0699, +0.2696] |
+| cbramod/random_full versus local | -0.0036 | [-0.1069, +0.0997] |
+| reve/pretrained_full versus local | +0.0372 | [-0.0800, +0.1543] |
+| reve/random_full versus local | -0.1141 | [-0.2085, -0.0197] |
+| reve/pretrained_full versus reve/random_full | +0.1513 | [+0.0405, +0.2620] |
 
 ## budget_models/fixed_1.0 · native · 3401
 
-Common paired identities: 10 / 44.
+Common paired identities: 36 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.2026 | [+0.0268, +0.3785] |
-| cbramod/pretrained_full versus local | +0.2812 | [+0.0228, +0.5395] |
-| cbramod/random_full versus local | +0.0785 | [-0.1632, +0.3203] |
-| reve/pretrained_full versus local | -0.0672 | [-0.4869, +0.3526] |
-| reve/random_full versus local | +0.0325 | [-0.1815, +0.2464] |
-| reve/pretrained_full versus reve/random_full | -0.0996 | [-0.4351, +0.2358] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.4142 | [+0.2855, +0.5428] |
+| cbramod/pretrained_full versus local | +0.2979 | [+0.1695, +0.4262] |
+| cbramod/random_full versus local | -0.1163 | [-0.2540, +0.0213] |
+| reve/pretrained_full versus local | -0.1635 | [-0.3209, -0.0061] |
+| reve/random_full versus local | +0.0128 | [-0.1018, +0.1274] |
+| reve/pretrained_full versus reve/random_full | -0.1763 | [-0.3072, -0.0454] |
 
 ## budget_models/fixed_1.0 · unified · 3401
 
-Common paired identities: 10 / 44.
+Common paired identities: 36 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | -0.0528 | [-0.2684, +0.1627] |
-| cbramod/pretrained_full versus local | +0.0587 | [-0.2349, +0.3523] |
-| cbramod/random_full versus local | +0.1115 | [-0.0330, +0.2560] |
-| reve/pretrained_full versus local | -0.2858 | [-0.7821, +0.2106] |
-| reve/random_full versus local | +0.1464 | [-0.0142, +0.3070] |
-| reve/pretrained_full versus reve/random_full | -0.4322 | [-0.9316, +0.0672] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1728 | [+0.0737, +0.2719] |
+| cbramod/pretrained_full versus local | +0.1483 | [+0.0459, +0.2507] |
+| cbramod/random_full versus local | -0.0245 | [-0.1262, +0.0773] |
+| reve/pretrained_full versus local | -0.1861 | [-0.3291, -0.0431] |
+| reve/random_full versus local | +0.1060 | [+0.0188, +0.1932] |
+| reve/pretrained_full versus reve/random_full | -0.2921 | [-0.4305, -0.1538] |
 
 ## budget_models/fixed_2.0 · native · 3401
 
-Common paired identities: 10 / 44.
+Common paired identities: 36 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.2178 | [+0.0590, +0.3766] |
-| cbramod/pretrained_full versus local | +0.1900 | [+0.0510, +0.3289] |
-| cbramod/random_full versus local | -0.0279 | [-0.2514, +0.1957] |
-| reve/pretrained_full versus local | -0.1932 | [-0.6192, +0.2327] |
-| reve/random_full versus local | +0.1685 | [-0.0327, +0.3697] |
-| reve/pretrained_full versus reve/random_full | -0.3618 | [-0.7224, -0.0012] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.4408 | [+0.2881, +0.5935] |
+| cbramod/pretrained_full versus local | +0.2067 | [+0.1022, +0.3112] |
+| cbramod/random_full versus local | -0.2341 | [-0.3884, -0.0798] |
+| reve/pretrained_full versus local | -0.2771 | [-0.4374, -0.1168] |
+| reve/random_full versus local | +0.2217 | [+0.0990, +0.3443] |
+| reve/pretrained_full versus reve/random_full | -0.4988 | [-0.6627, -0.3348] |
 
 ## budget_models/fixed_2.0 · unified · 3401
 
-Common paired identities: 10 / 44.
+Common paired identities: 36 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1224 | [-0.0254, +0.2701] |
-| cbramod/pretrained_full versus local | +0.0693 | [-0.0410, +0.1797] |
-| cbramod/random_full versus local | -0.0530 | [-0.1719, +0.0658] |
-| reve/pretrained_full versus local | -0.3049 | [-0.6591, +0.0493] |
-| reve/random_full versus local | +0.1806 | [+0.1009, +0.2603] |
-| reve/pretrained_full versus reve/random_full | -0.4855 | [-0.8112, -0.1599] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.2658 | [+0.1678, +0.3638] |
+| cbramod/pretrained_full versus local | +0.1135 | [+0.0222, +0.2048] |
+| cbramod/random_full versus local | -0.1523 | [-0.2470, -0.0576] |
+| reve/pretrained_full versus local | -0.2232 | [-0.3471, -0.0992] |
+| reve/random_full versus local | +0.1670 | [+0.0807, +0.2533] |
+| reve/pretrained_full versus reve/random_full | -0.3901 | [-0.5204, -0.2598] |
 
 ## budget_models/historical_selected · native · 3401
 
@@ -510,29 +510,29 @@ Common paired identities: 44 / 44.
 
 ## budget_models/new_selected · native · 3401
 
-Common paired identities: 10 / 44.
+Common paired identities: 36 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.2329 | [+0.0647, +0.4012] |
-| cbramod/pretrained_full versus local | +0.2420 | [+0.0644, +0.4196] |
-| cbramod/random_full versus local | +0.0091 | [-0.2175, +0.2357] |
-| reve/pretrained_full versus local | -0.0521 | [-0.4338, +0.3297] |
-| reve/random_full versus local | +0.1746 | [-0.0303, +0.3796] |
-| reve/pretrained_full versus reve/random_full | -0.2267 | [-0.5615, +0.1082] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.4204 | [+0.2734, +0.5674] |
+| cbramod/pretrained_full versus local | +0.2214 | [+0.1176, +0.3252] |
+| cbramod/random_full versus local | -0.1990 | [-0.3491, -0.0489] |
+| reve/pretrained_full versus local | -0.2588 | [-0.4233, -0.0943] |
+| reve/random_full versus local | +0.1920 | [+0.0785, +0.3056] |
+| reve/pretrained_full versus reve/random_full | -0.4509 | [-0.6170, -0.2847] |
 
 ## budget_models/new_selected · unified · 3401
 
-Common paired identities: 10 / 44.
+Common paired identities: 36 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0630 | [-0.1080, +0.2340] |
-| cbramod/pretrained_full versus local | +0.1069 | [-0.0204, +0.2342] |
-| cbramod/random_full versus local | +0.0439 | [-0.0672, +0.1549] |
-| reve/pretrained_full versus local | -0.2620 | [-0.5877, +0.0637] |
-| reve/random_full versus local | +0.1841 | [+0.1090, +0.2592] |
-| reve/pretrained_full versus reve/random_full | -0.4461 | [-0.7486, -0.1436] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.2244 | [+0.1164, +0.3325] |
+| cbramod/pretrained_full versus local | +0.1245 | [+0.0277, +0.2212] |
+| cbramod/random_full versus local | -0.1000 | [-0.2058, +0.0059] |
+| reve/pretrained_full versus local | -0.2724 | [-0.4107, -0.1342] |
+| reve/random_full versus local | +0.1516 | [+0.0697, +0.2335] |
+| reve/pretrained_full versus reve/random_full | -0.4240 | [-0.5572, -0.2909] |
 
 ## data/content/cbramod/pretrained_full · native · 3401
 
@@ -545,12 +545,30 @@ Common paired identities: 44 / 44.
 
 ## data/content/cbramod/pretrained_full · native · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.7916 | [-1.0271, -0.5561] |
-| 0.5 versus full | -0.3900 | [-0.5928, -0.1872] |
+| 0.25 versus full | -1.0103 | [-1.1740, -0.8465] |
+| 0.5 versus full | -0.6125 | [-0.7223, -0.5026] |
+
+## data/content/cbramod/pretrained_full · native · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.9636 | [-1.1344, -0.7927] |
+| 0.5 versus full | -0.6020 | [-0.7274, -0.4766] |
+
+## data/content/cbramod/pretrained_full · native · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.9559 | [-1.1106, -0.8012] |
+| 0.5 versus full | -0.5894 | [-0.6965, -0.4822] |
 
 ## data/content/cbramod/pretrained_full · unified · 3401
 
@@ -563,12 +581,30 @@ Common paired identities: 44 / 44.
 
 ## data/content/cbramod/pretrained_full · unified · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.3220 | [-0.5103, -0.1338] |
-| 0.5 versus full | -0.0724 | [-0.2199, +0.0751] |
+| 0.25 versus full | -0.4401 | [-0.5311, -0.3490] |
+| 0.5 versus full | -0.1999 | [-0.2593, -0.1404] |
+
+## data/content/cbramod/pretrained_full · unified · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.4441 | [-0.5375, -0.3506] |
+| 0.5 versus full | -0.2532 | [-0.3245, -0.1820] |
+
+## data/content/cbramod/pretrained_full · unified · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.4188 | [-0.5081, -0.3294] |
+| 0.5 versus full | -0.1944 | [-0.2545, -0.1343] |
 
 ## data/content/cbramod/random_full · native · 3401
 
@@ -581,12 +617,30 @@ Common paired identities: 44 / 44.
 
 ## data/content/cbramod/random_full · native · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.6013 | [-0.8624, -0.3402] |
-| 0.5 versus full | -0.4134 | [-0.5933, -0.2335] |
+| 0.25 versus full | -0.9385 | [-1.1156, -0.7614] |
+| 0.5 versus full | -0.5968 | [-0.7177, -0.4759] |
+
+## data/content/cbramod/random_full · native · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.9212 | [-1.0854, -0.7570] |
+| 0.5 versus full | -0.6196 | [-0.7416, -0.4976] |
+
+## data/content/cbramod/random_full · native · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.9077 | [-1.0619, -0.7534] |
+| 0.5 versus full | -0.6192 | [-0.7298, -0.5086] |
 
 ## data/content/cbramod/random_full · unified · 3401
 
@@ -599,12 +653,30 @@ Common paired identities: 44 / 44.
 
 ## data/content/cbramod/random_full · unified · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.3629 | [-0.5390, -0.1868] |
-| 0.5 versus full | -0.2262 | [-0.3530, -0.0994] |
+| 0.25 versus full | -0.4984 | [-0.5948, -0.4019] |
+| 0.5 versus full | -0.2623 | [-0.3292, -0.1954] |
+
+## data/content/cbramod/random_full · unified · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.5414 | [-0.6421, -0.4407] |
+| 0.5 versus full | -0.3491 | [-0.4221, -0.2762] |
+
+## data/content/cbramod/random_full · unified · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.5169 | [-0.6077, -0.4261] |
+| 0.5 versus full | -0.3220 | [-0.3849, -0.2590] |
 
 ## data/content/local · native · 3401
 
@@ -617,12 +689,30 @@ Common paired identities: 44 / 44.
 
 ## data/content/local · native · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.4943 | [-0.6488, -0.3398] |
-| 0.5 versus full | -0.2118 | [-0.4004, -0.0232] |
+| 0.25 versus full | -0.7557 | [-0.8879, -0.6235] |
+| 0.5 versus full | -0.3763 | [-0.4802, -0.2724] |
+
+## data/content/local · native · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.7308 | [-0.8498, -0.6119] |
+| 0.5 versus full | -0.4072 | [-0.4857, -0.3286] |
+
+## data/content/local · native · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.7398 | [-0.8674, -0.6122] |
+| 0.5 versus full | -0.4037 | [-0.4882, -0.3193] |
 
 ## data/content/local · unified · 3401
 
@@ -635,12 +725,30 @@ Common paired identities: 44 / 44.
 
 ## data/content/local · unified · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.2305 | [-0.3394, -0.1217] |
-| 0.5 versus full | -0.1442 | [-0.2487, -0.0398] |
+| 0.25 versus full | -0.3447 | [-0.4222, -0.2672] |
+| 0.5 versus full | -0.2188 | [-0.2795, -0.1581] |
+
+## data/content/local · unified · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.3752 | [-0.4621, -0.2883] |
+| 0.5 versus full | -0.2070 | [-0.2707, -0.1433] |
+
+## data/content/local · unified · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.3540 | [-0.4294, -0.2787] |
+| 0.5 versus full | -0.2267 | [-0.2785, -0.1749] |
 
 ## data/content/reve/pretrained_full · native · 3401
 
@@ -689,12 +797,30 @@ Common paired identities: 44 / 44.
 
 ## data/people/cbramod/pretrained_full · native · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.7662 | [-1.0125, -0.5199] |
-| 0.5 versus full | -0.4286 | [-0.5584, -0.2987] |
+| 0.25 versus full | -0.8843 | [-1.0272, -0.7415] |
+| 0.5 versus full | -0.4795 | [-0.5839, -0.3752] |
+
+## data/people/cbramod/pretrained_full · native · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.8783 | [-1.0404, -0.7162] |
+| 0.5 versus full | -0.4948 | [-0.6162, -0.3735] |
+
+## data/people/cbramod/pretrained_full · native · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.9013 | [-1.0597, -0.7430] |
+| 0.5 versus full | -0.4973 | [-0.6089, -0.3857] |
 
 ## data/people/cbramod/pretrained_full · unified · 3401
 
@@ -707,12 +833,30 @@ Common paired identities: 44 / 44.
 
 ## data/people/cbramod/pretrained_full · unified · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.5985 | [-0.8104, -0.3866] |
-| 0.5 versus full | -0.1013 | [-0.1997, -0.0028] |
+| 0.25 versus full | -0.5369 | [-0.6153, -0.4585] |
+| 0.5 versus full | -0.2274 | [-0.2837, -0.1711] |
+
+## data/people/cbramod/pretrained_full · unified · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.4896 | [-0.5835, -0.3956] |
+| 0.5 versus full | -0.2161 | [-0.2814, -0.1509] |
+
+## data/people/cbramod/pretrained_full · unified · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.5381 | [-0.6289, -0.4472] |
+| 0.5 versus full | -0.2181 | [-0.2790, -0.1573] |
 
 ## data/people/cbramod/random_full · native · 3401
 
@@ -725,12 +869,30 @@ Common paired identities: 44 / 44.
 
 ## data/people/cbramod/random_full · native · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.7018 | [-0.9649, -0.4386] |
-| 0.5 versus full | -0.2826 | [-0.4204, -0.1447] |
+| 0.25 versus full | -0.7767 | [-0.9030, -0.6503] |
+| 0.5 versus full | -0.3318 | [-0.4053, -0.2582] |
+
+## data/people/cbramod/random_full · native · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.8232 | [-0.9529, -0.6934] |
+| 0.5 versus full | -0.4383 | [-0.5296, -0.3470] |
+
+## data/people/cbramod/random_full · native · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.8117 | [-0.9315, -0.6918] |
+| 0.5 versus full | -0.4064 | [-0.4786, -0.3342] |
 
 ## data/people/cbramod/random_full · unified · 3401
 
@@ -743,12 +905,30 @@ Common paired identities: 44 / 44.
 
 ## data/people/cbramod/random_full · unified · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.4600 | [-0.6544, -0.2657] |
-| 0.5 versus full | -0.2426 | [-0.3693, -0.1159] |
+| 0.25 versus full | -0.4840 | [-0.5592, -0.4088] |
+| 0.5 versus full | -0.2162 | [-0.2647, -0.1676] |
+
+## data/people/cbramod/random_full · unified · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.5088 | [-0.5978, -0.4199] |
+| 0.5 versus full | -0.2771 | [-0.3415, -0.2127] |
+
+## data/people/cbramod/random_full · unified · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.4875 | [-0.5629, -0.4121] |
+| 0.5 versus full | -0.2546 | [-0.3057, -0.2036] |
 
 ## data/people/local · native · 3401
 
@@ -761,12 +941,30 @@ Common paired identities: 44 / 44.
 
 ## data/people/local · native · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.4701 | [-0.7553, -0.1849] |
-| 0.5 versus full | -0.1435 | [-0.3100, +0.0230] |
+| 0.25 versus full | -0.5866 | [-0.6917, -0.4816] |
+| 0.5 versus full | -0.2317 | [-0.3113, -0.1522] |
+
+## data/people/local · native · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.6535 | [-0.7640, -0.5430] |
+| 0.5 versus full | -0.3693 | [-0.4490, -0.2897] |
+
+## data/people/local · native · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.6614 | [-0.7720, -0.5508] |
+| 0.5 versus full | -0.3126 | [-0.3822, -0.2430] |
 
 ## data/people/local · unified · 3401
 
@@ -779,12 +977,30 @@ Common paired identities: 44 / 44.
 
 ## data/people/local · unified · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.4519 | [-0.7387, -0.1652] |
-| 0.5 versus full | -0.1774 | [-0.3066, -0.0483] |
+| 0.25 versus full | -0.3714 | [-0.4552, -0.2876] |
+| 0.5 versus full | -0.1665 | [-0.2183, -0.1146] |
+
+## data/people/local · unified · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.3758 | [-0.4655, -0.2860] |
+| 0.5 versus full | -0.2193 | [-0.2884, -0.1501] |
+
+## data/people/local · unified · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| 0.25 versus full | -0.4042 | [-0.4932, -0.3152] |
+| 0.5 versus full | -0.1874 | [-0.2379, -0.1369] |
 
 ## data/people/reve/pretrained_full · native · 3401
 
@@ -837,13 +1053,33 @@ Common paired identities: 44 / 44.
 
 ## data_models/content/0.25 · native · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0634 | [-0.0927, +0.2196] |
-| cbramod/pretrained_full versus local | +0.0786 | [-0.1171, +0.2744] |
-| cbramod/random_full versus local | +0.0152 | [-0.1923, +0.2228] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.2658 | [+0.1869, +0.3447] |
+| cbramod/pretrained_full versus local | +0.1717 | [+0.0867, +0.2567] |
+| cbramod/random_full versus local | -0.0941 | [-0.1963, +0.0081] |
+
+## data_models/content/0.25 · native · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.3570 | [+0.2647, +0.4494] |
+| cbramod/pretrained_full versus local | +0.1289 | [+0.0617, +0.1960] |
+| cbramod/random_full versus local | -0.2281 | [-0.3257, -0.1306] |
+
+## data_models/content/0.25 · native · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.3238 | [+0.2438, +0.4039] |
+| cbramod/pretrained_full versus local | +0.1617 | [+0.0894, +0.2339] |
+| cbramod/random_full versus local | -0.1622 | [-0.2614, -0.0630] |
 
 ## data_models/content/0.25 · unified · 3401
 
@@ -860,13 +1096,33 @@ Common paired identities: 44 / 44.
 
 ## data_models/content/0.25 · unified · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0887 | [-0.0317, +0.2092] |
-| cbramod/pretrained_full versus local | +0.0865 | [-0.0712, +0.2441] |
-| cbramod/random_full versus local | -0.0022 | [-0.1490, +0.1445] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.2306 | [+0.1642, +0.2969] |
+| cbramod/pretrained_full versus local | +0.1339 | [+0.0632, +0.2047] |
+| cbramod/random_full versus local | -0.0966 | [-0.1697, -0.0235] |
+
+## data_models/content/0.25 · unified · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.2882 | [+0.2036, +0.3729] |
+| cbramod/pretrained_full versus local | +0.1187 | [+0.0537, +0.1837] |
+| cbramod/random_full versus local | -0.1696 | [-0.2560, -0.0832] |
+
+## data_models/content/0.25 · unified · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.2772 | [+0.2070, +0.3474] |
+| cbramod/pretrained_full versus local | +0.1328 | [+0.0670, +0.1985] |
+| cbramod/random_full versus local | -0.1444 | [-0.2215, -0.0673] |
 
 ## data_models/content/0.5 · native · 3401
 
@@ -883,13 +1139,33 @@ Common paired identities: 44 / 44.
 
 ## data_models/content/0.5 · native · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.2771 | [+0.0193, +0.5349] |
-| cbramod/pretrained_full versus local | +0.1977 | [+0.0142, +0.3813] |
-| cbramod/random_full versus local | -0.0794 | [-0.3502, +0.1914] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.3220 | [+0.2329, +0.4111] |
+| cbramod/pretrained_full versus local | +0.1901 | [+0.0894, +0.2908] |
+| cbramod/random_full versus local | -0.1319 | [-0.2492, -0.0146] |
+
+## data_models/content/0.5 · native · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.4170 | [+0.3335, +0.5006] |
+| cbramod/pretrained_full versus local | +0.1669 | [+0.0430, +0.2907] |
+| cbramod/random_full versus local | -0.2502 | [-0.3827, -0.1177] |
+
+## data_models/content/0.5 · native · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.4019 | [+0.3093, +0.4946] |
+| cbramod/pretrained_full versus local | +0.1922 | [+0.0833, +0.3012] |
+| cbramod/random_full versus local | -0.2097 | [-0.3344, -0.0851] |
 
 ## data_models/content/0.5 · unified · 3401
 
@@ -906,13 +1182,33 @@ Common paired identities: 44 / 44.
 
 ## data_models/content/0.5 · unified · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.2017 | [+0.0666, +0.3368] |
-| cbramod/pretrained_full versus local | +0.2498 | [+0.1316, +0.3681] |
-| cbramod/random_full versus local | +0.0482 | [-0.1009, +0.1973] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.2347 | [+0.1682, +0.3011] |
+| cbramod/pretrained_full versus local | +0.2483 | [+0.1597, +0.3368] |
+| cbramod/random_full versus local | +0.0136 | [-0.0759, +0.1031] |
+
+## data_models/content/0.5 · unified · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.2868 | [+0.2180, +0.3555] |
+| cbramod/pretrained_full versus local | +0.1413 | [+0.0484, +0.2342] |
+| cbramod/random_full versus local | -0.1455 | [-0.2402, -0.0507] |
+
+## data_models/content/0.5 · unified · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.3066 | [+0.2313, +0.3820] |
+| cbramod/pretrained_full versus local | +0.2299 | [+0.1337, +0.3260] |
+| cbramod/random_full versus local | -0.0768 | [-0.1743, +0.0207] |
 
 ## data_models/people/0.25 · native · 3401
 
@@ -929,13 +1225,33 @@ Common paired identities: 44 / 44.
 
 ## data_models/people/0.25 · native · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1893 | [-0.1106, +0.4891] |
-| cbramod/pretrained_full versus local | +0.0798 | [-0.1641, +0.3237] |
-| cbramod/random_full versus local | -0.1094 | [-0.4811, +0.2623] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.2300 | [+0.1501, +0.3098] |
+| cbramod/pretrained_full versus local | +0.1286 | [+0.0116, +0.2457] |
+| cbramod/random_full versus local | -0.1013 | [-0.2265, +0.0238] |
+
+## data_models/people/0.25 · native · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.3443 | [+0.2634, +0.4252] |
+| cbramod/pretrained_full versus local | +0.1369 | [+0.0149, +0.2589] |
+| cbramod/random_full versus local | -0.2074 | [-0.3291, -0.0857] |
+
+## data_models/people/0.25 · native · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.2824 | [+0.2064, +0.3585] |
+| cbramod/pretrained_full versus local | +0.1379 | [+0.0187, +0.2572] |
+| cbramod/random_full versus local | -0.1445 | [-0.2706, -0.0184] |
 
 ## data_models/people/0.25 · unified · 3401
 
@@ -952,13 +1268,33 @@ Common paired identities: 44 / 44.
 
 ## data_models/people/0.25 · unified · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | -0.0906 | [-0.2723, +0.0912] |
-| cbramod/pretrained_full versus local | +0.0314 | [-0.0894, +0.1522] |
-| cbramod/random_full versus local | +0.1220 | [-0.1012, +0.3452] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1193 | [+0.0371, +0.2015] |
+| cbramod/pretrained_full versus local | +0.0638 | [-0.0208, +0.1484] |
+| cbramod/random_full versus local | -0.0555 | [-0.1486, +0.0376] |
+
+## data_models/people/0.25 · unified · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.2102 | [+0.1327, +0.2876] |
+| cbramod/pretrained_full versus local | +0.0738 | [-0.0267, +0.1742] |
+| cbramod/random_full versus local | -0.1364 | [-0.2145, -0.0583] |
+
+## data_models/people/0.25 · unified · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.1285 | [+0.0454, +0.2115] |
+| cbramod/pretrained_full versus local | +0.0637 | [-0.0199, +0.1473] |
+| cbramod/random_full versus local | -0.0648 | [-0.1468, +0.0172] |
 
 ## data_models/people/0.5 · native · 3401
 
@@ -975,13 +1311,33 @@ Common paired identities: 44 / 44.
 
 ## data_models/people/0.5 · native · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1077 | [-0.1020, +0.3174] |
-| cbramod/pretrained_full versus local | +0.0908 | [-0.1566, +0.3383] |
-| cbramod/random_full versus local | -0.0169 | [-0.2372, +0.2034] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1898 | [+0.0949, +0.2848] |
+| cbramod/pretrained_full versus local | +0.1785 | [+0.0599, +0.2971] |
+| cbramod/random_full versus local | -0.0114 | [-0.1095, +0.0868] |
+
+## data_models/people/0.5 · native · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.3429 | [+0.2651, +0.4206] |
+| cbramod/pretrained_full versus local | +0.2362 | [+0.0762, +0.3961] |
+| cbramod/random_full versus local | -0.1067 | [-0.2683, +0.0549] |
+
+## data_models/people/0.5 · native · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.2812 | [+0.1963, +0.3660] |
+| cbramod/pretrained_full versus local | +0.1931 | [+0.0534, +0.3329] |
+| cbramod/random_full versus local | -0.0881 | [-0.2193, +0.0432] |
 
 ## data_models/people/0.5 · unified · 3401
 
@@ -998,13 +1354,33 @@ Common paired identities: 44 / 44.
 
 ## data_models/people/0.5 · unified · 3407
 
-Common paired identities: 10 / 44.
+Common paired identities: 44 / 44.
 
 | Contrast | ΔR bits/query | Simultaneous 95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1892 | [+0.1174, +0.2609] |
-| cbramod/pretrained_full versus local | +0.2541 | [+0.1771, +0.3311] |
-| cbramod/random_full versus local | +0.0650 | [-0.0584, +0.1883] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1610 | [+0.1102, +0.2119] |
+| cbramod/pretrained_full versus local | +0.1684 | [+0.0911, +0.2457] |
+| cbramod/random_full versus local | +0.0074 | [-0.0668, +0.0815] |
+
+## data_models/people/0.5 · unified · 3413
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.2519 | [+0.1822, +0.3216] |
+| cbramod/pretrained_full versus local | +0.1907 | [+0.0653, +0.3161] |
+| cbramod/random_full versus local | -0.0612 | [-0.1732, +0.0508] |
+
+## data_models/people/0.5 · unified · complete_seed_mean
+
+Common paired identities: 36 / 44.
+
+| Contrast | ΔR bits/query | Simultaneous 95% interval |
+|---|---:|---:|
+| cbramod/pretrained_full versus cbramod/random_full | +0.2155 | [+0.1571, +0.2739] |
+| cbramod/pretrained_full versus local | +0.1668 | [+0.0686, +0.2650] |
+| cbramod/random_full versus local | -0.0487 | [-0.1344, +0.0369] |
 
 ## episode/cbramod/pretrained_full/support_0.1 · native · 3401
 

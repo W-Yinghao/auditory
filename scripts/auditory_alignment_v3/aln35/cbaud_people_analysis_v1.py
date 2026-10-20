@@ -99,6 +99,10 @@ def main():
             lines.append(f"- {g} (n={v['n']}): " + '; '.join(f"{c} {v['est'][j]:+.4f} [{v['band_low'][j]:+.4f}, {v['band_high'][j]:+.4f}]"
                                                             for j, c in enumerate(COLUMNS)))
         lines.append('')
+    lines += ['Note: both arms inherit the ALN3.4 people-row early-stopping rule, which selects the epoch by gain '
+              '(ES loss minus mismatched loss), not by source-side true risk. The rule is identical for both starts, so the '
+              'comparison is matched, but absolute risks may differ from a true-risk-selected model (see the 1050758 '
+              'selection result).', '']
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / 'summary.json').write_text(json.dumps(result, indent=2, default=float) + '\n')
     DOC.write_text('\n'.join(lines) + '\n')

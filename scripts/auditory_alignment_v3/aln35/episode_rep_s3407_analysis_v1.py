@@ -16,10 +16,20 @@ DOC = REPO / 'docs/auditory_alignment_v3/aln35/EPISODE_REPLICATION_S3407_RESULTS
 REFERENCE = REPO / 'results/auditory_alignment_v3/aln35/support_summary_v1/snapshots/job_1050758_20261020T015908062290Z/summary.json'
 
 
+def relabel(row):
+    # SES hard-codes the seed-3401 label in both `seed` and provenance `source_seed_ids`; every unit here is seed 3407.
+    prov = dict(row['provenance'])
+    if 'source_seed_ids' in prov:
+        SES.require(prov['source_seed_ids'] == [3401], 'unexpected source seed label')
+        prov['source_seed_ids'] = [3407]
+    return dict(row, seed=3407, provenance=prov)
+
+
 def main():
     assert os.environ.get('SLURM_JOB_ID'), 'run under Slurm'
     plan, plan_sha = SES.read(ER.PLAN)
     ER.verify(plan)
+    SES.require(all(u['seed'] == 3407 and u['source']['inner']['seed'] == 3407 for u in plan['rows']), 'non-3407 unit in plan')
     geometry_path = SES.ROOT / 'support_coverage_v1/restricted_support_bindings.json'
     geometry, geometry_sha = SES.read(geometry_path)
     support_plan, _ = SES.read(SES.ROOT / 'support_coverage_v1/plan.json')
@@ -50,7 +60,7 @@ def main():
         original_id = spec['family_id']
         spec['family_id'] += '__seed3407'
         spec['required_seeds'] = [3407]
-        rows = [dict(r, seed=3407) for r in panel['rows'] if r['metric'] == 'nll_bits']
+        rows = [relabel(r) for r in panel['rows'] if r['metric'] == 'nll_bits']
         result = SES.REF.analyze(rows, spec) if rows else SES.empty_result(spec)
         result.update(panel_id=panel['panel_id'], expected_unit_count=len(set(panel['expected_units'])),
                       complete_unit_count=len(set(panel['available_units'])), seed3401_family=original_id)

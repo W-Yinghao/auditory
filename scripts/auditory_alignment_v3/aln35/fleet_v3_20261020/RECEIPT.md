@@ -57,3 +57,14 @@ workers (6 → 10).
 - Second heartbeat 09:45:36: committed 10, pending 0, no further submission.
 - To stop v3: create `aln35/STOP_fleet_maintenance_v3`. `STOP_fleet_maintenance_v2` must stay in place
   while v3 runs (otherwise a later v2 start would contend for the lock and fail).
+
+## ECC technical failures, 2026-10-20 17:17–17:19 (resolved 18:3x with researcher approval)
+
+After heavy runfill preemption, four requeued workers (1051935 budget, 1052131 curves, 1051061 breadth budget,
+1052091 breadth curves) each died 10–39 s after START with `CUDA error: uncorrectable ECC error encountered`, writing one
+`.FAILED.json` per lane; fleet v3 then held all four lanes at `technical_failure` (1 GPU left running). The node could not
+be identified (sacct DB refused connections; fleet log keeps no node history). `resolve_ecc_20261020.py` (srun step in
+1047358; receipt `resolve_ecc_1047358.json`) verified each marker, the ECC log line, no unit result, no checkpoint/ledger/
+claim written after the failing START, and a free claim lock, then preserved each marker and log excerpt under
+`aln34/<lane>/technical_failures/ecc_20261020/` (copy + rename to `.resolved_active_marker`). Researcher: "我确认，你可以运行，
+恢复到最多十个GPU并行". No plan, row, trainer, checkpoint or record changed; cap stays 10.
