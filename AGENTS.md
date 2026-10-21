@@ -1,5 +1,40 @@
 > **接手更新（2026-10-20，Codex → Claude Code）：** 用户指定后续由 Claude Code 接手。先读本文件，再读 [CLAUDE_HANDOFF.md](CLAUDE_HANDOFF.md) 和 [CODEX_HANDOFF.md](CODEX_HANDOFF.md) §0.28。新的独立调度作业为1050940（2026-10-20 09:44起由 fleet v3 作业1051045接替，见 CLAUDE_HANDOFF §1），证据服务1047358保留；旧Codex附属step1047358.2已退出。最新完成度、V100未完成检查和明确待办以此次核查为准，历史交接段落保留。
 
+# ACTIVE RESEARCH INSTRUCTIONS — ALN4.1 (2026-10-21)
+
+Append as a new dated block above superseded research-design wording; preserve all historical execution identities and scoped holds. The user now requests a coherent Pattern Recognition study and closure within three rounds. This continues ALN3.4/3.5 and revises the proposed ALN4.0 package; it does not restart the project.
+
+1. The question is transferable stimulus-related auditory EEG structure and its temporal/personal organization. Preserve completed content, time, history/twin, hearing-group, developmental, support and cross-stimulus results as actual evidence. Do not reduce the project to a private classification leaderboard.
+2. Separate concerns, testable hypotheses and replaceable tools. Classical kernel CS is a primary candidate, with matched TNCE and pooled GCS controls. No unpublished VCS-QMI, forced CS superiority, universal absence/ceiling claims, or outcome-based person/seed selection.
+3. Bind one verified Stage1: bounded exact-load of MindMix-released EEG-only asset, otherwise verified CBraMod. Same initial state for five arms. Encoder-only use is not the full MindMix method. Retain effective local, truly full CB and representative REVE evidence.
+4. Follow the three native-crop, within-person S32/Q32, first-order support adaptation and q²-CS definition exactly. Physical input support is not neural latency. No query audio in the EEG encoder and no target-query outcome selection.
+5. R1 consists of six source calibration fits, four production source fits and fifteen core-three private CE full-FT fits, plus five-arm frozen scientific readouts and bounded age/attention. No automatic architecture/loss/window grid.
+6. R2 repeats the fixed core and one support/cross-stimulus question; R3 closes with one faithful external method and at most one shared optional ablation slot. Do not fill unused budgets automatically or create R4 tuning.
+7. Preserve all valid favorable, adverse and uncertain results. Fix engineering errors with scoped versioned reruns. Engineering readiness, never an effect-size threshold, permits already-authorized work to proceed.
+8. Recheck actual GitHub/server status and bind hashes. Keep full-project 10-GPU cap, Slurm computation, exact job ownership and no-scontrol rule. No broad cancellations, hold clearing, editing running code, checkpoint deletion or automatic publication.
+9. The approved deidentified individual-result scope remains authorized. Raw EEG, names and identity mappings remain private. Do not ask the user again for the same individual-publication permission.
+
+(Merged on 2026-10-21 from the byte-validated `AUDITORY_ALN4_SERVER_PACKAGE_v4_1_20261021.zip` (SHA256 `eb9b343b…971b2c`, `verify_package.py` and `verify_handoff.py` PASS) at the researcher's instruction "这个包也启动，这个包里的有优先级": ALN4.1 runs alongside ALN3.6 and takes priority (engineering effort and GPU slots) where they compete. ALN3.6 (below) keeps running; neither package cancels the other's registered work. Code `auditory_alignment_v3/aln41/`, records `private/auditory_alignment_v3/aln41/`. Backup `private/AGENTS_before_aln41_20261021.md`.)
+
+# ACTIVE RESEARCH INSTRUCTIONS — ALN3.6 (2026-10-20)
+
+This block implements the researcher's explicit instruction to finish the necessary research in three further rounds. Place it above conflicting ALN3.5/3.4 exploration-only wording. Preserve the history, completed outputs, old IDs and scoped holds.
+
+1. Separate the enduring concern (transferable sound-related EEG evidence and listener-specific temporal readout), the changeable hypotheses, and replaceable tools. This is now a bounded manuscript-oriented investigation; the paper's factual conclusions remain conditional on evidence.
+2. R1 tests whole FAU hearing-group exclusion and nested shared/personal readouts. R2 repeats the fixed core, including all three groups and both tools, rather than only favorable cells. R3 finishes predeclared validity analyses and writing. No fourth scientific search round is implied.
+3. Keep effective same-access local and query-aligned genuinely full-finetuned CBraMod. Keep representative REVE, random, published kernel-CS and InfoNCE evidence; do not multiply them into every new cell. No unpublished VCS-QMI or variational critic.
+4. FAU group exclusion applies to this study's source EEG, normalization, fitting, development and readouts, including TH dev individuals. Generic CB pretraining provenance is fixed; do not claim its lifetime training never contained that hearing category. Retained offline EEG preprocessing is disclosed.
+5. Count unique source fits, not result slices. With the full target group withheld, the five original person folds share the same allowed source set: 2 tools × 3 groups × 2 content folds = 12 unique fits per seed, yielding 60 evaluation cells. Hash-based reuse is required when dependencies are identical.
+6. E0 has zero target support. HP/EC/ET have the same natural support and identical queries. A supported result does not establish zero-support group transfer. EC and ET share history calibration and the same EEG evidence bank; ET adds only the predefined temporal contrast coefficients.
+7. Select all rules and checkpoints from allowed source data only. No outer query labels/results choose support, window, regularization, model, seed or stopping. Target support labels may fit the predefined personal parameters; they may not select target queries or new architectures.
+8. Public support uses the held-out person's source-fit sound contents and evaluates on all source-test contents. Private support uses natural physical blocks and independent later blocks. Do not call private binary trial/block generalization unseen-sound-content transfer.
+9. Children carry the current-sound-versus-history and personal-readout test. Keep all children and valid outcomes; no signal/clinical significance threshold. Keep stage/group/identity and human/phantom exclusions. No ERP main line, neural latency claim from broad windows, clinical treatment effect or exact conditional MI claim from decoder risk.
+10. Completed ALN3.3–3.5 results remain available, including positive auditory-people, episode and fusion findings and all weak/reversed outcomes. No new general model/loss/pressure/scale/checkpoint search. Already running work finishes at safe unit boundaries; useful registered tails remain finite.
+11. Individual derived publication remains authorized in the already agreed scope. No renewed permission request. Raw EEG, names, identity mappings, raw private records and model weights remain governed by existing restrictions.
+12. Maintain the aggregate 10-GPU cap and exact job ownership. New versioned code only; no editing running source, blanket queue cancellation, hold reset, or unscoped deletion. Ordinary engineering readiness is sufficient to proceed with this authorized scope.
+
+(Merged on 2026-10-20 from the byte-validated `AUDITORY_ALN3_SERVER_PACKAGE_v3_6_20261020.zip` (SHA256 `34f1162c…a53d108`, `verify_package.py` pass, 9/9 package tests) at the researcher's instruction "查看并完成这个包里的内容，你自己来判断优先级，可以调整". Baseline GitHub main `3da8cf5758214c0cf87a1f1c8d67fb84b574000e`; backup `private/AGENTS_before_aln36_20261020.md`. Server work goes under `auditory_alignment_v3/aln36/` and `private/auditory_alignment_v3/aln36/`. The ALN3.5 block below is kept as history; where it conflicts with ALN3.6 on scope or exploration wording, ALN3.6 wins.)
+
 # ACTIVE RESEARCH INSTRUCTIONS — ALN3.5 (2026-10-18)
 
 This block carries the researcher's current ALN3.5 instructions. Place it above conflicting historical research/approval wording and preserve the history. It continues ALN3.4; it does not reset old execution identities or remove scoped holds.

@@ -302,3 +302,29 @@
 **核验**：CPU normal 作业数高于 27 的提交线，因此快照、构建与门禁均以 `srun --overlap` 步骤在证据作业分配 1047358 内运行，未新开 CPU 批作业（日志 `private/github_publish_033/{prepare,build,verify}-step.log`）。构建完成 JSON 解析、Python/Slurm 语法、五个 ALN3 包 zip/解压一致性、逐文件与逐压缩包成员扫描、无损拆包及清单生成；扫描覆盖 321 个已知姓名、158 个全拼形式和 9,386 个标识符，未批准标识符 0。人工复核 6 项为良性：ALN3.5 包与一个运行检查脚本中的裸共享盘根路径、两份代码中的矩阵乘法写法、上述归档来源路径。最终暂存区检查 **PASS**：918 个路径，无遗漏、意外文件、私有/扣留路径、未暂存更改或未解决匹配；909 个与构建字节相同的 index blob 复用已完成扫描，四个新包复用逐成员往返校验。`git diff --cached --check` 仅报告 3 个读出 CSV 的 CRLF 换行（RFC 4180）和 2 个读出 Markdown 末尾空行，保留与服务器输出逐字节一致。
 
 本轮未发布：私有原始数据、文件/事件/临床源表、身份映射、人名/联系方式、仅限服务器的支持集几何绑定、模型权重、运行日志、存储清理工具/清单与入口、交接记录及其核查脚本。本轮使用 `private/github_publish_033/checkout`；publish_032 副本保持原状态。GPU 训练与监控继续运行，发布未重复训练或改变实验日程。
+
+## 两条 ALN3.5 有界实验线的结果（2026-10-20 晚间，publish_034）
+
+研究者本次指示：`你来push一版到github`。沿用既有发布范围。内容提交 `3da8cf5758214c0cf87a1f1c8d67fb84b574000e` 已推送，`git ls-remote` 读回一致；本记录随 publish_035 补交（当时记录提交未完成）。
+
+- 发布 S35_CBAUD_PEOPLE（DTU 44 人）与 seed-3407 episode 复核（10/10）的结果、分析脚本与汇总；fleet v3 回执与 2026-10-20 ECC 失败标记存档脚本。
+- 逐单元记录：`lanes_034_001.tar.gz`（8.4 MiB，269 个成员）及 `LANES_MANIFEST_034.tsv`，为 publish_030–033 未逐字节发布的 lane 记录；成员与服务器原件逐字节一致。
+
+入口为 [RELEASE_034](auditory_alignment_v3/RELEASE_034.md)，来源与发布哈希见 [publication_034/MANIFEST.tsv](../results/auditory_alignment_v3/publication_034/MANIFEST.tsv)。
+
+**核验**：快照、构建与门禁以 `srun --overlap` 步骤在证据作业分配 1047358 内运行。扫描覆盖 321 个已知姓名、158 个全拼形式和 9,386 个标识符，未批准标识符 0；人工/自动复核 19 项（公开队列标识符与授权儿童假名）。导出步骤会重新复制交接核查脚本与存储清理入口，已按扣留清单逐路径剔除（`withheld_dropped.json`）。最终暂存区检查 **PASS**：82 个路径，76 个 index blob 复用构建扫描。
+
+## ALN3.6 与 ALN4.1 第一轮、两个第二轮计划与跨刺激决定（2026-10-21，publish_035）
+
+研究者本次指示：`先push到github上`。沿用既有发布范围。内容提交 `20592b0bd6213fb6b0e2ef667f8d225dcff2a778` 已推送，`git ls-remote origin refs/heads/main` 读回一致。
+
+- 发布 ALN3.6 包与 ALN4.1 包（zip 与解压成员逐字节一致）；`auditory_alignment_v3/aln36/`、`aln41/` 代码；ALN3.6 第一轮科学判断、绑定说明、family 表与逐人结果；ALN4.1 第一轮报告、接入记录与门槛（`scripts/auditory_alignment_v3/aln41/intake/`、`docs/auditory_alignment_v3/aln41/ops/`）、BINDING 与 family 表。
+- 发布两个第二轮的 runner、冻结计划（ALN3.6 seed 3407；ALN4.1 seed 3407/3413）、F_SUPPORT 计划、第二轮分析代码，以及跨刺激问题的决定记录（在任何跨刺激结果前按资产语义选定：MFF 纯音→bapa 的偏差关系迁移与 bapa 重拟合）。跨刺激计划列出 MFF 记录编号与身份键，不发布；决定记录的 SHA256 绑定在该计划内。
+- 发布 fleet 就绪 shim、2026-10-21 node51 ECC 失败释放脚本与回执，以及 ALN3.4 尾巴的新完成。
+- 逐单元记录：`lanes_035_001.tar.gz`（7.3 MiB，398 个成员）及 `LANES_MANIFEST_035.tsv`：publish_030–034 未发布过的 ALN3.4 lane 记录与 ALN3.6/ALN4.1 lane 记录（前缀 `aln36/`、`aln41/`；第二轮为已完成部分）。本轮成员中的私有 checkpoint 存储根路径替换为既定占位符，逐成员来源/发布 SHA256 见 `publication_035/LANE_MEMBER_DERIVATIONS.json`；已发布过的原始记录不因占位符替换重复上传。年龄结果文件（含真实年龄）不发布。
+
+入口为 [RELEASE_035](auditory_alignment_v3/RELEASE_035.md)，来源与发布哈希见 [publication_035/MANIFEST.tsv](../results/auditory_alignment_v3/publication_035/MANIFEST.tsv)。21 个发布副本沿用私有 checkpoint 存储占位符，数值不变。
+
+**核验**：快照、构建与门禁以 `srun --overlap` 步骤在证据作业分配 1047358 内运行。七个 ALN3/ALN4 包 zip/解压一致；扫描覆盖 321 个已知姓名、158 个全拼形式和 9,386 个标识符，未批准标识符 0；自动复核 44 项（公开队列标识符与授权儿童假名）。人工复核为良性：两个新包中的示例临时文件路径、模型目录占位路径与作者审阅沙箱路径，包规则文本中的只读共享盘根路径，以及 ICLR 论文链接中的 32 位哈希。另对新归档逐成员检查了身份键、MFF 记录编号、真实年龄字段和私有存储根路径，均为 0。最终暂存区检查 **PASS**：327 个路径，无遗漏、意外文件、私有/扣留路径或未解决匹配。`git diff --cached --check` 仅报告包内一份快照与三份 family 表末尾空行，保留与源文件逐字节一致。
+
+本轮未发布：私有原始数据、文件/事件/临床源表、身份映射、人名/联系方式、MFF 记录与身份列表、真实年龄、仅限服务器的支持集几何绑定、模型权重、运行日志、存储清理工具/清单与入口、交接记录及其核查脚本。本轮使用 `private/github_publish_035/checkout`。GPU 训练继续运行，发布未改变实验日程。
