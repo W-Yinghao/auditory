@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "performed_utc": "2026-10-21 11:56:04 UTC",
+  "scope": "Local synthetic mathematics, contract checks and read-only Git fixtures. No real EEG, model weights, GPU, server queue or external full-method execution.",
+  "real_data_validation_performed": false,
+  "server_execution_performed": false,
+  "suites": [
+    {
+      "name": "source_probe_metrics",
+      "command": "python3 -B tools/check_source_probe_metrics.py",
+      "exit_code": 0,
+      "checks": 7,
+      "checks_summary": [
+        "exact masked/multipositive uniform baseline",
+        "tie credit",
+        "q-gain direction",
+        "mask exclusion",
+        "centred rank/roundoff",
+        "bad mask/value/probability rejection",
+        "CLI JSON/no-overwrite/invalid rejection"
+      ]
+    },
+    {
+      "name": "tools/check_paired_risk_summary.py",
+      "command": "python3 -B tools/check_paired_risk_summary.py",
+      "exit_code": 0,
+      "checks": 8,
+      "output": "test_cli_writes_only_new_output_and_does_not_overwrite (__main__.PairedRiskChecks.test_cli_writes_only_new_output_and_does_not_overwrite) ... ok\ntest_degenerate_family_has_null_intervals_and_no_invalid_json (__main__.PairedRiskChecks.test_degenerate_family_has_null_intervals_and_no_invalid_json) ... ok\ntest_duplicate_seeds_do_not_double_the_participant_sample (__main__.PairedRiskChecks.test_duplicate_seeds_do_not_double_the_participant_sample) ... ok\ntest_gc_positive_does_not_imply_improvement_over_e0 (__main__.PairedRiskChecks.test_gc_positive_does_not_imply_improvement_over_e0) ... ok\ntest_incomplete_duplicate_missing_seed_and_wholly_missing_roster_rejected (__main__.PairedRiskChecks.test_incomplete_duplicate_missing_seed_and_wholly_missing_roster_rejected) ... ok\ntest_nonfinite_negative_and_mixed_units_rejected (__main__.PairedRiskChecks.test_nonfinite_negative_and_mixed_units_rejected) ... ok\ntest_same_query_required_within_states_and_across_tools_and_seeds (__main__.PairedRiskChecks.test_same_query_required_within_states_and_across_tools_and_seeds) ... ok\ntest_single_fingerprint_requires_explicit_adapter_declaration (__main__.PairedRiskChecks.test_single_fingerprint_requires_explicit_adapter_declaration) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.405s\n\nOK\n"
+    },
+    {
+      "name": "tools/check_inspect_existing_state.py",
+      "command": "python3 -B tools/check_inspect_existing_state.py",
+      "exit_code": 0,
+      "checks": 8,
+      "output": "{\n  \"status\": \"PASS\",\n  \"checks_passed\": 8,\n  \"checks\": [\n    \"clean_baseline_three_way_hashes_and_index_unchanged\",\n    \"missing_baseline_does_not_pass_or_fetch\",\n    \"changed_key_file_has_separate_worktree_hash_and_status\",\n    \"committed_key_change_is_not_confused_with_worktree_change\",\n    \"available_nonancestor_requires_reconciliation\",\n    \"exclusive_output_and_realpath_outside_repo_enforced\",\n    \"timeout_discards_stderr\",\n    \"cli_fixed_baseline_and_no_live_queue_claim\"\n  ],\n  \"real_checkout_mutated\": false,\n  \"network_or_queue_used\": false\n}\n"
+    }
+  ],
+  "meaningful_check_groups": 23,
+  "local_old_checkout_probe": {
+    "command": "python3 -B tools/inspect_existing_state.py --repo <old local checkout> --output <new external path>",
+    "exit_code": 2,
+    "status": "NEEDS_RECONCILIATION",
+    "live_queue": "NOT_CHECKED",
+    "expected": true,
+    "reason": "local checkout lacks current baseline; helper correctly refuses to label it current"
+  },
+  "schema_validation": {
+    "json_parse": true,
+    "internal_refs": "checked structurally by verify_package.py",
+    "full_draft202012_instance_validation": false,
+    "reason": "jsonschema not available locally; no real event instances"
+  },
+  "independent_reviews": [
+    {
+      "scope": "story and external protocol",
+      "outcome": "reviewed with primary sources; single external route and10 public downstream units, adapted protocols explicitly labeled"
+    },
+    {
+      "scope": "source diagnostics math",
+      "outcome": "NCE baseline/q/rank reviewed; S/Q naming, outer gradient and per-snapshot ridge ambiguities corrected"
+    },
+    {
+      "scope": "private families and net inference",
+      "outcome": "20/13 counts, same-Q and fixed seed aggregation verified; cross-stim AUC metric-before-seed order clarified"
+    }
+  ],
+  "unvalidated": [
+    "production checkpoint/data adapter wiring",
+    "real source episode export",
+    "private raw-event semantics",
+    "full external checkpoint loading and scoring",
+    "current Slurm and private output completion"
+  ]
+}
+

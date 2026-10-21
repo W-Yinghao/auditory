@@ -1,0 +1,342 @@
+{
+  "plan_id": "ALN42_R2_CONTINUATION_v1",
+  "status": "design_frozen_in_delivery; server binding required",
+  "design_baseline": "5d2960eee61a75c048f6b6ee3cef8427d945c3cd",
+  "inherits": [
+    "ALN4.1 frozen R2 plan",
+    "ALN3.6 R2_BINDING"
+  ],
+  "preserve_original_unit_ids": true,
+  "completed_compatible": "reuse",
+  "running_compatible": "await_existing_job",
+  "missing_registered": "resume_original_unit",
+  "production_mutation_without_confirmed_bug": false,
+  "stage1": "CBraMod pretrained_full as already bound",
+  "source_arms": [
+    "TCS",
+    "TNCE",
+    "GCS",
+    "TCS_WRONG"
+  ],
+  "core_arms": [
+    "B0",
+    "TCS",
+    "TNCE"
+  ],
+  "aln41": {
+    "r1_seed": 3401,
+    "r2_seeds": [
+      3407,
+      3413
+    ],
+    "all_seeds": [
+      3401,
+      3407,
+      3413
+    ],
+    "existing_source_fits": 8,
+    "existing_private_ce_fits": 30,
+    "new_source_fits": 0,
+    "new_private_ce_fits": 0,
+    "source_lr": 0.0001,
+    "source_transfer_step": 10000,
+    "private_recipe": "unchanged original plan"
+  },
+  "aln36": {
+    "r1_seed": 3401,
+    "r2_seeds": [
+      3407
+    ],
+    "net_analysis_seeds": [
+      3401,
+      3407
+    ],
+    "reuse_original_parent_bindings": true,
+    "new_research_training_fits": 0
+  },
+  "source_diagnostic": {
+    "seed": 3401,
+    "arms": [
+      "TCS",
+      "TNCE",
+      "GCS",
+      "TCS_WRONG"
+    ],
+    "snapshots": [
+      0,
+      2500,
+      5000,
+      10000
+    ],
+    "fit_episodes": 32,
+    "dev_episodes": 32,
+    "people_per_episode": 2,
+    "support_anchors_per_person": 32,
+    "query_anchors_per_person": 32,
+    "dev_panel_seed": 348201,
+    "persistent_optimizer_updates": 0,
+    "episode_delta_steps": 5,
+    "ridge_refit_per_snapshot": true,
+    "ridge_panel_fit": 512,
+    "ridge_panel_dev": 512,
+    "ridge_lambda_rule": "original 1e-3*trace(XX^T)/n, no search",
+    "gpu_hours_a100_equivalent_cap": 4,
+    "missing_checkpoint": "report_missing_do_not_retrain",
+    "effect_size_gate": false
+  },
+  "support": {
+    "family_id": "F_SUPPORT",
+    "expected_members": 20,
+    "core_arms": [
+      "B0",
+      "TCS",
+      "TNCE"
+    ],
+    "seeds": [
+      3401,
+      3407,
+      3413
+    ],
+    "primary": "query NLL bits per trial",
+    "original_keys_and_signs": "existing analysis_r2 support_values exports U0-risk minus adapted-risk gains; exact family keys/order bind original plan; semantic index is not replacement key names",
+    "query": "identical across support level, draw, delta/cal and method for original legal panel",
+    "u10_draw_seeds": [
+      351410,
+      351411,
+      351412,
+      351413,
+      351414
+    ],
+    "u10_count": "min(floor(0.1*all_available_trials), guarded_early_pool_size)",
+    "u30_pool": "earliest ceil(0.3*physical_blocks), original boundary deletion and complete-epoch guard",
+    "delta": {
+      "steps": 5,
+      "lr": 0.1,
+      "l2": 0.1,
+      "initial": "zero added to a_target",
+      "trainable": "temporary person delta only"
+    },
+    "cal": {
+      "function": "sigmoid(exp(s)*logit(p)+b)",
+      "steps": 5,
+      "lr": 0.1,
+      "l2": 0.1,
+      "p_clip": [
+        1e-06,
+        0.999999
+      ],
+      "initial": [
+        0,
+        0
+      ]
+    },
+    "aggregation": "draw mean within person/arm/seed, then seed mean within person",
+    "n_not_multiplied": true,
+    "bootstrap_draws": 4000,
+    "semantic_index": [
+      {
+        "id": "B0_delta_U10_vs_U0",
+        "expression": "R(B0,U0)-R(B0,delta,U10)",
+        "better": "positive"
+      },
+      {
+        "id": "B0_cal_U10_vs_U0",
+        "expression": "R(B0,U0)-R(B0,cal,U10)",
+        "better": "positive"
+      },
+      {
+        "id": "B0_delta_U10_vs_cal",
+        "expression": "R(B0,cal,U10)-R(B0,delta,U10)",
+        "better": "positive"
+      },
+      {
+        "id": "B0_delta_U30_vs_U0",
+        "expression": "R(B0,U0)-R(B0,delta,U30)",
+        "better": "positive"
+      },
+      {
+        "id": "B0_cal_U30_vs_U0",
+        "expression": "R(B0,U0)-R(B0,cal,U30)",
+        "better": "positive"
+      },
+      {
+        "id": "B0_delta_U30_vs_cal",
+        "expression": "R(B0,cal,U30)-R(B0,delta,U30)",
+        "better": "positive"
+      },
+      {
+        "id": "TCS_delta_U10_vs_U0",
+        "expression": "R(TCS,U0)-R(TCS,delta,U10)",
+        "better": "positive"
+      },
+      {
+        "id": "TCS_cal_U10_vs_U0",
+        "expression": "R(TCS,U0)-R(TCS,cal,U10)",
+        "better": "positive"
+      },
+      {
+        "id": "TCS_delta_U10_vs_cal",
+        "expression": "R(TCS,cal,U10)-R(TCS,delta,U10)",
+        "better": "positive"
+      },
+      {
+        "id": "TCS_delta_U30_vs_U0",
+        "expression": "R(TCS,U0)-R(TCS,delta,U30)",
+        "better": "positive"
+      },
+      {
+        "id": "TCS_cal_U30_vs_U0",
+        "expression": "R(TCS,U0)-R(TCS,cal,U30)",
+        "better": "positive"
+      },
+      {
+        "id": "TCS_delta_U30_vs_cal",
+        "expression": "R(TCS,cal,U30)-R(TCS,delta,U30)",
+        "better": "positive"
+      },
+      {
+        "id": "TNCE_delta_U10_vs_U0",
+        "expression": "R(TNCE,U0)-R(TNCE,delta,U10)",
+        "better": "positive"
+      },
+      {
+        "id": "TNCE_cal_U10_vs_U0",
+        "expression": "R(TNCE,U0)-R(TNCE,cal,U10)",
+        "better": "positive"
+      },
+      {
+        "id": "TNCE_delta_U10_vs_cal",
+        "expression": "R(TNCE,cal,U10)-R(TNCE,delta,U10)",
+        "better": "positive"
+      },
+      {
+        "id": "TNCE_delta_U30_vs_U0",
+        "expression": "R(TNCE,U0)-R(TNCE,delta,U30)",
+        "better": "positive"
+      },
+      {
+        "id": "TNCE_cal_U30_vs_U0",
+        "expression": "R(TNCE,U0)-R(TNCE,cal,U30)",
+        "better": "positive"
+      },
+      {
+        "id": "TNCE_delta_U30_vs_cal",
+        "expression": "R(TNCE,cal,U30)-R(TNCE,delta,U30)",
+        "better": "positive"
+      },
+      {
+        "id": "TCS_vs_B0_delta_U30_gain",
+        "expression": "[R(TCS,U0)-R(TCS,delta,U30)]-[R(B0,U0)-R(B0,delta,U30)]",
+        "better": "positive"
+      },
+      {
+        "id": "TCS_vs_TNCE_delta_U30_gain",
+        "expression": "[R(TCS,U0)-R(TCS,delta,U30)]-[R(TNCE,U0)-R(TNCE,delta,U30)]",
+        "better": "positive"
+      }
+    ]
+  },
+  "cross_stim": {
+    "family_id": "F_CROSS_STIM",
+    "expected_members": 13,
+    "direction": "puretone_to_bapa",
+    "primary": "per-person AUC",
+    "labels": {
+      "standard": 0,
+      "deviant": 1
+    },
+    "target_identity_count_at_registration": 24,
+    "target_folds": 5,
+    "paired_subset_count": 8,
+    "paired_subset_inference": "descriptive only",
+    "frozen_exports": 7,
+    "transfer": "pure-tone train identities excluding target fold identities",
+    "refit": "other bapa identity folds; whole readout pipeline",
+    "shared_query": true,
+    "fit_pca_standardization_calibration_on_allowed_training_side_only": true,
+    "low_auc_flip_labels": false,
+    "history": "reuse registered separate descriptive family",
+    "twin": "reuse only if already exists or CPU-restorable from registered predictions/mapping",
+    "bootstrap_draws": 4000,
+    "semantic_index": [
+      {
+        "id": "B0_transfer_minus_0.5",
+        "better": "positive",
+        "note": "per-person AUC"
+      },
+      {
+        "id": "B0_refit_minus_0.5",
+        "better": "positive",
+        "note": "per-person AUC"
+      },
+      {
+        "id": "B0_refit_minus_transfer",
+        "better": "positive",
+        "note": "target-task supervision gain, not proof of equal-budget readout mechanism"
+      },
+      {
+        "id": "TCS_transfer_minus_0.5",
+        "better": "positive",
+        "note": "per-person AUC"
+      },
+      {
+        "id": "TCS_refit_minus_0.5",
+        "better": "positive",
+        "note": "per-person AUC"
+      },
+      {
+        "id": "TCS_refit_minus_transfer",
+        "better": "positive",
+        "note": "target-task supervision gain, not proof of equal-budget readout mechanism"
+      },
+      {
+        "id": "TNCE_transfer_minus_0.5",
+        "better": "positive",
+        "note": "per-person AUC"
+      },
+      {
+        "id": "TNCE_refit_minus_0.5",
+        "better": "positive",
+        "note": "per-person AUC"
+      },
+      {
+        "id": "TNCE_refit_minus_transfer",
+        "better": "positive",
+        "note": "target-task supervision gain, not proof of equal-budget readout mechanism"
+      },
+      {
+        "id": "TCS_minus_B0_transfer",
+        "better": "positive"
+      },
+      {
+        "id": "TCS_minus_TNCE_transfer",
+        "better": "positive"
+      },
+      {
+        "id": "TCS_minus_B0_refit",
+        "better": "positive"
+      },
+      {
+        "id": "TCS_minus_TNCE_refit",
+        "better": "positive"
+      }
+    ],
+    "aggregation": "compute AUC within each person and seed on fixed Q, then average per-person AUC across seeds; B0 frozen baseline used once; not probability ensemble"
+  },
+  "private_event_audit": {
+    "extra_training_fits": 0,
+    "event_before_history": true,
+    "include_rejected_stimuli_in_history": true,
+    "full_epoch_guard": true,
+    "known_case": "private locator child60; not an exclusion rule",
+    "public_trace": false
+  },
+  "net_risk": {
+    "family_scope": "per cohort all fixed tools x NET_C/NET_T",
+    "status": "post_R1_diagnostic",
+    "reference_method": "fixed-original-SE max-absolute-z bootstrap, not production bootstrap-t",
+    "expected_panel_required_for_formal_run": true,
+    "query_fingerprints": "same physical queries/targets/weights across states, tools and seeds",
+    "original_families_preserved": true
+  }
+}

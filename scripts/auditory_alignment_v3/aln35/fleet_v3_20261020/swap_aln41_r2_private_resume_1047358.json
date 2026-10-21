@@ -1,0 +1,111 @@
+{
+ "status": "pass",
+ "job": "1047358",
+ "replaced": {
+  "module": "auditory_alignment_v3.aln35.aln41_r2_fleet",
+  "sha256": "20fc56bb269dc00c6cdcd710fdcd8b6017dcc20fc00b5781303ed976983c2e6f",
+  "name": "c3_s35r2a41",
+  "lane": "s35_r2_aln41"
+ },
+ "entry": {
+  "module": "auditory_alignment_v3.aln35.aln41_r2_fleet_v2",
+  "sha256": "6b8df760a43247ec04f82e06bd55935f19bb24c40cd47ae55bae65798f27eab5",
+  "name": "c3_s35r2a41",
+  "lane": "s35_r2_aln41"
+ },
+ "backup": "/home/infres/yinwang/EEG_auditory/private/auditory_alignment_v3/aln35/fleet_plugins_before_aln41_r2_v2_1047358.json",
+ "private_items_v1": [
+  {
+   "name": "c3_s35r2a41pb0",
+   "lane": "s35_r2_aln41_private_b0",
+   "state": "ready",
+   "ready": 6,
+   "remaining": 6,
+   "slots": 2,
+   "initial": [],
+   "submit": [
+    "slurm/aln35_r2a41_private_b0.sbatch",
+    "--worker",
+    "--arm",
+    "B0"
+   ]
+  },
+  {
+   "name": "c3_s35r2a41ptcs",
+   "lane": "s35_r2_aln41_private_tcs",
+   "state": "ready",
+   "ready": 5,
+   "remaining": 5,
+   "slots": 2,
+   "initial": [],
+   "submit": [
+    "slurm/aln35_r2a41_private_tcs.sbatch",
+    "--worker",
+    "--arm",
+    "TCS"
+   ]
+  },
+  {
+   "name": "c3_s35r2a41ptnc",
+   "lane": "s35_r2_aln41_private_tnc",
+   "state": "ready",
+   "ready": 6,
+   "remaining": 6,
+   "slots": 2,
+   "initial": [],
+   "submit": [
+    "slurm/aln35_r2a41_private_tnc.sbatch",
+    "--worker",
+    "--arm",
+    "TNCE"
+   ]
+  }
+ ],
+ "private_items_v2": [
+  {
+   "name": "c3_s35r2a41qb0",
+   "lane": "s35_r2_aln41_private_b0",
+   "state": "ready",
+   "ready": 1,
+   "remaining": 6,
+   "slots": 1,
+   "initial": [],
+   "submit": [
+    "slurm/aln35_r2a41_private_resume_b0.sbatch",
+    "--resume-smoke"
+   ]
+  },
+  {
+   "name": "c3_s35r2a41qtcs",
+   "lane": "s35_r2_aln41_private_tcs",
+   "state": "awaiting_resume_smoke",
+   "ready": 0,
+   "remaining": 5,
+   "slots": 1,
+   "initial": [],
+   "submit": []
+  },
+  {
+   "name": "c3_s35r2a41qtnc",
+   "lane": "s35_r2_aln41_private_tnc",
+   "state": "awaiting_resume_smoke",
+   "ready": 0,
+   "remaining": 6,
+   "slots": 1,
+   "initial": [],
+   "submit": []
+  }
+ ],
+ "shas": {
+  "auditory_alignment_v3/aln41/private_ft.py": "c62b9c0694f179cbd033786a4db7d7f10687d29475476569eb593bedbde36ecd",
+  "auditory_alignment_v3/aln41/r2.py": "62aad8c615136e817024b637654ae2a33589f38e4eb350a4835a7da80fd7a01d",
+  "auditory_alignment_v3/aln41/r2_lanes.py": "64813eeddd24798fdccb775dfc45a7bdb90c6c0529f4db40a00cb808f8bdf732",
+  "auditory_alignment_v3/aln41/private_ft_resume.py": "334a51502096fc629b5c10ba36797fd1e333fcb7cb12f3b779af7a270f4c0e3b",
+  "auditory_alignment_v3/aln41/r2_private_resume.py": "1521b453321068ed1858645038076288e224b8a3a4d90cad8f96c4cac16fc04e",
+  "auditory_alignment_v3/aln41/r2_lanes_v2.py": "340443e2248091b71e5f06ae18160fa145551675742e3ad78d479d0109e5545f",
+  "auditory_alignment_v3/aln35/aln41_r2_fleet_v2.py": "6b8df760a43247ec04f82e06bd55935f19bb24c40cd47ae55bae65798f27eab5",
+  "slurm/aln35_r2a41_private_resume_b0.sbatch": "2b0b65fa5d15f64847ef4fe29b58740efdf0a62a6ee88beaccbc2c6762a3bc23",
+  "slurm/aln35_r2a41_private_resume_tcs.sbatch": "c0c8b641757c1c9b09add1b247ae781cd318a71f6b8c9e617856694c388ed943",
+  "slurm/aln35_r2a41_private_resume_tnc.sbatch": "fbdd4124a53bfb652154b0a44adf320fcade68f55b80c9c36f5aa3636be6d807"
+ }
+}

@@ -1,0 +1,100 @@
+{
+  "design_time": "after published R1; do not claim all rules were pre-R1 registered",
+  "rules": [
+    {
+      "id": "H1_STIMULUS",
+      "question": "正确声音监督添加了什么？",
+      "required": [
+        "correct_vs_B0",
+        "correct_vs_wrong",
+        "history-residual content",
+        "seed-specific results"
+      ],
+      "allows": "stimulus-related utility where direct paired evidence supports it",
+      "forbids": "correct-wrong alone as improvement over Stage1; weak evidence as zero information"
+    },
+    {
+      "id": "H2_TIME",
+      "question": "时间组织改变了何种读出？",
+      "required": [
+        "same-window",
+        "fixed cross-window",
+        "target-window refit"
+      ],
+      "allows": "separate readout reuse from representation availability",
+      "forbids": "large refit recovery alone as timing superiority; gate as physiological latency"
+    },
+    {
+      "id": "H3_SUPPORT",
+      "question": "时间δ超出普通校准了吗？",
+      "required": [
+        "delta vs U0 NLL",
+        "delta vs affine NLL",
+        "TCS-B0 gain interaction",
+        "TCS-TNCE gain interaction"
+      ],
+      "allows": "temporal adaptation claim only at supported direct-comparison level",
+      "forbids": "AUC alone to beat monotone calibration; one significant arm versus another nonsignificant as interaction"
+    },
+    {
+      "id": "NET_ADAPT",
+      "question": "个人更新最终比固定E0好吗？",
+      "required": [
+        "same-Q E0-EC",
+        "same-Q E0-ET",
+        "old GH/GC/G0/DT"
+      ],
+      "allows": "direct net risk improvement",
+      "forbids": "GC positive implies net benefit; subtract independent CIs"
+    },
+    {
+      "id": "H4_CHILD_TRANSFER",
+      "question": "儿童跨刺激判别读出能否复用？",
+      "required": [
+        "transfer_vs0.5",
+        "refit_vs0.5",
+        "refit_minus_transfer",
+        "direct TCS-B0/TNCE"
+      ],
+      "allows": "standard/deviant readout transfer under registered stimulus/history conditions",
+      "forbids": "abstract deviance or speech semantics from label role alone; AUC sign flipping"
+    },
+    {
+      "id": "CHILD_DEVELOPMENT",
+      "question": "共享表示提供何种年龄信息？",
+      "required": [
+        "OOF person error",
+        "B0/TCS/TNCE",
+        "raw/train-mean references",
+        "direct Stage2 contrasts"
+      ],
+      "allows": "development-related EEG information attributable to actual stage",
+      "forbids": "Stage1 age success as proof of Stage2 CS benefit or clinical diagnosis"
+    },
+    {
+      "id": "EXTERNAL",
+      "question": "共同应用下外部方法怎样？",
+      "required": [
+        "one precommitted route",
+        "exact dataset identity",
+        "same-Q paired scores",
+        "true input/label access",
+        "released-weight/data provenance"
+      ],
+      "allows": "explicitly adapted system comparison",
+      "forbids": "literature 99.93% versus our44-person accuracy; frozen EEG probe as full MindMix"
+    },
+    {
+      "id": "CLOSURE",
+      "question": "是否支持拟定方法贡献？",
+      "required": [
+        "complete valid evidence map",
+        "direct comparison uncertainty",
+        "remaining evidence gaps"
+      ],
+      "allows": "supported contribution, unresolved claim or insufficient contribution",
+      "forbids": "new negative-result story; automatic R4 or unlimited rescue"
+    }
+  ]
+}
+

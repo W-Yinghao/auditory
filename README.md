@@ -6,7 +6,34 @@
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## 最新（2026-10-21）：ALN3.6 与 ALN4.1 第一轮完成，两个第二轮已启动
+## 最新（2026-10-22）：ALN3.6 第二轮完成，ALN4.2 诊断与外部对照进行中，论文主线（MindMix 审计 + CS 依赖图谱）启动
+
+本次发布 [ALN4.2 研究者包](AUDITORY_ALN4_SERVER_PACKAGE_v4_2_20261021/README.md)（第二轮续跑与第三轮收尾）、ALN3.6 第二轮结果、ALN4.2 的来源诊断/事件审计/NET 诊断，以及论文主线的第一批分析。所有结果保留有利、不利和不确定方向；seed、fold、实验单元和发布版本都不增加独立受试者数。
+
+- **[ALN3.6 第二轮](docs/auditory_alignment_v3/aln42/NET_AND_ALN36_R2_NOTE.md)**（seed 3407，[R1/R2 复制表](results/auditory_alignment_v3/aln36/r2/R1_R2_REPLICATION.md)）：
+  - 两个 seed 都分辨出的 51 个成员中，46 个结论相同，没有方向翻转。
+  - 训练不含任何 HA 听者时，共享读出对 HA 的增益复制成功：CBpre G0 R2 为 +0.00232 [+0.00122, +0.00342]，R1 为 +0.00233。
+  - 个人时间重权在两个 seed 的所有公开单元中都有害。
+  - 儿童严格 twin 差在 R2 中对 AP 和错配对照 APwrong 都为正，所以这一信号不特定于正确配对。
+- **ALN4.2 诊断**（均在 R1 之后设计，并按此标注）：
+  - [来源学习诊断](docs/auditory_alignment_v3/aln42/SOURCE_LEARNING_REPORT.md)：在任何臂、任何快照中，投影后的 EEG 都没有学会区分正确声音配对，检索 top-1 处于随机水平（1/32）。TNCE 的 query 损失降到 ln 32，原因是表示坍缩，不是学习。
+  - [私有儿童事件审计](docs/auditory_alignment_v3/aln42/EVENT_AUDIT_REPORT.md)：64 名儿童、63,415 个 epoch，从原始标注到 loader 全链路核对，所有类别不一致数都为 0。ALN3.6 R1 中那名序列方向与组相反的 HA 儿童，不是实现错误造成的。
+  - NET 诊断：在所有公开队列里，个人尺度重标定（EC）相对共享读出（E0）都是净损失，例如 DTU NET_C −0.0078；再加时间重权（ET）损失约翻倍。私有队列结果受 history 离群项支配，没有信息量。
+  - 外部 MindMix 对照（路线 A，DTU 10 个单元）运行中；[就绪报告](docs/auditory_alignment_v3/aln42/ops/EXTERNAL_READINESS_REPORT.md)记录了官方评分只用特权槽位等捷径问题。
+- **[论文主线](docs/auditory_alignment_v3/paper/PR_STORY_BLUEPRINT.md)**（攻击并改进 MindMix；CS 散度既是训练目标，也作为分析工具）：
+  - [CS 依赖图谱](results/auditory_alignment_v3/paper/cs_atlas/ATLAS.md)（探索性，在 ALN4.1 R1/ALN4.2 之后设计）。指标是相对受试者内片段循环移位零分布的超额 CS 依赖，噪声 EEG 对照约为 0。
+    - ALN4.1：所有臂的表示都携带超出零分布的包络依赖，在去掉包络自身 history 后仍为正。在最早窗口，TCS 比错配对照多 +0.69e-4 nats [+0.07, +1.32]e-4（DTU，族内同时区间），也比不分时间槽的 GCS 多。TCS 与 TNCE、B0 的差异未分辨。
+    - ALN3.4 四类模型 × 六种声音属性：学到的表示比原始 EEG 多携带大量依赖，所有属性、两个队列一致，峰值在 0 ms 中心（DTU 包络 +14.3e-4 nats）。预训练与随机初始化的 CBraMod 大多无法区分，所以这部分依赖主要不来自 Stage1 预训练。
+  - MindMix 事后审计通道已登记，smoke 通过，正在等外部单元完成。
+- **运行**：ALN4.1 R2 儿童微调改为可续跑版本。验证：中断续跑与一次跑完在 1e-4 bits 容差内一致，所选 epoch 相同。被取代的旧作业已按收据取消。ALN3.6 R2 私有通道的参数解析缺陷已改用新包装器修复。
+- **逐单元记录**：`lanes_036_001.tar.gz` 收录 194 份此前未逐字节发布的 lane 记录，私有存储路径换成既定占位符，逐成员哈希见 [LANE_MEMBER_DERIVATIONS.json](results/auditory_alignment_v3/publication_036/LANE_MEMBER_DERIVATIONS.json)。
+- **仍在运行**：ALN4.1 R2 儿童微调最后 1 个单元、MindMix 外部单元 2 个，以及之后的审计。ALN4.1 R2 读出、跨刺激读出和收尾报告要等这些完成。
+
+[发布清单](results/auditory_alignment_v3/publication_036/MANIFEST.tsv)记录逐文件来源与发布哈希。**这是进行中的研究快照。**
+
+本次不上传：私有数据集本身、身份映射、人名/联系方式、MFF 记录与身份列表（含跨刺激计划和 fold 表）、事件审计的逐行轨迹与身份对照、真实年龄、MindMix 论文副本、仅限服务器的支持集几何绑定、模型权重、运行日志、存储清理工具和交接记录。
+
+## 2026-10-21：ALN3.6 与 ALN4.1 第一轮完成，两个第二轮已启动
 
 本次发布两个研究者包（[ALN3.6](AUDITORY_ALN3_SERVER_PACKAGE_v3_6_20261020/README.md)、[ALN4.1](AUDITORY_ALN4_SERVER_PACKAGE_v4_1_20261021/README.md)）的第一轮结果、第二轮冻结计划和跨刺激问题的决定记录，详见[发布说明](docs/auditory_alignment_v3/RELEASE_035.md)。结果保留有利、不利和不确定方向；seed、fold 和发布版本都不增加独立受试者数。
 

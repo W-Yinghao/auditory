@@ -1,0 +1,1265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:auditory:aln4:private-event-trace:v1",
+  "title": "ALN4 private event audit trace",
+  "description": "Private audit only. Generic schema contains no participant instances. Store raw event sequences and private linkage separately from public deidentified model results. Schema validity does not establish correct event semantics, chronological ordering, or causal isolation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "privacy_class",
+    "audit_status",
+    "audit_id",
+    "created_utc",
+    "provenance",
+    "researcher_declaration",
+    "scope",
+    "records",
+    "dependency_impacts",
+    "summary"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aln4.private_event_trace.v1"
+    },
+    "privacy_class": {
+      "const": "PRIVATE_EVENT_AUDIT"
+    },
+    "audit_status": {
+      "enum": [
+        "NOT_STARTED",
+        "IN_PROGRESS",
+        "COMPLETE_VALID",
+        "CONFIRMED_BUG",
+        "UNRESOLVED_PROVENANCE"
+      ]
+    },
+    "audit_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "created_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code_commit",
+        "original_plan_sha256",
+        "audit_code_sha256",
+        "assets",
+        "private_crosswalk_asset_token"
+      ],
+      "properties": {
+        "code_commit": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{40,64}$"
+        },
+        "original_plan_sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "audit_code_sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/asset"
+          }
+        },
+        "private_crosswalk_asset_token": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+        }
+      }
+    },
+    "researcher_declaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Standing authorization permits deidentified individual model results. It does not authorize public real identifiers, linkage tables, raw EEG, or rowwise event traces; no renewed permission request is required for the authorized model results.",
+      "required": [
+        "no_real_identifiers_in_public_artifacts",
+        "private_trace_not_for_public_release",
+        "identity_crosswalk_stored_separately",
+        "deidentified_individual_model_results_already_authorized",
+        "no_reconfirmation_required_for_authorized_results",
+        "adaptation_results_do_not_authorize_raw_trace_release"
+      ],
+      "properties": {
+        "no_real_identifiers_in_public_artifacts": {
+          "const": true
+        },
+        "private_trace_not_for_public_release": {
+          "const": true
+        },
+        "identity_crosswalk_stored_separately": {
+          "const": true
+        },
+        "deidentified_individual_model_results_already_authorized": {
+          "const": true
+        },
+        "no_reconfirmation_required_for_authorized_results": {
+          "const": true
+        },
+        "adaptation_results_do_not_authorize_raw_trace_release": {
+          "const": true
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reason",
+        "selection_not_based_on_model_score",
+        "cohort_checks",
+        "planned_record_count",
+        "traced_record_count",
+        "existing_results_preserved"
+      ],
+      "properties": {
+        "reason": {
+          "enum": [
+            "REGISTERED_EVENT_INTEGRITY_CHECK",
+            "DEPENDENCY_EXPANSION_FROM_CONFIRMED_BUG"
+          ]
+        },
+        "selection_not_based_on_model_score": {
+          "const": true
+        },
+        "cohort_checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/check"
+          }
+        },
+        "planned_record_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "traced_record_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "existing_results_preserved": {
+          "const": true
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "dependency_impacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/dependency"
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finding",
+        "records_checked",
+        "events_checked",
+        "label_mismatches",
+        "history_mismatches",
+        "alignment_mismatches",
+        "unresolved_checks",
+        "recompute_class",
+        "public_summary_contains_only_anonymous_validation"
+      ],
+      "properties": {
+        "finding": {
+          "enum": [
+            "NOT_YET_ESTABLISHED",
+            "NO_IMPLEMENTATION_BUG_FOUND",
+            "TRUE_DISTRIBUTION_MISMATCH",
+            "HISTORY_ONLY_BUG",
+            "LABEL_OR_ALIGNMENT_BUG",
+            "OTHER_DEPENDENCY_BUG",
+            "UNRESOLVED_PROVENANCE"
+          ]
+        },
+        "records_checked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "events_checked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "label_mismatches": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "history_mismatches": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "alignment_mismatches": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolved_checks": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "recompute_class": {
+          "enum": [
+            "NONE",
+            "CPU_DEPENDENCIES_ONLY",
+            "SCOPED_VERSIONED_TRAINING_DEPENDENCY",
+            "NOT_YET_DETERMINED"
+          ]
+        },
+        "public_summary_contains_only_anonymous_validation": {
+          "const": true
+        },
+        "public_summary_asset_token": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recompute_receipt_asset_token": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "audit_status": {
+            "enum": [
+              "COMPLETE_VALID",
+              "CONFIRMED_BUG"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "records": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset_token",
+        "sha256",
+        "role"
+      ],
+      "properties": {
+        "asset_token": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "role": {
+          "enum": [
+            "RAW_EVENT_STREAM",
+            "PROTOCOL",
+            "STAGED_EPOCHS",
+            "LABEL_MAP",
+            "STORED_HISTORY",
+            "FOLD_ASSIGNMENT",
+            "SUPPORT_QUERY_PLAN",
+            "PREDICTIONS",
+            "CHECKPOINT",
+            "NORMALIZATION",
+            "OTHER_PRIVATE_BINDING"
+          ]
+        },
+        "private_binding_key": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+        }
+      }
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "check_id",
+        "status",
+        "evidence_asset_tokens",
+        "evidence_event_tokens"
+      ],
+      "properties": {
+        "check_id": {
+          "enum": [
+            "RAW_STREAM_COMPLETE",
+            "EVENT_ORDER_MONOTONIC",
+            "RAW_CODE_MAP",
+            "CURRENT_LABEL_MATCH",
+            "HISTORY_USES_PAST_ONLY",
+            "HISTORY_INCLUDES_QC_DROPPED_STIMULI",
+            "BLOCK_RESET_MATCHES_PROTOCOL",
+            "TRIGGER_EPOCH_ALIGNMENT",
+            "PHYSICAL_WINDOW_SUPPORT",
+            "SUPPORT_QUERY_GUARD",
+            "QUERY_UNCHANGED",
+            "ROSTER_DEPENDENCY_UNCHANGED",
+            "NORMALIZATION_DEPENDENCY_UNCHANGED",
+            "SEQUENCE_PROTOCOL_MATCH",
+            "RAW_IDENTIFIERS_EXCLUDED_FROM_PUBLIC"
+          ]
+        },
+        "status": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "UNRESOLVED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "evidence_asset_tokens": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "uniqueItems": true
+        },
+        "evidence_event_tokens": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "uniqueItems": true
+        },
+        "explanation": {
+          "type": "string",
+          "description": "Private audit explanation; never copy verbatim into public results without removing private linkage and timestamps."
+        }
+      }
+    },
+    "history": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_stream",
+        "algorithm_version",
+        "reset_rule",
+        "max_raw_stream_index_used",
+        "current_event_used",
+        "previous_stimulus_index",
+        "last_deviant_index",
+        "since_last_deviant",
+        "history_bin"
+      ],
+      "properties": {
+        "source_stream": {
+          "enum": [
+            "FULL_STIMULUS_STREAM",
+            "ACCEPTED_EPOCH_STREAM",
+            "UNKNOWN"
+          ]
+        },
+        "algorithm_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reset_rule": {
+          "enum": [
+            "RECORD",
+            "BLOCK",
+            "PROTOCOL_OTHER",
+            "UNRESOLVED"
+          ]
+        },
+        "max_raw_stream_index_used": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "current_event_used": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "previous_stimulus_index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "last_deviant_index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "since_last_deviant": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": -1
+        },
+        "history_bin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "previous_stimulus_role": {
+          "enum": [
+            "standard",
+            "deviant",
+            "other",
+            "unresolved",
+            null
+          ]
+        },
+        "seconds_since_previous_stimulus": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "seconds_since_last_deviant": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "before_event_history": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_stream",
+        "algorithm_version",
+        "reset_rule",
+        "max_raw_stream_index_used",
+        "current_event_used",
+        "previous_stimulus_index",
+        "last_deviant_index",
+        "since_last_deviant",
+        "history_bin"
+      ],
+      "properties": {
+        "source_stream": {
+          "const": "FULL_STIMULUS_STREAM"
+        },
+        "algorithm_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reset_rule": {
+          "enum": [
+            "RECORD",
+            "BLOCK",
+            "PROTOCOL_OTHER",
+            "UNRESOLVED"
+          ]
+        },
+        "max_raw_stream_index_used": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "current_event_used": {
+          "const": false
+        },
+        "previous_stimulus_index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "last_deviant_index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "since_last_deviant": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": -1
+        },
+        "history_bin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "previous_stimulus_role": {
+          "enum": [
+            "standard",
+            "deviant",
+            "other",
+            "unresolved",
+            null
+          ]
+        },
+        "seconds_since_previous_stimulus": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "seconds_since_last_deviant": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "description": "Recomputed history immediately BEFORE applying the current event; null at event level if the complete source stream cannot be recovered. Runtime must also verify all used indices precede the current event."
+    },
+    "role_assignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analysis_id",
+        "plan_sha256",
+        "outer_fold",
+        "role"
+      ],
+      "properties": {
+        "analysis_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "plan_sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "outer_fold": {
+          "type": [
+            "string",
+            "integer",
+            "null"
+          ]
+        },
+        "role": {
+          "enum": [
+            "FIT",
+            "ES",
+            "CALIBRATION",
+            "SUPPORT_POOL",
+            "SUPPORT",
+            "QUERY",
+            "NOT_SELECTED",
+            "UNASSIGNED"
+          ]
+        }
+      }
+    },
+    "alignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stored_trigger_sample",
+        "expected_trigger_sample",
+        "difference_samples",
+        "native_epoch_start_sample",
+        "native_epoch_end_sample_exclusive",
+        "status"
+      ],
+      "properties": {
+        "stored_trigger_sample": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "expected_trigger_sample": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "difference_samples": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "native_epoch_start_sample": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "native_epoch_end_sample_exclusive": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "MATCH",
+            "MISMATCH",
+            "UNRESOLVED",
+            "NOT_AN_EPOCH"
+          ]
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slot_id",
+              "relative_start_seconds",
+              "relative_end_seconds",
+              "native_start_sample",
+              "native_end_sample_exclusive",
+              "resampled_valid_points",
+              "padded_total_points"
+            ],
+            "properties": {
+              "slot_id": {
+                "enum": [
+                  "W0",
+                  "W1",
+                  "W2"
+                ]
+              },
+              "relative_start_seconds": {
+                "type": "number"
+              },
+              "relative_end_seconds": {
+                "type": "number"
+              },
+              "native_start_sample": {
+                "type": "integer"
+              },
+              "native_end_sample_exclusive": {
+                "type": "integer"
+              },
+              "resampled_valid_points": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "padded_total_points": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_token",
+        "raw_stream_index",
+        "raw_event_code",
+        "raw_sample_index",
+        "raw_onset_seconds",
+        "is_stimulus",
+        "parsed_role",
+        "block_token",
+        "accepted_epoch",
+        "epoch_row_index",
+        "current_y",
+        "expected_y_from_raw_mapping",
+        "roles",
+        "stored_history",
+        "recomputed_before_event_history",
+        "history_comparison_status",
+        "alignment"
+      ],
+      "properties": {
+        "event_token": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "raw_stream_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "raw_event_code": {
+          "type": "string",
+          "description": "Exact lossless textual representation from private raw events, not a model-inferred code."
+        },
+        "raw_sample_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "raw_onset_seconds": {
+          "type": "number"
+        },
+        "is_stimulus": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "parsed_role": {
+          "enum": [
+            "standard",
+            "deviant",
+            "other",
+            "unresolved"
+          ]
+        },
+        "block_token": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "accepted_epoch": {
+          "type": "boolean"
+        },
+        "epoch_row_index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "current_y": {
+          "enum": [
+            0,
+            1,
+            null
+          ]
+        },
+        "expected_y_from_raw_mapping": {
+          "enum": [
+            0,
+            1,
+            null
+          ]
+        },
+        "qc_or_selection_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/role_assignment"
+          }
+        },
+        "stored_history": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/history"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recomputed_before_event_history": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/before_event_history"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "history_comparison_status": {
+          "enum": [
+            "MATCH",
+            "MISMATCH",
+            "NOT_COMPUTABLE",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "alignment": {
+          "$ref": "#/$defs/alignment"
+        }
+      }
+    },
+    "guard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analysis_id",
+        "plan_sha256",
+        "support_row_tokens",
+        "query_row_tokens",
+        "query_sha256",
+        "latest_support_epoch_end_sample",
+        "earliest_query_epoch_start_sample",
+        "direct_sample_disjoint",
+        "overlap_count",
+        "preprocessing_scope"
+      ],
+      "properties": {
+        "analysis_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "plan_sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "support_row_tokens": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "uniqueItems": true
+        },
+        "query_row_tokens": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "uniqueItems": true
+        },
+        "query_sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "latest_support_epoch_end_sample": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "earliest_query_epoch_start_sample": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "direct_sample_disjoint": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "overlap_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "boundary_removed_support_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "boundary_removed_query_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "guard_excluded_support_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "preprocessing_scope": {
+          "enum": [
+            "INHERITED_FULL_RECORD_OFFLINE",
+            "TRAIN_ONLY",
+            "TRIAL_ONLY",
+            "UNRESOLVED"
+          ]
+        }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "person_token",
+        "record_token",
+        "trace_level",
+        "native_sampling_hz",
+        "raw_event_asset_token",
+        "staged_epoch_asset_token",
+        "label_map_asset_token",
+        "full_stream_event_count",
+        "full_stream_stimulus_count",
+        "accepted_epoch_count",
+        "sequence_protocol",
+        "events",
+        "support_query_guards",
+        "checks"
+      ],
+      "properties": {
+        "person_token": {
+          "type": "string",
+          "pattern": "^p_[a-f0-9]{16,64}$",
+          "description": "Opaque audit token; private identity crosswalk is a separate asset. Do not store names, dates of birth, or original subject labels in this field."
+        },
+        "record_token": {
+          "type": "string",
+          "pattern": "^r_[a-f0-9]{16,64}$"
+        },
+        "trace_level": {
+          "enum": [
+            "FULL_EVENT_STREAM",
+            "INDEX_ONLY_UNRESOLVED"
+          ]
+        },
+        "native_sampling_hz": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "raw_event_asset_token": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "staged_epoch_asset_token": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "label_map_asset_token": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "full_stream_event_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "full_stream_stimulus_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "accepted_epoch_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sequence_protocol": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "evidence_level",
+            "protocol_asset_token",
+            "label_mapping_verified",
+            "physical_stimulus_mapping_verified",
+            "block_reset_rule",
+            "expected_deviant_probability",
+            "observed_deviant_probability",
+            "observed_soa_summary"
+          ],
+          "properties": {
+            "evidence_level": {
+              "enum": [
+                "ORIGINAL_PROTOCOL_AND_RAW_LOG",
+                "RAW_LOG_ONLY",
+                "DERIVED_CONTAINERS_ONLY",
+                "UNRESOLVED"
+              ]
+            },
+            "protocol_asset_token": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "label_mapping_verified": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "physical_stimulus_mapping_verified": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "block_reset_rule": {
+              "enum": [
+                "RECORD",
+                "BLOCK",
+                "PROTOCOL_OTHER",
+                "UNRESOLVED"
+              ]
+            },
+            "expected_deviant_probability": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1
+            },
+            "observed_deviant_probability": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1
+            },
+            "observed_soa_summary": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "n": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "mean_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "min_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "max_seconds": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/event"
+          }
+        },
+        "support_query_guards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/guard"
+          }
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/check"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "trace_level": {
+                "const": "FULL_EVENT_STREAM"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "events": {
+                "minItems": 1
+              },
+              "raw_event_asset_token": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+              },
+              "full_stream_event_count": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "dependency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "original_unit_id",
+        "original_output_asset_token",
+        "finding",
+        "affected_fields",
+        "training_input_changed",
+        "selection_input_changed",
+        "evaluation_only",
+        "action",
+        "scope_receipt_asset_token"
+      ],
+      "properties": {
+        "original_unit_id": {
+          "type": "string"
+        },
+        "original_output_asset_token": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "finding": {
+          "enum": [
+            "NO_BUG",
+            "TRUE_DISTRIBUTION_MISMATCH",
+            "HISTORY_BUG",
+            "LABEL_BUG",
+            "ALIGNMENT_BUG",
+            "ROSTER_OR_NORMALIZATION_BUG",
+            "UNRESOLVED"
+          ]
+        },
+        "affected_fields": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "HISTORY",
+              "CURRENT_Y",
+              "EEG_EVENT_ALIGNMENT",
+              "TRIAL_ROSTER",
+              "NORMALIZATION",
+              "FIT_ES_ROLES",
+              "SUPPORT_QUERY",
+              "CALIBRATION",
+              "AGE_FEATURES",
+              "NONE",
+              "UNKNOWN"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "training_input_changed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "selection_input_changed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "evaluation_only": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "action": {
+          "enum": [
+            "REUSE_UNCHANGED",
+            "CPU_DEPENDENCIES_ONLY",
+            "SCOPED_VERSIONED_RECOMPUTE",
+            "UNRESOLVED_NO_GUESS"
+          ]
+        },
+        "scope_receipt_asset_token": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "replacement_asset_token": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

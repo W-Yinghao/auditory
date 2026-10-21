@@ -149,3 +149,27 @@ A record can bundle several evaluations; records, releases, seeds and reused res
 - `breadth_inner_v1`: 56
 - `data_inner_v1`: 10
 - `learning_budget_v2`: 39
+
+## Lane supplement — publish_036
+
+The 1 independently readable `lanes_036_*.tar.gz` parts contain 194 completed non-probe records frozen at 2026-10-22T00:46:34.659337+02:00; `LANES_MANIFEST_036.tsv` maps every member to its part and SHA256. Members are byte-identical to the server records, except that in publish_036 members the private checkpoint-storage root is replaced by the established placeholder `<private checkpoint storage>` (as in published plans; per-member source/published SHA256 in `results/auditory_alignment_v3/publication_036/LANE_MEMBER_DERIVATIONS.json`).
+
+- Members without a prefix are ALN3.4 lane records; members under `aln35/`, `aln36/`, `aln41/`, `aln42/` and `paper/` are ALN3.5, ALN3.6, ALN4.1, ALN4.2 and paper-line (MindMix audit) lane records (lanes in progress) that were **not** already published byte-identically in the publish_030-035 lane snapshots (new completions or changed records; member name and SHA256 compared). The complete lane set at this snapshot is the earlier parts plus these members; where a member name occurs in several releases, the latest release is the current record. Server-only support/query geometry bindings are not included; plans publish their hash.
+
+A record can bundle several evaluations; records, releases, seeds and reused results never increase independent participant n.
+
+- `aln36/r2_s3407/apwrong_v1`: 10
+- `aln36/r2_s3407/private_features_v1`: 10
+- `aln36/r2_s3407/private_readout_v1`: 10
+- `aln36/r2_s3407/public_features_v1`: 1
+- `aln36/r2_s3407/public_readout_v1`: 52
+- `aln41/r2/seed3407/frozen_v1`: 20
+- `aln41/r2/seed3407/private_ft_v1`: 13
+- `aln41/r2/seed3407/source_v1`: 2
+- `aln41/r2/seed3413/frozen_v1`: 20
+- `aln41/r2/seed3413/private_ft_v1`: 14
+- `aln41/r2/seed3413/source_v1`: 4
+- `aln42/external_v1`: 8
+- `aln42/source_diag_v1`: 4
+- `breadth_inner_v1`: 18
+- `paper/mindmix_audit_v1`: 8

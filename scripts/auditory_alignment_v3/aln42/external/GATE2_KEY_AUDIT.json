@@ -1,0 +1,299 @@
+{
+ "checkpoint": "/projects/EEG-foundation-model/auditory_public/foundation_models/github__CookieMikeLiu__MindMix@98445f3/lfs/best_model_loss_0.0909.pth",
+ "sha256": "fe2603e3ee2c95fa2e1e012710a2774e70b6dd5582560773aafd20b295f15026",
+ "ckpt_epoch": 22,
+ "ckpt_loss": 0.09086330958775111,
+ "ckpt_args_fusion_method": "clara",
+ "ckpt_args_model": "labram_base_patch200_200",
+ "ckpt_args_input_size": 400,
+ "ckpt_args_finetune": "checkpoints/v2.0.pth",
+ "env": {
+  "torch": "2.6.0+cu124",
+  "transformers": "5.2.0",
+  "timm": "1.0.25"
+ },
+ "official_args": {
+  "batch_size": 32,
+  "epochs": 50,
+  "lr": 1e-05,
+  "weight_decay": 0.01,
+  "warmup_epochs": 3,
+  "warmup_lr": 1e-06,
+  "min_lr": 1e-07,
+  "clip_grad": null,
+  "dataset": "DTU",
+  "data_path": "<DTU_trail>",
+  "strategy": "multimodal_real",
+  "fusion_method": "calra",
+  "pretrained_model": "/projects/EEG-foundation-model/auditory_public/foundation_models/github__CookieMikeLiu__MindMix@98445f3/lfs/best_model_loss_0.0909.pth",
+  "finetune": "",
+  "use_auditory_type": false,
+  "n_folds": 5,
+  "seed": 42,
+  "output_dir": "./universal_finetune_results",
+  "num_workers": 4,
+  "pin_mem": true,
+  "save_ckpt": true,
+  "model": "labram_base_patch200_200",
+  "input_size": 400,
+  "drop": 0.0,
+  "attn_drop_rate": 0.0,
+  "drop_path": 0.1,
+  "qkv_bias": true,
+  "rel_pos_bias": true,
+  "abs_pos_emb": true,
+  "layer_scale_init_value": 0.1,
+  "use_mean_pooling": true,
+  "model_key": "model|module",
+  "model_prefix": "",
+  "model_filter_name": "gzp",
+  "init_scale": 0.001
+ },
+ "official_loader_log_tail": [
+  "Skipped: classifier.weight (shape mismatch or not found)",
+  "Skipped: classifier.bias (shape mismatch or not found)",
+  "Successfully loaded 507 layers from pretrained model"
+ ],
+ "official_loader_skipped_lines": [
+  "Skipped: audio_model.encoder.pos_conv_embed.conv.weight_g (shape mismatch or not found)",
+  "Skipped: audio_model.encoder.pos_conv_embed.conv.weight_v (shape mismatch or not found)",
+  "Skipped: classifier.weight (shape mismatch or not found)",
+  "Skipped: classifier.bias (shape mismatch or not found)"
+ ],
+ "audit_A_official_loader": {
+  "ckpt_tensors": 511,
+  "model_tensors": 514,
+  "ckpt_status_counts": {
+   "loaded": 507,
+   "not_in_model": 4
+  },
+  "per_module_ckpt_status": {
+   "audio_model.encoder.layer_norm": {
+    "loaded": 2
+   },
+   "audio_model.encoder.layers": {
+    "loaded": 192
+   },
+   "audio_model.encoder.pos_conv_embed": {
+    "loaded": 1,
+    "not_in_model": 2
+   },
+   "audio_model.feature_extractor.conv_layers": {
+    "loaded": 9
+   },
+   "audio_model.feature_projection.layer_norm": {
+    "loaded": 2
+   },
+   "audio_model.feature_projection.projection": {
+    "loaded": 2
+   },
+   "audio_model.masked_spec_embed": {
+    "loaded": 1
+   },
+   "audio_proj": {
+    "loaded": 4
+   },
+   "classifier": {
+    "not_in_model": 2
+   },
+   "eeg_model.model.blocks": {
+    "loaded": 228
+   },
+   "eeg_model.model.cls_token": {
+    "loaded": 1
+   },
+   "eeg_model.model.fc_norm": {
+    "loaded": 2
+   },
+   "eeg_model.model.patch_embed": {
+    "loaded": 12
+   },
+   "eeg_model.model.time_embed": {
+    "loaded": 1
+   },
+   "eeg_proj": {
+    "loaded": 4
+   },
+   "fusion_module": {
+    "loaded": 46
+   }
+  },
+  "unexpected_or_unloaded_ckpt_keys": [
+   {
+    "ckpt_key": "audio_model.encoder.pos_conv_embed.conv.weight_g",
+    "model_key": "audio_encoder.encoder.pos_conv_embed.conv.weight_g",
+    "status": "not_in_model",
+    "shape": [
+     1,
+     1,
+     128
+    ]
+   },
+   {
+    "ckpt_key": "audio_model.encoder.pos_conv_embed.conv.weight_v",
+    "model_key": "audio_encoder.encoder.pos_conv_embed.conv.weight_v",
+    "status": "not_in_model",
+    "shape": [
+     768,
+     48,
+     128
+    ]
+   },
+   {
+    "ckpt_key": "classifier.weight",
+    "model_key": "classifier.weight",
+    "status": "not_in_model",
+    "shape": [
+     1,
+     256
+    ]
+   },
+   {
+    "ckpt_key": "classifier.bias",
+    "model_key": "classifier.bias",
+    "status": "not_in_model",
+    "shape": [
+     1
+    ]
+   }
+  ],
+  "model_keys_not_from_ckpt": {
+   "audio_encoder.encoder.pos_conv_embed.conv.parametrizations.weight.original0": [
+    1,
+    1,
+    128
+   ],
+   "audio_encoder.encoder.pos_conv_embed.conv.parametrizations.weight.original1": [
+    768,
+    48,
+    128
+   ],
+   "classifier.0.weight": [
+    128,
+    256
+   ],
+   "classifier.0.bias": [
+    128
+   ],
+   "classifier.3.weight": [
+    2,
+    128
+   ],
+   "classifier.3.bias": [
+    2
+   ],
+   "clip_loss.logit_scale": []
+  },
+  "model_keys_not_from_ckpt_per_module": {
+   "audio_encoder.encoder.pos_conv_embed": 2,
+   "classifier": 4,
+   "clip_loss": 1
+  },
+  "n_params_model": 101787291,
+  "n_params_from_ckpt": 97035416
+ },
+ "audit_B_with_pos_conv_rename": {
+  "ckpt_tensors": 511,
+  "model_tensors": 514,
+  "ckpt_status_counts": {
+   "loaded": 507,
+   "loaded_via_mechanical_rename": 2,
+   "not_in_model": 2
+  },
+  "per_module_ckpt_status": {
+   "audio_model.encoder.layer_norm": {
+    "loaded": 2
+   },
+   "audio_model.encoder.layers": {
+    "loaded": 192
+   },
+   "audio_model.encoder.pos_conv_embed": {
+    "loaded": 1,
+    "loaded_via_mechanical_rename": 2
+   },
+   "audio_model.feature_extractor.conv_layers": {
+    "loaded": 9
+   },
+   "audio_model.feature_projection.layer_norm": {
+    "loaded": 2
+   },
+   "audio_model.feature_projection.projection": {
+    "loaded": 2
+   },
+   "audio_model.masked_spec_embed": {
+    "loaded": 1
+   },
+   "audio_proj": {
+    "loaded": 4
+   },
+   "classifier": {
+    "not_in_model": 2
+   },
+   "eeg_model.model.blocks": {
+    "loaded": 228
+   },
+   "eeg_model.model.cls_token": {
+    "loaded": 1
+   },
+   "eeg_model.model.fc_norm": {
+    "loaded": 2
+   },
+   "eeg_model.model.patch_embed": {
+    "loaded": 12
+   },
+   "eeg_model.model.time_embed": {
+    "loaded": 1
+   },
+   "eeg_proj": {
+    "loaded": 4
+   },
+   "fusion_module": {
+    "loaded": 46
+   }
+  },
+  "unexpected_or_unloaded_ckpt_keys": [
+   {
+    "ckpt_key": "classifier.weight",
+    "model_key": "classifier.weight",
+    "status": "not_in_model",
+    "shape": [
+     1,
+     256
+    ]
+   },
+   {
+    "ckpt_key": "classifier.bias",
+    "model_key": "classifier.bias",
+    "status": "not_in_model",
+    "shape": [
+     1
+    ]
+   }
+  ],
+  "model_keys_not_from_ckpt": {
+   "classifier.0.weight": [
+    128,
+    256
+   ],
+   "classifier.0.bias": [
+    128
+   ],
+   "classifier.3.weight": [
+    2,
+    128
+   ],
+   "classifier.3.bias": [
+    2
+   ],
+   "clip_loss.logit_scale": []
+  },
+  "model_keys_not_from_ckpt_per_module": {
+   "classifier": 4,
+   "clip_loss": 1
+  },
+  "n_params_model": 101787291,
+  "n_params_from_ckpt": 101754136
+ },
+ "pos_conv_effective_weight_max_abs_diff": 0.0,
+ "logit_scale_init": 2.6592600345611572
+}

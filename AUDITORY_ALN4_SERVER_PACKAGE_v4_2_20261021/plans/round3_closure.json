@@ -1,0 +1,103 @@
+{
+  "plan_id": "ALN42_R3_CLOSURE_v1",
+  "research_round": 3,
+  "external": {
+    "seats": 1,
+    "selection": "inherit existing EXTERNAL_SLOT_DECISION; engineering/input feasibility only; freeze before new external test scores",
+    "preferred": "MindMix_released_full_architecture_common_protocol_adaptation",
+    "fallback": "TransformerCLIP_published_frozen_encoder_native_envelope_readout_family",
+    "routes_mutually_exclusive": true,
+    "dataset": {
+      "id": "dtu44",
+      "doi": "10.5281/zenodo.3618205",
+      "identity_not": "18-person AAD DOI 10.5281/zenodo.1199011"
+    },
+    "content_folds": [
+      0,
+      1
+    ],
+    "person_folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "downstream_seeds": [
+      3401
+    ],
+    "public_downstream_fit_cap": 10,
+    "new_source_pretraining_fit_cap": 0,
+    "private_external_ft_fit_cap": 0,
+    "additional_fau_task": false,
+    "hyperparameter_search": false,
+    "ensemble": false,
+    "routes": {
+      "MindMix": {
+        "required": [
+          "released EEG/audio/projection/CALRA weights",
+          "real aligned raw EEG/audio",
+          "blind candidate-order/batch invariant scorer",
+          "common identity/content fit/es/test access"
+        ],
+        "full_encoder_downstream_fit_cap": 10,
+        "epochs": 50,
+        "batch_size": 32,
+        "lr": 0.00001,
+        "weight_decay": 0.01,
+        "checkpoint_choice": "bound author rule on ES before new test; otherwise fixed final50",
+        "must_label": "full released architecture under adapted common protocol, not author within-person result reproduction"
+      },
+      "TransformerCLIP": {
+        "required": [
+          "published single EEG encoder and config",
+          "verified channels/reference/units",
+          "native 3s/64Hz input and legal context",
+          "training-side native linear envelope readout family"
+        ],
+        "full_encoder_downstream_fit_cap": 0,
+        "frozen_readout_fit_cap": 10,
+        "kernel_samples": 32,
+        "input_seconds": 3,
+        "sampling_hz": 64,
+        "overlap_fraction": 0.5,
+        "overlap_add": "Hann with explicit valid-support mask",
+        "readout_solver": "author implementation if recoverable; otherwise deterministic min-norm least-squares of same linear convolution family, labeled implementation adaptation",
+        "must_label": "published frozen encoder native envelope-readout family adapted to common AAD"
+      }
+    },
+    "evaluation": {
+      "decision_seconds": 20,
+      "segment_seconds": 5,
+      "double_candidate_order": true,
+      "ties_credit": 0.5,
+      "primary": "accuracy",
+      "secondary": "NLL bits",
+      "families_separate": true,
+      "contrasts": [
+        "external-B0",
+        "external-TCS",
+        "external-TNCE"
+      ],
+      "bootstrap_draws": 4000,
+      "unit_of_resampling": "person",
+      "common_query_manifest_required": true,
+      "core_seed_mean_within_person": true,
+      "external_seed_uncertainty": "conditional on released checkpoint and single downstream seed"
+    }
+  },
+  "optional_ablation": {
+    "enabled": false,
+    "source_fit_cap": 0,
+    "private_fit_cap": 0,
+    "unspent_budget_transfer": false
+  },
+  "closure": {
+    "science_figures": 5,
+    "automatic_round4": false,
+    "failed_feasibility_is_not_model_loss": true,
+    "incomplete_external_evidence_blocks_claim_of_complete_external_validation": true,
+    "publication_readiness_not_guaranteed_by_execution_completion": true
+  }
+}
+

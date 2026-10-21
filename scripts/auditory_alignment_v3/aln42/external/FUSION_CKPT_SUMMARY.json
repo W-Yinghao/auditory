@@ -1,0 +1,1781 @@
+{
+ "pickle_globals": [
+  "argparse.Namespace",
+  "collections.OrderedDict",
+  "torch.FloatStorage",
+  "torch._utils._rebuild_tensor_v2"
+ ],
+ "top_keys": [
+  "epoch",
+  "model_state_dict",
+  "optimizer_state_dict",
+  "scheduler_state_dict",
+  "warmup_scheduler_state_dict",
+  "loss",
+  "args"
+ ],
+ "meta": {
+  "epoch": "22",
+  "model_state_dict": "dict[511]",
+  "optimizer_state_dict": "dict[2]",
+  "scheduler_state_dict": "dict[8]",
+  "warmup_scheduler_state_dict": "dict[9]",
+  "loss": "0.09086330958775111",
+  "args": "Namespace(batch_size=128, epochs=100, update_freq=1, save_ckpt_freq=10, robust_test=None, model='labram_base_patch200_200', qkv_bias=True, rel_pos_bias=True, abs_pos_emb=True, layer_scale_init_value=0.1, input_size=400, drop=0.0, attn_drop_rate=0.0, drop_path=0.1, disable_eval_during_finetuning=False, model_ema=False, model_ema_decay=0.9999, model_ema_force_cpu=False, opt='adamw', opt_eps=1e-08, opt_betas=None, clip_grad=1.0, momentum=0.9, weight_decay=0.1, weight_decay_end=None, lr=5e-05, layer_decay=0.9, warmup_lr=1e-06, min_lr=1e-06, warmup_epochs=5, warmup_steps=-1, smoothing=0.1, reprob=0.25, remode='pixel', recount=1, resplit=False, finetune='checkpoints/v2.0.pth', model_key='model|module', model_prefix='', model_filter_name='gzp', init_scale=0.001, use_mean_pooling=True, disable_weight_decay_on_rel_pos_bias=False, nb_classes=0, output_dir='pretrain_fusion_checkpoints', log_dir=None, seed=0, resume='', auto_resume=False, save_ckpt=True, start_epoch=0, eval=False, dist_eval=False, num_workers=32, pin_mem=True, world_size=4, local_rank=-1, dist_on_itp=False, dist_url='env://', enable_deepspeed=False, dataset='TUAB', data_path='Dataset/Pretraining', temperature=0.07, fusion_method='clara', use_auditory_type=False, dropout_rate=0.2, rank=0, gpu=0, distributed=True, dist_backend='nccl')"
+ },
+ "prefix_counts": {
+  "eeg_model.model": 244,
+  "audio_model.masked_spec_embed": 1,
+  "audio_model.feature_extractor": 9,
+  "audio_model.feature_projection": 4,
+  "audio_model.encoder": 197,
+  "eeg_proj": 4,
+  "audio_proj": 4,
+  "fusion_module": 46,
+  "classifier": 2
+ },
+ "prefix_numel": {
+  "eeg_model.model": 5798936,
+  "audio_model.masked_spec_embed": 768,
+  "audio_model.feature_extractor": 4200448,
+  "audio_model.feature_projection": 395008,
+  "audio_model.encoder": 89775488,
+  "eeg_proj": 51968,
+  "audio_proj": 197376,
+  "fusion_module": 1334144,
+  "classifier": 257
+ },
+ "n_tensors": 511,
+ "numel": 101754393,
+ "dtypes": {
+  "torch.float32": 511
+ },
+ "keys": {
+  "eeg_model.model.cls_token": [
+   1,
+   1,
+   200
+  ],
+  "eeg_model.model.time_embed": [
+   1,
+   16,
+   200
+  ],
+  "eeg_model.model.patch_embed.conv1.weight": [
+   8,
+   1,
+   1,
+   15
+  ],
+  "eeg_model.model.patch_embed.conv1.bias": [
+   8
+  ],
+  "eeg_model.model.patch_embed.norm1.weight": [
+   8
+  ],
+  "eeg_model.model.patch_embed.norm1.bias": [
+   8
+  ],
+  "eeg_model.model.patch_embed.conv2.weight": [
+   8,
+   8,
+   1,
+   3
+  ],
+  "eeg_model.model.patch_embed.conv2.bias": [
+   8
+  ],
+  "eeg_model.model.patch_embed.norm2.weight": [
+   8
+  ],
+  "eeg_model.model.patch_embed.norm2.bias": [
+   8
+  ],
+  "eeg_model.model.patch_embed.conv3.weight": [
+   8,
+   8,
+   1,
+   3
+  ],
+  "eeg_model.model.patch_embed.conv3.bias": [
+   8
+  ],
+  "eeg_model.model.patch_embed.norm3.weight": [
+   8
+  ],
+  "eeg_model.model.patch_embed.norm3.bias": [
+   8
+  ],
+  "eeg_model.model.blocks.0.gamma_1": [
+   200
+  ],
+  "eeg_model.model.blocks.0.gamma_2": [
+   200
+  ],
+  "eeg_model.model.blocks.0.norm1.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.0.norm1.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.0.attn.q_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.0.attn.v_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.0.attn.qkv.weight": [
+   600,
+   200
+  ],
+  "eeg_model.model.blocks.0.attn.q_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.0.attn.q_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.0.attn.k_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.0.attn.k_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.0.attn.proj.weight": [
+   200,
+   200
+  ],
+  "eeg_model.model.blocks.0.attn.proj.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.0.norm2.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.0.norm2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.0.mlp.fc1.weight": [
+   800,
+   200
+  ],
+  "eeg_model.model.blocks.0.mlp.fc1.bias": [
+   800
+  ],
+  "eeg_model.model.blocks.0.mlp.fc2.weight": [
+   200,
+   800
+  ],
+  "eeg_model.model.blocks.0.mlp.fc2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.1.gamma_1": [
+   200
+  ],
+  "eeg_model.model.blocks.1.gamma_2": [
+   200
+  ],
+  "eeg_model.model.blocks.1.norm1.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.1.norm1.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.1.attn.q_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.1.attn.v_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.1.attn.qkv.weight": [
+   600,
+   200
+  ],
+  "eeg_model.model.blocks.1.attn.q_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.1.attn.q_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.1.attn.k_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.1.attn.k_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.1.attn.proj.weight": [
+   200,
+   200
+  ],
+  "eeg_model.model.blocks.1.attn.proj.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.1.norm2.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.1.norm2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.1.mlp.fc1.weight": [
+   800,
+   200
+  ],
+  "eeg_model.model.blocks.1.mlp.fc1.bias": [
+   800
+  ],
+  "eeg_model.model.blocks.1.mlp.fc2.weight": [
+   200,
+   800
+  ],
+  "eeg_model.model.blocks.1.mlp.fc2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.2.gamma_1": [
+   200
+  ],
+  "eeg_model.model.blocks.2.gamma_2": [
+   200
+  ],
+  "eeg_model.model.blocks.2.norm1.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.2.norm1.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.2.attn.q_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.2.attn.v_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.2.attn.qkv.weight": [
+   600,
+   200
+  ],
+  "eeg_model.model.blocks.2.attn.q_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.2.attn.q_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.2.attn.k_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.2.attn.k_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.2.attn.proj.weight": [
+   200,
+   200
+  ],
+  "eeg_model.model.blocks.2.attn.proj.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.2.norm2.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.2.norm2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.2.mlp.fc1.weight": [
+   800,
+   200
+  ],
+  "eeg_model.model.blocks.2.mlp.fc1.bias": [
+   800
+  ],
+  "eeg_model.model.blocks.2.mlp.fc2.weight": [
+   200,
+   800
+  ],
+  "eeg_model.model.blocks.2.mlp.fc2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.3.gamma_1": [
+   200
+  ],
+  "eeg_model.model.blocks.3.gamma_2": [
+   200
+  ],
+  "eeg_model.model.blocks.3.norm1.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.3.norm1.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.3.attn.q_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.3.attn.v_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.3.attn.qkv.weight": [
+   600,
+   200
+  ],
+  "eeg_model.model.blocks.3.attn.q_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.3.attn.q_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.3.attn.k_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.3.attn.k_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.3.attn.proj.weight": [
+   200,
+   200
+  ],
+  "eeg_model.model.blocks.3.attn.proj.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.3.norm2.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.3.norm2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.3.mlp.fc1.weight": [
+   800,
+   200
+  ],
+  "eeg_model.model.blocks.3.mlp.fc1.bias": [
+   800
+  ],
+  "eeg_model.model.blocks.3.mlp.fc2.weight": [
+   200,
+   800
+  ],
+  "eeg_model.model.blocks.3.mlp.fc2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.4.gamma_1": [
+   200
+  ],
+  "eeg_model.model.blocks.4.gamma_2": [
+   200
+  ],
+  "eeg_model.model.blocks.4.norm1.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.4.norm1.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.4.attn.q_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.4.attn.v_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.4.attn.qkv.weight": [
+   600,
+   200
+  ],
+  "eeg_model.model.blocks.4.attn.q_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.4.attn.q_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.4.attn.k_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.4.attn.k_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.4.attn.proj.weight": [
+   200,
+   200
+  ],
+  "eeg_model.model.blocks.4.attn.proj.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.4.norm2.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.4.norm2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.4.mlp.fc1.weight": [
+   800,
+   200
+  ],
+  "eeg_model.model.blocks.4.mlp.fc1.bias": [
+   800
+  ],
+  "eeg_model.model.blocks.4.mlp.fc2.weight": [
+   200,
+   800
+  ],
+  "eeg_model.model.blocks.4.mlp.fc2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.5.gamma_1": [
+   200
+  ],
+  "eeg_model.model.blocks.5.gamma_2": [
+   200
+  ],
+  "eeg_model.model.blocks.5.norm1.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.5.norm1.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.5.attn.q_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.5.attn.v_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.5.attn.qkv.weight": [
+   600,
+   200
+  ],
+  "eeg_model.model.blocks.5.attn.q_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.5.attn.q_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.5.attn.k_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.5.attn.k_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.5.attn.proj.weight": [
+   200,
+   200
+  ],
+  "eeg_model.model.blocks.5.attn.proj.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.5.norm2.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.5.norm2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.5.mlp.fc1.weight": [
+   800,
+   200
+  ],
+  "eeg_model.model.blocks.5.mlp.fc1.bias": [
+   800
+  ],
+  "eeg_model.model.blocks.5.mlp.fc2.weight": [
+   200,
+   800
+  ],
+  "eeg_model.model.blocks.5.mlp.fc2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.6.gamma_1": [
+   200
+  ],
+  "eeg_model.model.blocks.6.gamma_2": [
+   200
+  ],
+  "eeg_model.model.blocks.6.norm1.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.6.norm1.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.6.attn.q_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.6.attn.v_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.6.attn.qkv.weight": [
+   600,
+   200
+  ],
+  "eeg_model.model.blocks.6.attn.q_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.6.attn.q_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.6.attn.k_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.6.attn.k_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.6.attn.proj.weight": [
+   200,
+   200
+  ],
+  "eeg_model.model.blocks.6.attn.proj.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.6.norm2.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.6.norm2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.6.mlp.fc1.weight": [
+   800,
+   200
+  ],
+  "eeg_model.model.blocks.6.mlp.fc1.bias": [
+   800
+  ],
+  "eeg_model.model.blocks.6.mlp.fc2.weight": [
+   200,
+   800
+  ],
+  "eeg_model.model.blocks.6.mlp.fc2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.7.gamma_1": [
+   200
+  ],
+  "eeg_model.model.blocks.7.gamma_2": [
+   200
+  ],
+  "eeg_model.model.blocks.7.norm1.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.7.norm1.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.7.attn.q_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.7.attn.v_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.7.attn.qkv.weight": [
+   600,
+   200
+  ],
+  "eeg_model.model.blocks.7.attn.q_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.7.attn.q_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.7.attn.k_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.7.attn.k_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.7.attn.proj.weight": [
+   200,
+   200
+  ],
+  "eeg_model.model.blocks.7.attn.proj.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.7.norm2.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.7.norm2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.7.mlp.fc1.weight": [
+   800,
+   200
+  ],
+  "eeg_model.model.blocks.7.mlp.fc1.bias": [
+   800
+  ],
+  "eeg_model.model.blocks.7.mlp.fc2.weight": [
+   200,
+   800
+  ],
+  "eeg_model.model.blocks.7.mlp.fc2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.8.gamma_1": [
+   200
+  ],
+  "eeg_model.model.blocks.8.gamma_2": [
+   200
+  ],
+  "eeg_model.model.blocks.8.norm1.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.8.norm1.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.8.attn.q_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.8.attn.v_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.8.attn.qkv.weight": [
+   600,
+   200
+  ],
+  "eeg_model.model.blocks.8.attn.q_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.8.attn.q_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.8.attn.k_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.8.attn.k_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.8.attn.proj.weight": [
+   200,
+   200
+  ],
+  "eeg_model.model.blocks.8.attn.proj.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.8.norm2.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.8.norm2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.8.mlp.fc1.weight": [
+   800,
+   200
+  ],
+  "eeg_model.model.blocks.8.mlp.fc1.bias": [
+   800
+  ],
+  "eeg_model.model.blocks.8.mlp.fc2.weight": [
+   200,
+   800
+  ],
+  "eeg_model.model.blocks.8.mlp.fc2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.9.gamma_1": [
+   200
+  ],
+  "eeg_model.model.blocks.9.gamma_2": [
+   200
+  ],
+  "eeg_model.model.blocks.9.norm1.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.9.norm1.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.9.attn.q_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.9.attn.v_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.9.attn.qkv.weight": [
+   600,
+   200
+  ],
+  "eeg_model.model.blocks.9.attn.q_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.9.attn.q_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.9.attn.k_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.9.attn.k_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.9.attn.proj.weight": [
+   200,
+   200
+  ],
+  "eeg_model.model.blocks.9.attn.proj.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.9.norm2.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.9.norm2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.9.mlp.fc1.weight": [
+   800,
+   200
+  ],
+  "eeg_model.model.blocks.9.mlp.fc1.bias": [
+   800
+  ],
+  "eeg_model.model.blocks.9.mlp.fc2.weight": [
+   200,
+   800
+  ],
+  "eeg_model.model.blocks.9.mlp.fc2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.10.gamma_1": [
+   200
+  ],
+  "eeg_model.model.blocks.10.gamma_2": [
+   200
+  ],
+  "eeg_model.model.blocks.10.norm1.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.10.norm1.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.10.attn.q_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.10.attn.v_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.10.attn.qkv.weight": [
+   600,
+   200
+  ],
+  "eeg_model.model.blocks.10.attn.q_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.10.attn.q_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.10.attn.k_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.10.attn.k_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.10.attn.proj.weight": [
+   200,
+   200
+  ],
+  "eeg_model.model.blocks.10.attn.proj.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.10.norm2.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.10.norm2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.10.mlp.fc1.weight": [
+   800,
+   200
+  ],
+  "eeg_model.model.blocks.10.mlp.fc1.bias": [
+   800
+  ],
+  "eeg_model.model.blocks.10.mlp.fc2.weight": [
+   200,
+   800
+  ],
+  "eeg_model.model.blocks.10.mlp.fc2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.11.gamma_1": [
+   200
+  ],
+  "eeg_model.model.blocks.11.gamma_2": [
+   200
+  ],
+  "eeg_model.model.blocks.11.norm1.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.11.norm1.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.11.attn.q_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.11.attn.v_bias": [
+   200
+  ],
+  "eeg_model.model.blocks.11.attn.qkv.weight": [
+   600,
+   200
+  ],
+  "eeg_model.model.blocks.11.attn.q_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.11.attn.q_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.11.attn.k_norm.weight": [
+   20
+  ],
+  "eeg_model.model.blocks.11.attn.k_norm.bias": [
+   20
+  ],
+  "eeg_model.model.blocks.11.attn.proj.weight": [
+   200,
+   200
+  ],
+  "eeg_model.model.blocks.11.attn.proj.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.11.norm2.weight": [
+   200
+  ],
+  "eeg_model.model.blocks.11.norm2.bias": [
+   200
+  ],
+  "eeg_model.model.blocks.11.mlp.fc1.weight": [
+   800,
+   200
+  ],
+  "eeg_model.model.blocks.11.mlp.fc1.bias": [
+   800
+  ],
+  "eeg_model.model.blocks.11.mlp.fc2.weight": [
+   200,
+   800
+  ],
+  "eeg_model.model.blocks.11.mlp.fc2.bias": [
+   200
+  ],
+  "eeg_model.model.fc_norm.weight": [
+   200
+  ],
+  "eeg_model.model.fc_norm.bias": [
+   200
+  ],
+  "audio_model.masked_spec_embed": [
+   768
+  ],
+  "audio_model.feature_extractor.conv_layers.0.conv.weight": [
+   512,
+   1,
+   10
+  ],
+  "audio_model.feature_extractor.conv_layers.0.layer_norm.weight": [
+   512
+  ],
+  "audio_model.feature_extractor.conv_layers.0.layer_norm.bias": [
+   512
+  ],
+  "audio_model.feature_extractor.conv_layers.1.conv.weight": [
+   512,
+   512,
+   3
+  ],
+  "audio_model.feature_extractor.conv_layers.2.conv.weight": [
+   512,
+   512,
+   3
+  ],
+  "audio_model.feature_extractor.conv_layers.3.conv.weight": [
+   512,
+   512,
+   3
+  ],
+  "audio_model.feature_extractor.conv_layers.4.conv.weight": [
+   512,
+   512,
+   3
+  ],
+  "audio_model.feature_extractor.conv_layers.5.conv.weight": [
+   512,
+   512,
+   2
+  ],
+  "audio_model.feature_extractor.conv_layers.6.conv.weight": [
+   512,
+   512,
+   2
+  ],
+  "audio_model.feature_projection.layer_norm.weight": [
+   512
+  ],
+  "audio_model.feature_projection.layer_norm.bias": [
+   512
+  ],
+  "audio_model.feature_projection.projection.weight": [
+   768,
+   512
+  ],
+  "audio_model.feature_projection.projection.bias": [
+   768
+  ],
+  "audio_model.encoder.pos_conv_embed.conv.bias": [
+   768
+  ],
+  "audio_model.encoder.pos_conv_embed.conv.weight_g": [
+   1,
+   1,
+   128
+  ],
+  "audio_model.encoder.pos_conv_embed.conv.weight_v": [
+   768,
+   48,
+   128
+  ],
+  "audio_model.encoder.layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.0.attention.k_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.0.attention.k_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.0.attention.v_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.0.attention.v_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.0.attention.q_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.0.attention.q_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.0.attention.out_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.0.attention.out_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.0.layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.0.layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.0.feed_forward.intermediate_dense.weight": [
+   3072,
+   768
+  ],
+  "audio_model.encoder.layers.0.feed_forward.intermediate_dense.bias": [
+   3072
+  ],
+  "audio_model.encoder.layers.0.feed_forward.output_dense.weight": [
+   768,
+   3072
+  ],
+  "audio_model.encoder.layers.0.feed_forward.output_dense.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.0.final_layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.0.final_layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.1.attention.k_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.1.attention.k_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.1.attention.v_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.1.attention.v_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.1.attention.q_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.1.attention.q_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.1.attention.out_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.1.attention.out_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.1.layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.1.layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.1.feed_forward.intermediate_dense.weight": [
+   3072,
+   768
+  ],
+  "audio_model.encoder.layers.1.feed_forward.intermediate_dense.bias": [
+   3072
+  ],
+  "audio_model.encoder.layers.1.feed_forward.output_dense.weight": [
+   768,
+   3072
+  ],
+  "audio_model.encoder.layers.1.feed_forward.output_dense.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.1.final_layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.1.final_layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.2.attention.k_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.2.attention.k_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.2.attention.v_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.2.attention.v_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.2.attention.q_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.2.attention.q_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.2.attention.out_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.2.attention.out_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.2.layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.2.layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.2.feed_forward.intermediate_dense.weight": [
+   3072,
+   768
+  ],
+  "audio_model.encoder.layers.2.feed_forward.intermediate_dense.bias": [
+   3072
+  ],
+  "audio_model.encoder.layers.2.feed_forward.output_dense.weight": [
+   768,
+   3072
+  ],
+  "audio_model.encoder.layers.2.feed_forward.output_dense.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.2.final_layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.2.final_layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.3.attention.k_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.3.attention.k_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.3.attention.v_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.3.attention.v_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.3.attention.q_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.3.attention.q_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.3.attention.out_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.3.attention.out_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.3.layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.3.layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.3.feed_forward.intermediate_dense.weight": [
+   3072,
+   768
+  ],
+  "audio_model.encoder.layers.3.feed_forward.intermediate_dense.bias": [
+   3072
+  ],
+  "audio_model.encoder.layers.3.feed_forward.output_dense.weight": [
+   768,
+   3072
+  ],
+  "audio_model.encoder.layers.3.feed_forward.output_dense.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.3.final_layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.3.final_layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.4.attention.k_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.4.attention.k_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.4.attention.v_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.4.attention.v_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.4.attention.q_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.4.attention.q_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.4.attention.out_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.4.attention.out_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.4.layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.4.layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.4.feed_forward.intermediate_dense.weight": [
+   3072,
+   768
+  ],
+  "audio_model.encoder.layers.4.feed_forward.intermediate_dense.bias": [
+   3072
+  ],
+  "audio_model.encoder.layers.4.feed_forward.output_dense.weight": [
+   768,
+   3072
+  ],
+  "audio_model.encoder.layers.4.feed_forward.output_dense.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.4.final_layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.4.final_layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.5.attention.k_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.5.attention.k_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.5.attention.v_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.5.attention.v_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.5.attention.q_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.5.attention.q_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.5.attention.out_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.5.attention.out_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.5.layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.5.layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.5.feed_forward.intermediate_dense.weight": [
+   3072,
+   768
+  ],
+  "audio_model.encoder.layers.5.feed_forward.intermediate_dense.bias": [
+   3072
+  ],
+  "audio_model.encoder.layers.5.feed_forward.output_dense.weight": [
+   768,
+   3072
+  ],
+  "audio_model.encoder.layers.5.feed_forward.output_dense.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.5.final_layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.5.final_layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.6.attention.k_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.6.attention.k_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.6.attention.v_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.6.attention.v_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.6.attention.q_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.6.attention.q_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.6.attention.out_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.6.attention.out_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.6.layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.6.layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.6.feed_forward.intermediate_dense.weight": [
+   3072,
+   768
+  ],
+  "audio_model.encoder.layers.6.feed_forward.intermediate_dense.bias": [
+   3072
+  ],
+  "audio_model.encoder.layers.6.feed_forward.output_dense.weight": [
+   768,
+   3072
+  ],
+  "audio_model.encoder.layers.6.feed_forward.output_dense.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.6.final_layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.6.final_layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.7.attention.k_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.7.attention.k_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.7.attention.v_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.7.attention.v_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.7.attention.q_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.7.attention.q_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.7.attention.out_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.7.attention.out_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.7.layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.7.layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.7.feed_forward.intermediate_dense.weight": [
+   3072,
+   768
+  ],
+  "audio_model.encoder.layers.7.feed_forward.intermediate_dense.bias": [
+   3072
+  ],
+  "audio_model.encoder.layers.7.feed_forward.output_dense.weight": [
+   768,
+   3072
+  ],
+  "audio_model.encoder.layers.7.feed_forward.output_dense.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.7.final_layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.7.final_layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.8.attention.k_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.8.attention.k_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.8.attention.v_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.8.attention.v_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.8.attention.q_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.8.attention.q_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.8.attention.out_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.8.attention.out_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.8.layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.8.layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.8.feed_forward.intermediate_dense.weight": [
+   3072,
+   768
+  ],
+  "audio_model.encoder.layers.8.feed_forward.intermediate_dense.bias": [
+   3072
+  ],
+  "audio_model.encoder.layers.8.feed_forward.output_dense.weight": [
+   768,
+   3072
+  ],
+  "audio_model.encoder.layers.8.feed_forward.output_dense.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.8.final_layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.8.final_layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.9.attention.k_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.9.attention.k_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.9.attention.v_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.9.attention.v_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.9.attention.q_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.9.attention.q_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.9.attention.out_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.9.attention.out_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.9.layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.9.layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.9.feed_forward.intermediate_dense.weight": [
+   3072,
+   768
+  ],
+  "audio_model.encoder.layers.9.feed_forward.intermediate_dense.bias": [
+   3072
+  ],
+  "audio_model.encoder.layers.9.feed_forward.output_dense.weight": [
+   768,
+   3072
+  ],
+  "audio_model.encoder.layers.9.feed_forward.output_dense.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.9.final_layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.9.final_layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.10.attention.k_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.10.attention.k_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.10.attention.v_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.10.attention.v_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.10.attention.q_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.10.attention.q_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.10.attention.out_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.10.attention.out_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.10.layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.10.layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.10.feed_forward.intermediate_dense.weight": [
+   3072,
+   768
+  ],
+  "audio_model.encoder.layers.10.feed_forward.intermediate_dense.bias": [
+   3072
+  ],
+  "audio_model.encoder.layers.10.feed_forward.output_dense.weight": [
+   768,
+   3072
+  ],
+  "audio_model.encoder.layers.10.feed_forward.output_dense.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.10.final_layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.10.final_layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.11.attention.k_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.11.attention.k_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.11.attention.v_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.11.attention.v_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.11.attention.q_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.11.attention.q_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.11.attention.out_proj.weight": [
+   768,
+   768
+  ],
+  "audio_model.encoder.layers.11.attention.out_proj.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.11.layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.11.layer_norm.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.11.feed_forward.intermediate_dense.weight": [
+   3072,
+   768
+  ],
+  "audio_model.encoder.layers.11.feed_forward.intermediate_dense.bias": [
+   3072
+  ],
+  "audio_model.encoder.layers.11.feed_forward.output_dense.weight": [
+   768,
+   3072
+  ],
+  "audio_model.encoder.layers.11.feed_forward.output_dense.bias": [
+   768
+  ],
+  "audio_model.encoder.layers.11.final_layer_norm.weight": [
+   768
+  ],
+  "audio_model.encoder.layers.11.final_layer_norm.bias": [
+   768
+  ],
+  "eeg_proj.0.weight": [
+   256,
+   200
+  ],
+  "eeg_proj.0.bias": [
+   256
+  ],
+  "eeg_proj.2.weight": [
+   256
+  ],
+  "eeg_proj.2.bias": [
+   256
+  ],
+  "audio_proj.0.weight": [
+   256,
+   768
+  ],
+  "audio_proj.0.bias": [
+   256
+  ],
+  "audio_proj.2.weight": [
+   256
+  ],
+  "audio_proj.2.bias": [
+   256
+  ],
+  "fusion_module.eeg_self_query.weight": [
+   256,
+   256
+  ],
+  "fusion_module.eeg_self_query.bias": [
+   256
+  ],
+  "fusion_module.eeg_self_key.weight": [
+   256,
+   256
+  ],
+  "fusion_module.eeg_self_key.bias": [
+   256
+  ],
+  "fusion_module.eeg_self_value.weight": [
+   256,
+   256
+  ],
+  "fusion_module.eeg_self_value.bias": [
+   256
+  ],
+  "fusion_module.eeg_self_proj.weight": [
+   256,
+   256
+  ],
+  "fusion_module.eeg_self_proj.bias": [
+   256
+  ],
+  "fusion_module.eeg_norm1.weight": [
+   256
+  ],
+  "fusion_module.eeg_norm1.bias": [
+   256
+  ],
+  "fusion_module.eeg_ffn.0.weight": [
+   512,
+   256
+  ],
+  "fusion_module.eeg_ffn.0.bias": [
+   512
+  ],
+  "fusion_module.eeg_ffn.3.weight": [
+   256,
+   512
+  ],
+  "fusion_module.eeg_ffn.3.bias": [
+   256
+  ],
+  "fusion_module.eeg_norm2.weight": [
+   256
+  ],
+  "fusion_module.eeg_norm2.bias": [
+   256
+  ],
+  "fusion_module.audio_self_query.weight": [
+   256,
+   256
+  ],
+  "fusion_module.audio_self_query.bias": [
+   256
+  ],
+  "fusion_module.audio_self_key.weight": [
+   256,
+   256
+  ],
+  "fusion_module.audio_self_key.bias": [
+   256
+  ],
+  "fusion_module.audio_self_value.weight": [
+   256,
+   256
+  ],
+  "fusion_module.audio_self_value.bias": [
+   256
+  ],
+  "fusion_module.audio_self_proj.weight": [
+   256,
+   256
+  ],
+  "fusion_module.audio_self_proj.bias": [
+   256
+  ],
+  "fusion_module.audio_norm1.weight": [
+   256
+  ],
+  "fusion_module.audio_norm1.bias": [
+   256
+  ],
+  "fusion_module.audio_ffn.0.weight": [
+   512,
+   256
+  ],
+  "fusion_module.audio_ffn.0.bias": [
+   512
+  ],
+  "fusion_module.audio_ffn.3.weight": [
+   256,
+   512
+  ],
+  "fusion_module.audio_ffn.3.bias": [
+   256
+  ],
+  "fusion_module.audio_norm2.weight": [
+   256
+  ],
+  "fusion_module.audio_norm2.bias": [
+   256
+  ],
+  "fusion_module.W_U_eeg.weight": [
+   128,
+   256
+  ],
+  "fusion_module.W_U_eeg.bias": [
+   128
+  ],
+  "fusion_module.W_U_audio.weight": [
+   128,
+   256
+  ],
+  "fusion_module.W_U_audio.bias": [
+   128
+  ],
+  "fusion_module.shared_interaction.0.weight": [
+   128,
+   128
+  ],
+  "fusion_module.shared_interaction.0.bias": [
+   128
+  ],
+  "fusion_module.W_D_eeg.weight": [
+   256,
+   128
+  ],
+  "fusion_module.W_D_eeg.bias": [
+   256
+  ],
+  "fusion_module.W_D_audio.weight": [
+   256,
+   128
+  ],
+  "fusion_module.W_D_audio.bias": [
+   256
+  ],
+  "fusion_module.eeg_final_proj.weight": [
+   256,
+   256
+  ],
+  "fusion_module.eeg_final_proj.bias": [
+   256
+  ],
+  "fusion_module.audio_final_proj.weight": [
+   256,
+   256
+  ],
+  "fusion_module.audio_final_proj.bias": [
+   256
+  ],
+  "classifier.weight": [
+   1,
+   256
+  ],
+  "classifier.bias": [
+   1
+  ]
+ },
+ "optimizer_param_groups": [
+  {
+   "lr": 4.578621636312652e-05,
+   "betas": [
+    0.9,
+    0.95
+   ],
+   "eps": 1e-08,
+   "weight_decay": 0.1,
+   "amsgrad": false,
+   "foreach": null,
+   "maximize": false,
+   "capturable": false,
+   "differentiable": false,
+   "fused": null,
+   "initial_lr": 5e-05,
+   "n_params": 511
+  }
+ ]
+}
