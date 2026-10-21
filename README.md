@@ -6,7 +6,31 @@
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## 最新（2026-10-20 晚间）：两条 ALN3.5 新实验线完成，尾巴实验继续运行
+## 最新（2026-10-21）：ALN3.6 与 ALN4.1 第一轮完成，两个第二轮已启动
+
+本次发布两个研究者包（[ALN3.6](AUDITORY_ALN3_SERVER_PACKAGE_v3_6_20261020/README.md)、[ALN4.1](AUDITORY_ALN4_SERVER_PACKAGE_v4_1_20261021/README.md)）的第一轮结果、第二轮冻结计划和跨刺激问题的决定记录，详见[发布说明](docs/auditory_alignment_v3/RELEASE_035.md)。结果保留有利、不利和不确定方向；seed、fold 和发布版本都不增加独立受试者数。
+
+- **[ALN3.6 第一轮](docs/auditory_alignment_v3/aln36/R1_SCIENTIFIC_DECISION.md)**（seed 3401）：
+  - FAU 整组排除：训练全程不含任何 HA 听者的 EEG，共享读出对 HA 仍在 history 之上改善当前包络预测（local +0.0017、CBpre +0.0023，同时区间不含 0）。TH 方向一致但未分辨；CI 无增量，且训练含 CI 的旧 pooled 模型对 CI 同样接近 0。
+  - 个人时间重权在独立 query 上一致变差，在本设置下被否定；个人 history 重标定有害；整体 EEG 尺度标定对 HA 和 DTU 有益。
+  - 儿童：当前声音证据、严格 twin 均未分辨；AP−APwrong ≈ 0。
+- **[ALN4.1 第一轮](docs/auditory_alignment_v3/aln41/ROUND1_REPORT.md)**（Stage1 = CBraMod，MindMix 资产未通过门槛）：
+  - 冻结内容读出 TNCE > TCS > B0。TCS 高于错配对照的差距主要来自错配本身的损害。
+  - 学到的时间门控始终均匀；TNCE 的 query 损失一直处在随机水平，但它的冻结特征仍最好。
+  - 儿童全量微调 AUC 各臂相同（0.535–0.538）。冻结年龄误差约 25 个月，对照为 32；增益来自 Stage1，Stage2 没有额外收益。
+- **第二轮（运行中，计划在任何第二轮结果前冻结）**：
+  - [ALN4.1 R2](docs/auditory_alignment_v3/aln41/R2_PLAN.md)：seed 3407/3413，个人支持适配（U0/U10/U30，δ 对比概率校准）。
+  - [跨刺激问题](docs/auditory_alignment_v3/aln41/R2_CROSS_STIM_DECISION.md)：只按资产语义选定。MFF 纯音与 bapa 共享"偏差/标准"关系，不共享声音身份，因此做纯音→bapa 迁移，再在 bapa 上重拟合。
+  - [ALN3.6 R2](docs/auditory_alignment_v3/aln36/R2_BINDING.md)：seed 3407 固定复制。
+- **运行**：node51 上一块 GPU 持续报不可纠正 ECC 错误。核查确认失败尝试没有写入任何结果后，11 个失败标记已按收据存档，该节点已从提交中排除。
+- **逐单元记录**：`lanes_035_001.tar.gz` 收录 398 份此前未逐字节发布的 lane 记录，含 ALN3.6/ALN4.1 第一轮全部记录和已完成的第二轮记录。私有存储路径换成既定占位符，逐成员哈希见 [LANE_MEMBER_DERIVATIONS.json](results/auditory_alignment_v3/publication_035/LANE_MEMBER_DERIVATIONS.json)。
+- **仍在运行**：两个第二轮；ALN3.4 尾巴还剩 DTU 预算 1 个单元、breadth 曲线 18 个单元。
+
+[发布清单](results/auditory_alignment_v3/publication_035/MANIFEST.tsv)记录逐文件来源与发布哈希。**这是进行中的研究快照。**
+
+本次不上传：私有数据集本身、身份映射、人名/联系方式、MFF 记录与身份列表（含跨刺激计划）、真实年龄、仅限服务器的支持集几何绑定、模型权重、运行日志、存储清理工具和交接记录。
+
+## 2026-10-20 晚间：两条 ALN3.5 新实验线完成，尾巴实验继续运行
 
 本次发布[两条新实验线](docs/auditory_alignment_v3/RELEASE_034.md)的结果，设计均在出结果前冻结。所有结果保留有利、不利和不确定方向，实验单元、seed 和发布版本都不增加独立受试者数。
 

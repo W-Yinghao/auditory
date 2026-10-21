@@ -2,7 +2,7 @@
 #SBATCH --job-name=c3_aln34rotate
 #SBATCH --qos=runfill
 #SBATCH --partition=A30,A40,L40S
-#SBATCH --exclude=node52
+#SBATCH --exclude=node51,node52
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=12
 #SBATCH --mem=64G

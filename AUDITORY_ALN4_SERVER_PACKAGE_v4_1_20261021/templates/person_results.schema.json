@@ -1,0 +1,32 @@
+{
+  "type": "array_or_jsonl_of_objects",
+  "required": [
+    "person_id",
+    "dataset",
+    "arm",
+    "seed",
+    "fold",
+    "endpoint",
+    "condition",
+    "query_sha256",
+    "value",
+    "n_trials",
+    "status"
+  ],
+  "fields": {
+    "person_id": "deidentified stable ID in approved scope",
+    "dataset": "DTU|FAU|PRIVATE_BDF|prebound_cross_stimulus",
+    "arm": "B0|TCS|TNCE|GCS|TCS_WRONG|named_external_or_legacy",
+    "value": "finite number for COMPLETE_VALID; null otherwise",
+    "status": "NOT_RUN|RUNNING|COMPLETE_VALID|MISSING_ASSET|IMPLEMENTATION_FAILURE|NUMERICAL_FAILURE|INSUFFICIENT_DATA",
+    "seed": "source/run seed, averaged within person before inference",
+    "query_sha256": "identity of exact evaluated rows, including role/split",
+    "n_trials": "count, not independent sample n"
+  },
+  "do_not_include": [
+    "raw_EEG",
+    "identity_mapping",
+    "names",
+    "raw_audio"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "performed_utc": "2026-10-20T19:05:20.839489+00:00",
+  "status": "pass_for_local_reference_and_specification",
+  "unit_tests": {
+    "count": 9,
+    "command": "PYTHONPATH=src python -B -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "transcript": "test_fit_has_no_query_label_api_and_contrasts_use_direct_paired_algebra (test_nested_readout.NestedReadoutTests.test_fit_has_no_query_label_api_and_contrasts_use_direct_paired_algebra) ... ok\ntest_near_collinear_time_score_cannot_cheaply_replace_global_gain (test_nested_readout.NestedReadoutTests.test_near_collinear_time_score_cannot_cheaply_replace_global_gain) ... ok\ntest_nested_models_positive_scale_bound_and_identity_initialization (test_nested_readout.NestedReadoutTests.test_nested_models_positive_scale_bound_and_identity_initialization) ... ok\ntest_one_class_support_is_finite_and_query_evaluation_does_not_refit (test_nested_readout.NestedReadoutTests.test_one_class_support_is_finite_and_query_evaluation_does_not_refit) ... ok\ntest_pure_base_rate_shift_is_not_a_temporal_rotation (test_nested_readout.NestedReadoutTests.test_pure_base_rate_shift_is_not_a_temporal_rotation) ... ok\ntest_true_temporal_rotation_recovers_on_independent_queries_in_both_families (test_nested_readout.NestedReadoutTests.test_true_temporal_rotation_recovers_on_independent_queries_in_both_families) ... ok\ntest_zero_shared_signal_and_source_rank_degeneracy_are_explicit (test_nested_readout.NestedReadoutTests.test_zero_shared_signal_and_source_rank_degeneracy_are_explicit) ... ok\ntest_person_slices_reuse_group_training (test_plan_and_summary.PlanAndSummary.test_person_slices_reuse_group_training) ... ok\ntest_repeats_do_not_inflate_n_and_missing_not_zero (test_plan_and_summary.PlanAndSummary.test_repeats_do_not_inflate_n_and_missing_not_zero) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.085s\n\nOK\n"
+  },
+  "plan": {
+    "unique_fau_source_fits": 12,
+    "core_evaluation_bundles": 110,
+    "with_optional_compatible_existing_S": 115,
+    "production_binding_required": true
+  },
+  "review_repository": {
+    "head": "3da8cf5758214c0cf87a1f1c8d67fb84b574000e",
+    "clean": true,
+    "source_files_rehashed": 37
+  },
+  "independent_review_fixes": [
+    "Temporal contrast is actually source-nuisance-residualized and whitened in both fit and predict.",
+    "The 60-evaluation-cell count does not authorize 60 encoder fits.",
+    "Whole-group versus old pooled differences do not identify a group-coverage causal effect.",
+    "Private twin controls share frozen real source parameters and identical eligible support/query rows."
+  ],
+  "not_performed": [
+    "server adapter integration",
+    "real EEG forward pass",
+    "new encoder training",
+    "Slurm job submission",
+    "remote file deletion",
+    "scientific confirmation of new hypotheses"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+ "version": "ALN41_STAGE1_GATE_v1",
+ "decided": "2026-10-21T01:49:16.167313+02:00",
+ "asset": {
+  "repo": "https://github.com/CookieMikeLiu/MindMix",
+  "commit": "98445f368efcb161c638172501bd16f92d09a89d",
+  "file": "checkpoints/v2.4_large.pth",
+  "local_path": "/projects/EEG-foundation-model/auditory_public/foundation_models/github__CookieMikeLiu__MindMix@98445f3/lfs/v2.4_large.pth",
+  "bytes": 166531622,
+  "sha256_local_full_file": "707dfabf98e7c471fe7096722f97ac9aa06c3df1c86383b095cfc71f667455a0",
+  "matches_lfs_oid": true
+ },
+ "load": "torch.load weights_only=True with allowlisted argparse.Namespace and numpy scalar/dtype globals (no arbitrary unpickling)",
+ "contents": {
+  "top_keys": [
+   "model",
+   "optimizer",
+   "epoch",
+   "args",
+   "scaler"
+  ],
+  "epoch": 29,
+  "model_prefixes": {
+   "student": 428,
+   "lm_head": 2,
+   "projection_head": 2
+  },
+  "student_backbone": "LaBraM-style masked-modelling student: TemporalConv out_chans 8, embed 200, 24 blocks, q_norm/k_norm dim 10 (=> 20 heads), layer scale gamma (init 1e-5), qkv without bias, pos_embed [1,109,200], time_embed [1,128,200], cls/mask tokens, lm_head 8192 (token prediction, strippable)",
+  "args_model": "labram_large_patch200_1600_8k_vocab",
+  "args_abs_pos_emb": true,
+  "args_input_size": 1600,
+  "tensors": 432,
+  "numel": 14960720
+ },
+ "checks_against_traceable_code": [
+  "public factory labram_large_patch200_* (MindMix modeling_finetune_2.py, both main and fix/release-runtime-issues) = embed 400, depth 24, 16 heads, out_chans 16: does not match the asset (200 x 24, 20 heads, out_chans 8)",
+  "public NeuralTransformer forces pos_embed=None and time_embed [1,16,dim]; the asset has pos_embed [1,109,200] and time_embed [1,128,200]",
+  "the only channel table (utils.standard_1020, main and fix branch) has 136 entries (120 monopolar + 16 bipolar); the asset's position table has 108 channel rows + cls, so the channel->position mapping used in pretraining is not recoverable from public material",
+  "args record no channel list, head count or time-embedding size"
+ ],
+ "asset_gate": "not_passed",
+ "reason": "unexplained architecture gaps (factory config, position/time embedding sizes) and an unrecoverable channel->position mapping; tensors could be shape-loaded into a hand-modified model, but the input contract could not be traced, so this would be a guessed rather than verified Stage1",
+ "engineering_time": "about 35 minutes of the 4-hour bound; no target outcome consulted",
+ "stage1_selected": {
+  "arch": "cbramod",
+  "adaptation": "pretrained_full",
+  "weights": "/projects/EEG-foundation-model/auditory_public/foundation_models/weighting666__CBraMod@500543c/pretrained_weights.pth",
+  "sha256": "0792cb808c14e6b7a2bb2ce1dff379bc47bc54c49a779825bdfeb33bf8157178",
+  "hf_revision": "500543c7e30bda1b22bfd51a49301b238dee21fd",
+  "code_head": "b9e961003214326972c567eff390e75b0287e32a",
+  "provenance": "/projects/EEG-foundation-model/auditory_public/foundation_models/FETCH_RECEIPT.json"
+ },
+ "label": "MindMix-released EEG-only asset downloaded and inspected; not used. The full MindMix external method (R3) is a separate identity to be checked from its fusion/downstream assets."
+}

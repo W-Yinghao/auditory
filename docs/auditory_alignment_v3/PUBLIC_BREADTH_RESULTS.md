@@ -1,13 +1,13 @@
 # FAU/Federici breadth intervention results
 
-Snapshot 2026-10-20T19:29:30.442576+02:00, CPU job 1047358; **interim**.
+Snapshot 2026-10-21T11:10:25.926613+02:00, CPU job 1047358; **interim**.
 
 Seed3401 breadth; independent of the DTU three-seed panel. Strict identity pairing; phantom excluded. Historical baseline comparisons reuse completed records and are not new intervention results.
 
 | Lane | Complete / registered | Failed markers |
 |---|---:|---:|
-| breadth_budget_v1 | 66 / 75 | 0 |
-| breadth_inner_v1 | 300 / 375 | 0 |
+| breadth_budget_v1 | 75 / 75 | 0 |
+| breadth_inner_v1 | 357 / 375 | 0 |
 | breadth_policy_v1 | 40 / 40 | 0 |
 | breadth_fusion_v1 | 15 / 15 | 0 |
 | breadth_episode_v1 | 40 / 40 | 0 |
@@ -92,81 +92,81 @@ new production intervention. Paired n=67/67.
 
 ## fau / budget_models/fixed_0.5 / native
 
-new production intervention. Paired n=42/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0621 | [+0.0118,+0.1123] |
-| cbramod/pretrained_full versus local | +0.1132 | [+0.0486,+0.1779] |
-| cbramod/random_full versus local | +0.0512 | [-0.0114,+0.1137] |
-| reve/pretrained_full versus local | +0.1201 | [+0.0035,+0.2368] |
-| reve/random_full versus local | +0.0160 | [-0.0605,+0.0926] |
-| reve/pretrained_full versus reve/random_full | +0.1041 | [-0.0168,+0.2251] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.0833 | [+0.0462,+0.1203] |
+| cbramod/pretrained_full versus local | +0.1421 | [+0.0912,+0.1930] |
+| cbramod/random_full versus local | +0.0589 | [+0.0098,+0.1079] |
+| reve/pretrained_full versus local | +0.1455 | [+0.0606,+0.2305] |
+| reve/random_full versus local | +0.0172 | [-0.0382,+0.0727] |
+| reve/pretrained_full versus reve/random_full | +0.1283 | [+0.0359,+0.2207] |
 
 ## fau / budget_models/fixed_0.5 / unified
 
-new production intervention. Paired n=42/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0673 | [+0.0193,+0.1153] |
-| cbramod/pretrained_full versus local | +0.1147 | [+0.0211,+0.2083] |
-| cbramod/random_full versus local | +0.0474 | [-0.0341,+0.1288] |
-| reve/pretrained_full versus local | +0.1055 | [+0.0058,+0.2052] |
-| reve/random_full versus local | +0.0368 | [-0.0180,+0.0917] |
-| reve/pretrained_full versus reve/random_full | +0.0686 | [-0.0270,+0.1643] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.0859 | [+0.0543,+0.1176] |
+| cbramod/pretrained_full versus local | +0.1327 | [+0.0701,+0.1953] |
+| cbramod/random_full versus local | +0.0468 | [-0.0082,+0.1017] |
+| reve/pretrained_full versus local | +0.1175 | [+0.0490,+0.1861] |
+| reve/random_full versus local | +0.0456 | [+0.0071,+0.0841] |
+| reve/pretrained_full versus reve/random_full | +0.0720 | [+0.0071,+0.1368] |
 
 ## fau / budget_models/fixed_1.0 / native
 
-new production intervention. Paired n=42/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0966 | [+0.0100,+0.1833] |
-| cbramod/pretrained_full versus local | +0.1316 | [+0.0171,+0.2460] |
-| cbramod/random_full versus local | +0.0350 | [-0.0285,+0.0984] |
-| reve/pretrained_full versus local | +0.0040 | [-0.1131,+0.1210] |
-| reve/random_full versus local | +0.1004 | [+0.0336,+0.1673] |
-| reve/pretrained_full versus reve/random_full | -0.0965 | [-0.2011,+0.0082] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1071 | [+0.0474,+0.1667] |
+| cbramod/pretrained_full versus local | +0.1513 | [+0.0775,+0.2252] |
+| cbramod/random_full versus local | +0.0443 | [-0.0009,+0.0895] |
+| reve/pretrained_full versus local | -0.0016 | [-0.0876,+0.0845] |
+| reve/random_full versus local | +0.0992 | [+0.0522,+0.1461] |
+| reve/pretrained_full versus reve/random_full | -0.1008 | [-0.1860,-0.0156] |
 
 ## fau / budget_models/fixed_1.0 / unified
 
-new production intervention. Paired n=42/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1461 | [+0.0866,+0.2055] |
-| cbramod/pretrained_full versus local | +0.1285 | [+0.0341,+0.2230] |
-| cbramod/random_full versus local | -0.0175 | [-0.0814,+0.0463] |
-| reve/pretrained_full versus local | +0.0046 | [-0.0882,+0.0975] |
-| reve/random_full versus local | +0.0882 | [+0.0072,+0.1692] |
-| reve/pretrained_full versus reve/random_full | -0.0836 | [-0.1625,-0.0047] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1394 | [+0.0960,+0.1828] |
+| cbramod/pretrained_full versus local | +0.1270 | [+0.0669,+0.1871] |
+| cbramod/random_full versus local | -0.0124 | [-0.0556,+0.0309] |
+| reve/pretrained_full versus local | +0.0147 | [-0.0511,+0.0806] |
+| reve/random_full versus local | +0.0863 | [+0.0356,+0.1371] |
+| reve/pretrained_full versus reve/random_full | -0.0716 | [-0.1292,-0.0140] |
 
 ## fau / budget_models/fixed_2.0 / native
 
-new production intervention. Paired n=42/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1725 | [+0.0806,+0.2644] |
-| cbramod/pretrained_full versus local | +0.1308 | [+0.0263,+0.2353] |
-| cbramod/random_full versus local | -0.0417 | [-0.1095,+0.0262] |
-| reve/pretrained_full versus local | -0.1067 | [-0.2350,+0.0217] |
-| reve/random_full versus local | +0.1178 | [+0.0378,+0.1978] |
-| reve/pretrained_full versus reve/random_full | -0.2245 | [-0.3441,-0.1048] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1829 | [+0.1185,+0.2473] |
+| cbramod/pretrained_full versus local | +0.1540 | [+0.0841,+0.2239] |
+| cbramod/random_full versus local | -0.0289 | [-0.0778,+0.0200] |
+| reve/pretrained_full versus local | -0.0881 | [-0.1801,+0.0039] |
+| reve/random_full versus local | +0.1329 | [+0.0797,+0.1861] |
+| reve/pretrained_full versus reve/random_full | -0.2210 | [-0.3087,-0.1333] |
 
 ## fau / budget_models/fixed_2.0 / unified
 
-new production intervention. Paired n=42/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1450 | [+0.0584,+0.2316] |
-| cbramod/pretrained_full versus local | +0.1064 | [+0.0352,+0.1777] |
-| cbramod/random_full versus local | -0.0386 | [-0.0880,+0.0108] |
-| reve/pretrained_full versus local | -0.0566 | [-0.1465,+0.0333] |
-| reve/random_full versus local | +0.0690 | [-0.0150,+0.1530] |
-| reve/pretrained_full versus reve/random_full | -0.1257 | [-0.2257,-0.0257] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1503 | [+0.0902,+0.2104] |
+| cbramod/pretrained_full versus local | +0.1077 | [+0.0591,+0.1564] |
+| cbramod/random_full versus local | -0.0425 | [-0.0785,-0.0066] |
+| reve/pretrained_full versus local | -0.0505 | [-0.1169,+0.0159] |
+| reve/random_full versus local | +0.0811 | [+0.0276,+0.1346] |
+| reve/pretrained_full versus reve/random_full | -0.1316 | [-0.2038,-0.0594] |
 
 ## fau / budget_models/historical_selected / native
 
@@ -196,29 +196,29 @@ reused historical baseline; not a new training result. Paired n=67/67.
 
 ## fau / budget_models/new_selected / native
 
-new production intervention. Paired n=42/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1242 | [+0.0360,+0.2124] |
-| cbramod/pretrained_full versus local | +0.1219 | [+0.0178,+0.2261] |
-| cbramod/random_full versus local | -0.0023 | [-0.0696,+0.0651] |
-| reve/pretrained_full versus local | -0.0994 | [-0.2317,+0.0330] |
-| reve/random_full versus local | +0.1138 | [+0.0313,+0.1964] |
-| reve/pretrained_full versus reve/random_full | -0.2132 | [-0.3331,-0.0933] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1439 | [+0.0816,+0.2062] |
+| cbramod/pretrained_full versus local | +0.1442 | [+0.0757,+0.2127] |
+| cbramod/random_full versus local | +0.0003 | [-0.0472,+0.0478] |
+| reve/pretrained_full versus local | -0.0856 | [-0.1784,+0.0072] |
+| reve/random_full versus local | +0.1259 | [+0.0726,+0.1793] |
+| reve/pretrained_full versus reve/random_full | -0.2115 | [-0.2995,-0.1235] |
 
 ## fau / budget_models/new_selected / unified
 
-new production intervention. Paired n=42/67.
+new production intervention. Paired n=67/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1070 | [+0.0254,+0.1886] |
-| cbramod/pretrained_full versus local | +0.1074 | [+0.0338,+0.1811] |
-| cbramod/random_full versus local | +0.0004 | [-0.0480,+0.0489] |
-| reve/pretrained_full versus local | -0.0549 | [-0.1464,+0.0366] |
-| reve/random_full versus local | +0.0638 | [-0.0235,+0.1511] |
-| reve/pretrained_full versus reve/random_full | -0.1187 | [-0.2182,-0.0192] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1208 | [+0.0630,+0.1786] |
+| cbramod/pretrained_full versus local | +0.1070 | [+0.0570,+0.1569] |
+| cbramod/random_full versus local | -0.0139 | [-0.0508,+0.0231] |
+| reve/pretrained_full versus local | -0.0500 | [-0.1171,+0.0171] |
+| reve/random_full versus local | +0.0767 | [+0.0207,+0.1327] |
+| reve/pretrained_full versus reve/random_full | -0.1267 | [-0.2001,-0.0534] |
 
 ## fau / data/content/cbramod/pretrained_full / native
 
@@ -276,25 +276,25 @@ new production intervention. Paired n=67/67.
 
 ## fau / data/content/reve/pretrained_full / native
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.0091 | [-0.0448,+0.0265] |
-| 0.5 versus full | -0.0100 | [-0.0475,+0.0275] |
+| 0.25 versus full | +0.0064 | [-0.0172,+0.0300] |
+| 0.5 versus full | +0.0059 | [-0.0183,+0.0302] |
 
 ## fau / data/content/reve/pretrained_full / unified
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.0009 | [-0.0350,+0.0332] |
-| 0.5 versus full | -0.0059 | [-0.0413,+0.0296] |
+| 0.25 versus full | +0.0097 | [-0.0101,+0.0296] |
+| 0.5 versus full | +0.0072 | [-0.0132,+0.0277] |
 
 ## fau / data/content/reve/random_full / native
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
@@ -303,7 +303,7 @@ new production intervention. Paired n=14/67.
 
 ## fau / data/content/reve/random_full / unified
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
@@ -366,143 +366,143 @@ new production intervention. Paired n=67/67.
 
 ## fau / data/people/reve/pretrained_full / native
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.3366 | [-0.5052,-0.1680] |
-| 0.5 versus full | -0.2414 | [-0.3601,-0.1227] |
+| 0.25 versus full | -0.3493 | [-0.4486,-0.2501] |
+| 0.5 versus full | -0.2377 | [-0.3150,-0.1604] |
 
 ## fau / data/people/reve/pretrained_full / unified
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.2236 | [-0.3056,-0.1415] |
-| 0.5 versus full | -0.1630 | [-0.2365,-0.0895] |
+| 0.25 versus full | -0.2228 | [-0.2828,-0.1628] |
+| 0.5 versus full | -0.1694 | [-0.2187,-0.1202] |
 
 ## fau / data/people/reve/random_full / native
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.2667 | [-0.4594,-0.0739] |
-| 0.5 versus full | -0.1579 | [-0.3205,+0.0048] |
+| 0.25 versus full | -0.3184 | [-0.3806,-0.2562] |
+| 0.5 versus full | -0.1779 | [-0.2286,-0.1273] |
 
 ## fau / data/people/reve/random_full / unified
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.1233 | [-0.2806,+0.0339] |
-| 0.5 versus full | -0.1249 | [-0.2926,+0.0428] |
+| 0.25 versus full | -0.1726 | [-0.2335,-0.1118] |
+| 0.5 versus full | -0.1090 | [-0.1626,-0.0554] |
 
 ## fau / data_models/content/0.25 / native
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1060 | [-0.0651,+0.2771] |
-| cbramod/pretrained_full versus local | +0.0981 | [-0.0577,+0.2539] |
-| cbramod/random_full versus local | -0.0080 | [-0.1635,+0.1476] |
-| reve/pretrained_full versus local | +0.0299 | [-0.2599,+0.3197] |
-| reve/random_full versus local | +0.0190 | [-0.1035,+0.1415] |
-| reve/pretrained_full versus reve/random_full | +0.0109 | [-0.2785,+0.3003] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1016 | [+0.0451,+0.1581] |
+| cbramod/pretrained_full versus local | +0.1694 | [+0.0972,+0.2417] |
+| cbramod/random_full versus local | +0.0678 | [+0.0134,+0.1222] |
+| reve/pretrained_full versus local | +0.1246 | [+0.0248,+0.2245] |
+| reve/random_full versus local | +0.0932 | [+0.0371,+0.1492] |
+| reve/pretrained_full versus reve/random_full | +0.0315 | [-0.0628,+0.1258] |
 
 ## fau / data_models/content/0.25 / unified
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0849 | [-0.0825,+0.2524] |
-| cbramod/pretrained_full versus local | +0.0574 | [-0.1994,+0.3142] |
-| cbramod/random_full versus local | -0.0275 | [-0.2141,+0.1590] |
-| reve/pretrained_full versus local | +0.0614 | [-0.1368,+0.2596] |
-| reve/random_full versus local | +0.0029 | [-0.2071,+0.2129] |
-| reve/pretrained_full versus reve/random_full | +0.0584 | [-0.1224,+0.2393] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1084 | [+0.0619,+0.1548] |
+| cbramod/pretrained_full versus local | +0.1398 | [+0.0686,+0.2109] |
+| cbramod/random_full versus local | +0.0314 | [-0.0186,+0.0814] |
+| reve/pretrained_full versus local | +0.1295 | [+0.0587,+0.2003] |
+| reve/random_full versus local | +0.0949 | [+0.0302,+0.1595] |
+| reve/pretrained_full versus reve/random_full | +0.0346 | [-0.0188,+0.0881] |
 
 ## fau / data_models/content/0.5 / native
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1087 | [-0.0721,+0.2894] |
-| cbramod/pretrained_full versus local | +0.0981 | [-0.0660,+0.2622] |
-| cbramod/random_full versus local | -0.0106 | [-0.1738,+0.1527] |
-| reve/pretrained_full versus local | +0.0299 | [-0.2753,+0.3352] |
-| reve/random_full versus local | +0.0190 | [-0.1100,+0.1481] |
-| reve/pretrained_full versus reve/random_full | +0.0109 | [-0.2940,+0.3157] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1034 | [+0.0460,+0.1608] |
+| cbramod/pretrained_full versus local | +0.1694 | [+0.0961,+0.2428] |
+| cbramod/random_full versus local | +0.0660 | [+0.0109,+0.1212] |
+| reve/pretrained_full versus local | +0.1242 | [+0.0237,+0.2247] |
+| reve/random_full versus local | +0.0932 | [+0.0363,+0.1501] |
+| reve/pretrained_full versus reve/random_full | +0.0310 | [-0.0637,+0.1258] |
 
 ## fau / data_models/content/0.5 / unified
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0840 | [-0.0757,+0.2437] |
-| cbramod/pretrained_full versus local | +0.0574 | [-0.1895,+0.3043] |
-| cbramod/random_full versus local | -0.0266 | [-0.2088,+0.1556] |
-| reve/pretrained_full versus local | +0.0614 | [-0.1291,+0.2518] |
-| reve/random_full versus local | +0.0029 | [-0.1989,+0.2048] |
-| reve/pretrained_full versus reve/random_full | +0.0584 | [-0.1154,+0.2323] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1087 | [+0.0625,+0.1550] |
+| cbramod/pretrained_full versus local | +0.1397 | [+0.0692,+0.2103] |
+| cbramod/random_full versus local | +0.0310 | [-0.0187,+0.0808] |
+| reve/pretrained_full versus local | +0.1270 | [+0.0550,+0.1989] |
+| reve/random_full versus local | +0.0948 | [+0.0307,+0.1589] |
+| reve/pretrained_full versus reve/random_full | +0.0321 | [-0.0233,+0.0876] |
 
 ## fau / data_models/people/0.25 / native
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1470 | [+0.0387,+0.2553] |
-| cbramod/pretrained_full versus local | +0.1998 | [+0.0995,+0.3002] |
-| cbramod/random_full versus local | +0.0529 | [-0.0402,+0.1460] |
-| reve/pretrained_full versus local | +0.1124 | [+0.0021,+0.2227] |
-| reve/random_full versus local | +0.0774 | [-0.0231,+0.1779] |
-| reve/pretrained_full versus reve/random_full | +0.0351 | [-0.0709,+0.1410] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1564 | [+0.0890,+0.2239] |
+| cbramod/pretrained_full versus local | +0.1993 | [+0.1374,+0.2611] |
+| cbramod/random_full versus local | +0.0428 | [-0.0134,+0.0990] |
+| reve/pretrained_full versus local | +0.0667 | [-0.0028,+0.1363] |
+| reve/random_full versus local | +0.0726 | [+0.0131,+0.1320] |
+| reve/pretrained_full versus reve/random_full | -0.0059 | [-0.0710,+0.0593] |
 
 ## fau / data_models/people/0.25 / unified
 
-new production intervention. Paired n=28/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0482 | [-0.1070,+0.2033] |
-| cbramod/pretrained_full versus local | +0.0698 | [-0.0929,+0.2324] |
-| cbramod/random_full versus local | +0.0216 | [-0.0855,+0.1286] |
-| reve/pretrained_full versus local | +0.0284 | [-0.0697,+0.1265] |
-| reve/random_full versus local | +0.0449 | [-0.0441,+0.1338] |
-| reve/pretrained_full versus reve/random_full | -0.0165 | [-0.1123,+0.0794] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.0730 | [-0.0131,+0.1590] |
+| cbramod/pretrained_full versus local | +0.0792 | [-0.0075,+0.1659] |
+| cbramod/random_full versus local | +0.0063 | [-0.0512,+0.0638] |
+| reve/pretrained_full versus local | +0.0034 | [-0.0528,+0.0596] |
+| reve/random_full versus local | +0.0287 | [-0.0202,+0.0776] |
+| reve/pretrained_full versus reve/random_full | -0.0253 | [-0.0795,+0.0289] |
 
 ## fau / data_models/people/0.5 / native
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0872 | [-0.2435,+0.4179] |
-| cbramod/pretrained_full versus local | +0.0983 | [-0.1607,+0.3573] |
-| cbramod/random_full versus local | +0.0111 | [-0.2255,+0.2478] |
-| reve/pretrained_full versus local | +0.0624 | [-0.1980,+0.3227] |
-| reve/random_full versus local | +0.0309 | [-0.1195,+0.1814] |
-| reve/pretrained_full versus reve/random_full | +0.0314 | [-0.2417,+0.3046] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1120 | [+0.0421,+0.1818] |
+| cbramod/pretrained_full versus local | +0.1773 | [+0.1048,+0.2498] |
+| cbramod/random_full versus local | +0.0653 | [+0.0027,+0.1279] |
+| reve/pretrained_full versus local | +0.0605 | [-0.0308,+0.1517] |
+| reve/random_full versus local | +0.0951 | [+0.0357,+0.1546] |
+| reve/pretrained_full versus reve/random_full | -0.0347 | [-0.1255,+0.0562] |
 
 ## fau / data_models/people/0.5 / unified
 
-new production intervention. Paired n=14/67.
+new production intervention. Paired n=56/67.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1141 | [-0.1986,+0.4269] |
-| cbramod/pretrained_full versus local | +0.0808 | [-0.3032,+0.4648] |
-| cbramod/random_full versus local | -0.0333 | [-0.3963,+0.3297] |
-| reve/pretrained_full versus local | +0.0122 | [-0.2502,+0.2747] |
-| reve/random_full versus local | -0.0237 | [-0.4028,+0.3553] |
-| reve/pretrained_full versus reve/random_full | +0.0360 | [-0.3131,+0.3850] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.0734 | [+0.0173,+0.1296] |
+| cbramod/pretrained_full versus local | +0.0967 | [+0.0242,+0.1692] |
+| cbramod/random_full versus local | +0.0233 | [-0.0377,+0.0842] |
+| reve/pretrained_full versus local | +0.0178 | [-0.0475,+0.0831] |
+| reve/random_full versus local | +0.0533 | [-0.0095,+0.1161] |
+| reve/pretrained_full versus reve/random_full | -0.0355 | [-0.1064,+0.0353] |
 
 ## fau / episode/cbramod/pretrained_full/support_0.1 / native
 
@@ -1202,81 +1202,81 @@ new production intervention. Paired n=86/86.
 
 ## federici / budget_models/fixed_0.5 / native
 
-new production intervention. Paired n=69/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0408 | [-0.0164,+0.0980] |
-| cbramod/pretrained_full versus local | +0.1915 | [+0.0755,+0.3075] |
-| cbramod/random_full versus local | +0.1507 | [+0.0631,+0.2382] |
-| reve/pretrained_full versus local | +0.1387 | [+0.0523,+0.2251] |
-| reve/random_full versus local | +0.1284 | [+0.0297,+0.2271] |
-| reve/pretrained_full versus reve/random_full | +0.0103 | [-0.0732,+0.0939] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.0331 | [-0.0175,+0.0837] |
+| cbramod/pretrained_full versus local | +0.1785 | [+0.0748,+0.2822] |
+| cbramod/random_full versus local | +0.1454 | [+0.0688,+0.2220] |
+| reve/pretrained_full versus local | +0.1400 | [+0.0636,+0.2164] |
+| reve/random_full versus local | +0.1201 | [+0.0352,+0.2050] |
+| reve/pretrained_full versus reve/random_full | +0.0199 | [-0.0516,+0.0914] |
 
 ## federici / budget_models/fixed_0.5 / unified
 
-new production intervention. Paired n=69/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0304 | [-0.0163,+0.0772] |
-| cbramod/pretrained_full versus local | +0.1865 | [+0.0900,+0.2829] |
-| cbramod/random_full versus local | +0.1560 | [+0.0772,+0.2348] |
-| reve/pretrained_full versus local | +0.1385 | [+0.0568,+0.2202] |
-| reve/random_full versus local | +0.1700 | [+0.0787,+0.2613] |
-| reve/pretrained_full versus reve/random_full | -0.0315 | [-0.0941,+0.0310] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.0296 | [-0.0104,+0.0695] |
+| cbramod/pretrained_full versus local | +0.1784 | [+0.0966,+0.2602] |
+| cbramod/random_full versus local | +0.1488 | [+0.0839,+0.2138] |
+| reve/pretrained_full versus local | +0.1318 | [+0.0628,+0.2009] |
+| reve/random_full versus local | +0.1535 | [+0.0752,+0.2318] |
+| reve/pretrained_full versus reve/random_full | -0.0217 | [-0.0778,+0.0344] |
 
 ## federici / budget_models/fixed_1.0 / native
 
-new production intervention. Paired n=69/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0948 | [+0.0209,+0.1687] |
-| cbramod/pretrained_full versus local | +0.2310 | [+0.1125,+0.3495] |
-| cbramod/random_full versus local | +0.1362 | [+0.0604,+0.2120] |
-| reve/pretrained_full versus local | -0.0456 | [-0.1404,+0.0493] |
-| reve/random_full versus local | +0.2114 | [+0.1207,+0.3020] |
-| reve/pretrained_full versus reve/random_full | -0.2569 | [-0.3578,-0.1560] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.0928 | [+0.0310,+0.1547] |
+| cbramod/pretrained_full versus local | +0.2228 | [+0.1228,+0.3228] |
+| cbramod/random_full versus local | +0.1300 | [+0.0629,+0.1971] |
+| reve/pretrained_full versus local | -0.0283 | [-0.1115,+0.0549] |
+| reve/random_full versus local | +0.2087 | [+0.1292,+0.2882] |
+| reve/pretrained_full versus reve/random_full | -0.2370 | [-0.3242,-0.1498] |
 
 ## federici / budget_models/fixed_1.0 / unified
 
-new production intervention. Paired n=69/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1067 | [+0.0413,+0.1720] |
-| cbramod/pretrained_full versus local | +0.2120 | [+0.1106,+0.3135] |
-| cbramod/random_full versus local | +0.1054 | [+0.0374,+0.1734] |
-| reve/pretrained_full versus local | -0.0032 | [-0.0694,+0.0630] |
-| reve/random_full versus local | +0.2132 | [+0.1131,+0.3132] |
-| reve/pretrained_full versus reve/random_full | -0.2164 | [-0.3120,-0.1207] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1011 | [+0.0464,+0.1558] |
+| cbramod/pretrained_full versus local | +0.2123 | [+0.1285,+0.2961] |
+| cbramod/random_full versus local | +0.1112 | [+0.0553,+0.1671] |
+| reve/pretrained_full versus local | +0.0052 | [-0.0506,+0.0611] |
+| reve/random_full versus local | +0.2133 | [+0.1289,+0.2976] |
+| reve/pretrained_full versus reve/random_full | -0.2080 | [-0.2884,-0.1276] |
 
 ## federici / budget_models/fixed_2.0 / native
 
-new production intervention. Paired n=69/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1471 | [+0.0491,+0.2451] |
-| cbramod/pretrained_full versus local | +0.2396 | [+0.1151,+0.3641] |
-| cbramod/random_full versus local | +0.0925 | [+0.0212,+0.1638] |
-| reve/pretrained_full versus local | -0.0527 | [-0.1228,+0.0175] |
-| reve/random_full versus local | +0.2676 | [+0.1649,+0.3703] |
-| reve/pretrained_full versus reve/random_full | -0.3203 | [-0.4259,-0.2147] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1278 | [+0.0414,+0.2142] |
+| cbramod/pretrained_full versus local | +0.2106 | [+0.0952,+0.3259] |
+| cbramod/random_full versus local | +0.0828 | [+0.0168,+0.1487] |
+| reve/pretrained_full versus local | -0.0410 | [-0.1063,+0.0244] |
+| reve/random_full versus local | +0.2565 | [+0.1676,+0.3454] |
+| reve/pretrained_full versus reve/random_full | -0.2975 | [-0.3903,-0.2046] |
 
 ## federici / budget_models/fixed_2.0 / unified
 
-new production intervention. Paired n=69/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1431 | [+0.0636,+0.2225] |
-| cbramod/pretrained_full versus local | +0.2137 | [+0.1160,+0.3114] |
-| cbramod/random_full versus local | +0.0706 | [+0.0120,+0.1293] |
-| reve/pretrained_full versus local | -0.0420 | [-0.1021,+0.0181] |
-| reve/random_full versus local | +0.2242 | [+0.1320,+0.3165] |
-| reve/pretrained_full versus reve/random_full | -0.2662 | [-0.3612,-0.1713] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1294 | [+0.0602,+0.1985] |
+| cbramod/pretrained_full versus local | +0.1983 | [+0.1108,+0.2858] |
+| cbramod/random_full versus local | +0.0689 | [+0.0171,+0.1207] |
+| reve/pretrained_full versus local | -0.0358 | [-0.0899,+0.0182] |
+| reve/random_full versus local | +0.2188 | [+0.1382,+0.2993] |
+| reve/pretrained_full versus reve/random_full | -0.2546 | [-0.3387,-0.1705] |
 
 ## federici / budget_models/historical_selected / native
 
@@ -1306,29 +1306,29 @@ reused historical baseline; not a new training result. Paired n=86/86.
 
 ## federici / budget_models/new_selected / native
 
-new production intervention. Paired n=69/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1104 | [+0.0156,+0.2053] |
-| cbramod/pretrained_full versus local | +0.2313 | [+0.1040,+0.3585] |
-| cbramod/random_full versus local | +0.1209 | [+0.0398,+0.2020] |
-| reve/pretrained_full versus local | -0.0381 | [-0.1115,+0.0353] |
-| reve/random_full versus local | +0.2616 | [+0.1586,+0.3646] |
-| reve/pretrained_full versus reve/random_full | -0.2997 | [-0.4017,-0.1978] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.0778 | [-0.0056,+0.1612] |
+| cbramod/pretrained_full versus local | +0.2056 | [+0.0914,+0.3198] |
+| cbramod/random_full versus local | +0.1278 | [+0.0565,+0.1991] |
+| reve/pretrained_full versus local | -0.0141 | [-0.0829,+0.0546] |
+| reve/random_full versus local | +0.2522 | [+0.1634,+0.3410] |
+| reve/pretrained_full versus reve/random_full | -0.2663 | [-0.3549,-0.1778] |
 
 ## federici / budget_models/new_selected / unified
 
-new production intervention. Paired n=69/86.
+new production intervention. Paired n=86/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1176 | [+0.0453,+0.1899] |
-| cbramod/pretrained_full versus local | +0.2119 | [+0.1127,+0.3111] |
-| cbramod/random_full versus local | +0.0943 | [+0.0280,+0.1606] |
-| reve/pretrained_full versus local | -0.0336 | [-0.0950,+0.0279] |
-| reve/random_full versus local | +0.2246 | [+0.1300,+0.3192] |
-| reve/pretrained_full versus reve/random_full | -0.2581 | [-0.3535,-0.1628] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.0889 | [+0.0270,+0.1507] |
+| cbramod/pretrained_full versus local | +0.1958 | [+0.1129,+0.2787] |
+| cbramod/random_full versus local | +0.1069 | [+0.0527,+0.1611] |
+| reve/pretrained_full versus local | -0.0207 | [-0.0725,+0.0312] |
+| reve/random_full versus local | +0.2202 | [+0.1425,+0.2980] |
+| reve/pretrained_full versus reve/random_full | -0.2409 | [-0.3197,-0.1621] |
 
 ## federici / data/content/cbramod/pretrained_full / native
 
@@ -1386,39 +1386,39 @@ new production intervention. Paired n=86/86.
 
 ## federici / data/content/reve/pretrained_full / native
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.1422 | [-0.2240,-0.0604] |
-| 0.5 versus full | -0.0608 | [-0.1565,+0.0349] |
+| 0.25 versus full | -0.1431 | [-0.2142,-0.0721] |
+| 0.5 versus full | -0.0512 | [-0.1131,+0.0108] |
 
 ## federici / data/content/reve/pretrained_full / unified
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.0891 | [-0.1474,-0.0309] |
-| 0.5 versus full | -0.0219 | [-0.0737,+0.0300] |
+| 0.25 versus full | -0.1290 | [-0.1804,-0.0776] |
+| 0.5 versus full | -0.0366 | [-0.0773,+0.0040] |
 
 ## federici / data/content/reve/random_full / native
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.2474 | [-0.3763,-0.1186] |
-| 0.5 versus full | -0.0594 | [-0.1380,+0.0192] |
+| 0.25 versus full | -0.1975 | [-0.2832,-0.1117] |
+| 0.5 versus full | -0.0467 | [-0.0945,+0.0011] |
 
 ## federici / data/content/reve/random_full / unified
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.2202 | [-0.3474,-0.0930] |
-| 0.5 versus full | -0.0352 | [-0.0964,+0.0260] |
+| 0.25 versus full | -0.1894 | [-0.2778,-0.1010] |
+| 0.5 versus full | -0.0392 | [-0.0852,+0.0067] |
 
 ## federici / data/people/cbramod/pretrained_full / native
 
@@ -1476,143 +1476,143 @@ new production intervention. Paired n=86/86.
 
 ## federici / data/people/reve/pretrained_full / native
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.1369 | [-0.2421,-0.0317] |
-| 0.5 versus full | -0.1230 | [-0.2208,-0.0252] |
+| 0.25 versus full | -0.1279 | [-0.2122,-0.0436] |
+| 0.5 versus full | -0.0876 | [-0.1600,-0.0153] |
 
 ## federici / data/people/reve/pretrained_full / unified
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.0946 | [-0.1766,-0.0126] |
-| 0.5 versus full | -0.0644 | [-0.1337,+0.0048] |
+| 0.25 versus full | -0.0940 | [-0.1519,-0.0362] |
+| 0.5 versus full | -0.0641 | [-0.1148,-0.0134] |
 
 ## federici / data/people/reve/random_full / native
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.2172 | [-0.3252,-0.1092] |
-| 0.5 versus full | -0.0857 | [-0.1396,-0.0318] |
+| 0.25 versus full | -0.2097 | [-0.2900,-0.1293] |
+| 0.5 versus full | -0.0677 | [-0.1026,-0.0327] |
 
 ## federici / data/people/reve/random_full / unified
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| 0.25 versus full | -0.1914 | [-0.2980,-0.0847] |
-| 0.5 versus full | -0.0841 | [-0.1509,-0.0173] |
+| 0.25 versus full | -0.1903 | [-0.2717,-0.1088] |
+| 0.5 versus full | -0.0707 | [-0.1165,-0.0249] |
 
 ## federici / data_models/content/0.25 / native
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1738 | [+0.0638,+0.2837] |
-| cbramod/pretrained_full versus local | +0.3164 | [+0.1577,+0.4752] |
-| cbramod/random_full versus local | +0.1427 | [+0.0532,+0.2321] |
-| reve/pretrained_full versus local | +0.1201 | [-0.0068,+0.2470] |
-| reve/random_full versus local | +0.1270 | [+0.0285,+0.2256] |
-| reve/pretrained_full versus reve/random_full | -0.0069 | [-0.1276,+0.1137] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1500 | [+0.0775,+0.2226] |
+| cbramod/pretrained_full versus local | +0.2792 | [+0.1705,+0.3879] |
+| cbramod/random_full versus local | +0.1292 | [+0.0637,+0.1946] |
+| reve/pretrained_full versus local | +0.1121 | [+0.0304,+0.1939] |
+| reve/random_full versus local | +0.1438 | [+0.0672,+0.2204] |
+| reve/pretrained_full versus reve/random_full | -0.0316 | [-0.1085,+0.0452] |
 
 ## federici / data_models/content/0.25 / unified
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1436 | [+0.0682,+0.2189] |
-| cbramod/pretrained_full versus local | +0.2631 | [+0.1430,+0.3833] |
-| cbramod/random_full versus local | +0.1196 | [+0.0146,+0.2245] |
-| reve/pretrained_full versus local | +0.1244 | [+0.0084,+0.2403] |
-| reve/random_full versus local | +0.1395 | [+0.0599,+0.2191] |
-| reve/pretrained_full versus reve/random_full | -0.0151 | [-0.1210,+0.0908] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1244 | [+0.0683,+0.1805] |
+| cbramod/pretrained_full versus local | +0.2306 | [+0.1363,+0.3248] |
+| cbramod/random_full versus local | +0.1061 | [+0.0387,+0.1736] |
+| reve/pretrained_full versus local | +0.0900 | [+0.0146,+0.1654] |
+| reve/random_full versus local | +0.1303 | [+0.0696,+0.1910] |
+| reve/pretrained_full versus reve/random_full | -0.0403 | [-0.1073,+0.0266] |
 
 ## federici / data_models/content/0.5 / native
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0889 | [-0.0025,+0.1804] |
-| cbramod/pretrained_full versus local | +0.2890 | [+0.1099,+0.4680] |
-| cbramod/random_full versus local | +0.2000 | [+0.0612,+0.3389] |
-| reve/pretrained_full versus local | +0.1056 | [-0.0168,+0.2280] |
-| reve/random_full versus local | +0.2192 | [+0.1017,+0.3367] |
-| reve/pretrained_full versus reve/random_full | -0.1136 | [-0.2013,-0.0258] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.0885 | [+0.0262,+0.1508] |
+| cbramod/pretrained_full versus local | +0.2695 | [+0.1470,+0.3920] |
+| cbramod/random_full versus local | +0.1810 | [+0.0870,+0.2750] |
+| reve/pretrained_full versus local | +0.1135 | [+0.0286,+0.1984] |
+| reve/random_full versus local | +0.2039 | [+0.1149,+0.2929] |
+| reve/pretrained_full versus reve/random_full | -0.0904 | [-0.1744,-0.0065] |
 
 ## federici / data_models/content/0.5 / unified
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0967 | [+0.0165,+0.1769] |
-| cbramod/pretrained_full versus local | +0.2632 | [+0.1100,+0.4164] |
-| cbramod/random_full versus local | +0.1665 | [+0.0533,+0.2797] |
-| reve/pretrained_full versus local | +0.1329 | [+0.0210,+0.2448] |
-| reve/random_full versus local | +0.2657 | [+0.1067,+0.4248] |
-| reve/pretrained_full versus reve/random_full | -0.1328 | [-0.2341,-0.0315] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.0804 | [+0.0233,+0.1374] |
+| cbramod/pretrained_full versus local | +0.2432 | [+0.1393,+0.3472] |
+| cbramod/random_full versus local | +0.1629 | [+0.0902,+0.2355] |
+| reve/pretrained_full versus local | +0.1196 | [+0.0397,+0.1995] |
+| reve/random_full versus local | +0.2177 | [+0.1211,+0.3143] |
+| reve/pretrained_full versus reve/random_full | -0.0981 | [-0.1673,-0.0289] |
 
 ## federici / data_models/people/0.25 / native
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1966 | [+0.1171,+0.2761] |
-| cbramod/pretrained_full versus local | +0.2930 | [+0.1553,+0.4307] |
-| cbramod/random_full versus local | +0.0964 | [-0.0257,+0.2185] |
-| reve/pretrained_full versus local | +0.1011 | [-0.0108,+0.2131] |
-| reve/random_full versus local | +0.1331 | [+0.0307,+0.2354] |
-| reve/pretrained_full versus reve/random_full | -0.0319 | [-0.1344,+0.0705] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1680 | [+0.0981,+0.2378] |
+| cbramod/pretrained_full versus local | +0.2667 | [+0.1532,+0.3801] |
+| cbramod/random_full versus local | +0.0987 | [+0.0183,+0.1791] |
+| reve/pretrained_full versus local | +0.1018 | [+0.0140,+0.1897] |
+| reve/random_full versus local | +0.1060 | [+0.0308,+0.1812] |
+| reve/pretrained_full versus reve/random_full | -0.0042 | [-0.0810,+0.0727] |
 
 ## federici / data_models/people/0.25 / unified
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.1311 | [+0.0445,+0.2177] |
-| cbramod/pretrained_full versus local | +0.2399 | [+0.0932,+0.3865] |
-| cbramod/random_full versus local | +0.1088 | [+0.0052,+0.2124] |
-| reve/pretrained_full versus local | +0.1110 | [+0.0047,+0.2174] |
-| reve/random_full versus local | +0.1603 | [+0.0612,+0.2594] |
-| reve/pretrained_full versus reve/random_full | -0.0493 | [-0.1508,+0.0521] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.1006 | [+0.0323,+0.1689] |
+| cbramod/pretrained_full versus local | +0.2053 | [+0.0961,+0.3145] |
+| cbramod/random_full versus local | +0.1047 | [+0.0336,+0.1759] |
+| reve/pretrained_full versus local | +0.1007 | [+0.0299,+0.1715] |
+| reve/random_full versus local | +0.1052 | [+0.0388,+0.1717] |
+| reve/pretrained_full versus reve/random_full | -0.0045 | [-0.0735,+0.0646] |
 
 ## federici / data_models/people/0.5 / native
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0927 | [-0.0209,+0.2063] |
-| cbramod/pretrained_full versus local | +0.2160 | [+0.0255,+0.4065] |
-| cbramod/random_full versus local | +0.1233 | [-0.0110,+0.2576] |
-| reve/pretrained_full versus local | +0.0236 | [-0.0991,+0.1462] |
-| reve/random_full versus local | +0.1730 | [+0.0190,+0.3271] |
-| reve/pretrained_full versus reve/random_full | -0.1494 | [-0.2592,-0.0397] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.0695 | [-0.0028,+0.1418] |
+| cbramod/pretrained_full versus local | +0.2285 | [+0.1000,+0.3570] |
+| cbramod/random_full versus local | +0.1590 | [+0.0711,+0.2469] |
+| reve/pretrained_full versus local | +0.0737 | [-0.0015,+0.1488] |
+| reve/random_full versus local | +0.1796 | [+0.0758,+0.2834] |
+| reve/pretrained_full versus reve/random_full | -0.1059 | [-0.1929,-0.0190] |
 
 ## federici / data_models/people/0.5 / unified
 
-new production intervention. Paired n=37/86.
+new production intervention. Paired n=69/86.
 
 | Contrast | ΔR bits/query | Simultaneous95% interval |
 |---|---:|---:|
-| cbramod/pretrained_full versus cbramod/random_full | +0.0718 | [-0.0165,+0.1600] |
-| cbramod/pretrained_full versus local | +0.2227 | [+0.0764,+0.3690] |
-| cbramod/random_full versus local | +0.1509 | [+0.0521,+0.2498] |
-| reve/pretrained_full versus local | +0.0988 | [+0.0021,+0.1955] |
-| reve/random_full versus local | +0.2252 | [+0.0728,+0.3776] |
-| reve/pretrained_full versus reve/random_full | -0.1264 | [-0.2389,-0.0140] |
+| cbramod/pretrained_full versus cbramod/random_full | +0.0729 | [+0.0141,+0.1317] |
+| cbramod/pretrained_full versus local | +0.2152 | [+0.1106,+0.3198] |
+| cbramod/random_full versus local | +0.1423 | [+0.0654,+0.2192] |
+| reve/pretrained_full versus local | +0.0949 | [+0.0305,+0.1593] |
+| reve/random_full versus local | +0.1890 | [+0.0919,+0.2861] |
+| reve/pretrained_full versus reve/random_full | -0.0941 | [-0.1733,-0.0149] |
 
 ## federici / fusion/cb_pre / native
 

@@ -1,0 +1,255 @@
+{
+  "version": "ALN3.6_R1_20261020",
+  "research_question": "Transferable auditory evidence and listener-specific temporal readout",
+  "baseline_commit": "3da8cf5758214c0cf87a1f1c8d67fb84b574000e",
+  "design_status": "prospective_protocol_after_2026_10_20_result_informed_design",
+  "production_binding_required": true,
+  "current_round": 1,
+  "maximum_rounds": 3,
+  "seed": 3401,
+  "replication_seed_round2": 3407,
+  "gpu_cap_running_plus_pending": 10,
+  "public_tools": [
+    "local_L1",
+    "CBpre_true_full"
+  ],
+  "public_objective": "InfoNCE",
+  "heldout_groups": [
+    "ci",
+    "ha",
+    "th"
+  ],
+  "person_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "content_folds": [
+    0,
+    1
+  ],
+  "public_time_centers_ms": [
+    -200,
+    0,
+    200,
+    400,
+    600
+  ],
+  "public_window_relative_to_center_ms": [
+    -400,
+    600
+  ],
+  "public_joint_access_ms": [
+    -600,
+    1200
+  ],
+  "public_target": "source_audio_fit_standardized_current_envelope",
+  "public_history_lags_ms": [
+    20,
+    100,
+    200,
+    500
+  ],
+  "public_primary_risk": "MSE",
+  "public_support": "first_ceil_30pct_legal_5s_segments_from_target_person_source_fit_content_only",
+  "public_query": "all_legal_target_person_source_test_content",
+  "private_arms": [
+    "matched_AP_v2",
+    "matched_APwrong_v2"
+  ],
+  "private_optional_reference": "compatible_existing_S_only",
+  "private_time_windows_ms": [
+    [
+      0,
+      200
+    ],
+    [
+      200,
+      400
+    ],
+    [
+      400,
+      600
+    ]
+  ],
+  "private_primary_risk": "NLL_bits_per_trial",
+  "private_support": "existing_natural_U30_physical_block_rule_with_boundary_guards",
+  "private_query": "independent_later_blocks_natural_class_proportions",
+  "readout_states": [
+    "H0",
+    "E0",
+    "HP",
+    "EC",
+    "ET"
+  ],
+  "default_personal_ridge": {
+    "history": 1.0,
+    "scale": 1.0,
+    "time": 1.0
+  },
+  "main_estimands": {
+    "G0": "R(H0)-R(E0)",
+    "DT": "R(EC)-R(ET)"
+  },
+  "secondary_estimands": {
+    "GC": "R(HP)-R(EC)",
+    "GT": "R(HP)-R(ET)",
+    "J": "GT-G0",
+    "GH": "R(H0)-R(HP)"
+  },
+  "expected_counts": {
+    "unique_fau_source_training": 12,
+    "fau_group_evaluation_cells": 60,
+    "fau_pooled_frozen_bundles": 20,
+    "dtu_frozen_bundles": 20,
+    "private_frozen_bundles": 10,
+    "core_evaluation_bundles": 110,
+    "optional_S_bundles": 5
+  },
+  "expected_people": {
+    "fau": {
+      "ci": 24,
+      "ha": 29,
+      "th": 14
+    },
+    "dtu_total": 44,
+    "private": {
+      "HA": 55,
+      "NH": 9
+    }
+  },
+  "checkpoint_selection": "source_only_fixed_ES_candidate_pool_actual_native_query_NLL",
+  "parent_recipes": {
+    "local_L1": {
+      "epochs": 200,
+      "lr": 0.001,
+      "weight_decay": 0.0001
+    },
+    "CBpre_true_full": {
+      "epochs": 100,
+      "lr_backbone": 0.0003,
+      "lr_head": 0.001,
+      "recipe": "full_onestep_v1"
+    }
+  },
+  "new_source_forbidden_inputs": [
+    "heldout_group_EEG",
+    "heldout_group_TH_dev",
+    "source_test_content_for_fit_or_selection",
+    "target_query_labels",
+    "FAU_pooled_finetuned_initialization",
+    "project_auditory_donor_seen_FAU_target_group"
+  ],
+  "bootstrap": {
+    "B": 4000,
+    "unit": "person",
+    "seed": 361020,
+    "reference_method": "fixed_original_SE_max_abs_centered_bootstrap_z",
+    "group_resampling": "independent_within_groups_paired_across_contrasts"
+  },
+  "new_training_round3": false,
+  "closed_new_searches": [
+    "episode_pressure_or_steps",
+    "C10_H10",
+    "donor_checkpoint_grid",
+    "50pct_selector_panel",
+    "4x_or_8x_budget",
+    "expanded_people_fraction_grid",
+    "ensemble_grid",
+    "architecture_loss_window_cartesian_grid"
+  ],
+  "public_anchor_seconds": [
+    0.8,
+    1.2,
+    1.6,
+    2.0,
+    2.4,
+    2.8,
+    3.2,
+    3.6
+  ],
+  "public_fit_loss_mass": "one_equal_weight_per_fixed_anchor; exactly_8_unique_anchors_per_legal_5s_segment",
+  "private_fit_loss_mass": "one_equal_weight_per_natural_trial",
+  "statistical_families": [
+    {
+      "id": "F_FAU_GROUP_SHARED_TIME",
+      "members": 12,
+      "definition": "2 tools x 3 target groups x [G0,DT]"
+    },
+    {
+      "id": "F_FAU_MECHANISM",
+      "members": 24,
+      "definition": "2 tools x 3 target groups x [GC,GT,J,GH]"
+    },
+    {
+      "id": "F_DTU_SHARED_TIME",
+      "members": 4,
+      "definition": "2 tools x [G0,DT]"
+    },
+    {
+      "id": "F_DTU_MECHANISM",
+      "members": 8,
+      "definition": "2 tools x [GC,GT,J,GH]"
+    },
+    {
+      "id": "F_PRIVATE_SHARED_TIME",
+      "members": 6,
+      "definition": "2 arms x [G0,DT] plus matched AP-minus-APwrong for G0 and DT"
+    },
+    {
+      "id": "F_PRIVATE_MECHANISM",
+      "members": 8,
+      "definition": "2 arms x [GC,GT,J,GH]"
+    },
+    {
+      "id": "F_PRIVATE_CURRENT_CORRESPONDENCE",
+      "members": 4,
+      "definition": "2 arms x [R(twin_E0)-R(real_E0),R(twin_ET)-R(real_ET)]"
+    },
+    {
+      "id": "F_FAU_ALIGNMENT",
+      "members": 6,
+      "definition": "2 tools x 3 target groups x [R(M0)-R(E0)]"
+    },
+    {
+      "id": "F_DTU_ALIGNMENT",
+      "members": 2,
+      "definition": "2 tools x [R(M0)-R(E0)]"
+    }
+  ],
+  "public_alignment_control": {
+    "name": "M0",
+    "mapping": "within_target_person_Q_rotate_whole_ordered_5s_segments_by_one; keep_8_anchor_positions_and_all_5_window_scores_together",
+    "fit": "none; fixed_E0_readout",
+    "history_and_targets": "retain_original_rows",
+    "estimand": "R(M0)-R(E0)",
+    "interpretation": "alignment_sensitivity_not_conditional_randomization",
+    "minimum_query_segments": 2
+  },
+  "source_head_crossfit": {
+    "folds": 3,
+    "unit": "source_person",
+    "coordinates": "shared_audio_target_units_then_fixed_OOF_score_scaler",
+    "combiner_fit": "corresponding_OOF_history_offset_and_OOF_scorebank",
+    "final_predictor": "full_legal_source_refit_with_frozen_OOF_score_scaler_and_a0",
+    "public_history_personal_columns": [
+      "constant",
+      "source_scaled_env_lag20",
+      "source_scaled_env_lag100",
+      "source_scaled_env_lag200",
+      "source_scaled_env_lag500"
+    ]
+  },
+  "private_strict_twin_control": {
+    "source": "shared_frozen_real_source_H0_probes_scaler_a0_time_basis; no_twin_source_refit",
+    "partners": "same_child_same_history_other_block_nonself; support_within_support_and_query_within_query; no_current_y_selection",
+    "scores": "all_K3_windows_from_one_partner; project_swapped_scores_with_current_history",
+    "E0": "fixed_parameters_same_eligible_query_intersection",
+    "personal": "real_control_and_twin_control_each_fit_HP_EC_ET_on_identical_twin_eligible_support_rows_then_same_query_intersection",
+    "natural_primary": "full_natural_real_support_and_query_reported_separately",
+    "interpretation": "correspondence_sensitivity_in_both_support_and_query_not_pure_timing_or_query_only_effect",
+    "missing": "explicit_not_estimable_no_support_partner_or_no_query_partner; no_fallback_or_zero_imputation"
+  }
+}

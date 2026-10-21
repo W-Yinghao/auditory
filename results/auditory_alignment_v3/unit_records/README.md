@@ -122,3 +122,30 @@ A record can bundle several evaluations; records, releases, seeds and reused res
 - `breadth_inner_v1`: 24
 - `data_inner_v1`: 195
 - `learning_budget_v2`: 14
+
+## Lane supplement — publish_035
+
+The 1 independently readable `lanes_035_*.tar.gz` parts contain 398 completed non-probe records frozen at 2026-10-21T11:53:17.929248+02:00; `LANES_MANIFEST_035.tsv` maps every member to its part and SHA256. Members are byte-identical to the server records, except that in publish_035 members the private checkpoint-storage root is replaced by the established placeholder `<private checkpoint storage>` (as in published plans; per-member source/published SHA256 in `results/auditory_alignment_v3/publication_035/LANE_MEMBER_DERIVATIONS.json`).
+
+- Members without a prefix are ALN3.4 lane records; members under `aln35/`, `aln36/` and `aln41/` are ALN3.5, ALN3.6 and ALN4.1 lane records (R2 lanes in progress) that were **not** already published byte-identically in the publish_030-034 lane snapshots (new completions or changed records; member name and SHA256 compared). The complete lane set at this snapshot is the earlier parts plus these members; where a member name occurs in several releases, the latest release is the current record. Server-only support/query geometry bindings are not included; plans publish their hash.
+
+A record can bundle several evaluations; records, releases, seeds and reused results never increase independent participant n.
+
+- `aln36/fau_group_v1`: 12
+- `aln36/private_features_v1`: 10
+- `aln36/private_readout_v1`: 15
+- `aln36/public_features_v1`: 52
+- `aln36/public_readout_v1`: 52
+- `aln36/r2_s3407/apwrong_v1`: 1
+- `aln36/r2_s3407/fau_group_v1`: 12
+- `aln36/r2_s3407/public_features_v1`: 51
+- `aln41/frozen_v1`: 25
+- `aln41/private_ft_v1`: 15
+- `aln41/r2/seed3407/private_ft_v1`: 2
+- `aln41/r2/seed3407/source_v1`: 2
+- `aln41/readout_v1`: 25
+- `aln41/source_v1`: 10
+- `breadth_budget_v1`: 9
+- `breadth_inner_v1`: 56
+- `data_inner_v1`: 10
+- `learning_budget_v2`: 39

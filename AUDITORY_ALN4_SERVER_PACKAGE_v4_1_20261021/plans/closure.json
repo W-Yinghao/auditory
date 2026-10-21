@@ -1,0 +1,41 @@
+{
+  "schema": "auditory_aln41_closure_v1",
+  "rounds_total": 3,
+  "R1": "plans/round1.json",
+  "R2": {
+    "seeds": [
+      3407,
+      3413
+    ],
+    "source_production_fits": 8,
+    "private_core_full_ft_fits": 30,
+    "repeat_original_arms_even_if_weak": true,
+    "retune_on_R1_test": false,
+    "support": [
+      "U0",
+      "U10",
+      "U30"
+    ],
+    "support_comparators": [
+      "temporal_delta",
+      "probability_calibration"
+    ],
+    "cross_stimulus_questions_max": 1
+  },
+  "R3": {
+    "external_slots": 1,
+    "external_preference": "complete faithful MindMix common auditory task",
+    "external_readiness_fallback": "Transformer-CLIP",
+    "external_extra_source_fits_cap": 3,
+    "external_private_fits_cap": 15,
+    "conditional_on_input_compatibility": true
+  },
+  "one_optional_ablation_slot_shared_R2_R3": {
+    "max_branches": 1,
+    "source_fits_cap": 3,
+    "private_ft_fits_cap": 15,
+    "not_default": true,
+    "new_result_seen_before_registration": false
+  },
+  "no_R4_sweep": true
+}

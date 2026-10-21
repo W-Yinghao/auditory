@@ -1,0 +1,89 @@
+{
+  "status": "pass",
+  "scope": "NumPy mathematical reference only; not production/GPU/gradient-through-EEG validation",
+  "seed": 20261021,
+  "n_checks": 16,
+  "checks": [
+    {
+      "check": "expanded_counting_measure_KDE_equals_q_squared_formula",
+      "status": "pass",
+      "max_abs_error": 2.6645352591003757e-15
+    },
+    {
+      "check": "expanded_KDE_with_zero_slot_probability",
+      "status": "pass",
+      "max_abs_error": 3.552713678800501e-15
+    },
+    {
+      "check": "single_slot_reduces_to_ordinary_CS",
+      "status": "pass",
+      "max_abs_error": 8.881784197001252e-16
+    },
+    {
+      "check": "identical_slots_reduce_to_ordinary_CS_for_nonuniform_q",
+      "status": "pass",
+      "max_abs_error": 8.881784197001252e-16
+    },
+    {
+      "check": "constant_EEG_within_each_slot_is_independent_of_audio",
+      "status": "pass",
+      "max_abs_error": 1.7763568394002505e-15
+    },
+    {
+      "check": "constant_audio_is_independent_of_time_tagged_EEG",
+      "status": "pass",
+      "max_abs_error": 1.7763568394002505e-15
+    },
+    {
+      "check": "simultaneous_anchor_permutation_invariance",
+      "status": "pass",
+      "max_abs_error": 0.0
+    },
+    {
+      "check": "slot_relabeling_with_q_relabeling",
+      "status": "pass",
+      "max_abs_error": 0.0
+    },
+    {
+      "check": "audio_marginal_stays_uniform_under_nonuniform_q",
+      "status": "pass",
+      "max_abs_error": 0.0
+    },
+    {
+      "check": "analytic_gate_logit_gradient_matches_finite_difference",
+      "status": "pass",
+      "max_abs_error": 6.002509600477879e-10
+    },
+    {
+      "check": "gate_gradient_null_direction",
+      "status": "pass",
+      "max_abs_error": 6.938893903907228e-16
+    },
+    {
+      "check": "uniform_prior_KL_gradient",
+      "status": "pass",
+      "max_abs_error": 3.282391025649645e-11
+    },
+    {
+      "check": "query_changes_cannot_change_support_only_delta",
+      "status": "pass",
+      "max_abs_error": 0.0
+    },
+    {
+      "check": "delta_has_zero_mean",
+      "status": "pass",
+      "max_abs_error": 1.3552527156068805e-19
+    },
+    {
+      "check": "slot_specific_sigma_rejected",
+      "status": "pass"
+    },
+    {
+      "check": "constructed_dependency_exceeds_wrong_pairing",
+      "status": "pass",
+      "true_score_nats": 0.3135635402257204,
+      "wrong_score_nats": 0.015082516032781434
+    }
+  ],
+  "warning": "CS scores are not Shannon mutual information or neural latency; q_squared pooling is density-scale sensitive."
+}

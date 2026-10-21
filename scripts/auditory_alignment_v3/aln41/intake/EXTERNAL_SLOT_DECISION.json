@@ -1,0 +1,26 @@
+{
+ "version": "ALN41_EXTERNAL_SLOT_DECISION_v1",
+ "decided": "2026-10-21T02:21:24.768547+02:00",
+ "decided_before_new_target_results": true,
+ "slot_identity": "R3 external method: complete MindMix (official repo 98445f36, Stage2 fusion checkpoint pretrain_fusion_checkpoints/best_model_loss_0.0909.pth + official universal_eeg_finetune.py CALRA downstream) on DTU auditory attention decoding",
+ "why_this_task": "DTU AAD is an official MindMix downstream task (README) and a common public auditory task in this project (DTU competing-talker segments, attended/ignored streams)",
+ "faithfulness_contract": [
+  "official code at the pinned commit; only data adapters written by us",
+  "our participant-held-out DTU split and our 20 s window metric reported beside the authors' own trial protocol",
+  "audio visibility at test recorded (CALRA uses audio): reported as a candidate-visible setting, not an EEG-only result",
+  "their pretraining data overlap with DTU checked and disclosed"
+ ],
+ "readiness_gates": [
+  "fusion asset downloaded, full-file SHA256 equal to its LFS oid",
+  "EEG and audio fusion weights load with zero missing/unexpected backbone tensors (official loader uses strict=False: we require an explicit key audit)",
+  "official DTU loader runs on our DTU export with a documented channel/sampling contract",
+  "one forward/backward on real DTU data"
+ ],
+ "failure_conditions_to_fallback": "any gate fails within one bounded engineering session (<= 4 h): fixed fallback = Transformer-CLIP (https://github.com/exporl/transformer-clip-eeg) on the same DTU task/split; the choice is never made after seeing ALN4.1 target results",
+ "budget": {
+  "source_fits_max": 3,
+  "target_fits_max": "5 folds x 3 seeds",
+  "not_default_filled": true
+ },
+ "status": "registered_not_run (R3)"
+}

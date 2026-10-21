@@ -1,0 +1,981 @@
+{
+  "schema": "auditory_aln41_logical_units_v1",
+  "not_scheduler_submission": true,
+  "logical_units_count": 72,
+  "logical_kind_counts": {
+    "age_raw_ridge_and_trainmean": 1,
+    "engineering_readiness": 1,
+    "fixed_source_panels_and_sigmas": 1,
+    "frozen_age_nested_ridge": 3,
+    "frozen_attention_bundle": 6,
+    "frozen_cache_bundle": 15,
+    "frozen_content_time_history_bundle": 15,
+    "intake": 1,
+    "paired_scientific_summary": 1,
+    "private_full_finetune": 15,
+    "server_implementation": 1,
+    "source_only_selection": 1,
+    "source_production": 4,
+    "source_short_calibration": 6,
+    "stage1_asset_readiness": 1
+  },
+  "cpu_fit_expansion_not_finished_until_binding": true,
+  "units": [
+    {
+      "id": "ALN41_INTAKE",
+      "kind": "intake",
+      "depends_on": [],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "expanded_fits": 0
+    },
+    {
+      "id": "ALN41_ASSET",
+      "kind": "stage1_asset_readiness",
+      "depends_on": [
+        "ALN41_INTAKE"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "expanded_fits": 0
+    },
+    {
+      "id": "ALN41_IMPLEMENT",
+      "kind": "server_implementation",
+      "depends_on": [
+        "ALN41_INTAKE",
+        "ALN41_ASSET"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "expanded_fits": 0
+    },
+    {
+      "id": "ALN41_READY",
+      "kind": "engineering_readiness",
+      "depends_on": [
+        "ALN41_IMPLEMENT"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "expanded_fits": 0
+    },
+    {
+      "id": "ALN41_PANELS",
+      "kind": "fixed_source_panels_and_sigmas",
+      "depends_on": [
+        "ALN41_READY"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "expanded_fits": 0
+    },
+    {
+      "id": "ALN41_CAL_TCS_LR0_S3401",
+      "kind": "source_short_calibration",
+      "depends_on": [
+        "ALN41_PANELS"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "lr": 0.0001,
+      "updates": 1000,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_CAL_TCS_LR1_S3401",
+      "kind": "source_short_calibration",
+      "depends_on": [
+        "ALN41_PANELS"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "lr": 0.0003,
+      "updates": 1000,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_CAL_TNCE_LR0_S3401",
+      "kind": "source_short_calibration",
+      "depends_on": [
+        "ALN41_PANELS"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "lr": 0.0001,
+      "updates": 1000,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_CAL_TNCE_LR1_S3401",
+      "kind": "source_short_calibration",
+      "depends_on": [
+        "ALN41_PANELS"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "lr": 0.0003,
+      "updates": 1000,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_CAL_GCS_LR0_S3401",
+      "kind": "source_short_calibration",
+      "depends_on": [
+        "ALN41_PANELS"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "GCS",
+      "lr": 0.0001,
+      "updates": 1000,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_CAL_GCS_LR1_S3401",
+      "kind": "source_short_calibration",
+      "depends_on": [
+        "ALN41_PANELS"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "GCS",
+      "lr": 0.0003,
+      "updates": 1000,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_LR_FREEZE",
+      "kind": "source_only_selection",
+      "depends_on": [
+        "ALN41_CAL_TCS_LR0_S3401",
+        "ALN41_CAL_TCS_LR1_S3401",
+        "ALN41_CAL_TNCE_LR0_S3401",
+        "ALN41_CAL_TNCE_LR1_S3401",
+        "ALN41_CAL_GCS_LR0_S3401",
+        "ALN41_CAL_GCS_LR1_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "expanded_fits": 0
+    },
+    {
+      "id": "ALN41_SOURCE_TCS_S3401",
+      "kind": "source_production",
+      "depends_on": [
+        "ALN41_LR_FREEZE"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "updates": 10000,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_SOURCE_TNCE_S3401",
+      "kind": "source_production",
+      "depends_on": [
+        "ALN41_LR_FREEZE"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "updates": 10000,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_SOURCE_GCS_S3401",
+      "kind": "source_production",
+      "depends_on": [
+        "ALN41_LR_FREEZE"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "GCS",
+      "updates": 10000,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_SOURCE_TCS_WRONG_S3401",
+      "kind": "source_production",
+      "depends_on": [
+        "ALN41_LR_FREEZE"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS_WRONG",
+      "updates": 10000,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_CACHE_B0_DTU_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_READY"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "B0",
+      "dataset": "DTU",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_B0_DTU_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_B0_DTU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "B0",
+      "dataset": "DTU",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_CACHE_B0_FAU_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_READY"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "B0",
+      "dataset": "FAU",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_B0_FAU_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_B0_FAU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "B0",
+      "dataset": "FAU",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_CACHE_B0_PRIVATE_BDF_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_READY"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "B0",
+      "dataset": "PRIVATE_BDF",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_B0_PRIVATE_BDF_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_B0_PRIVATE_BDF_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "B0",
+      "dataset": "PRIVATE_BDF",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_CACHE_TCS_DTU_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_SOURCE_TCS_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "dataset": "DTU",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_TCS_DTU_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_TCS_DTU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "dataset": "DTU",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_CACHE_TCS_FAU_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_SOURCE_TCS_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "dataset": "FAU",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_TCS_FAU_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_TCS_FAU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "dataset": "FAU",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_CACHE_TCS_PRIVATE_BDF_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_SOURCE_TCS_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "dataset": "PRIVATE_BDF",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_TCS_PRIVATE_BDF_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_TCS_PRIVATE_BDF_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "dataset": "PRIVATE_BDF",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_CACHE_TNCE_DTU_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_SOURCE_TNCE_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "dataset": "DTU",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_TNCE_DTU_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_TNCE_DTU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "dataset": "DTU",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_CACHE_TNCE_FAU_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_SOURCE_TNCE_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "dataset": "FAU",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_TNCE_FAU_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_TNCE_FAU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "dataset": "FAU",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_CACHE_TNCE_PRIVATE_BDF_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_SOURCE_TNCE_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "dataset": "PRIVATE_BDF",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_TNCE_PRIVATE_BDF_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_TNCE_PRIVATE_BDF_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "dataset": "PRIVATE_BDF",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_CACHE_GCS_DTU_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_SOURCE_GCS_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "GCS",
+      "dataset": "DTU",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_GCS_DTU_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_GCS_DTU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "GCS",
+      "dataset": "DTU",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_CACHE_GCS_FAU_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_SOURCE_GCS_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "GCS",
+      "dataset": "FAU",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_GCS_FAU_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_GCS_FAU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "GCS",
+      "dataset": "FAU",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_CACHE_GCS_PRIVATE_BDF_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_SOURCE_GCS_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "GCS",
+      "dataset": "PRIVATE_BDF",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_GCS_PRIVATE_BDF_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_GCS_PRIVATE_BDF_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "GCS",
+      "dataset": "PRIVATE_BDF",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_CACHE_TCS_WRONG_DTU_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_SOURCE_TCS_WRONG_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS_WRONG",
+      "dataset": "DTU",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_TCS_WRONG_DTU_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_TCS_WRONG_DTU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS_WRONG",
+      "dataset": "DTU",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_CACHE_TCS_WRONG_FAU_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_SOURCE_TCS_WRONG_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS_WRONG",
+      "dataset": "FAU",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_TCS_WRONG_FAU_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_TCS_WRONG_FAU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS_WRONG",
+      "dataset": "FAU",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_CACHE_TCS_WRONG_PRIVATE_BDF_S3401",
+      "kind": "frozen_cache_bundle",
+      "depends_on": [
+        "ALN41_SOURCE_TCS_WRONG_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS_WRONG",
+      "dataset": "PRIVATE_BDF",
+      "expanded_fits": 0,
+      "actual_cache_units": "bind target folds and row identities before execution"
+    },
+    {
+      "id": "ALN41_PROBE_TCS_WRONG_PRIVATE_BDF_S3401",
+      "kind": "frozen_content_time_history_bundle",
+      "depends_on": [
+        "ALN41_CACHE_TCS_WRONG_PRIVATE_BDF_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS_WRONG",
+      "dataset": "PRIVATE_BDF",
+      "expanded_fits": null,
+      "expansion_required": "public fold spec / private five folds and registered common heads"
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_B0_F0_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_READY"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "B0",
+      "fold": 0,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_B0_F1_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_READY"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "B0",
+      "fold": 1,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_B0_F2_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_READY"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "B0",
+      "fold": 2,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_B0_F3_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_READY"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "B0",
+      "fold": 3,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_B0_F4_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_READY"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "B0",
+      "fold": 4,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_AGE_B0_S3401",
+      "kind": "frozen_age_nested_ridge",
+      "depends_on": [
+        "ALN41_CACHE_B0_PRIVATE_BDF_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "B0",
+      "expanded_fits": 105,
+      "counts_condition": "5 valid outer folds, each with 4 valid inner folds and 5 alphas"
+    },
+    {
+      "id": "ALN41_ATTENTION_B0_DTU_S3401",
+      "kind": "frozen_attention_bundle",
+      "depends_on": [
+        "ALN41_CACHE_B0_DTU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "B0",
+      "dataset": "DTU",
+      "main_window_seconds": 20,
+      "expanded_fits": null,
+      "expansion_required": "bound common target readout folds"
+    },
+    {
+      "id": "ALN41_ATTENTION_B0_FAU_S3401",
+      "kind": "frozen_attention_bundle",
+      "depends_on": [
+        "ALN41_CACHE_B0_FAU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "B0",
+      "dataset": "FAU",
+      "main_window_seconds": 20,
+      "expanded_fits": null,
+      "expansion_required": "bound common target readout folds"
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_TCS_F0_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_SOURCE_TCS_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "fold": 0,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_TCS_F1_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_SOURCE_TCS_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "fold": 1,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_TCS_F2_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_SOURCE_TCS_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "fold": 2,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_TCS_F3_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_SOURCE_TCS_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "fold": 3,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_TCS_F4_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_SOURCE_TCS_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "fold": 4,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_AGE_TCS_S3401",
+      "kind": "frozen_age_nested_ridge",
+      "depends_on": [
+        "ALN41_CACHE_TCS_PRIVATE_BDF_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "expanded_fits": 105,
+      "counts_condition": "5 valid outer folds, each with 4 valid inner folds and 5 alphas"
+    },
+    {
+      "id": "ALN41_ATTENTION_TCS_DTU_S3401",
+      "kind": "frozen_attention_bundle",
+      "depends_on": [
+        "ALN41_CACHE_TCS_DTU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "dataset": "DTU",
+      "main_window_seconds": 20,
+      "expanded_fits": null,
+      "expansion_required": "bound common target readout folds"
+    },
+    {
+      "id": "ALN41_ATTENTION_TCS_FAU_S3401",
+      "kind": "frozen_attention_bundle",
+      "depends_on": [
+        "ALN41_CACHE_TCS_FAU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TCS",
+      "dataset": "FAU",
+      "main_window_seconds": 20,
+      "expanded_fits": null,
+      "expansion_required": "bound common target readout folds"
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_TNCE_F0_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_SOURCE_TNCE_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "fold": 0,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_TNCE_F1_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_SOURCE_TNCE_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "fold": 1,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_TNCE_F2_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_SOURCE_TNCE_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "fold": 2,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_TNCE_F3_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_SOURCE_TNCE_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "fold": 3,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_PRIVATE_CE_TNCE_F4_S3401",
+      "kind": "private_full_finetune",
+      "depends_on": [
+        "ALN41_SOURCE_TNCE_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "fold": 4,
+      "epochs": 100,
+      "expanded_fits": 1
+    },
+    {
+      "id": "ALN41_AGE_TNCE_S3401",
+      "kind": "frozen_age_nested_ridge",
+      "depends_on": [
+        "ALN41_CACHE_TNCE_PRIVATE_BDF_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "expanded_fits": 105,
+      "counts_condition": "5 valid outer folds, each with 4 valid inner folds and 5 alphas"
+    },
+    {
+      "id": "ALN41_ATTENTION_TNCE_DTU_S3401",
+      "kind": "frozen_attention_bundle",
+      "depends_on": [
+        "ALN41_CACHE_TNCE_DTU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "dataset": "DTU",
+      "main_window_seconds": 20,
+      "expanded_fits": null,
+      "expansion_required": "bound common target readout folds"
+    },
+    {
+      "id": "ALN41_ATTENTION_TNCE_FAU_S3401",
+      "kind": "frozen_attention_bundle",
+      "depends_on": [
+        "ALN41_CACHE_TNCE_FAU_S3401"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "arm": "TNCE",
+      "dataset": "FAU",
+      "main_window_seconds": 20,
+      "expanded_fits": null,
+      "expansion_required": "bound common target readout folds"
+    },
+    {
+      "id": "ALN41_AGE_BASELINES",
+      "kind": "age_raw_ridge_and_trainmean",
+      "depends_on": [
+        "ALN41_READY"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "expanded_fits": 110,
+      "counts_condition": "105 raw ridge fits plus 5 trainmean fits with full valid roster"
+    },
+    {
+      "id": "ALN41_SUMMARY",
+      "kind": "paired_scientific_summary",
+      "depends_on": [
+        "ALN41_PROBE_B0_DTU_S3401",
+        "ALN41_PROBE_B0_FAU_S3401",
+        "ALN41_PROBE_B0_PRIVATE_BDF_S3401",
+        "ALN41_PROBE_TCS_DTU_S3401",
+        "ALN41_PROBE_TCS_FAU_S3401",
+        "ALN41_PROBE_TCS_PRIVATE_BDF_S3401",
+        "ALN41_PROBE_TNCE_DTU_S3401",
+        "ALN41_PROBE_TNCE_FAU_S3401",
+        "ALN41_PROBE_TNCE_PRIVATE_BDF_S3401",
+        "ALN41_PROBE_GCS_DTU_S3401",
+        "ALN41_PROBE_GCS_FAU_S3401",
+        "ALN41_PROBE_GCS_PRIVATE_BDF_S3401",
+        "ALN41_PROBE_TCS_WRONG_DTU_S3401",
+        "ALN41_PROBE_TCS_WRONG_FAU_S3401",
+        "ALN41_PROBE_TCS_WRONG_PRIVATE_BDF_S3401",
+        "ALN41_PRIVATE_CE_B0_F0_S3401",
+        "ALN41_PRIVATE_CE_B0_F1_S3401",
+        "ALN41_PRIVATE_CE_B0_F2_S3401",
+        "ALN41_PRIVATE_CE_B0_F3_S3401",
+        "ALN41_PRIVATE_CE_B0_F4_S3401",
+        "ALN41_AGE_B0_S3401",
+        "ALN41_ATTENTION_B0_DTU_S3401",
+        "ALN41_ATTENTION_B0_FAU_S3401",
+        "ALN41_PRIVATE_CE_TCS_F0_S3401",
+        "ALN41_PRIVATE_CE_TCS_F1_S3401",
+        "ALN41_PRIVATE_CE_TCS_F2_S3401",
+        "ALN41_PRIVATE_CE_TCS_F3_S3401",
+        "ALN41_PRIVATE_CE_TCS_F4_S3401",
+        "ALN41_AGE_TCS_S3401",
+        "ALN41_ATTENTION_TCS_DTU_S3401",
+        "ALN41_ATTENTION_TCS_FAU_S3401",
+        "ALN41_PRIVATE_CE_TNCE_F0_S3401",
+        "ALN41_PRIVATE_CE_TNCE_F1_S3401",
+        "ALN41_PRIVATE_CE_TNCE_F2_S3401",
+        "ALN41_PRIVATE_CE_TNCE_F3_S3401",
+        "ALN41_PRIVATE_CE_TNCE_F4_S3401",
+        "ALN41_AGE_TNCE_S3401",
+        "ALN41_ATTENTION_TNCE_DTU_S3401",
+        "ALN41_ATTENTION_TNCE_FAU_S3401",
+        "ALN41_AGE_BASELINES"
+      ],
+      "status": "NOT_RUN",
+      "seed": 3401,
+      "expanded_fits": 0
+    }
+  ],
+  "plan_sha256": "854bfd38ffa48e6ee180c4295e693fa79c3a2a5e75d1a17cfc0f0d8cb05f11ee"
+}

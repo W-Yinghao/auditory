@@ -1,0 +1,272 @@
+{
+  "schema": "auditory_aln41_plan_v1",
+  "version": "4.1",
+  "baseline_repo_head": "3da8cf5758214c0cf87a1f1c8d67fb84b574000e",
+  "stage": "R1",
+  "seed": 3401,
+  "arms": [
+    "B0",
+    "TCS",
+    "TNCE",
+    "GCS",
+    "TCS_WRONG"
+  ],
+  "core_arms": [
+    "B0",
+    "TCS",
+    "TNCE"
+  ],
+  "stage1": {
+    "one_shared_init": true,
+    "preference": "verified MindMix-released EEG-only",
+    "readiness_fallback": "verified CBraMod",
+    "selection_uses_target_outcomes": false,
+    "restore_engineering_hours_cap": 4
+  },
+  "time": {
+    "native_first": true,
+    "resample_hz": 200,
+    "pad_to": 200,
+    "windows_ms": [
+      [
+        -200,
+        200
+      ],
+      [
+        0,
+        400
+      ],
+      [
+        200,
+        600
+      ]
+    ],
+    "source_native_hz": 64,
+    "source_offsets": [
+      [
+        -12,
+        13
+      ],
+      [
+        0,
+        26
+      ],
+      [
+        13,
+        39
+      ]
+    ],
+    "source_valid_n": [
+      78,
+      81,
+      81
+    ],
+    "private_native_hz": 250,
+    "private_offsets": [
+      [
+        0,
+        100
+      ],
+      [
+        50,
+        150
+      ],
+      [
+        100,
+        200
+      ]
+    ],
+    "private_valid_n": [
+      80,
+      80,
+      80
+    ],
+    "source_anchor_offset_inclusive": [
+      26,
+      281
+    ],
+    "source_actual_tick_count": 200,
+    "source_actual_last_tick": 280,
+    "source_cache_only_upper_offset": 318,
+    "public_native_hz": 128,
+    "public_offsets": [
+      [
+        -25,
+        26
+      ],
+      [
+        0,
+        52
+      ],
+      [
+        26,
+        77
+      ]
+    ],
+    "public_valid_n": [
+      80,
+      81,
+      80
+    ],
+    "resampling_owner": "new_crop_wrapper_scipy_resample_then_pad",
+    "backbone_fs_native_after_wrapper": 200,
+    "amplitude_scaling_owner": "backbone_asset_adapter_once",
+    "channels_verified": [
+      20,
+      31,
+      64
+    ]
+  },
+  "source": {
+    "views": [
+      "env",
+      "ss",
+      "sc"
+    ],
+    "view_weights": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "people_per_update": 2,
+    "support_per_person": 32,
+    "query_per_person": 32,
+    "families_per_person": 3,
+    "family_counts_per_split": [
+      11,
+      11,
+      10
+    ],
+    "one_anchor_per_segment": true,
+    "disjoint_physical_access_with_guard": true,
+    "inner_steps": 5,
+    "inner_lr": 0.1,
+    "inner_delta_l2": 0.1,
+    "outer_uniform_prior_kl": 0.01,
+    "first_order": true,
+    "calibration_arms": [
+      "TCS",
+      "TNCE",
+      "GCS"
+    ],
+    "calibration_lrs": [
+      0.0001,
+      0.0003
+    ],
+    "calibration_steps": 1000,
+    "production_arms": [
+      "TCS",
+      "TNCE",
+      "GCS",
+      "TCS_WRONG"
+    ],
+    "production_steps": 10000,
+    "optimizer": "AdamW",
+    "weight_decay": 0.0001,
+    "cosine": true,
+    "grad_clip": 5,
+    "temperature": 0.1,
+    "source_panel_n_fit": 512,
+    "source_panel_n_dev": 512,
+    "panel_seed": 3420,
+    "fixed_final_transfer_step": 10000,
+    "sigma_same_across_slots_within_view": true,
+    "wrong_inherits": "TCS",
+    "gcs_adaptation": "same_SQ_FO_delta_as_TCS",
+    "gcs_sigma": "separate_initial_uniform_pooled_eeg_sigma"
+  },
+  "downstream": {
+    "frozen_arms": [
+      "B0",
+      "TCS",
+      "TNCE",
+      "GCS",
+      "TCS_WRONG"
+    ],
+    "datasets": [
+      "DTU",
+      "FAU",
+      "PRIVATE_BDF"
+    ],
+    "private_ft_arms": [
+      "B0",
+      "TCS",
+      "TNCE"
+    ],
+    "private_outer_folds": 5,
+    "private_epochs": 100,
+    "private_batch": 64,
+    "private_lr": 0.0001,
+    "private_early_selection": "minimum_equal_child_ES_true_NLL_including_epoch0",
+    "private_ft_support_test_people": false,
+    "frozen_shared_pca_dim": 64,
+    "frozen_pca_max_rows": 8192,
+    "frozen_pca_seed": 3437,
+    "time_primary_contrast": "W0_to_W2_fixed_loss_and_target_readout_refit",
+    "age_arms": [
+      "B0",
+      "TCS",
+      "TNCE"
+    ],
+    "age_baselines": [
+      "raw_eeg_logvar_ridge",
+      "outer_train_mean"
+    ],
+    "age_inner_folds": 4,
+    "age_alphas": [
+      0.01,
+      0.1,
+      1,
+      10,
+      100
+    ],
+    "age_inner_seed": 3431,
+    "attention_arms": [
+      "B0",
+      "TCS",
+      "TNCE"
+    ],
+    "attention_main_seconds": 20,
+    "attention_descriptive_seconds": [
+      5,
+      10
+    ],
+    "cross_stimulus_R1": "asset_and_legacy_result_intake_only",
+    "personal_support_R2": {
+      "base": "private_CE_checkpoint_selected_on_training_children_ES",
+      "delta_steps": 5,
+      "delta_lr": 0.1,
+      "delta_l2": 0.1,
+      "u10_seeds": [
+        351410,
+        351411,
+        351412,
+        351413,
+        351414
+      ],
+      "u10_count": "min(floor(.1*N_available_trials),N_guarded_pool)",
+      "u30_pool": "earliest ceil(.3*N_blocks) after boundary/guard",
+      "comparator": "two_parameter_positive_affine_logit_5steps_lr.1_l2.1",
+      "primary": "query_NLL",
+      "secondary": [
+        "Brier",
+        "AUC"
+      ]
+    }
+  },
+  "counts": {
+    "short_source_fits": 6,
+    "production_source_fits": 4,
+    "private_full_ft_fits": 15,
+    "age_cpu_ridge_fits_if_full_five_fold_roster": 420,
+    "age_trainmean_fits": 5,
+    "public_fold_and_probe_fit_counts": "materialize_after_binding_not_equivalent_to_logical_bundle_count"
+  },
+  "limits": {
+    "running_plus_pending_project_gpu_cap": 10,
+    "automatic_submission": false,
+    "automatic_deletion": false,
+    "automatic_push": false,
+    "no_performance_entry_gate": true
+  }
+}
