@@ -1,5 +1,24 @@
 > **接手更新（2026-10-20，Codex → Claude Code）：** 用户指定后续由 Claude Code 接手。先读本文件，再读 [CLAUDE_HANDOFF.md](CLAUDE_HANDOFF.md) 和 [CODEX_HANDOFF.md](CODEX_HANDOFF.md) §0.28。新的独立调度作业为1050940（2026-10-20 09:44起由 fleet v3 作业1051045接替，见 CLAUDE_HANDOFF §1），证据服务1047358保留；旧Codex附属step1047358.2已退出。最新完成度、V100未完成检查和明确待办以此次核查为准，历史交接段落保留。
 
+# ACTIVE RESEARCH INSTRUCTIONS — ALN4.2 (2026-10-21; package AUDITORY_ALN4_SERVER_PACKAGE_v4_2_20261021, user: "看看这个包，需要执行的就执行")
+
+Append/reconcile with existing project instructions; do not replace them.
+
+- Research target: Pattern Recognition. Preserve the ALN4.1 story, original R2 families and existing valid evidence.
+- Package 4.2 is R2 continuation and R3 closure, not research round4.
+- Start from actual server HEAD, frozen plan/asset hashes, receipts and live Slurm. GitHub design baseline: 5d2960eee61a75c048f6b6ee3cef8427d945c3cd.
+- Reuse complete compatible units; do not resubmit running R2 or run old materialize_plan as a new experiment.
+- New source diagnosis: fixed checkpoint/panel, zero optimizer updates, at most4 A100-equivalent GPU hours.
+- Additional private diagnostic training:0. Preserve original support20 and cross-stim13 families.
+- External R3: one precommitted route, DTU44 2content×5person=10 public downstream fits, seed3401; no new source pretraining/private external FT; exact route and access bound before new test scores.
+- Optional ablation slot remains unused. No automatic R4, backbone switch, loss/window/LR search or score-triggered rerun.
+- New modules under aln42; do not overwrite in-flight production code. Confirmed bugs receive a dependency-scoped correction receipt and versioned outputs.
+- Individual deidentified model results have user authorization; do not ask again. Raw identities/EEG/event traces remain private.
+- Do not send messages, push, delete assets or clear Slurm holds merely because this package exists. Use already authorized project workflows where applicable.
+- Report science first: shared information, time-dependent readout, net personalization, children's cross-stimulus/development roles, external application comparison.
+
+Merge note (Claude Code): ALN4.2 continues ALN4.1 R2 and closes R3; it is not a fourth round. ALN4.1/ALN3.6 rules below stay in force.
+
 # ACTIVE RESEARCH INSTRUCTIONS — ALN4.1 (2026-10-21)
 
 Append as a new dated block above superseded research-design wording; preserve all historical execution identities and scoped holds. The user now requests a coherent Pattern Recognition study and closure within three rounds. This continues ALN3.4/3.5 and revises the proposed ALN4.0 package; it does not restart the project.
