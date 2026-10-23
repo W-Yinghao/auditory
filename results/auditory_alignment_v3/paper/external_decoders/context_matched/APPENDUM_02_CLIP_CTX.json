@@ -1,0 +1,66 @@
+{
+ "appendum": "APPENDUM_02_CLIP_CTX",
+ "post_hoc": true,
+ "protocol_sha256": "28d829c6c7eeba5af93c326b13b582886f0d6fd043685643cebb21ca0cda0703",
+ "scope": "engineering binding of the pre-declared clip_ctx row (PROTOCOL.json analyses.clip_ctx); no change of its definition",
+ "module": "auditory_alignment_v3/paper/ext_context_clip.py (new; the frozen protocol listed no clip_ctx module)",
+ "implementation": {
+  "encoder": "frozen stage-S EEGConformerInterleaved of the completed native CLIP row (ext_clip source unit, checkpoint sha below), loaded exactly as ext_clip.target_unit (memory bank keys excluded)",
+  "readout": "ext_clip.target_unit recipe unchanged (official RegressionModel, PearsonLoss, Adam 1e-3, batch 64, <= 250 epochs, patience 10, best state; FAU adapter Linear(31->64) with ext_vlaai.adapter_init)",
+  "input": "ext_context_vlaai.load_ctx(cache, car=(ds == dtu)) = span [13, 304) only; DTU CAR + per-listener per-channel z-score over span samples (protocol: \"DTU re-reference / z-score over span samples\"); FAU cache EEG span",
+  "windows": {
+   "length": 192,
+   "train_starts_64hz": [
+    13,
+    112
+   ],
+   "infer_starts_64hz": [
+    13,
+    62,
+    112
+   ],
+   "span_relative_train": [
+    0,
+    99
+   ],
+   "span_relative_infer": [
+    0,
+    49,
+    99
+   ]
+  },
+  "ola": "torch.hann_window(192) (periodic, as the native row), first window first half = 1, last window second half = 1, divided by the summed weights over [13, 304)",
+  "margin": "r(hat, att) - r(hat, ign) over the 291 span samples",
+  "integration": "ext_context.score_units -> ext_common.integrate_unit (5 / 10 / 20 s), ext_context.table -> TABLE2_CLIP_CTX.json"
+ },
+ "adaptations_to_current_repo": [
+  "the frozen PROTOCOL.json module_sha256 list predates this module; its sha and every reused module's sha are bound in this appendum and in the clip_ctx plan",
+  "reuses ext_context_vlaai.load_ctx (span loader) instead of duplicating it"
+ ],
+ "native_source": {
+  "unit": "PXCLP_S_5db1e6fc03294c21",
+  "checkpoint": "<private checkpoint storage>/auditory_alignment_v3/paper/external_decoders/clip/source_v1/model.ckpt",
+  "checkpoint_sha256": "7e4a0ba9d95580e3762e8659985dea497a500a7881533d04a904b8bf83b75bc0",
+  "plan_sha256": "34ab42a0550cafbffb2cd4113dae706759d08c750057656c82ce5c0ea51bd561"
+ },
+ "geometry_check": {
+  "windows_inside_span": true,
+  "ola_weights_positive_on_span": true,
+  "train_windows_cover_span": true,
+  "den_min": 1.0,
+  "den_max": 1.9509389400482178,
+  "pass": true
+ },
+ "module_sha256": {
+  "auditory_alignment_v3/paper/ext_context_clip.py": "10e32b45df40bd28d4a916c535be3a46843e6f4958935b350ee2d791ef8318c9",
+  "auditory_alignment_v3/paper/ext_context.py": "24c1390fa73a3736755b1a09a9a2adcd7c0cd48faffe8b405b6a60342b129f7a",
+  "auditory_alignment_v3/paper/ext_context_vlaai.py": "1da423de47c00a0fabbc766a1712d99364a83453af2cf2e07b2134a7282b1f9e",
+  "auditory_alignment_v3/paper/ext_clip.py": "aa5254fabd6f051d5a2ca644630f54bcb55f450dee0545c3b494ebcb91132857",
+  "auditory_alignment_v3/paper/ext_vlaai.py": "91950309731c83cbc6a1eec541c2109257a9322e2f8b1c50bc2e315900dff270",
+  "auditory_alignment_v3/paper/ext_fleet.py": "766fc3b02323352265e3a2988621187018f168c9ed355b8c708147316859187a",
+  "auditory_alignment_v3/paper/ext_common.py": "33de3374f0d0718f8d1ee6a02e39622d940504b59c319414e036aa95b1e3526b",
+  "auditory_alignment_v3/aln42/external_eval.py": "2922109a21f23a36b298ac27aaabcc1d7edc26df590cc05c6b543e935ceb6fb4"
+ },
+ "written": "2026-10-23T11:56:05.198638+02:00",
+ "job": "1058917"
+}

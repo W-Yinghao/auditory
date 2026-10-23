@@ -109,3 +109,13 @@ Not-servable reasons (also in `REGISTRY[name]['not_servable_reason']`):
 - **ALN4.1 arms are served off their training interface.** They were trained on 400 ms crops, not on the 1 s container. Report them with their flag. Their own frozen 3-crop arrays are an alternative that is not identical to this interface.
 - **ALN3.4 CB/REVE are fold models.** They were trained on target-cohort training people. Use only the fold whose held-out people and contents you evaluate, and flag the access.
 - **New-round arms are not available yet.** Until E0 selects a mode, `cs_pair@3401` etc. raise `EncoderNotReady`.
+
+## 4. Registry version 2 (`encoders_v2.py`, extension 1, 2026-10-23)
+
+- **What it adds:** four names, `raw_cs@3407`, `raw_cs@3413`, `cs_pair_wrong@3407` and `cs_pair_wrong@3413` (LoRA, step 10,000). These are the extension-1 mechanism controls, trained by `source_fleet_ext1` (DECISIONS 2026-10-23 07:30, S18, S19).
+- **Same API** as v1: `REGISTRY`, `refresh()`, `servable()`, `describe()`, `load()`. Import `from auditory_alignment_v3.dep12 import encoders_v2 as ENC`.
+- **Identical representation:** v1 (`encoders.py`, sha256 0201f975…) is imported unchanged and not edited. Every v1 name loads through `encoders.load`. The extension names use the same `CBraModEncoder` branch.
+  - Checked: U of `raw_cs@3401` is bit-identical through v1 and v2.
+  - `meta['api_version']` stays `dep12_encoders_v1`. Extension encoders also carry `meta['registry_module'] = 'encoders_v2'`.
+- **State:** the four names are `planned` until their run receipts list step 10,000, then `available`.
+- **For Agents M/P:** extraction of these names needs a versioned change on your side. Your arm lists are hard-coded, and your `sources()` pin `encoders.py`; add `encoders_v2.py` to the pins and keep `encoders.py`.

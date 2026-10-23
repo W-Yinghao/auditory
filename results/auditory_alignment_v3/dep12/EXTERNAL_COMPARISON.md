@@ -1,4 +1,4 @@
-# EXTERNAL_COMPARISON — DEP12 (v0, 2026-10-23; existing results, before the DEP12 common query)
+# EXTERNAL_COMPARISON — DEP12 (v1, 2026-10-23 10:50; §6 adds F_EXTERNAL on the DEP12 common query)
 
 **Status:**
 - Everything here is an existing result, retrospective relative to DEP12.
@@ -69,3 +69,17 @@ Complete released system, DTU/FAU × released / fine-tuned × train / test side,
   - versus local / CB / REVE wherever `dep12/encoders.py` can serve them.
 - Same-query recomputation, or full-sample plus intersection tables.
 - MindMix candidate-swap, wrong-trial, same-stimulus cross-listener and noise sensitivities on the common query, each interpreted separately.
+
+## 6. F_EXTERNAL on the DEP12 common query (v1)
+
+The DEP12 attention queries are exactly the ext_common / aln42 20 s windows (DECISIONS M8), so the systems are paired by person on the same queries. CS-pair is the person mean over seeds 3401/3407/3413; B = 10,000; simultaneous 95%. Full tables are in `F_EXTERNAL.md`.
+
+| CS-pair rule (b) minus | DTU (n44) | FAU (n67) |
+|---|---|---|
+| mTRF | −0.208 [−0.249, −0.168] | −0.112 [−0.146, −0.078] |
+| VLAAI | −0.221 [−0.267, −0.174] | −0.155 [−0.186, −0.124] |
+| Transformer-CLIP | −0.193 [−0.233, −0.154] | −0.112 [−0.144, −0.080] |
+| MindMix complete | **+0.078 [+0.041, +0.115]** | **+0.033 [+0.006, +0.061]** |
+| MindMix EEG branch (DEP12 rule b) | +0.022 [−0.015, +0.058] | +0.016 [−0.006, +0.038] |
+
+Mean 20 s accuracy, rule (b): CS-pair DTU 0.609 / FAU 0.524. With rule (a), CS-pair is 0.550 / 0.516, and the MindMix comparisons are unresolved. FAU caveat: the CS-pair readout gain over B0 vanishes after foreign-EEG debiasing (ROUND_REPORT §1, §3). Every external system used target training people's attention labels. CS-pair used no attention labels and no target parameter update; only its readout was fitted on target training people's single-talker data.

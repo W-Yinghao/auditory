@@ -24,9 +24,9 @@ import numpy as np
 
 from . import attention as AT
 from . import dependence_measure as DM
-from . import measure as M
+from . import measure_v5 as M
 from . import panels as PN
-from . import public_features as PF
+from . import public_features_v5 as PF
 
 OUT = M.RESULTS / 'selection' / 'public'
 LAMBDA = 0.1
@@ -64,7 +64,8 @@ def run(ds, tag, cands):
     for n in cands:
         dest, _ = PF.feature_dir(n, ds); assert dest is not None, n
         with np.load(dest / 'panels.npz', allow_pickle=False) as z:
-            feats[n] = {pid: z['d2'][i] for i, pid in enumerate(z['ids'].tolist())}
+            D2 = z['d2']                                  # load once (indexing z['d2'] per panel re-reads the whole array)
+            feats[n] = {pid: D2[i] for i, pid in enumerate(z['ids'].tolist())}
         cals[n] = read(M.MEAS / ds / n / 'calibration.json')['calibration']
         qt[n] = query_table(ds, n)
     bank = M.bank(defs, 'n128', range(4)); blocks = np.repeat(np.arange(4), PN.BLOCK_N)

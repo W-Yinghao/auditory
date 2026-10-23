@@ -28,9 +28,9 @@ import time
 import numpy as np
 
 from . import dependence_measure as DM
-from . import measure as M
+from . import measure_v5 as M
 from . import panels as PN
-from . import public_features as PF
+from . import public_features_v5 as PF
 
 PRED = M.RESULTS / 'predictions' / 'attention_public'
 RIDGE = 0.1
@@ -208,8 +208,7 @@ def done(name, ds):
 
 
 def run_all():
-    plan = read(PF.FEAT / 'plan.json')
-    for row in plan['rows']:
+    for row in PF.plan_rows():
         if not (PF.FEAT / 'units' / f'{row["id"]}.json').exists():
             continue
         for name in row['encoders']:
@@ -228,8 +227,7 @@ def main():
     elif a.step == 'run-all':
         run_all()
     else:
-        plan = read(PF.FEAT / 'plan.json')
-        print({f'{r["dataset"]}:{n}': done(n, r['dataset']) for r in plan['rows'] for n in r['encoders']})
+        print({f'{r["dataset"]}:{n}': done(n, r['dataset']) for r in PF.plan_rows() for n in r['encoders']})
 
 
 if __name__ == '__main__':

@@ -6,7 +6,35 @@
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## 最新（2026-10-23）：论文 manuscript v2 第一批实验（Tables 2–6）全部完成，DEP12 依赖包执行中
+## 最新（2026-10-23 中午）：DEP12 依赖轮完成主体，扩展对照与 W7 GPU 四臂结果
+
+本次发布 DEP12 依赖包（v1.2）这一轮的[轮次报告](results/auditory_alignment_v3/dep12/ROUND_REPORT.md)、[限制与未完成项](results/auditory_alignment_v3/dep12/LIMITATIONS.md)、外部对照、全部对比族与逐人结果，以及论文主线 W7 GPU 四臂的结果。所有结果保留有利、不利和不确定方向；seed、fold、实验单元和发布版本都不增加独立受试者数。统计口径：人为单位，seed 先在人内平均，bootstrap-t（B = 10,000），族内同时 95% 区间。
+
+- **DEP12 四个判断**（DTU 44 人、FAU 67 人、私有儿童 64 人，另有 MFF 第二私有队列 57 人；9 个主模型 + 机制对照，共 155,000 次源更新，不含进行中的 EXT2）：
+  - **学习**：CS-pair 相对 B0 提高了 DTU 20 s 注意读出（+0.055 [+0.027, +0.083]，去偏后 +0.046）和儿童历史之外的当前事件信息（G +0.0034 bits/试次 [+0.0011, +0.0056]），3 个 seed 各自都为正。中心化配对明显优于 raw-CS。但错配对照 WRONG 与 CS-pair 相当，InfoNCE、Sigmoid 也相当：提升不依赖正确配对，也不是 CS 目标特有。按包的判定，这是"用途改善，但不支持学到了更多可用的声音关系"。
+  - **测量**：共同 CS 测量能分辨大的表示差异（例如用目标队列配对音频训练的模型），分辨不了源训练各臂之间的小差异（F_MEASURE 所有成员都含 0）。结果对带宽 σ 和锚点数 n 敏感，σ×0.5 时方法排名翻转。外源 EEG 对照揭示了候选边际偏置（FAU 0.49–0.61，而不是 0.5），所以跨候选的依赖比较必须带外源或去偏对照。
+  - **用途**：DTU 注意读出的提升在去偏后仍成立；FAU 的提升去偏后消失。儿童 G 相对 B0 提高，但绝对值仍为负（约 −0.0025），只是高于无信号时 64 维读出的样本外代价（约 −0.006）。MFF 队列和跨刺激都约为 0。外部对照（同一组 20 s query）：CS-pair 低于 mTRF / VLAAI / Transformer-CLIP（DTU −0.19 到 −0.22，FAU −0.11 到 −0.16），高于 MindMix 完整系统（DTU +0.078，FAU +0.033），与 MindMix EEG 分支的差未分辨。
+  - **选择**：依赖剖面选择没有胜过固定选择或读出交叉验证选择，比均匀组合差 0.0025 bits/试次 [−0.0030, −0.0019]；公共选择器也一样。测量的描述价值和决策效益要分开看。
+- **扩展机制对照**（超出包预算，已在[决定记录](docs/auditory_alignment_v3/dep12/DECISIONS.md)中登记）：
+  - EXT1：raw-CS 与 WRONG 补齐 3 个 seed（在看到这些臂的任何测量之前决定）。合并后 CS-pair − raw-CS 的 G 为 +0.0011 [+0.0002, +0.0021]，CS-pair − WRONG 约为 0。
+  - **EXT2（部分结果，看到本轮结果之后设计，事后）**：cs_pair_noise 用与声音无关的高斯目标代替音频，其余配方相同。在已完成的 2 个 seed 上，它相对 B0 的 G 提升（+0.0033、+0.0031，同时区间都不含 0）与 CS-pair 相当，CS-pair − cs_pair_noise 为 +0.0004 / +0.0003，区间含 0。按 10:55 冻结的解读规则，这初步指向与声音无关的训练效应（中心化正则），而不是声音依赖。第 3 个 seed 和公开队列读出还在运行，现在不下结论。
+- **[W7 GPU 四臂](results/auditory_alignment_v3/paper/w7/W7_ARMS.md)**（冻结预注册，3 个 seed，正值表示新臂更好）：H1（RES）、H2（PRES）、H3（CCS）都不成立。
+  - RES 的历史残差 r：DTU +0.0055（含 0），FAU −0.0062（区间低于 0）。
+  - PRES 的年龄 MAE 差含 0。PRES 提高 DTU 直接包络 r（+0.017）和时间稳定性，但两个队列的历史残差 r 都下降，儿童当前事件 AUC 下降（−0.019）。
+  - CCS 在几乎所有终点更差（DTU 注意 −0.050）。
+- **论文追踪**：[实验追踪](docs/auditory_alignment_v3/paper/MANUSCRIPT_V2_EXPERIMENTS.md)已更新。Transformer-CLIP 的上下文匹配敏感性（事后附录 02）已开始，本次快照含其部分单元记录。
+- **发布格式**（见 [DEP12 打包说明](results/auditory_alignment_v3/dep12/PUBLICATION_038.md)）：
+  - 三张逐人表太大，只发布 gzip 副本（公开 14 MB、私有 3.3 MB、MFF 0.4 MB），未压缩原文件不上传。仓库里 publish_037 的私有逐人表是更早、更小的快照，已由本次 gzip 副本取代。
+  - measurement 和 predictions 中此前未发布的 1,310 个文件打包为 6 个 tar.gz（每个不超过 45 MiB），附逐成员清单与 SHA256。
+  - 私有儿童只以化名出现，预测数组只含标签、概率与索引；MFF 儿童只以哈希化名出现，不含记录号或身份键。
+- **逐单元记录**：`lanes_038_001.tar.gz` 收录 90 份此前未逐字节发布的 lane 记录（W7 四臂 80 份，Transformer-CLIP 上下文匹配 10 份）。私有存储路径换成既定占位符。
+- **仍在运行**：EXT2 第 3 个 seed 与公开读出、Transformer-CLIP 上下文匹配敏感性。DEP12 的结果文件随运行继续变化，本次是构建时的快照。
+
+[发布清单](results/auditory_alignment_v3/publication_038/MANIFEST.tsv)记录逐文件来源与发布哈希。**这是进行中的研究快照。**
+
+本次不上传：私有数据集本身、身份映射（含 MFF 身份表）、人名/联系方式、MFF 记录与身份列表、真实年龄、研究者手稿草稿、下载的论文副本、KUL AAD 数据及任何 KUL 逐 trial 输出、仅限服务器的绑定、模型权重、运行日志、存储清理工具和交接记录。
+
+## 2026-10-23 凌晨：论文 manuscript v2 第一批实验（Tables 2–6）全部完成，DEP12 依赖包执行中
 
 本次发布论文主线 manuscript v2 第一批实验（Tables 2–6）的完整结果与代码、ALN4.1 第二轮全部 13 个族，以及研究者 DEP12 依赖包（v1.2）的代码、计划和**进行中**的中间结果。所有结果保留有利、不利和不确定方向；seed、fold、实验单元和发布版本都不增加独立受试者数。
 
