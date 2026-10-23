@@ -1,0 +1,230 @@
+{
+ "post_hoc": true,
+ "requested": "2026-10-22 ~18:40 by the researcher, after the Table 2 numbers had been seen",
+ "question": "does the 20 s accuracy gap between the proposed temporal-CS system and mTRF / VLAAI come from the EEG context each system sees?  Restrict mTRF and VLAAI to the proposed system EEG span in training and scoring.",
+ "seen_before_request": {
+  "proposed_temporal_CS_20s_acc": {
+   "dtu": 0.612,
+   "fau": 0.515
+  },
+  "mtrf_20s_acc": {
+   "dtu": 0.818,
+   "fau": 0.636
+  },
+  "vlaai_20s_acc": {
+   "dtu": 0.83,
+   "fau": 0.679
+  }
+ },
+ "span": {
+  "source": "aln41/frozen.py cs anchors rint(linspace(0.4, 4.15, 16) * 128) and aln41/timebank.layout(128) crops",
+  "span_128hz_half_open_segment_relative": [
+   26,
+   608
+  ],
+  "span_s": [
+   0.203125,
+   4.75
+  ],
+  "span_64hz_half_open": [
+   13,
+   304
+  ],
+  "span_64hz_samples": 291,
+  "eeg_seconds_per_segment": 4.546875,
+  "eeg_seconds_used_per_20s_decision": 18.1875,
+  "eeg_extent_seconds_per_20s_decision": 19.546875,
+  "native_eeg_seconds_per_segment": {
+   "mtrf": 5.5,
+   "vlaai": 5.0
+  },
+  "mapping": "ext_common 64 Hz sample j = mean of 128 Hz samples 2j, 2j+1 -> [26, 608) at 128 Hz == [13, 304) at 64 Hz",
+  "not_restricted": "cohort-level offline preprocessing and per-person standardisation (shared by every system incl. the proposed one)"
+ },
+ "analyses": {
+  "mtrf_ctx": {
+   "output": "TABLE2_MTRF_CTX.json",
+   "module": "auditory_alignment_v3/paper/ext_context_mtrf.py",
+   "reference_row": "mtrf (ext_mtrf, plan sha below)",
+   "eeg_used_64hz": [
+    13,
+    304
+   ],
+   "lags_samples": [
+    0,
+    32
+   ],
+   "reconstructed_envelope_samples_64hz_inclusive": [
+    13,
+    271
+   ],
+   "n_envelope_samples": 259,
+   "rule": "envelope sample t used iff EEG t..t+32 all inside [13, 304); EEG outside the span set to NaN before the design matrix, finiteness asserted",
+   "train": "train people cs role=fit, attended envelope at t in [13, 271]",
+   "alpha": "same grid logspace(-3, 4, 8); mean per-segment Pearson r over t in [13, 271] on train people cs role=es",
+   "refit": "fit + es with the selected alpha",
+   "margin": "r(hat, att) - r(hat, ign) over t in [13, 271]"
+  },
+  "vlaai_ctx": {
+   "output": "TABLE2_VLAAI_CTX.json",
+   "module": "auditory_alignment_v3/paper/ext_context_vlaai.py",
+   "reference_row": "vlaai_v2 (ext_vlaai_v2, plan sha below)",
+   "eeg_used_64hz": [
+    13,
+    304
+   ],
+   "input_window_samples": 291,
+   "envelope_window_64hz": [
+    13,
+    304
+   ],
+   "rule": "model input = EEG[:, 13:304] only (fully convolutional, zero padding at the window edges as natively); target / loss / validation r / margin over the same window (native VLAAI convention)",
+   "dtu_input": "common average reference, then per-listener per-channel z-score over span samples only",
+   "fau_input": "cache EEG span, Linear(31->64) adapter (spherical-spline init) trained jointly, as Table 2",
+   "recipe": "identical to Table 2 (seed 3401, Adam 1e-4, batch 64, <= 50 epochs, patience 5, best epoch by mean per-segment r on train people cs role=es, fp32 numerics); re-fitted per unit, not re-scored",
+   "margin": "r(hat, att) - r(hat, ign) over [13, 304)",
+   "checks": "finiteness, batch invariance, v2 swap check"
+  },
+  "clip_ctx": {
+   "status": "pre-declared, not implemented; added as a new module after the native CLIP row is complete",
+   "output": "TABLE2_CLIP_CTX.json",
+   "eeg_used_64hz": [
+    13,
+    304
+   ],
+   "window": 192,
+   "train_starts_64hz": [
+    13,
+    112
+   ],
+   "infer_starts_64hz": [
+    13,
+    62,
+    112
+   ],
+   "ola": "native Hann overlap-add, outer half-windows weight 1, normalised by summed weights, over [13, 304)",
+   "rule": "frozen stage-S encoder unchanged; stage-T readout (+ FAU adapter) re-fitted with the Table 2 recipe on windows inside the span; DTU re-reference / z-score over span samples; margin over [13, 304)"
+  },
+  "not_run": {
+   "extend_proposed_to_full_5s": "assessed only (needs new frozen GPU features); see report"
+  },
+  "excluded": {
+   "mindmix": "at chance in Table 2; left out by the researcher"
+  }
+ },
+ "unchanged": {
+  "partition": "ext_common / ALN4.1 public units (2 content folds x 5 person folds), same train / test people and roles",
+  "integration": "aln42.external_eval.integrate via ext_common.integrate_unit (5 / 10 / 20 s; 20 s primary)",
+  "aggregation": "ext_common.summarize: per person content folds averaged (both required); groups dtu nh/hi, fau th/ha/ci, all"
+ },
+ "module_sha256_at_freeze": {
+  "auditory_alignment_v3/paper/ext_context.py": "24c1390fa73a3736755b1a09a9a2adcd7c0cd48faffe8b405b6a60342b129f7a",
+  "auditory_alignment_v3/paper/ext_context_mtrf.py": "92e4c67d8b7fe3a1d7bbd4c3bc1ff0a73ef41f689a39fa8690853c6a593c34cb",
+  "auditory_alignment_v3/paper/ext_context_vlaai.py": "1da423de47c00a0fabbc766a1712d99364a83453af2cf2e07b2134a7282b1f9e",
+  "auditory_alignment_v3/aln35/paper_ext_ctx_vlaai_fleet.py": "b430661c4a91bcb10ca5eab8b424e74f45bd8f0793b29ce2f50ad8fa6d45135e",
+  "slurm/aln35_paper_ext_ctx_vlaai.sbatch": "a7d0d89cfab51c3af697389f93a56af802cae20f69abd1a12c3f4f01fbbdb906",
+  "auditory_alignment_v3/paper/ext_common.py": "33de3374f0d0718f8d1ee6a02e39622d940504b59c319414e036aa95b1e3526b",
+  "auditory_alignment_v3/paper/ext_mtrf.py": "7da3718914ff49eb9c7547c60d6e81b7dccdb5c9270a26928a6c009bcf46cc05",
+  "auditory_alignment_v3/paper/ext_vlaai.py": "91950309731c83cbc6a1eec541c2109257a9322e2f8b1c50bc2e315900dff270",
+  "auditory_alignment_v3/paper/ext_vlaai_v2.py": "96cd99fbf7608ca1fda30ef2e2de106aa8f3dde51903b18e7f0481988d31a6ff",
+  "auditory_alignment_v3/paper/vlaai_torch.py": "48181327fcea4ef1c9f3764297a80e702c203917857683ad1ac0b92668baa794",
+  "auditory_alignment_v3/paper/ext_fleet.py": "766fc3b02323352265e3a2988621187018f168c9ed355b8c708147316859187a",
+  "auditory_alignment_v3/aln42/external_eval.py": "2922109a21f23a36b298ac27aaabcc1d7edc26df590cc05c6b543e935ceb6fb4",
+  "auditory_alignment_v3/aln41/frozen.py": "48c46fe88d04e36d396f765eb9b72f5fb3c822d7671bcf4fd61a12ee164be1cb",
+  "auditory_alignment_v3/aln41/timebank.py": "878b5b276bbcd4244d55a2c908743d68a247091d5aef77ca76f528b066d95bbe",
+  "auditory_alignment_v3/aln41/time_access.py": "7b1fb30837e3311e124b98a6d42379c9d31caddf8f581b4319db28d3c54bb586",
+  "auditory_alignment_v3/aln34/content_time.py": "8dd9dfee498e31cffcfec503a9e4161f1b582c84bab04d986d5a3e6b5525513f",
+  "auditory_alignment_v3/aln34/attention_order.py": "3daa4dd4669b4923b3854752c755bf54f7fab407606c11966b4fcd9c7d266442",
+  "auditory_alignment_v3/run_attention.py": "6c386954d587db8c5f4bad5e101e1323c9815cc7790b636bd0ca5c7dd1eb763e"
+ },
+ "plans_sha256": {
+  "mtrf": "f5c38e2bdd9ab1b5181be5a16cd3cea0a45c05ba47f962c2c206ad7ca4000010",
+  "vlaai_v1": "daf640efd65278961a9f7b587bff738025d897f582b2154bc1fc028e55a7cf51",
+  "vlaai_v2": "d2891e1088b0da7ba2b03598aad409b14e2cc676e2f2aecc11942462e19e2bd0"
+ },
+ "input_index_sha256": {
+  "dtu": "b219bbcba8205f083ec4dee165cdf3902b1478d13973c9c93eea7c70d32d72b0",
+  "fau": "ce883bcf537e4aec477c726fdab4a6563a9379cf63352f6808a0d6c4342664ed"
+ },
+ "main_rows_sha256": {
+  "mtrf_ctx": "2fdd24f233e29dbef54b6f9f699a681d0c3c8606aec4e4d59ae95f22ad37c704",
+  "vlaai_ctx": "26fc8487a7b41ebc6af4806d6edda6e69d8f51d5047e532c53a529810e1612df",
+  "clip_ctx": null
+ },
+ "span_check": {
+  "anchors_128hz": [
+   51,
+   83,
+   115,
+   147,
+   179,
+   211,
+   243,
+   275,
+   307,
+   339,
+   371,
+   403,
+   435,
+   467,
+   499,
+   531
+  ],
+  "crop_layout_128hz": [
+   [
+    -25,
+    26,
+    80
+   ],
+   [
+    0,
+    52,
+    81
+   ],
+   [
+    26,
+    77,
+    80
+   ]
+  ],
+  "union_contiguous": true,
+  "span_128hz_half_open": [
+   26,
+   608
+  ],
+  "span_s": [
+   0.203125,
+   4.75
+  ],
+  "span_64hz_half_open": [
+   13,
+   304
+  ],
+  "span_64hz_samples": 291,
+  "stored_frozen_b0": {
+   "dtu_cf0": {
+    "cs_offsets_equal": true,
+    "crop_layout_equal": true,
+    "seg_len": 640
+   },
+   "dtu_cf1": {
+    "cs_offsets_equal": true,
+    "crop_layout_equal": true,
+    "seg_len": 640
+   },
+   "fau_cf0": {
+    "cs_offsets_equal": true,
+    "crop_layout_equal": true,
+    "seg_len": 640
+   },
+   "fau_cf1": {
+    "cs_offsets_equal": true,
+    "crop_layout_equal": true,
+    "seg_len": 640
+   }
+  },
+  "pass": true
+ },
+ "frozen_at": "2026-10-22T18:50:34.101078+02:00",
+ "frozen_by_job": "1047358"
+}

@@ -1,0 +1,45 @@
+{
+ "post_hoc": true,
+ "requested": "2026-10-22 by the coordinator, after the cs-trained mTRF Table 2 numbers were seen",
+ "reason": "training-data mismatch: mTRF trains on cs attended segments, the proposed readout (aln41 readout.attention) on ss data",
+ "analyses": {
+  "a_mtrf_ss": {
+   "output": "TABLE2_MTRF_SS.json",
+   "decoder": "ext_mtrf (same lags, alpha grid, selection rule)",
+   "train": "train people ss role=fit (presented envelope)",
+   "alpha": "mean per-segment r on train people ss role=es",
+   "refit": "ss fit + es",
+   "scored": "Table 2 cs segments, margin r(att) - r(ign), aln42.external_eval.integrate"
+  },
+  "b_readout_cs": {
+   "output": "TABLE2_READOUT_CS_<ARM>.json",
+   "arms_seeds": {
+    "B0": [
+     3401
+    ],
+    "TCS": [
+     3401,
+     3407,
+     3413
+    ],
+    "TNCE": [
+     3401,
+     3407,
+     3413
+    ]
+   },
+   "features": "aln41 frozen cs_pca_sf<sf> (16 anchors x 3 slots x 64)",
+   "ridge": "aln34.content_time.fitted per slot (alpha by ES r, refit fit + es), target standardised on training rows",
+   "train": "train people cs anchors role=fit, ATTENDED envelope",
+   "alpha": "train people cs anchors role=es",
+   "mixture": "q0 = softmax(source a) (B0 uniform)",
+   "scored": "aln41 readout.attention (q0), 5/10/20 s",
+   "aggregation": "content folds averaged, then seeds (all required)",
+   "pipeline_check": "ss-trained readout recomputed == stored aln41 readout records"
+  }
+ },
+ "partition": "ext_common / ALN4.1 public units (2 content folds x 5 person folds)",
+ "module_sha256_at_freeze": "96b3c8ad7426d1618cc6875c29e4d5acb02eafafe1f5ae0207f95d98d4638c23",
+ "mtrf_plan_sha256": "f5c38e2bdd9ab1b5181be5a16cd3cea0a45c05ba47f962c2c206ad7ca4000010",
+ "frozen_at": "2026-10-22T03:17:03.915597+02:00"
+}

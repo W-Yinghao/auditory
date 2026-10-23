@@ -6,7 +6,39 @@
 
 从 [V3 完整结果](reports/auditory_v3/final_002/V3_RESULTS.md)、[科研判断](docs/auditory_v3/SCIENTIFIC_DECISION_001.md)和[最终状态](docs/AUDITORY_V3_FINAL_STATUS.md)开始阅读；前轮见 [v2.1 科学结果](docs/auditory_v21/SCIENTIFIC_RESULTS_v2_1.md)、[v2 报告](reports/auditory_next_v2/final_002/NEXT_ROUND_REPORT.md)和 [Auditory5 报告](reports/auditory5_v1/S4_final_001/FIVE_IDEAS_SCREENING_REPORT.md)。前期依据见 [Phase 3 报告](docs/phase3_report.md)与[原项目目标映射](docs/ORIGINAL_IDEA_EVIDENCE_MAP.md)。数据来源包含 HA、CI/CIHA 字面标签及大量组别未知记录；文件数、处理版本和 epoch 数不能当作独立儿童数。
 
-## 最新（2026-10-22）：ALN3.6 第二轮完成，ALN4.2 诊断与外部对照进行中，论文主线（MindMix 审计 + CS 依赖图谱）启动
+## 最新（2026-10-23）：论文 manuscript v2 第一批实验（Tables 2–6）全部完成，DEP12 依赖包执行中
+
+本次发布论文主线 manuscript v2 第一批实验（Tables 2–6）的完整结果与代码、ALN4.1 第二轮全部 13 个族，以及研究者 DEP12 依赖包（v1.2）的代码、计划和**进行中**的中间结果。所有结果保留有利、不利和不确定方向；seed、fold、实验单元和发布版本都不增加独立受试者数。
+
+- **[Manuscript v2 表格](results/auditory_alignment_v3/paper/manuscript_v2/TABLES.md)**（[实验追踪](docs/auditory_alignment_v3/paper/MANUSCRIPT_V2_EXPERIMENTS.md)；对比族在任何新结果出现前冻结于 [FAMILIES_v1.json](results/auditory_alignment_v3/paper/manuscript_v2/FAMILIES_v1.json)；区间为逐人 bootstrap，族内为同时 95% 区间）：
+  - **T2 外部听觉解码**（20 s，DTU 44 人 / FAU 67 人，准确率）：VLAAI 0.830 / 0.679，mTRF 0.818 / 0.636，Transformer-CLIP 0.803 / 0.636（官方权重已失效，用官方代码在公开 SparrKULee 71 人上重训），本文 TCS 0.612 / 0.515，MindMix 完整系统 0.531 / 0.491。TCS 低于三个解码器（DTU −0.19 到 −0.22，FAU −0.12 到 −0.16，区间不含 0），高于 MindMix（DTU +0.081 [+0.045, +0.117]；FAU +0.025，区间含 0）。
+  - **T2 事后敏感性**（协议先冻结）：两类系统互换训练数据只变 1–4 个百分点；上下文匹配只降约 0.015；mTRF 只在本方法的 16 个锚点上打分时，与 TCS 的差距消掉约一半（DTU 0.803 → 0.701，FAU 0.624 → 0.570）。稀疏的 4 Hz 打分是差距的主要来源之一，其余在冻结特征与读出。
+  - **T3 儿童事件**（64 名儿童）：冻结事件 AUC 0.511–0.531，全量微调 AUC 0.535–0.543，NLL 都约 0.716 bits/试次。冻结族中 TCS − CBraMod 的 AUC 为 +0.015 [+0.0005, +0.030]；全量微调族中 TCS 与 CBraMod、REVE、MindMix EEG 分支的差都含 0。
+  - **T4 读出复用与发育信息**：跨刺激音节 AUC（迁移 / 重拟合，24 人）所有系统都约 0.49–0.51；年龄 MAE 23.8–26.9 月，训练均值基线 32.0、原始 EEG 对数方差 32.4；只有 RAW − TCS（+5.5 月 [+0.3, +10.7]）区间不含 0。
+  - **T5 个人适配**（U30 全部早期支持集）：时间增益约 1e-5 bits/试次，校准增益约 1e-4；T5_SUPPORT 族（64 人）所有成员都含 0。
+  - **T6 公共骨干上的匹配对齐**：TCS 的 DTU 包络 r 0.079、FAU 历史残差 r 0.049；只用包络视图的 TCS 在 DTU 包络 r 上与 EEG-only 初始化相同（0.089）。在公共骨干上复现的 MindMix 对齐配方（CALRA）指标不低于 TCS，但[审计](results/auditory_alignment_v3/paper/calra_cbramod/W5_AUDIT_v2.json)显示其训练损失完全来自共享 dropout 键：噪声 EEG、错误音频也同样"匹配"，eval 模式下表示为常数。
+- **MindMix 机制审计与 KUL 复现**：
+  - [完整系统审计](results/auditory_alignment_v3/paper/mindmix_audit/MINDMIX_DROPKEY_AUDIT_COMBINED.json)：DTU / FAU × 发布 / 微调 × 训练侧 / 测试侧共 16 格结论一致。匹配靠同一次前向里候选音频的表示（主要是 wav2vec2 的 SpecAugment 随机掩码）经 CALRA 进入"EEG"一侧，与 EEG 无关；音频移植后检索跟随音频（1.0），EEG 移植后不跟随（0）。
+  - [KUL AAD 复现](results/auditory_alignment_v3/paper/kul_mindmix/KUL_MINDMIX.json)（16 名被试）：官方打分器 0.9987；目标换成未被注意流、或 EEG 换成噪声，结果不变；盲打分 0.50。KUL 数据为 CC-BY-NC-SA-4.0，本仓库只含逐被试准确率汇总，不含数据或逐 trial 输出。
+- **追加实验**（研究者批准，排在第一批之后）：上下文匹配敏感性完成；W7 不融合的 CS 依赖对齐已按[冻结预注册](docs/auditory_alignment_v3/paper/W7_CS_DEPENDENCE_PREREG_FROZEN.md)执行。CS 判决 R 处于随机水平且低于岭回归；按人适配增益在 1e-4 bits 量级，H4（CS 准则更好）不成立。W7 的 GPU 对齐臂 v2 仍在运行。
+- **[ALN4.1 第二轮](results/auditory_alignment_v3/aln41/r2/contrasts.json)**（3 个 seed，13 个族全部完成；[逐人结果](results/auditory_alignment_v3/aln41/r2/person_results.csv)）：FAU 内容族 TCS − B0 为 +0.0116 [+0.0031, +0.0200]。DTU 的 TCS − 错配对照在 3 个 seed 下不再分辨（R1 为 +0.036）。注意力族无分辨。TNCE 在固定读出上的时间损失大于 TCS（DTU、私有）。个人支持增益都约为 0。
+- **修正**：`aln42/external_eval.py` v1 在 R2 seed 上读错了 readout 目录，静默丢掉了 TCS / TNCE。v2 只修正这一处依赖，旧输出保留为 `EXTERNAL_COMPARISON_v1_incomplete.json`。
+- **DEP12 依赖包（进行中）**：[研究者包 v1.2](docs/AUDITORY_DEPENDENCE_SERVER_PACKAGE_v1_2_20261022.zip)、[执行计划](docs/auditory_alignment_v3/dep12/DEP12_PLAN.md)、[状态](docs/auditory_alignment_v3/dep12/STATUS.md)、[决定记录](docs/auditory_alignment_v3/dep12/DECISIONS.md)、[来源更新](results/auditory_alignment_v3/dep12/SOURCE_UPDATE.md)、[外部对照 v0](results/auditory_alignment_v3/dep12/EXTERNAL_COMPARISON.md)：
+  - 包内参考实现在服务器上通过（NumPy 18/18，Torch 10/10）。
+  - E0 按冻结规则选定 LoRA 更新（[E0_SELECTION.json](results/auditory_alignment_v3/dep12/E0_SELECTION.json)）：规则只看 dev 包络 r，不看 CS 值；四个 2,500 步试点在 dev 探针上都不高于 B0。
+  - 9 个主模型和 2 个诊断模型（共 115,000 次更新）正在训练，05:21 时完成 4 个。
+  - 公开测量与注意打分在已完成的特征单元上逐步产出（本快照含 DTU / FAU 的 159 个测量单元、DTU 的 8 个注意预测）。
+  - 私有儿童（64 人）U0：B0 的 G 为 −0.0058 bits/试次 [−0.0072, −0.0045]，接近无信号时 64 维读出的预期样本外代价（约 −0.006），所以 G 要对照 −0.006 来读。REVE、MindMix 分支相对 B0 的差都含 0（[探索性对比](results/auditory_alignment_v3/dep12/private_contrasts.md)）。
+  - Federici 推迟：100 Hz 采样下窗口无法用整数样本保持。
+  - `results/auditory_alignment_v3/dep12/` 中的文件随运行持续变化，本次只是构建时的快照，不是最终结果。
+- **逐单元记录**：`lanes_037_001.tar.gz` 收录 753 份此前未逐字节发布的 lane 记录：论文主线 710 份（外部解码 159、W7 147、对齐臂 134、KUL 112、编码器 76、CALRA 40、MindMix 审计 42），ALN4.1 41 份，ALN4.2 2 份。私有存储路径换成既定占位符，逐成员哈希见 [LANE_MEMBER_DERIVATIONS.json](results/auditory_alignment_v3/publication_037/LANE_MEMBER_DERIVATIONS.json)。
+- **仍在运行**：DEP12 训练、测量、注意与私有分析，以及 W7 GPU 对齐臂。DEP12 的轮次报告要等这些完成。
+
+[发布清单](results/auditory_alignment_v3/publication_037/MANIFEST.tsv)记录逐文件来源与发布哈希。**这是进行中的研究快照。**
+
+本次不上传：私有数据集本身、身份映射（含 MFF 身份表）、人名/联系方式、MFF 记录与身份列表（含编码器跨刺激计划与跨刺激读出记录）、真实年龄、研究者手稿草稿、下载的论文副本、KUL AAD 数据及任何 KUL 逐 trial 输出、仅限服务器的绑定、模型权重、运行日志、存储清理工具和交接记录。
+
+## 2026-10-22：ALN3.6 第二轮完成，ALN4.2 诊断与外部对照进行中，论文主线（MindMix 审计 + CS 依赖图谱）启动
 
 本次发布 [ALN4.2 研究者包](AUDITORY_ALN4_SERVER_PACKAGE_v4_2_20261021/README.md)（第二轮续跑与第三轮收尾）、ALN3.6 第二轮结果、ALN4.2 的来源诊断/事件审计/NET 诊断，以及论文主线的第一批分析。所有结果保留有利、不利和不确定方向；seed、fold、实验单元和发布版本都不增加独立受试者数。
 

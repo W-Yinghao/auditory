@@ -1,0 +1,199 @@
+{
+  "context": {
+    "eeg_per_20s_decision_s": 20.5,
+    "eeg_per_segment_s": 5.5,
+    "lag_window_ms": 500
+  },
+  "created": "2026-10-22T02:25:40.568433+02:00",
+  "input_index_sha256": {
+    "dtu": "b219bbcba8205f083ec4dee165cdf3902b1478d13973c9c93eea7c70d32d72b0",
+    "fau": "ce883bcf537e4aec477c726fdab4a6563a9379cf63352f6808a0d6c4342664ed"
+  },
+  "input_npz_sha256": {
+    "dtu": "46c540e199f4cf14e424d957a53706ac349a04bb9cfbb2f1c5f29409c0b45eb7",
+    "fau": "dde50f715cd0997a58d25de2794296398725878639ff4c5c6c0f6243925abd87"
+  },
+  "recipe": {
+    "alphas": [
+      0.001,
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0,
+      1000.0,
+      10000.0
+    ],
+    "direction": "backward (EEG after stimulus)",
+    "features": "all cohort EEG channels x 33 lags, standardised on the training rows",
+    "fs": 64,
+    "integration": "aln42.external_eval.integrate (5/10/20 s, tau by double-order log loss on train-side windows)",
+    "lags_ms": [
+      0,
+      500
+    ],
+    "lags_samples": [
+      0,
+      32
+    ],
+    "margin": "r(hat, attended) - r(hat, ignored) over the 5 s segment",
+    "refit": "fit + es with the selected alpha",
+    "ridge": "aln34.content_time.ridge (gram/n + alpha I on standardised features)",
+    "selection": "mean per-segment Pearson r on train people cs role=es",
+    "train": "train people, cs role=fit, attended envelope"
+  },
+  "rows": [
+    {
+      "content_fold": 0,
+      "dataset": "dtu",
+      "id": "PXMTRF_75feacda1cd12a60",
+      "person_fold": 0,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "dtu",
+      "id": "PXMTRF_8bc282a65b012b8b",
+      "person_fold": 1,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "dtu",
+      "id": "PXMTRF_ef73b918a5c26046",
+      "person_fold": 2,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "dtu",
+      "id": "PXMTRF_741a1e9452751d92",
+      "person_fold": 3,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "dtu",
+      "id": "PXMTRF_09f12cbcc6b931d5",
+      "person_fold": 4,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "dtu",
+      "id": "PXMTRF_4147c926810b0ce8",
+      "person_fold": 0,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "dtu",
+      "id": "PXMTRF_0f05f3fdab9ace32",
+      "person_fold": 1,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "dtu",
+      "id": "PXMTRF_2a905a83656bf13f",
+      "person_fold": 2,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "dtu",
+      "id": "PXMTRF_455c183f074482e9",
+      "person_fold": 3,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "dtu",
+      "id": "PXMTRF_b713408e7ef19336",
+      "person_fold": 4,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "fau",
+      "id": "PXMTRF_2f7b8d40c2341686",
+      "person_fold": 0,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "fau",
+      "id": "PXMTRF_c211cad83197cd13",
+      "person_fold": 1,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "fau",
+      "id": "PXMTRF_90487fe481231514",
+      "person_fold": 2,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "fau",
+      "id": "PXMTRF_f4069876d5cfef51",
+      "person_fold": 3,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "fau",
+      "id": "PXMTRF_3c5b67ebc3494ebe",
+      "person_fold": 4,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "fau",
+      "id": "PXMTRF_593b5094b2662cb3",
+      "person_fold": 0,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "fau",
+      "id": "PXMTRF_c1d0d042c21cdbde",
+      "person_fold": 1,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "fau",
+      "id": "PXMTRF_e266bc541c48bcb4",
+      "person_fold": 2,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "fau",
+      "id": "PXMTRF_30b35abc1f977869",
+      "person_fold": 3,
+      "system": "mtrf"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "fau",
+      "id": "PXMTRF_187118dfb4dbeb6c",
+      "person_fold": 4,
+      "system": "mtrf"
+    }
+  ],
+  "sources": {
+    "auditory_alignment/data.py": "abeb9d368116e4b1b6becace401299660248e48356fa12f72084950282ebb6b5",
+    "auditory_alignment_v2/train.py": "1a00101c1514c1cb790c8927c778e3fd80d3b0505685e71ec058bb7720b6f9a4",
+    "auditory_alignment_v3/aln34/attention_order.py": "3daa4dd4669b4923b3854752c755bf54f7fab407606c11966b4fcd9c7d266442",
+    "auditory_alignment_v3/aln41/frozen.py": "48c46fe88d04e36d396f765eb9b72f5fb3c822d7671bcf4fd61a12ee164be1cb",
+    "auditory_alignment_v3/aln41/readout.py": "00d4637a87d37eed0e8003c60c549329e30c468666ac821321ff1db594c15111",
+    "auditory_alignment_v3/aln42/external_eval.py": "2922109a21f23a36b298ac27aaabcc1d7edc26df590cc05c6b543e935ceb6fb4",
+    "auditory_alignment_v3/paper/ext_common.py": "33de3374f0d0718f8d1ee6a02e39622d940504b59c319414e036aa95b1e3526b",
+    "auditory_alignment_v3/paper/ext_mtrf.py": "7da3718914ff49eb9c7547c60d6e81b7dccdb5c9270a26928a6c009bcf46cc05",
+    "auditory_alignment_v3/run_attention.py": "6c386954d587db8c5f4bad5e101e1323c9815cc7790b636bd0ca5c7dd1eb763e"
+  },
+  "version": "PAPER_EXT_MTRF_v1"
+}

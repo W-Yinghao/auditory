@@ -1,0 +1,76 @@
+{
+ "status": "pass",
+ "job": "1047358",
+ "entries": [
+  {
+   "module": "auditory_alignment_v3.aln35.paper_ext_vlaai_fleet",
+   "sha256": "d69d84d07432299d60aa3762b36fe3376be821609e503260b219ae07097a7c64",
+   "name": "c3_s35pxvla",
+   "lane": "s35_paper_ext_vlaai"
+  },
+  {
+   "module": "auditory_alignment_v3.aln35.paper_ext_mmfau_fleet",
+   "sha256": "456f59b3d06689dcc85f8b02a98421ef113ecbcc48f6a2400baf6f37f6611753",
+   "name": "c3_s35pxmmf",
+   "lane": "s35_paper_ext_mmfau"
+  },
+  {
+   "module": "auditory_alignment_v3.aln35.paper_ext_clip_fleet",
+   "sha256": "7f28cb0146b60359d7ff106df2c39f895b0937b6f1c330171a3b40ff7eb67744",
+   "name": "c3_s35pxclp",
+   "lane": "s35_paper_ext_clip"
+  }
+ ],
+ "backup": "/home/infres/yinwang/EEG_auditory/private/auditory_alignment_v3/aln35/fleet_plugins_before_paper_ext_1047358_20261022.json",
+ "readiness": {
+  "vlaai": {
+   "state": "ready",
+   "ready": 20,
+   "slots": 1,
+   "submit": [
+    "slurm/aln35_paper_ext_vlaai.sbatch",
+    "worker",
+    "--system",
+    "vlaai",
+    "--max-units",
+    "10"
+   ]
+  },
+  "mmfau": {
+   "state": "ready",
+   "ready": 1,
+   "slots": 1,
+   "submit": [
+    "slurm/aln35_paper_ext_mmfau.sbatch",
+    "smoke",
+    "--system",
+    "mmfau"
+   ]
+  },
+  "clip": {
+   "state": "ready",
+   "ready": 1,
+   "slots": 1,
+   "submit": [
+    "slurm/aln35_paper_ext_clip.sbatch",
+    "smoke",
+    "--system",
+    "clip"
+   ]
+  }
+ },
+ "authorisation": "researcher 2026-10-22: manuscript v2 \"\u8865\u5168\u6240\u6709\u5dee\u7684\u5b9e\u9a8c\" (Table 2 rows VLAAI, MindMix FAU, Transformer-CLIP; CLIP production gated on researcher route approval)",
+ "shas": {
+  "auditory_alignment_v3/paper/ext_common.py": "33de3374f0d0718f8d1ee6a02e39622d940504b59c319414e036aa95b1e3526b",
+  "auditory_alignment_v3/paper/ext_fleet.py": "766fc3b02323352265e3a2988621187018f168c9ed355b8c708147316859187a",
+  "auditory_alignment_v3/paper/vlaai_torch.py": "48181327fcea4ef1c9f3764297a80e702c203917857683ad1ac0b92668baa794",
+  "auditory_alignment_v3/paper/ext_mtrf.py": "7da3718914ff49eb9c7547c60d6e81b7dccdb5c9270a26928a6c009bcf46cc05",
+  "auditory_alignment_v3/paper/ext_vlaai.py": "91950309731c83cbc6a1eec541c2109257a9322e2f8b1c50bc2e315900dff270",
+  "auditory_alignment_v3/paper/ext_clip.py": "aa5254fabd6f051d5a2ca644630f54bcb55f450dee0545c3b494ebcb91132857",
+  "auditory_alignment_v3/paper/mindmix_fau.py": "94b3e88738f0d19ab9db06363260bcc6bc0cd72d6a387e5fcc4b4bb88d2221ed",
+  "auditory_alignment_v3/paper/external_decoders.py": "1abe17dc2bc312189e5199cf00645bad971e2e70433afbbe37d0230f92fa2f9f",
+  "slurm/aln35_paper_ext_vlaai.sbatch": "94085e450cf1f1acdc72d115188914d5611beca571911a9115824d5a5825585a",
+  "slurm/aln35_paper_ext_mmfau.sbatch": "9953e2616ca934fd73eac8742303c7c9c5c62aefc673158821d129e300c9b205",
+  "slurm/aln35_paper_ext_clip.sbatch": "a188d344c0b5f838700ca73763b25ad9fe8937c41b232ae361ed82dbc027d15a"
+ }
+}

@@ -1,0 +1,386 @@
+{
+  "assets": {
+    "mindmix": {
+      "audit": {
+        "checkpoint": "/projects/EEG-foundation-model/auditory_public/foundation_models/github__CookieMikeLiu__MindMix@98445f3/lfs/best_model_loss_0.0909.pth",
+        "checkpoint_epoch": 22,
+        "checkpoint_sha256": "fe2603e3ee2c95fa2e1e012710a2774e70b6dd5582560773aafd20b295f15026",
+        "checkpoint_tensor_groups": {
+          "audio_model": 211,
+          "audio_proj": 4,
+          "classifier": 2,
+          "eeg_model": 244,
+          "eeg_proj": 4,
+          "fusion_module": 46
+        },
+        "eeg_encoder_numel": 5798936,
+        "eeg_encoder_tensors": 244,
+        "eeg_proj_numel": 51968,
+        "eeg_proj_tensors": 4,
+        "embed_dim": 200,
+        "excluded_groups": [
+          "audio_model",
+          "audio_proj",
+          "classifier",
+          "fusion_module"
+        ],
+        "model_state_numel": 5798936,
+        "model_state_tensors": 244,
+        "n_blocks": 12,
+        "pos_embed_is_none": true,
+        "strict_load": true,
+        "time_embed_shape": [
+          1,
+          16,
+          200
+        ]
+      },
+      "branch_file": "<private checkpoint storage>/auditory_alignment_v3/paper/encoders_v1/assets/mindmix_eeg_branch.pt",
+      "branch_sha256": "b9fa2cfd6d5bbe011eb5aae5c7021223617be332d8bf9f5b0bed50c95df8646d",
+      "checkpoint_sha256": "fe2603e3ee2c95fa2e1e012710a2774e70b6dd5582560773aafd20b295f15026",
+      "commit": "98445f368efcb161c638172501bd16f92d09a89d"
+    },
+    "reve": {
+      "brain-bzh/reve-base": {
+        "files": {
+          ".gitattributes": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+          "LICENSE": "cda77c38a1fcf002009678642608748f221458f83bc5ee3944f1e0c83939cd96",
+          "README.md": "45398279f723f2f1cfb4347cfb757fa30a497c8ca5826e389f7846003bed10ee",
+          "config.json": "5b74a19202d1aaa5d1814b26b720e4184cd0047f28a672834d390318eed05945",
+          "configuration_reve.py": "8abbf691a2de914dccb692aa42b987d20815b52dc0642b0db1fd216df4ccbbfb",
+          "model.safetensors": "8ecc650619598748286c2457f81f5c6bd12e8bb59db44f7b02af1955c44de8fe",
+          "modeling_reve.py": "207a9c51218d806ab317eabf4eb6d3234eabe887f48e541ef5580c4b9b45359f"
+        },
+        "revision": "dc2a075c287bb2f6c04ee5875bd79535a0f7dba6"
+      },
+      "brain-bzh/reve-positions": {
+        "files": {
+          ".gitattributes": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+          "README.md": "e08e7961aaca6d559478f70549c402c4b74278abdd4ced02ddb5cd10beb5e6d1",
+          "config.json": "8e89acf4d27cf1d24815add8df771e6cf138b68846e60796db57e36f1ec8d6f8",
+          "configuration_bank.py": "148ac1c41478be7bfbcd1575d68fcf6d75076da5dfdf9f682e6742612cc88f73",
+          "model.safetensors": "4b793820b9df0998667deb6c8ce2dbb86b38221d5165c1844bc4971941b13f13",
+          "position_bank.py": "26ad5d55fb667da7c80bcc8e8512eb35bca33054a3b3e2bcafe4775543aa1cd0",
+          "positions.json": "f62ca8d7dd4b88e1422ea17348440a41ed0b73b9ff7d12c3b1229492c9b448a5"
+        },
+        "revision": "befa5b57a455b77cf302daf610c2e9ed8140bace"
+      }
+    }
+  },
+  "bindings": {
+    "aln41_age_results_sha256": "40d5f29d045ac4c5b2f95b0fca6de983794ec11c2cedff9d04045b314c50239c",
+    "aln41_cross_stim_decision_sha256": "a9998544c847489b2e8a73cc47e8b92c76bead82383c70629d9eacada52c989a",
+    "aln41_cross_stim_plan_sha256": "4c26dfbe6d14206d83244bfdb8d3f96066436260a96e94406e700d191b411a35",
+    "aln41_frozen_plan_sha256": "fc029e2d5bcfa7a4ba926da4cfa6a4d141e3a0901c17c382009c540f1542d294",
+    "aln41_private_ft_plan_sha256": "ac57b4a2111ed7cbf3aa3ca9e4c753e6cdb9509a0b2af8d596d968c8b2e87fe3",
+    "aln41_support_plan_sha256": "3ed2b6f5fcbf5d3a03651938036fb05017d52b583e72c88ce1d2e9c0a2abcf5a"
+  },
+  "candidates": {
+    "MINDMIX": {
+      "common": {
+        "lr": 0.0001,
+        "weight_decay": 0.0001
+      },
+      "documented": {
+        "lr": 1e-05,
+        "source": "MindMix@98445f36 README CLI = universal_eeg_finetune.get_args defaults: lr 1e-5, weight_decay 0.01 (AdamW betas 0.9/0.95, batch 32, 50 epochs, warmup 3); only lr and weight decay adopted (common full-FT recipe)",
+        "weight_decay": 0.01
+      }
+    },
+    "REVE": {
+      "common": {
+        "lr": 0.0001,
+        "weight_decay": 0.0001
+      },
+      "documented": {
+        "lr": 0.0001,
+        "source": "github elouayas/reve_eeg main@06a7059a (2026-03-20; linked from brain-bzh.github.io/reve): src/configs/task/{bciciv2a,speech,tuev}.yaml fine_tuning.optimizer.lr 1e-4; src/configs/optimizer/stable_adamw.yaml weight_decay 0.01 (StableAdamW, betas [0.92, 0.999]); LoRA r16, two-stage LP->FT, plateau scheduler, mixup are not adopted (common full-FT recipe)",
+        "weight_decay": 0.01
+      }
+    }
+  },
+  "created": "2026-10-22T02:30:33.844921+02:00",
+  "deviations": [
+    "Target-validation allowance = two (lr, weight decay) candidates per external encoder; the documented candidate adopts only the documented lr and weight decay; optimizer, schedule, batch, epochs, heads and selection are the common ALN4.1 recipe.",
+    "The candidate is chosen per outer fold at seed 3401 (training-side ES NLL only) and inherited by seeds 3407 / 3413 (not re-selected per seed), as the ALN4.1 R2 seeds inherit the R1 learning rate.",
+    "REVE documented fine-tuning (LoRA r16 attention adapters, linear probing then unfreezing, StableAdamW, plateau scheduler, mixup, classifier dropout) is replaced by full fine-tuning of every parameter from the first step (manuscript B.4).",
+    "MindMix amplitude: the shared per-record (per-child / per-MFF-record) channel z-score of the loaders, not MindMix's per-2-s window z-score; a z-score over each 400-ms crop would remove crop mean and scale that the other encoders see.",
+    "MindMix tokens: official return_patch_tokens output (fc_norm per patch token) of both patches (80 real + 120 zero samples; 200 zero samples) concatenated per channel (E = 400); the pooled embedding and eeg_proj are not used downstream, like the proposed model's projection heads; drop_path 0.1 of the official construction is active in training.",
+    "REVE input: 80 real samples right-padded to 200 = exactly one REVE patch (patch 200, overlap 20); amplitude clip(z, -15, 15) (foundation_adapter contract), not the repository dataset scale factors (raw-unit conversions).",
+    "Frozen units are seed-independent (pretrained weights, fixed PCA seeds), as for B0: one frozen unit per encoder x cohort."
+  ],
+  "encoders": [
+    "REVE",
+    "MINDMIX"
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "interface": {
+    "MINDMIX": {
+      "E": 400,
+      "amplitude": "loader z-score unchanged",
+      "asset": "MindMix@98445f36 best_model_loss_0.0909.pth, eeg_model.* only (strict) -> official EEGEncoder",
+      "channels_mff": "E1..E128 (no channel vocabulary used)",
+      "channels_private_in_standard_1020": true,
+      "pad_to": 400,
+      "patches_per_crop": 2,
+      "spatial_embedding": "none (pos_embed forced None, no input_chans)",
+      "token": "official forward(return_patch_tokens=True) = fc_norm(patch tokens); per channel [patch0 | patch1]"
+    },
+    "REVE": {
+      "E": 512,
+      "adapter_channel_aliases": {
+        "T3": "T7",
+        "T4": "T8",
+        "T5": "P7",
+        "T6": "P8"
+      },
+      "amplitude": "clip(z, -15, 15)",
+      "asset": "HF brain-bzh/reve-base@dc2a075 + brain-bzh/reve-positions@befa5b5 via foundation_adapter.Backbone",
+      "channels_mff": "E1..E128 (REVE bank names)",
+      "channels_private": [
+        "Fp1",
+        "Fp2",
+        "Fz",
+        "F3",
+        "F4",
+        "F7",
+        "F8",
+        "Cz",
+        "C3",
+        "C4",
+        "T7",
+        "T8",
+        "Pz",
+        "P3",
+        "P4",
+        "P7",
+        "P8",
+        "Oz",
+        "O1",
+        "O2"
+      ],
+      "pad_to": 200,
+      "patch": "size 200, overlap 20 (unfold step 180)",
+      "patches_per_crop": 1,
+      "token": "final transformer output [C, 512] of the single patch"
+    },
+    "common": {
+      "crop": "aln41/timebank.crop_inputs: native crop at 250 Hz (100 samples), crop-only FFT resampling to 200 Hz (80 samples), zero right padding to 200; each crop an independent forward",
+      "mff_cross_stim": "aln41/cross_stim.load (gated GX records, per-record channel z-score), onset 50, 128 ch E1..E128",
+      "private_bdf": "auditory_alignment.data.load_private (64 children, 20 ch, 250 Hz, per-child z-score), onset 50",
+      "windows_ms": [
+        [
+          -200,
+          200
+        ],
+        [
+          0,
+          400
+        ],
+        [
+          200,
+          600
+        ]
+      ]
+    }
+  },
+  "mff": {
+    "channels": [
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5",
+      "E6",
+      "E7",
+      "E8",
+      "E9",
+      "E10",
+      "E11",
+      "E12",
+      "E13",
+      "E14",
+      "E15",
+      "E16",
+      "E17",
+      "E18",
+      "E19",
+      "E20",
+      "E21",
+      "E22",
+      "E23",
+      "E24",
+      "E25",
+      "E26",
+      "E27",
+      "E28",
+      "E29",
+      "E30",
+      "E31",
+      "E32",
+      "E33",
+      "E34",
+      "E35",
+      "E36",
+      "E37",
+      "E38",
+      "E39",
+      "E40",
+      "E41",
+      "E42",
+      "E43",
+      "E44",
+      "E45",
+      "E46",
+      "E47",
+      "E48",
+      "E49",
+      "E50",
+      "E51",
+      "E52",
+      "E53",
+      "E54",
+      "E55",
+      "E56",
+      "E57",
+      "E58",
+      "E59",
+      "E60",
+      "E61",
+      "E62",
+      "E63",
+      "E64",
+      "E65",
+      "E66",
+      "E67",
+      "E68",
+      "E69",
+      "E70",
+      "E71",
+      "E72",
+      "E73",
+      "E74",
+      "E75",
+      "E76",
+      "E77",
+      "E78",
+      "E79",
+      "E80",
+      "E81",
+      "E82",
+      "E83",
+      "E84",
+      "E85",
+      "E86",
+      "E87",
+      "E88",
+      "E89",
+      "E90",
+      "E91",
+      "E92",
+      "E93",
+      "E94",
+      "E95",
+      "E96",
+      "E97",
+      "E98",
+      "E99",
+      "E100",
+      "E101",
+      "E102",
+      "E103",
+      "E104",
+      "E105",
+      "E106",
+      "E107",
+      "E108",
+      "E109",
+      "E110",
+      "E111",
+      "E112",
+      "E113",
+      "E114",
+      "E115",
+      "E116",
+      "E117",
+      "E118",
+      "E119",
+      "E120",
+      "E121",
+      "E122",
+      "E123",
+      "E124",
+      "E125",
+      "E126",
+      "E127",
+      "E128"
+    ],
+    "geometry_vs_reve_bank": {
+      "excluded_reference": [
+        "VREF"
+      ],
+      "layout_hash": "f2432571f166a2fbb38282d732841dd396fc5583c91caa3eb205127bcdd04c1f",
+      "nearest_bank_label_equals_name": 128,
+      "raw_distance_median_m": 0.03878219008926222,
+      "residual_max_m": 7.271839084335889e-06,
+      "residual_median_m": 4.410538980185072e-06,
+      "rotation_det": 1.0000000000000002,
+      "scale": 0.9484601690638325
+    },
+    "layout_hash": "f2432571f166a2fbb38282d732841dd396fc5583c91caa3eb205127bcdd04c1f",
+    "reader_evidence_sha256": "d075d004023b93c2a171ec8b80737abd4321c96b58f292992cf95f335c49bb2a",
+    "records": 60
+  },
+  "results_seen": false,
+  "seeds": [
+    3401,
+    3407,
+    3413
+  ],
+  "selection_rule": "per encoder x outer fold, seed 3401: choose the candidate with the lower selected_es_nll_bits (minimum equal-child ES NLL over epochs 0..100 on the training children's ES blocks); exact tie -> common; seeds 3407 / 3413 run only the chosen candidate; held-out children never enter training, selection or the candidate choice",
+  "sources": {
+    "auditory_alignment/data.py": "abeb9d368116e4b1b6becace401299660248e48356fa12f72084950282ebb6b5",
+    "auditory_alignment_v2/fm_readout.py": "7035108ab87aed6bcf7e297a6ca24f2728c5dceb64749b0a6fc028856efb3c4e",
+    "auditory_alignment_v2/foundation_adapter.py": "09cd929720cfc9348a7b3c9b87139a1fae6e9e6c6adbe26556a7d5f6fb79e355",
+    "auditory_alignment_v3/aln34/content_time.py": "8dd9dfee498e31cffcfec503a9e4161f1b582c84bab04d986d5a3e6b5525513f",
+    "auditory_alignment_v3/aln34/private_current_time_v2.py": "0f8b4876eebc6d09309a16513b1a1608e65d1b0b3ba555519a8055dcc8a564e3",
+    "auditory_alignment_v3/aln35/history_interface.py": "b02a0e1e73c544d0b798fb13c007f1638cb60e1d64477c1360c30fae26d2cd19",
+    "auditory_alignment_v3/aln35/support_contract.py": "c4abbda40e605718883b87d0dd4a6933a8b1065e49dbd11bf2f66f32e7a95f7c",
+    "auditory_alignment_v3/aln35/support_runtime.py": "ec39cee3a05a7cc0fd97f0f53ad24626af75926da177c8b42e3889132119918e",
+    "auditory_alignment_v3/aln41/age.py": "7f8667ca028b2df3943e1d649fdae48e355e40185424117aa6ccd97b7f6948ad",
+    "auditory_alignment_v3/aln41/age_probe.py": "763895d758f9fed0fd8f9ccd2252f95267f29ae54b1590e534a5d4671ca4e067",
+    "auditory_alignment_v3/aln41/cross_stim.py": "92fd422389c8e999b4ae726fca2b8ad7ee1ea9e21328661ec69915ed4ae61d7e",
+    "auditory_alignment_v3/aln41/frozen.py": "48c46fe88d04e36d396f765eb9b72f5fb3c822d7671bcf4fd61a12ee164be1cb",
+    "auditory_alignment_v3/aln41/private_ft.py": "c62b9c0694f179cbd033786a4db7d7f10687d29475476569eb593bedbde36ecd",
+    "auditory_alignment_v3/aln41/private_ft_resume.py": "334a51502096fc629b5c10ba36797fd1e333fcb7cb12f3b779af7a270f4c0e3b",
+    "auditory_alignment_v3/aln41/r2.py": "62aad8c615136e817024b637654ae2a33589f38e4eb350a4835a7da80fd7a01d",
+    "auditory_alignment_v3/aln41/readout.py": "00d4637a87d37eed0e8003c60c549329e30c468666ac821321ff1db594c15111",
+    "auditory_alignment_v3/aln41/source.py": "b7ebc04fec3476b7901b9de107505df6c508668b464cb4419442d2c091ff25d7",
+    "auditory_alignment_v3/aln41/support.py": "052a8f5b731ef5deb6497679926ac0a5e459dc9bae5c0a18085806f95ba90d37",
+    "auditory_alignment_v3/aln41/time_access.py": "7b1fb30837e3311e124b98a6d42379c9d31caddf8f581b4319db28d3c54bb586",
+    "auditory_alignment_v3/aln41/timebank.py": "878b5b276bbcd4244d55a2c908743d68a247091d5aef77ca76f528b066d95bbe",
+    "auditory_alignment_v3/aln42/external_mindmix.py": "564d4d1903915af0660ac6bdad963648aa0a2bb8cfff36496ef22056f71937d4",
+    "auditory_alignment_v3/fm_aligned.py": "5f99cbc5617a978d3f110d74eeb1ddb24fd677e5d3df83a646bd1535127c76c1",
+    "auditory_alignment_v3/paper/enc_models.py": "26e25df76e582bbe4a3e147df403282aaed512e4f7b32cfb3729370fd113bbd1",
+    "auditory_alignment_v3/paper/encoders.py": "39d7e51e71571cbe44029487775d54ab2757697971aab081b0cf925f8dee9061",
+    "auditory_c3/c3dl/hc.py": "6d66f84aec7d1f2c18e9f23efef76736d1d9a2a73063e6613410b02e4c92eca1",
+    "auditory_c3/private_mi2.py": "bb768296506dc414b696e89191464c7e8aa556b623ed3b82ccd5b13bff92d70b",
+    "mindmix@98445f36/modeling_finetune_2.py": "2b27918d7836fe4c03ee20f492d2a9faa8c629fd22d16884a9b21550f7711e65",
+    "mindmix@98445f36/universal_eeg_finetune.py": "2e388b92d3cd40d3a2edf3d0cd8251b51ea6481a52508de004e19adebc7a6a88",
+    "mindmix@98445f36/universal_models.py": "a60639fc2aee22fabf90207628f62e0743975683465ea57f9538873af50ca461",
+    "mindmix@98445f36/utils.py": "d405673570ffd613fd515cf9e7f1eb03ad5b30657693ce97da92e71debd8b9c1"
+  },
+  "stages": {
+    "frozen": "frozen_v1/plan.json",
+    "ft": "private_ft_v1/plan.json",
+    "support": "support_v1/plan.json"
+  },
+  "store": "<private checkpoint storage>/auditory_alignment_v3/paper/encoders_v1",
+  "version": "PAPER_ENCODERS_v1"
+}

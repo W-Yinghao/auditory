@@ -1,0 +1,231 @@
+{
+ "post_hoc": true,
+ "appendum_to": {
+  "file": "PROTOCOL.json",
+  "sha256": "28d829c6c7eeba5af93c326b13b582886f0d6fd043685643cebb21ca0cda0703"
+ },
+ "requested": "2026-10-22 ~19:45 by the researcher, after the mTRF-ctx numbers (TABLE2_MTRF_CTX.json) had been seen",
+ "seen_before_request": {
+  "mtrf_ctx_by_window_s_acc_nll": {
+   "dtu": {
+    "5": {
+     "nh": [
+      0.6691,
+      0.8821
+     ],
+     "hi": [
+      0.6733,
+      0.875
+     ],
+     "all": [
+      0.6712,
+      0.8786
+     ]
+    },
+    "10": {
+     "nh": [
+      0.7267,
+      0.7804
+     ],
+     "hi": [
+      0.7348,
+      0.7694
+     ],
+     "all": [
+      0.7307,
+      0.7749
+     ]
+    },
+    "20": {
+     "nh": [
+      0.8025,
+      0.6046
+     ],
+     "hi": [
+      0.8028,
+      0.6143
+     ],
+     "all": [
+      0.8026,
+      0.6095
+     ]
+    }
+   },
+   "fau": {
+    "5": {
+     "th": [
+      0.5988,
+      0.9558
+     ],
+     "ha": [
+      0.5914,
+      0.9707
+     ],
+     "ci": [
+      0.5226,
+      1.0256
+     ],
+     "all": [
+      0.5683,
+      0.9873
+     ]
+    },
+    "10": {
+     "th": [
+      0.6453,
+      0.9185
+     ],
+     "ha": [
+      0.6213,
+      0.9405
+     ],
+     "ci": [
+      0.529,
+      1.0361
+     ],
+     "all": [
+      0.5933,
+      0.9702
+     ]
+    },
+    "20": {
+     "th": [
+      0.6809,
+      0.845
+     ],
+     "ha": [
+      0.6648,
+      0.8903
+     ],
+     "ci": [
+      0.5415,
+      1.0553
+     ],
+     "all": [
+      0.624,
+      0.9399
+     ]
+    }
+   }
+  },
+  "mtrf_ctx_file_sha256": "770b9ee874418d8cafcf2b8c8931c960d35c6a7dc849cb0850afd39136de62b1",
+  "also_seen": "Table 2 main rows (mTRF, VLAAI, TCS, B0, TNCE, MindMix) and the earlier post-hoc sensitivity rows (manuscript_v2/TABLES.md); VLAAI-ctx not seen (lane registered, no output read)"
+ },
+ "question": "how much of mTRF's accuracy survives when its segment margin is computed only at the proposed system's 16 anchor times instead of on all reconstructable samples?",
+ "anchors": {
+  "anchors_128hz_segment_relative": [
+   51,
+   83,
+   115,
+   147,
+   179,
+   211,
+   243,
+   275,
+   307,
+   339,
+   371,
+   403,
+   435,
+   467,
+   499,
+   531
+  ],
+  "samples_64hz": [
+   25,
+   41,
+   57,
+   73,
+   89,
+   105,
+   121,
+   137,
+   153,
+   169,
+   185,
+   201,
+   217,
+   233,
+   249,
+   265
+  ],
+  "mapping": "64 Hz sample j = a // 2: the ext_common pairwise-mean sample whose 128 Hz pair {2j, 2j+1} contains a (centre 3.9 ms before a)",
+  "targets": "the decoder's 64 Hz prediction and the 64 Hz pairwise-mean attended / ignored envelopes at j (its own training target), not the 128 Hz envelope sample at a"
+ },
+ "primary": {
+  "analysis": "mtrf_ctx_anchor16",
+  "output": "TABLE2_MTRF_CTX_ANCHOR16.json",
+  "decoder": "mTRF-ctx units (context_matched/mtrf), stored decoder.npz, no re-fit",
+  "margin": "r(pred, att) - r(pred, ign) over the 16 samples j of each 5 s segment",
+  "integration": "ext_context.score_units = ext_common.integrate_unit (aln42.external_eval.integrate, 5 / 10 / 20 s, tau refitted on training-side windows by the unchanged rule) + ext_common.summarize; 20 s primary"
+ },
+ "secondary": {
+  "analysis": "mtrf_main_anchor16",
+  "decoder": "Table 2 mTRF units (external_decoders/mtrf), stored decoder.npz, no re-fit",
+  "margin": "same 16 samples",
+  "location": "inside the output file, key secondary_mtrf_main_anchor16"
+ },
+ "reference_cited_not_recomputed": {
+  "TCS_20s_acc_nll": {
+   "dtu": {
+    "nh": [
+     0.61,
+     0.945
+    ],
+    "hi": [
+     0.614,
+     0.939
+    ],
+    "all": [
+     0.612,
+     0.942
+    ]
+   },
+   "fau": {
+    "th": [
+     0.542,
+     0.993
+    ],
+    "ha": [
+     0.519,
+     0.999
+    ],
+    "ci": [
+     0.495,
+     1.004
+    ],
+    "all": [
+     0.515,
+     1.0
+    ]
+   }
+  },
+  "source": "results/auditory_alignment_v3/paper/manuscript_v2/TABLES.md, row TCS",
+  "source_sha256_at_freeze": "2f324077c58701bdd34f97d87372c57a822b4923390dc5e27ad4e0c3146f5fdd"
+ },
+ "reproduction_gate": "full-window margins recomputed from the stored weights == stored margins (max abs diff <= 1e-09) on every scored segment of every unit, both decoders; engineering check, not an outcome gate",
+ "pre_stated_reading": {
+  "large_drop": "a large drop of mTRF toward the proposed system's level means sparse 4 Hz (16-point) scoring explains much of the gap",
+  "small_drop": "a small drop means it does not",
+  "descriptive_quantity": "per cohort / group at 20 s: share of the mTRF-ctx minus TCS accuracy gap removed by 16-anchor scoring = (mtrf_ctx - mtrf_ctx_anchor16) / (mtrf_ctx - TCS); reported, no threshold",
+  "caveat": "the proposed system still differs in features, readout training data (ss) and 128 Hz anchor targets; this isolates only the number / rate of scored points"
+ },
+ "module_sha256_at_freeze": {
+  "auditory_alignment_v3/paper/ext_context_anchor.py": "94e45904f42e787c8d2bd4941bcc5cd0597f02d7b8281051f9c8eb4869496882",
+  "auditory_alignment_v3/paper/ext_context.py": "24c1390fa73a3736755b1a09a9a2adcd7c0cd48faffe8b405b6a60342b129f7a",
+  "auditory_alignment_v3/paper/ext_context_mtrf.py": "92e4c67d8b7fe3a1d7bbd4c3bc1ff0a73ef41f689a39fa8690853c6a593c34cb",
+  "auditory_alignment_v3/paper/ext_mtrf.py": "7da3718914ff49eb9c7547c60d6e81b7dccdb5c9270a26928a6c009bcf46cc05",
+  "auditory_alignment_v3/paper/ext_common.py": "33de3374f0d0718f8d1ee6a02e39622d940504b59c319414e036aa95b1e3526b",
+  "auditory_alignment_v3/aln42/external_eval.py": "2922109a21f23a36b298ac27aaabcc1d7edc26df590cc05c6b543e935ceb6fb4"
+ },
+ "plans_sha256": {
+  "mtrf_ctx": "0c8e74299bb8d847cab58946ca1db9a255ae7f16be222a0014f7b43b12e789d8",
+  "mtrf": "f5c38e2bdd9ab1b5181be5a16cd3cea0a45c05ba47f962c2c206ad7ca4000010"
+ },
+ "input_index_sha256": {
+  "dtu": "b219bbcba8205f083ec4dee165cdf3902b1478d13973c9c93eea7c70d32d72b0",
+  "fau": "ce883bcf537e4aec477c726fdab4a6563a9379cf63352f6808a0d6c4342664ed"
+ },
+ "frozen_at": "2026-10-22T19:48:26.614750+02:00",
+ "frozen_by_job": "1047358"
+}

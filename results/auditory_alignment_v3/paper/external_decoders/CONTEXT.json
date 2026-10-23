@@ -1,0 +1,57 @@
+{
+ "note": "Native input context per system on the common protocol (manuscript section 4.1). Score integration is identical for every system: mean of 5 s segment margins over 1 / 2 / 4 consecutive segments (5 / 10 / 20 s; 20 s primary), aln42.external_eval.integrate. EEG spans are within one trial; no system sees EEG beyond its trial.",
+ "systems": {
+  "proposed_temporal_CS": {
+   "eeg_fs_hz": 128,
+   "native_unit": "3 crops x 0.40 s around each of 16 anchors per 5 s segment (offsets -0.20..+0.60 s)",
+   "eeg_span_per_segment_s": [
+    0.203,
+    4.75
+   ],
+   "eeg_seconds_per_segment_margin": 4.55,
+   "eeg_seconds_per_20s_decision": 19.55
+  },
+  "mtrf": {
+   "eeg_fs_hz": 64,
+   "native_unit": "backward lags 0..500 ms per reconstructed sample",
+   "eeg_span_per_segment_s": [
+    0.0,
+    5.5
+   ],
+   "eeg_seconds_per_segment_margin": 5.5,
+   "eeg_seconds_per_20s_decision": 20.5
+  },
+  "vlaai": {
+   "eeg_fs_hz": 64,
+   "native_unit": "5 s window (released training window), whole segment",
+   "eeg_span_per_segment_s": [
+    0.0,
+    5.0
+   ],
+   "eeg_seconds_per_segment_margin": 5.0,
+   "eeg_seconds_per_20s_decision": 20.0
+  },
+  "transformer_clip": {
+   "eeg_fs_hz": 64,
+   "native_unit": "3 s encoder window; windows at +0/+1/+2 s overlap-added",
+   "eeg_span_per_segment_s": [
+    0.0,
+    5.0
+   ],
+   "eeg_seconds_per_segment_margin": 5.0,
+   "eeg_seconds_per_20s_decision": 20.0
+  },
+  "mindmix_complete": {
+   "eeg_fs_hz": 200,
+   "audio_fs_hz": 16000,
+   "native_unit": "2 s window (EEG + candidate audio); sub-windows at +0/+1.5/+3.0 s",
+   "eeg_span_per_segment_s": [
+    0.0,
+    5.0
+   ],
+   "eeg_seconds_per_segment_margin": 5.0,
+   "eeg_seconds_per_20s_decision": 20.0
+  }
+ },
+ "context_matched_sensitivity": "match the actual EEG span contributing to a decision (e.g. restrict every system to the proposed system 0.203-4.75 s span per segment, or extend the proposed system to the full 5 s); not executed here"
+}

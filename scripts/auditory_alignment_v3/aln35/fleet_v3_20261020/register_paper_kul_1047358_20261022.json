@@ -1,0 +1,59 @@
+{
+ "status": "pass",
+ "job": "1047358",
+ "entries": [
+  {
+   "module": "auditory_alignment_v3.aln35.paper_kul_fleet_a",
+   "sha256": "ac6b799e3be036943d5c915dbca9832784fa799349c75c3368374054b96f0605",
+   "name": "c3_s35pkA",
+   "lane": "s35_paper_kul_a"
+  },
+  {
+   "module": "auditory_alignment_v3.aln35.paper_kul_fleet_b",
+   "sha256": "d75eba835a0162544706a0c2c91ea84518877b140b578e4119c97609aedaec7f",
+   "name": "c3_s35pkB",
+   "lane": "s35_paper_kul_b"
+  }
+ ],
+ "backup": "/home/infres/yinwang/EEG_auditory/private/auditory_alignment_v3/aln35/fleet_plugins_before_paper_kul_1047358_20261022.json",
+ "readiness": {
+  "a": {
+   "state": "ready",
+   "ready": 80,
+   "remaining": 80,
+   "slots": 2,
+   "submit": [
+    "slurm/aln35_paper_kul_a.sbatch",
+    "--worker",
+    "--lane",
+    "A",
+    "--max-units",
+    "4"
+   ]
+  },
+  "b": {
+   "state": "ready",
+   "ready": 32,
+   "remaining": 32,
+   "slots": 2,
+   "submit": [
+    "slurm/aln35_paper_kul_b.sbatch",
+    "--worker",
+    "--lane",
+    "B",
+    "--max-units",
+    "4"
+   ]
+  }
+ },
+ "authorisation": "researcher 2026-10-22: W6 \"KUL download + attack\" approved (~20 GPU-h); revision 01 keeps P2 at folds 0-1 (21.3 GPU-h projected)",
+ "shas": {
+  "auditory_alignment_v3/paper/kul_mindmix.py": "e948526b230c3811cea28253739536b2b37e475d84701f237a7d8db9c3e5dc6c",
+  "slurm/aln35_paper_kul_a.sbatch": "a9d3c273feec08efb9f2f98ca73286912ba541601b18ced01ad08dfc2bd40c0d",
+  "slurm/aln35_paper_kul_b.sbatch": "e6ec6dc65bb862ebf8d7274ca0d8a1a94345e634a2362d87f305c903de3de42b",
+  "private/auditory_alignment_v3/paper/kul_v1/KUL_MINDMIX_BINDING.json": "d64e30eed01107d07b608bef88829d617083f9f1159ced4b8f1e167d3f82a134",
+  "private/auditory_alignment_v3/paper/kul_v1/KUL_MINDMIX_REVISION_01.json": "609dc3661dee9244fbd06d365a7d5201b27cdef164c3e53ab54698626a9ffd41",
+  "private/auditory_alignment_v3/paper/kul_v1/plan_v2.json": "949ae3257eecbf58cae964b43708c779d3354a9a132b506c299dc3f84152ddd7",
+  "private/auditory_alignment_v3/paper/kul_v1/probes/1056232/receipt.json": "6252e553920fa910d10dc986600a2060949898767e054095abea1ee5024eea6b"
+ }
+}

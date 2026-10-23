@@ -173,3 +173,104 @@ A record can bundle several evaluations; records, releases, seeds and reused res
 - `aln42/source_diag_v1`: 4
 - `breadth_inner_v1`: 18
 - `paper/mindmix_audit_v1`: 8
+
+## Lane supplement — publish_037
+
+The 1 independently readable `lanes_037_*.tar.gz` parts contain 753 completed non-probe records frozen at 2026-10-23T05:48:14.962795+02:00; `LANES_MANIFEST_037.tsv` maps every member to its part and SHA256. Members are byte-identical to the server records, except that in publish_037 members the private checkpoint-storage root is replaced by the established placeholder `<private checkpoint storage>` (as in published plans; per-member source/published SHA256 in `results/auditory_alignment_v3/publication_037/LANE_MEMBER_DERIVATIONS.json`).
+
+- Members without a prefix are ALN3.4 lane records; members under `aln35/`, `aln36/`, `aln41/`, `aln42/` and `paper/` are ALN3.5, ALN3.6, ALN4.1, ALN4.2 and paper-line (manuscript v2: arms, encoders, external decoders, CALRA, MindMix audits, KUL MindMix reproduction, W7) lane records (lanes in progress) that were **not** already published byte-identically in the publish_030-036 lane snapshots (new completions or changed records; member name and SHA256 compared). The complete lane set at this snapshot is the earlier parts plus these members; where a member name occurs in several releases, the latest release is the current record. Server-only support/query geometry bindings are not included; plans publish their hash.
+
+A record can bundle several evaluations; records, releases, seeds and reused results never increase independent participant n.
+
+- `aln41/r2/seed3407/readout_v1`: 20
+- `aln41/r2/seed3413/private_ft_v1`: 1
+- `aln41/r2/seed3413/readout_v1`: 20
+- `aln42/external_v1`: 2
+- `paper/arms_v1/SV_env/seed3401/frozen_v1`: 5
+- `paper/arms_v1/SV_env/seed3401/readout_v1`: 5
+- `paper/arms_v1/SV_env/seed3401/source_v1`: 1
+- `paper/arms_v1/SV_env/seed3407/frozen_v1`: 5
+- `paper/arms_v1/SV_env/seed3407/readout_v1`: 5
+- `paper/arms_v1/SV_env/seed3407/source_v1`: 1
+- `paper/arms_v1/SV_env/seed3413/frozen_v1`: 5
+- `paper/arms_v1/SV_env/seed3413/readout_v1`: 5
+- `paper/arms_v1/SV_env/seed3413/source_v1`: 1
+- `paper/arms_v1/SV_sc/seed3401/frozen_v1`: 5
+- `paper/arms_v1/SV_sc/seed3401/readout_v1`: 5
+- `paper/arms_v1/SV_sc/seed3401/source_v1`: 1
+- `paper/arms_v1/SV_sc/seed3407/frozen_v1`: 5
+- `paper/arms_v1/SV_sc/seed3407/readout_v1`: 5
+- `paper/arms_v1/SV_sc/seed3407/source_v1`: 1
+- `paper/arms_v1/SV_sc/seed3413/frozen_v1`: 5
+- `paper/arms_v1/SV_sc/seed3413/readout_v1`: 5
+- `paper/arms_v1/SV_sc/seed3413/source_v1`: 1
+- `paper/arms_v1/SV_ss/seed3401/frozen_v1`: 5
+- `paper/arms_v1/SV_ss/seed3401/readout_v1`: 5
+- `paper/arms_v1/SV_ss/seed3401/source_v1`: 1
+- `paper/arms_v1/SV_ss/seed3407/frozen_v1`: 5
+- `paper/arms_v1/SV_ss/seed3407/readout_v1`: 5
+- `paper/arms_v1/SV_ss/seed3407/source_v1`: 1
+- `paper/arms_v1/SV_ss/seed3413/frozen_v1`: 5
+- `paper/arms_v1/SV_ss/seed3413/readout_v1`: 5
+- `paper/arms_v1/SV_ss/seed3413/source_v1`: 1
+- `paper/arms_v1/THSIC/seed3401/frozen_v1`: 5
+- `paper/arms_v1/THSIC/seed3401/readout_v1`: 5
+- `paper/arms_v1/THSIC/seed3401/source_v1`: 3
+- `paper/arms_v1/THSIC/seed3407/frozen_v1`: 5
+- `paper/arms_v1/THSIC/seed3407/readout_v1`: 5
+- `paper/arms_v1/THSIC/seed3407/source_v1`: 1
+- `paper/arms_v1/THSIC/seed3413/frozen_v1`: 5
+- `paper/arms_v1/THSIC/seed3413/readout_v1`: 5
+- `paper/arms_v1/THSIC/seed3413/source_v1`: 1
+- `paper/calra_v1/CALRA/seed3401/frozen_v1`: 5
+- `paper/calra_v1/CALRA/seed3401/readout_v1`: 5
+- `paper/calra_v1/CALRA/seed3401/source_v1`: 1
+- `paper/calra_v1/CALRA/seed3407/frozen_v1`: 5
+- `paper/calra_v1/CALRA/seed3407/readout_v1`: 5
+- `paper/calra_v1/CALRA/seed3407/source_v1`: 1
+- `paper/calra_v1/CALRA/seed3413/frozen_v1`: 5
+- `paper/calra_v1/CALRA/seed3413/readout_v1`: 5
+- `paper/calra_v1/CALRA/seed3413/source_v1`: 1
+- `paper/calra_v1/PROJ_NCE/seed3401/source_v1`: 1
+- `paper/calra_v1/audit_v2`: 4
+- `paper/calra_v1/calibration`: 2
+- `paper/encoders_v1/frozen_v1`: 4
+- `paper/encoders_v1/private_ft_v1`: 40
+- `paper/encoders_v1/readout_v1`: 2
+- `paper/encoders_v1/support_v1`: 30
+- `paper/external_decoders/clip`: 21
+- `paper/external_decoders/context_matched/anchor16`: 40
+- `paper/external_decoders/context_matched/mtrf`: 20
+- `paper/external_decoders/context_matched/vlaai`: 20
+- `paper/external_decoders/mindmix_fau`: 10
+- `paper/external_decoders/mtrf`: 20
+- `paper/external_decoders/vlaai`: 8
+- `paper/external_decoders/vlaai_v2`: 20
+- `paper/kul_v1`: 112
+- `paper/mindmix_audit_v1`: 2
+- `paper/mindmix_dropkey_v1`: 20
+- `paper/mindmix_dropkey_v1/appendum_01`: 20
+- `paper/w7_v1/adapt_v2`: 30
+- `paper/w7_v1/arms_v2/TCS_CCS/seed3401/frozen_v1`: 5
+- `paper/w7_v1/arms_v2/TCS_CCS/seed3401/source_v1`: 1
+- `paper/w7_v1/arms_v2/TCS_CCS/seed3407/frozen_v1`: 5
+- `paper/w7_v1/arms_v2/TCS_CCS/seed3407/source_v1`: 1
+- `paper/w7_v1/arms_v2/TCS_CCS/seed3413/source_v1`: 1
+- `paper/w7_v1/arms_v2/TCS_PRES/seed3401/frozen_v1`: 5
+- `paper/w7_v1/arms_v2/TCS_PRES/seed3401/source_v1`: 4
+- `paper/w7_v1/arms_v2/TCS_PRES/seed3407/frozen_v1`: 5
+- `paper/w7_v1/arms_v2/TCS_PRES/seed3407/source_v1`: 1
+- `paper/w7_v1/arms_v2/TCS_PRES/seed3413/frozen_v1`: 5
+- `paper/w7_v1/arms_v2/TCS_PRES/seed3413/source_v1`: 1
+- `paper/w7_v1/arms_v2/TCS_RES/seed3401/frozen_v1`: 5
+- `paper/w7_v1/arms_v2/TCS_RES/seed3401/source_v1`: 1
+- `paper/w7_v1/arms_v2/TCS_RES/seed3407/frozen_v1`: 5
+- `paper/w7_v1/arms_v2/TCS_RES/seed3407/source_v1`: 1
+- `paper/w7_v1/arms_v2/TCS_RES/seed3413/frozen_v1`: 5
+- `paper/w7_v1/arms_v2/TCS_RES/seed3413/source_v1`: 1
+- `paper/w7_v1/arms_v2/TCS_RES_PRES/seed3401/source_v1`: 1
+- `paper/w7_v1/arms_v2/TCS_RES_PRES/seed3407/source_v1`: 1
+- `paper/w7_v1/arms_v2/TCS_RES_PRES/seed3413/source_v1`: 1
+- `paper/w7_v1/audit`: 6
+- `paper/w7_v1/rule`: 28
+- `paper/w7_v1/rule_z`: 28

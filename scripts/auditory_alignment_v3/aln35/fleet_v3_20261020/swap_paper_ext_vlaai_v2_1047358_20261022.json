@@ -1,0 +1,38 @@
+{
+ "status": "pass",
+ "job": "1047358",
+ "replaced": {
+  "module": "auditory_alignment_v3.aln35.paper_ext_vlaai_fleet",
+  "sha256": "d69d84d07432299d60aa3762b36fe3376be821609e503260b219ae07097a7c64",
+  "name": "c3_s35pxvla",
+  "lane": "s35_paper_ext_vlaai"
+ },
+ "new": {
+  "module": "auditory_alignment_v3.aln35.paper_ext_vlaai_fleet_v2",
+  "sha256": "8a726f0f25af4d122823d97912469135479843f7b726d65628c72f1e828d7d51",
+  "name": "c3_s35pxvla",
+  "lane": "s35_paper_ext_vlaai"
+ },
+ "backup": "/home/infres/yinwang/EEG_auditory/private/auditory_alignment_v3/aln35/fleet_plugins_before_vlaai_v2_swap_1047358_20261022.json",
+ "reason": "v1 swap-antisymmetry check compared float32 recomputation with float64 margins (false check_failed on PXVLA_b71adaac1426b919); v2 checks the same float64 arrays; see CORRECTION_RECEIPT.json",
+ "correction_receipt_sha256": "0b3c3e7b593e57dccae419b37e372f88fbeeeb7f411610b5280f140408d98f81",
+ "readiness": {
+  "state": "ready",
+  "ready": 14,
+  "remaining": 14,
+  "slots": 1,
+  "submit": [
+   "slurm/aln35_paper_ext_vlaai_v2.sbatch",
+   "worker",
+   "--system",
+   "vlaai_v2",
+   "--max-units",
+   "10"
+  ]
+ },
+ "shas": {
+  "auditory_alignment_v3/paper/ext_vlaai_v2.py": "96cd99fbf7608ca1fda30ef2e2de106aa8f3dde51903b18e7f0481988d31a6ff",
+  "auditory_alignment_v3/aln35/paper_ext_vlaai_fleet_v2.py": "8a726f0f25af4d122823d97912469135479843f7b726d65628c72f1e828d7d51",
+  "slurm/aln35_paper_ext_vlaai_v2.sbatch": "faf049770d6e00b6741cf5e865e15bb95bd035e18a0171f2372981ea0d411675"
+ }
+}

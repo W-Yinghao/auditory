@@ -1,0 +1,56 @@
+{
+  "correction": "v1 audit scored eval mode only; v2 adds training-mode scoring; v1 records and W5_AUDIT.json unchanged",
+  "created": "2026-10-22T07:29:20.924561+02:00",
+  "rows": [
+    {
+      "arm": "CALRA",
+      "base": "/home/infres/yinwang/EEG_auditory/private/auditory_alignment_v3/paper/calra_v1/CALRA/seed3401/source_v1",
+      "id": "W5P_fb6214a88bcc7ef9",
+      "seed": 3401,
+      "unit_sha256": "08cc069aed4abd075403d6e3682dd3392485323fa62fe971f02f5e36f87a6ec3",
+      "v1_audit_sha256": "baaa67baded429c8f3996027fc7eb8e1d672da28de9b3a04ffc51813571a4ed9"
+    },
+    {
+      "arm": "CALRA",
+      "base": "/home/infres/yinwang/EEG_auditory/private/auditory_alignment_v3/paper/calra_v1/CALRA/seed3407/source_v1",
+      "id": "W5P_ddb4d2c1776575ae",
+      "seed": 3407,
+      "unit_sha256": "38e64f6003dd2e0033600ece755f7468a4085d0c78780400e59da3bb082c6460",
+      "v1_audit_sha256": "e415e430fdc65023a69cda2f226ebdc71e2a30366a398495e155002dadddd251"
+    },
+    {
+      "arm": "CALRA",
+      "base": "/home/infres/yinwang/EEG_auditory/private/auditory_alignment_v3/paper/calra_v1/CALRA/seed3413/source_v1",
+      "id": "W5P_8e4f1bb0a3f56d5d",
+      "seed": 3413,
+      "unit_sha256": "7952664b89a91e8c756667a5acff9de70e338ca9806d441bdbbfe19b93497e78",
+      "v1_audit_sha256": "d49c14cc4ea7246d94c5b6a3d00affe15dbfdf45cd0815e9c02f6faeb8ac1148"
+    },
+    {
+      "arm": "PROJ_NCE",
+      "base": "/home/infres/yinwang/EEG_auditory/private/auditory_alignment_v3/paper/calra_v1/PROJ_NCE/seed3401/source_v1",
+      "id": "W5P_d92e84afd1c32581",
+      "seed": 3401,
+      "unit_sha256": "0794c36d06a18e4988feee828e0d389ba1771ecce1910becbbfbb4e00f0d6892",
+      "v1_audit_sha256": "a0e62e8a5b228643168437888199ba365fc515c7da4d52214a90555c0bce899d"
+    }
+  ],
+  "settings": {
+    "blocks": "v1 audit blocks (source dev AUDIT_SEED stream; DTU cs test)",
+    "identical_inputs": "row 0's EEG crops and pre-fusion audio embedding repeated over the block",
+    "modes": [
+      "eval",
+      "train"
+    ],
+    "objective_pairing": "one CALRA(e_i, x_i) call per row for both sides (training pairing)",
+    "official_scorer": "forward_contrastive call structure: (f, g_t) = CALRA(e, t); g_c = CALRA(e, c)[1]",
+    "rng_seed": 3560
+  },
+  "sources": {
+    "/home/infres/yinwang/EEG_auditory/auditory_alignment_v3/paper/calra_audit_v2.py": "427a7e477d9c68b8c119cc54d02db99613e87b71d20dae406aedde78552d803f",
+    "/home/infres/yinwang/EEG_auditory/auditory_alignment_v3/paper/calra_cbramod.py": "dee050de3927f6adc3c1869e926b4fe4a2953c9030c70113630722119a21f31e"
+  },
+  "v1_summary_sha256": "c38eff9c3a98b9ad01d42512b98fd1f7a533b72769c78af041454ed39c426a4c",
+  "version": "PAPER_W5_AUDIT_v2",
+  "w5_plan_sha256": "3bc98277cfbbb373cf5f7200a3efb1aa3a579e8c8d3db6fc14c0e63916f02fbe"
+}

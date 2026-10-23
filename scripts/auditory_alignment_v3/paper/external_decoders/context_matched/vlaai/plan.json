@@ -1,0 +1,316 @@
+{
+  "created": "2026-10-22T18:51:03.542953+02:00",
+  "fleet": {
+    "lane": "s35_paper_ext_vlaai_ctx",
+    "max_units_per_job": 10,
+    "name": "c3_s35pxvctx",
+    "sbatch": "slurm/aln35_paper_ext_ctx_vlaai.sbatch",
+    "slots": 2
+  },
+  "input_index_sha256": {
+    "dtu": "b219bbcba8205f083ec4dee165cdf3902b1478d13973c9c93eea7c70d32d72b0",
+    "fau": "ce883bcf537e4aec477c726fdab4a6563a9379cf63352f6808a0d6c4342664ed"
+  },
+  "post_hoc": true,
+  "protocol_sha256": "28d829c6c7eeba5af93c326b13b582886f0d6fd043685643cebb21ca0cda0703",
+  "recipe": {
+    "batch": 64,
+    "batch_invariance_margin_tol": 0.0001,
+    "dtu_input": "native 64 BioSemi channels, common average reference, per-listener per-channel z-score",
+    "fau_input": "Linear(31->64) time-shared adapter, spherical-spline init, trained jointly",
+    "integration": "aln42.external_eval.integrate",
+    "loss": "-mean Pearson r over the 5 s window (released pearson_loss)",
+    "lr": 0.0001,
+    "margin": "r(hat, attended) - r(hat, ignored), 5 s segment",
+    "max_epochs": 50,
+    "numerics": "fp32 (TF32 off, deterministic cuDNN)",
+    "optimizer": "Adam",
+    "patience": 5,
+    "seed": 3401,
+    "swap_check": "ext_vlaai_v2.swap_check (atol 1e-9 x max(1, max|margin|))",
+    "train": "train people cs role=fit, attended envelope",
+    "validation": "train people cs role=es, mean per-segment r (attended), best epoch restored"
+  },
+  "reference_plan_sha256": {
+    "vlaai_v1": "daf640efd65278961a9f7b587bff738025d897f582b2154bc1fc028e55a7cf51",
+    "vlaai_v2": "d2891e1088b0da7ba2b03598aad409b14e2cc676e2f2aecc11942462e19e2bd0"
+  },
+  "released": {
+    "commit": "9af13054bf73188e9c248f249f44ecc0cd02f6c5",
+    "h5_sha256": "a077d0c2c0fdb8ec44bc59845e232dff30f5f9b23b1ce930c15de84784c6c3a9",
+    "n_params": 1740289,
+    "repo": "github.com/exporl/vlaai",
+    "verify_sha256": "0f919231858e997ecf1953acc12724292b6217c09cfae37c4e8cfd6991cc0ad1"
+  },
+  "rows": [
+    {
+      "content_fold": 0,
+      "dataset": "dtu",
+      "id": "PXVCTX_67769bfcfdaf52f0",
+      "person_fold": 0,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "dtu",
+      "id": "PXVCTX_a71767aa6f3c994d",
+      "person_fold": 1,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "dtu",
+      "id": "PXVCTX_db38557e093ff6ec",
+      "person_fold": 2,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "dtu",
+      "id": "PXVCTX_8e61326b0c32bc84",
+      "person_fold": 3,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "dtu",
+      "id": "PXVCTX_0e1a527fc8c343cc",
+      "person_fold": 4,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "dtu",
+      "id": "PXVCTX_c97adb298e129f9e",
+      "person_fold": 0,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "dtu",
+      "id": "PXVCTX_d4b7fea4122cf654",
+      "person_fold": 1,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "dtu",
+      "id": "PXVCTX_289926841f1e2536",
+      "person_fold": 2,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "dtu",
+      "id": "PXVCTX_93f301f88ea2aa82",
+      "person_fold": 3,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "dtu",
+      "id": "PXVCTX_26db2f1d93e3ee53",
+      "person_fold": 4,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "fau",
+      "id": "PXVCTX_ed38277516989bb4",
+      "person_fold": 0,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "fau",
+      "id": "PXVCTX_ec342aeb16657eba",
+      "person_fold": 1,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "fau",
+      "id": "PXVCTX_d133156469482b10",
+      "person_fold": 2,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "fau",
+      "id": "PXVCTX_79d59f364d747f4a",
+      "person_fold": 3,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 0,
+      "dataset": "fau",
+      "id": "PXVCTX_cf4a72c549ec7a62",
+      "person_fold": 4,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "fau",
+      "id": "PXVCTX_37847784938cab27",
+      "person_fold": 0,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "fau",
+      "id": "PXVCTX_caae90017fb37dd7",
+      "person_fold": 1,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "fau",
+      "id": "PXVCTX_854b0c1958470c77",
+      "person_fold": 2,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "fau",
+      "id": "PXVCTX_26fb9fcf07444321",
+      "person_fold": 3,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    },
+    {
+      "content_fold": 1,
+      "dataset": "fau",
+      "id": "PXVCTX_2f1f06c8e4d1da84",
+      "person_fold": 4,
+      "seed": 3401,
+      "span_64hz": [
+        13,
+        304
+      ],
+      "system": "vlaai_ctx"
+    }
+  ],
+  "smoke": {
+    "epochs": 2,
+    "score": 64,
+    "train": 256,
+    "val": 64
+  },
+  "sources": {
+    "auditory_alignment_v3/aln42/external_eval.py": "2922109a21f23a36b298ac27aaabcc1d7edc26df590cc05c6b543e935ceb6fb4",
+    "auditory_alignment_v3/paper/ext_common.py": "33de3374f0d0718f8d1ee6a02e39622d940504b59c319414e036aa95b1e3526b",
+    "auditory_alignment_v3/paper/ext_context.py": "24c1390fa73a3736755b1a09a9a2adcd7c0cd48faffe8b405b6a60342b129f7a",
+    "auditory_alignment_v3/paper/ext_context_vlaai.py": "1da423de47c00a0fabbc766a1712d99364a83453af2cf2e07b2134a7282b1f9e",
+    "auditory_alignment_v3/paper/ext_fleet.py": "766fc3b02323352265e3a2988621187018f168c9ed355b8c708147316859187a",
+    "auditory_alignment_v3/paper/ext_vlaai.py": "91950309731c83cbc6a1eec541c2109257a9322e2f8b1c50bc2e315900dff270",
+    "auditory_alignment_v3/paper/ext_vlaai_v2.py": "96cd99fbf7608ca1fda30ef2e2de106aa8f3dde51903b18e7f0481988d31a6ff",
+    "auditory_alignment_v3/paper/vlaai_torch.py": "48181327fcea4ef1c9f3764297a80e702c203917857683ad1ac0b92668baa794"
+  },
+  "span": {
+    "dtu_input": "CAR, then per-listener per-channel z-score over span samples only",
+    "eeg_64hz_half_open": [
+      13,
+      304
+    ],
+    "envelope_64hz_half_open": [
+      13,
+      304
+    ],
+    "input_samples": 291
+  },
+  "version": "PAPER_EXT_VLAAI_CTX_v1"
+}

@@ -1,0 +1,83 @@
+{
+ "status": "pass",
+ "job": "1047358",
+ "entries": [
+  {
+   "module": "auditory_alignment_v3.aln35.paper_w7v2_fleet_a",
+   "sha256": "4756fd3824274856a269d6ba2d13218700d0844e5e3c3f65742f6546482e1104",
+   "name": "c3_s35pw7v2A",
+   "lane": "s35_paper_w7v2_src_a"
+  },
+  {
+   "module": "auditory_alignment_v3.aln35.paper_w7v2_fleet_b",
+   "sha256": "5ad570d91b83cf4a328f3118c96ffc0f7835863006adcc5a9cfe0a5bff6709ab",
+   "name": "c3_s35pw7v2B",
+   "lane": "s35_paper_w7v2_src_b"
+  },
+  {
+   "module": "auditory_alignment_v3.aln35.paper_w7v2_fleet_z",
+   "sha256": "c19e76eb30cd88b758c665fae9b7015f3785cfb4b3c49ad84feaf6792a2000e0",
+   "name": "c3_s35pw7v2Z",
+   "lane": "s35_paper_w7v2_frozen"
+  }
+ ],
+ "backup": "/home/infres/yinwang/EEG_auditory/private/auditory_alignment_v3/aln35/fleet_plugins_before_paper_w7v2_1047358_20261022.json",
+ "readiness": {
+  "a": {
+   "state": "ready",
+   "ready": 12,
+   "remaining": 12,
+   "slots": 2,
+   "submit": [
+    "slurm/aln35_paper_w7v2_src_a.sbatch",
+    "worker",
+    "--max-units",
+    "2"
+   ]
+  },
+  "b": {
+   "state": "ready",
+   "ready": 10,
+   "remaining": 12,
+   "slots": 2,
+   "submit": [
+    "slurm/aln35_paper_w7v2_src_b.sbatch",
+    "worker",
+    "--max-units",
+    "2"
+   ]
+  },
+  "z": {
+   "state": "waiting_for_sources",
+   "ready": 0,
+   "remaining": 12,
+   "slots": 2,
+   "submit": [
+    "slurm/aln35_paper_w7v2_frozen.sbatch",
+    "frozen-worker",
+    "--max-units",
+    "3"
+   ]
+  }
+ },
+ "pres_beta": 1.0,
+ "pres_beta_note": "selected beta is the upper end of the frozen grid {0.1, 0.3, 1.0}; grid not extended (frozen rule)",
+ "smoke_receipt_sha256": "e33a7186a9bec234c64b43ac4605ccc881bd46923be778a65a74be9202eed40c",
+ "selection_sha256": "2d3d90cc1e13e9ceda5d73aa11f8fdc4de5061ea36a0468f018bdf442a672db1",
+ "authorisation": "researcher 2026-10-22: W7 approved (\"你建议的都做，你自己拿主意\"; \"必须CCS，其余的按你推荐的来\"); frozen W7 design 19:48",
+ "shas": {
+  "auditory_alignment_v3/paper/w7_objectives.py": "ae209695c4382070090ca89a7c9e18b717b3acae4917f26023565524a8782cb3",
+  "auditory_alignment_v3/paper/w7_arms_v2.py": "c382c8a3ef5aae47226bbc556a278758b5363c7e16126c2188029e7933c00783",
+  "auditory_alignment_v3/aln35/paper_w7v2_fleet_a.py": "4756fd3824274856a269d6ba2d13218700d0844e5e3c3f65742f6546482e1104",
+  "auditory_alignment_v3/aln35/paper_w7v2_fleet_b.py": "5ad570d91b83cf4a328f3118c96ffc0f7835863006adcc5a9cfe0a5bff6709ab",
+  "auditory_alignment_v3/aln35/paper_w7v2_fleet_z.py": "c19e76eb30cd88b758c665fae9b7015f3785cfb4b3c49ad84feaf6792a2000e0",
+  "slurm/aln35_paper_w7v2_src_a.sbatch": "b136b60afd544e767e4719d6754092a12fb7f037f64fdd547453a317656f5393",
+  "slurm/aln35_paper_w7v2_src_b.sbatch": "40b1f124312303af64d8ad0197e9d7d55df7391069228e491bd711edeb4cd239",
+  "slurm/aln35_paper_w7v2_frozen.sbatch": "5836fd86636bb5c09570f1883c228e095cd9d38977468792d14ef460055bca30",
+  "private/auditory_alignment_v3/paper/w7_v1/APPENDUM_01.md": "3a0793ff660415cdd1376c366e8951856bfc294078042502771eed7f9097b44b",
+  "private/auditory_alignment_v3/paper/w7_v1/APPENDUM_02.md": "945cf00410a82898aac925748d7f62a2c5cc7aa431ca4943442b2a234731dae7",
+  "private/auditory_alignment_v3/paper/w7_v1/APPENDUM_03.md": "d3db5a7402530ee61ab8697e629bdd4f5b8486e38ca60db5cce0b44e571634f7",
+  "private/auditory_alignment_v3/paper/w7_v1/APPENDUM_04.md": "32eae5256f12a3d8caf526c1843d22a86f902f8488ad5be517018434d37121e3",
+  "docs/auditory_alignment_v3/paper/W7_CS_DEPENDENCE_PREREG_FROZEN.md": "c4b461b0a6754af0ba04720320b0acc3f8c907a37f90369a4a250a612a92746c"
+ }
+}
