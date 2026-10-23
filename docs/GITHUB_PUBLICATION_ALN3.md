@@ -403,3 +403,33 @@
 - 仅限服务器的绑定，模型权重，运行日志，存储清理工具 / 清单，交接记录。
 
 本轮使用 `private/github_publish_037/checkout`。GPU 训练继续运行，发布未改变实验日程。
+
+## DEP12 依赖轮主体、扩展机制对照与 W7 GPU 四臂（2026-10-23，publish_038）
+
+研究者指示："push一版到github上"。沿用既有发布范围。内容提交 `53c9cf2ea0f69c11409307ddb6435a4fc1d68552` 已推送，`git ls-remote origin refs/heads/main` 读回一致。
+
+- DEP12 依赖包 v1.2：轮次报告、限制、F_EXTERNAL 与外部对照 v1、公开 / 私有 / MFF 对比族、机制对照（EXT1 完整，EXT2 两个 seed）、选择记录、决定记录、状态与接口，以及新增与版本化的 dep12 代码。
+- 论文主线：W7 GPU 四臂结果与族；Transformer-CLIP 上下文匹配附录 02 及模块；实验追踪更新。
+- 运维：fleet shim、Slurm 入口（含 runfill 调度器接续）、注册 / 替换 / 取消回执，V100 策略添加回执。
+- 尺寸规则：
+  - 三张逐人表只发布 kit 内写出的 gzip 副本（公开 14.0 MB、私有 3.3 MB、MFF 0.4 MB），未压缩原表不发布。publish_037 中较早的私有逐人表留在仓库，由本次 gzip 副本取代（见 `results/auditory_alignment_v3/dep12/PUBLICATION_038.md`）。
+  - measurement / predictions 中此前未发布的 1,310 个文件打包为 6 个确定性 tar.gz（每个 ≤ 45 MiB），附 `BUNDLES_MANIFEST_038.tsv`。
+- 逐单元记录：`lanes_038_001.tar.gz`，90 个成员（W7 四臂 80、CLIP 上下文匹配 10）。私有存储根路径替换为既定占位符，逐成员哈希见 `publication_038/LANE_MEMBER_DERIVATIONS.json`。
+
+来源与发布哈希见 [publication_038/MANIFEST.tsv](../results/auditory_alignment_v3/publication_038/MANIFEST.tsv)。
+
+**核验**：所有步骤以 `srun --overlap` 在 CPU 宿主 `aud_dep12cpu`（1058917）内运行。
+- 扫描覆盖 321 个已知姓名、158 个全拼形式、9,446 个标识符（含 DEP12 MFF 身份映射的 109 个键值）。未批准标识符 0；"email" 形式的命中全部是 `<臂>@<队列>` 文件名；唯一的绝对路径命中已省略为 `/projects/.../`。
+- MFF 儿童只以 `mff_<hash>` 化名出现；化名不能从公开数据反推。
+- (假名、年龄、时长) 三元组检查通过：本轮不含年龄或时长字段，NPZ 只含标签、概率、fold 与索引数组。
+- 打包与 lane 成员与冻结副本逐字节一致。
+- 最终暂存区检查 **PASS**：157 个路径（新增 143、修改 14），0 个发现；推送约 213 MiB，最大文件 37.5 MiB。
+
+本轮未发布：
+- 私有原始数据，身份映射（含 MFF 身份表），人名 / 联系方式；
+- MFF 记录与身份列表，真实年龄表，三张未压缩逐人表；
+- 研究者手稿草稿，下载的论文副本；
+- KUL AAD 数据与任何 KUL 逐 trial 输出（数据许可 CC-BY-NC-SA-4.0）；
+- 仅限服务器的绑定，模型权重，运行日志，存储清理工具 / 清单，交接记录。
+
+快照之后仍在运行：EXT2 第 3 个 seed 与公开读出、EXT3（无声音自监督继续训练）、Federici 第三公开队列、Transformer-CLIP 上下文匹配行。本轮使用 `private/github_publish_038/checkout`。GPU 训练继续运行，发布未改变实验日程。
