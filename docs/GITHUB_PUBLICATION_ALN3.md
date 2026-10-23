@@ -375,3 +375,31 @@
 - 存储清理工具/清单与入口，交接记录及其核查脚本。
 
 本轮使用 `private/github_publish_036/checkout`。GPU 训练继续运行，发布未改变实验日程。
+
+## 论文 manuscript v2 第一批（Tables 2–6）、ALN4.1 R2 全部族与 DEP12 进行中快照（2026-10-23，publish_037）
+
+研究者指示："第一批实验完成之后，你来push一版到github上"。沿用既有发布范围，本轮另行扣留下列内容。内容提交 `dbbad70b35bcffa8aeebaf4322883ccd5fe393a1` 已推送，`git ls-remote origin refs/heads/main` 读回一致。
+
+- 论文主线 manuscript v2：Tables 2–6 的代码、冻结对比族（`FAMILIES_v1.json`）、自动表格与全部族结果；外部解码器、事后敏感性及附录；CALRA 审计 v2；完整 MindMix 机制审计 v1 + 附录 01；KUL 复现汇总；CS 图谱；W7 冻结预注册及已完成部分（R、R_z、审计 A、D）。
+- ALN4.1 第二轮：13 个族与逐人结果；ALN4.2 外部评估 v2 修正。
+- DEP12 依赖包 v1.2：研究者包、执行计划、决定记录、状态、来源更新、外部对照 v0、E0 选择，以及构建时的中间结果快照（训练与测量仍在运行）。
+- 运维：fleet shim、注册、替换与取消回执，V100 策略添加回执。
+- 逐单元记录：`lanes_037_001.tar.gz`，753 个成员。私有存储根路径替换为既定占位符，逐成员哈希见 `publication_037/LANE_MEMBER_DERIVATIONS.json`。
+
+来源与发布哈希见 [publication_037/MANIFEST.tsv](../results/auditory_alignment_v3/publication_037/MANIFEST.tsv)。
+
+**核验**：所有步骤以 `srun --overlap` 在 CPU 宿主 `aud_dep12cpu`（1058917）内运行；证据分配 1047358 已于 10-23 04:13 到达时限。
+- 扫描覆盖 321 个已知姓名、158 个全拼形式、9,443 个标识符（含 DEP12 MFF 身份映射的 106 个键值），未批准标识符 0。
+- 首次构建在编码器冻结计划和跨刺激读出记录中发现 49 个身份映射编号与 MFF 序号；两类文件均已扣留，聚合结果 T4_XS 照常发布。
+- (假名、年龄、时长) 三元组检查通过：本轮不含年龄或时长字段。
+- csv / tsv（含 .gz）无 CRLF。
+- 最终暂存区检查 **PASS**：692 个路径，0 个发现。
+
+本轮未发布：
+- 私有原始数据，身份映射（含 MFF 身份表），人名 / 联系方式；
+- MFF 记录与身份列表（含编码器跨刺激计划与跨刺激读出记录），真实年龄表；
+- 研究者手稿草稿，下载的论文副本；
+- KUL AAD 数据与任何 KUL 逐 trial 输出（数据许可 CC-BY-NC-SA-4.0；只发布逐被试准确率汇总与训练记录）；
+- 仅限服务器的绑定，模型权重，运行日志，存储清理工具 / 清单，交接记录。
+
+本轮使用 `private/github_publish_037/checkout`。GPU 训练继续运行，发布未改变实验日程。

@@ -1,5 +1,22 @@
 > **接手更新（2026-10-20，Codex → Claude Code）：** 用户指定后续由 Claude Code 接手。先读本文件，再读 [CLAUDE_HANDOFF.md](CLAUDE_HANDOFF.md) 和 [CODEX_HANDOFF.md](CODEX_HANDOFF.md) §0.28。新的独立调度作业为1050940（2026-10-20 09:44起由 fleet v3 作业1051045接替，见 CLAUDE_HANDOFF §1），证据服务1047358保留；旧Codex附属step1047358.2已退出。最新完成度、V100未完成检查和明确待办以此次核查为准，历史交接段落保留。
 
+# ACTIVE RESEARCH INSTRUCTIONS — DEP12 dependence package v1.2 (2026-10-23; docs/AUDITORY_DEPENDENCE_SERVER_PACKAGE_v1_2_20261022.zip)
+
+Append/reconcile with the existing project instructions; do not replace them. The user's verbatim instructions: "看看能不能按这个方向做，完成所有规划的实验，尽可能完善 … 只要对这个思路有用的实验，你都自己下判断，不用问我"; then "你是可以修改的，只要我们的目的是一致的，换数据集，换方法，都是可以的。单seed优势也可以。甚至可以换核估计的核".
+
+- Research centre: sound–EEG dependence that is measurable, comparable, transferable and useful for decisions. Time is a measurement axis, not the main question.
+- The package is the default plan, not a hard limit. Dataset, method, kernel or estimator changes are allowed when they serve that centre.
+- Every change goes in `docs/auditory_alignment_v3/dep12/DECISIONS.md` before the outputs it affects exist. Label post-hoc choices as post hoc. Never select on query or test data.
+- Keep negative results. Single-seed advantages are reported and labelled as single-seed.
+- Execution: `docs/auditory_alignment_v3/dep12/{DEP12_PLAN,STATUS,INTERFACES}.md`; code `auditory_alignment_v3/dep12/`; results `results/auditory_alignment_v3/dep12/`.
+- Fleet coordinator rules:
+  - lanes are named `s35_*`; submit scripts are `slurm/aln35_*.sbatch`;
+  - a shim swap needs a NEW module name, because the coordinator never reloads shims;
+  - V100 routing goes through `aln35/v100_20261019/compatibility.json`;
+  - non-GPU runfill jobs must not be `c3_`-prefixed.
+- Storage: check `/projects/EEG-foundation-model` free space every monitoring tick. Below 300 GiB, run the frozen Tier-1 cache deletion in `private/auditory_alignment_v3/aln35/storage_cleanup/TIER1_20261023/`. Nothing beyond Tier 1 without the user. The A3c/A3d deferral still holds.
+- Publication: publish_037 (content dbbad70, 2026-10-23). Push only on an explicit user instruction.
+
 # ACTIVE RESEARCH INSTRUCTIONS — ALN4.2 (2026-10-21; package AUDITORY_ALN4_SERVER_PACKAGE_v4_2_20261021, user: "看看这个包，需要执行的就执行")
 
 Append/reconcile with existing project instructions; do not replace them.
